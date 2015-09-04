@@ -1,0 +1,9 @@
+[{
+ "trigger": {
+ "url-filter": "^https?://"
+ },
+ "action": {
+ "type": "css-display-none",
+ "selector": "#A9AdsMiddleBoxTop"
+ }
+ }]

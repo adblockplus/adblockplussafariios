@@ -17,14 +17,45 @@
 
 #import "AppDelegate.h"
 
+#import "Appearence.h"
+#import "RootController.h"
+
 @interface AppDelegate ()
+
+@property (nonatomic, strong) AdblockPlus *adblockPlus;
 
 @end
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+/*  for (NSString* family in [UIFont familyNames])
+  {
+    NSLog(@"%@", family);
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    for (NSString* name in [UIFont fontNamesForFamilyName: family])
+    {
+      NSLog(@"  %@", name);
+    }
+  }
+*/
+  [Appearence applyAppearence];
+  return YES;
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  self.adblockPlus = [[AdblockPlus alloc] init];
+
+  if (!self.adblockPlus.activated) {
+    [self.adblockPlus reloadContentBlockerWithCompletion:nil];
+  }
+
+  if ([self.window.rootViewController isKindOfClass:[RootController class]]) {
+    ((RootController *)self.window.rootViewController).adblockPlus = self.adblockPlus;
+  }
+
   return YES;
 }
 
@@ -37,7 +68,9 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+  [self.adblockPlus checkActivatedFlag];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
