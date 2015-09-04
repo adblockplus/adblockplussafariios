@@ -20,6 +20,20 @@
 - (void)dealloc
 {
   self.adblockPlus = nil;
+
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+
+  // Subscribe to the AVPlayerItem's DidPlayToEndTime notification.
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(onPlayerItemDidPlayToEndTimeNotification:)
+                                               name:AVPlayerItemDidPlayToEndTimeNotification
+                                             object:nil];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -54,7 +68,24 @@
   playerViewController.player = [[AVPlayer alloc] initWithURL:url];
   [playerViewController.player play];
   playerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-  [self.navigationController presentViewController:playerViewController animated:true completion:nil];
+  [self.navigationController presentViewController:playerViewController animated:YES completion:nil];
+}
+
+#pragma mark - private
+
+- (void)onPlayerItemDidPlayToEndTimeNotification:(NSNotification *)notification
+{
+  if ([self.navigationController.presentedViewController isKindOfClass:[AVPlayerViewController class]]) {
+    AVPlayerViewController *playerViewController = (AVPlayerViewController *)self.navigationController.presentedViewController;
+
+    if ([notification.object isKindOfClass:[AVPlayerItem class]]) {
+      AVPlayerItem *item = (AVPlayerItem *)notification.object;
+
+      if (playerViewController.player.currentItem == item) {
+        [playerViewController dismissViewControllerAnimated:YES completion:nil];
+      }
+    }
+  }
 }
 
 @end
