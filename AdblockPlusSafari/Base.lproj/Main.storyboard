@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -30,21 +31,24 @@
                                     <constraint firstAttribute="height" constant="0.5" id="efo-Wr-fdh"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Safari Configuration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLy-wT-2fz">
-                                <rect key="frame" x="73" y="47" width="229" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adblock Plus doesn't work if you don't configure your Safari settings. Don't be afraid, we explain you how." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="jgu-sr-NP6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adblock Plus won't work if you don't configure your Safari settings. Don't worry, we'll show you how." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="jgu-sr-NP6">
                                 <rect key="frame" x="25" y="119" width="325" height="86"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="step2_visual_configure" translatesAutoresizingMaskIntoConstraints="NO" id="y7h-IX-O8H">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" image="step2_visual_configure" translatesAutoresizingMaskIntoConstraints="NO" id="y7h-IX-O8H">
                                 <rect key="frame" x="63" y="225" width="250" height="284"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="y7h-IX-O8H" secondAttribute="height" multiplier="125:142" id="lNE-XS-Gjg"/>
+                                </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Safari Configuration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLy-wT-2fz">
+                                <rect key="frame" x="73" y="47" width="229" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.792156862745098" green="0.070588235294117646" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -55,8 +59,8 @@
                             <constraint firstItem="y7h-IX-O8H" firstAttribute="centerX" secondItem="asU-Se-HSF" secondAttribute="centerX" id="Zzv-b0-2bw"/>
                             <constraint firstItem="jgu-sr-NP6" firstAttribute="leading" secondItem="asU-Se-HSF" secondAttribute="leading" constant="25" id="iZO-7p-jCB"/>
                             <constraint firstItem="x1Q-BG-fLD" firstAttribute="top" secondItem="KLy-wT-2fz" secondAttribute="bottom" constant="14" id="kby-qa-7f7"/>
-                            <constraint firstItem="KLy-wT-2fz" firstAttribute="top" secondItem="asU-Se-HSF" secondAttribute="topMargin" constant="47" id="ljm-5w-PUF"/>
-                            <constraint firstItem="flg-0w-p9N" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y7h-IX-O8H" secondAttribute="bottom" constant="10" id="odC-fm-qgy"/>
+                            <constraint firstItem="KLy-wT-2fz" firstAttribute="top" secondItem="asU-Se-HSF" secondAttribute="top" constant="47" id="ljm-5w-PUF"/>
+                            <constraint firstItem="flg-0w-p9N" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y7h-IX-O8H" secondAttribute="bottom" constant="27" id="odC-fm-qgy"/>
                             <constraint firstItem="KLy-wT-2fz" firstAttribute="centerX" secondItem="asU-Se-HSF" secondAttribute="centerX" id="rAd-CI-hwd"/>
                             <constraint firstItem="jgu-sr-NP6" firstAttribute="top" secondItem="x1Q-BG-fLD" secondAttribute="bottom" constant="25" id="zcr-in-4ML"/>
                         </constraints>
@@ -69,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBf-E8-fci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="929.5" y="843.5"/>
+            <point key="canvasLocation" x="893.5" y="964.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="X28-Nr-npu">
@@ -102,8 +106,11 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="step1_visual_settings" translatesAutoresizingMaskIntoConstraints="NO" id="Ugs-CI-kzb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" image="step1_visual_settings" translatesAutoresizingMaskIntoConstraints="NO" id="Ugs-CI-kzb">
                                 <rect key="frame" x="63" y="245" width="250" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ugs-CI-kzb" secondAttribute="height" multiplier="25:7" id="lgj-4B-6KV"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the Settings icon → Acceptable Ads" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euz-Uy-cr5">
                                 <rect key="frame" x="79" y="323" width="218" height="14"/>
@@ -126,7 +133,7 @@
                             <constraint firstItem="RRQ-SL-6ZV" firstAttribute="centerX" secondItem="g7o-89-lWh" secondAttribute="centerX" id="azS-qe-11W"/>
                             <constraint firstItem="Ugs-CI-kzb" firstAttribute="centerX" secondItem="g7o-89-lWh" secondAttribute="centerX" id="g2t-Xv-hYG"/>
                             <constraint firstItem="euz-Uy-cr5" firstAttribute="top" secondItem="Ugs-CI-kzb" secondAttribute="bottom" constant="8" id="qdt-Pm-gbA"/>
-                            <constraint firstItem="RRQ-SL-6ZV" firstAttribute="top" secondItem="g7o-89-lWh" secondAttribute="topMargin" constant="47" id="tWm-g0-ZfJ"/>
+                            <constraint firstItem="RRQ-SL-6ZV" firstAttribute="top" secondItem="g7o-89-lWh" secondAttribute="top" constant="47" id="tWm-g0-ZfJ"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -137,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pu9-4h-hQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="929.5" y="54.5"/>
+            <point key="canvasLocation" x="356.5" y="964.5"/>
         </scene>
         <!--Welcome Controller-->
         <scene sceneID="RGt-WV-eEi">
@@ -217,7 +224,7 @@
                                 <rect key="frame" x="192" y="590" width="7" height="7"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.10588235294117647" green="0.10980392156862745" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.054901960784313725" green="0.054901960784313725" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="buA-i7-59b" firstAttribute="top" secondItem="oLj-ed-HW7" secondAttribute="bottom" id="6y9-gW-G72"/>
                             <constraint firstAttribute="trailing" secondItem="oLj-ed-HW7" secondAttribute="trailing" id="AKd-E2-uyK"/>
@@ -274,19 +281,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Go to iOS Settings → Safari → Content Blockers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9TK-Zf-1G9">
-                                <rect key="frame" x="46" y="393" width="284" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <rect key="frame" x="48" y="393" width="280" height="15"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Enable the blocking functionality" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thw-XS-bUp">
-                                <rect key="frame" x="88" y="417" width="199" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <rect key="frame" x="90" y="417" width="196" height="15"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To enable ad blocking in safari" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFT-cY-IYR">
-                                <rect key="frame" x="74" y="359" width="229" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To enable ad blocking in Safari" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFT-cY-IYR">
+                                <rect key="frame" x="73" y="359" width="230" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -299,32 +306,10 @@
                                     <constraint firstAttribute="width" constant="70" id="irB-S2-PZf"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKf-Ke-DKJ">
-                                <rect key="frame" x="314" y="607" width="1" height="60"/>
-                                <color key="backgroundColor" red="0.24313725490196078" green="0.24313725490196078" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="DzG-AV-9jH"/>
-                                    <constraint firstAttribute="width" constant="0.5" id="R19-JY-Eby"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6o-Ya-UIg">
-                                <rect key="frame" x="0.0" y="607" width="314" height="60"/>
-                                <color key="backgroundColor" red="0.10588235294117647" green="0.10980392156862745" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Pcu-Or-LY1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Deactivated" image="home_deactivated">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="selected" title="Activated" image="home_checkmark"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hB5-px-8GJ">
-                                <rect key="frame" x="315" y="607" width="60" height="60"/>
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <color key="backgroundColor" red="0.054901960784313725" green="0.054901960784313725" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="R3y-4X-Z3B"/>
                                     <constraint firstAttribute="height" constant="60" id="jRt-A9-gPE"/>
                                 </constraints>
                                 <state key="normal" image="home_settings"/>
@@ -336,21 +321,17 @@
                         <color key="backgroundColor" red="0.79215686269999996" green="0.070588235289999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dGg-TC-8Nr" firstAttribute="top" secondItem="Thw-XS-bUp" secondAttribute="bottom" constant="12" id="1yO-sG-73o"/>
-                            <constraint firstItem="rKf-Ke-DKJ" firstAttribute="leading" secondItem="Q6o-Ya-UIg" secondAttribute="trailing" id="2gN-nT-Nec"/>
                             <constraint firstItem="kFT-cY-IYR" firstAttribute="centerX" secondItem="7St-wf-B5k" secondAttribute="centerX" id="6Qu-vs-6eV"/>
                             <constraint firstAttribute="trailing" secondItem="hB5-px-8GJ" secondAttribute="trailing" id="ANu-0H-MCK"/>
                             <constraint firstItem="kFT-cY-IYR" firstAttribute="top" secondItem="DhA-mo-PVm" secondAttribute="bottom" constant="8" id="LYB-xl-mHZ"/>
-                            <constraint firstItem="Q6o-Ya-UIg" firstAttribute="leading" secondItem="7St-wf-B5k" secondAttribute="leading" id="Lo6-P1-0zH"/>
-                            <constraint firstItem="1Pe-ZB-3r7" firstAttribute="top" secondItem="rKf-Ke-DKJ" secondAttribute="bottom" id="Nc8-MN-yvq"/>
                             <constraint firstItem="9TK-Zf-1G9" firstAttribute="top" secondItem="kFT-cY-IYR" secondAttribute="bottom" constant="14" id="P9g-So-u3a"/>
+                            <constraint firstItem="hB5-px-8GJ" firstAttribute="leading" secondItem="7St-wf-B5k" secondAttribute="leading" id="RWj-Nl-TM3"/>
                             <constraint firstItem="DhA-mo-PVm" firstAttribute="centerX" secondItem="7St-wf-B5k" secondAttribute="centerX" id="TXu-sK-IRa"/>
                             <constraint firstItem="DhA-mo-PVm" firstAttribute="top" secondItem="Eql-gR-b6d" secondAttribute="bottom" constant="30" id="W5o-CE-zEp"/>
                             <constraint firstItem="9TK-Zf-1G9" firstAttribute="centerX" secondItem="7St-wf-B5k" secondAttribute="centerX" id="YXx-qU-Dh4"/>
                             <constraint firstItem="Thw-XS-bUp" firstAttribute="top" secondItem="9TK-Zf-1G9" secondAttribute="bottom" constant="10" id="Ygc-eg-XAN"/>
                             <constraint firstItem="dGg-TC-8Nr" firstAttribute="centerX" secondItem="7St-wf-B5k" secondAttribute="centerX" id="dKy-fL-Sre"/>
                             <constraint firstItem="1Pe-ZB-3r7" firstAttribute="top" secondItem="hB5-px-8GJ" secondAttribute="bottom" id="m2R-31-tOW"/>
-                            <constraint firstItem="hB5-px-8GJ" firstAttribute="leading" secondItem="rKf-Ke-DKJ" secondAttribute="trailing" id="oRV-bi-Qd4"/>
-                            <constraint firstItem="1Pe-ZB-3r7" firstAttribute="top" secondItem="Q6o-Ya-UIg" secondAttribute="bottom" id="ugX-8h-KR6"/>
                             <constraint firstItem="Thw-XS-bUp" firstAttribute="centerX" secondItem="7St-wf-B5k" secondAttribute="centerX" id="vf8-JT-Iki"/>
                             <constraint firstItem="Eql-gR-b6d" firstAttribute="centerX" secondItem="7St-wf-B5k" secondAttribute="centerX" id="wNt-ae-vWk"/>
                             <constraint firstItem="Eql-gR-b6d" firstAttribute="top" secondItem="7St-wf-B5k" secondAttribute="topMargin" constant="50" id="wlW-jR-T5L"/>
@@ -361,9 +342,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="activatedButton" destination="Q6o-Ya-UIg" id="Ouu-f3-chn"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FBW-YE-tzX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -499,14 +477,14 @@
                                     <constraint firstAttribute="height" constant="1" id="St1-2D-rnn"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="94r-nm-jV7">
-                                <rect key="frame" x="16" y="135" width="343" height="94"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="94r-nm-jV7">
+                                <rect key="frame" x="16" y="135" width="343" height="101"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">We'd like to encourage websites to use straighforward, unobstructive advertisings. That's why we've established strict guidelines to identify acceptable ads, which are shown under default settings. If you still want to block every ad you can disable this in a few seconds</string>
                                         <attributes>
                                             <color key="NSColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                            <font key="NSFont" size="13" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="2"/>
                                         </attributes>
                                     </fragment>
@@ -524,7 +502,7 @@
                                         <rect key="frame" x="0.0" y="49.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yGO-hz-dd9" id="2YJ-iv-5h2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Allow some non-intrusive ads" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3FL-nd-DlQ">
@@ -665,7 +643,7 @@
                                         <rect key="frame" x="0.0" y="113.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rmp-MW-56d" id="UdH-D1-oIX">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="v0.0.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wan-fA-Vjp">
@@ -700,8 +678,6 @@
         <image name="adblockbrowser" width="86" height="68"/>
         <image name="arrow-right" width="7" height="12"/>
         <image name="home_abplogo" width="168" height="99"/>
-        <image name="home_checkmark" width="13" height="10"/>
-        <image name="home_deactivated" width="10" height="10"/>
         <image name="home_settings" width="16" height="16"/>
         <image name="home_videoscreenshot" width="297" height="172"/>
         <image name="pageindicator_active" width="7" height="7"/>

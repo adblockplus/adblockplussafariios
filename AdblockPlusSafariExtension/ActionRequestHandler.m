@@ -34,10 +34,10 @@
 
   if (!adblockPlus.enabled) {
     file = @"empty";
-  } else if (!adblockPlus.acceptableAdsEnabled) {
-    file = @"easylist";
-  } else {
+  } else if (adblockPlus.acceptableAdsEnabled) {
     file = @"easylist_with_acceptable_ads";
+  } else {
+    file = @"easylist";
   }
 
   NSItemProvider *attachment = [[NSItemProvider alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:file withExtension:@"json"]];
@@ -45,28 +45,6 @@
   item.attachments = @[attachment];
 
   [context completeRequestReturningItems:@[item] completionHandler:nil];
-
-  /*NSArray *items;
-
-  if (!adblockPlus.enabled) {
-    items = @[];
-  } else {
-
-    NSString *file;
-
-    if (!adblockPlus.acceptableAdsEnabled) {
-      file = @"easylist";
-    } else {
-      file = @"easylist_with_acceptable_ads";
-    }
-
-    NSItemProvider *attachment = [[NSItemProvider alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:file withExtension:@"json"]];
-    NSExtensionItem *item = [[NSExtensionItem alloc] init];
-    item.attachments = @[attachment];
-    items = @[item];
-  }
-
-  [context completeRequestReturningItems:items completionHandler:nil];*/
 }
 
 @end

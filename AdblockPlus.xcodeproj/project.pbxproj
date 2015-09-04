@@ -41,7 +41,7 @@
 		E9071D4A1B76897C00091AEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9071D481B76897C00091AEB /* Main.storyboard */; };
 		E9071D4C1B76897C00091AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9071D4B1B76897C00091AEB /* Assets.xcassets */; };
 		E942B0801B76899D004B4692 /* ActionRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E942B07F1B76899D004B4692 /* ActionRequestHandler.m */; };
-		E942B0841B76899D004B4692 /* AdblockPlusSafariExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E942B0841B76899D004B4692 /* AdblockPlus.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E942B07A1B76899D004B4692 /* AdblockPlus.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E9C719D91B8CDC9200584FB8 /* easylist_with_acceptable_ads.json in Resources */ = {isa = PBXBuildFile; fileRef = E9C719D81B8CDC9200584FB8 /* easylist_with_acceptable_ads.json */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +62,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E942B0841B76899D004B4692 /* AdblockPlusSafariExtension.appex in Embed App Extensions */,
+				E942B0841B76899D004B4692 /* AdblockPlus.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,14 +110,14 @@
 		69F4D9261B95F1B700300817 /* AdblockPlusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusController.m; sourceTree = "<group>"; };
 		69F4D9281B95F28B00300817 /* AcceptableAdsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptableAdsController.h; sourceTree = "<group>"; };
 		69F4D9291B95F28B00300817 /* AcceptableAdsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptableAdsController.m; sourceTree = "<group>"; };
-		E9071D3C1B76897C00091AEB /* AdblockPlusSafari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdblockPlusSafari.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9071D3C1B76897C00091AEB /* AdblockPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdblockPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9071D401B76897C00091AEB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E9071D421B76897C00091AEB /* AppDelegate.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; tabWidth = 2; };
 		E9071D431B76897C00091AEB /* AppDelegate.m */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; tabWidth = 2; };
 		E9071D491B76897C00091AEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9071D4B1B76897C00091AEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9071D501B76897C00091AEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AdblockPlusSafariExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E942B07A1B76899D004B4692 /* AdblockPlus.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AdblockPlus.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E942B07E1B76899D004B4692 /* ActionRequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionRequestHandler.h; sourceTree = "<group>"; };
 		E942B07F1B76899D004B4692 /* ActionRequestHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionRequestHandler.m; sourceTree = "<group>"; };
 		E942B0811B76899D004B4692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -217,8 +217,8 @@
 		E9071D3D1B76897C00091AEB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E9071D3C1B76897C00091AEB /* AdblockPlusSafari.app */,
-				E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */,
+				E9071D3C1B76897C00091AEB /* AdblockPlus.app */,
+				E942B07A1B76899D004B4692 /* AdblockPlus.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -269,9 +269,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E9071D3B1B76897C00091AEB /* AdblockPlusSafari */ = {
+		E9071D3B1B76897C00091AEB /* AdblockPlus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E9071D531B76897C00091AEB /* Build configuration list for PBXNativeTarget "AdblockPlusSafari" */;
+			buildConfigurationList = E9071D531B76897C00091AEB /* Build configuration list for PBXNativeTarget "AdblockPlus" */;
 			buildPhases = (
 				E9071D381B76897C00091AEB /* Sources */,
 				E9071D391B76897C00091AEB /* Frameworks */,
@@ -283,14 +283,14 @@
 			dependencies = (
 				E942B0831B76899D004B4692 /* PBXTargetDependency */,
 			);
-			name = AdblockPlusSafari;
+			name = AdblockPlus;
 			productName = AdblockPlusSafari;
-			productReference = E9071D3C1B76897C00091AEB /* AdblockPlusSafari.app */;
+			productReference = E9071D3C1B76897C00091AEB /* AdblockPlus.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E942B0791B76899D004B4692 /* AdblockPlusSafariExtension */ = {
+		E942B0791B76899D004B4692 /* AdblockPlusExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E942B0871B76899D004B4692 /* Build configuration list for PBXNativeTarget "AdblockPlusSafariExtension" */;
+			buildConfigurationList = E942B0871B76899D004B4692 /* Build configuration list for PBXNativeTarget "AdblockPlusExtension" */;
 			buildPhases = (
 				E942B0761B76899D004B4692 /* Sources */,
 				E942B0771B76899D004B4692 /* Frameworks */,
@@ -300,9 +300,9 @@
 			);
 			dependencies = (
 			);
-			name = AdblockPlusSafariExtension;
+			name = AdblockPlusExtension;
 			productName = AdblockPlusSafariExtension;
-			productReference = E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */;
+			productReference = E942B07A1B76899D004B4692 /* AdblockPlus.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -316,7 +316,7 @@
 				TargetAttributes = {
 					E9071D3B1B76897C00091AEB = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 5YAZE4MX2R;
+						DevelopmentTeam = KZNK82MF62;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -325,7 +325,7 @@
 					};
 					E942B0791B76899D004B4692 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 5YAZE4MX2R;
+						DevelopmentTeam = KZNK82MF62;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -334,7 +334,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E9071D371B76897C00091AEB /* Build configuration list for PBXProject "AdblockPlusSafari" */;
+			buildConfigurationList = E9071D371B76897C00091AEB /* Build configuration list for PBXProject "AdblockPlus" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -347,8 +347,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E9071D3B1B76897C00091AEB /* AdblockPlusSafari */,
-				E942B0791B76899D004B4692 /* AdblockPlusSafariExtension */,
+				E9071D3B1B76897C00091AEB /* AdblockPlus */,
+				E942B0791B76899D004B4692 /* AdblockPlusExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -423,7 +423,7 @@
 /* Begin PBXTargetDependency section */
 		E942B0831B76899D004B4692 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E942B0791B76899D004B4692 /* AdblockPlusSafariExtension */;
+			target = E942B0791B76899D004B4692 /* AdblockPlusExtension */;
 			targetProxy = E942B0821B76899D004B4692 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -532,7 +532,7 @@
 				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.salsitasoft.AdblockPlusSafari;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AdblockPlus;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -547,7 +547,7 @@
 				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.salsitasoft.AdblockPlusSafari;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AdblockPlus;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -561,7 +561,7 @@
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.salsitasoft.AdblockPlusSafari.AdblockPlusSafariExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AdblockPlus;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
@@ -576,7 +576,7 @@
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.salsitasoft.AdblockPlusSafari.AdblockPlusSafariExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AdblockPlus;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
@@ -585,7 +585,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E9071D371B76897C00091AEB /* Build configuration list for PBXProject "AdblockPlusSafari" */ = {
+		E9071D371B76897C00091AEB /* Build configuration list for PBXProject "AdblockPlus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E9071D511B76897C00091AEB /* Debug */,
@@ -594,7 +594,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E9071D531B76897C00091AEB /* Build configuration list for PBXNativeTarget "AdblockPlusSafari" */ = {
+		E9071D531B76897C00091AEB /* Build configuration list for PBXNativeTarget "AdblockPlus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E9071D541B76897C00091AEB /* Debug */,
@@ -603,7 +603,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E942B0871B76899D004B4692 /* Build configuration list for PBXNativeTarget "AdblockPlusSafariExtension" */ = {
+		E942B0871B76899D004B4692 /* Build configuration list for PBXNativeTarget "AdblockPlusExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E942B0851B76899D004B4692 /* Debug */,

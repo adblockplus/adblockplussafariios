@@ -100,7 +100,6 @@
 - (void)onSwitchHasChanged:(UISwitch *)s
 {
   [self.adblockPlus setEnabled:s.on reload:YES];
-  //self.adblockPlus.enabled = s.on;
 }
 
 @end

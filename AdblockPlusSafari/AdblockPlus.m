@@ -47,18 +47,21 @@ static NSString *AdblockPlusAcceptableAdsEnabled = @"AdblockPlusAcceptableAdsEna
 {
   _enabled = enabled;
   [_adblockPlusDetails setBool:enabled forKey:AdblockPlusEnabled];
+  [_adblockPlusDetails synchronize];
 }
 
 - (void)setAcceptableAdsEnabled:(BOOL)acceptableAdsEnabled
 {
   _acceptableAdsEnabled = acceptableAdsEnabled;
   [_adblockPlusDetails setBool:acceptableAdsEnabled forKey:AdblockPlusAcceptableAdsEnabled];
+  [_adblockPlusDetails synchronize];
 }
 
 - (void)setActivated:(BOOL)activated
 {
   _activated = activated;
   [_adblockPlusDetails setBool:activated forKey:AdblockPlusActivated];
+  [_adblockPlusDetails synchronize];
 }
 
 #pragma mark -

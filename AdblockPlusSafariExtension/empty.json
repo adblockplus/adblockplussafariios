@@ -1,9 +1,13 @@
-[{
- "trigger": {
- "url-filter": "^https?://"
- },
- "action": {
- "type": "css-display-none",
- "selector": "#A9AdsMiddleBoxTop"
- }
- }]
+[
+  {
+    "action":
+    {
+      "selector": "a[href^=\"http://www.iana.org/domains/example\"]",
+      "type": "css-display-none"
+    },
+    "trigger":
+    {
+      "url-filter": ".*"
+    }
+  }
+]
