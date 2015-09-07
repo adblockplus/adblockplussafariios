@@ -44,6 +44,9 @@
 {
   if ([keyPath isEqualToString:NSStringFromSelector(@selector(acceptableAdsEnabled))]) {
     self.acceptableAdsEnablingSwitch.on = self.adblockPlus.acceptableAdsEnabled;
+  } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(reloading))]) {
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self updateAccessoryViewOfCell: cell];
   } else {
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
   }
@@ -51,13 +54,20 @@
 
 - (void)setAdblockPlus:(AdblockPlus *)adblockPlus
 {
-  NSString *keyPath = NSStringFromSelector(@selector(acceptableAdsEnabled));
-  [_adblockPlus removeObserver:self forKeyPath:keyPath];
+  NSArray<NSString *> *keyPaths = @[NSStringFromSelector(@selector(acceptableAdsEnabled)),
+                                   NSStringFromSelector(@selector(reloading))];
+
+  for (NSString *keyPath in keyPaths) {
+    [_adblockPlus removeObserver:self
+                      forKeyPath:keyPath];
+  }
   _adblockPlus = adblockPlus;
-  [_adblockPlus addObserver:self
-                 forKeyPath:keyPath
-                    options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew
-                    context:nil];
+  for (NSString *keyPath in keyPaths) {
+    [_adblockPlus addObserver:self
+                   forKeyPath:keyPath
+                      options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew
+                      context:nil];
+  }
 }
 
 #pragma mark - UITableViewDataSource
@@ -73,6 +83,7 @@
 
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
   cell.accessoryView = self.acceptableAdsEnablingSwitch;
+  [self updateAccessoryViewOfCell: cell];
 
   return cell;
 }
@@ -82,6 +93,18 @@
 - (void)onSwitchHasChanged:(UISwitch *)s
 {
   [self.adblockPlus setAcceptableAdsEnabled:s.on reload:YES];
+}
+
+- (void)updateAccessoryViewOfCell:(UITableViewCell *)cell
+{
+  if (!self.adblockPlus.reloading) {
+    cell.accessoryView = self.acceptableAdsEnablingSwitch;
+  } else {
+    UIActivityIndicatorView *view =
+    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [view startAnimating];
+    cell.accessoryView = view;
+  }
 }
 
 @end

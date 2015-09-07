@@ -36,7 +36,8 @@
 
   NSString *text = NSLocalizedString(@"To get a better ad blocking experience use Adblock\u00a0Browser for iOS", @"");
 
-  NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName: lightFont}];
+  NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text
+                                                                                     attributes:@{NSFontAttributeName: lightFont}];
 
   NSRange range = [text rangeOfString:@"Browser" options:NSCaseInsensitiveSearch];
 

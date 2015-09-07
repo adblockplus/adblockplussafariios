@@ -92,12 +92,16 @@ static NSString *AdblockPlusAcceptableAdsEnabled = @"AdblockPlusAcceptableAdsEna
 - (void)reloadContentBlockerWithCompletion:(void(^__nullable)(NSError * __nullable error))completion;
 {
   __weak __typeof(self) wSelf = self;
+  wSelf.reloading = YES;
   [SFContentBlockerManager reloadContentBlockerWithIdentifier:self.contentBlockerIdentifier completionHandler:^(NSError *error) {
     NSLog(@"%@", error);
-    [wSelf checkActivatedFlag];
-    if (completion) {
-      completion(error);
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+      wSelf.reloading = NO;
+      [wSelf checkActivatedFlag];
+      if (completion) {
+        completion(error);
+      }
+    });
   }];
 }
 
