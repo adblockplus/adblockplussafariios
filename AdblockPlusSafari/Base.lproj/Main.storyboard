@@ -31,14 +31,8 @@
                                     <constraint firstAttribute="height" constant="0.5" id="efo-Wr-fdh"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adblock Plus won't work if you don't configure your Safari settings. Don't worry, we'll show you how." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="jgu-sr-NP6">
-                                <rect key="frame" x="25" y="119" width="325" height="86"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" image="step2_visual_configure" translatesAutoresizingMaskIntoConstraints="NO" id="y7h-IX-O8H">
-                                <rect key="frame" x="63" y="225" width="250" height="284"/>
+                                <rect key="frame" x="63" y="203" width="250" height="284"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="y7h-IX-O8H" secondAttribute="height" multiplier="125:142" id="lNE-XS-Gjg"/>
                                 </constraints>
@@ -46,6 +40,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Safari Configuration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLy-wT-2fz">
                                 <rect key="frame" x="73" y="47" width="229" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adblock Plus won't work if you don't configure your Safari settings. Don't worry, we'll show you how." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgu-sr-NP6">
+                                <rect key="frame" x="25" y="119" width="325" height="65"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -88,33 +88,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmh-yU-kbe">
-                                <rect key="frame" x="15" y="93" width="345" height="1"/>
+                                <rect key="frame" x="15" y="92" width="345" height="1"/>
                                 <color key="backgroundColor" red="0.81568627449999997" green="0.4549019608" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="C34-Vi-TyH"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're in control" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRQ-SL-6ZV">
-                                <rect key="frame" x="96" y="47" width="185" height="32"/>
+                                <rect key="frame" x="95" y="47" width="185" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annoying ads are always blocked, while nonintrusive ads are displayed by default. You can change this setting at any time." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="CNX-VR-6h9">
-                                <rect key="frame" x="25" y="119" width="325" height="86"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" image="step1_visual_settings" translatesAutoresizingMaskIntoConstraints="NO" id="Ugs-CI-kzb">
-                                <rect key="frame" x="63" y="245" width="250" height="70"/>
+                                <rect key="frame" x="63" y="244" width="250" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ugs-CI-kzb" secondAttribute="height" multiplier="25:7" id="lgj-4B-6KV"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the Settings icon → Acceptable Ads" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euz-Uy-cr5">
-                                <rect key="frame" x="79" y="323" width="218" height="14"/>
+                                <rect key="frame" x="79" y="322" width="218" height="14"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annoying ads are always blocked, while nonintrusive ads are displayed by default. You can change this setting at any time." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNX-VR-6h9">
+                                <rect key="frame" x="25" y="118" width="325" height="86"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -506,7 +506,7 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AcceptableAds" textLabel="3FL-nd-DlQ" style="IBUITableViewCellStyleDefault" id="yGO-hz-dd9">
-                                        <rect key="frame" x="0.0" y="49.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yGO-hz-dd9" id="2YJ-iv-5h2">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -647,7 +647,7 @@
                             <tableViewSection headerTitle="VERSION" id="4Ma-gI-dEb">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="wan-fA-Vjp" style="IBUITableViewCellStyleDefault" id="rmp-MW-56d">
-                                        <rect key="frame" x="0.0" y="113.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rmp-MW-56d" id="UdH-D1-oIX">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>

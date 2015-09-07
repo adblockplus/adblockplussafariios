@@ -34,7 +34,7 @@
   UIFont *lightFont = [Appearence defaultLightFontOfSize:fontSize];
   UIFont *boldFont = [Appearence defaultBoldFontOfSize:fontSize];
 
-  NSString *text = NSLocalizedString(@"To get a better ad blocking experience use Adblock Browser for iOS", @"");
+  NSString *text = NSLocalizedString(@"To get a better ad blocking experience use Adblock\u00a0Browser for iOS", @"");
 
   NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName: lightFont}];
 
