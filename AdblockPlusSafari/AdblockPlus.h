@@ -16,6 +16,8 @@
 
 @property (nonatomic) BOOL activated;
 
+@property (nonatomic) BOOL reloading;
+
 - (void)setEnabled:(BOOL)enabled reload:(BOOL)reload;
 
 - (void)setAcceptableAdsEnabled:(BOOL)enabled reload:(BOOL)reload;

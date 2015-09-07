@@ -36,6 +36,9 @@
   if ([keyPath isEqualToString:NSStringFromSelector(@selector(enabled))]) {
     self.blockingEnablingSwitch.on = self.adblockPlus.enabled;
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+  } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(reloading))]) {
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self updateAccessoryViewOfCell:cell];
   } else {
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
   }
@@ -43,13 +46,20 @@
 
 - (void)setAdblockPlus:(AdblockPlus *)adblockPlus
 {
-  NSString *keyPath = NSStringFromSelector(@selector(enabled));
-  [_adblockPlus removeObserver:self forKeyPath:keyPath];
+  NSArray<NSString *> *keyPaths = @[NSStringFromSelector(@selector(enabled)),
+                                    NSStringFromSelector(@selector(reloading))];
+
+  for (NSString *keyPath in keyPaths) {
+    [_adblockPlus removeObserver:self
+                      forKeyPath:keyPath];
+  }
   _adblockPlus = adblockPlus;
-  [_adblockPlus addObserver:self
-                 forKeyPath:keyPath
-                    options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew
-                    context:nil];
+  for (NSString *keyPath in keyPaths) {
+    [_adblockPlus addObserver:self
+                   forKeyPath:keyPath
+                      options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew
+                      context:nil];
+  }
 }
 
 #pragma mark - Navigation
@@ -70,6 +80,7 @@
   if ([cell.reuseIdentifier isEqualToString:@"AdblockPlus"]) {
     cell.accessoryView = self.blockingEnablingSwitch;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self updateAccessoryViewOfCell: cell];
   } else if ([cell.reuseIdentifier isEqualToString:@"AcceptableAds"]) {
     BOOL enabled = self.adblockPlus.enabled;
     cell.userInteractionEnabled = enabled;
@@ -100,6 +111,18 @@
 - (void)onSwitchHasChanged:(UISwitch *)s
 {
   [self.adblockPlus setEnabled:s.on reload:YES];
+}
+
+- (void)updateAccessoryViewOfCell:(UITableViewCell *)cell
+{
+  if (!self.adblockPlus.reloading) {
+    cell.accessoryView = self.blockingEnablingSwitch;
+  } else {
+    UIActivityIndicatorView *view =
+    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [view startAnimating];
+    cell.accessoryView = view;
+  }
 }
 
 @end
