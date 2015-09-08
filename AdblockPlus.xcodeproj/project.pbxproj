@@ -31,7 +31,6 @@
 		69AB6A511B971A82005C2075 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69AB6A501B971A82005C2075 /* SafariServices.framework */; };
 		69AB6A541B971B9A005C2075 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A531B971B9A005C2075 /* HomeController.m */; };
 		69AB6A571B973802005C2075 /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A561B973802005C2075 /* WelcomeController.m */; };
-		69C19C711B9758AF009ACBAC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C19C701B9758AF009ACBAC /* MediaPlayer.framework */; };
 		69C19C741B975946009ACBAC /* screencast.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 69C19C731B975946009ACBAC /* screencast.mp4 */; };
 		69C19C771B9835D1009ACBAC /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C19C761B9835D1009ACBAC /* RootController.m */; };
 		69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4D9261B95F1B700300817 /* AdblockPlusController.m */; };
@@ -102,7 +101,6 @@
 		69AB6A531B971B9A005C2075 /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
 		69AB6A551B973802005C2075 /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeController.h; sourceTree = "<group>"; };
 		69AB6A561B973802005C2075 /* WelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeController.m; sourceTree = "<group>"; };
-		69C19C701B9758AF009ACBAC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		69C19C731B975946009ACBAC /* screencast.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = screencast.mp4; sourceTree = "<group>"; };
 		69C19C751B9835D1009ACBAC /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
 		69C19C761B9835D1009ACBAC /* RootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootController.m; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69C19C711B9758AF009ACBAC /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +202,6 @@
 		E9071D331B76897C00091AEB = {
 			isa = PBXGroup;
 			children = (
-				69C19C701B9758AF009ACBAC /* MediaPlayer.framework */,
 				69AB6A501B971A82005C2075 /* SafariServices.framework */,
 				E9071D3E1B76897C00091AEB /* AdblockPlusSafari */,
 				E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */,
