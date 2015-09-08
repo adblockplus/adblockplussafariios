@@ -30,16 +30,6 @@
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-/*  for (NSString* family in [UIFont familyNames])
-  {
-    NSLog(@"%@", family);
-
-    for (NSString* name in [UIFont fontNamesForFamilyName: family])
-    {
-      NSLog(@"  %@", name);
-    }
-  }
-*/
   [Appearence applyAppearence];
   return YES;
 }
@@ -55,7 +45,7 @@
   if ([self.window.rootViewController isKindOfClass:[RootController class]]) {
     ((RootController *)self.window.rootViewController).adblockPlus = self.adblockPlus;
   }
-
+  
   return YES;
 }
 
