@@ -312,7 +312,7 @@
 				TargetAttributes = {
 					E9071D3B1B76897C00091AEB = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = KZNK82MF62;
+						DevelopmentTeam = GRYYZR985A;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -321,7 +321,7 @@
 					};
 					E942B0791B76899D004B4692 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = KZNK82MF62;
+						DevelopmentTeam = GRYYZR985A;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -527,7 +527,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.salsitasoft.AdblockPlusSafari;
+				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari;
 				PRODUCT_NAME = AdblockPlus;
 				PROVISIONING_PROFILE = "";
 			};
@@ -542,7 +542,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.salsitasoft.AdblockPlusSafari;
+				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari;
 				PRODUCT_NAME = AdblockPlus;
 				PROVISIONING_PROFILE = "";
 			};
@@ -556,7 +556,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.salsitasoft.AdblockPlusSafari.AdblockPlusSafariExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension;
 				PRODUCT_NAME = AdblockPlus;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -571,7 +571,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.salsitasoft.AdblockPlusSafari.AdblockPlusSafariExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension;
 				PRODUCT_NAME = AdblockPlus;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
