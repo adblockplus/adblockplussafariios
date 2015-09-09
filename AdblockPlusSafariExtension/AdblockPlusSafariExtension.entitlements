@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.salsitasoft.AdblockPlusSafari</string>
+		<string>group.org.adblockplus.AdblockPlusSafari</string>
 	</array>
 </dict>
 </plist>
