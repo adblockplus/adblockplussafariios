@@ -1,0 +1,614 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		691F74471B9874590057C702 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74461B9874590057C702 /* AboutController.m */; };
+		691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */; };
+		69A910101B9860E000D93485 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
+		69A910121B9866A300D93485 /* easylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A910111B9866A300D93485 /* easylist.json */; };
+		69A910161B986A0D00D93485 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A910151B986A0D00D93485 /* empty.json */; };
+		69A910191B986DB600D93485 /* RightCenteredImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A910181B986DB600D93485 /* RightCenteredImageButton.m */; };
+		69AB6A2E1B96F664005C2075 /* Appearence.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A2D1B96F664005C2075 /* Appearence.m */; };
+		69AB6A3D1B970D18005C2075 /* SourceSansPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A311B970D18005C2075 /* SourceSansPro-Black.otf */; };
+		69AB6A3E1B970D18005C2075 /* SourceSansPro-BlackIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A321B970D18005C2075 /* SourceSansPro-BlackIt.otf */; };
+		69AB6A3F1B970D19005C2075 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A331B970D18005C2075 /* SourceSansPro-Bold.otf */; };
+		69AB6A401B970D19005C2075 /* SourceSansPro-BoldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A341B970D18005C2075 /* SourceSansPro-BoldIt.otf */; };
+		69AB6A411B970D19005C2075 /* SourceSansPro-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A351B970D18005C2075 /* SourceSansPro-ExtraLight.otf */; };
+		69AB6A421B970D19005C2075 /* SourceSansPro-ExtraLightIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A361B970D18005C2075 /* SourceSansPro-ExtraLightIt.otf */; };
+		69AB6A431B970D19005C2075 /* SourceSansPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A371B970D18005C2075 /* SourceSansPro-It.otf */; };
+		69AB6A441B970D19005C2075 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A381B970D18005C2075 /* SourceSansPro-Light.otf */; };
+		69AB6A451B970D19005C2075 /* SourceSansPro-LightIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A391B970D18005C2075 /* SourceSansPro-LightIt.otf */; };
+		69AB6A461B970D19005C2075 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A3A1B970D18005C2075 /* SourceSansPro-Regular.otf */; };
+		69AB6A471B970D19005C2075 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A3B1B970D18005C2075 /* SourceSansPro-Semibold.otf */; };
+		69AB6A481B970D19005C2075 /* SourceSansPro-SemiboldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A3C1B970D18005C2075 /* SourceSansPro-SemiboldIt.otf */; };
+		69AB6A4A1B970FFA005C2075 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A491B970FFA005C2075 /* LaunchScreen.xib */; };
+		69AB6A4F1B9712F1005C2075 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
+		69AB6A511B971A82005C2075 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69AB6A501B971A82005C2075 /* SafariServices.framework */; };
+		69AB6A541B971B9A005C2075 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A531B971B9A005C2075 /* HomeController.m */; };
+		69AB6A571B973802005C2075 /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A561B973802005C2075 /* WelcomeController.m */; };
+		69C19C741B975946009ACBAC /* screencast.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 69C19C731B975946009ACBAC /* screencast.mp4 */; };
+		69C19C771B9835D1009ACBAC /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C19C761B9835D1009ACBAC /* RootController.m */; };
+		69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4D9261B95F1B700300817 /* AdblockPlusController.m */; };
+		69F4D92A1B95F28B00300817 /* AcceptableAdsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4D9291B95F28B00300817 /* AcceptableAdsController.m */; };
+		E9071D411B76897C00091AEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9071D401B76897C00091AEB /* main.m */; };
+		E9071D441B76897C00091AEB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9071D431B76897C00091AEB /* AppDelegate.m */; };
+		E9071D4A1B76897C00091AEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9071D481B76897C00091AEB /* Main.storyboard */; };
+		E9071D4C1B76897C00091AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9071D4B1B76897C00091AEB /* Assets.xcassets */; };
+		E942B0801B76899D004B4692 /* ActionRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E942B07F1B76899D004B4692 /* ActionRequestHandler.m */; };
+		E942B0841B76899D004B4692 /* AdblockPlus.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E942B07A1B76899D004B4692 /* AdblockPlus.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E9C719D91B8CDC9200584FB8 /* easylist_with_acceptable_ads.json in Resources */ = {isa = PBXBuildFile; fileRef = E9C719D81B8CDC9200584FB8 /* easylist_with_acceptable_ads.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E942B0821B76899D004B4692 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E9071D341B76897C00091AEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E942B0791B76899D004B4692;
+			remoteInfo = AdblockPlusSafariExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E942B0881B76899D004B4692 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E942B0841B76899D004B4692 /* AdblockPlus.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		691F74451B9874590057C702 /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
+		691F74461B9874590057C702 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
+		691F74481B988ADC0057C702 /* AdblockPlusContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusContainerController.h; sourceTree = "<group>"; };
+		691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusContainerController.m; sourceTree = "<group>"; };
+		69A9100E1B985B2800D93485 /* AdblockPlusSafari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AdblockPlusSafari.entitlements; sourceTree = "<group>"; };
+		69A9100F1B985B3B00D93485 /* AdblockPlusSafariExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AdblockPlusSafariExtension.entitlements; sourceTree = "<group>"; };
+		69A910111B9866A300D93485 /* easylist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = easylist.json; sourceTree = "<group>"; };
+		69A910151B986A0D00D93485 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
+		69A910171B986DB600D93485 /* RightCenteredImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightCenteredImageButton.h; sourceTree = "<group>"; };
+		69A910181B986DB600D93485 /* RightCenteredImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightCenteredImageButton.m; sourceTree = "<group>"; };
+		69AB6A2C1B96F664005C2075 /* Appearence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appearence.h; sourceTree = "<group>"; };
+		69AB6A2D1B96F664005C2075 /* Appearence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appearence.m; sourceTree = "<group>"; };
+		69AB6A311B970D18005C2075 /* SourceSansPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.otf"; sourceTree = "<group>"; };
+		69AB6A321B970D18005C2075 /* SourceSansPro-BlackIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-BlackIt.otf"; sourceTree = "<group>"; };
+		69AB6A331B970D18005C2075 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
+		69AB6A341B970D18005C2075 /* SourceSansPro-BoldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-BoldIt.otf"; sourceTree = "<group>"; };
+		69AB6A351B970D18005C2075 /* SourceSansPro-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-ExtraLight.otf"; sourceTree = "<group>"; };
+		69AB6A361B970D18005C2075 /* SourceSansPro-ExtraLightIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-ExtraLightIt.otf"; sourceTree = "<group>"; };
+		69AB6A371B970D18005C2075 /* SourceSansPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-It.otf"; sourceTree = "<group>"; };
+		69AB6A381B970D18005C2075 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
+		69AB6A391B970D18005C2075 /* SourceSansPro-LightIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-LightIt.otf"; sourceTree = "<group>"; };
+		69AB6A3A1B970D18005C2075 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
+		69AB6A3B1B970D18005C2075 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
+		69AB6A3C1B970D18005C2075 /* SourceSansPro-SemiboldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-SemiboldIt.otf"; sourceTree = "<group>"; };
+		69AB6A491B970FFA005C2075 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		69AB6A4D1B9712F1005C2075 /* AdblockPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlus.h; sourceTree = "<group>"; };
+		69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlus.m; sourceTree = "<group>"; };
+		69AB6A501B971A82005C2075 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		69AB6A521B971B9A005C2075 /* HomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
+		69AB6A531B971B9A005C2075 /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
+		69AB6A551B973802005C2075 /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeController.h; sourceTree = "<group>"; };
+		69AB6A561B973802005C2075 /* WelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeController.m; sourceTree = "<group>"; };
+		69C19C731B975946009ACBAC /* screencast.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = screencast.mp4; sourceTree = "<group>"; };
+		69C19C751B9835D1009ACBAC /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
+		69C19C761B9835D1009ACBAC /* RootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootController.m; sourceTree = "<group>"; };
+		69F4D9251B95F1B700300817 /* AdblockPlusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusController.h; sourceTree = "<group>"; };
+		69F4D9261B95F1B700300817 /* AdblockPlusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusController.m; sourceTree = "<group>"; };
+		69F4D9281B95F28B00300817 /* AcceptableAdsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptableAdsController.h; sourceTree = "<group>"; };
+		69F4D9291B95F28B00300817 /* AcceptableAdsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptableAdsController.m; sourceTree = "<group>"; };
+		E9071D3C1B76897C00091AEB /* AdblockPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdblockPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9071D401B76897C00091AEB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E9071D421B76897C00091AEB /* AppDelegate.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; tabWidth = 2; };
+		E9071D431B76897C00091AEB /* AppDelegate.m */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; tabWidth = 2; };
+		E9071D491B76897C00091AEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E9071D4B1B76897C00091AEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E9071D501B76897C00091AEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E942B07A1B76899D004B4692 /* AdblockPlus.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AdblockPlus.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E942B07E1B76899D004B4692 /* ActionRequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionRequestHandler.h; sourceTree = "<group>"; };
+		E942B07F1B76899D004B4692 /* ActionRequestHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionRequestHandler.m; sourceTree = "<group>"; };
+		E942B0811B76899D004B4692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9C719D81B8CDC9200584FB8 /* easylist_with_acceptable_ads.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = easylist_with_acceptable_ads.json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E9071D391B76897C00091AEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69AB6A511B971A82005C2075 /* SafariServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E942B0771B76899D004B4692 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		69A9101A1B986DB900D93485 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				69A910171B986DB600D93485 /* RightCenteredImageButton.h */,
+				69A910181B986DB600D93485 /* RightCenteredImageButton.m */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
+		69AB6A2F1B970D18005C2075 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				69C19C731B975946009ACBAC /* screencast.mp4 */,
+				69AB6A301B970D18005C2075 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		69AB6A301B970D18005C2075 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				69AB6A311B970D18005C2075 /* SourceSansPro-Black.otf */,
+				69AB6A321B970D18005C2075 /* SourceSansPro-BlackIt.otf */,
+				69AB6A331B970D18005C2075 /* SourceSansPro-Bold.otf */,
+				69AB6A341B970D18005C2075 /* SourceSansPro-BoldIt.otf */,
+				69AB6A351B970D18005C2075 /* SourceSansPro-ExtraLight.otf */,
+				69AB6A361B970D18005C2075 /* SourceSansPro-ExtraLightIt.otf */,
+				69AB6A371B970D18005C2075 /* SourceSansPro-It.otf */,
+				69AB6A381B970D18005C2075 /* SourceSansPro-Light.otf */,
+				69AB6A391B970D18005C2075 /* SourceSansPro-LightIt.otf */,
+				69AB6A3A1B970D18005C2075 /* SourceSansPro-Regular.otf */,
+				69AB6A3B1B970D18005C2075 /* SourceSansPro-Semibold.otf */,
+				69AB6A3C1B970D18005C2075 /* SourceSansPro-SemiboldIt.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		69F4D9241B95F18C00300817 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				691F74451B9874590057C702 /* AboutController.h */,
+				691F74461B9874590057C702 /* AboutController.m */,
+				69F4D9281B95F28B00300817 /* AcceptableAdsController.h */,
+				69F4D9291B95F28B00300817 /* AcceptableAdsController.m */,
+				691F74481B988ADC0057C702 /* AdblockPlusContainerController.h */,
+				691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */,
+				69F4D9251B95F1B700300817 /* AdblockPlusController.h */,
+				69F4D9261B95F1B700300817 /* AdblockPlusController.m */,
+				69AB6A521B971B9A005C2075 /* HomeController.h */,
+				69AB6A531B971B9A005C2075 /* HomeController.m */,
+				69C19C751B9835D1009ACBAC /* RootController.h */,
+				69C19C761B9835D1009ACBAC /* RootController.m */,
+				69AB6A551B973802005C2075 /* WelcomeController.h */,
+				69AB6A561B973802005C2075 /* WelcomeController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E9071D331B76897C00091AEB = {
+			isa = PBXGroup;
+			children = (
+				69AB6A501B971A82005C2075 /* SafariServices.framework */,
+				E9071D3E1B76897C00091AEB /* AdblockPlusSafari */,
+				E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */,
+				E9071D3D1B76897C00091AEB /* Products */,
+				69AB6A2F1B970D18005C2075 /* Resources */,
+			);
+			sourceTree = "<group>";
+		};
+		E9071D3D1B76897C00091AEB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9071D3C1B76897C00091AEB /* AdblockPlus.app */,
+				E942B07A1B76899D004B4692 /* AdblockPlus.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E9071D3E1B76897C00091AEB /* AdblockPlusSafari */ = {
+			isa = PBXGroup;
+			children = (
+				69AB6A4D1B9712F1005C2075 /* AdblockPlus.h */,
+				69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */,
+				69A9100E1B985B2800D93485 /* AdblockPlusSafari.entitlements */,
+				E9071D421B76897C00091AEB /* AppDelegate.h */,
+				E9071D431B76897C00091AEB /* AppDelegate.m */,
+				69AB6A2C1B96F664005C2075 /* Appearence.h */,
+				69AB6A2D1B96F664005C2075 /* Appearence.m */,
+				E9071D4B1B76897C00091AEB /* Assets.xcassets */,
+				69F4D9241B95F18C00300817 /* Controllers */,
+				69A9101A1B986DB900D93485 /* Controls */,
+				E9071D501B76897C00091AEB /* Info.plist */,
+				69AB6A491B970FFA005C2075 /* LaunchScreen.xib */,
+				E9071D481B76897C00091AEB /* Main.storyboard */,
+				E9071D3F1B76897C00091AEB /* Supporting Files */,
+			);
+			path = AdblockPlusSafari;
+			sourceTree = "<group>";
+		};
+		E9071D3F1B76897C00091AEB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E9071D401B76897C00091AEB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */ = {
+			isa = PBXGroup;
+			children = (
+				E942B07E1B76899D004B4692 /* ActionRequestHandler.h */,
+				E942B07F1B76899D004B4692 /* ActionRequestHandler.m */,
+				69A9100F1B985B3B00D93485 /* AdblockPlusSafariExtension.entitlements */,
+				E9C719D81B8CDC9200584FB8 /* easylist_with_acceptable_ads.json */,
+				69A910111B9866A300D93485 /* easylist.json */,
+				69A910151B986A0D00D93485 /* empty.json */,
+				E942B0811B76899D004B4692 /* Info.plist */,
+			);
+			path = AdblockPlusSafariExtension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E9071D3B1B76897C00091AEB /* AdblockPlus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9071D531B76897C00091AEB /* Build configuration list for PBXNativeTarget "AdblockPlus" */;
+			buildPhases = (
+				E9071D381B76897C00091AEB /* Sources */,
+				E9071D391B76897C00091AEB /* Frameworks */,
+				E9071D3A1B76897C00091AEB /* Resources */,
+				E942B0881B76899D004B4692 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E942B0831B76899D004B4692 /* PBXTargetDependency */,
+			);
+			name = AdblockPlus;
+			productName = AdblockPlusSafari;
+			productReference = E9071D3C1B76897C00091AEB /* AdblockPlus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E942B0791B76899D004B4692 /* AdblockPlusExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E942B0871B76899D004B4692 /* Build configuration list for PBXNativeTarget "AdblockPlusExtension" */;
+			buildPhases = (
+				E942B0761B76899D004B4692 /* Sources */,
+				E942B0771B76899D004B4692 /* Frameworks */,
+				E942B0781B76899D004B4692 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AdblockPlusExtension;
+			productName = AdblockPlusSafariExtension;
+			productReference = E942B07A1B76899D004B4692 /* AdblockPlus.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E9071D341B76897C00091AEB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Eyeo GmbH";
+				TargetAttributes = {
+					E9071D3B1B76897C00091AEB = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = GRYYZR985A;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					E942B0791B76899D004B4692 = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = GRYYZR985A;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = E9071D371B76897C00091AEB /* Build configuration list for PBXProject "AdblockPlus" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E9071D331B76897C00091AEB;
+			productRefGroup = E9071D3D1B76897C00091AEB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E9071D3B1B76897C00091AEB /* AdblockPlus */,
+				E942B0791B76899D004B4692 /* AdblockPlusExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E9071D3A1B76897C00091AEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69AB6A471B970D19005C2075 /* SourceSansPro-Semibold.otf in Resources */,
+				69AB6A431B970D19005C2075 /* SourceSansPro-It.otf in Resources */,
+				E9071D4C1B76897C00091AEB /* Assets.xcassets in Resources */,
+				69AB6A481B970D19005C2075 /* SourceSansPro-SemiboldIt.otf in Resources */,
+				69AB6A461B970D19005C2075 /* SourceSansPro-Regular.otf in Resources */,
+				69AB6A401B970D19005C2075 /* SourceSansPro-BoldIt.otf in Resources */,
+				69AB6A421B970D19005C2075 /* SourceSansPro-ExtraLightIt.otf in Resources */,
+				69AB6A411B970D19005C2075 /* SourceSansPro-ExtraLight.otf in Resources */,
+				E9071D4A1B76897C00091AEB /* Main.storyboard in Resources */,
+				69AB6A3D1B970D18005C2075 /* SourceSansPro-Black.otf in Resources */,
+				69C19C741B975946009ACBAC /* screencast.mp4 in Resources */,
+				69AB6A441B970D19005C2075 /* SourceSansPro-Light.otf in Resources */,
+				69AB6A4A1B970FFA005C2075 /* LaunchScreen.xib in Resources */,
+				69AB6A451B970D19005C2075 /* SourceSansPro-LightIt.otf in Resources */,
+				69AB6A3F1B970D19005C2075 /* SourceSansPro-Bold.otf in Resources */,
+				69AB6A3E1B970D18005C2075 /* SourceSansPro-BlackIt.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E942B0781B76899D004B4692 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9C719D91B8CDC9200584FB8 /* easylist_with_acceptable_ads.json in Resources */,
+				69A910161B986A0D00D93485 /* empty.json in Resources */,
+				69A910121B9866A300D93485 /* easylist.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E9071D381B76897C00091AEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69AB6A4F1B9712F1005C2075 /* AdblockPlus.m in Sources */,
+				69AB6A541B971B9A005C2075 /* HomeController.m in Sources */,
+				69A910191B986DB600D93485 /* RightCenteredImageButton.m in Sources */,
+				E9071D441B76897C00091AEB /* AppDelegate.m in Sources */,
+				69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */,
+				E9071D411B76897C00091AEB /* main.m in Sources */,
+				691F74471B9874590057C702 /* AboutController.m in Sources */,
+				69F4D92A1B95F28B00300817 /* AcceptableAdsController.m in Sources */,
+				691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */,
+				69C19C771B9835D1009ACBAC /* RootController.m in Sources */,
+				69AB6A571B973802005C2075 /* WelcomeController.m in Sources */,
+				69AB6A2E1B96F664005C2075 /* Appearence.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E942B0761B76899D004B4692 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69A910101B9860E000D93485 /* AdblockPlus.m in Sources */,
+				E942B0801B76899D004B4692 /* ActionRequestHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E942B0831B76899D004B4692 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E942B0791B76899D004B4692 /* AdblockPlusExtension */;
+			targetProxy = E942B0821B76899D004B4692 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E9071D481B76897C00091AEB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9071D491B76897C00091AEB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E9071D511B76897C00091AEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E9071D521B76897C00091AEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E9071D541B76897C00091AEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafari.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari;
+				PRODUCT_NAME = AdblockPlus;
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		E9071D551B76897C00091AEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafari.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari;
+				PRODUCT_NAME = AdblockPlus;
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		E942B0851B76899D004B4692 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension;
+				PRODUCT_NAME = AdblockPlus;
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E942B0861B76899D004B4692 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension;
+				PRODUCT_NAME = AdblockPlus;
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E9071D371B76897C00091AEB /* Build configuration list for PBXProject "AdblockPlus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9071D511B76897C00091AEB /* Debug */,
+				E9071D521B76897C00091AEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E9071D531B76897C00091AEB /* Build configuration list for PBXNativeTarget "AdblockPlus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9071D541B76897C00091AEB /* Debug */,
+				E9071D551B76897C00091AEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E942B0871B76899D004B4692 /* Build configuration list for PBXNativeTarget "AdblockPlusExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E942B0851B76899D004B4692 /* Debug */,
+				E942B0861B76899D004B4692 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E9071D341B76897C00091AEB /* Project object */;
+}
