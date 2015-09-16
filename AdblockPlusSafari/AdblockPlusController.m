@@ -20,6 +20,7 @@
 @interface AdblockPlusController ()
 
 @property (nonatomic, strong) UISwitch *blockingEnablingSwitch;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -31,6 +32,7 @@
     _blockingEnablingSwitch = [[UISwitch alloc] init];
     [_blockingEnablingSwitch sizeToFit];
     [_blockingEnablingSwitch addTarget:self action:@selector(onSwitchHasChanged:) forControlEvents:UIControlEventValueChanged];
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
   }
   return self;
 }
@@ -48,15 +50,25 @@
   } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(reloading))]) {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     [self updateAccessoryViewOfCell:cell];
+  } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(updating))]) {
+    if (self.adblockPlus.updating) {
+      [self.activityIndicatorView startAnimating];
+    } else {
+      [self.activityIndicatorView stopAnimating];
+    }
+  } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(lastUpdate))]) {
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
   } else {
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
   }
 }
 
-- (void)setAdblockPlus:(AdblockPlus *)adblockPlus
+- (void)setAdblockPlus:(AdblockPlusExtras *)adblockPlus
 {
   NSArray<NSString *> *keyPaths = @[NSStringFromSelector(@selector(enabled)),
-                                    NSStringFromSelector(@selector(reloading))];
+                                    NSStringFromSelector(@selector(reloading)),
+                                    NSStringFromSelector(@selector(updating)),
+                                    NSStringFromSelector(@selector(lastUpdate))];
 
   for (NSString *keyPath in keyPaths) {
     [_adblockPlus removeObserver:self
@@ -90,6 +102,9 @@
     cell.accessoryView = self.blockingEnablingSwitch;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [self updateAccessoryViewOfCell: cell];
+  } else  if ([cell.reuseIdentifier isEqualToString:@"UpdateFilterlists"]) {
+    cell.accessoryView = self.activityIndicatorView;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
   } else if ([cell.reuseIdentifier isEqualToString:@"AcceptableAds"]) {
     BOOL enabled = self.adblockPlus.enabled;
     cell.userInteractionEnabled = enabled;
@@ -98,6 +113,20 @@
   }
 
   return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+  NSDate *lastUpdate = self.adblockPlus.lastUpdate;
+  if (section == 0 && lastUpdate != nil) {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.locale = [NSLocale currentLocale];
+    dateFormatter.dateStyle = NSDateFormatterFullStyle;
+    dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    return [NSString stringWithFormat:@"Last filterlist update: %@", [dateFormatter stringFromDate:lastUpdate]];
+  } else {
+    return nil;
+  }
 }
 
 #pragma mark - UITableViewDelegate
@@ -112,6 +141,10 @@
 
   if ([cell.reuseIdentifier isEqualToString:@"About"]) {
     [self.parentViewController performSegueWithIdentifier:@"AboutSegue" sender:nil];
+  }
+
+  if ([cell.reuseIdentifier isEqualToString:@"UpdateFilterlists"]) {
+    [self.adblockPlus updateFilterlists];
   }
 }
 

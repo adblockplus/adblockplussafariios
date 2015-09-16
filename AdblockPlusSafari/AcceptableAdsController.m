@@ -61,7 +61,7 @@
   }
 }
 
-- (void)setAdblockPlus:(AdblockPlus *)adblockPlus
+- (void)setAdblockPlus:(AdblockPlusExtras *)adblockPlus
 {
   NSArray<NSString *> *keyPaths = @[NSStringFromSelector(@selector(acceptableAdsEnabled)),
                                    NSStringFromSelector(@selector(reloading))];

@@ -22,7 +22,7 @@
 
 @interface AppDelegate ()
 
-@property (nonatomic, strong) AdblockPlus *adblockPlus;
+@property (nonatomic, strong) AdblockPlusExtras *adblockPlus;
 
 @end
 
@@ -36,7 +36,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  self.adblockPlus = [[AdblockPlus alloc] init];
+  self.adblockPlus = [[AdblockPlusExtras alloc] init];
 
   if (!self.adblockPlus.activated) {
     [self.adblockPlus reloadContentBlockerWithCompletion:nil];
@@ -45,7 +45,7 @@
   if ([self.window.rootViewController isKindOfClass:[RootController class]]) {
     ((RootController *)self.window.rootViewController).adblockPlus = self.adblockPlus;
   }
-  
+
   return YES;
 }
 

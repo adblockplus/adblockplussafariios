@@ -17,15 +17,15 @@
 
 #import "AdblockPlus.h"
 
-@import SafariServices;
-
-static NSString *AdblockPlusActivated = @"AdblockPlusActivated";
+NSString *AdblockPlusActivated = @"AdblockPlusActivated";
 static NSString *AdblockPlusEnabled = @"AdblockPlusEnabled";
 static NSString *AdblockPlusAcceptableAdsEnabled = @"AdblockPlusAcceptableAdsEnabled";
+static NSString *AdblockPlusFilterlists = @"AdblockPlusFilterlists";
+static NSString *AdblockPlusInstalledVersion = @"AdblockPlusInstalledVersion";
+static NSString *AdblockPlusDownloadedVersion = @"AdblockPlusDownloadedVersion";
 
 @interface AdblockPlus ()
 
-@property (nonatomic, strong) NSUserDefaults *adblockPlusDetails;
 @property (nonatomic, strong) NSString *bundleName;
 
 @end
@@ -36,16 +36,25 @@ static NSString *AdblockPlusAcceptableAdsEnabled = @"AdblockPlusAcceptableAdsEna
 {
   if (self = [super init]) {
     _bundleName = [[[[[NSBundle mainBundle] bundleIdentifier] componentsSeparatedByString:@"."] subarrayWithRange:NSMakeRange(0, 2)] componentsJoinedByString:@"."];
-    NSString *group = [NSString stringWithFormat:@"group.%@.%@", _bundleName, @"AdblockPlusSafari"];
-    _adblockPlusDetails = [[NSUserDefaults alloc] initWithSuiteName:group];
+    _adblockPlusDetails = [[NSUserDefaults alloc] initWithSuiteName:self.group];
     [_adblockPlusDetails registerDefaults:
      @{ AdblockPlusActivated: @NO,
         AdblockPlusEnabled: @YES,
-        AdblockPlusAcceptableAdsEnabled: @YES}];
+        AdblockPlusAcceptableAdsEnabled: @YES,
+        AdblockPlusInstalledVersion: @0,
+        AdblockPlusDownloadedVersion: @1,
+        AdblockPlusFilterlists:
+          @{@"https://easylist-downloads.adblockplus.org/easylist_content_blocker.json":
+              @{@"filename": @"easylist"},
+            @"https://easylist-downloads.adblockplus.org/easylist+exceptionrules_content_blocker.json":
+              @{@"filename": @"easylist_with_acceptable_ads"}}}];
 
     _enabled = [_adblockPlusDetails boolForKey:AdblockPlusEnabled];
     _acceptableAdsEnabled = [_adblockPlusDetails boolForKey:AdblockPlusAcceptableAdsEnabled];
     _activated = [_adblockPlusDetails boolForKey:AdblockPlusActivated];
+    _filterlists = [_adblockPlusDetails objectForKey:AdblockPlusFilterlists];
+    _installedVersion = [_adblockPlusDetails integerForKey:AdblockPlusInstalledVersion];
+    _downloadedVersion = [_adblockPlusDetails integerForKey:AdblockPlusDownloadedVersion];
   }
   return self;
 }
@@ -73,53 +82,42 @@ static NSString *AdblockPlusAcceptableAdsEnabled = @"AdblockPlusAcceptableAdsEna
   [_adblockPlusDetails synchronize];
 }
 
+- (void)setFilterlists:(NSDictionary<NSString *,NSDictionary<NSString *,NSObject *> *> *)filterlists
+{
+  _filterlists = filterlists;
+  [_adblockPlusDetails setObject:filterlists forKey:AdblockPlusFilterlists];
+  [_adblockPlusDetails synchronize];
+}
+
+- (void)setInstalledVersion:(NSInteger)installedVersion
+{
+  _installedVersion = installedVersion;
+  [_adblockPlusDetails setInteger:installedVersion forKey:AdblockPlusInstalledVersion];
+  [_adblockPlusDetails synchronize];
+}
+
+- (void)setDownloadedVersion:(NSInteger)downloadedVersion
+{
+  _downloadedVersion = downloadedVersion;
+  [_adblockPlusDetails setInteger:downloadedVersion forKey:AdblockPlusDownloadedVersion];
+  [_adblockPlusDetails synchronize];
+}
+
 #pragma mark -
 
 - (NSString *)contentBlockerIdentifier
 {
-    return [NSString stringWithFormat:@"%@.AdblockPlusSafari.AdblockPlusSafariExtension", _bundleName];
+  return [NSString stringWithFormat:@"%@.AdblockPlusSafari.AdblockPlusSafariExtension", _bundleName];
 }
 
-- (void)setEnabled:(BOOL)enabled reload:(BOOL)reload
+- (NSString *)group
 {
-  self.enabled = enabled;
-
-  if (reload) {
-    [self reloadContentBlockerWithCompletion:nil];
-  }
+  return [NSString stringWithFormat:@"group.%@.%@", _bundleName, @"AdblockPlusSafari"];
 }
 
-- (void)setAcceptableAdsEnabled:(BOOL)enabled reload:(BOOL)reload
+- (NSString *)backgroundSessionConfigurationIdentifier
 {
-  self.acceptableAdsEnabled = enabled;
-
-  if (reload) {
-    [self reloadContentBlockerWithCompletion:nil];
-  }
-}
-
-- (void)reloadContentBlockerWithCompletion:(void(^__nullable)(NSError * __nullable error))completion;
-{
-  __weak __typeof(self) wSelf = self;
-  wSelf.reloading = YES;
-  [SFContentBlockerManager reloadContentBlockerWithIdentifier:self.contentBlockerIdentifier completionHandler:^(NSError *error) {
-    NSLog(@"%@", error);
-    dispatch_async(dispatch_get_main_queue(), ^{
-      wSelf.reloading = NO;
-      [wSelf checkActivatedFlag];
-      if (completion) {
-        completion(error);
-      }
-    });
-  }];
-}
-
-- (void)checkActivatedFlag
-{
-  BOOL activated = [_adblockPlusDetails boolForKey:AdblockPlusActivated];
-  if (self.activated != activated) {
-    self.activated = activated;
-  }
+  return [NSString stringWithFormat:@"%@.AdblockPlusSafari.BackgroundSession", _bundleName];
 }
 
 @end
