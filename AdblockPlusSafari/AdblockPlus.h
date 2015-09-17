@@ -39,6 +39,6 @@ extern NSString *_Nonnull AdblockPlusActivated;
 
 @property (nonatomic) NSInteger downloadedVersion;
 
-@property (nonatomic, strong) NSDictionary<NSString *, NSDictionary<NSString *, NSObject *> *> *__nonnull filterlists;
+@property (nonatomic, strong) NSDictionary<NSString *, NSDictionary<NSString *, id> *> *__nonnull filterlists;
 
 @end

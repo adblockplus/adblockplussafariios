@@ -28,18 +28,30 @@
     _backgroundSession = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     _downloadTasks = [[NSMutableDictionary alloc] init];
 
-    _updating = [[[self.filterlists allValues] valueForKeyPath:@"@sum.updating"] integerValue] > 0;
-    _lastUpdate = [[self.filterlists allValues] valueForKeyPath:@"@min.lastUpdate"];
-
+    // Update filterlists with statuses of task running in background (outside application scope).
     __weak __typeof(self) wSelf = self;
     [_backgroundSession getAllTasksWithCompletionHandler:^(NSArray<__kindof NSURLSessionTask *> * _Nonnull tasks) {
       __strong __typeof(wSelf) sSelf = wSelf;
       if (sSelf) {
         NSMutableSet<NSString *> *set = [NSMutableSet setWithArray:sSelf.filterlists.allKeys];
+
+        // Remove filterlists whose tasks are still running
         for (NSURLSessionTask *task in tasks) {
-          [set removeObject:task.originalRequest.URL.absoluteString];
-          sSelf.downloadTasks[task.originalRequest.URL.absoluteString] = task;
+          NSString *filterlistName = task.originalRequest.URL.absoluteString;
+          [set removeObject:filterlistName];
+          if (task.taskIdentifier == [sSelf.filterlists[filterlistName][@"taskIdentifier"] unsignedIntegerValue]) {
+            sSelf.downloadTasks[task.originalRequest.URL.absoluteString] = task;
+          } else {
+            [task cancel];
+          }
         }
+
+        // Remove filterlists whose tasks have been planned again
+        for (NSString *filterlistName in self.downloadTasks) {
+          [set removeObject:filterlistName];
+        }
+
+        // Set updating flag to false of filterlist, which was cancelled by user (user killed application).
         if ([set count] > 0) {
           NSMutableDictionary *filterlists = [sSelf.filterlists mutableCopy];
           for (NSString *key in set) {
@@ -57,21 +69,33 @@
 
 #pragma mark - property
 
-- (void)setFilterlists:(NSDictionary<NSString *,NSDictionary<NSString *,NSObject *> *> *)filterlists
-{
-  super.filterlists = filterlists;
+@dynamic lastUpdate;
+@dynamic updating;
 
-  self.updating = [[[filterlists allValues] valueForKeyPath:@"@sum.updating"] integerValue] > 0;
-  self.lastUpdate = [[filterlists allValues] valueForKeyPath:@"@min.lastUpdate"];
+- (NSDate *)lastUpdate
+{
+  return [[self.filterlists allValues] valueForKeyPath:@"@min.lastUpdate"];
 }
 
-- (void)setUpdating:(BOOL)updating
+- (BOOL)updating
 {
-  // Force content blocker to load newer version of filterlist
-  if (_updating && !updating && self.installedVersion < self.downloadedVersion) {
+  return [[[self.filterlists allValues] valueForKeyPath:@"@sum.updating"] integerValue] > 0;
+}
+
+- (void)setFilterlists:(NSDictionary<NSString *,NSDictionary<NSString *,NSObject *> *> *)filterlists
+{
+  BOOL updating = self.updating;
+
+  [self willChangeValueForKey:@"lastUpdate"];
+  [self willChangeValueForKey:@"updating"];
+  super.filterlists = filterlists;
+  [self didChangeValueForKey:@"updating"];
+  [self didChangeValueForKey:@"lastUpdate"];
+
+  if (self.installedVersion < self.downloadedVersion && updating && !self.updating) {
+    // Force content blocker to load newer version of filterlist
     [self reloadContentBlockerWithCompletion:nil];
   }
-  _updating = updating;
 }
 
 #pragma mark -

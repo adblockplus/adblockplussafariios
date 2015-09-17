@@ -14,10 +14,10 @@
 @property (nonatomic) BOOL reloading;
 
 // Updating filterlists
-@property (nonatomic) BOOL updating;
+@property (nonatomic, readonly) BOOL updating;
 
 // Date of the last successful update of filterlists
-@property (nonatomic, strong) NSDate *__nullable lastUpdate;
+@property (nonatomic, readonly) NSDate *__nullable lastUpdate;
 
 - (void)setEnabled:(BOOL)enabled reload:(BOOL)reload;
 
