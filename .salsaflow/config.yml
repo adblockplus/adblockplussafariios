@@ -1,0 +1,40 @@
+# This field keeps the timestamp of when 'repo bootstrap' was executed.
+# This timestamp is being used by the pre-push hook to check only the commits
+# that happened after so that it is easier to migrate existing projects to SF.
+# You can modify the timestamp manually in case there is a need.
+salsaflow_enabled_timestamp: "2015-09-15T13:45:18.377303039+02:00"
+
+#  Unless stated otherwise, the keys that are commented out
+#  are required, so please uncomment them and fill in the values.
+
+#-- ISSUE TRACKER
+issue_tracker: "pivotal_tracker"
+pivotal_tracker:
+  project_id: 1273354
+#
+#  All config that follows is OPTIONAL.
+#
+#  # You can set the following key to filter the stories
+#  # SalsaFlow will be operating with when inside of this repository.
+#  # This is handy in case you are using a single PT projects
+#  # with multiple repositories.
+  component_label: "content-blocker"
+#
+#  # The values visible there are the default choices.
+#  # In case the defaults are fine, just delete the section,
+#  # otherwise uncomment what you need to change.
+#  workflow_labels:
+#    point_me: "point_me"
+#    reviewed: "reviewed"
+#    skip_review: "no review"
+#    tested: "qa+"
+#    skip_testing: "no qa"
+#    skip_check_labels:
+#      - "wontfix"
+#      - "dupe"
+
+#-- CODE REVIEW TOOL
+code_review_tool: "github"
+# no additional config required
+
+
