@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		691F74471B9874590057C702 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74461B9874590057C702 /* AboutController.m */; };
 		691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */; };
+		6970E76E1BA94C3900B11AC3 /* AdblockPlus+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */; settings = {ASSET_TAGS = (); }; };
+		6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */; settings = {ASSET_TAGS = (); }; };
 		69A910101B9860E000D93485 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
 		69A910121B9866A300D93485 /* easylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A910111B9866A300D93485 /* easylist.json */; };
 		69A910161B986A0D00D93485 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A910151B986A0D00D93485 /* empty.json */; };
@@ -73,6 +75,10 @@
 		691F74461B9874590057C702 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 		691F74481B988ADC0057C702 /* AdblockPlusContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusContainerController.h; sourceTree = "<group>"; };
 		691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusContainerController.m; sourceTree = "<group>"; };
+		6970E76C1BA94C3900B11AC3 /* AdblockPlus+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AdblockPlus+Extension.h"; sourceTree = "<group>"; };
+		6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AdblockPlus+Extension.m"; sourceTree = "<group>"; };
+		6970E76F1BA952F200B11AC3 /* AdblockPlusExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusExtras.h; sourceTree = "<group>"; };
+		6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusExtras.m; sourceTree = "<group>"; };
 		69A9100E1B985B2800D93485 /* AdblockPlusSafari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AdblockPlusSafari.entitlements; sourceTree = "<group>"; };
 		69A9100F1B985B3B00D93485 /* AdblockPlusSafariExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AdblockPlusSafariExtension.entitlements; sourceTree = "<group>"; };
 		69A910111B9866A300D93485 /* easylist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = easylist.json; sourceTree = "<group>"; };
@@ -224,6 +230,8 @@
 			children = (
 				69AB6A4D1B9712F1005C2075 /* AdblockPlus.h */,
 				69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */,
+				6970E76F1BA952F200B11AC3 /* AdblockPlusExtras.h */,
+				6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */,
 				69A9100E1B985B2800D93485 /* AdblockPlusSafari.entitlements */,
 				E9071D421B76897C00091AEB /* AppDelegate.h */,
 				E9071D431B76897C00091AEB /* AppDelegate.m */,
@@ -253,6 +261,8 @@
 			children = (
 				E942B07E1B76899D004B4692 /* ActionRequestHandler.h */,
 				E942B07F1B76899D004B4692 /* ActionRequestHandler.m */,
+				6970E76C1BA94C3900B11AC3 /* AdblockPlus+Extension.h */,
+				6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */,
 				69A9100F1B985B3B00D93485 /* AdblockPlusSafariExtension.entitlements */,
 				E9C719D81B8CDC9200584FB8 /* easylist_with_acceptable_ads.json */,
 				69A910111B9866A300D93485 /* easylist.json */,
@@ -316,6 +326,12 @@
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.VPNLite = {
+								enabled = 0;
 							};
 						};
 					};
@@ -397,6 +413,7 @@
 				69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */,
 				E9071D411B76897C00091AEB /* main.m in Sources */,
 				691F74471B9874590057C702 /* AboutController.m in Sources */,
+				6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */,
 				69F4D92A1B95F28B00300817 /* AcceptableAdsController.m in Sources */,
 				691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */,
 				69C19C771B9835D1009ACBAC /* RootController.m in Sources */,
@@ -411,6 +428,7 @@
 			files = (
 				69A910101B9860E000D93485 /* AdblockPlus.m in Sources */,
 				E942B0801B76899D004B4692 /* ActionRequestHandler.m in Sources */,
+				6970E76E1BA94C3900B11AC3 /* AdblockPlus+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

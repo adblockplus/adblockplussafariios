@@ -17,7 +17,7 @@
 
 #import "ActionRequestHandler.h"
 
-#import "AdblockPlus.h"
+#import "AdblockPlus+Extension.h"
 
 @interface ActionRequestHandler ()
 
@@ -30,21 +30,14 @@
   AdblockPlus *adblockPlus = [[AdblockPlus alloc] init];
   adblockPlus.activated = YES;
 
-  NSString *file;
-
-  if (!adblockPlus.enabled) {
-    file = @"empty";
-  } else if (adblockPlus.acceptableAdsEnabled) {
-    file = @"easylist_with_acceptable_ads";
-  } else {
-    file = @"easylist";
-  }
-
-  NSItemProvider *attachment = [[NSItemProvider alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:file withExtension:@"json"]];
+  NSURL *url = [adblockPlus currentFilterlistURL];
+  NSItemProvider *attachment = [[NSItemProvider alloc] initWithContentsOfURL:url];
   NSExtensionItem *item = [[NSExtensionItem alloc] init];
   item.attachments = @[attachment];
 
-  [context completeRequestReturningItems:@[item] completionHandler:nil];
+  [context completeRequestReturningItems:@[item] completionHandler:^(BOOL expired) {
+    adblockPlus.installedVersion = adblockPlus.downloadedVersion;
+  }];
 }
 
 @end
