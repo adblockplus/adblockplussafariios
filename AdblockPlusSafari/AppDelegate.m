@@ -20,7 +20,10 @@
 #import "Appearence.h"
 #import "RootController.h"
 
-const NSTimeInterval FilterlistsUpdatePeriod = 3600*24;
+// Update filter list every 5 days
+const NSTimeInterval FilterlistsUpdatePeriod = 3600*24*5;
+// Wake up application every 12 hours (just hint for iOS)
+const NSTimeInterval BackgroundFetchInterval = 3600*12;
 
 @interface AppDelegate ()
 
@@ -51,7 +54,7 @@ const NSTimeInterval FilterlistsUpdatePeriod = 3600*24;
     ((RootController *)self.window.rootViewController).adblockPlus = self.adblockPlus;
   }
 
-  [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+  [application setMinimumBackgroundFetchInterval:BackgroundFetchInterval];
   return YES;
 }
 
@@ -135,7 +138,7 @@ const NSTimeInterval FilterlistsUpdatePeriod = 3600*24;
         [wSelf setBackgroundTaskIdentifier:UIBackgroundTaskInvalid withApplication:wApplication];
       }];
     }
-  } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(filterlists))]) {
+  } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(filterLists))]) {
 
     AdblockPlusExtras *adblockPlus = object;
     if (!adblockPlus.updating) {
@@ -177,7 +180,7 @@ const NSTimeInterval FilterlistsUpdatePeriod = 3600*24;
   AdblockPlusExtras *oldAdblockPlus = _adblockPlus;
   _adblockPlus = adblockPlus;
 
-  for (NSString *keyPath in @[NSStringFromSelector(@selector(filterlists)),
+  for (NSString *keyPath in @[NSStringFromSelector(@selector(filterLists)),
                               NSStringFromSelector(@selector(reloading))]) {
     [oldAdblockPlus removeObserver:self
                         forKeyPath:keyPath

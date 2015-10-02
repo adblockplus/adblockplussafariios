@@ -20,7 +20,7 @@
 NSString *AdblockPlusActivated = @"AdblockPlusActivated";
 static NSString *AdblockPlusEnabled = @"AdblockPlusEnabled";
 static NSString *AdblockPlusAcceptableAdsEnabled = @"AdblockPlusAcceptableAdsEnabled";
-static NSString *AdblockPlusFilterlists = @"AdblockPlusFilterlists";
+static NSString *AdblockPlusFilterLists = @"AdblockPlusFilterLists";
 static NSString *AdblockPlusInstalledVersion = @"AdblockPlusInstalledVersion";
 static NSString *AdblockPlusDownloadedVersion = @"AdblockPlusDownloadedVersion";
 
@@ -35,6 +35,13 @@ static NSString *AdblockPlusDownloadedVersion = @"AdblockPlusDownloadedVersion";
 - (instancetype)init
 {
   if (self = [super init]) {
+
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"FilterLists" ofType:@"plist"];
+    NSDictionary *filterLists = [NSDictionary dictionaryWithContentsOfFile:path];
+    if (!filterLists) {
+      filterLists = @{};
+    }
+
     _bundleName = [[[[[NSBundle mainBundle] bundleIdentifier] componentsSeparatedByString:@"."] subarrayWithRange:NSMakeRange(0, 2)] componentsJoinedByString:@"."];
     _adblockPlusDetails = [[NSUserDefaults alloc] initWithSuiteName:self.group];
     [_adblockPlusDetails registerDefaults:
@@ -43,16 +50,12 @@ static NSString *AdblockPlusDownloadedVersion = @"AdblockPlusDownloadedVersion";
         AdblockPlusAcceptableAdsEnabled: @YES,
         AdblockPlusInstalledVersion: @0,
         AdblockPlusDownloadedVersion: @1,
-        AdblockPlusFilterlists:
-          @{@"https://easylist-downloads.adblockplus.org/easylist_content_blocker.json":
-              @{@"filename": @"easylist"},
-            @"https://easylist-downloads.adblockplus.org/easylist+exceptionrules_content_blocker.json":
-              @{@"filename": @"easylist_with_acceptable_ads"}}}];
+        AdblockPlusFilterLists: filterLists }];
 
     _enabled = [_adblockPlusDetails boolForKey:AdblockPlusEnabled];
     _acceptableAdsEnabled = [_adblockPlusDetails boolForKey:AdblockPlusAcceptableAdsEnabled];
     _activated = [_adblockPlusDetails boolForKey:AdblockPlusActivated];
-    _filterlists = [_adblockPlusDetails objectForKey:AdblockPlusFilterlists];
+    _filterLists = [_adblockPlusDetails objectForKey:AdblockPlusFilterLists];
     _installedVersion = [_adblockPlusDetails integerForKey:AdblockPlusInstalledVersion];
     _downloadedVersion = [_adblockPlusDetails integerForKey:AdblockPlusDownloadedVersion];
   }
@@ -82,10 +85,10 @@ static NSString *AdblockPlusDownloadedVersion = @"AdblockPlusDownloadedVersion";
   [_adblockPlusDetails synchronize];
 }
 
-- (void)setFilterlists:(NSDictionary<NSString *,NSDictionary<NSString *,NSObject *> *> *)filterlists
+- (void)setFilterLists:(NSDictionary<NSString *,NSDictionary<NSString *,NSObject *> *> *)filterLists
 {
-  _filterlists = filterlists;
-  [_adblockPlusDetails setObject:filterlists forKey:AdblockPlusFilterlists];
+  _filterLists = filterLists;
+  [_adblockPlusDetails setObject:filterLists forKey:AdblockPlusFilterLists];
   [_adblockPlusDetails synchronize];
 }
 

@@ -30,13 +30,21 @@
   AdblockPlus *adblockPlus = [[AdblockPlus alloc] init];
   adblockPlus.activated = YES;
 
+  // completeRequestReturningItems might need lot of time to update rules.
+  // (iOS process can be suspended during reloading, which expand time of reloading.)
+  // During this period filter lists might be updated (either by hand or by background refresh).
+  NSInteger downloadedVersion = adblockPlus.downloadedVersion;
   NSURL *url = [adblockPlus currentFilterlistURL];
   NSItemProvider *attachment = [[NSItemProvider alloc] initWithContentsOfURL:url];
   NSExtensionItem *item = [[NSExtensionItem alloc] init];
   item.attachments = @[attachment];
 
   [context completeRequestReturningItems:@[item] completionHandler:^(BOOL expired) {
-    adblockPlus.installedVersion = adblockPlus.downloadedVersion;
+    if (!expired) {
+      // If the new filter list was updated during reloading
+      // then downloadedVersion would be less then self.downloadedVersion.
+      adblockPlus.installedVersion = MAX(adblockPlus.installedVersion, downloadedVersion);
+    }
   }];
 }
 
