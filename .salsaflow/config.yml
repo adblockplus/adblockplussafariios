@@ -10,7 +10,7 @@ salsaflow_enabled_timestamp: "2015-09-15T13:45:18.377303039+02:00"
 #-- ISSUE TRACKER
 issue_tracker: "pivotal_tracker"
 pivotal_tracker:
-  project_id: 1273354
+  project_id: 1431320 
 #
 #  All config that follows is OPTIONAL.
 #
