@@ -24,11 +24,11 @@
   NSString *filename;
 
   if (!self.enabled) {
-    filename = @"empty";
+    filename = @"empty.json";
   } else if (self.acceptableAdsEnabled) {
-    filename = @"easylist+exceptionrules_content_blocker";
+    filename = @"easylist+exceptionrules_content_blocker.json";
   } else {
-    filename = @"easylist_content_blocker";
+    filename = @"easylist_content_blocker.json";
   }
 
   for (NSString *filterlistName in self.filterLists) {
@@ -42,7 +42,7 @@
       NSURL *url = [fileManager containerURLForSecurityApplicationGroupIdentifier:self.group];
       url = [url URLByAppendingPathComponent:filename isDirectory:NO];
 
-      if (![fileManager fileExistsAtPath:url.absoluteString]) {
+      if (![fileManager fileExistsAtPath:url.path]) {
         break;
       }
 
@@ -50,7 +50,7 @@
     }
   }
 
-  return [[NSBundle mainBundle] URLForResource:filename withExtension:@"json"];
+  return [[NSBundle mainBundle] URLForResource:[filename stringByDeletingPathExtension] withExtension:@"json"];
 }
 
 @end

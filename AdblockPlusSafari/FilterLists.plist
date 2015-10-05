@@ -5,12 +5,12 @@
 	<key>https://easylist-downloads.adblockplus.org/easylist_content_blocker.json</key>
 	<dict>
 		<key>filename</key>
-		<string>easylist_content_blocker</string>
+		<string>easylist_content_blocker.json</string>
 	</dict>
 	<key>https://easylist-downloads.adblockplus.org/easylist+exceptionrules_content_blocker.json</key>
 	<dict>
 		<key>filename</key>
-		<string>easylist+exceptionrules_content_blocker</string>
+		<string>easylist+exceptionrules_content_blocker.json</string>
 	</dict>
 </dict>
 </plist>
