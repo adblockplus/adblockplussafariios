@@ -18,7 +18,7 @@ pivotal_tracker:
 #  # SalsaFlow will be operating with when inside of this repository.
 #  # This is handy in case you are using a single PT projects
 #  # with multiple repositories.
-  component_label: "content-blocker"
+#  component_label: "content-blocker"
 #
 #  # The values visible there are the default choices.
 #  # In case the defaults are fine, just delete the section,
