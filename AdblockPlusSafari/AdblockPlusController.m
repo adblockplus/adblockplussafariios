@@ -123,7 +123,8 @@
     dateFormatter.locale = [NSLocale currentLocale];
     dateFormatter.dateStyle = NSDateFormatterFullStyle;
     dateFormatter.timeStyle = NSDateFormatterShortStyle;
-    return [NSString stringWithFormat:@"Last filterlist update: %@", [dateFormatter stringFromDate:lastUpdate]];
+    NSString* footerFormat = [super tableView:tableView titleForFooterInSection:section];
+    return [NSString stringWithFormat:footerFormat, [dateFormatter stringFromDate:lastUpdate]];
   } else {
     return nil;
   }
