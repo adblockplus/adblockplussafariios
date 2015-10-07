@@ -19,12 +19,16 @@
 
 @import SafariServices;
 
+#import "RootController.h"
+#import "HomeController.h"
 
+static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayErrorDialog";
 
 @interface AdblockPlusExtras ()<NSURLSessionDownloadDelegate, NSFileManagerDelegate>
 
 @property (nonatomic, weak) NSURLSession *backgroundSession;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, __kindof NSURLSessionTask *> *downloadTasks;
+@property (nonatomic) BOOL needsDisplayErrorDialog;
 
 @end
 
@@ -36,6 +40,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:self.backgroundSessionConfigurationIdentifier];
     _backgroundSession = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     _downloadTasks = [[NSMutableDictionary alloc] init];
+    _needsDisplayErrorDialog = [self.adblockPlusDetails boolForKey:AdblockPlusNeedsDisplayErrorDialog];
 
     // Update filter lists with statuses of task running in background (outside application scope).
     __weak __typeof(self) wSelf = self;
@@ -93,7 +98,8 @@
 
 - (void)setFilterLists:(NSDictionary<NSString *,NSDictionary<NSString *,NSObject *> *> *)filterLists
 {
-  BOOL updating = self.updating;
+  BOOL wasUpdating = self.updating;
+  BOOL hasAnyLastUpdateFailed = self.anyLastUpdateFailed;
 
   [self willChangeValueForKey:@"lastUpdate"];
   [self willChangeValueForKey:@"updating"];
@@ -101,10 +107,30 @@
   [self didChangeValueForKey:@"updating"];
   [self didChangeValueForKey:@"lastUpdate"];
 
-  if (self.installedVersion < self.downloadedVersion && updating && !self.updating) {
+  BOOL updating = self.updating;
+  BOOL anyLastUpdateFailed = self.anyLastUpdateFailed;
+
+  if (self.installedVersion < self.downloadedVersion && wasUpdating && !updating) {
     // Force content blocker to load newer version of filterlist
     [self reloadContentBlockerWithCompletion:nil];
   }
+
+  if (hasAnyLastUpdateFailed != anyLastUpdateFailed) {
+    self.needsDisplayErrorDialog = anyLastUpdateFailed;
+    [self displayErrorDialogIfNeeded];
+  }
+}
+
+- (void)setNeedsDisplayErrorDialog:(BOOL)needsDisplayErrorDialog
+{
+  _needsDisplayErrorDialog = needsDisplayErrorDialog;
+  [self.adblockPlusDetails setBool:needsDisplayErrorDialog forKey:AdblockPlusNeedsDisplayErrorDialog];
+  [self.adblockPlusDetails synchronize];
+}
+
+- (BOOL)anyLastUpdateFailed
+{
+  return [[[self.filterLists allValues] valueForKeyPath:@"@sum.lastUpdateFailed"] integerValue] > 0;
 }
 
 #pragma mark -
@@ -151,26 +177,66 @@
   }
 }
 
-- (void)updateFilterlists
+- (void)updateFilterlists:(BOOL)userTriggered
 {
-  NSMutableDictionary *filterlists = [self.filterLists mutableCopy];
-  for (NSString *filterlistName in self.filterLists) {
-    NSURL *url = [NSURL URLWithString:filterlistName];
+  NSMutableDictionary *filterLists = [self.filterLists mutableCopy];
+  for (NSString *filterListName in self.filterLists) {
+    NSURL *url = [NSURL URLWithString:filterListName];
 
     NSURLSessionTask *task = [self.backgroundSession downloadTaskWithURL:url];
 
-    NSMutableDictionary *filterlist = [filterlists[filterlistName] mutableCopy];
-    filterlist[@"updating"] = @YES;
-    filterlist[@"taskIdentifier"] = @(task.taskIdentifier);
-    filterlists[filterlistName] = filterlist;
+    NSMutableDictionary *filterList = [filterLists[filterListName] mutableCopy];
+    filterList[@"updating"] = @YES;
+    filterList[@"taskIdentifier"] = @(task.taskIdentifier);
+    filterList[@"userTriggered"] = @(userTriggered);
+    filterList[@"lastUpdateFailed"] = @NO;
+    filterLists[filterListName] = filterList;
 
-    [self.downloadTasks[filterlistName] cancel];
+    [self.downloadTasks[filterListName] cancel];
     // Store key to task cache
-    self.downloadTasks[filterlistName] = task;
+    self.downloadTasks[filterListName] = task;
 
     [task resume];
   }
-  self.filterLists = filterlists;
+  self.filterLists = filterLists;
+}
+
+- (void)displayErrorDialogIfNeeded
+{
+  if (!self.needsDisplayErrorDialog) {
+    return;
+  }
+
+  if (UIApplication.sharedApplication.applicationState != UIApplicationStateActive) {
+    return;
+  }
+
+  UIViewController *viewController = UIApplication.sharedApplication.delegate.window.rootViewController;
+  if ([viewController isKindOfClass:[RootController class]]) {
+    RootController *rootController = (RootController *)viewController;
+    if (![rootController.viewControllers.firstObject isKindOfClass:[HomeController class]]) {
+      return;
+    }
+  }
+
+  while (viewController.presentedViewController) {
+    viewController = viewController.presentedViewController;
+  }
+
+  NSString *title = @"​Filter lists Updating​";
+  NSString *message;
+  if ([[[self.filterLists allValues] valueForKeyPath:@"@sum.userTriggered"] integerValue] > 0) {
+    message = @"Manual updating failed. Please try again later.";
+  } else {
+    message = @"Automatic updating failed. Please try updating manually.";
+  }
+
+  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+  [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+  alertController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+  [viewController presentViewController:alertController animated:YES completion:nil];
+
+  self.needsDisplayErrorDialog = NO;
 }
 
 #pragma mark - NSURLSessionDownloadDelegate
@@ -182,12 +248,13 @@
 
   if ([filterlist[@"taskIdentifier"] unsignedIntegerValue] == task.taskIdentifier && [filterlist[@"updating"] boolValue]) {
 
-    NSMutableDictionary *mutableFilterlist = [filterlist mutableCopy];
-    mutableFilterlist[@"updating"] = @NO;
-    [mutableFilterlist removeObjectForKey:@"taskIdentifier"];
+    NSMutableDictionary *mutableFilterList = [filterlist mutableCopy];
+    mutableFilterList[@"updating"] = @NO;
+    mutableFilterList[@"lastUpdateFailed"] = @YES;
+    [mutableFilterList removeObjectForKey:@"taskIdentifier"];
 
     NSMutableDictionary *mutableFilterlists = [self.filterLists mutableCopy];
-    mutableFilterlists[filterlistName] = mutableFilterlist;
+    mutableFilterlists[filterlistName] = mutableFilterList;
     self.filterLists = mutableFilterlists;
 
     // Remove key from task cache
@@ -204,15 +271,13 @@
     if (![downloadTask.response isKindOfClass:[NSHTTPURLResponse class]]) {
       // This error occurs in rare cases. The error message is meaningless to ordinary user.
       NSLog(@"Downloading has failed: %@", downloadTask.error);
-      [self displayErrorDialog:filterListName withErrorMessage:@""];
       return;
     }
 
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)downloadTask.response;
 
     if (response.statusCode < 200 || response.statusCode >= 300) {
-      NSString *errorMessage = [NSString stringWithFormat:@" Remote server responded: %ld (%@).", response.statusCode, [NSHTTPURLResponse localizedStringForStatusCode:response.statusCode]];
-      [self displayErrorDialog:filterListName withErrorMessage:errorMessage];
+      NSLog(@" Remote server responded: %ld (%@).", response.statusCode, [NSHTTPURLResponse localizedStringForStatusCode:response.statusCode]);
       return;
     }
 
@@ -227,15 +292,16 @@
     // http://stackoverflow.com/questions/20683696/how-to-overwrite-a-folder-using-nsfilemanager-defaultmanager-when-copying
     if (![fileManager moveItemAtURL:location toURL:destination error:&error]) {
       NSLog(@"Moving has failed: %@", error);
-      [self displayErrorDialog:filterListName withErrorMessage:@""];
       return;
     }
 
     // Success, store the result
     NSMutableDictionary *mutableFilterList = [filterList mutableCopy];
-    mutableFilterList[@"updating"] = @NO;
     mutableFilterList[@"lastUpdate"] = [NSDate date];
     mutableFilterList[@"downloaded"] = @YES;
+    mutableFilterList[@"updating"] = @NO;
+    mutableFilterList[@"lastUpdateFailed"] = @NO;
+    [mutableFilterList removeObjectForKey:@"taskIdentifier"];
     self.downloadedVersion += 1;
 
     NSMutableDictionary *mutableFilterLists = [self.filterLists mutableCopy];
@@ -256,21 +322,5 @@
 }
 
 #pragma mark - Private
-
-- (void)displayErrorDialog:(NSString *)filterlistName withErrorMessage:(NSString *)errorMessage
-{
-  UIViewController *viewController = UIApplication.sharedApplication.delegate.window.rootViewController;
-  while (viewController.presentedViewController) {
-    viewController = viewController.presentedViewController;
-  }
-
-  NSString *title = @"Updating filterlists";
-  NSString *message = [NSString stringWithFormat:@"Filterlist %@ cannot be updated.%@", filterlistName, errorMessage];
-
-  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-  [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-  alertController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-  [viewController presentViewController:alertController animated:YES completion:nil];
-}
 
 @end

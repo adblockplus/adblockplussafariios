@@ -30,6 +30,7 @@ const NSTimeInterval BackgroundFetchInterval = 3600*12;
 @property (nonatomic, strong) AdblockPlusExtras *adblockPlus;
 @property (nonatomic, strong) NSMutableArray<NSDictionary *> *backgroundFetches;
 @property (nonatomic) UIBackgroundTaskIdentifier backgroundTaskIdentifier;
+@property (nonatomic) BOOL firstUpdateTriggered;
 
 @end
 
@@ -49,6 +50,7 @@ const NSTimeInterval BackgroundFetchInterval = 3600*12;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   self.adblockPlus = [[AdblockPlusExtras alloc] init];
+  self.firstUpdateTriggered = NO;
 
   if ([self.window.rootViewController isKindOfClass:[RootController class]]) {
     ((RootController *)self.window.rootViewController).adblockPlus = self.adblockPlus;
@@ -84,6 +86,11 @@ const NSTimeInterval BackgroundFetchInterval = 3600*12;
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
   [self.adblockPlus checkActivatedFlag];
+
+  if (self.firstUpdateTriggered && !self.adblockPlus.updating && self.adblockPlus.lastUpdate == nil) {
+    [self.adblockPlus updateFilterlists: NO];
+    self.firstUpdateTriggered = YES;
+  }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -100,7 +107,7 @@ const NSTimeInterval BackgroundFetchInterval = 3600*12;
   }
 
   if ([lastUpdate timeIntervalSinceNow] <= -FilterlistsUpdatePeriod) {
-    [self.adblockPlus updateFilterlists];
+    [self.adblockPlus updateFilterlists: NO];
     if (!self.backgroundFetches) {
       self.backgroundFetches = [NSMutableArray array];
     }
