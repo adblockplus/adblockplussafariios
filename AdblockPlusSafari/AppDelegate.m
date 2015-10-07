@@ -87,7 +87,7 @@ const NSTimeInterval BackgroundFetchInterval = 3600*12;
 {
   [self.adblockPlus checkActivatedFlag];
 
-  if (self.firstUpdateTriggered && !self.adblockPlus.updating && self.adblockPlus.lastUpdate == nil) {
+  if (!self.firstUpdateTriggered && !self.adblockPlus.updating && self.adblockPlus.lastUpdate == nil) {
     [self.adblockPlus updateFilterlists: NO];
     self.firstUpdateTriggered = YES;
   }
