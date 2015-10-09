@@ -110,8 +110,8 @@
         <note>Class = "UITableViewSection"; headerTitle = "EXCEPTIONS"; ObjectID = "w2u-Tw-F3D";</note>
       </trans-unit>
       <trans-unit id="z6o-iS-GOv.footerTitle">
-        <source>Last filter list update: %@</source>
-        <note>Class = "UITableViewSection"; footerTitle = "Last filter list update: %@"; ObjectID = "z6o-iS-GOv";</note>
+        <source>Last filter list update:</source>
+        <note>Class = "UITableViewSection"; footerTitle = "Last filter list update:"; ObjectID = "z6o-iS-GOv";</note>
       </trans-unit>
     </body>
   </file>
