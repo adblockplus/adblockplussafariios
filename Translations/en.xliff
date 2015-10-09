@@ -10,8 +10,8 @@
         <note>Class = "UILabel"; text = "About"; ObjectID = "3Bc-kL-vsl";</note>
       </trans-unit>
       <trans-unit id="3FL-nd-DlQ.text">
-        <source>Allow some nonintrusive ads</source>
-        <note>Class = "UILabel"; text = "Allow some nonintrusive ads"; ObjectID = "3FL-nd-DlQ";</note>
+        <source>Allow some non-intrusive ads</source>
+        <note>Class = "UILabel"; text = "Allow some non-intrusive ads"; ObjectID = "3FL-nd-DlQ";</note>
       </trans-unit>
       <trans-unit id="4Ma-gI-dEb.headerTitle">
         <source>VERSION</source>
@@ -20,10 +20,6 @@
       <trans-unit id="9TK-Zf-1G9.text">
         <source>1. Go to iOS Settings → Safari → Content Blockers</source>
         <note>Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9";</note>
-      </trans-unit>
-      <trans-unit id="94r-nm-jV7.text">
-        <source>We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time.</source>
-        <note>Class = "UILabel"; text = "We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time."; ObjectID = "94r-nm-jV7";</note>
       </trans-unit>
       <trans-unit id="ABG-dZ-EA2.text">
         <source>Acceptable Ads</source>
@@ -122,7 +118,6 @@
     <body>
       <trans-unit id="CFBundleDisplayName">
         <source>Adblock Plus</source>
-        <note>App name in iOS dashboard</note>
       </trans-unit>
     </body>
   </file>
@@ -133,7 +128,6 @@
     <body>
       <trans-unit id="CFBundleDisplayName">
         <source>Adblock Plus</source>
-        <note>Blocker name in Safari settings</note>
       </trans-unit>
     </body>
   </file>
