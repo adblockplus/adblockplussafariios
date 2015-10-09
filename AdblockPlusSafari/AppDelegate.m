@@ -22,8 +22,8 @@
 
 // Update filter list every 5 days
 const NSTimeInterval FilterlistsUpdatePeriod = 3600*24*5;
-// Wake up application every 12 hours (just hint for iOS)
-const NSTimeInterval BackgroundFetchInterval = 3600*12;
+// Wake up application every hour (just hint for iOS)
+const NSTimeInterval BackgroundFetchInterval = 3600;
 
 @interface AppDelegate ()
 
