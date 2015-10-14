@@ -144,6 +144,10 @@
     [self.parentViewController performSegueWithIdentifier:@"AboutSegue" sender:nil];
   }
 
+  if ([cell.reuseIdentifier isEqualToString:@"WhitelistedWebsites"]) {
+    [self.parentViewController performSegueWithIdentifier:@"WhitelistedWebsitesSegue" sender:nil];
+  }
+
   if ([cell.reuseIdentifier isEqualToString:@"UpdateFilterLists"]) {
     [self.adblockPlus updateFilterLists: YES];
   }

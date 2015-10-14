@@ -16,10 +16,11 @@
  */
 
 #import "AdblockPlus+Extension.h"
+#import "AdblockPlus+Parsing.h"
 
 @implementation AdblockPlus (Extension)
 
-- (NSURL *)currentFilterListURL
+- (NSURL *__nullable)activeFilterListsURL
 {
   NSString *filename;
 
@@ -51,6 +52,30 @@
   }
 
   return [[NSBundle mainBundle] URLForResource:[filename stringByDeletingPathExtension] withExtension:@"json"];
+}
+
+- (NSURL *)activeFilterListURLWithWhitelistedWebsites
+{
+  NSURL *original = self.activeFilterListsURL;
+  NSString *filename = original.lastPathComponent;
+
+  if (filename == nil || [filename isEqual:@"empty.json"] || self.whitelistedWebsites.count == 0)  {
+    return original;
+  }
+
+  NSFileManager *fileManager = [NSFileManager defaultManager];
+  NSURL *copy = [fileManager containerURLForSecurityApplicationGroupIdentifier:self.group];
+  copy = [copy URLByAppendingPathComponent:[NSString stringWithFormat:@"ww-%@", filename] isDirectory:NO];
+
+  NSError *error;
+  if (![[self class] mergeFilterListsFromURL:original
+                     withWhitelistedWebsites:self.whitelistedWebsites
+                                       toURL:copy
+                                       error:&error]) {
+    return original;
+  }
+
+  return copy;
 }
 
 @end

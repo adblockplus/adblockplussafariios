@@ -1,0 +1,10 @@
+PODS:
+  - yajl (2.0.4)
+
+DEPENDENCIES:
+  - yajl (~> 2.0.4)
+
+SPEC CHECKSUMS:
+  yajl: 1597676af793b78d195deb0432afdf9746c0bdcd
+
+COCOAPODS: 0.39.0
