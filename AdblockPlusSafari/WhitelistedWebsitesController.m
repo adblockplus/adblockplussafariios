@@ -16,9 +16,11 @@
 
 - (NSString *__nullable)stringByRemovingHostDisallowedCharacters
 {
-  [NSCharacterSet alphanumericCharacterSet];
-
-  return [[self componentsSeparatedByCharactersInSet:[[NSCharacterSet URLHostAllowedCharacterSet] invertedSet]] componentsJoinedByString:@""];
+  NSMutableCharacterSet *set = [[NSCharacterSet URLHostAllowedCharacterSet] mutableCopy];
+  // Some of those characters are allowed in above set.
+  [set removeCharactersInString:@"\\|()[{^$*+?<>"];
+  [set invert];
+  return [[self componentsSeparatedByCharactersInSet:set] componentsJoinedByString:@""];
 }
 
 - (NSString *__nullable)whitelistedHostname

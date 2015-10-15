@@ -1,10 +1,19 @@
-//
-//  AdblockPlusSafariTests.m
-//  AdblockPlusSafariTests
-//
-//  Created by Jan Dědeček on 13/10/15.
-//  Copyright © 2015 Eyeo GmbH. All rights reserved.
-//
+/*
+ * This file is part of Adblock Plus <https://adblockplus.org/>,
+ * Copyright (C) 2006-2015 Eyeo GmbH
+ *
+ * Adblock Plus is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * Adblock Plus is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
+ */
 
 #import <XCTest/XCTest.h>
 
@@ -79,6 +88,19 @@
 - (void)testEasylistPlusExceptionsFilterListsMergeWithWhitelistedWebsites
 {
   [self performMergeFilterlists:@"easylist+exceptionrules_content_blocker"];
+}
+
+- (void)testHostnameEscaping
+{
+  NSDictionary<NSString *, NSString *> *input =
+  @{@"a.b.c.d": @"a\\.b\\.c\\.d",
+    @"[|(){^$*+?.<>[]": @"\\[\\|\\(\\)\\{\\^\\$\\*\\+\\?\\.\\<\\>\\[\\]"
+    };
+
+  for (NSString *key in input) {
+    id result = [AdblockPlus escapeHostname:key];
+    XCTAssert([input[key] isEqualToString:result], @"Hostname is not escaped!");
+  }
 }
 
 
