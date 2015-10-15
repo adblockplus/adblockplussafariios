@@ -18,30 +18,39 @@
 {
   NSMutableCharacterSet *set = [[NSCharacterSet URLHostAllowedCharacterSet] mutableCopy];
   // Some of those characters are allowed in above set.
-  [set removeCharactersInString:@"\\|()[{^$*+?<>"];
+  [set removeCharactersInString:@"\\|()[{^$*?<>"];
   [set invert];
   return [[self componentsSeparatedByCharactersInSet:set] componentsJoinedByString:@""];
 }
 
 - (NSString *__nullable)whitelistedHostname
 {
-  NSString *possibleURL = self;
-  if (![possibleURL hasPrefix:@"http://"] || ![possibleURL hasPrefix:@"https://"]) {
-    possibleURL = [@"http://" stringByAppendingString:possibleURL];
+  // Convert to lower case
+  NSString *input = [self lowercaseString];
+
+  // Trim hostname
+  NSString *hostname = [input stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+  // Prepend scheme if needed
+  if (![hostname hasPrefix:@"http://"] && ![hostname hasPrefix:@"https://"]) {
+    hostname = [@"http://" stringByAppendingString:hostname];
   }
 
-  NSString *host = [[NSURL URLWithString:possibleURL] host];
-  if (host.length == 0) {
-    host = self;
+  // Try to get host from URL
+  hostname = [[NSURL URLWithString:hostname] host];
+  if (hostname.length == 0) {
+    hostname = self;
   }
 
-  host = [host stringByRemovingHostDisallowedCharacters];
+  // Remove not allowed characters
+  hostname = [hostname stringByRemovingHostDisallowedCharacters];
 
-  if ([host hasPrefix:@"www."]) {
-    host = [host substringFromIndex:@"www.".length];
+  // Remove www prefix
+  if ([hostname hasPrefix:@"www."]) {
+    hostname = [hostname substringFromIndex:@"www.".length];
   }
 
-  return host;
+  return hostname;
 }
 
 @end
@@ -51,9 +60,24 @@ const NSInteger TextFieldTag = 121212;
 
 @interface WhitelistedWebsitesController ()<UITextFieldDelegate>
 
+@property (nonatomic, strong) NSAttributedString *attributedPlaceholder;
+
 @end
 
 @implementation WhitelistedWebsitesController
+
+- (void)awakeFromNib
+{
+  [super awakeFromNib];
+
+  UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"AddingCell"];
+  UITextField *textField = (UITextField *)[cell viewWithTag:TextFieldTag];
+  NSString *placeholder = textField.placeholder;
+  if (placeholder) {
+    UIColor *color = [UIColor colorWithWhite:1.0 * 0xA1 / 0xFF alpha:1.0];
+    self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName: color}];
+  }
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -86,11 +110,7 @@ const NSInteger TextFieldTag = 121212;
   if (indexPath.section == 0) {
     cell = [tableView dequeueReusableCellWithIdentifier:@"AddingCell" forIndexPath:indexPath];
     UITextField *textField = (UITextField *)[cell viewWithTag:TextFieldTag];
-    NSString *placeholder = textField.placeholder;
-    if (placeholder) {
-      UIColor *color = [UIColor colorWithWhite:1.0 * 0xA1 / 0xFF alpha:1.0];
-      textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName: color}];
-    }
+    textField.attributedPlaceholder = self.attributedPlaceholder;
   } else if (self.adblockPlus.whitelistedWebsites.count == 0) {
     cell = [tableView dequeueReusableCellWithIdentifier:@"NoWebsiteCell" forIndexPath:indexPath];
   } else {
@@ -109,6 +129,16 @@ const NSInteger TextFieldTag = 121212;
 }
 
 #pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+  textField.attributedPlaceholder = nil;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+  textField.attributedPlaceholder = self.attributedPlaceholder;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -129,6 +159,7 @@ const NSInteger TextFieldTag = 121212;
       UITextField *textField = (UITextField *)[view viewWithTag:TextFieldTag];
       NSString *website = textField.text;
       textField.text = nil;
+      [textField resignFirstResponder];
       [self whitelistWebsite:website];
       return;
     }
@@ -148,9 +179,11 @@ const NSInteger TextFieldTag = 121212;
       self.adblockPlus.whitelistedWebsites = websites;
 
       if (websites.count > 0) {
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath]
+                              withRowAnimation:UITableViewRowAnimationFade];
       } else {
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1]
+                      withRowAnimation:UITableViewRowAnimationAutomatic];
       }
 
       return;
@@ -179,9 +212,11 @@ const NSInteger TextFieldTag = 121212;
   self.adblockPlus.whitelistedWebsites = websites;
 
   if (websites.count > 1) {
-    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]]
+                          withRowAnimation:UITableViewRowAnimationFade];
   } else {
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1]
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
   }
 }
 

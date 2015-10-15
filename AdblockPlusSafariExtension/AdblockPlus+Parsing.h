@@ -19,7 +19,7 @@
 
 @interface AdblockPlus (Parsing)
 
-+ (NSString *)escapeHostname:(NSString *)hostname;
++ (NSString *__nonnull)escapeHostname:(NSString *__nonnull)hostname;
 
 /**
  *  Merges filter list from given json file with whitelisted websites and generates new json file.

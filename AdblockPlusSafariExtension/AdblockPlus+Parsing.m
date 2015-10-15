@@ -107,10 +107,39 @@ static yajl_callbacks callbacks = {
   reformat_end_array
 };
 
+static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, yajl_gen g);
+
 static BOOL writeString(NSString *__nonnull string, yajl_gen g)
 {
   const char *str = [string cStringUsingEncoding:NSUTF8StringEncoding];
   return yajl_gen_status_ok == yajl_gen_string(g, str, strlen(str));
+}
+
+static BOOL writeArray(NSArray<id> *array, yajl_gen g)
+{
+  if (yajl_gen_status_ok != yajl_gen_array_open(g)) {
+    return NO;
+  }
+
+  for (id value in array) {
+
+    BOOL result;
+    if ([value isKindOfClass:[NSDictionary class]]) {
+      result = writeDictionary(value, g);
+    } else if ([value isKindOfClass:[NSString class]]) {
+      result = writeString(value, g);
+    } else if ([value isKindOfClass:[NSArray class]]) {
+      result = writeArray(value, g);
+    } else {
+      result = yajl_gen_status_ok == yajl_gen_null(g);
+    }
+
+    if (!result) {
+      return NO;
+    }
+  }
+
+  return yajl_gen_status_ok == yajl_gen_array_close(g);
 }
 
 static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, yajl_gen g)
@@ -131,6 +160,8 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
       result = writeDictionary(value, g);
     } else if ([value isKindOfClass:[NSString class]]) {
       result = writeString(value, g);
+    } else if ([value isKindOfClass:[NSArray class]]) {
+      result = writeArray(value, g);
     } else {
       result = yajl_gen_status_ok == yajl_gen_null(g);
     }
@@ -235,10 +266,9 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
 
     // Write whitelisted websites
     for (__strong NSString *website in whitelistedWebsites) {
-      website = [self escapeHostname:website];
 
       NSDictionary *dictionary =
-      @{@"trigger": @{ @"url-filter": website },
+      @{@"trigger": @{ @"url-filter": @".*", @"if-domain": @[website]},
         @"action": @{ @"type": @"ignore-previous-rules" }
         };
 
