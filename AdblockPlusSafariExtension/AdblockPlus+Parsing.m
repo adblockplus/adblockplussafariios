@@ -1,13 +1,24 @@
-//
-//  AdblockPlus+Parsing.m
-//  AdblockPlusSafari
-//
-//  Created by Jan Dědeček on 14/10/15.
-//  Copyright © 2015 Eyeo GmbH. All rights reserved.
-//
+/*
+ * This file is part of Adblock Plus <https://adblockplus.org/>,
+ * Copyright (C) 2006-2015 Eyeo GmbH
+ *
+ * Adblock Plus is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * Adblock Plus is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
+ */
 
 #import "AdblockPlus+Parsing.h"
 
+// yajl is sax-like json parser. Content blocker extension has limited amount of memory,
+// so that it is not possible to load whole filter list at once.
 #include <yajl/yajl_parse.h>
 #include <yajl/yajl_gen.h>
 
@@ -102,7 +113,6 @@ static BOOL writeString(NSString *__nonnull string, yajl_gen g)
   return yajl_gen_status_ok == yajl_gen_string(g, str, strlen(str));
 }
 
-
 static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, yajl_gen g)
 {
   if (yajl_gen_status_ok != yajl_gen_map_open(g)) {
@@ -134,7 +144,21 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
 }
 
 
+
 @implementation AdblockPlus (Parsing)
+
++ (NSString *)escapeHostname:(NSString *)hostname
+{
+  NSRegularExpression *regexp =
+  [NSRegularExpression regularExpressionWithPattern:@"[\\\\|(){^$*+?.<>\\[\\]]" options:0 error:nil];
+
+  NSMutableString *h = [hostname mutableCopy];
+  [regexp replaceMatchesInString:h
+                         options:0
+                           range:NSMakeRange(0, h.length)
+                    withTemplate:@"\\\\$0"];
+  return h;
+}
 
 + (BOOL)mergeFilterListsFromURL:(NSURL *__nonnull)input
         withWhitelistedWebsites:(NSArray<NSString *> *__nonnull)whitelistedWebsites
@@ -159,6 +183,7 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
     yajl_config(hand, yajl_dont_validate_strings, 1);
     context.g = g;
 
+    // Write buffer to output stream
     BOOL(^writeBuffer)(yajl_gen g) = ^BOOL(yajl_gen g) {
       NSUInteger outputBufferLength;
       const uint8_t *outputBuffer;
@@ -166,7 +191,7 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
       if (outputBufferLength > 0) {
         NSInteger written = [outputStream write:outputBuffer maxLength:outputBufferLength];
         if (written == -1) {
-          NSLog(@"%lu %@", (unsigned long)outputStream.streamStatus, outputStream.streamError);
+          *error = outputStream.streamError;
           return NO;
         }
       }
@@ -174,6 +199,7 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
       return true;
     };
 
+    // Get parser error
     NSError *(^getParseError)(yajl_handle hand) = ^NSError *(yajl_handle hand) {
       NSUInteger errorBufferLength = 256;
       uint8_t errorBuffer[errorBufferLength];
@@ -183,15 +209,14 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
     };
 
     // Read json file
-
     const NSUInteger inputBufferLength = 256;
     uint8_t inputBuffer[inputBufferLength];
     NSInteger read;
 
     while ((read = [inputStream read:inputBuffer maxLength:inputBufferLength]) != 0) {
 
-      yajl_status stat = yajl_parse(hand, inputBuffer, read);
-      if (stat != yajl_status_ok) {
+      yajl_status status = yajl_parse(hand, inputBuffer, read);
+      if (status != yajl_status_ok) {
         *error = getParseError(hand);
         return NO;
       }
@@ -201,25 +226,21 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
       }
     }
 
-    yajl_status stat = yajl_complete_parse(hand);
-    if (stat != yajl_status_ok) {
+    // Close parser
+    yajl_status status = yajl_complete_parse(hand);
+    if (status != yajl_status_ok) {
       *error = getParseError(hand);
       return NO;
     }
 
-    // Write white whitelisted websites
-
+    // Write whitelisted websites
     for (__strong NSString *website in whitelistedWebsites) {
-      website = [website stringByReplacingOccurrencesOfString:@"." withString:@"\\."];
+      website = [self escapeHostname:website];
+
       NSDictionary *dictionary =
-      @{@"trigger":
-          @{
-            @"url-filter": website,
-            },
-        @"action":
-          @{
-            @"type": @"ignore-previous-rules"
-            }};
+      @{@"trigger": @{ @"url-filter": website },
+        @"action": @{ @"type": @"ignore-previous-rules" }
+        };
 
       if (!writeDictionary(dictionary, g)) {
         *error = getParseError(hand);
