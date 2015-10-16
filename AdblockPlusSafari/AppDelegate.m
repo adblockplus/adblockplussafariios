@@ -21,7 +21,7 @@
 #import "RootController.h"
 
 // Update filter list every 5 days
-const NSTimeInterval FilterlistsUpdatePeriod = 3600*24*5;
+const NSTimeInterval FilterListsUpdatePeriod = 3600*24*5;
 // Wake up application every hour (just hint for iOS)
 const NSTimeInterval BackgroundFetchInterval = 3600;
 
@@ -88,7 +88,7 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
   [self.adblockPlus checkActivatedFlag];
 
   if (!self.firstUpdateTriggered && !self.adblockPlus.updating && self.adblockPlus.lastUpdate == nil) {
-    [self.adblockPlus updateFilterlists: NO];
+    [self.adblockPlus updateFilterLists: NO];
     self.firstUpdateTriggered = YES;
   }
 }
@@ -106,8 +106,8 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
     lastUpdate = [NSDate distantPast];
   }
 
-  if ([lastUpdate timeIntervalSinceNow] <= -FilterlistsUpdatePeriod) {
-    [self.adblockPlus updateFilterlists: NO];
+  if ([lastUpdate timeIntervalSinceNow] <= -FilterListsUpdatePeriod) {
+    [self.adblockPlus updateFilterLists: NO];
     if (!self.backgroundFetches) {
       self.backgroundFetches = [NSMutableArray array];
     }

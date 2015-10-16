@@ -20,7 +20,7 @@
 
 @implementation AdblockPlus (Extension)
 
-- (NSURL *__nullable)activeFilterlistsURL
+- (NSURL *__nullable)activeFilterListsURL
 {
   NSString *filename;
 
@@ -32,10 +32,10 @@
     filename = @"easylist_content_blocker.json";
   }
 
-  for (NSString *filterlistName in self.filterLists) {
-    NSDictionary *filterlist = self.filterLists[filterlistName];
-    if ([filename isEqualToString:filterlist[@"filename"]]) {
-      if (![filterlist[@"downloaded"] boolValue]) {
+  for (NSString *filterListName in self.filterLists) {
+    NSDictionary *filterList = self.filterLists[filterListName];
+    if ([filename isEqualToString:filterList[@"filename"]]) {
+      if (![filterList[@"downloaded"] boolValue]) {
         break;
       }
 
@@ -54,9 +54,9 @@
   return [[NSBundle mainBundle] URLForResource:[filename stringByDeletingPathExtension] withExtension:@"json"];
 }
 
-- (NSURL *)activeFilterlistURLWithWhitelistedWebsites
+- (NSURL *)activeFilterListURLWithWhitelistedWebsites
 {
-  NSURL *original = self.activeFilterlistsURL;
+  NSURL *original = self.activeFilterListsURL;
   NSString *filename = original.lastPathComponent;
 
   if (filename == nil || [filename isEqual:@"empty.json"] || self.whitelistedWebsites.count == 0)  {

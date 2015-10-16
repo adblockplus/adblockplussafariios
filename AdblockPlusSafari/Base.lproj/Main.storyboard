@@ -408,7 +408,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UpdateFilterlists" textLabel="PnU-9J-ZXq" style="IBUITableViewCellStyleDefault" id="YT7-Dh-gwD">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UpdateFilterLists" textLabel="PnU-9J-ZXq" style="IBUITableViewCellStyleDefault" id="YT7-Dh-gwD">
                                         <rect key="frame" x="0.0" y="79" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YT7-Dh-gwD" id="Hrn-xZ-mcA">
@@ -430,7 +430,7 @@
                             <tableViewSection headerTitle="EXCEPTIONS" id="w2u-Tw-F3D">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AcceptableAds" textLabel="ABG-dZ-EA2" style="IBUITableViewCellStyleDefault" id="pfG-1g-RT5">
-                                        <rect key="frame" x="0.0" y="189.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="190" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pfG-1g-RT5" id="ZDF-eD-Qwq">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>

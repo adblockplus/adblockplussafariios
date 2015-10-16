@@ -34,8 +34,7 @@
   // (iOS process can be suspended during reloading, which expand time of reloading.)
   // During this period filter lists might be updated (either by hand or by background refresh).
   NSInteger downloadedVersion = adblockPlus.downloadedVersion;
-  NSURL *url = [adblockPlus activeFilterlistURLWithWhitelistedWebsites];
-
+  NSURL *url = [adblockPlus activeFilterListURLWithWhitelistedWebsites];
   NSItemProvider *attachment = [[NSItemProvider alloc] initWithContentsOfURL:url];
   NSExtensionItem *item = [[NSExtensionItem alloc] init];
   item.attachments = @[attachment];

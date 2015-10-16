@@ -39,9 +39,9 @@
   [super tearDown];
 }
 
-- (void)performMergeFilterlists:(NSString *)filterlists
+- (void)performMergeFilterLists:(NSString *)filterLists
 {
-  NSURL *input = [[NSBundle bundleForClass:[self class]] URLForResource:filterlists withExtension:@"json"];
+  NSURL *input = [[NSBundle bundleForClass:[self class]] URLForResource:filterLists withExtension:@"json"];
   NSString *filename = input.lastPathComponent;
   NSURL *output = [[NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES] URLByAppendingPathComponent:filename isDirectory:NO];
 
@@ -78,16 +78,16 @@
 
 - (void)testEmptyFilterListsMergeWithWhitelistedWebsites
 {
-  [self performMergeFilterlists:@"empty"];
+  [self performMergeFilterLists:@"empty"];
 }
 
 - (void)testEasylistFilterListsMergeWithWhitelistedWebsites
 {
-  [self performMergeFilterlists:@"easylist_content_blocker"];}
+  [self performMergeFilterLists:@"easylist_content_blocker"];}
 
 - (void)testEasylistPlusExceptionsFilterListsMergeWithWhitelistedWebsites
 {
-  [self performMergeFilterlists:@"easylist+exceptionrules_content_blocker"];
+  [self performMergeFilterLists:@"easylist+exceptionrules_content_blocker"];
 }
 
 - (void)testHostnameEscaping
