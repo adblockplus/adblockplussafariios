@@ -15,30 +15,29 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
  */
 
-#import <Foundation/Foundation.h>
+#import "AdblockPlus.h"
 
-extern NSString *_Nonnull AdblockPlusActivated;
+@interface AdblockPlusExtras : AdblockPlus
 
-@interface AdblockPlus : NSObject
+// Reloading content blocker
+@property (nonatomic) BOOL reloading;
 
-@property (nonatomic, strong, readonly) NSUserDefaults *__nonnull adblockPlusDetails;
+// Updating filter lists
+@property (nonatomic, readonly) BOOL updating;
 
-- (NSString *__nonnull)group;
+// Date of the last successful update of filter lists
+@property (nonatomic, readonly) NSDate *__nullable lastUpdate;
 
-- (NSString *__nonnull)contentBlockerIdentifier;
+- (void)setEnabled:(BOOL)enabled reload:(BOOL)reload;
 
-- (NSString *__nonnull)backgroundSessionConfigurationIdentifier;
+- (void)setAcceptableAdsEnabled:(BOOL)enabled reload:(BOOL)reload;
 
-@property (nonatomic) BOOL enabled;
+- (void)reloadContentBlockerWithCompletion:(void(^__nullable)(NSError * __nullable error))completion;
 
-@property (nonatomic) BOOL acceptableAdsEnabled;
+- (void)checkActivatedFlag;
 
-@property (nonatomic) BOOL activated;
+- (void)updateFilterLists:(BOOL)userTriggered;
 
-@property (nonatomic) NSInteger installedVersion;
-
-@property (nonatomic) NSInteger downloadedVersion;
-
-@property (nonatomic, strong) NSDictionary<NSString *, NSDictionary<NSString *, id> *> *__nonnull filterLists;
+- (void)displayErrorDialogIfNeeded;
 
 @end

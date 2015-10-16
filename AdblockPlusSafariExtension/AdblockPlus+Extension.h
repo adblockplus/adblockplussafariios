@@ -15,30 +15,10 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
  */
 
-#import <Foundation/Foundation.h>
+#import "AdblockPlus.h"
 
-extern NSString *_Nonnull AdblockPlusActivated;
+@interface AdblockPlus (Extension)
 
-@interface AdblockPlus : NSObject
-
-@property (nonatomic, strong, readonly) NSUserDefaults *__nonnull adblockPlusDetails;
-
-- (NSString *__nonnull)group;
-
-- (NSString *__nonnull)contentBlockerIdentifier;
-
-- (NSString *__nonnull)backgroundSessionConfigurationIdentifier;
-
-@property (nonatomic) BOOL enabled;
-
-@property (nonatomic) BOOL acceptableAdsEnabled;
-
-@property (nonatomic) BOOL activated;
-
-@property (nonatomic) NSInteger installedVersion;
-
-@property (nonatomic) NSInteger downloadedVersion;
-
-@property (nonatomic, strong) NSDictionary<NSString *, NSDictionary<NSString *, id> *> *__nonnull filterLists;
+- (NSURL *__nullable)currentFilterListURL;
 
 @end
