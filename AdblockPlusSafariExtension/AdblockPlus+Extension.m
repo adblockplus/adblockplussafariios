@@ -19,7 +19,7 @@
 
 @implementation AdblockPlus (Extension)
 
-- (NSURL *)currentFilterlistURL
+- (NSURL *)currentFilterListURL
 {
   NSString *filename;
 

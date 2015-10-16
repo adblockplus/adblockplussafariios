@@ -36,7 +36,7 @@
 
 - (void)checkActivatedFlag;
 
-- (void)updateFilterlists:(BOOL)userTriggered;
+- (void)updateFilterLists:(BOOL)userTriggered;
 
 - (void)displayErrorDialogIfNeeded;
 

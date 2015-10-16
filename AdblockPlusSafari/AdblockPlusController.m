@@ -102,7 +102,7 @@
     cell.accessoryView = self.blockingEnablingSwitch;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [self updateAccessoryViewOfCell: cell];
-  } else  if ([cell.reuseIdentifier isEqualToString:@"UpdateFilterlists"]) {
+  } else  if ([cell.reuseIdentifier isEqualToString:@"UpdateFilterLists"]) {
     cell.accessoryView = self.activityIndicatorView;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
   } else if ([cell.reuseIdentifier isEqualToString:@"AcceptableAds"]) {
@@ -144,8 +144,8 @@
     [self.parentViewController performSegueWithIdentifier:@"AboutSegue" sender:nil];
   }
 
-  if ([cell.reuseIdentifier isEqualToString:@"UpdateFilterlists"]) {
-    [self.adblockPlus updateFilterlists: YES];
+  if ([cell.reuseIdentifier isEqualToString:@"UpdateFilterLists"]) {
+    [self.adblockPlus updateFilterLists: YES];
   }
 }
 

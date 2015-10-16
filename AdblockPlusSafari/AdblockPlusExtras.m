@@ -177,7 +177,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
   }
 }
 
-- (void)updateFilterlists:(BOOL)userTriggered
+- (void)updateFilterLists:(BOOL)userTriggered
 {
   NSMutableDictionary *filterLists = [self.filterLists mutableCopy];
   for (NSString *filterListName in self.filterLists) {
@@ -253,9 +253,9 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
     mutableFilterList[@"lastUpdateFailed"] = @YES;
     [mutableFilterList removeObjectForKey:@"taskIdentifier"];
 
-    NSMutableDictionary *mutableFilterlists = [self.filterLists mutableCopy];
-    mutableFilterlists[filterListName] = mutableFilterList;
-    self.filterLists = mutableFilterlists;
+    NSMutableDictionary *mutableFilterLists = [self.filterLists mutableCopy];
+    mutableFilterLists[filterListName] = mutableFilterList;
+    self.filterLists = mutableFilterLists;
 
     // Remove key from task cache
     [self.downloadTasks removeObjectForKey:filterListName];
