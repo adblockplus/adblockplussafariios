@@ -51,9 +51,9 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
         // Remove filter lists whose tasks are still running
         for (NSURLSessionTask *task in tasks) {
-          NSString *filterlistName = task.originalRequest.URL.absoluteString;
-          [set removeObject:filterlistName];
-          if (task.taskIdentifier == [sSelf.filterLists[filterlistName][@"taskIdentifier"] unsignedIntegerValue]) {
+          NSString *filterListName = task.originalRequest.URL.absoluteString;
+          [set removeObject:filterListName];
+          if (task.taskIdentifier == [sSelf.filterLists[filterListName][@"taskIdentifier"] unsignedIntegerValue]) {
             sSelf.downloadTasks[task.originalRequest.URL.absoluteString] = task;
           } else {
             [task cancel];
@@ -61,19 +61,19 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
         }
 
         // Remove filter lists whose tasks have been planned again
-        for (NSString *filterlistName in self.downloadTasks) {
-          [set removeObject:filterlistName];
+        for (NSString *filterListName in self.downloadTasks) {
+          [set removeObject:filterListName];
         }
 
-        // Set updating flag to false of filterlist, which was cancelled by user (user killed application).
+        // Set updating flag to false of filter list, which was cancelled by user (user killed application).
         if ([set count] > 0) {
-          NSMutableDictionary *filterlists = [sSelf.filterLists mutableCopy];
+          NSMutableDictionary *filterLists = [sSelf.filterLists mutableCopy];
           for (NSString *key in set) {
-            NSMutableDictionary *filterlist = [filterlists[key] mutableCopy];
-            filterlist[@"updating"] = @NO;
-            filterlists[key] = filterlist;
+            NSMutableDictionary *filterList = [filterLists[key] mutableCopy];
+            filterList[@"updating"] = @NO;
+            filterLists[key] = filterList;
           }
-          sSelf.filterLists = filterlists;
+          sSelf.filterLists = filterLists;
         }
       }
     }];
@@ -111,7 +111,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
   BOOL anyLastUpdateFailed = self.anyLastUpdateFailed;
 
   if (self.installedVersion < self.downloadedVersion && wasUpdating && !updating) {
-    // Force content blocker to load newer version of filterlist
+    // Force content blocker to load newer version of filter lists
     [self reloadContentBlockerWithCompletion:nil];
   }
 
@@ -207,6 +207,11 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
     return;
   }
 
+  // Do not show message, if update was automatic.
+  if ([[[self.filterLists allValues] valueForKeyPath:@"@sum.userTriggered"] integerValue] == 0) {
+    return;
+  }
+
   if (UIApplication.sharedApplication.applicationState != UIApplicationStateActive) {
     return;
   }
@@ -223,13 +228,8 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
     viewController = viewController.presentedViewController;
   }
 
-  NSString *title = @"​Filter lists Updating​";
-  NSString *message;
-  if ([[[self.filterLists allValues] valueForKeyPath:@"@sum.userTriggered"] integerValue] > 0) {
-    message = @"Manual updating failed. Please try again later.";
-  } else {
-    message = @"Automatic updating failed. Please try updating manually.";
-  }
+  NSString *title = NSLocalizedString(@"​Filter list update failed", "Title of filter update fialure dialog");
+  NSString *message = NSLocalizedString(@"Failed to update filter lists, please try again later.", @"Message of filter update fialure dialog");
 
   UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
   [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
@@ -243,22 +243,22 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
-  NSString *filterlistName = task.originalRequest.URL.absoluteString;
-  NSDictionary *filterlist = self.filterLists[filterlistName];
+  NSString *filterListName = task.originalRequest.URL.absoluteString;
+  NSDictionary *filterList = self.filterLists[filterListName];
 
-  if ([filterlist[@"taskIdentifier"] unsignedIntegerValue] == task.taskIdentifier && [filterlist[@"updating"] boolValue]) {
+  if ([filterList[@"taskIdentifier"] unsignedIntegerValue] == task.taskIdentifier && [filterList[@"updating"] boolValue]) {
 
-    NSMutableDictionary *mutableFilterList = [filterlist mutableCopy];
+    NSMutableDictionary *mutableFilterList = [filterList mutableCopy];
     mutableFilterList[@"updating"] = @NO;
     mutableFilterList[@"lastUpdateFailed"] = @YES;
     [mutableFilterList removeObjectForKey:@"taskIdentifier"];
 
     NSMutableDictionary *mutableFilterlists = [self.filterLists mutableCopy];
-    mutableFilterlists[filterlistName] = mutableFilterList;
+    mutableFilterlists[filterListName] = mutableFilterList;
     self.filterLists = mutableFilterlists;
 
     // Remove key from task cache
-    [self.downloadTasks removeObjectForKey:filterlistName];
+    [self.downloadTasks removeObjectForKey:filterListName];
   }
 }
 

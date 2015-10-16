@@ -31,10 +31,10 @@
     filename = @"easylist_content_blocker.json";
   }
 
-  for (NSString *filterlistName in self.filterLists) {
-    NSDictionary *filterlist = self.filterLists[filterlistName];
-    if ([filename isEqualToString:filterlist[@"filename"]]) {
-      if (![filterlist[@"downloaded"] boolValue]) {
+  for (NSString *filterListName in self.filterLists) {
+    NSDictionary *filterList = self.filterLists[filterListName];
+    if ([filename isEqualToString:filterList[@"filename"]]) {
+      if (![filterList[@"downloaded"] boolValue]) {
         break;
       }
 
