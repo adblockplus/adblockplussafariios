@@ -46,7 +46,6 @@
 		E942B0801B76899D004B4692 /* ActionRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E942B07F1B76899D004B4692 /* ActionRequestHandler.m */; };
 		E942B0841B76899D004B4692 /* AdblockPlusSafariExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E9C719D91B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json in Resources */ = {isa = PBXBuildFile; fileRef = E9C719D81B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json */; };
-		E9D1ABF81BBEE26C00177057 /* NSString+MarkdownRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D1ABF71BBEE26C00177057 /* NSString+MarkdownRenderer.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,9 +129,6 @@
 		E942B07F1B76899D004B4692 /* ActionRequestHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionRequestHandler.m; sourceTree = "<group>"; };
 		E942B0811B76899D004B4692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9C719D81B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "easylist+exceptionrules_content_blocker.json"; sourceTree = "<group>"; };
-		E9D1ABF61BBEE26C00177057 /* NSString+MarkdownRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MarkdownRenderer.h"; sourceTree = "<group>"; };
-		E9D1ABF71BBEE26C00177057 /* NSString+MarkdownRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MarkdownRenderer.m"; sourceTree = "<group>"; };
-		E9F3922C1BBF1B1A004A068A /* en.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = en.xliff; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,7 +216,6 @@
 				E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */,
 				E9071D3D1B76897C00091AEB /* Products */,
 				69AB6A2F1B970D18005C2075 /* Resources */,
-				E9F3922B1BBF1B1A004A068A /* Translations */,
 			);
 			sourceTree = "<group>";
 		};
@@ -246,8 +241,6 @@
 				69AB6A2C1B96F664005C2075 /* Appearence.h */,
 				69AB6A2D1B96F664005C2075 /* Appearence.m */,
 				E9071D4B1B76897C00091AEB /* Assets.xcassets */,
-				E9D1ABF61BBEE26C00177057 /* NSString+MarkdownRenderer.h */,
-				E9D1ABF71BBEE26C00177057 /* NSString+MarkdownRenderer.m */,
 				69F4D9241B95F18C00300817 /* Controllers */,
 				69A9101A1B986DB900D93485 /* Controls */,
 				E9071D501B76897C00091AEB /* Info.plist */,
@@ -281,14 +274,6 @@
 				E942B0811B76899D004B4692 /* Info.plist */,
 			);
 			path = AdblockPlusSafariExtension;
-			sourceTree = "<group>";
-		};
-		E9F3922B1BBF1B1A004A068A /* Translations */ = {
-			isa = PBXGroup;
-			children = (
-				E9F3922C1BBF1B1A004A068A /* en.xliff */,
-			);
-			path = Translations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,7 +425,6 @@
 				69C19C771B9835D1009ACBAC /* RootController.m in Sources */,
 				69AB6A571B973802005C2075 /* WelcomeController.m in Sources */,
 				69AB6A2E1B96F664005C2075 /* Appearence.m in Sources */,
-				E9D1ABF81BBEE26C00177057 /* NSString+MarkdownRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

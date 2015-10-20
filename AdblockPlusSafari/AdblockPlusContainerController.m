@@ -18,7 +18,6 @@
 #import "AdblockPlusContainerController.h"
 
 #import "Appearence.h"
-#import "NSString+MarkdownRenderer.h"
 
 @interface AdblockPlusContainerController ()
 
@@ -41,9 +40,22 @@
 
   // This is the simpliest way to print Browser word using custom bold font.
   CGFloat fontSize = self.adblockBrowserLabel.font.pointSize;
+  UIFont *lightFont = [Appearence defaultLightFontOfSize:fontSize];
+  UIFont *boldFont = [Appearence defaultBoldFontOfSize:fontSize];
+
+  NSString *text = NSLocalizedString(@"To get a better ad blocking experience use Adblock\u00a0Browser for iOS", @"");
+
+  NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text
+                                                                                     attributes:@{NSFontAttributeName: lightFont}];
+
+  NSRange range = [text rangeOfString:@"Browser" options:NSCaseInsensitiveSearch];
+
+  if (range.location != NSNotFound) {
+    [attributedText addAttribute:NSFontAttributeName value:boldFont range:range];
+  }
+
   self.adblockBrowserLabel.fontFamilyName = DefaultFontFamily;
-  self.adblockBrowserLabel.attributedText = [self.adblockBrowserLabel.text markdownSpanMarkerChar:@"*"
-                                                                                     renderAsFont:[Appearence defaultBoldFontOfSize:fontSize]];
+  self.adblockBrowserLabel.attributedText = attributedText;
 }
 
 #pragma mark - Navigation
