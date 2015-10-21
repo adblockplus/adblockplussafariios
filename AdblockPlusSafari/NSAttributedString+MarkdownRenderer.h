@@ -15,12 +15,19 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
  */
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-#import "AdblockPlusExtras.h"
+@class UIFont;
 
-@interface HomeController : UIViewController
+@interface NSAttributedString (MarkdownRenderer)
 
-@property (nonatomic, strong) AdblockPlusExtras *__nullable adblockPlus;
+/**
+ @param token a single character representing a span marker. Can be anything but Markdown
+ compatible is `*` for bold and `_` for italic
+ @param font the font to substitute in the span
+ @return self as attributed string with font changes applied to the found spans
+ */
+- (NSAttributedString*)markdownSpanMarkerChar:(NSString*)markerChar
+                                 renderAsFont:(UIFont*)font;
 
 @end

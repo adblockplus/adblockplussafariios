@@ -32,12 +32,10 @@
 
 - (void)setAcceptableAdsEnabled:(BOOL)enabled reload:(BOOL)reload;
 
-- (void)reloadContentBlockerWithCompletion:(void(^__nullable)(NSError * __nullable error))completion;
-
-- (void)checkActivatedFlag;
+- (void)reloadContentBlocker;
 
 - (void)updateFilterLists:(BOOL)userTriggered;
 
-- (void)displayErrorDialogIfNeeded;
+@property (nonatomic) BOOL needsDisplayErrorDialog;
 
 @end

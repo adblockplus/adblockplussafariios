@@ -20,6 +20,10 @@
 extern NSString *_Nonnull AdblockPlusErrorDomain;
 extern NSString *_Nonnull AdblockPlusActivated;
 
+typedef NS_ENUM(NSUInteger, AdblockPlusErrorCode) {
+  AdblockPlusErrorCodeActivityTest = 10
+};
+
 @interface AdblockPlus : NSObject
 
 @property (nonatomic, strong, readonly) NSUserDefaults *__nonnull adblockPlusDetails;
@@ -36,6 +40,8 @@ extern NSString *_Nonnull AdblockPlusActivated;
 
 @property (nonatomic) BOOL activated;
 
+@property (nonatomic) NSDate *__nullable lastActivity;
+
 @property (nonatomic) NSInteger installedVersion;
 
 @property (nonatomic) NSInteger downloadedVersion;
@@ -43,5 +49,9 @@ extern NSString *_Nonnull AdblockPlusActivated;
 @property (nonatomic, strong) NSDictionary<NSString *, NSDictionary<NSString *, id> *> *__nonnull filterLists;
 
 @property (nonatomic, strong) NSArray<NSString *> *__nonnull whitelistedWebsites;
+
+@property (nonatomic) BOOL performingActivityTest;
+
+- (void)synchronize;
 
 @end

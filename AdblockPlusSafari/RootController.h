@@ -19,8 +19,13 @@
 
 #import "AdblockPlusExtras.h"
 
+@protocol DialogControllerProtocol <NSObject>
+@end
+
 @interface RootController : UINavigationController
 
 @property (nonatomic, strong) AdblockPlusExtras *__nullable adblockPlus;
+
+- (void)showDialogIfNeeded;
 
 @end

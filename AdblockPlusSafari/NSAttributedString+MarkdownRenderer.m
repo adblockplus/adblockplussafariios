@@ -1,15 +1,25 @@
-//
-//  NSString+MarkdownRenderer.m
-//  AdblockPlusSafari
-//
-//  Created by Pavel Zdeněk on 2.O.15.
-//  Copyright © 2015 Eyeo GmbH. All rights reserved.
-//
+/*
+ * This file is part of Adblock Plus <https://adblockplus.org/>,
+ * Copyright (C) 2006-2015 Eyeo GmbH
+ *
+ * Adblock Plus is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * Adblock Plus is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
+ */
 
-#import "NSString+MarkdownRenderer.h"
+#import "NSAttributedString+MarkdownRenderer.h"
+
 @import UIKit;
 
-@implementation NSString (MarkdownRenderer)
+@implementation NSAttributedString (MarkdownRenderer)
 
 static NSRegularExpression* pairingRegex;
 
@@ -23,9 +33,10 @@ static NSRegularExpression* pairingRegex;
     NSLog(@"Parsing Markdown regex, error %@", [err localizedDescription]);
     return nil;
   }
+  NSString *string = self.string;
   NSRange rangeWhole = NSMakeRange(0, self.length);
-  NSArray<NSTextCheckingResult*> *results = [pairingRegex matchesInString:self options:0 range:rangeWhole];
-  NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:self];
+  NSArray<NSTextCheckingResult*> *results = [pairingRegex matchesInString:string options:0 range:rangeWhole];
+  NSMutableAttributedString *attributedText = self.mutableCopy;
   NSUInteger rangeShift = 0;
   for(NSTextCheckingResult* resultGroup in results) {
     // range 0 is "the whole match" which means equal to first capture group because our regex is only a group
@@ -33,7 +44,7 @@ static NSRegularExpression* pairingRegex;
     markdownRange.location -= rangeShift;
     NSRange plaintextRange = [resultGroup rangeAtIndex:2]; // inner group - the plain text
     // replace the markdowned text with the inner plain text
-    [attributedText replaceCharactersInRange:markdownRange withString:[self substringWithRange:plaintextRange]];
+    [attributedText replaceCharactersInRange:markdownRange withString:[string substringWithRange:plaintextRange]];
     plaintextRange.location -= rangeShift;
     // attribute the replaced text which is now in position of the original markdowned text
     [attributedText addAttribute:NSFontAttributeName

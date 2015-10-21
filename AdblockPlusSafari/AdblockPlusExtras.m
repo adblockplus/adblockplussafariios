@@ -19,16 +19,12 @@
 
 @import SafariServices;
 
-#import "RootController.h"
-#import "HomeController.h"
-
 static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayErrorDialog";
 
 @interface AdblockPlusExtras ()<NSURLSessionDownloadDelegate, NSFileManagerDelegate>
 
 @property (nonatomic, weak) NSURLSession *backgroundSession;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, __kindof NSURLSessionTask *> *downloadTasks;
-@property (nonatomic) BOOL needsDisplayErrorDialog;
 
 @end
 
@@ -77,8 +73,18 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
         }
       }
     }];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onApplicationWillEnterForegroundNotification:)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
   }
   return self;
+}
+
+- (void)dealloc
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - property
@@ -112,19 +118,18 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
   if (self.installedVersion < self.downloadedVersion && wasUpdating && !updating) {
     // Force content blocker to load newer version of filter list
-    [self reloadContentBlockerWithCompletion:nil];
+    [self reloadContentBlocker];
   }
 
   if (hasAnyLastUpdateFailed != anyLastUpdateFailed) {
     self.needsDisplayErrorDialog = anyLastUpdateFailed;
-    [self displayErrorDialogIfNeeded];
   }
 }
 
 - (void)setWhitelistedWebsites:(NSArray<NSString *> *)whitelistedWebsites
 {
   super.whitelistedWebsites = whitelistedWebsites;
-  [self reloadContentBlockerWithCompletion:nil];
+  [self reloadContentBlocker];
 }
 
 - (void)setNeedsDisplayErrorDialog:(BOOL)needsDisplayErrorDialog
@@ -146,7 +151,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
   self.enabled = enabled;
 
   if (reload) {
-    [self reloadContentBlockerWithCompletion:nil];
+    [self reloadContentBlocker];
   }
 }
 
@@ -155,32 +160,23 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
   self.acceptableAdsEnabled = enabled;
 
   if (reload) {
-    [self reloadContentBlockerWithCompletion:nil];
+    [self reloadContentBlocker];
   }
 }
 
-- (void)reloadContentBlockerWithCompletion:(void(^__nullable)(NSError * __nullable error))completion;
+- (void)reloadContentBlocker
 {
   __weak __typeof(self) wSelf = self;
+  NSDate *lastActivity = wSelf.lastActivity;
   wSelf.reloading = YES;
+  wSelf.performingActivityTest = NO;
   [SFContentBlockerManager reloadContentBlockerWithIdentifier:self.contentBlockerIdentifier completionHandler:^(NSError *error) {
-    NSLog(@"%@", error);
     dispatch_async(dispatch_get_main_queue(), ^{
+      NSLog(@"%@", error);
       wSelf.reloading = NO;
-      [wSelf checkActivatedFlag];
-      if (completion) {
-        completion(error);
-      }
+      [wSelf checkActivatedFlag:lastActivity];
     });
   }];
-}
-
-- (void)checkActivatedFlag
-{
-  BOOL activated = [self.adblockPlusDetails boolForKey:AdblockPlusActivated];
-  if (self.activated != activated) {
-    self.activated = activated;
-  }
 }
 
 - (void)updateFilterLists:(BOOL)userTriggered
@@ -205,44 +201,6 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
     [task resume];
   }
   self.filterLists = filterLists;
-}
-
-- (void)displayErrorDialogIfNeeded
-{
-  if (!self.needsDisplayErrorDialog) {
-    return;
-  }
-
-  if (UIApplication.sharedApplication.applicationState != UIApplicationStateActive) {
-    return;
-  }
-
-  UIViewController *viewController = UIApplication.sharedApplication.delegate.window.rootViewController;
-  if ([viewController isKindOfClass:[RootController class]]) {
-    RootController *rootController = (RootController *)viewController;
-    if (![rootController.viewControllers.firstObject isKindOfClass:[HomeController class]]) {
-      return;
-    }
-  }
-
-  while (viewController.presentedViewController) {
-    viewController = viewController.presentedViewController;
-  }
-
-  NSString *title = @"​Filter lists Updating​";
-  NSString *message;
-  if ([[[self.filterLists allValues] valueForKeyPath:@"@sum.userTriggered"] integerValue] > 0) {
-    message = @"Manual updating failed. Please try again later.";
-  } else {
-    message = @"Automatic updating failed. Please try updating manually.";
-  }
-
-  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-  [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-  alertController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-  [viewController presentViewController:alertController animated:YES completion:nil];
-
-  self.needsDisplayErrorDialog = NO;
 }
 
 #pragma mark - NSURLSessionDownloadDelegate
@@ -328,5 +286,29 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 }
 
 #pragma mark - Private
+
+- (void)onApplicationWillEnterForegroundNotification:(NSNotification *)notification
+{
+  if (self.reloading) {
+    return;
+  }
+
+  __weak __typeof(self) wSelf = self;
+  NSDate *lastActivity = wSelf.lastActivity;
+  wSelf.performingActivityTest = YES;
+  [SFContentBlockerManager reloadContentBlockerWithIdentifier:self.contentBlockerIdentifier completionHandler:^(NSError *error) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+      NSLog(@"%@", error);
+      wSelf.performingActivityTest = YES;
+      [wSelf checkActivatedFlag:lastActivity];
+    });
+  }];
+}
+
+- (void)checkActivatedFlag:(NSDate *)lastActivity
+{
+  [self synchronize];
+  self.activated = !!self.lastActivity && (!lastActivity || [self.lastActivity compare:lastActivity] == NSOrderedDescending);
+}
 
 @end

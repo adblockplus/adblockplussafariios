@@ -42,7 +42,7 @@ static UIFont *__nonnull createFont(NSString *__nonnull familyName, UIFont *__no
 
   NSString *name = [NSString stringWithFormat:@"%@-%@", familyName, type];
 
-  NSFont *font = [UIFont fontWithName:name size:fromFont.pointSize];
+  id font = [UIFont fontWithName:name size:fromFont.pointSize];
   
   if (font) {
     return font;
@@ -103,14 +103,14 @@ static UIFont *__nonnull createFontWithName(NSString *__nonnull name, CGFloat si
   // http://ivomynttinen.com/blog/the-ios-7-design-cheat-sheet/
 
   NSString *boldFontName = [NSString stringWithFormat:@"%@-Bold", DefaultFontFamily];
-  NSFont *boldFont = [UIFont fontWithName:boldFontName size:17];
+  id boldFont = [UIFont fontWithName:boldFontName size:17];
 
   if (boldFont) {
     UINavigationBar.appearance.titleTextAttributes = @{NSFontAttributeName: boldFont};
   }
 
   NSString *regularFontName = [NSString stringWithFormat:@"%@-Regular", DefaultFontFamily];
-  NSFont *regularFont = [UIFont fontWithName:regularFontName size:17];
+  id regularFont = [UIFont fontWithName:regularFontName size:17];
 
   if (regularFont) {
     [UIBarButtonItem.appearance setTitleTextAttributes: @{NSFontAttributeName: regularFont} forState: UIControlStateNormal];
@@ -135,43 +135,10 @@ static UIFont *__nonnull createFontWithName(NSString *__nonnull name, CGFloat si
   return createFontWithName(name, size, [UIFont boldSystemFontOfSize:size]);
 }
 
++ (UIFont *__nonnull)defaultSemiboldFontOfSize:(CGFloat)size
+{
+  NSString *name = [NSString stringWithFormat:@"%@-Semibold", DefaultFontFamily];
+  return createFontWithName(name, size, [UIFont boldSystemFontOfSize:size]);
+}
+
 @end
-
-
-
-/*
-func createFont(name: String, size: CGFloat, fallbackFont: UIFont) -> UIFont
-{
-  if let font = UIFont(name: name, size: size) {
-    return font
-  } else {
-    println("[WARNING] Font named '\(name)' has not been found!")
-    return fallbackFont
-  }
-}*/
-
-/*
-extension UIFont
-{
-  class func defaultRegularFontOfSize(size: CGFloat) -> UIFont
-  {
-    return createFont(DefaultFontFamily + "-Regular", size, UIFont.systemFontOfSize(size))
-  }
-
-  class func defaultLightFontOfSize(size: CGFloat) -> UIFont
-  {
-    return createFont(DefaultFontFamily + "-Light", size, UIFont.systemFontOfSize(size))
-  }
-
-  class func defaultItalicFontOfSize(size: CGFloat) -> UIFont
-  {
-    return createFont(DefaultFontFamily + "-It", size, UIFont.systemFontOfSize(size))
-  }
-
-  class func defaultSemiboldFontOfSize(size: CGFloat) -> UIFont
-  {
-    return createFont(DefaultFontFamily + "-Semibold", size, UIFont.boldSystemFontOfSize(size))
-  }
-}*/
-
-

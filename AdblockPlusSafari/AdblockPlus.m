@@ -25,6 +25,8 @@ static NSString *AdblockPlusFilterLists = @"AdblockPlusFilterLists";
 static NSString *AdblockPlusInstalledVersion = @"AdblockPlusInstalledVersion";
 static NSString *AdblockPlusDownloadedVersion = @"AdblockPlusDownloadedVersion";
 static NSString *AdblockPlusWhitelistedWebsites = @"AdblockPlusWhitelistedWebsites";
+static NSString *AdblockPlusLastActivity = @"AdblockPlusLastActivity";
+static NSString *AdblockPlusPerformingActivityTest = @"AdblockPlusPerformingActivityTest";
 
 @interface AdblockPlus ()
 
@@ -62,6 +64,8 @@ static NSString *AdblockPlusWhitelistedWebsites = @"AdblockPlusWhitelistedWebsit
     _installedVersion = [_adblockPlusDetails integerForKey:AdblockPlusInstalledVersion];
     _downloadedVersion = [_adblockPlusDetails integerForKey:AdblockPlusDownloadedVersion];
     _whitelistedWebsites = [_adblockPlusDetails objectForKey:AdblockPlusWhitelistedWebsites];
+    _lastActivity = [_adblockPlusDetails objectForKey:AdblockPlusLastActivity];
+    _performingActivityTest = [_adblockPlusDetails boolForKey:AdblockPlusPerformingActivityTest];
   }
   return self;
 }
@@ -86,6 +90,13 @@ static NSString *AdblockPlusWhitelistedWebsites = @"AdblockPlusWhitelistedWebsit
 {
   _activated = activated;
   [_adblockPlusDetails setBool:activated forKey:AdblockPlusActivated];
+  [_adblockPlusDetails synchronize];
+}
+
+- (void)setLastActivity:(NSDate *)lastActivity
+{
+  _lastActivity = lastActivity;
+  [_adblockPlusDetails setObject:lastActivity forKey:AdblockPlusLastActivity];
   [_adblockPlusDetails synchronize];
 }
 
@@ -117,6 +128,13 @@ static NSString *AdblockPlusWhitelistedWebsites = @"AdblockPlusWhitelistedWebsit
   [_adblockPlusDetails synchronize];
 }
 
+- (void)setPerformingActivityTest:(BOOL)performingActivityTest
+{
+  _performingActivityTest = performingActivityTest;
+  [_adblockPlusDetails setBool:performingActivityTest forKey:AdblockPlusPerformingActivityTest];
+  [_adblockPlusDetails synchronize];
+}
+
 #pragma mark -
 
 - (NSString *)contentBlockerIdentifier
@@ -132,6 +150,12 @@ static NSString *AdblockPlusWhitelistedWebsites = @"AdblockPlusWhitelistedWebsit
 - (NSString *)backgroundSessionConfigurationIdentifier
 {
   return [NSString stringWithFormat:@"%@.AdblockPlusSafari.BackgroundSession", _bundleName];
+}
+
+- (void)synchronize
+{
+  [self.adblockPlusDetails synchronize];
+  _lastActivity = [self.adblockPlusDetails objectForKey:AdblockPlusLastActivity];
 }
 
 @end

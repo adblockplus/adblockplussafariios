@@ -18,10 +18,11 @@
 #import "AdblockPlusContainerController.h"
 
 #import "Appearence.h"
-#import "NSString+MarkdownRenderer.h"
+#import "NSAttributedString+MarkdownRenderer.h"
 
 @interface AdblockPlusContainerController ()
 
+@property (nonatomic, weak) IBOutlet UILabel *adblockPlusLabel;
 @property (nonatomic, weak) IBOutlet UILabel *adblockBrowserLabel;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *adblockBrowserBannerConstraint;
 
@@ -39,11 +40,29 @@
     self.adblockBrowserBannerConstraint.constant = 0;
   }
 
+  CGFloat fontSize = self.adblockPlusLabel.font.pointSize;
+  self.adblockPlusLabel.fontFamilyName = DefaultFontFamily;
+  self.adblockPlusLabel.attributedText = [self.adblockPlusLabel.attributedText markdownSpanMarkerChar:@"*"
+                                                                                         renderAsFont:[Appearence defaultBoldFontOfSize:fontSize]];
   // This is the simpliest way to print Browser word using custom bold font.
-  CGFloat fontSize = self.adblockBrowserLabel.font.pointSize;
+  fontSize = self.adblockBrowserLabel.font.pointSize;
   self.adblockBrowserLabel.fontFamilyName = DefaultFontFamily;
-  self.adblockBrowserLabel.attributedText = [self.adblockBrowserLabel.text markdownSpanMarkerChar:@"*"
-                                                                                     renderAsFont:[Appearence defaultBoldFontOfSize:fontSize]];
+  self.adblockBrowserLabel.attributedText = [self.adblockBrowserLabel.attributedText markdownSpanMarkerChar:@"*"
+                                                                                               renderAsFont:[Appearence defaultBoldFontOfSize:fontSize]];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [self.navigationController setNavigationBarHidden:YES animated:animated];
+  [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+  if (self.navigationController.topViewController != self) {
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+  }
+  [super viewWillDisappear:animated];
 }
 
 #pragma mark - Navigation
