@@ -442,18 +442,18 @@ MS4gT3BlbiAQaU9TIFNldHRpbmdzA
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adblockbrowser" translatesAutoresizingMaskIntoConstraints="NO" id="Eig-RE-wk0">
                                 <rect key="frame" x="20" y="579" width="86" height="68"/>
                             </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DoX-mk-2DI">
-                                <rect key="frame" x="0.0" y="75" width="375" height="448"/>
-                                <connections>
-                                    <segue destination="ZYU-FA-p2m" kind="embed" id="erM-hw-BMD"/>
-                                </connections>
-                            </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get a better ad blocking experience, use Adblock *Browser* for iOS" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJZ-V3-ohd">
                                 <rect key="frame" x="15" y="539" width="345" height="43"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DoX-mk-2DI">
+                                <rect key="frame" x="0.0" y="75" width="375" height="448"/>
+                                <connections>
+                                    <segue destination="ZYU-FA-p2m" kind="embed" id="erM-hw-BMD"/>
+                                </connections>
+                            </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adblock*Plus*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8UY-5K-QVO">
                                 <rect key="frame" x="111" y="38" width="153" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
@@ -487,8 +487,8 @@ MS4gT3BlbiAQaU9TIFNldHRpbmdzA
                             <constraint firstAttribute="trailing" secondItem="DoX-mk-2DI" secondAttribute="trailing" id="eE1-XB-7nA"/>
                             <constraint firstItem="Eig-RE-wk0" firstAttribute="leading" secondItem="Yny-sF-shz" secondAttribute="leading" constant="20" id="fRk-7k-UgX"/>
                             <constraint firstItem="TUG-U9-6x7" firstAttribute="leading" secondItem="Eig-RE-wk0" secondAttribute="trailing" constant="19" id="i1P-dL-xlr"/>
+                            <constraint firstItem="2jK-S9-xp0" firstAttribute="top" secondItem="ALv-ui-TGz" secondAttribute="bottom" constant="143" id="jkW-kC-cCt"/>
                             <constraint firstAttribute="trailing" secondItem="cAU-k4-3Rf" secondAttribute="trailing" id="mLg-7a-675"/>
-                            <constraint firstItem="ALv-ui-TGz" firstAttribute="top" secondItem="DoX-mk-2DI" secondAttribute="bottom" id="nVP-7b-GzC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Adblock Plus" id="ASd-WJ-vg5"/>
