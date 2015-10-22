@@ -228,8 +228,8 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
     viewController = viewController.presentedViewController;
   }
 
-  NSString *title = NSLocalizedString(@"​Filter list update failed", "Title of filter update fialure dialog");
-  NSString *message = NSLocalizedString(@"Failed to update filter lists, please try again later.", @"Message of filter update fialure dialog");
+  NSString *title = NSLocalizedString(@"​Filter list update failed", "Title of filter update failure dialog");
+  NSString *message = NSLocalizedString(@"Failed to update filter lists. Please try again later.", @"Message of filter update failure dialog");
 
   UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
   [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
