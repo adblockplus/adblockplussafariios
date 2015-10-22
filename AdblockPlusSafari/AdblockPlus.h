@@ -17,7 +17,17 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *_Nonnull AdblockPlusActivated;
+
 @interface AdblockPlus : NSObject
+
+@property (nonatomic, strong, readonly) NSUserDefaults *__nonnull adblockPlusDetails;
+
+- (NSString *__nonnull)group;
+
+- (NSString *__nonnull)contentBlockerIdentifier;
+
+- (NSString *__nonnull)backgroundSessionConfigurationIdentifier;
 
 @property (nonatomic) BOOL enabled;
 
@@ -25,14 +35,10 @@
 
 @property (nonatomic) BOOL activated;
 
-@property (nonatomic) BOOL reloading;
+@property (nonatomic) NSInteger installedVersion;
 
-- (void)setEnabled:(BOOL)enabled reload:(BOOL)reload;
+@property (nonatomic) NSInteger downloadedVersion;
 
-- (void)setAcceptableAdsEnabled:(BOOL)enabled reload:(BOOL)reload;
-
-- (void)reloadContentBlockerWithCompletion:(void(^__nullable)(NSError * __nullable error))completion;
-
-- (void)checkActivatedFlag;
+@property (nonatomic, strong) NSDictionary<NSString *, NSDictionary<NSString *, id> *> *__nonnull filterLists;
 
 @end

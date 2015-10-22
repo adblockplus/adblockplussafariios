@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>https://easylist-downloads.adblockplus.org/easylist_content_blocker.json</key>
+	<dict>
+		<key>filename</key>
+		<string>easylist_content_blocker.json</string>
+	</dict>
+	<key>https://easylist-downloads.adblockplus.org/easylist+exceptionrules_content_blocker.json</key>
+	<dict>
+		<key>filename</key>
+		<string>easylist+exceptionrules_content_blocker.json</string>
+	</dict>
+</dict>
+</plist>

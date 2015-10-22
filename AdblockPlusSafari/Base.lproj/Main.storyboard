@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9046" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5TC-Np-xxq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5TC-Np-xxq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="HelveticaNeueLights.ttc">
-            <string>HelveticaNeue-Light</string>
+        <mutableArray key="SourceSansPro-Light.otf">
+            <string>SourceSansPro-Light</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -286,20 +286,20 @@
                                     <action selector="onVideoButtonTouched:" destination="pd1-H8-tQ1" eventType="touchUpInside" id="fq7-6G-V4v"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Go to iOS Settings → Safari → Content Blockers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9TK-Zf-1G9">
-                                <rect key="frame" x="28" y="392" width="319" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Go to iOS Settings → Safari → Content Blockers" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9TK-Zf-1G9">
+                                <rect key="frame" x="24" y="391" width="327" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To enable ad blocking in Safari" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFT-cY-IYR">
-                                <rect key="frame" x="73" y="359" width="230" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To enable ad blocking in Safari" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFT-cY-IYR">
+                                <rect key="frame" x="26" y="361" width="323" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGg-TC-8Nr">
-                                <rect key="frame" x="153" y="448" width="70" height="1"/>
+                                <rect key="frame" x="153" y="447" width="70" height="1"/>
                                 <color key="backgroundColor" red="0.46274509803921571" green="0.043137254901960784" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="Iox-sY-ipA"/>
@@ -317,8 +317,8 @@
                                     <segue destination="RC2-EL-8i2" kind="show" id="pfW-Ve-zus"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2. Enable Adblock Plus and wait for 10 seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thw-XS-bUp">
-                                <rect key="frame" x="37" y="417" width="300" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Enable Adblock Plus and wait for 10 seconds" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thw-XS-bUp">
+                                <rect key="frame" x="24" y="418" width="327" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -327,19 +327,22 @@
                         <color key="backgroundColor" red="0.79215686269999996" green="0.070588235289999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dGg-TC-8Nr" firstAttribute="top" secondItem="Thw-XS-bUp" secondAttribute="bottom" constant="12" id="1yO-sG-73o"/>
-                            <constraint firstItem="kFT-cY-IYR" firstAttribute="centerX" secondItem="7St-wf-B5k" secondAttribute="centerX" id="6Qu-vs-6eV"/>
+                            <constraint firstItem="Thw-XS-bUp" firstAttribute="leading" secondItem="7St-wf-B5k" secondAttribute="leadingMargin" constant="8" id="6Gh-2h-Zy0"/>
+                            <constraint firstItem="9TK-Zf-1G9" firstAttribute="leading" secondItem="7St-wf-B5k" secondAttribute="leadingMargin" constant="8" id="8jb-ot-QNz"/>
                             <constraint firstAttribute="trailing" secondItem="hB5-px-8GJ" secondAttribute="trailing" id="ANu-0H-MCK"/>
                             <constraint firstItem="hB5-px-8GJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dGg-TC-8Nr" secondAttribute="bottom" id="HNA-WN-el9"/>
-                            <constraint firstItem="kFT-cY-IYR" firstAttribute="top" secondItem="DhA-mo-PVm" secondAttribute="bottom" constant="8" id="LYB-xl-mHZ"/>
-                            <constraint firstItem="9TK-Zf-1G9" firstAttribute="top" secondItem="kFT-cY-IYR" secondAttribute="bottom" constant="14" id="P9g-So-u3a"/>
+                            <constraint firstItem="kFT-cY-IYR" firstAttribute="top" secondItem="DhA-mo-PVm" secondAttribute="bottom" constant="10" id="LYB-xl-mHZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kFT-cY-IYR" secondAttribute="trailing" constant="10" id="Nhp-XO-L5w"/>
+                            <constraint firstItem="9TK-Zf-1G9" firstAttribute="top" secondItem="kFT-cY-IYR" secondAttribute="bottom" constant="10" id="P9g-So-u3a"/>
                             <constraint firstItem="hB5-px-8GJ" firstAttribute="leading" secondItem="7St-wf-B5k" secondAttribute="leading" id="RWj-Nl-TM3"/>
                             <constraint firstItem="DhA-mo-PVm" firstAttribute="centerX" secondItem="7St-wf-B5k" secondAttribute="centerX" id="TXu-sK-IRa"/>
                             <constraint firstItem="DhA-mo-PVm" firstAttribute="top" secondItem="Eql-gR-b6d" secondAttribute="bottom" constant="30" id="W5o-CE-zEp"/>
-                            <constraint firstItem="9TK-Zf-1G9" firstAttribute="centerX" secondItem="7St-wf-B5k" secondAttribute="centerX" id="YXx-qU-Dh4"/>
                             <constraint firstItem="Thw-XS-bUp" firstAttribute="top" secondItem="9TK-Zf-1G9" secondAttribute="bottom" constant="10" id="Ygc-eg-XAN"/>
                             <constraint firstItem="dGg-TC-8Nr" firstAttribute="centerX" secondItem="7St-wf-B5k" secondAttribute="centerX" id="dKy-fL-Sre"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9TK-Zf-1G9" secondAttribute="trailing" constant="8" id="flu-qq-6Xm"/>
                             <constraint firstItem="1Pe-ZB-3r7" firstAttribute="top" secondItem="hB5-px-8GJ" secondAttribute="bottom" id="m2R-31-tOW"/>
-                            <constraint firstItem="Thw-XS-bUp" firstAttribute="centerX" secondItem="7St-wf-B5k" secondAttribute="centerX" id="vf8-JT-Iki"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Thw-XS-bUp" secondAttribute="trailing" constant="8" id="sa0-At-5Et"/>
+                            <constraint firstItem="kFT-cY-IYR" firstAttribute="leading" secondItem="7St-wf-B5k" secondAttribute="leadingMargin" constant="10" id="vmZ-Cc-B3d"/>
                             <constraint firstItem="Eql-gR-b6d" firstAttribute="centerX" secondItem="7St-wf-B5k" secondAttribute="centerX" id="wNt-ae-vWk"/>
                             <constraint firstItem="Eql-gR-b6d" firstAttribute="top" secondItem="7St-wf-B5k" secondAttribute="topMargin" constant="50" id="wlW-jR-T5L"/>
                         </constraints>
@@ -386,7 +389,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection id="z6o-iS-GOv">
+                            <tableViewSection footerTitle="Last filter list update: %@" id="z6o-iS-GOv">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdblockPlus" textLabel="md9-Cg-TU4" style="IBUITableViewCellStyleDefault" id="Qtb-CU-zbr">
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
@@ -405,12 +408,29 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UpdateFilterLists" textLabel="PnU-9J-ZXq" style="IBUITableViewCellStyleDefault" id="YT7-Dh-gwD">
+                                        <rect key="frame" x="0.0" y="79" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YT7-Dh-gwD" id="Hrn-xZ-mcA">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Update Filter lists" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PnU-9J-ZXq">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="EXCEPTIONS" id="w2u-Tw-F3D">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AcceptableAds" textLabel="ABG-dZ-EA2" style="IBUITableViewCellStyleDefault" id="pfG-1g-RT5">
-                                        <rect key="frame" x="0.0" y="121" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="190" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pfG-1g-RT5" id="ZDF-eD-Qwq">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -431,7 +451,7 @@
                             <tableViewSection headerTitle="MORE" id="JGs-ZZ-lI9">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="About" textLabel="3Bc-kL-vsl" style="IBUITableViewCellStyleDefault" id="1YB-NP-n3W">
-                                        <rect key="frame" x="0.0" y="207" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="276" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1YB-NP-n3W" id="Jno-x4-Oyv">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -472,20 +492,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acceptable Ads" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBD-xm-gdv">
-                                <rect key="frame" x="16" y="100" width="108" height="18"/>
+                                <rect key="frame" x="16" y="99" width="108" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zf-Nt-eIz">
-                                <rect key="frame" x="16" y="126" width="343" height="1"/>
+                                <rect key="frame" x="16" y="125" width="343" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="St1-2D-rnn"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="94r-nm-jV7">
-                                <rect key="frame" x="16" y="135" width="343" height="101"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="94r-nm-jV7">
+                                <rect key="frame" x="16" y="134" width="343" height="101"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">We'd like to encourage websites to use straighforward, unobstructive advertisings. That's why we've established strict guidelines to identify acceptable ads, which are shown under default settings. If you still want to block every ad you can disable this in a few seconds</string>
@@ -499,14 +519,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Y8-Rq-wgR">
-                                <rect key="frame" x="0.0" y="36" width="375" height="44"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="4QA-Th-I5C"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AcceptableAds" textLabel="3FL-nd-DlQ" style="IBUITableViewCellStyleDefault" id="yGO-hz-dd9">
-                                        <rect key="frame" x="0.0" y="49.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yGO-hz-dd9" id="2YJ-iv-5h2">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -530,7 +550,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="2Y8-Rq-wgR" firstAttribute="top" secondItem="ncx-dC-pFF" secondAttribute="bottom" constant="36" id="2ll-0k-8x8"/>
+                            <constraint firstItem="2Y8-Rq-wgR" firstAttribute="top" secondItem="ncx-dC-pFF" secondAttribute="bottom" constant="35" id="2ll-0k-8x8"/>
                             <constraint firstAttribute="trailing" secondItem="2Y8-Rq-wgR" secondAttribute="trailing" id="3Xa-yL-7c9"/>
                             <constraint firstItem="6zf-Nt-eIz" firstAttribute="leading" secondItem="lw9-IJ-JlK" secondAttribute="leadingMargin" id="6cq-xa-ud6"/>
                             <constraint firstItem="hBD-xm-gdv" firstAttribute="top" secondItem="2Y8-Rq-wgR" secondAttribute="bottom" constant="20" id="Bhp-gM-rSo"/>
@@ -572,12 +592,6 @@
                                     <constraint firstAttribute="height" constant="0.5" id="BbR-Uc-6J2"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get a better ad blocking experience use AdblockBrowser for iOS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJZ-V3-ohd">
-                                <rect key="frame" x="15" y="540" width="345" height="38"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUG-U9-6x7">
                                 <rect key="frame" x="125" y="610" width="235" height="42"/>
                                 <color key="backgroundColor" red="0.12156862745098039" green="0.63529411764705879" blue="0.82745098039215681" alpha="1" colorSpace="calibratedRGB"/>
@@ -601,12 +615,18 @@
                                     <segue destination="ZYU-FA-p2m" kind="embed" id="erM-hw-BMD"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get a better ad blocking experience, use Adblock*Browser* for iOS" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJZ-V3-ohd">
+                                <rect key="frame" x="15" y="539" width="345" height="43"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ALv-ui-TGz" secondAttribute="trailing" id="3xk-EG-Sww"/>
                             <constraint firstItem="DoX-mk-2DI" firstAttribute="top" secondItem="kdH-9p-zNf" secondAttribute="bottom" id="4dZ-fe-Oc6"/>
-                            <constraint firstItem="VJZ-V3-ohd" firstAttribute="top" secondItem="ALv-ui-TGz" secondAttribute="bottom" constant="16" id="AlL-x1-JFD"/>
+                            <constraint firstItem="VJZ-V3-ohd" firstAttribute="top" secondItem="ALv-ui-TGz" secondAttribute="bottom" constant="15" id="AlL-x1-JFD"/>
                             <constraint firstAttribute="trailing" secondItem="VJZ-V3-ohd" secondAttribute="trailing" constant="15" id="CJy-NB-0Fy"/>
                             <constraint firstAttribute="trailing" secondItem="TUG-U9-6x7" secondAttribute="trailing" constant="15" id="EVI-ba-ocb"/>
                             <constraint firstItem="2jK-S9-xp0" firstAttribute="top" secondItem="DoX-mk-2DI" secondAttribute="bottom" constant="144" id="JGi-X3-cgK"/>
@@ -647,7 +667,7 @@
                             <tableViewSection headerTitle="VERSION" id="4Ma-gI-dEb">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="wan-fA-Vjp" style="IBUITableViewCellStyleDefault" id="rmp-MW-56d">
-                                        <rect key="frame" x="0.0" y="113.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rmp-MW-56d" id="UdH-D1-oIX">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
