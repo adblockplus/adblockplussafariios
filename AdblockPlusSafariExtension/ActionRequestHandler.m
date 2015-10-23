@@ -17,7 +17,7 @@
 
 #import "ActionRequestHandler.h"
 
-#import "AdblockPlus.h"
+#import "AdblockPlus+Extension.h"
 
 @interface ActionRequestHandler ()
 
@@ -30,21 +30,22 @@
   AdblockPlus *adblockPlus = [[AdblockPlus alloc] init];
   adblockPlus.activated = YES;
 
-  NSString *file;
-
-  if (!adblockPlus.enabled) {
-    file = @"empty";
-  } else if (adblockPlus.acceptableAdsEnabled) {
-    file = @"easylist_with_acceptable_ads";
-  } else {
-    file = @"easylist";
-  }
-
-  NSItemProvider *attachment = [[NSItemProvider alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:file withExtension:@"json"]];
+  // completeRequestReturningItems might need lot of time to update rules.
+  // (iOS process can be suspended during reloading, which expand time of reloading.)
+  // During this period filter lists might be updated (either by hand or by background refresh).
+  NSInteger downloadedVersion = adblockPlus.downloadedVersion;
+  NSURL *url = [adblockPlus currentFilterListURL];
+  NSItemProvider *attachment = [[NSItemProvider alloc] initWithContentsOfURL:url];
   NSExtensionItem *item = [[NSExtensionItem alloc] init];
   item.attachments = @[attachment];
 
-  [context completeRequestReturningItems:@[item] completionHandler:nil];
+  [context completeRequestReturningItems:@[item] completionHandler:^(BOOL expired) {
+    if (!expired) {
+      // If the new filter list was updated during reloading
+      // then downloadedVersion would be less then self.downloadedVersion.
+      adblockPlus.installedVersion = MAX(adblockPlus.installedVersion, downloadedVersion);
+    }
+  }];
 }
 
 @end

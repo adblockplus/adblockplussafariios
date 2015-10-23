@@ -42,13 +42,18 @@
                                            selector:@selector(onPlayerItemDidPlayToEndTimeNotification:)
                                                name:AVPlayerItemDidPlayToEndTimeNotification
                                              object:nil];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
   [self.navigationController setNavigationBarHidden:YES animated:animated];
   [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  [self.adblockPlus displayErrorDialogIfNeeded];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
