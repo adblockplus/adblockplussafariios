@@ -47,8 +47,10 @@ static NSString *WelcomeDialogControllerShown = @"WelcomeDialogControllerShown";
                                                name:AVPlayerItemDidPlayToEndTimeNotification
                                              object:nil];
 
-  self.firstDialogView.hidden = self.adblockPlus.activated;
-  self.secondDialogView.hidden = !self.adblockPlus.activated;
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+  BOOL shown = [userDefaults boolForKey:WelcomeDialogControllerShown];
+  self.firstDialogView.hidden = shown;
+  self.secondDialogView.hidden = !shown;
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,12 +66,6 @@ static NSString *WelcomeDialogControllerShown = @"WelcomeDialogControllerShown";
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (activated && [userDefaults boolForKey:WelcomeDialogControllerShown]) {
       [self dismissViewController];
-    } else {
-      [UIView transitionFromView:activated ? self.firstDialogView : self.secondDialogView
-                          toView:activated ? self.secondDialogView : self.firstDialogView
-                        duration:0.6
-                         options:UIViewAnimationOptionShowHideTransitionViews|UIViewAnimationOptionTransitionCrossDissolve
-                      completion:nil];
     }
   } else {
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -99,7 +95,16 @@ static NSString *WelcomeDialogControllerShown = @"WelcomeDialogControllerShown";
 {
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   [userDefaults setBool:YES forKey:WelcomeDialogControllerShown];
-  [self dismissViewController];
+
+  if (self.adblockPlus.activated) {
+    [self dismissViewController];
+  } else {
+    [UIView transitionFromView:self.firstDialogView
+                        toView:self.secondDialogView
+                      duration:0.6
+                       options:UIViewAnimationOptionShowHideTransitionViews|UIViewAnimationOptionTransitionCrossDissolve
+                    completion:nil];
+  }
 }
 
 - (IBAction)onOpenSettingsButtonTouched:(id)sender

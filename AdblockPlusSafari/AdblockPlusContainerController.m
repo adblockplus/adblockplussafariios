@@ -19,9 +19,11 @@
 
 #import "Appearence.h"
 #import "NSAttributedString+MarkdownRenderer.h"
+#import "AdblockPlusController.h"
 
 @interface AdblockPlusContainerController ()
 
+@property (nonatomic, weak) IBOutlet UIView *topBarView;
 @property (nonatomic, weak) IBOutlet UILabel *adblockPlusLabel;
 @property (nonatomic, weak) IBOutlet UILabel *adblockBrowserLabel;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *adblockBrowserBannerConstraint;
@@ -63,6 +65,21 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
   }
   [super viewWillDisappear:animated];
+}
+
+- (void)viewDidLayoutSubviews
+{
+  [super viewDidLayoutSubviews];
+
+  for (UIViewController *viewController in self.childViewControllers) {
+    if ([viewController isKindOfClass:[AdblockPlusController class]]) {
+      const CGFloat topOffsetCorrection = -15;
+      UITableView *tableView = ((AdblockPlusController *)viewController).tableView;
+      UIEdgeInsets insets = UIEdgeInsetsMake(self.topBarView.frame.size.height + topOffsetCorrection, 0, 0, 0);
+      tableView.contentInset = insets;
+      tableView.scrollIndicatorInsets = insets;
+    }
+  }
 }
 
 #pragma mark - Navigation
