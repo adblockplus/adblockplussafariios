@@ -77,13 +77,6 @@
 		691F74461B9874590057C702 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 		691F74481B988ADC0057C702 /* AdblockPlusContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusContainerController.h; sourceTree = "<group>"; };
 		691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusContainerController.m; sourceTree = "<group>"; };
-		693126291BDA75C00084BEB8 /* Simulator Screen Shot 02 Oct 2015 22.13.05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 02 Oct 2015 22.13.05.png"; sourceTree = "<group>"; };
-		6931262A1BDA75C00084BEB8 /* Simulator Screen Shot 02 Oct 2015 22.13.13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 02 Oct 2015 22.13.13.png"; sourceTree = "<group>"; };
-		6931262B1BDA75C00084BEB8 /* Simulator Screen Shot 02 Oct 2015 22.16.44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 02 Oct 2015 22.16.44.png"; sourceTree = "<group>"; };
-		6931262C1BDA75C00084BEB8 /* Simulator Screen Shot 02 Oct 2015 22.22.48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 02 Oct 2015 22.22.48.png"; sourceTree = "<group>"; };
-		6931262D1BDA75C00084BEB8 /* Simulator Screen Shot 02 Oct 2015 22.23.01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 02 Oct 2015 22.23.01.png"; sourceTree = "<group>"; };
-		6931262E1BDA75C00084BEB8 /* Simulator Screen Shot 06 Oct 2015 08.46.57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 06 Oct 2015 08.46.57.png"; sourceTree = "<group>"; };
-		6931262F1BDA75C00084BEB8 /* Simulator Screen Shot 06 Oct 2015 10.56.24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 06 Oct 2015 10.56.24.png"; sourceTree = "<group>"; };
 		6970E76C1BA94C3900B11AC3 /* AdblockPlus+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AdblockPlus+Extension.h"; sourceTree = "<group>"; };
 		6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AdblockPlus+Extension.m"; sourceTree = "<group>"; };
 		6970E76F1BA952F200B11AC3 /* AdblockPlusExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusExtras.h; sourceTree = "<group>"; };
@@ -157,20 +150,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		693126271BDA75C00084BEB8 /* Translations */ = {
-			isa = PBXGroup;
-			children = (
-				693126291BDA75C00084BEB8 /* Simulator Screen Shot 02 Oct 2015 22.13.05.png */,
-				6931262A1BDA75C00084BEB8 /* Simulator Screen Shot 02 Oct 2015 22.13.13.png */,
-				6931262B1BDA75C00084BEB8 /* Simulator Screen Shot 02 Oct 2015 22.16.44.png */,
-				6931262C1BDA75C00084BEB8 /* Simulator Screen Shot 02 Oct 2015 22.22.48.png */,
-				6931262D1BDA75C00084BEB8 /* Simulator Screen Shot 02 Oct 2015 22.23.01.png */,
-				6931262E1BDA75C00084BEB8 /* Simulator Screen Shot 06 Oct 2015 08.46.57.png */,
-				6931262F1BDA75C00084BEB8 /* Simulator Screen Shot 06 Oct 2015 10.56.24.png */,
-			);
-			path = Translations;
-			sourceTree = "<group>";
-		};
 		69A9101A1B986DB900D93485 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,7 +216,6 @@
 				E9071D3D1B76897C00091AEB /* Products */,
 				69AB6A2F1B970D18005C2075 /* Resources */,
 				69AB6A501B971A82005C2075 /* SafariServices.framework */,
-				693126271BDA75C00084BEB8 /* Translations */,
 			);
 			sourceTree = "<group>";
 		};
