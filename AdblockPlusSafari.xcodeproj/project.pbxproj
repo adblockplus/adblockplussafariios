@@ -37,6 +37,7 @@
 		69AB6A571B973802005C2075 /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A561B973802005C2075 /* WelcomeController.m */; };
 		69C19C741B975946009ACBAC /* screencast.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 69C19C731B975946009ACBAC /* screencast.mp4 */; };
 		69C19C771B9835D1009ACBAC /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C19C761B9835D1009ACBAC /* RootController.m */; };
+		69D8BB081BE3AF1900339AAC /* NSString+MarkdownRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D8BB071BE3AF1900339AAC /* NSString+MarkdownRenderer.m */; };
 		69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4D9261B95F1B700300817 /* AdblockPlusController.m */; };
 		69F4D92A1B95F28B00300817 /* AcceptableAdsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4D9291B95F28B00300817 /* AcceptableAdsController.m */; };
 		E9071D411B76897C00091AEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9071D401B76897C00091AEB /* main.m */; };
@@ -113,6 +114,9 @@
 		69C19C731B975946009ACBAC /* screencast.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = screencast.mp4; sourceTree = "<group>"; };
 		69C19C751B9835D1009ACBAC /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
 		69C19C761B9835D1009ACBAC /* RootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootController.m; sourceTree = "<group>"; };
+		69D8BB051BE3AEAE00339AAC /* en.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = en.xliff; sourceTree = "<group>"; };
+		69D8BB061BE3AF1900339AAC /* NSString+MarkdownRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MarkdownRenderer.h"; sourceTree = "<group>"; };
+		69D8BB071BE3AF1900339AAC /* NSString+MarkdownRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MarkdownRenderer.m"; sourceTree = "<group>"; };
 		69F4D9251B95F1B700300817 /* AdblockPlusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusController.h; sourceTree = "<group>"; };
 		69F4D9261B95F1B700300817 /* AdblockPlusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusController.m; sourceTree = "<group>"; };
 		69F4D9281B95F28B00300817 /* AcceptableAdsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptableAdsController.h; sourceTree = "<group>"; };
@@ -187,6 +191,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		69D8BB041BE3AEAE00339AAC /* Translations */ = {
+			isa = PBXGroup;
+			children = (
+				69D8BB051BE3AEAE00339AAC /* en.xliff */,
+			);
+			path = Translations;
+			sourceTree = "<group>";
+		};
 		69F4D9241B95F18C00300817 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +228,7 @@
 				E9071D3D1B76897C00091AEB /* Products */,
 				69AB6A2F1B970D18005C2075 /* Resources */,
 				69AB6A501B971A82005C2075 /* SafariServices.framework */,
+				69D8BB041BE3AEAE00339AAC /* Translations */,
 			);
 			sourceTree = "<group>";
 		};
@@ -247,6 +260,8 @@
 				E9071D501B76897C00091AEB /* Info.plist */,
 				69AB6A491B970FFA005C2075 /* LaunchScreen.xib */,
 				E9071D481B76897C00091AEB /* Main.storyboard */,
+				69D8BB061BE3AF1900339AAC /* NSString+MarkdownRenderer.h */,
+				69D8BB071BE3AF1900339AAC /* NSString+MarkdownRenderer.m */,
 				E9071D3F1B76897C00091AEB /* Supporting Files */,
 			);
 			path = AdblockPlusSafari;
@@ -421,6 +436,7 @@
 				691F74471B9874590057C702 /* AboutController.m in Sources */,
 				6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */,
 				69F4D92A1B95F28B00300817 /* AcceptableAdsController.m in Sources */,
+				69D8BB081BE3AF1900339AAC /* NSString+MarkdownRenderer.m in Sources */,
 				691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */,
 				69C19C771B9835D1009ACBAC /* RootController.m in Sources */,
 				69AB6A571B973802005C2075 /* WelcomeController.m in Sources */,
