@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		691F74471B9874590057C702 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74461B9874590057C702 /* AboutController.m */; };
 		691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */; };
-		6970E76E1BA94C3900B11AC3 /* AdblockPlus+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */; settings = {ASSET_TAGS = (); }; };
-		6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */; settings = {ASSET_TAGS = (); }; };
-		699876F31BBE721900595FB9 /* FilterLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 699876F21BBE721900595FB9 /* FilterLists.plist */; settings = {ASSET_TAGS = (); }; };
+		6970E76E1BA94C3900B11AC3 /* AdblockPlus+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */; };
+		6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */; };
+		699876F31BBE721900595FB9 /* FilterLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 699876F21BBE721900595FB9 /* FilterLists.plist */; };
 		699876F41BBE765100595FB9 /* FilterLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 699876F21BBE721900595FB9 /* FilterLists.plist */; };
 		69A910101B9860E000D93485 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
 		69A910121B9866A300D93485 /* easylist_content_blocker.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A910111B9866A300D93485 /* easylist_content_blocker.json */; };
@@ -211,11 +211,11 @@
 		E9071D331B76897C00091AEB = {
 			isa = PBXGroup;
 			children = (
-				69AB6A501B971A82005C2075 /* SafariServices.framework */,
 				E9071D3E1B76897C00091AEB /* AdblockPlusSafari */,
 				E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */,
 				E9071D3D1B76897C00091AEB /* Products */,
 				69AB6A2F1B970D18005C2075 /* Resources */,
+				69AB6A501B971A82005C2075 /* SafariServices.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -243,11 +243,11 @@
 				E9071D4B1B76897C00091AEB /* Assets.xcassets */,
 				69F4D9241B95F18C00300817 /* Controllers */,
 				69A9101A1B986DB900D93485 /* Controls */,
+				699876F21BBE721900595FB9 /* FilterLists.plist */,
 				E9071D501B76897C00091AEB /* Info.plist */,
 				69AB6A491B970FFA005C2075 /* LaunchScreen.xib */,
 				E9071D481B76897C00091AEB /* Main.storyboard */,
 				E9071D3F1B76897C00091AEB /* Supporting Files */,
-				699876F21BBE721900595FB9 /* FilterLists.plist */,
 			);
 			path = AdblockPlusSafari;
 			sourceTree = "<group>";
