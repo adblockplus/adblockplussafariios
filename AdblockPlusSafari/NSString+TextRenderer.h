@@ -19,7 +19,7 @@
 
 @class UIFont;
 
-@interface NSString (MarkdownRenderer)
+@interface NSString (TextRenderer)
 
 /**
 @param token a single character representing a span marker. Can be anything but Markdown
@@ -28,6 +28,6 @@
 @return self as attributed string with font changes applied to the found spans
  */
 - (NSAttributedString*)markdownSpanMarkerChar:(NSString*)markerChar
-                                renderAsFont:(UIFont*)font;
+                                 renderAsFont:(UIFont*)font;
 
 @end

@@ -18,7 +18,7 @@
 #import "AdblockPlusContainerController.h"
 
 #import "Appearence.h"
-#import "NSString+MarkdownRenderer.h"
+#import "NSString+TextRenderer.h"
 
 @interface AdblockPlusContainerController ()
 
