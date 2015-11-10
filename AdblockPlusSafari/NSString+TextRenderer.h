@@ -22,12 +22,11 @@
 @interface NSString (TextRenderer)
 
 /**
-@param token a single character representing a span marker. Can be anything but Markdown
- compatible is `*` for bold and `_` for italic
+@param token a single character representing a span marker.
 @param font the font to substitute in the span
 @return self as attributed string with font changes applied to the found spans
  */
-- (NSAttributedString*)markdownSpanMarkerChar:(NSString*)markerChar
-                                 renderAsFont:(UIFont*)font;
+- (NSAttributedString*)renderSpanMarkedByChar:(NSString*)markerChar
+                                       asFont:(UIFont*)font;
 
 @end

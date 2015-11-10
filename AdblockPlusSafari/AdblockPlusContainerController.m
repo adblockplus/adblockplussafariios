@@ -42,8 +42,8 @@
   // This is the simpliest way to print Browser word using custom bold font.
   CGFloat fontSize = self.adblockBrowserLabel.font.pointSize;
   self.adblockBrowserLabel.fontFamilyName = DefaultFontFamily;
-  self.adblockBrowserLabel.attributedText = [self.adblockBrowserLabel.text markdownSpanMarkerChar:@"*"
-                                                                                     renderAsFont:[Appearence defaultBoldFontOfSize:fontSize]];
+  self.adblockBrowserLabel.attributedText = [self.adblockBrowserLabel.text renderSpanMarkedByChar:@"*"
+                                                                                           asFont:[Appearence defaultBoldFontOfSize:fontSize]];
 }
 
 #pragma mark - Navigation
