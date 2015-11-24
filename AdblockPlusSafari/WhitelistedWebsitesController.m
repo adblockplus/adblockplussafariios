@@ -127,7 +127,7 @@ const NSInteger TextFieldTag = 121212;
     cell.textLabel.text = self.adblockPlus.whitelistedWebsites[indexPath.row];
 
     UIButton *buttom = [UIButton buttonWithType:UIButtonTypeCustom];
-    [buttom addTarget:self action:@selector(onTrashButtomTouched:) forControlEvents:UIControlEventTouchUpInside];
+    [buttom addTarget:self action:@selector(onTrashButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
     [buttom setImage:[UIImage imageNamed:@"trash"] forState:UIControlStateNormal];
     buttom.imageEdgeInsets = UIEdgeInsetsMake(0, 30, 0, 0);
     buttom.bounds = CGRectMake(0, 0, 50, 44);
@@ -176,7 +176,7 @@ const NSInteger TextFieldTag = 121212;
   }
 }
 
-- (void)onTrashButtomTouched:(UIButton *)sender
+- (void)onTrashButtonTouched:(UIButton *)sender
 {
   id view = sender.superview;
   while (view != nil) {

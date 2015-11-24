@@ -42,8 +42,8 @@
 - (void)performMergeFilterlists:(NSString *)filterlists
 {
   NSURL *input = [[NSBundle bundleForClass:[self class]] URLForResource:filterlists withExtension:@"json"];
-  NSString *filename = input.lastPathComponent;
-  NSURL *output = [[NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES] URLByAppendingPathComponent:filename isDirectory:NO];
+  NSString *fileName = input.lastPathComponent;
+  NSURL *output = [[NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES] URLByAppendingPathComponent:fileName isDirectory:NO];
 
   id websites = @[@"adblockplus.org", @"acceptableads.org"];
 

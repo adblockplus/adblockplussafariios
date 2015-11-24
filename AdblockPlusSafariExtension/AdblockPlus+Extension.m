@@ -22,26 +22,26 @@
 
 - (NSURL *__nullable)activeFilterListsURL
 {
-  NSString *filename;
+  NSString *fileName;
 
   if (!self.enabled) {
-    filename = @"empty.json";
+    fileName = @"empty.json";
   } else if (self.acceptableAdsEnabled) {
-    filename = @"easylist+exceptionrules_content_blocker.json";
+    fileName = @"easylist+exceptionrules_content_blocker.json";
   } else {
-    filename = @"easylist_content_blocker.json";
+    fileName = @"easylist_content_blocker.json";
   }
 
   for (NSString *filterListName in self.filterLists) {
     NSDictionary *filterList = self.filterLists[filterListName];
-    if ([filename isEqualToString:filterList[@"filename"]]) {
+    if ([fileName isEqualToString:filterList[@"filename"]]) {
       if (![filterList[@"downloaded"] boolValue]) {
         break;
       }
 
       NSFileManager *fileManager = [NSFileManager defaultManager];
       NSURL *url = [fileManager containerURLForSecurityApplicationGroupIdentifier:self.group];
-      url = [url URLByAppendingPathComponent:filename isDirectory:NO];
+      url = [url URLByAppendingPathComponent:fileName isDirectory:NO];
 
       if (![fileManager fileExistsAtPath:url.path]) {
         break;
@@ -51,21 +51,21 @@
     }
   }
 
-  return [[NSBundle mainBundle] URLForResource:[filename stringByDeletingPathExtension] withExtension:@"json"];
+  return [[NSBundle mainBundle] URLForResource:[fileName stringByDeletingPathExtension] withExtension:@"json"];
 }
 
 - (NSURL *)activeFilterListURLWithWhitelistedWebsites
 {
   NSURL *original = self.activeFilterListsURL;
-  NSString *filename = original.lastPathComponent;
+  NSString *fileName = original.lastPathComponent;
 
-  if (filename == nil || [filename isEqual:@"empty.json"] || self.whitelistedWebsites.count == 0)  {
+  if (fileName == nil || [fileName isEqual:@"empty.json"] || self.whitelistedWebsites.count == 0)  {
     return original;
   }
 
   NSFileManager *fileManager = [NSFileManager defaultManager];
   NSURL *copy = [fileManager containerURLForSecurityApplicationGroupIdentifier:self.group];
-  copy = [copy URLByAppendingPathComponent:[NSString stringWithFormat:@"ww-%@", filename] isDirectory:NO];
+  copy = [copy URLByAppendingPathComponent:[NSString stringWithFormat:@"ww-%@", fileName] isDirectory:NO];
 
   NSError *error;
   if (![[self class] mergeFilterListsFromURL:original
