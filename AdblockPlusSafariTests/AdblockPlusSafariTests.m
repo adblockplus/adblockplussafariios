@@ -52,7 +52,7 @@
                     withWhitelistedWebsites:websites
                                       toURL:output
                                       error:&error]) {
-    XCTAssert(false, @"Marging has failed: %@", [error localizedDescription]);
+    XCTAssert(false, @"Merging has failed: %@", [error localizedDescription]);
     return;
   }
 
@@ -89,19 +89,5 @@
 {
   [self performMergeFilterlists:@"easylist+exceptionrules_content_blocker"];
 }
-
-- (void)testHostnameEscaping
-{
-  NSDictionary<NSString *, NSString *> *input =
-  @{@"a.b.c.d": @"a\\.b\\.c\\.d",
-    @"[|(){^$*+?.<>[]": @"\\[\\|\\(\\)\\{\\^\\$\\*\\+\\?\\.\\<\\>\\[\\]"
-    };
-
-  for (NSString *key in input) {
-    id result = [AdblockPlus escapeHostname:key];
-    XCTAssert([input[key] isEqualToString:result], @"Hostname is not escaped!");
-  }
-}
-
 
 @end

@@ -126,13 +126,13 @@ const NSInteger TextFieldTag = 121212;
     cell = [tableView dequeueReusableCellWithIdentifier:@"WebsiteCell" forIndexPath:indexPath];
     cell.textLabel.text = self.adblockPlus.whitelistedWebsites[indexPath.row];
 
-    UIButton *buttom = [UIButton buttonWithType:UIButtonTypeCustom];
-    [buttom addTarget:self action:@selector(onTrashButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
-    [buttom setImage:[UIImage imageNamed:@"trash"] forState:UIControlStateNormal];
-    buttom.imageEdgeInsets = UIEdgeInsetsMake(0, 30, 0, 0);
-    buttom.bounds = CGRectMake(0, 0, 50, 44);
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self action:@selector(onTrashButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+    [button setImage:[UIImage imageNamed:@"trash"] forState:UIControlStateNormal];
+    button.imageEdgeInsets = UIEdgeInsetsMake(0, 30, 0, 0);
+    button.bounds = CGRectMake(0, 0, 50, 44);
 
-    cell.accessoryView = buttom;
+    cell.accessoryView = button;
   }
   return cell;
 }

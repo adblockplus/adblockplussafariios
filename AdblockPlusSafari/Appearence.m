@@ -43,7 +43,7 @@ static UIFont *__nonnull createFont(NSString *__nonnull familyName, UIFont *__no
   NSString *name = [NSString stringWithFormat:@"%@-%@", familyName, type];
 
   NSFont *font = [UIFont fontWithName:name size:fromFont.pointSize];
-  
+
   if (font) {
     return font;
   } else {

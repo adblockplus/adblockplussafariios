@@ -33,7 +33,7 @@
 {
   [super viewDidLoad];
 
-  // Test if adblock browser is installed 
+  // Test if adblock browser is installed
   NSURL *adblockBrowserTestUrl = [NSURL URLWithString:@"adblockbrowser://example.com"];
   if ([[UIApplication sharedApplication] canOpenURL:adblockBrowserTestUrl]) {
     self.adblockBrowserBannerConstraint.constant = 0;

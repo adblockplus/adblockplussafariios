@@ -28,68 +28,68 @@
 
 typedef struct
 {
-  NSUInteger array_level;
+  NSUInteger arrayLevel;
   yajl_gen g;
 
-} adblock_plus_context;
+} AdblockPlusContext;
 
 static int reformat_null(void *ctx)
 {
-  adblock_plus_context *context = (adblock_plus_context *)ctx;
-  return yajl_gen_status_ok == yajl_gen_null(context->g);
+  AdblockPlusContext *context = (AdblockPlusContext *)ctx;
+  return yajl_gen_null(context->g) == yajl_gen_status_ok;
 }
 
 static int reformat_boolean(void *ctx, int boolean)
 {
-  adblock_plus_context *context = (adblock_plus_context *)ctx;
-  return yajl_gen_status_ok == yajl_gen_bool(context->g, boolean);
+  AdblockPlusContext *context = (AdblockPlusContext *)ctx;
+  return yajl_gen_bool(context->g, boolean) == yajl_gen_status_ok;
 }
 
 static int reformat_number(void *ctx, const char *s, size_t l)
 {
-  adblock_plus_context *context = (adblock_plus_context *)ctx;
-  return yajl_gen_status_ok == yajl_gen_number(context->g, s, l);
+  AdblockPlusContext *context = (AdblockPlusContext *)ctx;
+  return yajl_gen_number(context->g, s, l) == yajl_gen_status_ok;
 }
 
-static int reformat_string(void *ctx, const unsigned char * stringVal, size_t stringLen)
+static int reformat_string(void *ctx, const unsigned char *stringValue, size_t stringLength)
 {
-  adblock_plus_context *context = (adblock_plus_context *)ctx;
-  return yajl_gen_status_ok == yajl_gen_string(context->g, stringVal, stringLen);
+  AdblockPlusContext *context = (AdblockPlusContext *)ctx;
+  return yajl_gen_string(context->g, stringValue, stringLength) == yajl_gen_status_ok;
 }
 
-static int reformat_map_key(void *ctx, const unsigned char * stringVal, size_t stringLen)
+static int reformat_map_key(void *ctx, const unsigned char *stringValue, size_t stringLength)
 {
-  adblock_plus_context *context = (adblock_plus_context *)ctx;
-  return yajl_gen_status_ok == yajl_gen_string(context->g, stringVal, stringLen);
+  AdblockPlusContext *context = (AdblockPlusContext *)ctx;
+  return yajl_gen_string(context->g, stringValue, stringLength) == yajl_gen_status_ok;
 }
 
 static int reformat_start_map(void *ctx)
 {
-  adblock_plus_context *context = (adblock_plus_context *)ctx;
-  return yajl_gen_status_ok == yajl_gen_map_open(context->g);
+  AdblockPlusContext *context = (AdblockPlusContext *)ctx;
+  return yajl_gen_map_open(context->g) == yajl_gen_status_ok;
 }
 
 static int reformat_end_map(void *ctx)
 {
-  adblock_plus_context *context = (adblock_plus_context *)ctx;
-  return yajl_gen_status_ok == yajl_gen_map_close(context->g);
+  AdblockPlusContext *context = (AdblockPlusContext *)ctx;
+  return yajl_gen_map_close(context->g) == yajl_gen_status_ok;
 }
 
 static int reformat_start_array(void *ctx)
 {
-  adblock_plus_context *context = (adblock_plus_context *)ctx;
-  context->array_level += 1;
-  return yajl_gen_status_ok == yajl_gen_array_open(context->g);
+  AdblockPlusContext *context = (AdblockPlusContext *)ctx;
+  context->arrayLevel += 1;
+  return yajl_gen_array_open(context->g) == yajl_gen_status_ok;
 }
 
 static int reformat_end_array(void *ctx)
 {
-  adblock_plus_context *context = (adblock_plus_context *)ctx;
-  context->array_level -= 1;
-  if (context->array_level == 0) {
+  AdblockPlusContext *context = (AdblockPlusContext *)ctx;
+  context->arrayLevel -= 1;
+  if (context->arrayLevel == 0) {
     return YES;
   } else {
-    return yajl_gen_status_ok == yajl_gen_array_close(context->g);
+    return yajl_gen_array_close(context->g) == yajl_gen_status_ok;
   }
 }
 
@@ -112,12 +112,12 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
 static BOOL writeString(NSString *__nonnull string, yajl_gen g)
 {
   const char *str = [string cStringUsingEncoding:NSUTF8StringEncoding];
-  return yajl_gen_status_ok == yajl_gen_string(g, str, strlen(str));
+  return yajl_gen_string(g, (const unsigned char *)str, strlen(str)) == yajl_gen_status_ok;
 }
 
 static BOOL writeArray(NSArray<id> *array, yajl_gen g)
 {
-  if (yajl_gen_status_ok != yajl_gen_array_open(g)) {
+  if (yajl_gen_array_open(g) != yajl_gen_status_ok) {
     return NO;
   }
 
@@ -131,7 +131,7 @@ static BOOL writeArray(NSArray<id> *array, yajl_gen g)
     } else if ([value isKindOfClass:[NSArray class]]) {
       result = writeArray(value, g);
     } else {
-      result = yajl_gen_status_ok == yajl_gen_null(g);
+      result = yajl_gen_null(g) == yajl_gen_status_ok;
     }
 
     if (!result) {
@@ -139,12 +139,12 @@ static BOOL writeArray(NSArray<id> *array, yajl_gen g)
     }
   }
 
-  return yajl_gen_status_ok == yajl_gen_array_close(g);
+  return yajl_gen_array_close(g) == yajl_gen_status_ok;
 }
 
 static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, yajl_gen g)
 {
-  if (yajl_gen_status_ok != yajl_gen_map_open(g)) {
+  if (yajl_gen_map_open(g) != yajl_gen_status_ok) {
     return NO;
   }
 
@@ -163,7 +163,7 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
     } else if ([value isKindOfClass:[NSArray class]]) {
       result = writeArray(value, g);
     } else {
-      result = yajl_gen_status_ok == yajl_gen_null(g);
+      result = yajl_gen_null(g) == yajl_gen_status_ok;
     }
 
     if (!result) {
@@ -171,25 +171,12 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
     }
   }
 
-  return yajl_gen_status_ok == yajl_gen_map_close(g);
+  return yajl_gen_map_close(g) == yajl_gen_status_ok;
 }
 
 
 
 @implementation AdblockPlus (Parsing)
-
-+ (NSString *)escapeHostname:(NSString *)hostname
-{
-  NSRegularExpression *regexp =
-  [NSRegularExpression regularExpressionWithPattern:@"[\\\\|(){^$*+?.<>\\[\\]]" options:0 error:nil];
-
-  NSMutableString *h = [hostname mutableCopy];
-  [regexp replaceMatchesInString:h
-                         options:0
-                           range:NSMakeRange(0, h.length)
-                    withTemplate:@"\\\\$0"];
-  return h;
-}
 
 + (BOOL)mergeFilterListsFromURL:(NSURL *__nonnull)input
         withWhitelistedWebsites:(NSArray<NSString *> *__nonnull)whitelistedWebsites
@@ -201,7 +188,7 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
   NSOutputStream *outputStream = [NSOutputStream outputStreamWithURL:output append:NO];
   yajl_gen g = NULL;
   yajl_handle hand = NULL;
-  adblock_plus_context context = { 0, NULL };
+  AdblockPlusContext context = { 0, NULL };
 
   @try {
     [inputStream open];
@@ -235,7 +222,7 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
       NSUInteger errorBufferLength = 256;
       uint8_t errorBuffer[errorBufferLength];
       unsigned char *error_string = yajl_get_error(hand, 1, errorBuffer, errorBufferLength);
-      NSString *errorString = [[NSString alloc] initWithCString:error_string encoding:NSASCIIStringEncoding];
+      NSString *errorString = [[NSString alloc] initWithCString:(const char *)error_string encoding:NSASCIIStringEncoding];
       return [NSError errorWithDomain:AdblockPlusErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: errorString}];
     };
 
@@ -244,7 +231,7 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
     uint8_t inputBuffer[inputBufferLength];
     NSInteger read;
 
-    while ((read = [inputStream read:inputBuffer maxLength:inputBufferLength]) != 0) {
+    while ((read = [inputStream read:inputBuffer maxLength:inputBufferLength])) {
 
       yajl_status status = yajl_parse(hand, inputBuffer, read);
       if (status != yajl_status_ok) {
@@ -267,12 +254,12 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
     // Write whitelisted websites
     for (__strong NSString *website in whitelistedWebsites) {
 
-      NSDictionary *dictionary =
+      NSDictionary *whitelistingRule =
       @{@"trigger": @{ @"url-filter": @".*", @"if-domain": @[website]},
         @"action": @{ @"type": @"ignore-previous-rules" }
         };
 
-      if (!writeDictionary(dictionary, g)) {
+      if (!writeDictionary(whitelistingRule, g)) {
         *error = getParseError(hand);
         return NO;
       }
@@ -282,7 +269,7 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
       }
     }
 
-    if (yajl_gen_status_ok != yajl_gen_array_close(g)) {
+    if (yajl_gen_array_close(g) != yajl_gen_status_ok) {
       *error = getParseError(hand);
       return NO;
     }
@@ -301,7 +288,7 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
     yajl_gen_free(g);
     yajl_free(hand);
   }
-  
+
   return true;
 }
 
