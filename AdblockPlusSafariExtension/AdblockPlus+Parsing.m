@@ -33,56 +33,56 @@ typedef struct
 
 } AdblockPlusContext;
 
-static int reformat_null(void *ctx)
+static int reformatNull(void *ctx)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
   return yajl_gen_null(context->g) == yajl_gen_status_ok;
 }
 
-static int reformat_boolean(void *ctx, int boolean)
+static int reformatBoolean(void *ctx, int boolean)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
   return yajl_gen_bool(context->g, boolean) == yajl_gen_status_ok;
 }
 
-static int reformat_number(void *ctx, const char *s, size_t l)
+static int reformatNumber(void *ctx, const char *s, size_t l)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
   return yajl_gen_number(context->g, s, l) == yajl_gen_status_ok;
 }
 
-static int reformat_string(void *ctx, const unsigned char *stringValue, size_t stringLength)
+static int reformatString(void *ctx, const unsigned char *stringValue, size_t stringLength)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
   return yajl_gen_string(context->g, stringValue, stringLength) == yajl_gen_status_ok;
 }
 
-static int reformat_map_key(void *ctx, const unsigned char *stringValue, size_t stringLength)
+static int reformatMapKey(void *ctx, const unsigned char *stringValue, size_t stringLength)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
   return yajl_gen_string(context->g, stringValue, stringLength) == yajl_gen_status_ok;
 }
 
-static int reformat_start_map(void *ctx)
+static int reformatStartMap(void *ctx)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
   return yajl_gen_map_open(context->g) == yajl_gen_status_ok;
 }
 
-static int reformat_end_map(void *ctx)
+static int reformatEndMap(void *ctx)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
   return yajl_gen_map_close(context->g) == yajl_gen_status_ok;
 }
 
-static int reformat_start_array(void *ctx)
+static int reformatStartArray(void *ctx)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
   context->arrayLevel += 1;
   return yajl_gen_array_open(context->g) == yajl_gen_status_ok;
 }
 
-static int reformat_end_array(void *ctx)
+static int reformatEndArray(void *ctx)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
   context->arrayLevel -= 1;
@@ -94,17 +94,17 @@ static int reformat_end_array(void *ctx)
 }
 
 static yajl_callbacks callbacks = {
-  reformat_null,
-  reformat_boolean,
+  reformatNull,
+  reformatBoolean,
   NULL,
   NULL,
-  reformat_number,
-  reformat_string,
-  reformat_start_map,
-  reformat_map_key,
-  reformat_end_map,
-  reformat_start_array,
-  reformat_end_array
+  reformatNumber,
+  reformatString,
+  reformatStartMap,
+  reformatMapKey,
+  reformatEndMap,
+  reformatStartArray,
+  reformatEndArray
 };
 
 static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, yajl_gen g);
@@ -122,7 +122,6 @@ static BOOL writeArray(NSArray<id> *array, yajl_gen g)
   }
 
   for (id value in array) {
-
     BOOL result;
     if ([value isKindOfClass:[NSDictionary class]]) {
       result = writeDictionary(value, g);
@@ -253,7 +252,6 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
 
     // Write whitelisted websites
     for (__strong NSString *website in whitelistedWebsites) {
-
       NSDictionary *whitelistingRule =
       @{@"trigger": @{ @"url-filter": @".*", @"if-domain": @[website]},
         @"action": @{ @"type": @"ignore-previous-rules" }
