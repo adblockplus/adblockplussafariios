@@ -17,6 +17,7 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *_Nonnull AdblockPlusErrorDomain;
 extern NSString *_Nonnull AdblockPlusActivated;
 
 @interface AdblockPlus : NSObject
@@ -40,5 +41,7 @@ extern NSString *_Nonnull AdblockPlusActivated;
 @property (nonatomic) NSInteger downloadedVersion;
 
 @property (nonatomic, strong) NSDictionary<NSString *, NSDictionary<NSString *, id> *> *__nonnull filterLists;
+
+@property (nonatomic, strong) NSArray<NSString *> *__nonnull whitelistedWebsites;
 
 @end

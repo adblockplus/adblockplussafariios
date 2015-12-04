@@ -19,6 +19,8 @@
 
 @interface AdblockPlus (Extension)
 
-- (NSURL *__nullable)currentFilterListURL;
+- (NSURL *__nullable)activeFilterListsURL;
+
+- (NSURL *__nullable)activeFilterListURLWithWhitelistedWebsites;
 
 @end

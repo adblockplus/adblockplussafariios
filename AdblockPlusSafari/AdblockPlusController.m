@@ -105,7 +105,8 @@
   } else  if ([cell.reuseIdentifier isEqualToString:@"UpdateFilterLists"]) {
     cell.accessoryView = self.activityIndicatorView;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-  } else if ([cell.reuseIdentifier isEqualToString:@"AcceptableAds"]) {
+  } else if ([cell.reuseIdentifier isEqualToString:@"AcceptableAds"]
+             || [cell.reuseIdentifier isEqualToString:@"WhitelistedWebsites"]) {
     BOOL enabled = self.adblockPlus.enabled;
     cell.userInteractionEnabled = enabled;
     cell.selectionStyle = enabled ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
@@ -142,6 +143,10 @@
 
   if ([cell.reuseIdentifier isEqualToString:@"About"]) {
     [self.parentViewController performSegueWithIdentifier:@"AboutSegue" sender:nil];
+  }
+
+  if ([cell.reuseIdentifier isEqualToString:@"WhitelistedWebsites"]) {
+    [self.parentViewController performSegueWithIdentifier:@"WhitelistedWebsitesSegue" sender:nil];
   }
 
   if ([cell.reuseIdentifier isEqualToString:@"UpdateFilterLists"]) {

@@ -121,6 +121,12 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
   }
 }
 
+- (void)setWhitelistedWebsites:(NSArray<NSString *> *)whitelistedWebsites
+{
+  super.whitelistedWebsites = whitelistedWebsites;
+  [self reloadContentBlockerWithCompletion:nil];
+}
+
 - (void)setNeedsDisplayErrorDialog:(BOOL)needsDisplayErrorDialog
 {
   _needsDisplayErrorDialog = needsDisplayErrorDialog;
