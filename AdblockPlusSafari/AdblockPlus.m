@@ -17,12 +17,14 @@
 
 #import "AdblockPlus.h"
 
+NSString *AdblockPlusErrorDomain = @"AdblockPlusError";
 NSString *AdblockPlusActivated = @"AdblockPlusActivated";
 static NSString *AdblockPlusEnabled = @"AdblockPlusEnabled";
 static NSString *AdblockPlusAcceptableAdsEnabled = @"AdblockPlusAcceptableAdsEnabled";
 static NSString *AdblockPlusFilterLists = @"AdblockPlusFilterLists";
 static NSString *AdblockPlusInstalledVersion = @"AdblockPlusInstalledVersion";
 static NSString *AdblockPlusDownloadedVersion = @"AdblockPlusDownloadedVersion";
+static NSString *AdblockPlusWhitelistedWebsites = @"AdblockPlusWhitelistedWebsites";
 
 @interface AdblockPlus ()
 
@@ -50,7 +52,8 @@ static NSString *AdblockPlusDownloadedVersion = @"AdblockPlusDownloadedVersion";
         AdblockPlusAcceptableAdsEnabled: @YES,
         AdblockPlusInstalledVersion: @0,
         AdblockPlusDownloadedVersion: @1,
-        AdblockPlusFilterLists: filterLists }];
+        AdblockPlusFilterLists: filterLists,
+        AdblockPlusWhitelistedWebsites: @[]}];
 
     _enabled = [_adblockPlusDetails boolForKey:AdblockPlusEnabled];
     _acceptableAdsEnabled = [_adblockPlusDetails boolForKey:AdblockPlusAcceptableAdsEnabled];
@@ -58,6 +61,7 @@ static NSString *AdblockPlusDownloadedVersion = @"AdblockPlusDownloadedVersion";
     _filterLists = [_adblockPlusDetails objectForKey:AdblockPlusFilterLists];
     _installedVersion = [_adblockPlusDetails integerForKey:AdblockPlusInstalledVersion];
     _downloadedVersion = [_adblockPlusDetails integerForKey:AdblockPlusDownloadedVersion];
+    _whitelistedWebsites = [_adblockPlusDetails objectForKey:AdblockPlusWhitelistedWebsites];
   }
   return self;
 }
@@ -103,6 +107,13 @@ static NSString *AdblockPlusDownloadedVersion = @"AdblockPlusDownloadedVersion";
 {
   _downloadedVersion = downloadedVersion;
   [_adblockPlusDetails setInteger:downloadedVersion forKey:AdblockPlusDownloadedVersion];
+  [_adblockPlusDetails synchronize];
+}
+
+- (void)setWhitelistedWebsites:(NSArray<NSString *> *)whitelistedWebsites
+{
+  _whitelistedWebsites = whitelistedWebsites;
+  [_adblockPlusDetails setObject:whitelistedWebsites forKey:AdblockPlusWhitelistedWebsites];
   [_adblockPlusDetails synchronize];
 }
 

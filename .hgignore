@@ -1,2 +1,5 @@
 /xcuserdata/
 \.xcuserstate$
+\.DS_Store
+^Pods
+^AdblockPlusSafari.xcworkspace/
