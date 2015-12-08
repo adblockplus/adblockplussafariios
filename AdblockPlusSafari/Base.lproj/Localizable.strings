@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  AdblockPlusSafari
+
+  Created by Pavel Zdeněk on 8.D.15.
+  Copyright © 2015 Eyeo GmbH. All rights reserved.
+*/
+
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "Filter list update failed";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "Failed to update filter lists. Please try again later.";
+
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "ADD WEBSITE TO WHITELIST";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "YOUR WHITELIST";
