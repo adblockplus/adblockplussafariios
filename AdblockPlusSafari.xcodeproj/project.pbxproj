@@ -1119,6 +1119,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1163,6 +1164,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1188,6 +1190,7 @@
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_NUMBER = 0;
 				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafari.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1197,7 +1200,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari;
 				PRODUCT_DISPLAY_NAME = "Adblock Plus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "$(APP_PROVISIONING_PROFILE)";
 			};
 			name = Debug;
 		};
@@ -1206,6 +1209,7 @@
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_NUMBER = 0;
 				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafari.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1215,7 +1219,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari;
 				PRODUCT_DISPLAY_NAME = "Adblock Plus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "$(APP_PROVISIONING_PROFILE)";
 			};
 			name = Release;
 		};
@@ -1224,6 +1228,7 @@
 			baseConfigurationReference = A14A660893078CBC45FC4B6F /* Pods-AdblockPlusSafariExtension.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
+				BUILD_NUMBER = 0;
 				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1232,7 +1237,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension;
 				PRODUCT_DISPLAY_NAME = "Adblock Plus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "$(EXTENSION_PROVISIONING_PROFILE)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1242,6 +1247,7 @@
 			baseConfigurationReference = BF80A757631370D3996E337C /* Pods-AdblockPlusSafariExtension.release.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
+				BUILD_NUMBER = 0;
 				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1250,7 +1256,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension;
 				PRODUCT_DISPLAY_NAME = "Adblock Plus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "$(EXTENSION_PROVISIONING_PROFILE)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1273,6 +1279,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1298,6 +1305,7 @@
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_NUMBER = 0;
 				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafariDevbuild.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eyeo GmbH";
@@ -1306,7 +1314,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari;
 				PRODUCT_DISPLAY_NAME = "Adblock Plus Devbuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "$(APP_PROVISIONING_PROFILE)";
 			};
 			name = "Devbuild Release";
 		};
@@ -1315,6 +1323,7 @@
 			baseConfigurationReference = EE98E8374F2DBA9D5A14778F /* Pods-AdblockPlusSafariExtension.devbuild release.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
+				BUILD_NUMBER = 0;
 				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtensionDevbuild.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eyeo GmbH";
@@ -1323,7 +1332,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariExtension;
 				PRODUCT_DISPLAY_NAME = "Adblock Plus Devbuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "$(EXTENSION_PROVISIONING_PROFILE)";
 				SKIP_INSTALL = YES;
 			};
 			name = "Devbuild Release";
@@ -1346,6 +1355,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1377,6 +1387,7 @@
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_NUMBER = 0;
 				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafariDevbuild.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1385,7 +1396,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari;
 				PRODUCT_DISPLAY_NAME = "Adblock Plus Devbuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "$(APP_PROVISIONING_PROFILE)";
 			};
 			name = "Devbuild Debug";
 		};
@@ -1394,6 +1405,7 @@
 			baseConfigurationReference = A189F7915DEE1F8E0B9EC368 /* Pods-AdblockPlusSafariExtension.devbuild debug.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
+				BUILD_NUMBER = 0;
 				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtensionDevbuild.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1402,7 +1414,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariExtension;
 				PRODUCT_DISPLAY_NAME = "Adblock Plus Devbuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "$(EXTENSION_PROVISIONING_PROFILE)";
 				SKIP_INSTALL = YES;
 			};
 			name = "Devbuild Debug";
