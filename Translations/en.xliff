@@ -5,6 +5,10 @@
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.1" build-num="7B91b"/>
     </header>
     <body>
+      <trans-unit id="0Xh-gE-5Fu.text">
+        <source>Whitelisted Websites</source>
+        <note>Class = "UILabel"; text = "Whitelisted Websites"; ObjectID = "0Xh-gE-5Fu";</note>
+      </trans-unit>
       <trans-unit id="3Bc-kL-vsl.text">
         <source>About</source>
         <note>Class = "UILabel"; text = "About"; ObjectID = "3Bc-kL-vsl";</note>
@@ -37,6 +41,10 @@
         <source>Annoying ads are always blocked, while nonintrusive ads are displayed by default. You can change this setting at any time.</source>
         <note>Class = "UILabel"; text = "Annoying ads are always blocked, while nonintrusive ads are displayed by default. You can change this setting at any time."; ObjectID = "CNX-VR-6h9";</note>
       </trans-unit>
+      <trans-unit id="EiF-J0-RYy.title">
+        <source>Whitelisted Websites</source>
+        <note>Class = "UINavigationItem"; title = "Whitelisted Websites"; ObjectID = "EiF-J0-RYy";</note>
+      </trans-unit>
       <trans-unit id="Hto-9e-Mjf.title">
         <source>About</source>
         <note>Class = "UINavigationItem"; title = "About"; ObjectID = "Hto-9e-Mjf";</note>
@@ -64,6 +72,10 @@
       <trans-unit id="Thw-XS-bUp.text">
         <source>2. Enable Adblock Plus and wait for 10 seconds</source>
         <note>Class = "UILabel"; text = "2. Enable Adblock Plus and wait for 10 seconds"; ObjectID = "Thw-XS-bUp";</note>
+      </trans-unit>
+      <trans-unit id="VES-kP-JDg.text">
+        <source>No websites added yet</source>
+        <note>Class = "UILabel"; text = "No websites added yet"; ObjectID = "VES-kP-JDg";</note>
       </trans-unit>
       <trans-unit id="VJZ-V3-ohd.text">
         <source>To get a better ad blocking experience, use Adblock *Browser* for iOS</source>
@@ -130,12 +142,20 @@
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.1" build-num="7B91b"/>
     </header>
     <body>
+      <trans-unit id="ADD WEBSITE TO WHITELIST">
+        <source>ADD WEBSITE TO WHITELIST</source>
+        <note>Whitelisted Websites Controller</note>
+      </trans-unit>
       <trans-unit id="Failed to update filter lists. Please try again later.">
         <source>Failed to update filter lists. Please try again later.</source>
         <note>Message of filter update failure dialog</note>
       </trans-unit>
-      <trans-unit id="​Filter list update failed">
-        <source>​Filter list update failed</source>
+      <trans-unit id="YOUR WHITELIST">
+        <source>YOUR WHITELIST</source>
+        <note>Whitelisted Websites Controller</note>
+      </trans-unit>
+      <trans-unit id="Filter list update failed">
+        <source>Filter list update failed</source>
         <note>Title of filter update failure dialog</note>
       </trans-unit>
     </body>
