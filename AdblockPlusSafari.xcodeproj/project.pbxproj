@@ -57,6 +57,7 @@
 		E9071D4C1B76897C00091AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9071D4B1B76897C00091AEB /* Assets.xcassets */; };
 		E942B0801B76899D004B4692 /* ActionRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E942B07F1B76899D004B4692 /* ActionRequestHandler.m */; };
 		E942B0841B76899D004B4692 /* AdblockPlusSafariExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E96360F11C1736E8009179F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E96360F31C1736E8009179F2 /* Localizable.strings */; };
 		E9C719D91B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json in Resources */ = {isa = PBXBuildFile; fileRef = E9C719D81B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json */; };
 /* End PBXBuildFile section */
 
@@ -174,6 +175,7 @@
 		E942B07F1B76899D004B4692 /* ActionRequestHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionRequestHandler.m; sourceTree = "<group>"; };
 		E942B0811B76899D004B4692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9453B7B6F8DA7D03055D4D4 /* Pods-AdblockPlusSafariTests.devbuild release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariTests.devbuild release.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests.devbuild release.xcconfig"; sourceTree = "<group>"; };
+		E96360F21C1736E8009179F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9C719D81B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "easylist+exceptionrules_content_blocker.json"; sourceTree = "<group>"; };
 		EE98E8374F2DBA9D5A14778F /* Pods-AdblockPlusSafariExtension.devbuild release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariExtension.devbuild release.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension.devbuild release.xcconfig"; sourceTree = "<group>"; };
 		F55BC89B7901D5C152D67C85 /* Pods-AdblockPlusSafariTests.devbuild debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariTests.devbuild debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests.devbuild debug.xcconfig"; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				E9071D401B76897C00091AEB /* main.m */,
+				E96360F31C1736E8009179F2 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				69AB6A4A1B970FFA005C2075 /* LaunchScreen.xib in Resources */,
 				69AB6A451B970D19005C2075 /* SourceSansPro-LightIt.otf in Resources */,
 				69AB6A3F1B970D19005C2075 /* SourceSansPro-Bold.otf in Resources */,
+				E96360F11C1736E8009179F2 /* Localizable.strings in Resources */,
 				69C7EBE01BF39FC500FE8062 /* en.xliff in Resources */,
 				69AB6A3E1B970D18005C2075 /* SourceSansPro-BlackIt.otf in Resources */,
 			);
@@ -732,6 +736,14 @@
 				E9071D491B76897C00091AEB /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E96360F31C1736E8009179F2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E96360F21C1736E8009179F2 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
