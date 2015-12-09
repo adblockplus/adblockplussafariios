@@ -74,8 +74,8 @@
         <note>Class = "UILabel"; text = "2. Enable Adblock Plus and wait for 10 seconds"; ObjectID = "Thw-XS-bUp";</note>
       </trans-unit>
       <trans-unit id="VES-kP-JDg.text">
-        <source>No websites added yet</source>
-        <note>Class = "UILabel"; text = "No websites added yet"; ObjectID = "VES-kP-JDg";</note>
+        <source>No websites whitelisted</source>
+        <note>Class = "UILabel"; text = "No websites whitelisted"; ObjectID = "VES-kP-JDg";</note>
       </trans-unit>
       <trans-unit id="VJZ-V3-ohd.text">
         <source>To get a better ad blocking experience, use Adblock *Browser* for iOS</source>
