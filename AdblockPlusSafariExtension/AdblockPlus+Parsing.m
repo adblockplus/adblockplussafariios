@@ -26,8 +26,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef NS_ENUM(NSUInteger, AdblockPlusFilterListsType) {
+  AdblockPlusFilterListsTypeVersion1,
+  AdblockPlusFilterListsTypeVersion2
+};
+
 typedef struct
 {
+  BOOL writingEnabled;
+  AdblockPlusFilterListsType filterListsType;
+  NSUInteger mapLevel;
   NSUInteger arrayLevel;
   yajl_gen g;
 
@@ -36,61 +44,83 @@ typedef struct
 static int reformatNull(void *ctx)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
-  return yajl_gen_null(context->g) == yajl_gen_status_ok;
+  return !context->writingEnabled || yajl_gen_null(context->g) == yajl_gen_status_ok;
 }
 
 static int reformatBoolean(void *ctx, int boolean)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
-  return yajl_gen_bool(context->g, boolean) == yajl_gen_status_ok;
+  return !context->writingEnabled || yajl_gen_bool(context->g, boolean) == yajl_gen_status_ok;
 }
 
 static int reformatNumber(void *ctx, const char *s, size_t l)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
-  return yajl_gen_number(context->g, s, l) == yajl_gen_status_ok;
+  return !context->writingEnabled || yajl_gen_number(context->g, s, l) == yajl_gen_status_ok;
 }
 
-static int reformatString(void *ctx, const unsigned char *stringValue, size_t stringLength)
+static int reformatString(void *ctx, const unsigned char *string, size_t stringLength)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
-  return yajl_gen_string(context->g, stringValue, stringLength) == yajl_gen_status_ok;
+  return !context->writingEnabled || yajl_gen_string(context->g, string, stringLength) == yajl_gen_status_ok;
 }
 
-static int reformatMapKey(void *ctx, const unsigned char *stringValue, size_t stringLength)
+static int reformatMapKey(void *ctx, const unsigned char *string, size_t stringLength)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
-  return yajl_gen_string(context->g, stringValue, stringLength) == yajl_gen_status_ok;
+
+  if (context->mapLevel == 1 && context->filterListsType == AdblockPlusFilterListsTypeVersion2) {
+    context->writingEnabled = strncmp((const char *)string, "rules", stringLength) == 0;
+    return YES;
+  }
+
+  return !context->writingEnabled || yajl_gen_string(context->g, string, stringLength) == yajl_gen_status_ok;
 }
 
 static int reformatStartMap(void *ctx)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
-  return yajl_gen_map_open(context->g) == yajl_gen_status_ok;
+  context->mapLevel += 1;
+
+  if (context->mapLevel == 1 && context->arrayLevel == 0) {
+    context->filterListsType = AdblockPlusFilterListsTypeVersion2;
+    return YES;
+  }
+
+  return !context->writingEnabled || yajl_gen_map_open(context->g) == yajl_gen_status_ok;
 }
 
 static int reformatEndMap(void *ctx)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
-  return yajl_gen_map_close(context->g) == yajl_gen_status_ok;
+  context->mapLevel -= 1;
+  return !context->writingEnabled || yajl_gen_map_close(context->g) == yajl_gen_status_ok;
 }
 
 static int reformatStartArray(void *ctx)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
   context->arrayLevel += 1;
-  return yajl_gen_array_open(context->g) == yajl_gen_status_ok;
+
+  if (context->mapLevel == 0 && context->arrayLevel == 1) {
+    context->filterListsType = AdblockPlusFilterListsTypeVersion1;
+    context->writingEnabled = YES;
+  }
+
+  return !context->writingEnabled || yajl_gen_array_open(context->g) == yajl_gen_status_ok;
 }
 
 static int reformatEndArray(void *ctx)
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
   context->arrayLevel -= 1;
-  if (context->arrayLevel == 0) {
+
+  if (context->arrayLevel == 0 && context->writingEnabled) {
+    context->writingEnabled = NO;
     return YES;
-  } else {
-    return yajl_gen_array_close(context->g) == yajl_gen_status_ok;
   }
+
+  return !context->writingEnabled || yajl_gen_array_close(context->g) == yajl_gen_status_ok;
 }
 
 static yajl_callbacks callbacks = {
@@ -187,7 +217,7 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
   NSOutputStream *outputStream = [NSOutputStream outputStreamWithURL:output append:NO];
   yajl_gen g = NULL;
   yajl_handle hand = NULL;
-  AdblockPlusContext context = { 0, NULL };
+  AdblockPlusContext context = { NO, AdblockPlusFilterListsTypeVersion1, 0, 0, NULL };
 
   @try {
     [inputStream open];

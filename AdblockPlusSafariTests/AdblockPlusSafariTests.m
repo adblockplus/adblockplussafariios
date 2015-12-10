@@ -65,8 +65,9 @@
   @try {
     [inputStream open];
     NSError *error;
-    [NSJSONSerialization JSONObjectWithStream:inputStream options:NSJSONReadingMutableContainers error:&error];
-    XCTAssert(error == nil, @"JSON is not valid: %@", error);
+    id rules = [NSJSONSerialization JSONObjectWithStream:inputStream options:NSJSONReadingMutableContainers error:&error];
+    XCTAssert(error == nil && rules != nil, @"JSON is not valid: %@", error);
+    XCTAssert([rules isKindOfClass:[NSArray class]], @"Rules is not type of array.");
   }
   @catch (NSException *exception) {
     XCTAssert(false, @"Reading failed %@", exception.reason);
@@ -88,6 +89,15 @@
 - (void)testEasylistPlusExceptionsFilterListsMergeWithWhitelistedWebsites
 {
   [self performMergeFilterlists:@"easylist+exceptionrules_content_blocker"];
+}
+
+- (void)testEasylistFilterListsMergeWithWhitelistedWebsitesV2
+{
+  [self performMergeFilterlists:@"easylist_content_blocker_v2"];}
+
+- (void)testEasylistPlusExceptionsFilterListsMergeWithWhitelistedWebsitesV2
+{
+  [self performMergeFilterlists:@"easylist+exceptionrules_content_blocker_v2"];
 }
 
 @end
