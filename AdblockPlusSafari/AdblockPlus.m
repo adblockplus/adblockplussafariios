@@ -26,6 +26,8 @@ static NSString *AdblockPlusInstalledVersion = @"AdblockPlusInstalledVersion";
 static NSString *AdblockPlusDownloadedVersion = @"AdblockPlusDownloadedVersion";
 static NSString *AdblockPlusWhitelistedWebsites = @"AdblockPlusWhitelistedWebsites";
 
+static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
+
 @interface AdblockPlus ()
 
 @property (nonatomic, strong) NSString *bundleName;
@@ -44,7 +46,20 @@ static NSString *AdblockPlusWhitelistedWebsites = @"AdblockPlusWhitelistedWebsit
       filterLists = @{};
     }
 
-    _bundleName = [[[[[NSBundle mainBundle] bundleIdentifier] componentsSeparatedByString:@"."] subarrayWithRange:NSMakeRange(0, 2)] componentsJoinedByString:@"."];
+    // Try to extract group from bundle name from bundle id (in host app and extension):
+    // org.adblockplus.AdblockPlusSafari           -> org.adblockplus
+    // org.adblockplus.devbuilds.AdblockPlusSafari -> org.adblockplus.devbuilds
+    NSArray<NSString *> *components = [[[NSBundle mainBundle] bundleIdentifier] componentsSeparatedByString:@"."];
+
+    // Check, if the object is being created in the sharing extension.
+    if ([components.lastObject isEqualToString:AdblockPlusSafariExtension]) {
+      components = [components subarrayWithRange:NSMakeRange(0, [components count] - 2)];
+    } else {
+      components = [components subarrayWithRange:NSMakeRange(0, [components count] - 1)];
+    }
+
+    _bundleName = [components componentsJoinedByString:@"."];
+
     _adblockPlusDetails = [[NSUserDefaults alloc] initWithSuiteName:self.group];
     [_adblockPlusDetails registerDefaults:
      @{ AdblockPlusActivated: @NO,
@@ -121,7 +136,7 @@ static NSString *AdblockPlusWhitelistedWebsites = @"AdblockPlusWhitelistedWebsit
 
 - (NSString *)contentBlockerIdentifier
 {
-  return [NSString stringWithFormat:@"%@.AdblockPlusSafari.AdblockPlusSafariExtension", _bundleName];
+  return [NSString stringWithFormat:@"%@.AdblockPlusSafari.%@", _bundleName, AdblockPlusSafariExtension];
 }
 
 - (NSString *)group
