@@ -59,7 +59,7 @@
   NSURL *original = self.activeFilterListsURL;
   NSString *fileName = original.lastPathComponent;
 
-  if (fileName == nil || [fileName isEqual:@"empty.json"] || self.whitelistedWebsites.count == 0)  {
+  if (fileName == nil || [fileName isEqual:@"empty.json"])  {
     return original;
   }
 
