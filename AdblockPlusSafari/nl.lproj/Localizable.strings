@@ -1,0 +1,12 @@
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "TOEVOEGEN AAN WITTE LIJST";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "Filterlijsten bijwerken is mislukt. Probeer het later opnieuw.";
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "Filterlijst bijwerken mislukt";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "UW WITTE LIJST";
+

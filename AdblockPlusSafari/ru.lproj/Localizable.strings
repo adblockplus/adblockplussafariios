@@ -1,0 +1,12 @@
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "Добавить сайт в список разрешённых";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "Не удалось обновить списки фильтров. Пожалуйста, повторите попытку позже.";
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "Не удалось обновить список фильтров";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "Ваш список разрешённых сайтов";
+

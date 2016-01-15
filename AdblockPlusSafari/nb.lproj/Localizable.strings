@@ -1,0 +1,12 @@
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "SETT NETTSTED PÅ HVITELISTEN";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "Kan ikke oppdatere filterlistene. Vennligst prøv igjen senere.";
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "Filterlisteoppdateringen mislyktes";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "HVITELISTEN DIN";
+

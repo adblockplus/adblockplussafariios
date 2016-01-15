@@ -1,0 +1,12 @@
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "ADĂUGAŢI SITE-UL LA LISTA ALBĂ";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "Nu a reușit să actualizeze listele de filtre. Vă rugăm să încercaţi din nou mai târziu.";
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "Actualizarea listei de filtre nu a reușit";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "LISTA TA ALBĂ";
+

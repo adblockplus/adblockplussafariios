@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="AdblockPlusSafari/Base.lproj/Main.storyboard" source-language="en_US" datatype="plaintext" target-language="zh_Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.1" build-num="7B91b"/>
+    </header>
+    <body>
+      <trans-unit id="0Xh-gE-5Fu.text">
+        <source>Whitelisted Websites</source>
+        <note>Class = "UILabel"; text = "Whitelisted Websites"; ObjectID = "0Xh-gE-5Fu";</note>
+        <target xml:lang="zh_Hant" state="translated">白名單中的網站</target>
+      </trans-unit>
+      <trans-unit id="3Bc-kL-vsl.text">
+        <source>About</source>
+        <note>Class = "UILabel"; text = "About"; ObjectID = "3Bc-kL-vsl";</note>
+        <target xml:lang="zh_Hant" state="translated">關於</target>
+      </trans-unit>
+      <trans-unit id="3FL-nd-DlQ.text">
+        <source>Allow some nonintrusive ads</source>
+        <note>Class = "UILabel"; text = "Allow some nonintrusive ads"; ObjectID = "3FL-nd-DlQ";</note>
+        <target xml:lang="zh_Hant" state="translated">允許一些非侵入性的廣告</target>
+      </trans-unit>
+      <trans-unit id="4Ma-gI-dEb.headerTitle">
+        <source>VERSION</source>
+        <note>Class = "UITableViewSection"; headerTitle = "VERSION"; ObjectID = "4Ma-gI-dEb";</note>
+        <target xml:lang="zh_Hant" state="translated">版本</target>
+      </trans-unit>
+      <trans-unit id="9TK-Zf-1G9.text">
+        <source>1. Go to iOS Settings → Safari → Content Blockers</source>
+        <note>Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9";</note>
+        <target xml:lang="zh_Hant" state="translated">1.前往 iOS 設定 → Safari → 內容阻擋器</target>
+      </trans-unit>
+      <trans-unit id="94r-nm-jV7.text">
+        <source>We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time.</source>
+        <note>Class = "UILabel"; text = "We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time."; ObjectID = "94r-nm-jV7";</note>
+        <target xml:lang="zh_Hant" state="translated">我們想鼓勵網站使用簡單、非侵入式的廣告。這就是為什麼我們已經建立了嚴格的準則來判斷在默認設置下顯示的可接受廣告。如果你想要瀏覽時完全無廣告，您可隨時禁用此設置。</target>
+      </trans-unit>
+      <trans-unit id="ABG-dZ-EA2.text">
+        <source>Acceptable Ads</source>
+        <note>Class = "UILabel"; text = "Acceptable Ads"; ObjectID = "ABG-dZ-EA2";</note>
+        <target xml:lang="zh_Hant" state="translated">可接受廣告</target>
+        <alt-trans>
+          <target xml:lang="zh_Hant">非侵入式廣告</target>
+        </alt-trans>
+      </trans-unit>
+      <trans-unit id="ASd-WJ-vg5.title">
+        <source>Adblock Plus</source>
+        <note>Class = "UINavigationItem"; title = "Adblock Plus"; ObjectID = "ASd-WJ-vg5";</note>
+        <target xml:lang="zh_Hant" state="translated">Adblock Plus</target>
+      </trans-unit>
+      <trans-unit id="CNX-VR-6h9.text">
+        <source>Annoying ads are always blocked, while nonintrusive ads are displayed by default. You can change this setting at any time.</source>
+        <note>Class = "UILabel"; text = "Annoying ads are always blocked, while nonintrusive ads are displayed by default. You can change this setting at any time."; ObjectID = "CNX-VR-6h9";</note>
+        <target xml:lang="zh_Hant" state="translated">煩人的廣告總是被封鎖，但對於非侵入性廣告默認保留。您可以在任何時間更改此設置。</target>
+      </trans-unit>
+      <trans-unit id="EiF-J0-RYy.title">
+        <source>Whitelisted Websites</source>
+        <note>Class = "UINavigationItem"; title = "Whitelisted Websites"; ObjectID = "EiF-J0-RYy";</note>
+        <target xml:lang="zh_Hant" state="translated">白名單中的網站</target>
+      </trans-unit>
+      <trans-unit id="Hto-9e-Mjf.title">
+        <source>About</source>
+        <note>Class = "UINavigationItem"; title = "About"; ObjectID = "Hto-9e-Mjf";</note>
+        <target xml:lang="zh_Hant" state="translated">關於</target>
+      </trans-unit>
+      <trans-unit id="JGs-ZZ-lI9.headerTitle">
+        <source>MORE</source>
+        <note>Class = "UITableViewSection"; headerTitle = "MORE"; ObjectID = "JGs-ZZ-lI9";</note>
+        <target xml:lang="zh_Hant" state="translated">更多</target>
+      </trans-unit>
+      <trans-unit id="KLy-wT-2fz.text">
+        <source>Safari Configuration</source>
+        <note>Class = "UILabel"; text = "Safari Configuration"; ObjectID = "KLy-wT-2fz";</note>
+        <target xml:lang="zh_Hant" state="translated">Safari 組態</target>
+      </trans-unit>
+      <trans-unit id="PnU-9J-ZXq.text">
+        <source>Update Filter lists</source>
+        <note>Class = "UILabel"; text = "Update Filter lists"; ObjectID = "PnU-9J-ZXq";</note>
+        <target xml:lang="zh_Hant" state="translated">升級篩選器清單</target>
+      </trans-unit>
+      <trans-unit id="RRQ-SL-6ZV.text">
+        <source>You're in control</source>
+        <note>Class = "UILabel"; text = "You're in control"; ObjectID = "RRQ-SL-6ZV";</note>
+        <target xml:lang="zh_Hant" state="translated">選擇權在你手裡</target>
+      </trans-unit>
+      <trans-unit id="TUG-U9-6x7.normalTitle">
+        <source>Download on the App Store</source>
+        <note>Class = "UIButton"; normalTitle = "Download on the App Store"; ObjectID = "TUG-U9-6x7";</note>
+        <target xml:lang="zh_Hant" state="translated">在 App Store 下載</target>
+      </trans-unit>
+      <trans-unit id="Thw-XS-bUp.text">
+        <source>2. Enable Adblock Plus and wait for 10 seconds</source>
+        <note>Class = "UILabel"; text = "2. Enable Adblock Plus and wait for 10 seconds"; ObjectID = "Thw-XS-bUp";</note>
+        <target xml:lang="zh_Hant" state="translated">2.啟用  Adblock Plus 並等待 10 秒</target>
+      </trans-unit>
+      <trans-unit id="VES-kP-JDg.text">
+        <source>No websites whitelisted</source>
+        <note>Class = "UILabel"; text = "No websites whitelisted"; ObjectID = "VES-kP-JDg";</note>
+        <target xml:lang="zh_Hant" state="translated">沒有網站白名單</target>
+      </trans-unit>
+      <trans-unit id="VJZ-V3-ohd.text">
+        <source>To get a better ad blocking experience, use Adblock *Browser* for iOS</source>
+        <note>Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock (unbreakable space character)*Browser* for iOS"; ObjectID = "VJZ-V3-ohd";</note>
+        <target xml:lang="zh_Hant" state="translated">要獲得更好的廣告封鎖體驗，使用 iOS 版 Adblock *瀏覽器*</target>
+      </trans-unit>
+      <trans-unit id="Vy3-8g-AOR.normalTitle">
+        <source>Got it</source>
+        <note>Class = "UIButton"; normalTitle = "Got it"; ObjectID = "Vy3-8g-AOR";</note>
+        <target xml:lang="zh_Hant" state="translated">知道了</target>
+      </trans-unit>
+      <trans-unit id="euz-Uy-cr5.text">
+        <source>Tap the Settings icon → Acceptable Ads</source>
+        <note>Class = "UILabel"; text = "Tap the Settings icon → Acceptable Ads"; ObjectID = "euz-Uy-cr5";</note>
+        <target xml:lang="zh_Hant" state="translated">按「設定」圖示 → 可接受廣告</target>
+      </trans-unit>
+      <trans-unit id="hBD-xm-gdv.text">
+        <source>Acceptable Ads</source>
+        <note>Class = "UILabel"; text = "Acceptable Ads"; ObjectID = "hBD-xm-gdv";</note>
+        <target xml:lang="zh_Hant" state="translated">可接受廣告</target>
+        <alt-trans>
+          <target xml:lang="zh_Hant">非侵入式廣告</target>
+        </alt-trans>
+      </trans-unit>
+      <trans-unit id="iRE-JE-Bfh.title">
+        <source>Acceptable Ads</source>
+        <note>Class = "UINavigationItem"; title = "Acceptable Ads"; ObjectID = "iRE-JE-Bfh";</note>
+        <target xml:lang="zh_Hant" state="translated">可接受廣告</target>
+        <alt-trans>
+          <target xml:lang="zh_Hant">非侵入式廣告</target>
+        </alt-trans>
+      </trans-unit>
+      <trans-unit id="jgu-sr-NP6.text">
+        <source>Adblock Plus won't work if you don't configure your Safari settings. Don't worry, we'll show you how.</source>
+        <note>Class = "UILabel"; text = "Adblock Plus won't work if you don't configure your Safari settings. Don't worry, we'll show you how."; ObjectID = "jgu-sr-NP6";</note>
+        <target xml:lang="zh_Hant" state="translated">如果你不對 Safari 進行設定，Adblock Plus 將不會工作。不要擔心，我們將會告訴你怎麼做。</target>
+      </trans-unit>
+      <trans-unit id="kFT-cY-IYR.text">
+        <source>To enable ad blocking in Safari</source>
+        <note>Class = "UILabel"; text = "To enable ad blocking in Safari"; ObjectID = "kFT-cY-IYR";</note>
+        <target xml:lang="zh_Hant" state="translated">要在 Safari 中啟動廣告封鎖</target>
+      </trans-unit>
+      <trans-unit id="md9-Cg-TU4.text">
+        <source>Adblock Plus</source>
+        <note>Class = "UILabel"; text = "Adblock Plus"; ObjectID = "md9-Cg-TU4";</note>
+        <target xml:lang="zh_Hant" state="translated">Adblock Plus</target>
+      </trans-unit>
+      <trans-unit id="oLj-ed-HW7.normalTitle">
+        <source>Configure Safari</source>
+        <note>Class = "UIButton"; normalTitle = "Configure Safari"; ObjectID = "oLj-ed-HW7";</note>
+        <target xml:lang="zh_Hant" state="translated">設定 Safari</target>
+      </trans-unit>
+      <trans-unit id="qtJ-F2-gSw.title">
+        <source>Adblock Plus</source>
+        <note>Class = "UINavigationItem"; title = "Adblock Plus"; ObjectID = "qtJ-F2-gSw";</note>
+        <target xml:lang="zh_Hant" state="translated">Adblock Plus</target>
+      </trans-unit>
+      <trans-unit id="w2u-Tw-F3D.headerTitle">
+        <source>EXCEPTIONS</source>
+        <note>Class = "UITableViewSection"; headerTitle = "EXCEPTIONS"; ObjectID = "w2u-Tw-F3D";</note>
+        <target xml:lang="zh_Hant" state="translated">例外情況</target>
+      </trans-unit>
+      <trans-unit id="z6o-iS-GOv.footerTitle">
+        <source>Last filter list update: %@</source>
+        <note>Class = "UITableViewSection"; footerTitle = "Last filter list update: %@"; ObjectID = "z6o-iS-GOv";</note>
+        <target xml:lang="zh_Hant" state="translated">最近的篩選器清單更新：%@</target>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="AdblockPlusSafari/Info.plist" source-language="en_US" datatype="plaintext" target-language="zh_Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.1" build-num="7B91b"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName">
+        <source>Adblock Plus</source>
+        <target xml:lang="zh_Hant" state="translated">Adblock Plus</target>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="AdblockPlusSafari/Localizable.strings" source-language="en_US" datatype="plaintext" target-language="zh_Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.1" build-num="7B91b"/>
+    </header>
+    <body>
+      <trans-unit id="ADD WEBSITE TO WHITELIST">
+        <source>ADD WEBSITE TO WHITELIST</source>
+        <note>Whitelisted Websites Controller</note>
+        <target xml:lang="zh_Hant" state="translated">將網站新增至白名單</target>
+      </trans-unit>
+      <trans-unit id="Failed to update filter lists. Please try again later.">
+        <source>Failed to update filter lists. Please try again later.</source>
+        <note>Message of filter update failure dialog</note>
+        <target xml:lang="zh_Hant" state="translated">無法升級篩選器清單。請稍後再試。</target>
+      </trans-unit>
+      <trans-unit id="YOUR WHITELIST">
+        <source>YOUR WHITELIST</source>
+        <note>Whitelisted Websites Controller</note>
+        <target xml:lang="zh_Hant" state="translated">你的白名單</target>
+      </trans-unit>
+      <trans-unit id="Filter list update failed">
+        <source>Filter list update failed</source>
+        <note>Title of filter update failure dialog</note>
+        <target xml:lang="zh_Hant" state="translated">篩選器清單升級失敗</target>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="AdblockPlusSafariExtension/Info.plist" source-language="en_US" datatype="plaintext" target-language="zh_Hant">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.1" build-num="7B91b"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName">
+        <source>Adblock Plus</source>
+        <target xml:lang="zh_Hant" state="translated">Adblock Plus</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

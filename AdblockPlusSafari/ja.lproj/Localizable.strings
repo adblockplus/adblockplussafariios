@@ -1,0 +1,12 @@
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "ホワイトリストにサイトを追加";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "フィルタリストを更新できませんでした。後ほど再度お試しください。";
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "フィルタリストの更新に失敗しました";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "ホワイトリスト";
+

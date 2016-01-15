@@ -1,0 +1,90 @@
+/* Class = "UILabel"; text = "Whitelisted Websites"; ObjectID = "0Xh-gE-5Fu"; */
+"0Xh-gE-5Fu.text" = "সাদাতালিকাভুক্ত ওয়েবসাইট";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "3Bc-kL-vsl"; */
+"3Bc-kL-vsl.text" = "সম্পর্কে";
+
+/* Class = "UILabel"; text = "Allow some nonintrusive ads"; ObjectID = "3FL-nd-DlQ"; */
+"3FL-nd-DlQ.text" = "কিছু গোপনীয়তা অলঙ্ঘঙ্কারী বিজ্ঞাপনকে অনুমতি দিন";
+
+/* Class = "UITableViewSection"; headerTitle = "VERSION"; ObjectID = "4Ma-gI-dEb"; */
+"4Ma-gI-dEb.headerTitle" = "সংস্করণ";
+
+/* Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9"; */
+"9TK-Zf-1G9.text" = "১. iOS সেটিংসে যান → সাফারি → সামগ্রী অবরোধকারী";
+
+/* Class = "UILabel"; text = "We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time."; ObjectID = "94r-nm-jV7"; */
+"94r-nm-jV7.text" = "আমরা ওয়েবসাইটকে সহজবোধ্য, অ-অনধিকারমূলক বিজ্ঞাপন ব্যবহার করতে উত্সাহিত করতে চাই। এ কারণেই আমরা গ্রহণযোগ্য বিজ্ঞাপন চিহ্নিত করতে নিয়মনীতি প্রতিষ্ঠিত করেছি, যা ডিফল্ট সেটিংসের অধীনে প্রদর্শন করা হয়। আপনি যদি বিজ্ঞাপন মুক্ত ব্রাউজ করতে ইচ্ছুক হন, আপনি সেটিংস থেকে যে কোন সময় এটি নিষ্ক্রিয় করতে পারেন।";
+
+/* Class = "UILabel"; text = "Acceptable Ads"; ObjectID = "ABG-dZ-EA2"; */
+"ABG-dZ-EA2.text" = "গ্রহণযোগ্য বিজ্ঞাপন";
+
+/* Class = "UINavigationItem"; title = "Adblock Plus"; ObjectID = "ASd-WJ-vg5"; */
+"ASd-WJ-vg5.title" = "অ্যাডব্লক প্লাস";
+
+/* Class = "UILabel"; text = "Annoying ads are always blocked, while nonintrusive ads are displayed by default. You can change this setting at any time."; ObjectID = "CNX-VR-6h9"; */
+"CNX-VR-6h9.text" = "বিরক্তিকর বিজ্ঞাপন সবসময় অবরুদ্ধ থাকবে, যেখানে অ-অনধিকারমূলক বিজ্ঞাপন ডিফল্টরূপে প্রদর্শিত হয়। আপনি যে কোন সময়ে এই সেটিং পরিবর্তন করতে পারেন।";
+
+/* Class = "UINavigationItem"; title = "Whitelisted Websites"; ObjectID = "EiF-J0-RYy"; */
+"EiF-J0-RYy.title" = "সাদাতালিকাভুক্ত ওয়েবসাইট";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "Hto-9e-Mjf"; */
+"Hto-9e-Mjf.title" = "সম্পর্কে";
+
+/* Class = "UITableViewSection"; headerTitle = "MORE"; ObjectID = "JGs-ZZ-lI9"; */
+"JGs-ZZ-lI9.headerTitle" = "আরো";
+
+/* Class = "UILabel"; text = "Safari Configuration"; ObjectID = "KLy-wT-2fz"; */
+"KLy-wT-2fz.text" = "সাফারি কনফিগারেশন";
+
+/* Class = "UILabel"; text = "Update Filter lists"; ObjectID = "PnU-9J-ZXq"; */
+"PnU-9J-ZXq.text" = "ছাঁকন তালিকা হালনাগাদ করুন";
+
+/* Class = "UILabel"; text = "You're in control"; ObjectID = "RRQ-SL-6ZV"; */
+"RRQ-SL-6ZV.text" = "আপনি নিয়ন্ত্রণ করুন";
+
+/* Class = "UIButton"; normalTitle = "Download on the App Store"; ObjectID = "TUG-U9-6x7"; */
+"TUG-U9-6x7.normalTitle" = "অ্যাপ স্টোর থেকে ডাউনলোড করুন";
+
+/* Class = "UILabel"; text = "2. Enable Adblock Plus and wait for 10 seconds"; ObjectID = "Thw-XS-bUp"; */
+"Thw-XS-bUp.text" = "২. অ্যাডব্লক প্লাস সক্রিয় করতে ১০ সেকেন্ড অপেক্ষা করুন";
+
+/* Class = "UILabel"; text = "No websites whitelisted"; ObjectID = "VES-kP-JDg"; */
+"VES-kP-JDg.text" = "কোন সাদাতালিকাভুক্ত ওয়েবসাইট নেই";
+
+/* Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock *Browser* for iOS"; ObjectID = "VJZ-V3-ohd"; */
+"VJZ-V3-ohd.text" = "একটি ভাল বিজ্ঞাপন মুক্ত অভিজ্ঞতা পেতে, iOS-এর জন্য অ্যাডব্লক *ব্রাউজার* ব্যবহার করুন";
+
+/* Class = "UIButton"; normalTitle = "Got it"; ObjectID = "Vy3-8g-AOR"; */
+"Vy3-8g-AOR.normalTitle" = "বুঝেছি";
+
+/* Class = "UILabel"; text = "Tap the Settings icon → Acceptable Ads"; ObjectID = "euz-Uy-cr5"; */
+"euz-Uy-cr5.text" = "সেটিংস আইকনে টোকা দিন → গ্রহণযোগ্য বিজ্ঞাপন";
+
+/* Class = "UILabel"; text = "Acceptable Ads"; ObjectID = "hBD-xm-gdv"; */
+"hBD-xm-gdv.text" = "গ্রহণযোগ্য বিজ্ঞাপন";
+
+/* Class = "UINavigationItem"; title = "Acceptable Ads"; ObjectID = "iRE-JE-Bfh"; */
+"iRE-JE-Bfh.title" = "গ্রহণযোগ্য বিজ্ঞাপন";
+
+/* Class = "UILabel"; text = "Adblock Plus won't work if you don't configure your Safari settings. Don't worry, we'll show you how."; ObjectID = "jgu-sr-NP6"; */
+"jgu-sr-NP6.text" = "আপনি যদি আপনার সাফারি সেটিংস কনফিগার না করেন তাহলে অ্যাডব্লক প্লাস কাজ করবে না। চিন্তা করবেন না, কিভাবে করবেন তা আমরা আপনাকে দেখাবো।";
+
+/* Class = "UILabel"; text = "To enable ad blocking in Safari"; ObjectID = "kFT-cY-IYR"; */
+"kFT-cY-IYR.text" = "সাফারিতে বিজ্ঞাপন অবরোধ সক্রিয় করতে";
+
+/* Class = "UILabel"; text = "Adblock Plus"; ObjectID = "md9-Cg-TU4"; */
+"md9-Cg-TU4.text" = "অ্যাডব্লক প্লাস";
+
+/* Class = "UIButton"; normalTitle = "Configure Safari"; ObjectID = "oLj-ed-HW7"; */
+"oLj-ed-HW7.normalTitle" = "সাফারি কনফিগার করুন";
+
+/* Class = "UINavigationItem"; title = "Adblock Plus"; ObjectID = "qtJ-F2-gSw"; */
+"qtJ-F2-gSw.title" = "অ্যাডব্লক প্লাস";
+
+/* Class = "UITableViewSection"; headerTitle = "EXCEPTIONS"; ObjectID = "w2u-Tw-F3D"; */
+"w2u-Tw-F3D.headerTitle" = "ব্যতিক্রম";
+
+/* Class = "UITableViewSection"; footerTitle = "Last filter list update: %@"; ObjectID = "z6o-iS-GOv"; */
+"z6o-iS-GOv.footerTitle" = "ছাঁকন তালিকা সর্বশেষ হালনাগাদ: %@";
+
