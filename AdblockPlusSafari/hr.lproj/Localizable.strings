@@ -1,0 +1,12 @@
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "DODAJ WEB-STRANICU U LISTU DOZVOLJENIH";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "Ažuriranje popisa filtra nije uspjelo. Pokušajte ponovo kasnije.";
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "Ažuriranje popisa filtra nije uspjelo";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "VAŠA LISTA DOZVOLJENOG";
+

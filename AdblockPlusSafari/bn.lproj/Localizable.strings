@@ -1,0 +1,12 @@
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "সাদাতালিকায় ওয়েবসাইট যুক্ত করুন";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "ছাঁকনি তালিকা হালনাগাদকরণ ব্যর্থ হয়েছে। অনুগ্রহ করে পরে আবার চেষ্টা করুন।";
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "ছাঁকনি তালিকা হালনাগাদকরণ ব্যর্থ হয়েছে";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "আপনার সাদাতালিকা";
+

@@ -1,0 +1,12 @@
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "เพิ่มเว็บไซต์ในรายการยกเว้น";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "อัพเดตตัวกรองเกิดข้อผิพลาด กรุณาลองใหม่";
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "การอัพเดตตัวกรองล้มเหลว";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "รายการยกเว้นของคุณ";
+

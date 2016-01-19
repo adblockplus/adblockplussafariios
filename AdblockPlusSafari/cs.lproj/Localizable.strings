@@ -1,0 +1,12 @@
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "PŘIDAT WEB DO SEZNAMU POVOLENÝCH";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "Nepodařilo se aktualizovat seznamy filtrů. Opakujte akci později.";
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "Aktualizace seznamu filtrů se nezdařila";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "SEZNAMU POVOLENÝCH SERVERŮ";
+

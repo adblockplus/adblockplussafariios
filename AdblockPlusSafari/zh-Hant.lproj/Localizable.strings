@@ -1,0 +1,12 @@
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "將網站新增至白名單";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "無法升級篩選器清單。請稍後再試。";
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "篩選器清單升級失敗";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "你的白名單";
+

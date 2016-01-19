@@ -1,0 +1,12 @@
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "THÊM TRANG WEB VÀO DANH SÁCH MIỄN TRỪ";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "Câp nhật danh sách bộ lọc không thành công. Xin vui lòng thử lại sau.";
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "Danh sách Bộ lọc cấp nhật không thành công";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "DANH SÁCH MIỄN TRỪ CỦA BẠN";
+

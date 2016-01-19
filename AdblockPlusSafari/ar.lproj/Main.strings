@@ -1,0 +1,91 @@
+/* Class = "UILabel"; text = "Whitelisted Websites"; ObjectID = "0Xh-gE-5Fu"; */
+"0Xh-gE-5Fu.text" = "قائمة المواقع المسموحة";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "3Bc-kL-vsl"; */
+"3Bc-kL-vsl.text" = "حول";
+
+/* Class = "UILabel"; text = "Allow some nonintrusive ads"; ObjectID = "3FL-nd-DlQ"; */
+"3FL-nd-DlQ.text" = "السماح ببعض الإعلانات الغير متطفلة";
+
+/* Class = "UITableViewSection"; headerTitle = "VERSION"; ObjectID = "4Ma-gI-dEb"; */
+"4Ma-gI-dEb.headerTitle" = "الإصدار";
+
+/* Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9"; */
+"9TK-Zf-1G9.text" = "1. إنتقل إلى إعدادات آي أو إس iOS ← سفاري ← حظر المحتوى";
+
+/* Class = "UILabel"; text = "We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time."; ObjectID = "94r-nm-jV7"; */
+"94r-nm-jV7.text" = "نود أن نشجع مواقع الويب بإستخدام إعلانات واضحة، غير مؤذية، ولا تخرب تجربة التصفح.
+لذلك وضعنا مبادئ توجيهية صارمة لتحديد الإعلانات المقبولة، والتي تظهر تحت قائمة الإعدادات الإفتراضية. إذا كنت ترغب في تصفح خالي تماما من الإعلانات، يمكنك تَغيير هذا الإعداد في أي وقت.";
+
+/* Class = "UILabel"; text = "Acceptable Ads"; ObjectID = "ABG-dZ-EA2"; */
+"ABG-dZ-EA2.text" = "الإعلان المقبول";
+
+/* Class = "UINavigationItem"; title = "Adblock Plus"; ObjectID = "ASd-WJ-vg5"; */
+"ASd-WJ-vg5.title" = "آدبلوك بلس";
+
+/* Class = "UILabel"; text = "Annoying ads are always blocked, while nonintrusive ads are displayed by default. You can change this setting at any time."; ObjectID = "CNX-VR-6h9"; */
+"CNX-VR-6h9.text" = "الإعلانات المزعجة يتم حظرها دائماً، بينما يتم السماح للإعلانات الغير متطفلة بشكل إفتراضي. يمكنك تغيير هذا الإعداد في أي وقت.";
+
+/* Class = "UINavigationItem"; title = "Whitelisted Websites"; ObjectID = "EiF-J0-RYy"; */
+"EiF-J0-RYy.title" = "قائمة المواقع المسموحة";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "Hto-9e-Mjf"; */
+"Hto-9e-Mjf.title" = "حول";
+
+/* Class = "UITableViewSection"; headerTitle = "MORE"; ObjectID = "JGs-ZZ-lI9"; */
+"JGs-ZZ-lI9.headerTitle" = "المزيد";
+
+/* Class = "UILabel"; text = "Safari Configuration"; ObjectID = "KLy-wT-2fz"; */
+"KLy-wT-2fz.text" = "تهيئة سفاري";
+
+/* Class = "UILabel"; text = "Update Filter lists"; ObjectID = "PnU-9J-ZXq"; */
+"PnU-9J-ZXq.text" = "تحديث قوائم الفلاتر";
+
+/* Class = "UILabel"; text = "You're in control"; ObjectID = "RRQ-SL-6ZV"; */
+"RRQ-SL-6ZV.text" = "انت المتحكم";
+
+/* Class = "UIButton"; normalTitle = "Download on the App Store"; ObjectID = "TUG-U9-6x7"; */
+"TUG-U9-6x7.normalTitle" = "التحميل من متجر آبل";
+
+/* Class = "UILabel"; text = "2. Enable Adblock Plus and wait for 10 seconds"; ObjectID = "Thw-XS-bUp"; */
+"Thw-XS-bUp.text" = "2. فعل آدبلوك بلس و إنتظر لمدة 10 ثوان";
+
+/* Class = "UILabel"; text = "No websites whitelisted"; ObjectID = "VES-kP-JDg"; */
+"VES-kP-JDg.text" = "لا توجد مواقع على القائمة البيضاء";
+
+/* Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock *Browser* for iOS"; ObjectID = "VJZ-V3-ohd"; */
+"VJZ-V3-ohd.text" = "للحصول على تجربة أفضل مع حضر الإعلانات، إستخدم *المتصفح* آدبلوك لـ آي أو إس iOS";
+
+/* Class = "UIButton"; normalTitle = "Got it"; ObjectID = "Vy3-8g-AOR"; */
+"Vy3-8g-AOR.normalTitle" = "فهمت ذلك";
+
+/* Class = "UILabel"; text = "Tap the Settings icon → Acceptable Ads"; ObjectID = "euz-Uy-cr5"; */
+"euz-Uy-cr5.text" = "إضغط على أيقونة الإعدادات ← الإعلانات المقبولة";
+
+/* Class = "UILabel"; text = "Acceptable Ads"; ObjectID = "hBD-xm-gdv"; */
+"hBD-xm-gdv.text" = "الإعلان المقبول";
+
+/* Class = "UINavigationItem"; title = "Acceptable Ads"; ObjectID = "iRE-JE-Bfh"; */
+"iRE-JE-Bfh.title" = "الإعلان المقبول";
+
+/* Class = "UILabel"; text = "Adblock Plus won't work if you don't configure your Safari settings. Don't worry, we'll show you how."; ObjectID = "jgu-sr-NP6"; */
+"jgu-sr-NP6.text" = "آدبلوك بلس لن يعمل إذا لم تقم بضبط إعدادات سفاري. لا تقلق، سنوضح لك كيف.";
+
+/* Class = "UILabel"; text = "To enable ad blocking in Safari"; ObjectID = "kFT-cY-IYR"; */
+"kFT-cY-IYR.text" = "لتفعيل حظر الإعلانات في سفاري";
+
+/* Class = "UILabel"; text = "Adblock Plus"; ObjectID = "md9-Cg-TU4"; */
+"md9-Cg-TU4.text" = "آدبلوك بلس";
+
+/* Class = "UIButton"; normalTitle = "Configure Safari"; ObjectID = "oLj-ed-HW7"; */
+"oLj-ed-HW7.normalTitle" = "ضبط سفاري";
+
+/* Class = "UINavigationItem"; title = "Adblock Plus"; ObjectID = "qtJ-F2-gSw"; */
+"qtJ-F2-gSw.title" = "آدبلوك بلس";
+
+/* Class = "UITableViewSection"; headerTitle = "EXCEPTIONS"; ObjectID = "w2u-Tw-F3D"; */
+"w2u-Tw-F3D.headerTitle" = "الإستثناءات";
+
+/* Class = "UITableViewSection"; footerTitle = "Last filter list update: %@"; ObjectID = "z6o-iS-GOv"; */
+"z6o-iS-GOv.footerTitle" = "آخر تحديث لقائمة الفلاتر: %@";
+
