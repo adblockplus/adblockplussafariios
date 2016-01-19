@@ -1,0 +1,12 @@
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "أضف الموقع للقائمة المسموحة";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "فشل تحديث قوائم الفلاتر. الرجاء المحاولة مرة أخرى لاحقاً.";
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "فشل تحديث قائمة الفلاتر";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "قوائمك المسموح بها";
+
