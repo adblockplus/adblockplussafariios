@@ -775,7 +775,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WebsiteCell" textLabel="LBD-LS-G1D" style="IBUITableViewCellStyleDefault" id="SJt-Tn-kZJ">
+                            <tableViewCell customClass="WhitelistedSiteCell" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WebsiteCell" textLabel="LBD-LS-G1D" style="IBUITableViewCellStyleDefault" id="SJt-Tn-kZJ">
                                 <rect key="frame" x="0.0" y="201.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SJt-Tn-kZJ" id="Qe1-hR-4DA">
