@@ -17,6 +17,8 @@
 
 #import "WhitelistedWebsitesController.h"
 
+#import "WhitelistedSiteCell.h"
+
 @interface NSString (AdblockPlus)
 
 @end
@@ -67,7 +69,7 @@
 
 const NSInteger TextFieldTag = 121212;
 
-@interface WhitelistedWebsitesController ()<UITextFieldDelegate>
+@interface WhitelistedWebsitesController ()<UITextFieldDelegate, WhitelistingDelegate>
 
 @property (nonatomic, strong) NSAttributedString *attributedPlaceholder;
 
@@ -125,16 +127,25 @@ const NSInteger TextFieldTag = 121212;
   } else {
     cell = [tableView dequeueReusableCellWithIdentifier:@"WebsiteCell" forIndexPath:indexPath];
     cell.textLabel.text = self.adblockPlus.whitelistedWebsites[indexPath.row];
-
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self action:@selector(onTrashButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
-    [button setImage:[UIImage imageNamed:@"trash"] forState:UIControlStateNormal];
-    button.imageEdgeInsets = UIEdgeInsetsMake(0, 30, 0, 0);
-    button.bounds = CGRectMake(0, 0, 50, 44);
-
-    cell.accessoryView = button;
   }
   return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didTouchedDeleteButtonAtIndexPath:(NSIndexPath *)indexPath
+{
+  NSMutableArray *websites = [self.adblockPlus.whitelistedWebsites mutableCopy];
+  [websites removeObjectAtIndex:indexPath.row];
+  self.adblockPlus.whitelistedWebsites = websites;
+
+  if (websites.count > 0) {
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath]
+                          withRowAnimation:UITableViewRowAnimationFade];
+  } else {
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1]
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
+  }
 }
 
 #pragma mark - UITextFieldDelegate
@@ -170,31 +181,6 @@ const NSInteger TextFieldTag = 121212;
       textField.text = nil;
       [textField resignFirstResponder];
       [self whitelistWebsite:website];
-      return;
-    }
-    view = [view superview];
-  }
-}
-
-- (void)onTrashButtonTouched:(UIButton *)sender
-{
-  id view = sender.superview;
-  while (view != nil) {
-    if ([view isKindOfClass:[UITableViewCell class]]) {
-      NSIndexPath *indexPath = [self.tableView indexPathForCell:view];
-
-      NSMutableArray *websites = [self.adblockPlus.whitelistedWebsites mutableCopy];
-      [websites removeObjectAtIndex:indexPath.row];
-      self.adblockPlus.whitelistedWebsites = websites;
-
-      if (websites.count > 0) {
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath]
-                              withRowAnimation:UITableViewRowAnimationFade];
-      } else {
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1]
-                      withRowAnimation:UITableViewRowAnimationAutomatic];
-      }
-
       return;
     }
     view = [view superview];
