@@ -56,6 +56,8 @@
 		E9071D441B76897C00091AEB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9071D431B76897C00091AEB /* AppDelegate.m */; };
 		E9071D4A1B76897C00091AEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9071D481B76897C00091AEB /* Main.storyboard */; };
 		E9071D4C1B76897C00091AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9071D4B1B76897C00091AEB /* Assets.xcassets */; };
+		E9321E5D1C50F4180021D51F /* el.xliff in Resources */ = {isa = PBXBuildFile; fileRef = E9321E5B1C50F4180021D51F /* el.xliff */; };
+		E9321E5E1C50F4180021D51F /* rename.sh in Resources */ = {isa = PBXBuildFile; fileRef = E9321E5C1C50F4180021D51F /* rename.sh */; };
 		E942B0801B76899D004B4692 /* ActionRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E942B07F1B76899D004B4692 /* ActionRequestHandler.m */; };
 		E942B0841B76899D004B4692 /* AdblockPlusSafariExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E96360F11C1736E8009179F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E96360F31C1736E8009179F2 /* Localizable.strings */; };
@@ -177,6 +179,13 @@
 		E9071D491B76897C00091AEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9071D4B1B76897C00091AEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9071D501B76897C00091AEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9321E5B1C50F4180021D51F /* el.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = el.xliff; sourceTree = "<group>"; };
+		E9321E5C1C50F4180021D51F /* rename.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = rename.sh; sourceTree = "<group>"; };
+		E9321E5F1C50F4FF0021D51F /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Main.strings; sourceTree = "<group>"; };
+		E9321E601C50F4FF0021D51F /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9321E611C50F4FF0021D51F /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E9321E621C50F4FF0021D51F /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E9321E631C50F4FF0021D51F /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AdblockPlusSafariExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E942B07E1B76899D004B4692 /* ActionRequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionRequestHandler.h; sourceTree = "<group>"; };
 		E942B07F1B76899D004B4692 /* ActionRequestHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionRequestHandler.m; sourceTree = "<group>"; };
@@ -210,11 +219,6 @@
 		E9E8974F1C4948520005D6E2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9E897501C4948520005D6E2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9E897511C4948520005D6E2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E9E897521C4948610005D6E2 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		E9E897531C4948620005D6E2 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Main.strings"; sourceTree = "<group>"; };
-		E9E897541C4948620005D6E2 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		E9E897551C4948620005D6E2 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		E9E897561C4948620005D6E2 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E9E8975C1C4948830005D6E2 /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E9E8975D1C4948830005D6E2 /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Main.strings"; sourceTree = "<group>"; };
 		E9E8975E1C4948830005D6E2 /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -299,7 +303,6 @@
 		E9E897AD1C4949660005D6E2 /* bn.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = bn.xliff; sourceTree = "<group>"; };
 		E9E897AE1C4949660005D6E2 /* cs.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cs.xliff; sourceTree = "<group>"; };
 		E9E897AF1C4949660005D6E2 /* de.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = de.xliff; sourceTree = "<group>"; };
-		E9E897B01C4949660005D6E2 /* en-GB.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "en-GB.xliff"; sourceTree = "<group>"; };
 		E9E897B21C4949660005D6E2 /* es-MX.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "es-MX.xliff"; sourceTree = "<group>"; };
 		E9E897B31C4949660005D6E2 /* fr.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fr.xliff; sourceTree = "<group>"; };
 		E9E897B41C4949660005D6E2 /* hr.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = hr.xliff; sourceTree = "<group>"; };
@@ -315,8 +318,6 @@
 		E9E897BE1C4949660005D6E2 /* th.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = th.xliff; sourceTree = "<group>"; };
 		E9E897BF1C4949660005D6E2 /* unpack.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = unpack.sh; sourceTree = "<group>"; };
 		E9E897C01C4949660005D6E2 /* vi.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = vi.xliff; sourceTree = "<group>"; };
-		E9E897C11C4949660005D6E2 /* zh-CN.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "zh-CN.xliff"; sourceTree = "<group>"; };
-		E9E897C21C4949660005D6E2 /* zh-TW.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "zh-TW.xliff"; sourceTree = "<group>"; };
 		EE98E8374F2DBA9D5A14778F /* Pods-AdblockPlusSafariExtension.devbuild release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariExtension.devbuild release.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension.devbuild release.xcconfig"; sourceTree = "<group>"; };
 		F55BC89B7901D5C152D67C85 /* Pods-AdblockPlusSafariTests.devbuild debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariTests.devbuild debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests.devbuild debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -545,12 +546,14 @@
 		E9F3922B1BBF1B1A004A068A /* Translations */ = {
 			isa = PBXGroup;
 			children = (
+				E9321E5C1C50F4180021D51F /* rename.sh */,
+				E9E897BF1C4949660005D6E2 /* unpack.sh */,
+				E9321E5B1C50F4180021D51F /* el.xliff */,
 				E9A61B201C4E9EE500705A13 /* es.xliff */,
 				E9E897AC1C4949660005D6E2 /* ar.xliff */,
 				E9E897AD1C4949660005D6E2 /* bn.xliff */,
 				E9E897AE1C4949660005D6E2 /* cs.xliff */,
 				E9E897AF1C4949660005D6E2 /* de.xliff */,
-				E9E897B01C4949660005D6E2 /* en-GB.xliff */,
 				E9E897B21C4949660005D6E2 /* es-MX.xliff */,
 				E9E897B31C4949660005D6E2 /* fr.xliff */,
 				E9E897B41C4949660005D6E2 /* hr.xliff */,
@@ -564,10 +567,7 @@
 				E9E897BC1C4949660005D6E2 /* ro.xliff */,
 				E9E897BD1C4949660005D6E2 /* ru.xliff */,
 				E9E897BE1C4949660005D6E2 /* th.xliff */,
-				E9E897BF1C4949660005D6E2 /* unpack.sh */,
 				E9E897C01C4949660005D6E2 /* vi.xliff */,
-				E9E897C11C4949660005D6E2 /* zh-CN.xliff */,
-				E9E897C21C4949660005D6E2 /* zh-TW.xliff */,
 				69C7EBDF1BF39FC500FE8062 /* en.xliff */,
 			);
 			path = Translations;
@@ -723,7 +723,9 @@
 				69AB6A411B970D19005C2075 /* SourceSansPro-ExtraLight.otf in Resources */,
 				E9071D4A1B76897C00091AEB /* Main.storyboard in Resources */,
 				69AB6A3D1B970D18005C2075 /* SourceSansPro-Black.otf in Resources */,
+				E9321E5D1C50F4180021D51F /* el.xliff in Resources */,
 				E9E897401C4947F60005D6E2 /* InfoPlist.strings in Resources */,
+				E9321E5E1C50F4180021D51F /* rename.sh in Resources */,
 				69C19C741B975946009ACBAC /* screencast.mp4 in Resources */,
 				E9E897D61C4949660005D6E2 /* unpack.sh in Resources */,
 				699876F31BBE721900595FB9 /* FilterLists.plist in Resources */,
@@ -911,7 +913,6 @@
 				E9E897441C49481F0005D6E2 /* bn */,
 				E9E897491C4948410005D6E2 /* cs */,
 				E9E8974E1C4948520005D6E2 /* de */,
-				E9E897531C4948620005D6E2 /* en-GB */,
 				E9E8975D1C4948830005D6E2 /* es-MX */,
 				E9E897621C49489C0005D6E2 /* fr */,
 				E9E897671C4948A70005D6E2 /* hr */,
@@ -929,6 +930,7 @@
 				E9E897A31C4949340005D6E2 /* zh-Hans */,
 				E9E897A81C49493D0005D6E2 /* zh-Hant */,
 				E9A61B221C4E9F1700705A13 /* es */,
+				E9321E5F1C50F4FF0021D51F /* el */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -941,7 +943,6 @@
 				E9E897431C49481F0005D6E2 /* bn */,
 				E9E897481C4948410005D6E2 /* cs */,
 				E9E8974D1C4948520005D6E2 /* de */,
-				E9E897521C4948610005D6E2 /* en-GB */,
 				E9E8975C1C4948830005D6E2 /* es-MX */,
 				E9E897611C49489C0005D6E2 /* fr */,
 				E9E897661C4948A70005D6E2 /* hr */,
@@ -959,6 +960,7 @@
 				E9E897A21C4949340005D6E2 /* zh-Hans */,
 				E9E897A71C49493D0005D6E2 /* zh-Hant */,
 				E9A61B231C4E9F1700705A13 /* es */,
+				E9321E601C50F4FF0021D51F /* el */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -970,7 +972,6 @@
 				E9E897451C49481F0005D6E2 /* bn */,
 				E9E8974A1C4948410005D6E2 /* cs */,
 				E9E8974F1C4948520005D6E2 /* de */,
-				E9E897541C4948620005D6E2 /* en-GB */,
 				E9E8975E1C4948830005D6E2 /* es-MX */,
 				E9E897631C49489C0005D6E2 /* fr */,
 				E9E897681C4948A80005D6E2 /* hr */,
@@ -988,6 +989,7 @@
 				E9E897A41C4949340005D6E2 /* zh-Hans */,
 				E9E897A91C49493D0005D6E2 /* zh-Hant */,
 				E9A61B241C4E9F1700705A13 /* es */,
+				E9321E611C50F4FF0021D51F /* el */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -999,7 +1001,6 @@
 				E9E897461C49481F0005D6E2 /* bn */,
 				E9E8974B1C4948420005D6E2 /* cs */,
 				E9E897501C4948520005D6E2 /* de */,
-				E9E897551C4948620005D6E2 /* en-GB */,
 				E9E8975F1C4948830005D6E2 /* es-MX */,
 				E9E897641C49489D0005D6E2 /* fr */,
 				E9E897691C4948A80005D6E2 /* hr */,
@@ -1017,6 +1018,7 @@
 				E9E897A51C4949350005D6E2 /* zh-Hans */,
 				E9E897AA1C49493D0005D6E2 /* zh-Hant */,
 				E9A61B251C4E9F1800705A13 /* es */,
+				E9321E621C50F4FF0021D51F /* el */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1028,7 +1030,6 @@
 				E9E897471C4948200005D6E2 /* bn */,
 				E9E8974C1C4948420005D6E2 /* cs */,
 				E9E897511C4948520005D6E2 /* de */,
-				E9E897561C4948620005D6E2 /* en-GB */,
 				E9E897601C4948840005D6E2 /* es-MX */,
 				E9E897651C49489D0005D6E2 /* fr */,
 				E9E8976A1C4948A80005D6E2 /* hr */,
@@ -1046,6 +1047,7 @@
 				E9E897A61C4949350005D6E2 /* zh-Hans */,
 				E9E897AB1C49493D0005D6E2 /* zh-Hant */,
 				E9A61B261C4E9F1800705A13 /* es */,
+				E9321E631C50F4FF0021D51F /* el */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

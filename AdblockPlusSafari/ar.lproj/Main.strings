@@ -11,7 +11,7 @@
 "4Ma-gI-dEb.headerTitle" = "الإصدار";
 
 /* Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9"; */
-"9TK-Zf-1G9.text" = "1. إنتقل إلى إعدادات آي أو إس iOS ← سفاري ← حظر المحتوى";
+"9TK-Zf-1G9.text" = "1. إنتقل إلى الإعدادات ← Safari ← أدوات حظر المحتوى";
 
 /* Class = "UILabel"; text = "We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time."; ObjectID = "94r-nm-jV7"; */
 "94r-nm-jV7.text" = "نود أن نشجع مواقع الويب بإستخدام إعلانات واضحة، غير مؤذية، ولا تخرب تجربة التصفح.

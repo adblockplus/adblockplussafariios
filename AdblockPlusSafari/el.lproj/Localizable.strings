@@ -1,0 +1,12 @@
+/* Whitelisted Websites Controller */
+"ADD WEBSITE TO WHITELIST" = "ΠΡΟΣΘΗΚΗ ΙΣΤΟΣΕΛΙΔΑΣ ΣΤΗ ΛΙΣΤΑ ΕΠΙΤΡΕΠΟΜΕΝΩΝ";
+
+/* Message of filter update failure dialog */
+"Failed to update filter lists. Please try again later." = "Αποτυχία ενημέρωσης λίστας φίλτρων. Παρακαλώ δοκιμάστε αργότερα.";
+
+/* Title of filter update failure dialog */
+"Filter list update failed" = "Η ενημέρωση της λίστας φίλτρων απέτυχε";
+
+/* Whitelisted Websites Controller */
+"YOUR WHITELIST" = "Η ΛΙΣΤΑ ΕΠΙΤΡΕΠΟΜΕΝΩΝ ΙΣΤΟΣΕΛΙΔΩΝ ΣΑΣ";
+

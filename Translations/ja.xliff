@@ -110,7 +110,7 @@
       <trans-unit id="VJZ-V3-ohd.text">
         <source>To get a better ad blocking experience, use Adblock *Browser* for iOS</source>
         <note>Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock (unbreakable space character)*Browser* for iOS"; ObjectID = "VJZ-V3-ohd";</note>
-        <target xml:lang="ja" state="translated">より良い広告ブロック体験を得るには、iOS向けの Adblock *Browser* を利用して下さい。</target>
+        <target xml:lang="ja" state="translated">より良い広告ブロック体験を得るには、iOS向けの Adblock *Browser* を利用して下さい。</target>
       </trans-unit>
       <trans-unit id="Vy3-8g-AOR.normalTitle">
         <source>Got it</source>

@@ -16,10 +16,7 @@
       <trans-unit id="3Bc-kL-vsl.text">
         <source>About</source>
         <note>Class = "UILabel"; text = "About"; ObjectID = "3Bc-kL-vsl";</note>
-        <target xml:lang="it" state="translated">Chi siamo</target>
-        <alt-trans>
-          <target xml:lang="it">Informazioni</target>
-        </alt-trans>
+        <target xml:lang="it" state="translated">Informazioni</target>
       </trans-unit>
       <trans-unit id="3FL-nd-DlQ.text">
         <source>Allow some nonintrusive ads</source>
@@ -34,7 +31,7 @@
       <trans-unit id="9TK-Zf-1G9.text">
         <source>1. Go to iOS Settings → Safari → Content Blockers</source>
         <note>Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9";</note>
-        <target xml:lang="it" state="translated">1. Vai su Impostazioni iOS → Safari → Content Blockers</target>
+        <target xml:lang="it" state="translated">1. Vai su Impostazioni → Safari → Blocchi dei contenuti</target>
       </trans-unit>
       <trans-unit id="94r-nm-jV7.text">
         <source>We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time.</source>
@@ -104,7 +101,7 @@
       <trans-unit id="VJZ-V3-ohd.text">
         <source>To get a better ad blocking experience, use Adblock *Browser* for iOS</source>
         <note>Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock (unbreakable space character)*Browser* for iOS"; ObjectID = "VJZ-V3-ohd";</note>
-        <target xml:lang="it" state="translated">Per ottenere una migliore esperienza di ad blocking, utilizzare Adblock * Browser * per iOS</target>
+        <target xml:lang="it" state="translated">Per ottenere una migliore esperienza di ad blocking, utilizzare Adblock *Browser* per iOS</target>
       </trans-unit>
       <trans-unit id="Vy3-8g-AOR.normalTitle">
         <source>Got it</source>
@@ -114,7 +111,7 @@
       <trans-unit id="euz-Uy-cr5.text">
         <source>Tap the Settings icon → Acceptable Ads</source>
         <note>Class = "UILabel"; text = "Tap the Settings icon → Acceptable Ads"; ObjectID = "euz-Uy-cr5";</note>
-        <target xml:lang="it" state="translated">Toccare l'icona Impostazioni → pubblicità accettabili</target>
+        <target xml:lang="it" state="translated">Toccare l'icona Impostazioni → Annunci accettabili</target>
       </trans-unit>
       <trans-unit id="hBD-xm-gdv.text">
         <source>Acceptable Ads</source>
