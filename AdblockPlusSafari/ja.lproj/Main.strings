@@ -53,7 +53,7 @@
 "VES-kP-JDg.text" = "ホワイトリストに登録済みのウェブサイトはありません";
 
 /* Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock *Browser* for iOS"; ObjectID = "VJZ-V3-ohd"; */
-"VJZ-V3-ohd.text" = "より良い広告ブロック体験を得るには、iOS向けの Adblock *Browser* を利用して下さい。";
+"VJZ-V3-ohd.text" = "より良い広告ブロック体験を得るには、iOS向けの Adblock *Browser* を利用して下さい。";
 
 /* Class = "UIButton"; normalTitle = "Got it"; ObjectID = "Vy3-8g-AOR"; */
 "Vy3-8g-AOR.normalTitle" = "了解";

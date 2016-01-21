@@ -2,7 +2,7 @@
 "0Xh-gE-5Fu.text" = "Siti Web nella whitelist";
 
 /* Class = "UILabel"; text = "About"; ObjectID = "3Bc-kL-vsl"; */
-"3Bc-kL-vsl.text" = "Chi siamo";
+"3Bc-kL-vsl.text" = "Informazioni";
 
 /* Class = "UILabel"; text = "Allow some nonintrusive ads"; ObjectID = "3FL-nd-DlQ"; */
 "3FL-nd-DlQ.text" = "Consenti alcuni annunci non invasivi";
@@ -11,7 +11,7 @@
 "4Ma-gI-dEb.headerTitle" = "VERSIONE";
 
 /* Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9"; */
-"9TK-Zf-1G9.text" = "1. Vai su Impostazioni iOS → Safari → Content Blockers";
+"9TK-Zf-1G9.text" = "1. Vai su Impostazioni → Safari → Blocchi dei contenuti";
 
 /* Class = "UILabel"; text = "We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time."; ObjectID = "94r-nm-jV7"; */
 "94r-nm-jV7.text" = "Vorremmo incoraggiare i siti Web a utilizzare pubblicità semplici, non invasive. Ecco perché abbiamo stabilito delle linee guida rigorose per identificare annunci accettabili, che sono indicati nelle impostazioni predefinite. Se si desidera navigare senza pubblicità, è possibile disattivare questa impostazione in qualsiasi momento.";
@@ -53,13 +53,13 @@
 "VES-kP-JDg.text" = "Nessun sito web nella lista bianca";
 
 /* Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock *Browser* for iOS"; ObjectID = "VJZ-V3-ohd"; */
-"VJZ-V3-ohd.text" = "Per ottenere una migliore esperienza di ad blocking, utilizzare Adblock * Browser * per iOS";
+"VJZ-V3-ohd.text" = "Per ottenere una migliore esperienza di ad blocking, utilizzare Adblock *Browser* per iOS";
 
 /* Class = "UIButton"; normalTitle = "Got it"; ObjectID = "Vy3-8g-AOR"; */
 "Vy3-8g-AOR.normalTitle" = "Capito";
 
 /* Class = "UILabel"; text = "Tap the Settings icon → Acceptable Ads"; ObjectID = "euz-Uy-cr5"; */
-"euz-Uy-cr5.text" = "Toccare l'icona Impostazioni → pubblicità accettabili";
+"euz-Uy-cr5.text" = "Toccare l'icona Impostazioni → Annunci accettabili";
 
 /* Class = "UILabel"; text = "Acceptable Ads"; ObjectID = "hBD-xm-gdv"; */
 "hBD-xm-gdv.text" = "Annunci accettabili";

@@ -11,7 +11,7 @@
 "4Ma-gI-dEb.headerTitle" = "VERSJON";
 
 /* Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9"; */
-"9TK-Zf-1G9.text" = "1. Gå til iOS-innstillingene → Safari → Innholdsblokkerere";
+"9TK-Zf-1G9.text" = "1. Gå til Innstillinger → Safari → Innholdssperringer";
 
 /* Class = "UILabel"; text = "We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time."; ObjectID = "94r-nm-jV7"; */
 "94r-nm-jV7.text" = "Vi vil herved oppfordre nettsteder til å bruke enkle, ikke-påtrengende annonser. Det er grunnen til at vi har laget strenge retningslinjer for å identifisere Akseptable annonser. Du finner retningslinjene under standardinnstillingene. Dersom du ønsker å surfe helt uten annonser, kan du skru av Akseptable annonser når som helst.";
@@ -53,7 +53,7 @@
 "VES-kP-JDg.text" = "Ingen nettsteder er hvitelistet";
 
 /* Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock *Browser* for iOS"; ObjectID = "VJZ-V3-ohd"; */
-"VJZ-V3-ohd.text" = "Bruk Adblock *Browser* for iOS for en bedre annonseblokkeringsopplevelse";
+"VJZ-V3-ohd.text" = "Bruk Adblock *Browser* for iOS for en bedre annonseblokkeringsopplevelse";
 
 /* Class = "UIButton"; normalTitle = "Got it"; ObjectID = "Vy3-8g-AOR"; */
 "Vy3-8g-AOR.normalTitle" = "Oppfattet";
