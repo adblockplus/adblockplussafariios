@@ -39,8 +39,14 @@ const CGFloat imageOffset = 20;
   [super layoutSubviews];
   CGFloat width = [self.deleteButton imageForState:UIControlStateNormal].size.width / 2;
   CGPoint center = [self convertPoint:self.deleteButton.center toView:self];
-  CGFloat offset = self.frame.size.width - center.x - imageOffset - width;
-  self.deleteButton.center = CGPointMake(center.x + offset, center.y);
+
+  CGFloat offset;
+  if ([UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.semanticContentAttribute] == UIUserInterfaceLayoutDirectionRightToLeft) {
+    offset = imageOffset + width;
+  } else {
+    offset = self.frame.size.width - imageOffset - width;
+  }
+  self.deleteButton.center = CGPointMake(offset, center.y);
 }
 
 #pragma mark - Actions
