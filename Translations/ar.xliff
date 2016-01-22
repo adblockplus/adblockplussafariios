@@ -31,7 +31,10 @@
       <trans-unit id="9TK-Zf-1G9.text">
         <source>1. Go to iOS Settings → Safari → Content Blockers</source>
         <note>Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9";</note>
-        <target xml:lang="ar" state="translated">1. إنتقل إلى إعدادات آي أو إس iOS ← سفاري ← حظر المحتوى</target>
+        <target xml:lang="ar" state="translated">1. إنتقل إلى الإعدادات ← Safari ← أدوات حظر المحتوى</target>
+        <alt-trans>
+          <target xml:lang="ar">1. إنتقل إلى إعدادات آي أو إس iOS ← سفاري ← حظر المحتوى</target>
+        </alt-trans>
         <alt-trans>
           <target xml:lang="ar">1. إنتقل إلى إعدادات آي أو إس ← سفاري ← حظر المحتوى</target>
         </alt-trans>

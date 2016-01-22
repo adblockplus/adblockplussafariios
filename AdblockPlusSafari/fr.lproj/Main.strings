@@ -11,7 +11,7 @@
 "4Ma-gI-dEb.headerTitle" = "VERSION";
 
 /* Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9"; */
-"9TK-Zf-1G9.text" = "1. Aller sur paramètres iOS → Safari → Bloqueurs de contenus";
+"9TK-Zf-1G9.text" = "1. Aller sur Réglages → Safari → Bloqueurs de contenu";
 
 /* Class = "UILabel"; text = "We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time."; ObjectID = "94r-nm-jV7"; */
 "94r-nm-jV7.text" = "Nous aimerions encourager les sites à utiliser de la publicité simple, non-intrusive. C'est pourquoi nous avons établi des directives strictes pour identifier les annonces acceptable, qui sont affichées par défaut. Si vous souhaitez naviguer sans publicité, vous pouvez désactiver cette option à tout moment.";
@@ -53,7 +53,7 @@
 "VES-kP-JDg.text" = "Aucun site en liste blanche";
 
 /* Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock *Browser* for iOS"; ObjectID = "VJZ-V3-ohd"; */
-"VJZ-V3-ohd.text" = "Pour obtenir une meilleure expérience de blocage de la publicités, utilisez Adblock *Browser* pour iOS";
+"VJZ-V3-ohd.text" = "Pour obtenir une meilleure expérience de blocage de la publicités, utilisez Adblock *Browser* pour iOS";
 
 /* Class = "UIButton"; normalTitle = "Got it"; ObjectID = "Vy3-8g-AOR"; */
 "Vy3-8g-AOR.normalTitle" = "J'ai compris";
@@ -86,5 +86,5 @@
 "w2u-Tw-F3D.headerTitle" = "EXCEPTIONS";
 
 /* Class = "UITableViewSection"; footerTitle = "Last filter list update: %@"; ObjectID = "z6o-iS-GOv"; */
-"z6o-iS-GOv.footerTitle" = "Dernière mise à jour de la liste de filtre: %@";
+"z6o-iS-GOv.footerTitle" = "Dernière mise à jour de la liste de filtre : %@";
 

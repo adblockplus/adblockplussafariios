@@ -28,7 +28,7 @@
       <trans-unit id="9TK-Zf-1G9.text">
         <source>1. Go to iOS Settings → Safari → Content Blockers</source>
         <note>Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9";</note>
-        <target xml:lang="fr" state="translated">1. Aller sur paramètres iOS → Safari → Bloqueurs de contenus</target>
+        <target xml:lang="fr" state="translated">1. Aller sur Réglages → Safari → Bloqueurs de contenu</target>
       </trans-unit>
       <trans-unit id="94r-nm-jV7.text">
         <source>We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time.</source>
@@ -98,7 +98,7 @@
       <trans-unit id="VJZ-V3-ohd.text">
         <source>To get a better ad blocking experience, use Adblock *Browser* for iOS</source>
         <note>Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock (unbreakable space character)*Browser* for iOS"; ObjectID = "VJZ-V3-ohd";</note>
-        <target xml:lang="fr" state="translated">Pour obtenir une meilleure expérience de blocage de la publicités, utilisez Adblock *Browser* pour iOS</target>
+        <target xml:lang="fr" state="translated">Pour obtenir une meilleure expérience de blocage de la publicités, utilisez Adblock *Browser* pour iOS</target>
       </trans-unit>
       <trans-unit id="Vy3-8g-AOR.normalTitle">
         <source>Got it</source>
@@ -153,7 +153,7 @@
       <trans-unit id="z6o-iS-GOv.footerTitle">
         <source>Last filter list update: %@</source>
         <note>Class = "UITableViewSection"; footerTitle = "Last filter list update: %@"; ObjectID = "z6o-iS-GOv";</note>
-        <target xml:lang="fr" state="translated">Dernière mise à jour de la liste de filtre: %@</target>
+        <target xml:lang="fr" state="translated">Dernière mise à jour de la liste de filtre : %@</target>
       </trans-unit>
     </body>
   </file>

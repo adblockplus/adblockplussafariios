@@ -53,7 +53,7 @@
 "VES-kP-JDg.text" = "No hay webs en lista blanca";
 
 /* Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock *Browser* for iOS"; ObjectID = "VJZ-V3-ohd"; */
-"VJZ-V3-ohd.text" = "Para una mejor experiencia de bloqueo de publicidad, utiliza Adblock *Browser* para iOS";
+"VJZ-V3-ohd.text" = "Para una mejor experiencia de bloqueo de publicidad, utiliza Adblock *Browser* para iOS";
 
 /* Class = "UIButton"; normalTitle = "Got it"; ObjectID = "Vy3-8g-AOR"; */
 "Vy3-8g-AOR.normalTitle" = "Entendido";
@@ -86,5 +86,5 @@
 "w2u-Tw-F3D.headerTitle" = "EXCEPCIONES";
 
 /* Class = "UITableViewSection"; footerTitle = "Last filter list update: %@"; ObjectID = "z6o-iS-GOv"; */
-"z6o-iS-GOv.footerTitle" = "Última actualización de lista del filtros: %@";
+"z6o-iS-GOv.footerTitle" = "Última actualización de lista de filtros: %@";
 

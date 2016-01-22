@@ -28,7 +28,10 @@
       <trans-unit id="9TK-Zf-1G9.text">
         <source>1. Go to iOS Settings → Safari → Content Blockers</source>
         <note>Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9";</note>
-        <target xml:lang="bn" state="translated">১. iOS সেটিংসে যান → সাফারি → সামগ্রী অবরোধকারী</target>
+        <target xml:lang="bn" state="translated">১. Settings যান → Safari → Content Blockers</target>
+        <alt-trans>
+          <target xml:lang="bn">১. iOS সেটিংসে যান → সাফারি → সামগ্রী অবরোধকারী</target>
+        </alt-trans>
       </trans-unit>
       <trans-unit id="94r-nm-jV7.text">
         <source>We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time.</source>
@@ -43,7 +46,10 @@
       <trans-unit id="ASd-WJ-vg5.title">
         <source>Adblock Plus</source>
         <note>Class = "UINavigationItem"; title = "Adblock Plus"; ObjectID = "ASd-WJ-vg5";</note>
-        <target xml:lang="bn" state="translated">অ্যাডব্লক প্লাস</target>
+        <target xml:lang="bn" state="translated">Adblock Plus</target>
+        <alt-trans>
+          <target xml:lang="bn">অ্যাডব্লক প্লাস</target>
+        </alt-trans>
       </trans-unit>
       <trans-unit id="CNX-VR-6h9.text">
         <source>Annoying ads are always blocked, while nonintrusive ads are displayed by default. You can change this setting at any time.</source>
@@ -68,7 +74,10 @@
       <trans-unit id="KLy-wT-2fz.text">
         <source>Safari Configuration</source>
         <note>Class = "UILabel"; text = "Safari Configuration"; ObjectID = "KLy-wT-2fz";</note>
-        <target xml:lang="bn" state="translated">সাফারি কনফিগারেশন</target>
+        <target xml:lang="bn" state="translated">Safari কনফিগারেশন</target>
+        <alt-trans>
+          <target xml:lang="bn">সাফারি কনফিগারেশন</target>
+        </alt-trans>
       </trans-unit>
       <trans-unit id="PnU-9J-ZXq.text">
         <source>Update Filter lists</source>
@@ -83,12 +92,18 @@
       <trans-unit id="TUG-U9-6x7.normalTitle">
         <source>Download on the App Store</source>
         <note>Class = "UIButton"; normalTitle = "Download on the App Store"; ObjectID = "TUG-U9-6x7";</note>
-        <target xml:lang="bn" state="translated">অ্যাপ স্টোর থেকে ডাউনলোড করুন</target>
+        <target xml:lang="bn" state="translated">App Store থেকে ডাউনলোড করুন</target>
+        <alt-trans>
+          <target xml:lang="bn">অ্যাপ স্টোর থেকে ডাউনলোড করুন</target>
+        </alt-trans>
       </trans-unit>
       <trans-unit id="Thw-XS-bUp.text">
         <source>2. Enable Adblock Plus and wait for 10 seconds</source>
         <note>Class = "UILabel"; text = "2. Enable Adblock Plus and wait for 10 seconds"; ObjectID = "Thw-XS-bUp";</note>
-        <target xml:lang="bn" state="translated">২. অ্যাডব্লক প্লাস সক্রিয় করতে ১০ সেকেন্ড অপেক্ষা করুন</target>
+        <target xml:lang="bn" state="translated">২. Adblock Plus সক্রিয় করতে ১০ সেকেন্ড অপেক্ষা করুন</target>
+        <alt-trans>
+          <target xml:lang="bn">২. অ্যাডব্লক প্লাস সক্রিয় করতে ১০ সেকেন্ড অপেক্ষা করুন</target>
+        </alt-trans>
       </trans-unit>
       <trans-unit id="VES-kP-JDg.text">
         <source>No websites whitelisted</source>
@@ -98,7 +113,10 @@
       <trans-unit id="VJZ-V3-ohd.text">
         <source>To get a better ad blocking experience, use Adblock *Browser* for iOS</source>
         <note>Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock (unbreakable space character)*Browser* for iOS"; ObjectID = "VJZ-V3-ohd";</note>
-        <target xml:lang="bn" state="translated">একটি ভাল বিজ্ঞাপন মুক্ত অভিজ্ঞতা পেতে, iOS-এর জন্য অ্যাডব্লক *ব্রাউজার* ব্যবহার করুন</target>
+        <target xml:lang="bn" state="translated">একটি ভাল বিজ্ঞাপন মুক্ত অভিজ্ঞতা পেতে, iOS-এর জন্য Adblock *Browser* ব্যবহার করুন</target>
+        <alt-trans>
+          <target xml:lang="bn">একটি ভাল বিজ্ঞাপন মুক্ত অভিজ্ঞতা পেতে, iOS-এর জন্য অ্যাডব্লক *ব্রাউজার* ব্যবহার করুন</target>
+        </alt-trans>
       </trans-unit>
       <trans-unit id="Vy3-8g-AOR.normalTitle">
         <source>Got it</source>
@@ -123,27 +141,42 @@
       <trans-unit id="jgu-sr-NP6.text">
         <source>Adblock Plus won't work if you don't configure your Safari settings. Don't worry, we'll show you how.</source>
         <note>Class = "UILabel"; text = "Adblock Plus won't work if you don't configure your Safari settings. Don't worry, we'll show you how."; ObjectID = "jgu-sr-NP6";</note>
-        <target xml:lang="bn" state="translated">আপনি যদি আপনার সাফারি সেটিংস কনফিগার না করেন তাহলে অ্যাডব্লক প্লাস কাজ করবে না। চিন্তা করবেন না, কিভাবে করবেন তা আমরা আপনাকে দেখাবো।</target>
+        <target xml:lang="bn" state="translated">আপনি যদি আপনার Safari সেটিংস কনফিগার না করেন তাহলে Adblock Plus কাজ করবে না। চিন্তা করবেন না, কিভাবে করবেন তা আমরা আপনাকে দেখাবো।</target>
+        <alt-trans>
+          <target xml:lang="bn">আপনি যদি আপনার সাফারি সেটিংস কনফিগার না করেন তাহলে অ্যাডব্লক প্লাস কাজ করবে না। চিন্তা করবেন না, কিভাবে করবেন তা আমরা আপনাকে দেখাবো।</target>
+        </alt-trans>
       </trans-unit>
       <trans-unit id="kFT-cY-IYR.text">
         <source>To enable ad blocking in Safari</source>
         <note>Class = "UILabel"; text = "To enable ad blocking in Safari"; ObjectID = "kFT-cY-IYR";</note>
-        <target xml:lang="bn" state="translated">সাফারিতে বিজ্ঞাপন অবরোধ সক্রিয় করতে</target>
+        <target xml:lang="bn" state="translated">Safari বিজ্ঞাপন অবরোধ সক্রিয় করতে</target>
+        <alt-trans>
+          <target xml:lang="bn">সাফারিতে বিজ্ঞাপন অবরোধ সক্রিয় করতে</target>
+        </alt-trans>
       </trans-unit>
       <trans-unit id="md9-Cg-TU4.text">
         <source>Adblock Plus</source>
         <note>Class = "UILabel"; text = "Adblock Plus"; ObjectID = "md9-Cg-TU4";</note>
-        <target xml:lang="bn" state="translated">অ্যাডব্লক প্লাস</target>
+        <target xml:lang="bn" state="translated">Adblock Plus</target>
+        <alt-trans>
+          <target xml:lang="bn">অ্যাডব্লক প্লাস</target>
+        </alt-trans>
       </trans-unit>
       <trans-unit id="oLj-ed-HW7.normalTitle">
         <source>Configure Safari</source>
         <note>Class = "UIButton"; normalTitle = "Configure Safari"; ObjectID = "oLj-ed-HW7";</note>
-        <target xml:lang="bn" state="translated">সাফারি কনফিগার করুন</target>
+        <target xml:lang="bn" state="translated">Safari কনফিগার করুন</target>
+        <alt-trans>
+          <target xml:lang="bn">সাফারি কনফিগার করুন</target>
+        </alt-trans>
       </trans-unit>
       <trans-unit id="qtJ-F2-gSw.title">
         <source>Adblock Plus</source>
         <note>Class = "UINavigationItem"; title = "Adblock Plus"; ObjectID = "qtJ-F2-gSw";</note>
-        <target xml:lang="bn" state="translated">অ্যাডব্লক প্লাস</target>
+        <target xml:lang="bn" state="translated">Adblock Plus</target>
+        <alt-trans>
+          <target xml:lang="bn">অ্যাডব্লক প্লাস</target>
+        </alt-trans>
       </trans-unit>
       <trans-unit id="w2u-Tw-F3D.headerTitle">
         <source>EXCEPTIONS</source>
@@ -164,7 +197,7 @@
     <body>
       <trans-unit id="CFBundleDisplayName">
         <source>Adblock Plus</source>
-        <target xml:lang="bn" state="translated">অ্যাডব্লক প্লাস</target>
+        <target xml:lang="bn" state="translated">Adblock Plus</target>
       </trans-unit>
     </body>
   </file>
@@ -202,7 +235,7 @@
     <body>
       <trans-unit id="CFBundleDisplayName">
         <source>Adblock Plus</source>
-        <target xml:lang="bn" state="translated">অ্যাডব্লক প্লাস</target>
+        <target xml:lang="bn" state="translated">Adblock Plus</target>
       </trans-unit>
     </body>
   </file>

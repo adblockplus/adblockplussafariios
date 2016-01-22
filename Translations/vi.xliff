@@ -28,7 +28,7 @@
       <trans-unit id="9TK-Zf-1G9.text">
         <source>1. Go to iOS Settings → Safari → Content Blockers</source>
         <note>Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9";</note>
-        <target xml:lang="vi" state="translated">1. Vào Cài đặt iOS → Safari → Chặn nội dung</target>
+        <target xml:lang="vi" state="translated">1. Vào Cài đặt → Safari → Trình chặn Nội dung</target>
       </trans-unit>
       <trans-unit id="94r-nm-jV7.text">
         <source>We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time.</source>
@@ -101,7 +101,7 @@
       <trans-unit id="VJZ-V3-ohd.text">
         <source>To get a better ad blocking experience, use Adblock *Browser* for iOS</source>
         <note>Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock (unbreakable space character)*Browser* for iOS"; ObjectID = "VJZ-V3-ohd";</note>
-        <target xml:lang="vi" state="translated">Để có được trải nghiệm chăn quảng cáo tốt hơn, sử dụng Adblock *Browser* cho iOS</target>
+        <target xml:lang="vi" state="translated">Để có được trải nghiệm chăn quảng cáo tốt hơn, sử dụng Adblock *Browser* cho iOS</target>
         <alt-trans>
           <target xml:lang="vi">Để có được trải nghiệm chăn quảng cáo tốt hơn, sử dụng *Trình Duyệt* Adblock cho iOS</target>
         </alt-trans>

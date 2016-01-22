@@ -11,7 +11,7 @@
 "4Ma-gI-dEb.headerTitle" = "เวอร์ชั่น";
 
 /* Class = "UILabel"; text = "1. Go to iOS Settings → Safari → Content Blockers"; ObjectID = "9TK-Zf-1G9"; */
-"9TK-Zf-1G9.text" = "1. ไปที่ตั้งค่าของ iOS → Safari → ตัวบล็อกเนื้อหา";
+"9TK-Zf-1G9.text" = "1. ไปที่ การตั้งค่า → Safari → ตัวบล็อกเนื้อหา";
 
 /* Class = "UILabel"; text = "We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time."; ObjectID = "94r-nm-jV7"; */
 "94r-nm-jV7.text" = "พวกเราสนับสนุนเว็บที่ใช้โฆษณาที่ตรงไปตรงมาและไม่รบกวนผู้ใช้ นั้นคือเหตุผลที่พวกเราได้สร้างกฎที่เข้มงวดเพื่อระบุถึงโฆษณาที่พวกเรายอมรับได้ ซึ่งมันถูกให้ 'แสดง' เป็นค่าเริ่มต้น ถ้าคุณต้องการให้เบราเซอร์นี้ปลอดโฆษณาเลย คุณสามารถที่จะปิดและเปิดมันได้ทุกครั้ง";
@@ -53,7 +53,7 @@
 "VES-kP-JDg.text" = "ยังไม่ได้กำหนดเว็บที่ถูกยกเว้น";
 
 /* Class = "UILabel"; text = "To get a better ad blocking experience, use Adblock *Browser* for iOS"; ObjectID = "VJZ-V3-ohd"; */
-"VJZ-V3-ohd.text" = "เพื่อประสบการณ์การบล็อกโฆษณาที่ดีกว่านี้ ขอแนะนำให้ใช้ Adblock *Browser* สำหรับ iOS";
+"VJZ-V3-ohd.text" = "เพื่อประสบการณ์การบล็อกโฆษณาที่ดีกว่านี้ ขอแนะนำให้ใช้ Adblock *Browser* สำหรับ iOS";
 
 /* Class = "UIButton"; normalTitle = "Got it"; ObjectID = "Vy3-8g-AOR"; */
 "Vy3-8g-AOR.normalTitle" = "เข้าใจแล้ว";
