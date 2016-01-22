@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="localizable" useAutolayout="YES" useTraitCollections="YES" initialViewController="5TC-Np-xxq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5TC-Np-xxq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1Q-BG-fLD">
-                                <rect key="frame" x="15" y="93" width="345" height="1"/>
+                                <rect key="frame" x="15" y="92" width="345" height="1"/>
                                 <color key="backgroundColor" red="0.81568627450980391" green="0.45490196078431372" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="efo-Wr-fdh"/>
@@ -37,14 +37,14 @@
                                     <constraint firstAttribute="width" secondItem="y7h-IX-O8H" secondAttribute="height" multiplier="125:142" id="lNE-XS-Gjg"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Safari Configuration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLy-wT-2fz">
-                                <rect key="frame" x="73" y="47" width="229" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Safari Configuration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLy-wT-2fz">
+                                <rect key="frame" x="16" y="47" width="343" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adblock Plus won't work if you don't configure your Safari settings. Don't worry, we'll show you how." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgu-sr-NP6">
-                                <rect key="frame" x="25" y="119" width="325" height="65"/>
+                                <rect key="frame" x="25" y="118" width="325" height="65"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -57,12 +57,13 @@
                             <constraint firstAttribute="trailing" secondItem="x1Q-BG-fLD" secondAttribute="trailing" constant="15" id="P1N-vb-n99"/>
                             <constraint firstItem="y7h-IX-O8H" firstAttribute="top" secondItem="jgu-sr-NP6" secondAttribute="bottom" constant="20" id="XuY-Hr-Ezv"/>
                             <constraint firstItem="y7h-IX-O8H" firstAttribute="centerX" secondItem="asU-Se-HSF" secondAttribute="centerX" id="Zzv-b0-2bw"/>
+                            <constraint firstItem="KLy-wT-2fz" firstAttribute="leading" secondItem="asU-Se-HSF" secondAttribute="leadingMargin" id="awh-1h-vBX"/>
                             <constraint firstItem="jgu-sr-NP6" firstAttribute="leading" secondItem="asU-Se-HSF" secondAttribute="leading" constant="25" id="iZO-7p-jCB"/>
                             <constraint firstItem="x1Q-BG-fLD" firstAttribute="top" secondItem="KLy-wT-2fz" secondAttribute="bottom" constant="14" id="kby-qa-7f7"/>
                             <constraint firstItem="KLy-wT-2fz" firstAttribute="top" secondItem="asU-Se-HSF" secondAttribute="top" constant="47" id="ljm-5w-PUF"/>
                             <constraint firstItem="flg-0w-p9N" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y7h-IX-O8H" secondAttribute="bottom" constant="27" id="odC-fm-qgy"/>
-                            <constraint firstItem="KLy-wT-2fz" firstAttribute="centerX" secondItem="asU-Se-HSF" secondAttribute="centerX" id="rAd-CI-hwd"/>
                             <constraint firstItem="jgu-sr-NP6" firstAttribute="top" secondItem="x1Q-BG-fLD" secondAttribute="bottom" constant="25" id="zcr-in-4ML"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KLy-wT-2fz" secondAttribute="trailing" id="zpU-tg-KmC"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -88,32 +89,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmh-yU-kbe">
-                                <rect key="frame" x="15" y="92" width="345" height="1"/>
+                                <rect key="frame" x="15" y="93" width="345" height="1"/>
                                 <color key="backgroundColor" red="0.81568627449999997" green="0.4549019608" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="C34-Vi-TyH"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You're in control" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRQ-SL-6ZV">
-                                <rect key="frame" x="95" y="47" width="185" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're in control" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRQ-SL-6ZV">
+                                <rect key="frame" x="16" y="47" width="343" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" misplaced="YES" image="step1_visual_settings" translatesAutoresizingMaskIntoConstraints="NO" id="Ugs-CI-kzb">
-                                <rect key="frame" x="63" y="244" width="250" height="70"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" image="step1_visual_settings" translatesAutoresizingMaskIntoConstraints="NO" id="Ugs-CI-kzb">
+                                <rect key="frame" x="63" y="245" width="250" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ugs-CI-kzb" secondAttribute="height" multiplier="25:7" id="lgj-4B-6KV"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap the Settings icon → Acceptable Ads" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euz-Uy-cr5">
-                                <rect key="frame" x="79" y="322" width="218" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the Settings icon → Acceptable Ads" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euz-Uy-cr5">
+                                <rect key="frame" x="79" y="323" width="218" height="13"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Annoying ads are always blocked, while nonintrusive ads are displayed by default. You can change this setting at any time." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNX-VR-6h9">
-                                <rect key="frame" x="25" y="118" width="325" height="86"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annoying ads are always blocked, while nonintrusive ads are displayed by default. You can change this setting at any time." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNX-VR-6h9">
+                                <rect key="frame" x="25" y="119" width="325" height="86"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -125,12 +126,13 @@
                             <constraint firstItem="CNX-VR-6h9" firstAttribute="top" secondItem="cmh-yU-kbe" secondAttribute="bottom" constant="25" id="1WO-4P-qWC"/>
                             <constraint firstItem="oUP-0V-Mo3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="euz-Uy-cr5" secondAttribute="bottom" constant="10" id="3Ji-b2-l0X"/>
                             <constraint firstAttribute="trailing" secondItem="cmh-yU-kbe" secondAttribute="trailing" constant="15" id="6sl-95-Y8i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RRQ-SL-6ZV" secondAttribute="trailing" id="AWb-7F-fp2"/>
                             <constraint firstItem="Ugs-CI-kzb" firstAttribute="top" secondItem="CNX-VR-6h9" secondAttribute="bottom" constant="40" id="D2x-kH-qsG"/>
                             <constraint firstItem="euz-Uy-cr5" firstAttribute="centerX" secondItem="g7o-89-lWh" secondAttribute="centerX" id="KxH-kD-yfH"/>
                             <constraint firstItem="CNX-VR-6h9" firstAttribute="leading" secondItem="g7o-89-lWh" secondAttribute="leading" constant="25" id="VtX-mF-cIG"/>
                             <constraint firstItem="cmh-yU-kbe" firstAttribute="top" secondItem="RRQ-SL-6ZV" secondAttribute="bottom" constant="14" id="X1v-Si-D2j"/>
                             <constraint firstItem="cmh-yU-kbe" firstAttribute="leading" secondItem="g7o-89-lWh" secondAttribute="leading" constant="15" id="YRs-ra-7m8"/>
-                            <constraint firstItem="RRQ-SL-6ZV" firstAttribute="centerX" secondItem="g7o-89-lWh" secondAttribute="centerX" id="azS-qe-11W"/>
+                            <constraint firstItem="RRQ-SL-6ZV" firstAttribute="leading" secondItem="g7o-89-lWh" secondAttribute="leadingMargin" id="cDi-ga-ieG"/>
                             <constraint firstItem="Ugs-CI-kzb" firstAttribute="centerX" secondItem="g7o-89-lWh" secondAttribute="centerX" id="g2t-Xv-hYG"/>
                             <constraint firstItem="euz-Uy-cr5" firstAttribute="top" secondItem="Ugs-CI-kzb" secondAttribute="bottom" constant="8" id="qdt-Pm-gbA"/>
                             <constraint firstItem="RRQ-SL-6ZV" firstAttribute="top" secondItem="g7o-89-lWh" secondAttribute="top" constant="47" id="tWm-g0-ZfJ"/>
@@ -292,7 +294,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To enable ad blocking in Safari" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFT-cY-IYR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To enable ad blocking in Safari" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFT-cY-IYR">
                                 <rect key="frame" x="26" y="361" width="323" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -398,7 +400,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Adblock Plus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="md9-Cg-TU4">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Adblock Plus" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="md9-Cg-TU4">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -415,7 +417,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Update Filter lists" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PnU-9J-ZXq">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Update Filter lists" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PnU-9J-ZXq">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -436,7 +438,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Acceptable Ads" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ABG-dZ-EA2" userLabel="Subscriptions">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Acceptable Ads" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ABG-dZ-EA2" userLabel="Subscriptions">
                                                     <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -453,7 +455,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Whitelisted Websites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Xh-gE-5Fu" userLabel="Subscriptions">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Whitelisted Websites" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Xh-gE-5Fu" userLabel="Subscriptions">
                                                     <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -474,7 +476,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Bc-kL-vsl" userLabel="Subscriptions">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="About" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Bc-kL-vsl" userLabel="Subscriptions">
                                                     <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -508,7 +510,7 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acceptable Ads" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBD-xm-gdv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acceptable Ads" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBD-xm-gdv">
                                 <rect key="frame" x="16" y="99" width="108" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -521,7 +523,7 @@
                                     <constraint firstAttribute="height" constant="1" id="St1-2D-rnn"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="94r-nm-jV7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="94r-nm-jV7">
                                 <rect key="frame" x="16" y="134" width="343" height="91"/>
                                 <string key="text">We'd like to encourage websites to use straightforward, nonintrusive advertising. That's why we've established strict guidelines to identify Acceptable Ads, which are shown under default settings. If you wish to browse ad-free, you can disable this setting at any time.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
@@ -542,7 +544,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Allow some nonintrusive ads" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3FL-nd-DlQ">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Allow some nonintrusive ads" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3FL-nd-DlQ">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -568,6 +570,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="6zf-Nt-eIz" secondAttribute="trailing" id="eX7-Tp-LRX"/>
                             <constraint firstItem="hBD-xm-gdv" firstAttribute="leading" secondItem="lw9-IJ-JlK" secondAttribute="leadingMargin" id="jhX-iu-HDP"/>
                             <constraint firstItem="6zf-Nt-eIz" firstAttribute="top" secondItem="hBD-xm-gdv" secondAttribute="bottom" constant="8" id="myH-aA-Riw"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="hBD-xm-gdv" secondAttribute="trailing" id="oyS-iT-ncj"/>
                             <constraint firstItem="94r-nm-jV7" firstAttribute="top" secondItem="6zf-Nt-eIz" secondAttribute="bottom" constant="8" id="p0Y-Zy-uV4"/>
                             <constraint firstItem="94r-nm-jV7" firstAttribute="trailing" secondItem="lw9-IJ-JlK" secondAttribute="trailingMargin" id="rEH-Lh-qB4"/>
                             <constraint firstItem="94r-nm-jV7" firstAttribute="leading" secondItem="lw9-IJ-JlK" secondAttribute="leadingMargin" id="vMn-LM-Fa2"/>
@@ -602,8 +605,8 @@
                                     <constraint firstAttribute="height" constant="0.5" id="BbR-Uc-6J2"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUG-U9-6x7">
-                                <rect key="frame" x="125" y="610" width="235" height="42"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUG-U9-6x7">
+                                <rect key="frame" x="121" y="610" width="239" height="42"/>
                                 <color key="backgroundColor" red="0.12156862745098039" green="0.63529411764705879" blue="0.82745098039215681" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="F9N-3l-vQw"/>
@@ -616,8 +619,11 @@
                                     <action selector="onAppStoreButtonTouched:" destination="RC2-EL-8i2" eventType="touchUpInside" id="24n-2j-Cjr"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adblockbrowser" translatesAutoresizingMaskIntoConstraints="NO" id="Eig-RE-wk0">
-                                <rect key="frame" x="20" y="579" width="86" height="68"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="400" verticalCompressionResistancePriority="400" image="adblockbrowser" translatesAutoresizingMaskIntoConstraints="NO" id="Eig-RE-wk0">
+                                <rect key="frame" x="20" y="582" width="82" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Eig-RE-wk0" secondAttribute="height" multiplier="43:34" id="66q-LH-gZA"/>
+                                </constraints>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DoX-mk-2DI">
                                 <rect key="frame" x="0.0" y="64" width="375" height="459"/>
@@ -625,7 +631,7 @@
                                     <segue destination="ZYU-FA-p2m" kind="embed" id="erM-hw-BMD"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get a better ad blocking experience, use Adblock *Browser* for iOS" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJZ-V3-ohd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get a better ad blocking experience, use Adblock *Browser* for iOS" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJZ-V3-ohd">
                                 <rect key="frame" x="15" y="539" width="345" height="43"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -642,6 +648,7 @@
                             <constraint firstItem="2jK-S9-xp0" firstAttribute="top" secondItem="DoX-mk-2DI" secondAttribute="bottom" constant="144" id="JGi-X3-cgK"/>
                             <constraint firstItem="2jK-S9-xp0" firstAttribute="top" secondItem="TUG-U9-6x7" secondAttribute="bottom" constant="15" id="Kyu-4Q-6rg"/>
                             <constraint firstItem="VJZ-V3-ohd" firstAttribute="leading" secondItem="Yny-sF-shz" secondAttribute="leading" constant="15" id="LCs-jD-IJc"/>
+                            <constraint firstItem="TUG-U9-6x7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="VJZ-V3-ohd" secondAttribute="bottom" id="Oep-NP-Sa8"/>
                             <constraint firstItem="ALv-ui-TGz" firstAttribute="leading" secondItem="Yny-sF-shz" secondAttribute="leading" id="cUI-zd-GyC"/>
                             <constraint firstItem="DoX-mk-2DI" firstAttribute="leading" secondItem="Yny-sF-shz" secondAttribute="leading" id="dRc-hK-wHK"/>
                             <constraint firstItem="2jK-S9-xp0" firstAttribute="top" secondItem="Eig-RE-wk0" secondAttribute="bottom" constant="20" id="dUq-Cg-Rzg"/>
@@ -649,6 +656,7 @@
                             <constraint firstItem="Eig-RE-wk0" firstAttribute="leading" secondItem="Yny-sF-shz" secondAttribute="leading" constant="20" id="fRk-7k-UgX"/>
                             <constraint firstItem="TUG-U9-6x7" firstAttribute="leading" secondItem="Eig-RE-wk0" secondAttribute="trailing" constant="19" id="i1P-dL-xlr"/>
                             <constraint firstItem="ALv-ui-TGz" firstAttribute="top" secondItem="DoX-mk-2DI" secondAttribute="bottom" id="nVP-7b-GzC"/>
+                            <constraint firstItem="Eig-RE-wk0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="VJZ-V3-ohd" secondAttribute="bottom" id="q96-Mh-gbD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Adblock Plus" id="ASd-WJ-vg5"/>
@@ -718,7 +726,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="z7R-EI-l7I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddingCell" id="6Ty-zs-tal">
                                 <rect key="frame" x="0.0" y="113.5" width="375" height="44"/>
@@ -765,7 +773,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="No websites whitelisted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VES-kP-JDg">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="No websites whitelisted" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VES-kP-JDg">
                                             <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -775,7 +783,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell customClass="WhitelistedSiteCell" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WebsiteCell" textLabel="LBD-LS-G1D" style="IBUITableViewCellStyleDefault" id="SJt-Tn-kZJ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WebsiteCell" textLabel="LBD-LS-G1D" style="IBUITableViewCellStyleDefault" id="SJt-Tn-kZJ" customClass="WhitelistedSiteCell">
                                 <rect key="frame" x="0.0" y="201.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SJt-Tn-kZJ" id="Qe1-hR-4DA">
@@ -786,7 +794,7 @@
                                             <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
