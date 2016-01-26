@@ -156,7 +156,7 @@
                         <viewControllerLayoutGuide type="top" id="TSp-12-dFa"/>
                         <viewControllerLayoutGuide type="bottom" id="buA-i7-59b"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="IBY-89-Ng3">
+                    <view key="view" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" id="IBY-89-Ng3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -173,7 +173,7 @@
                                     <action selector="onButton1Touch:" destination="6Ak-RH-kFW" eventType="touchUpInside" id="sx6-qY-bJs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLj-ed-HW7" customClass="RightCenteredImageButton">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLj-ed-HW7" customClass="RightCenteredImageButton">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -186,7 +186,7 @@
                                     <action selector="onButton2Touch:" destination="6Ak-RH-kFW" eventType="touchUpInside" id="0er-Ca-AfX"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEU-Qx-Lk1">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEU-Qx-Lk1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G0u-mN-iCU">
