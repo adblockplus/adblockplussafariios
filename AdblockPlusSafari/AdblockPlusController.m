@@ -42,6 +42,24 @@
   self.adblockPlus = nil;
 }
 
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  self.clearsSelectionOnViewWillAppear = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  // There is an issue with swipe back navigation gesture,
+  // when cell is not deselected after end of gesture.
+  // Related issue: https://issues.adblockplus.org/ticket/3310
+  NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+  if (indexPath != nil) {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+  }
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
   if ([keyPath isEqualToString:NSStringFromSelector(@selector(enabled))]) {
