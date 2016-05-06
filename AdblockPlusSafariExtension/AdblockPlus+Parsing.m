@@ -282,8 +282,10 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
 
     // Write whitelisted websites
     for (__strong NSString *website in whitelistedWebsites) {
+      // http://comments.gmane.org/gmane.os.opendarwin.webkit.user/3971
+      NSString *websiteFilter = [@"*" stringByAppendingString:website];
       NSDictionary *whitelistingRule =
-      @{@"trigger": @{ @"url-filter": @".*", @"if-domain": @[website]},
+      @{@"trigger": @{ @"url-filter": @".*", @"if-domain": @[websiteFilter]},
         @"action": @{ @"type": @"ignore-previous-rules" }
         };
 
