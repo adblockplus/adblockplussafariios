@@ -52,6 +52,7 @@
 		69D8BB081BE3AF1900339AAC /* NSString+TextRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D8BB071BE3AF1900339AAC /* NSString+TextRenderer.m */; };
 		69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4D9261B95F1B700300817 /* AdblockPlusController.m */; };
 		69F4D92A1B95F28B00300817 /* AcceptableAdsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4D9291B95F28B00300817 /* AcceptableAdsController.m */; };
+		B2D14CC522021B30D75B131B /* libPods-AdblockPlusSafari.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCFABEF07C44557DAAC8BD3 /* libPods-AdblockPlusSafari.a */; };
 		CF410BE9E27E9A6CA4200141 /* libPods-AdblockPlusSafariExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEA24110F282539A5B78AD1 /* libPods-AdblockPlusSafariExtension.a */; };
 		E9071D411B76897C00091AEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9071D401B76897C00091AEB /* main.m */; };
 		E9071D441B76897C00091AEB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9071D431B76897C00091AEB /* AppDelegate.m */; };
@@ -102,10 +103,13 @@
 
 /* Begin PBXFileReference section */
 		055DE87C287339CE53C3A73E /* Pods-AdblockPlusSafariTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests.release.xcconfig"; sourceTree = "<group>"; };
+		12F980A7B4F14CB05D5848FB /* Pods-AdblockPlusSafari.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafari.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafari/Pods-AdblockPlusSafari.debug.xcconfig"; sourceTree = "<group>"; };
 		1EEA24110F282539A5B78AD1 /* libPods-AdblockPlusSafariExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdblockPlusSafariExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28D832F56DB60AF3C4946B8A /* Pods-AdblockPlusSafari.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafari.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafari/Pods-AdblockPlusSafari.release.xcconfig"; sourceTree = "<group>"; };
 		326F3467C5754EBF08C3CDF1 /* Pods-AdblockPlusSafariTests.devbuild debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariTests.devbuild debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests.devbuild debug.xcconfig"; sourceTree = "<group>"; };
 		419C3DAA2DB78EED37E8AEB4 /* Pods-AdblockPlusSafariExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension.release.xcconfig"; sourceTree = "<group>"; };
 		5CCFABEF07C44557DAAC8BD3 /* libPods-AdblockPlusSafari.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdblockPlusSafari.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		683DCB11947B013527DB2731 /* Pods-AdblockPlusSafari.devbuild debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafari.devbuild debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafari/Pods-AdblockPlusSafari.devbuild debug.xcconfig"; sourceTree = "<group>"; };
 		690362D61C19A7B9000E5581 /* easylist_content_blocker_v2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = easylist_content_blocker_v2.json; sourceTree = "<group>"; };
 		690362D71C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "easylist+exceptionrules_content_blocker_v2.json"; sourceTree = "<group>"; };
 		6905EDAA1BCE84F500B3A9B9 /* AdblockPlus+Parsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AdblockPlus+Parsing.h"; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 		69F4D9281B95F28B00300817 /* AcceptableAdsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptableAdsController.h; sourceTree = "<group>"; };
 		69F4D9291B95F28B00300817 /* AcceptableAdsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptableAdsController.m; sourceTree = "<group>"; };
 		71CD61F91359404B1A4CF81F /* Pods-AdblockPlusSafariExtension.devbuild debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariExtension.devbuild debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension.devbuild debug.xcconfig"; sourceTree = "<group>"; };
+		752AE5C145E982000028A35B /* Pods-AdblockPlusSafari.devbuild release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafari.devbuild release.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafari/Pods-AdblockPlusSafari.devbuild release.xcconfig"; sourceTree = "<group>"; };
 		75E518476C1052918064AF59 /* Pods-AdblockPlusSafariTests.devbuild release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariTests.devbuild release.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests.devbuild release.xcconfig"; sourceTree = "<group>"; };
 		974306E80D51C57902AEAA40 /* Pods-AdblockPlusSafariTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests.release.xcconfig"; sourceTree = "<group>"; };
 		99C0C1F5B6B184197F836F04 /* Pods-AdblockPlusSafariTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -339,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69AB6A511B971A82005C2075 /* SafariServices.framework in Frameworks */,
+				B2D14CC522021B30D75B131B /* libPods-AdblockPlusSafari.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +380,10 @@
 				055DE87C287339CE53C3A73E /* Pods-AdblockPlusSafariTests.release.xcconfig */,
 				326F3467C5754EBF08C3CDF1 /* Pods-AdblockPlusSafariTests.devbuild debug.xcconfig */,
 				E9453B7B6F8DA7D03055D4D4 /* Pods-AdblockPlusSafariTests.devbuild release.xcconfig */,
+				12F980A7B4F14CB05D5848FB /* Pods-AdblockPlusSafari.debug.xcconfig */,
+				683DCB11947B013527DB2731 /* Pods-AdblockPlusSafari.devbuild debug.xcconfig */,
+				28D832F56DB60AF3C4946B8A /* Pods-AdblockPlusSafari.release.xcconfig */,
+				752AE5C145E982000028A35B /* Pods-AdblockPlusSafari.devbuild release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -433,11 +443,11 @@
 		69B2AEB81BCD289C00E874A9 /* AdblockPlusSafariTests */ = {
 			isa = PBXGroup;
 			children = (
-				E9E8973D1C4947F60005D6E2 /* InfoPlist.strings */,
+				69B2AEB91BCD289C00E874A9 /* AdblockPlusSafariTests.m */,
 				690362D61C19A7B9000E5581 /* easylist_content_blocker_v2.json */,
 				690362D71C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json */,
-				69B2AEB91BCD289C00E874A9 /* AdblockPlusSafariTests.m */,
 				69B2AEBB1BCD289C00E874A9 /* Info.plist */,
+				E9E8973D1C4947F60005D6E2 /* InfoPlist.strings */,
 			);
 			path = AdblockPlusSafariTests;
 			sourceTree = "<group>";
@@ -494,7 +504,6 @@
 		E9071D3E1B76897C00091AEB /* AdblockPlusSafari */ = {
 			isa = PBXGroup;
 			children = (
-				E9E897421C4947F60005D6E2 /* InfoPlist.strings */,
 				69AB6A4D1B9712F1005C2075 /* AdblockPlus.h */,
 				69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */,
 				6970E76F1BA952F200B11AC3 /* AdblockPlusExtras.h */,
@@ -504,18 +513,19 @@
 				E9071D431B76897C00091AEB /* AppDelegate.m */,
 				69AB6A2C1B96F664005C2075 /* Appearence.h */,
 				69AB6A2D1B96F664005C2075 /* Appearence.m */,
-				69A2BF451C4E9C6B00A81994 /* WhitelistedSiteCell.h */,
-				69A2BF461C4E9C6B00A81994 /* WhitelistedSiteCell.m */,
 				E9071D4B1B76897C00091AEB /* Assets.xcassets */,
 				69F4D9241B95F18C00300817 /* Controllers */,
 				69A9101A1B986DB900D93485 /* Controls */,
 				699876F21BBE721900595FB9 /* FilterLists.plist */,
 				E9071D501B76897C00091AEB /* Info.plist */,
+				E9E897421C4947F60005D6E2 /* InfoPlist.strings */,
 				69AB6A491B970FFA005C2075 /* LaunchScreen.xib */,
 				E9071D481B76897C00091AEB /* Main.storyboard */,
 				69D8BB061BE3AF1900339AAC /* NSString+TextRenderer.h */,
 				69D8BB071BE3AF1900339AAC /* NSString+TextRenderer.m */,
 				E9071D3F1B76897C00091AEB /* Supporting Files */,
+				69A2BF451C4E9C6B00A81994 /* WhitelistedSiteCell.h */,
+				69A2BF461C4E9C6B00A81994 /* WhitelistedSiteCell.m */,
 			);
 			path = AdblockPlusSafari;
 			sourceTree = "<group>";
@@ -532,7 +542,6 @@
 		E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */ = {
 			isa = PBXGroup;
 			children = (
-				E9E897381C4947F60005D6E2 /* InfoPlist.strings */,
 				E942B07E1B76899D004B4692 /* ActionRequestHandler.h */,
 				E942B07F1B76899D004B4692 /* ActionRequestHandler.m */,
 				6970E76C1BA94C3900B11AC3 /* AdblockPlus+Extension.h */,
@@ -544,6 +553,7 @@
 				E9C719D81B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json */,
 				69A910151B986A0D00D93485 /* empty.json */,
 				E942B0811B76899D004B4692 /* Info.plist */,
+				E9E897381C4947F60005D6E2 /* InfoPlist.strings */,
 			);
 			path = AdblockPlusSafariExtension;
 			sourceTree = "<group>";
@@ -606,10 +616,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9071D531B76897C00091AEB /* Build configuration list for PBXNativeTarget "AdblockPlusSafari" */;
 			buildPhases = (
+				F63C26E639266E61F7480E7D /* Check Pods Manifest.lock */,
 				E9071D381B76897C00091AEB /* Sources */,
 				E9071D391B76897C00091AEB /* Frameworks */,
 				E9071D3A1B76897C00091AEB /* Resources */,
 				E942B0881B76899D004B4692 /* Embed App Extensions */,
+				AE5E622D21103103A6CF1CBD /* Embed Pods Frameworks */,
+				691024BF70D44FC0D9FEF327 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -804,6 +817,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		691024BF70D44FC0D9FEF327 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafari/Pods-AdblockPlusSafari-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A5E0886D94E83465A9788119 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -817,6 +845,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE5E622D21103103A6CF1CBD /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafari/Pods-AdblockPlusSafari-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BFCC4A703E29563EB64BAC88 /* Check Pods Manifest.lock */ = {
@@ -861,6 +904,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nif [[ -d \"Frameworks\" ]]; then\nrm -fr Frameworks\nfi";
+		};
+		F63C26E639266E61F7480E7D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1201,6 +1259,7 @@
 		};
 		E9071D541B76897C00091AEB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12F980A7B4F14CB05D5848FB /* Pods-AdblockPlusSafari.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1220,6 +1279,7 @@
 		};
 		E9071D551B76897C00091AEB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28D832F56DB60AF3C4946B8A /* Pods-AdblockPlusSafari.release.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1315,6 +1375,7 @@
 		};
 		E9CA91591BC64504002696CB /* Devbuild Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 752AE5C145E982000028A35B /* Pods-AdblockPlusSafari.devbuild release.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1396,6 +1457,7 @@
 		};
 		E9CA915C1BC64519002696CB /* Devbuild Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 683DCB11947B013527DB2731 /* Pods-AdblockPlusSafari.devbuild debug.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

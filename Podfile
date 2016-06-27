@@ -5,6 +5,8 @@ yajlVersion='~> 2.0.4'
 
 target 'AdblockPlusSafari' do
 
+pod 'yajl', $yajlVersion
+
 end
 
 target 'AdblockPlusSafariExtension' do
