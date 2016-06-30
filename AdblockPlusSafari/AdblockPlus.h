@@ -20,6 +20,11 @@
 extern NSString *_Nonnull AdblockPlusErrorDomain;
 extern NSString *_Nonnull AdblockPlusActivated;
 
+typedef NS_ENUM(NSUInteger, AdblockPlusFilterListType) {
+  AdblockPlusFilterListTypeVersion1,
+  AdblockPlusFilterListTypeVersion2
+};
+
 @interface AdblockPlus : NSObject
 
 @property (nonatomic, strong, readonly) NSUserDefaults *__nonnull adblockPlusDetails;

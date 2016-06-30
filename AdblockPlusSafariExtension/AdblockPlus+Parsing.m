@@ -26,15 +26,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef NS_ENUM(NSUInteger, AdblockPlusFilterListsType) {
-  AdblockPlusFilterListsTypeVersion1,
-  AdblockPlusFilterListsTypeVersion2
-};
-
 typedef struct
 {
   BOOL writingEnabled;
-  AdblockPlusFilterListsType filterListsType;
+  AdblockPlusFilterListType filterListType;
   NSUInteger mapLevel;
   NSUInteger arrayLevel;
   yajl_gen g;
@@ -69,7 +64,7 @@ static int reformatMapKey(void *ctx, const unsigned char *string, size_t stringL
 {
   AdblockPlusContext *context = (AdblockPlusContext *)ctx;
 
-  if (context->mapLevel == 1 && context->filterListsType == AdblockPlusFilterListsTypeVersion2) {
+  if (context->mapLevel == 1 && context->filterListType == AdblockPlusFilterListTypeVersion2) {
     context->writingEnabled = strncmp((const char *)string, "rules", stringLength) == 0;
     return YES;
   }
@@ -83,7 +78,7 @@ static int reformatStartMap(void *ctx)
   context->mapLevel += 1;
 
   if (context->mapLevel == 1 && context->arrayLevel == 0) {
-    context->filterListsType = AdblockPlusFilterListsTypeVersion2;
+    context->filterListType = AdblockPlusFilterListTypeVersion2;
     return YES;
   }
 
@@ -103,7 +98,7 @@ static int reformatStartArray(void *ctx)
   context->arrayLevel += 1;
 
   if (context->mapLevel == 0 && context->arrayLevel == 1) {
-    context->filterListsType = AdblockPlusFilterListsTypeVersion1;
+    context->filterListType = AdblockPlusFilterListTypeVersion1;
     context->writingEnabled = YES;
   }
 
@@ -217,7 +212,7 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
   NSOutputStream *outputStream = [NSOutputStream outputStreamWithURL:output append:NO];
   yajl_gen g = NULL;
   yajl_handle hand = NULL;
-  AdblockPlusContext context = { NO, AdblockPlusFilterListsTypeVersion1, 0, 0, NULL };
+  AdblockPlusContext context = { NO, AdblockPlusFilterListTypeVersion1, 0, 0, NULL };
 
   @try {
     [inputStream open];
