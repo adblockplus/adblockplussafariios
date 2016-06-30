@@ -19,9 +19,8 @@
 
 #import "Appearence.h"
 #import "RootController.h"
+#import "FilterList.h"
 
-// Update filter list every 5 days
-const NSTimeInterval FilterListsUpdatePeriod = 3600*24*5;
 // Wake up application every hour (just hint for iOS)
 const NSTimeInterval BackgroundFetchInterval = 3600;
 
@@ -87,9 +86,12 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
 {
   [self.adblockPlus checkActivatedFlag];
 
-  if (!self.firstUpdateTriggered && !self.adblockPlus.updating && self.adblockPlus.lastUpdate == nil) {
-    [self.adblockPlus updateFilterLists: NO];
-    self.firstUpdateTriggered = YES;
+  if (!self.firstUpdateTriggered && !self.adblockPlus.updating) {
+    NSDictionary *filterLists = [self.adblockPlus outdatedFilterLists];
+    if (filterLists.count > 0) {
+      [self.adblockPlus updateFilterLists:filterLists userTriggered:NO];
+      self.firstUpdateTriggered = YES;
+    }
   }
 }
 
@@ -101,20 +103,14 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
-  NSDate *lastUpdate = self.adblockPlus.lastUpdate;
-  if (!lastUpdate) {
-    lastUpdate = [NSDate distantPast];
-  }
+  NSDictionary *outdatedFilterLists = self.adblockPlus.outdatedFilterLists;
 
-  if ([lastUpdate timeIntervalSinceNow] <= -FilterListsUpdatePeriod) {
-    [self.adblockPlus updateFilterLists: NO];
-    if (!self.backgroundFetches) {
-      self.backgroundFetches = [NSMutableArray array];
-    }
+  if ([outdatedFilterLists count] > 0) {
+    [self.adblockPlus updateFilterLists:outdatedFilterLists userTriggered:NO];
+
     [self.backgroundFetches addObject:
      @{@"completion": completionHandler,
-       @"lastUpdate": lastUpdate,
-       @"version": @(self.adblockPlus.downloadedVersion),
+       @"filterLists": outdatedFilterLists,
        @"startDate": [NSDate date]}];
   } else {
     // No need to perform background refresh
@@ -149,12 +145,20 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
 
     AdblockPlusExtras *adblockPlus = object;
     if (!adblockPlus.updating) {
-
       for (NSDictionary *backgroundFetch in self.backgroundFetches) {
 
-        // The date of the last known successful update
-        NSDate *lastUpdate = backgroundFetch[@"lastUpdate"];
-        BOOL updated = !!lastUpdate && [adblockPlus.lastUpdate compare:lastUpdate] == NSOrderedDescending;
+        BOOL updated = NO;
+
+        NSDictionary<NSString *, id> *filterLists = backgroundFetch[@"filterLists"];
+        for (NSString *filterListName in filterLists) {
+          NSDictionary<NSString *, id> *filterList = filterLists[filterListName];
+          // The date of the last known successful update
+          NSDate *lastUpdate = filterList[@"lastUpdate"];
+
+          NSDate *currentLastUpdate = self.adblockPlus.filterLists[filterListName][@"lastUpdate"];
+
+          updated = updated || (!lastUpdate && currentLastUpdate) || (currentLastUpdate && [currentLastUpdate compare:lastUpdate] == NSOrderedDescending);
+        }
 
         void (^completion)(UIBackgroundFetchResult) = backgroundFetch[@"completion"];
         if (completion) {
@@ -178,6 +182,14 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
     [application endBackgroundTask:self.backgroundTaskIdentifier];
   }
   self.backgroundTaskIdentifier = backgroundTaskIdentifier;
+}
+
+- (NSMutableArray<NSDictionary *> *)backgroundFetches
+{
+  if (!_backgroundFetches) {
+    _backgroundFetches = [NSMutableArray array];
+  }
+  return _backgroundFetches;
 }
 
 #pragma mark -

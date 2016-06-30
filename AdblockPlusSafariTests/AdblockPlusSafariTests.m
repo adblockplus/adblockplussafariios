@@ -20,6 +20,7 @@
 #import "AdblockPlusExtras.h"
 #import "AdblockPlus+Extension.h"
 #import "AdblockPlus+Parsing.h"
+#import "FilterList+Processing.h"
 
 @interface AdblockPlusSafariTests : XCTestCase
 
@@ -39,9 +40,9 @@
   [super tearDown];
 }
 
-- (void)performMergeFilterlists:(NSString *)filterlists
+- (void)performMergeFilterList:(NSString *)filterList
 {
-  NSURL *input = [[NSBundle bundleForClass:[self class]] URLForResource:filterlists withExtension:@"json"];
+  NSURL *input = [[NSBundle bundleForClass:[self class]] URLForResource:filterList withExtension:@"json"];
   NSString *fileName = input.lastPathComponent;
   NSURL *output = [[NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES] URLByAppendingPathComponent:fileName isDirectory:NO];
 
@@ -77,27 +78,81 @@
   }
 }
 
-- (void)testEmptyFilterListsMergeWithWhitelistedWebsites
+- (void)testEmptyFilterListMergeWithWhitelistedWebsites
 {
-  [self performMergeFilterlists:@"empty"];
+  [self performMergeFilterList:@"empty"];
 }
 
-- (void)testEasylistFilterListsMergeWithWhitelistedWebsites
+- (void)testEasylistFilterListMergeWithWhitelistedWebsites
 {
-  [self performMergeFilterlists:@"easylist_content_blocker"];}
+  [self performMergeFilterList:@"easylist_content_blocker"];}
 
-- (void)testEasylistPlusExceptionsFilterListsMergeWithWhitelistedWebsites
+- (void)testEasylistPlusExceptionsFilterListMergeWithWhitelistedWebsites
 {
-  [self performMergeFilterlists:@"easylist+exceptionrules_content_blocker"];
+  [self performMergeFilterList:@"easylist+exceptionrules_content_blocker"];
 }
 
-- (void)testEasylistFilterListsMergeWithWhitelistedWebsitesV2
+- (void)testEasylistFilterListMergeWithWhitelistedWebsitesV2
 {
-  [self performMergeFilterlists:@"easylist_content_blocker_v2"];}
+  [self performMergeFilterList:@"easylist_content_blocker_v2"];
+}
 
-- (void)testEasylistPlusExceptionsFilterListsMergeWithWhitelistedWebsitesV2
+- (void)testEasylistPlusExceptionsFilterListMergeWithWhitelistedWebsitesV2
 {
-  [self performMergeFilterlists:@"easylist+exceptionrules_content_blocker_v2"];
+  [self performMergeFilterList:@"easylist+exceptionrules_content_blocker_v2"];
+}
+
+- (void)testExpiresParsing
+{
+  NSArray *inputs =
+  @[
+    @[@"4 days easylist", @YES, @4],
+    @[@"15 days combined", @YES, @15],
+    @[@"1000 hours test", @NO],
+    @[@"Expires in 1000", @NO]
+    ];
+
+  for (id input in inputs) {
+    NSTimeInterval expires;
+    BOOL result = [FilterList parseExpiresString:input[0] to:&expires];
+    if (result) {
+      XCTAssert(expires == ([input[2] doubleValue] * 3600 * 24), @"Unexpected output");
+    }
+    XCTAssert(result == [input[1] boolValue], @"Unexpected output");
+  }
+}
+
+
+- (void)processFilterList:(NSString *)filterListPath
+          expectedVersion:(NSString *)expectedVersion
+          expectedExpires:(NSTimeInterval)expectedExpires
+{
+  NSURL *input = [[NSBundle bundleForClass:[self class]] URLForResource:filterListPath withExtension:@"json"];
+  FilterList *filterList = [[FilterList alloc] initWithDictionary:@{}];
+
+  NSError *error = nil;
+  if (![filterList parseFilterListFromURL:input error:&error]) {
+    XCTAssert(false, @"Parsing should be successful");
+    return;
+  }
+
+  XCTAssert([filterList.version isEqualToString:expectedVersion] || (filterList.version == expectedVersion), @"Version should be equal");
+  XCTAssert(filterList.expires == expectedExpires, @"Expires should be filled");
+}
+
+- (void)testProcessingOfEasylistPlusExceptionsFilterListsMergeWithWhitelistedWebsites
+{
+  [self processFilterList:@"easylist+exceptionrules_content_blocker" expectedVersion:nil expectedExpires:DefaultFilterListsUpdateInterval];
+}
+
+- (void)testProcessingOfEasylistFilterListsMergeWithWhitelistedWebsitesV2
+{
+  [self processFilterList:@"easylist_content_blocker_v2" expectedVersion:@"201512011207" expectedExpires:4*3600*24];
+}
+
+- (void)testProcessingOfEasylistPlusExceptionsFilterListsMergeWithWhitelistedWebsitesV2
+{
+  [self processFilterList:@"easylist+exceptionrules_content_blocker_v2" expectedVersion:@"201512011207" expectedExpires:4*3600*24];
 }
 
 @end

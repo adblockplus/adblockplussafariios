@@ -21,6 +21,7 @@
 
 #import "RootController.h"
 #import "HomeController.h"
+#import "FilterList+Processing.h"
 
 static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayErrorDialog";
 
@@ -183,20 +184,25 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
   }
 }
 
-- (void)updateFilterLists:(BOOL)userTriggered
+- (void)updateAllFilterLists:(BOOL)userTriggered
 {
-  NSMutableDictionary *filterLists = [self.filterLists mutableCopy];
-  for (NSString *filterListName in self.filterLists) {
+  [self updateFilterLists:self.filterLists userTriggered:YES];
+}
+
+- (void)updateFilterLists:(NSDictionary<NSString *, NSDictionary<NSString *, id> *> *)filterLists userTriggered:(BOOL)userTriggered
+{
+  NSMutableDictionary *modifiedFilterLists = [self.filterLists mutableCopy];
+  for (NSString *filterListName in filterLists) {
     NSURL *url = [NSURL URLWithString:filterListName];
 
     NSURLSessionTask *task = [self.backgroundSession downloadTaskWithURL:url];
 
-    NSMutableDictionary *filterList = [filterLists[filterListName] mutableCopy];
-    filterList[@"updating"] = @YES;
-    filterList[@"taskIdentifier"] = @(task.taskIdentifier);
-    filterList[@"userTriggered"] = @(userTriggered);
-    filterList[@"lastUpdateFailed"] = @NO;
-    filterLists[filterListName] = filterList;
+    FilterList *filterList = [[FilterList alloc] initWithDictionary:filterLists[filterListName]];
+    filterList.updating = YES;
+    filterList.taskIdentifier = task.taskIdentifier;
+    filterList.userTriggered = userTriggered;
+    filterList.lastUpdateFailed = NO;
+    modifiedFilterLists[filterListName] = filterList.dictionary;
 
     [self.downloadTasks[filterListName] cancel];
     // Store key to task cache
@@ -204,7 +210,28 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
     [task resume];
   }
-  self.filterLists = filterLists;
+  self.filterLists = modifiedFilterLists;
+}
+
+- (NSDictionary<NSString *, NSDictionary<NSString *, id> *> *)outdatedFilterLists
+{
+  NSDate *now = [NSDate date];
+  NSMutableDictionary<NSString *, NSDictionary<NSString *, id> *> *outdatedFilterLists = [self.filterLists mutableCopy];
+  for (NSString *filterListName in self.filterLists) {
+    FilterList *filterList = [[FilterList alloc] initWithDictionary:self.filterLists[filterListName]];
+
+    NSDate *lastUpdate = filterList.lastUpdate;
+    if (lastUpdate == nil) {
+      continue;
+    }
+
+    if (lastUpdate.timeIntervalSince1970 + filterList.expires < now.timeIntervalSince1970) {
+      continue;
+    }
+
+    [outdatedFilterLists removeObjectForKey:filterListName];
+  }
+  return outdatedFilterLists;
 }
 
 - (void)displayErrorDialogIfNeeded
@@ -250,18 +277,17 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
   NSString *filterListName = task.originalRequest.URL.absoluteString;
-  NSDictionary *filterList = self.filterLists[filterListName];
+  FilterList *filterList = [[FilterList alloc] initWithDictionary:self.filterLists[filterListName]];
 
-  if ([filterList[@"taskIdentifier"] unsignedIntegerValue] == task.taskIdentifier && [filterList[@"updating"] boolValue]) {
+  if (filterList.taskIdentifier == task.taskIdentifier && filterList.updating) {
 
-    NSMutableDictionary *mutableFilterList = [filterList mutableCopy];
-    mutableFilterList[@"updating"] = @NO;
-    mutableFilterList[@"lastUpdateFailed"] = @YES;
-    [mutableFilterList removeObjectForKey:@"taskIdentifier"];
+    filterList.updating = NO;
+    filterList.lastUpdateFailed = YES;
+    filterList.taskIdentifier = 0;
 
-    NSMutableDictionary *mutableFilterLists = [self.filterLists mutableCopy];
-    mutableFilterLists[filterListName] = mutableFilterList;
-    self.filterLists = mutableFilterLists;
+    NSMutableDictionary *modifiedFilterLists = [self.filterLists mutableCopy];
+    modifiedFilterLists[filterListName] = filterList.dictionary;
+    self.filterLists = modifiedFilterLists;
 
     // Remove key from task cache
     [self.downloadTasks removeObjectForKey:filterListName];
@@ -271,9 +297,9 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
   NSString *filterListName = downloadTask.originalRequest.URL.absoluteString;
-  NSDictionary *filterList = self.filterLists[filterListName];
+  FilterList *filterList = [[FilterList alloc] initWithDictionary:self.filterLists[filterListName]];
 
-  if ([filterList[@"taskIdentifier"] unsignedIntegerValue] == downloadTask.taskIdentifier) {
+  if (filterList.taskIdentifier == downloadTask.taskIdentifier) {
     if (![downloadTask.response isKindOfClass:[NSHTTPURLResponse class]]) {
       // This error occurs in rare cases. The error message is meaningless to ordinary user.
       NSLog(@"Downloading has failed: %@", downloadTask.error);
@@ -292,7 +318,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
     // http://www.atomicbird.com/blog/sharing-with-app-extensions
     NSURL *destination = [fileManager containerURLForSecurityApplicationGroupIdentifier:self.group];
-    destination = [destination URLByAppendingPathComponent:filterList[@"filename"] isDirectory:NO];
+    destination = [destination URLByAppendingPathComponent:filterList.filename isDirectory:NO];
 
     NSError *error;
     // http://stackoverflow.com/questions/20683696/how-to-overwrite-a-folder-using-nsfilemanager-defaultmanager-when-copying
@@ -302,17 +328,22 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
     }
 
     // Success, store the result
-    NSMutableDictionary *mutableFilterList = [filterList mutableCopy];
-    mutableFilterList[@"lastUpdate"] = [NSDate date];
-    mutableFilterList[@"downloaded"] = @YES;
-    mutableFilterList[@"updating"] = @NO;
-    mutableFilterList[@"lastUpdateFailed"] = @NO;
-    [mutableFilterList removeObjectForKey:@"taskIdentifier"];
+    filterList.lastUpdate = [NSDate date];
+    filterList.downloaded = YES;
+    filterList.updating = NO;
+    filterList.lastUpdateFailed = NO;
+    filterList.taskIdentifier = 0;
     self.downloadedVersion += 1;
 
-    NSMutableDictionary *mutableFilterLists = [self.filterLists mutableCopy];
-    mutableFilterLists[filterListName] = mutableFilterList;
-    self.filterLists = mutableFilterLists;
+    if (![filterList parseFilterListFromURL:destination error:&error]) {
+      NSLog(@"Filter list parsing has failed: %@", error);
+      return;
+    }
+
+    // Commit changes
+    NSMutableDictionary *modifiedFilterLists = [self.filterLists mutableCopy];
+    modifiedFilterLists[filterListName] = [filterList dictionary];
+    self.filterLists = modifiedFilterLists;
   }
 }
 

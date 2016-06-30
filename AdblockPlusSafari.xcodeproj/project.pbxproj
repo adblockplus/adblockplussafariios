@@ -12,6 +12,8 @@
 		690362D91C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json in Resources */ = {isa = PBXBuildFile; fileRef = 690362D71C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json */; };
 		6905EDAC1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6905EDAB1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m */; };
 		6905EDAD1BCE890000B3A9B9 /* AdblockPlus+Parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6905EDAB1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m */; };
+		69142D571CDCC51C00FD2640 /* FilterList.m in Sources */ = {isa = PBXBuildFile; fileRef = 69142D541CDCC51C00FD2640 /* FilterList.m */; };
+		69142D581CDCC51C00FD2640 /* FilterList+Processing.m in Sources */ = {isa = PBXBuildFile; fileRef = 69142D561CDCC51C00FD2640 /* FilterList+Processing.m */; };
 		691F74471B9874590057C702 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74461B9874590057C702 /* AboutController.m */; };
 		691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */; };
 		6970E76E1BA94C3900B11AC3 /* AdblockPlus+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */; };
@@ -114,6 +116,10 @@
 		690362D71C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "easylist+exceptionrules_content_blocker_v2.json"; sourceTree = "<group>"; };
 		6905EDAA1BCE84F500B3A9B9 /* AdblockPlus+Parsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AdblockPlus+Parsing.h"; sourceTree = "<group>"; };
 		6905EDAB1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AdblockPlus+Parsing.m"; sourceTree = "<group>"; };
+		69142D531CDCC51C00FD2640 /* FilterList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterList.h; sourceTree = "<group>"; };
+		69142D541CDCC51C00FD2640 /* FilterList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterList.m; sourceTree = "<group>"; };
+		69142D551CDCC51C00FD2640 /* FilterList+Processing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FilterList+Processing.h"; sourceTree = "<group>"; };
+		69142D561CDCC51C00FD2640 /* FilterList+Processing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FilterList+Processing.m"; sourceTree = "<group>"; };
 		691F74451B9874590057C702 /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
 		691F74461B9874590057C702 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 		691F74481B988ADC0057C702 /* AdblockPlusContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusContainerController.h; sourceTree = "<group>"; };
@@ -516,6 +522,10 @@
 				E9071D4B1B76897C00091AEB /* Assets.xcassets */,
 				69F4D9241B95F18C00300817 /* Controllers */,
 				69A9101A1B986DB900D93485 /* Controls */,
+				69142D531CDCC51C00FD2640 /* FilterList.h */,
+				69142D541CDCC51C00FD2640 /* FilterList.m */,
+				69142D551CDCC51C00FD2640 /* FilterList+Processing.h */,
+				69142D561CDCC51C00FD2640 /* FilterList+Processing.m */,
 				699876F21BBE721900595FB9 /* FilterLists.plist */,
 				E9071D501B76897C00091AEB /* Info.plist */,
 				E9E897421C4947F60005D6E2 /* InfoPlist.strings */,
@@ -937,6 +947,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69142D581CDCC51C00FD2640 /* FilterList+Processing.m in Sources */,
 				69AB6A4F1B9712F1005C2075 /* AdblockPlus.m in Sources */,
 				69AB6A541B971B9A005C2075 /* HomeController.m in Sources */,
 				69A910191B986DB600D93485 /* RightCenteredImageButton.m in Sources */,
@@ -953,6 +964,7 @@
 				69C19C771B9835D1009ACBAC /* RootController.m in Sources */,
 				69AB6A571B973802005C2075 /* WelcomeController.m in Sources */,
 				69AB6A2E1B96F664005C2075 /* Appearence.m in Sources */,
+				69142D571CDCC51C00FD2640 /* FilterList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
