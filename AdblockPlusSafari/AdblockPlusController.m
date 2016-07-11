@@ -168,7 +168,7 @@
   }
 
   if ([cell.reuseIdentifier isEqualToString:@"UpdateFilterLists"]) {
-    [self.adblockPlus updateFilterLists: YES];
+    [self.adblockPlus updateAllFilterLists:YES];
   }
 }
 

@@ -36,7 +36,11 @@
 
 - (void)checkActivatedFlag;
 
-- (void)updateFilterLists:(BOOL)userTriggered;
+- (void)updateAllFilterLists:(BOOL)userTriggered;
+
+- (void)updateFilterLists:(NSDictionary<NSString *, NSDictionary<NSString *, id> *> *__nonnull)filterLists userTriggered:(BOOL)userTriggered;
+
+- (NSDictionary<NSString *, NSDictionary<NSString *, id> *> *__nonnull)outdatedFilterLists;
 
 - (void)displayErrorDialogIfNeeded;
 
