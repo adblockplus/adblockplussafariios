@@ -19,8 +19,12 @@
 
 #import "AdblockPlusExtras.h"
 
-@interface AdblockPlusController : UITableViewController
+@interface AdblockPlusControllerBase : UITableViewController
 
 @property (nonatomic, strong) AdblockPlusExtras *__nullable adblockPlus;
+
+@end
+
+@interface AdblockPlusController : AdblockPlusControllerBase
 
 @end

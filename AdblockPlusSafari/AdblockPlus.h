@@ -17,6 +17,10 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *_Nonnull DefaultFilterListName;
+extern NSString *_Nonnull DefaultFilterListPlusExceptionRulesName;
+extern NSString *_Nonnull CustomFilterListName;
+
 extern NSString *_Nonnull AdblockPlusErrorDomain;
 extern NSString *_Nonnull AdblockPlusActivated;
 
@@ -41,6 +45,8 @@ typedef NS_ENUM(NSUInteger, AdblockPlusFilterListType) {
 
 @property (nonatomic) BOOL activated;
 
+@property (nonatomic) BOOL defaultFilterListEnabled;
+
 @property (nonatomic) NSInteger installedVersion;
 
 @property (nonatomic) NSInteger downloadedVersion;
@@ -48,5 +54,7 @@ typedef NS_ENUM(NSUInteger, AdblockPlusFilterListType) {
 @property (nonatomic, strong) NSDictionary<NSString *, NSDictionary<NSString *, id> *> *__nonnull filterLists;
 
 @property (nonatomic, strong) NSArray<NSString *> *__nonnull whitelistedWebsites;
+
+- (NSString *__nonnull)activeFilterListName;
 
 @end

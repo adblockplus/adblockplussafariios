@@ -22,6 +22,7 @@
 #import "RootController.h"
 #import "HomeController.h"
 #import "FilterList+Processing.h"
+#import "NSDictionary+FilterList.h"
 
 static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayErrorDialog";
 
@@ -30,6 +31,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 @property (nonatomic, weak) NSURLSession *backgroundSession;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, __kindof NSURLSessionTask *> *downloadTasks;
 @property (nonatomic) BOOL needsDisplayErrorDialog;
+@property (nonatomic) NSUInteger updatingGroupIdentifier;
 
 @end
 
@@ -38,6 +40,16 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 - (instancetype)init
 {
   if (self = [super init]) {
+    // Remove updatingGroupIdentifier, which is only runtime attribute
+    NSMutableDictionary *modifiedFilterLists = [self.filterLists mutableCopy];
+    for (NSString *filterListName in self.filterLists) {
+      NSMutableDictionary *modifiedFilterList = [self.filterLists[filterListName] mutableCopy];
+      [modifiedFilterList removeObjectForKey:@"updatingGroupIdentifier"];
+      modifiedFilterLists[filterListName] = modifiedFilterList;
+    }
+    self.filterLists = modifiedFilterLists;
+
+    // Process running tasks
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:self.backgroundSessionConfigurationIdentifier];
     _backgroundSession = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     _downloadTasks = [[NSMutableDictionary alloc] init];
@@ -52,16 +64,27 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
         // Remove filter lists whose tasks are still running
         for (NSURLSessionTask *task in tasks) {
-          NSString *filterListName = task.originalRequest.URL.absoluteString;
-          [set removeObject:filterListName];
-          if (task.taskIdentifier == [sSelf.filterLists[filterListName][@"taskIdentifier"] unsignedIntegerValue]) {
-            sSelf.downloadTasks[task.originalRequest.URL.absoluteString] = task;
-          } else {
+          NSString *url = task.originalRequest.URL.absoluteString;
+          BOOL found = NO;
+          for (NSString *filterListName in sSelf.filterLists) {
+            NSDictionary *filterList = sSelf.filterLists[filterListName];
+            if ([url isEqualToString:filterList[@"url"]]) {
+              if (task.taskIdentifier == [sSelf.filterLists[filterListName] taskIdentifier]) {
+                sSelf.downloadTasks[task.originalRequest.URL.absoluteString] = task;
+              } else {
+                [task cancel];
+              }
+              found = YES;
+              break;
+            }
+          }
+
+          if (!found) {
             [task cancel];
           }
         }
 
-        // Remove filter lists whose tasks have been planned again
+        // Remove filter lists whose tasks have been found
         for (NSString *filterListName in self.downloadTasks) {
           [set removeObject:filterListName];
         }
@@ -84,13 +107,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
 #pragma mark - property
 
-@dynamic lastUpdate;
 @dynamic updating;
-
-- (NSDate *)lastUpdate
-{
-  return [[self.filterLists allValues] valueForKeyPath:@"@min.lastUpdate"];
-}
 
 - (BOOL)updating
 {
@@ -99,14 +116,14 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
 - (void)setFilterLists:(NSDictionary<NSString *,NSDictionary<NSString *,NSObject *> *> *)filterLists
 {
+  NSAssert([NSThread isMainThread], @"This method should be called from main thread only!");
+
   BOOL wasUpdating = self.updating;
   BOOL hasAnyLastUpdateFailed = self.anyLastUpdateFailed;
 
-  [self willChangeValueForKey:@"lastUpdate"];
   [self willChangeValueForKey:@"updating"];
   super.filterLists = filterLists;
   [self didChangeValueForKey:@"updating"];
-  [self didChangeValueForKey:@"lastUpdate"];
 
   BOOL updating = self.updating;
   BOOL anyLastUpdateFailed = self.anyLastUpdateFailed;
@@ -137,27 +154,38 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
 - (BOOL)anyLastUpdateFailed
 {
-  return [[[self.filterLists allValues] valueForKeyPath:@"@sum.lastUpdateFailed"] integerValue] > 0;
+  for (NSString *filterListName in self.filterLists) {
+    NSDictionary *filterList = self.filterLists[filterListName];
+    if ([filterList[@"updatingGroupIdentifier"] unsignedIntegerValue] == self.updatingGroupIdentifier
+        && [filterList[@"lastUpdateFailed"] boolValue]
+        && [filterList[@"userTriggered"] boolValue]) {
+      return YES;
+    }
+  }
+
+  return NO;
 }
 
 #pragma mark -
 
-- (void)setEnabled:(BOOL)enabled reload:(BOOL)reload
+- (void)setEnabled:(BOOL)enabled
 {
-  self.enabled = enabled;
-
-  if (reload) {
-    [self reloadContentBlockerWithCompletion:nil];
-  }
+  super.enabled = enabled;
+  [self reloadContentBlockerWithCompletion:nil];
 }
 
-- (void)setAcceptableAdsEnabled:(BOOL)enabled reload:(BOOL)reload
+- (void)setAcceptableAdsEnabled:(BOOL)enabled
 {
-  self.acceptableAdsEnabled = enabled;
+  super.acceptableAdsEnabled = enabled;
+  [self reloadContentBlockerWithCompletion:nil];
+  [self updateFilterListsWithNames:self.outdatedFilterListNames userTriggered:NO];
+}
 
-  if (reload) {
-    [self reloadContentBlockerWithCompletion:nil];
-  }
+-(void)setDefaultFilterListEnabled:(BOOL)defaultFilterListEnabled
+{
+  super.defaultFilterListEnabled = defaultFilterListEnabled;
+  [self reloadContentBlockerWithCompletion:nil];
+  [self updateFilterListsWithNames:self.outdatedFilterListNames userTriggered:NO];
 }
 
 - (void)reloadContentBlockerWithCompletion:(void(^__nullable)(NSError * __nullable error))completion;
@@ -184,25 +212,40 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
   }
 }
 
-- (void)updateAllFilterLists:(BOOL)userTriggered
+- (void)updateActiveFilterLists:(BOOL)userTriggered
 {
-  [self updateFilterLists:self.filterLists userTriggered:YES];
+  [self updateFilterListsWithNames:@[self.activeFilterListName] userTriggered:userTriggered];
 }
 
-- (void)updateFilterLists:(NSDictionary<NSString *, NSDictionary<NSString *, id> *> *)filterLists userTriggered:(BOOL)userTriggered
+- (void)updateFilterListsWithNames:(NSArray<NSString *> *)filterListNames userTriggered:(BOOL)userTriggered
 {
+  if ([filterListNames count] == 0) {
+    return;
+  }
+
+  self.updatingGroupIdentifier += 1;
+
+  NSMutableDictionary *scheduledTasks = [NSMutableDictionary dictionary];
+
   NSMutableDictionary *modifiedFilterLists = [self.filterLists mutableCopy];
-  for (NSString *filterListName in filterLists) {
-    NSURL *url = [NSURL URLWithString:filterListName];
+  for (NSString *filterListName in filterListNames) {
+    FilterList *filterList = [[FilterList alloc] initWithDictionary:self.filterLists[filterListName]];
 
+    NSURL *url = [NSURL URLWithString:filterList.url];
     NSURLSessionTask *task = [self.backgroundSession downloadTaskWithURL:url];
+    scheduledTasks[filterListName] = task;
 
-    FilterList *filterList = [[FilterList alloc] initWithDictionary:filterLists[filterListName]];
     filterList.updating = YES;
     filterList.taskIdentifier = task.taskIdentifier;
+    filterList.updatingGroupIdentifier = self.updatingGroupIdentifier;
     filterList.userTriggered = userTriggered;
     filterList.lastUpdateFailed = NO;
     modifiedFilterLists[filterListName] = filterList.dictionary;
+  }
+  self.filterLists = modifiedFilterLists;
+
+  for (NSString *filterListName in scheduledTasks) {
+    NSURLSessionTask *task = scheduledTasks[filterListName];
 
     [self.downloadTasks[filterListName] cancel];
     // Store key to task cache
@@ -210,28 +253,23 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
     [task resume];
   }
-  self.filterLists = modifiedFilterLists;
 }
 
-- (NSDictionary<NSString *, NSDictionary<NSString *, id> *> *)outdatedFilterLists
+- (NSArray<NSString *> *)outdatedFilterListNames
 {
   NSDate *now = [NSDate date];
-  NSMutableDictionary<NSString *, NSDictionary<NSString *, id> *> *outdatedFilterLists = [self.filterLists mutableCopy];
-  for (NSString *filterListName in self.filterLists) {
-    FilterList *filterList = [[FilterList alloc] initWithDictionary:self.filterLists[filterListName]];
+  NSMutableArray<NSString *> *outdatedFilterListNames = [NSMutableArray array];
 
+  NSString *filterListName = self.activeFilterListName;
+  FilterList *filterList = [[FilterList alloc] initWithDictionary:self.filterLists[filterListName]];
+  if (filterList) {
     NSDate *lastUpdate = filterList.lastUpdate;
-    if (lastUpdate == nil) {
-      continue;
+    if (lastUpdate == nil || lastUpdate.timeIntervalSince1970 + filterList.expires <= now.timeIntervalSince1970) {
+      [outdatedFilterListNames addObject:filterListName];
     }
-
-    if (lastUpdate.timeIntervalSince1970 + filterList.expires < now.timeIntervalSince1970) {
-      continue;
-    }
-
-    [outdatedFilterLists removeObjectForKey:filterListName];
   }
-  return outdatedFilterLists;
+
+  return outdatedFilterListNames;
 }
 
 - (void)displayErrorDialogIfNeeded
@@ -276,13 +314,11 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
-  NSString *filterListName = task.originalRequest.URL.absoluteString;
+  NSString *filterListName = [self filterListNameForTaskTaskIdentifier:task.taskIdentifier];
   FilterList *filterList = [[FilterList alloc] initWithDictionary:self.filterLists[filterListName]];
-
-  if (filterList.taskIdentifier == task.taskIdentifier && filterList.updating) {
-
-    filterList.updating = NO;
+  if (filterList) {
     filterList.lastUpdateFailed = YES;
+    filterList.updating = NO;
     filterList.taskIdentifier = 0;
 
     NSMutableDictionary *modifiedFilterLists = [self.filterLists mutableCopy];
@@ -296,10 +332,9 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
-  NSString *filterListName = downloadTask.originalRequest.URL.absoluteString;
+  NSString *filterListName = [self filterListNameForTaskTaskIdentifier:downloadTask.taskIdentifier];
   FilterList *filterList = [[FilterList alloc] initWithDictionary:self.filterLists[filterListName]];
-
-  if (filterList.taskIdentifier == downloadTask.taskIdentifier) {
+  if (filterList) {
     if (![downloadTask.response isKindOfClass:[NSHTTPURLResponse class]]) {
       // This error occurs in rare cases. The error message is meaningless to ordinary user.
       NSLog(@"Downloading has failed: %@", downloadTask.error);
@@ -318,7 +353,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
     // http://www.atomicbird.com/blog/sharing-with-app-extensions
     NSURL *destination = [fileManager containerURLForSecurityApplicationGroupIdentifier:self.group];
-    destination = [destination URLByAppendingPathComponent:filterList.filename isDirectory:NO];
+    destination = [destination URLByAppendingPathComponent:filterList.fileName isDirectory:NO];
 
     NSError *error;
     // http://stackoverflow.com/questions/20683696/how-to-overwrite-a-folder-using-nsfilemanager-defaultmanager-when-copying
@@ -330,9 +365,10 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
     // Success, store the result
     filterList.lastUpdate = [NSDate date];
     filterList.downloaded = YES;
-    filterList.updating = NO;
     filterList.lastUpdateFailed = NO;
+    filterList.updating = NO;
     filterList.taskIdentifier = 0;
+
     self.downloadedVersion += 1;
 
     if (![filterList parseFilterListFromURL:destination error:&error]) {
@@ -359,5 +395,16 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 }
 
 #pragma mark - Private
+
+- (NSString *)filterListNameForTaskTaskIdentifier:(NSUInteger)taskIdentifier
+{
+  for (NSString *filterListName in self.filterLists) {
+    NSDictionary *filterList = self.filterLists[filterListName];
+    if (taskIdentifier == filterList.taskIdentifier) {
+      return filterListName;
+    }
+  }
+  return nil;
+}
 
 @end

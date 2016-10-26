@@ -19,19 +19,26 @@
 
 @interface FilterList : NSObject
 
-@property (nonatomic, strong, nullable) NSString *filename;
+@property (nonatomic, strong, nonnull) NSString *url;
+@property (nonatomic, strong, nonnull) NSString *fileName;
 @property (nonatomic, strong, nullable) NSString *version;
 
 @property (nonatomic) BOOL userTriggered;
 @property (nonatomic) BOOL downloaded;
 @property (nonatomic) BOOL updating;
 @property (nonatomic) BOOL lastUpdateFailed;
+// Task identifier of associated download task
 @property (nonatomic) NSUInteger taskIdentifier;
+// Group identifier refer to associated download group.
+// Only download tasks, which were triggered by user,
+// are allowed to display download failure dialogs.
+// updatingGroupIdentifier represent the most recent download tasks.
+@property (nonatomic) NSUInteger updatingGroupIdentifier;
 
 @property (nonatomic, strong, nullable) NSDate *lastUpdate;
 @property (nonatomic) NSTimeInterval expires;
 
-- (instancetype __nonnull)initWithDictionary:(NSDictionary *__nonnull)dictionary;
+- (instancetype __nullable)initWithDictionary:(NSDictionary *__nullable)dictionary;
 
 - (NSDictionary *__nonnull)dictionary;
 
