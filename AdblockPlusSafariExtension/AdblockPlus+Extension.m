@@ -17,6 +17,9 @@
 
 #import "AdblockPlus+Extension.h"
 #import "AdblockPlus+Parsing.h"
+#import "NSDictionary+FilterList.h"
+
+static NSString *emptyFilterListName = @"empty.json";
 
 @implementation AdblockPlus (Extension)
 
@@ -24,31 +27,24 @@
 {
   NSString *fileName;
 
-  if (!self.enabled) {
-    fileName = @"empty.json";
-  } else if (self.acceptableAdsEnabled) {
-    fileName = @"easylist+exceptionrules_content_blocker.json";
-  } else {
-    fileName = @"easylist_content_blocker.json";
-  }
-
-  for (NSString *filterListName in self.filterLists) {
+  if (self.enabled) {
+    NSString *filterListName = self.activeFilterListName;
     NSDictionary *filterList = self.filterLists[filterListName];
-    if ([fileName isEqualToString:filterList[@"filename"]]) {
-      if (![filterList[@"downloaded"] boolValue]) {
-        break;
-      }
+    fileName = filterList.fileName;
 
+    if (filterList.downloaded && fileName) {
       NSFileManager *fileManager = [NSFileManager defaultManager];
       NSURL *url = [fileManager containerURLForSecurityApplicationGroupIdentifier:self.group];
       url = [url URLByAppendingPathComponent:fileName isDirectory:NO];
 
-      if (![fileManager fileExistsAtPath:url.path]) {
-        break;
+      if ([fileManager fileExistsAtPath:url.path]) {
+        return url;
       }
-
-      return url;
     }
+  }
+
+  if (!fileName) {
+    fileName = emptyFilterListName;
   }
 
   return [[NSBundle mainBundle] URLForResource:[fileName stringByDeletingPathExtension] withExtension:@"json"];
@@ -59,7 +55,7 @@
   NSURL *original = self.activeFilterListsURL;
   NSString *fileName = original.lastPathComponent;
 
-  if (fileName == nil || [fileName isEqual:@"empty.json"])  {
+  if (fileName == nil || [fileName isEqual:emptyFilterListName])  {
     return original;
   }
 

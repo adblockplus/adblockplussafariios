@@ -2,14 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>https://easylist-downloads.adblockplus.org/easylist_content_blocker.json</key>
+	<key>easylist</key>
 	<dict>
-		<key>filename</key>
+		<key>url</key>
+		<string>https://easylist-downloads.adblockplus.org/easylist_content_blocker.json</string>
+		<key>fileName</key>
 		<string>easylist_content_blocker.json</string>
 	</dict>
-	<key>https://easylist-downloads.adblockplus.org/easylist+exceptionrules_content_blocker.json</key>
+	<key>easylist+exceptionrules</key>
 	<dict>
-		<key>filename</key>
+		<key>url</key>
+		<string>https://easylist-downloads.adblockplus.org/easylist+exceptionrules_content_blocker.json</string>
+		<key>fileName</key>
 		<string>easylist+exceptionrules_content_blocker.json</string>
 	</dict>
 </dict>

@@ -101,7 +101,7 @@
 
 - (void)onSwitchHasChanged:(UISwitch *)s
 {
-  [self.adblockPlus setAcceptableAdsEnabled:s.on reload:YES];
+  self.adblockPlus.acceptableAdsEnabled = s.on;
 }
 
 - (void)updateAccessoryViewOfCell:(UITableViewCell *)cell
