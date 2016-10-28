@@ -119,7 +119,7 @@ static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
             }
           }
         }
-        
+
         _filterLists = filterListsVersion2;
       }
     }
