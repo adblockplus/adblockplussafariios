@@ -17,11 +17,19 @@
 
 #import "AdblockPlus.h"
 
+#import "NSDictionary+FilterList.h"
+
+NSString *DefaultFilterListName = @"easylist";
+NSString *DefaultFilterListPlusExceptionRulesName = @"easylist+exceptionrules";
+NSString *CustomFilterListName = @"customFilterList";
+
 NSString *AdblockPlusErrorDomain = @"AdblockPlusError";
 NSString *AdblockPlusActivated = @"AdblockPlusActivated";
 static NSString *AdblockPlusEnabled = @"AdblockPlusEnabled";
 static NSString *AdblockPlusAcceptableAdsEnabled = @"AdblockPlusAcceptableAdsEnabled";
+static NSString *AdblockPlusDefaultFilterListEnabled = @"AdblockPlusDefaultFilterListEnabled";
 static NSString *AdblockPlusFilterLists = @"AdblockPlusFilterLists";
+static NSString *AdblockPlusFilterListsVersion2 = @"AdblockPlusFilterListsVersion2";
 static NSString *AdblockPlusInstalledVersion = @"AdblockPlusInstalledVersion";
 static NSString *AdblockPlusDownloadedVersion = @"AdblockPlusDownloadedVersion";
 static NSString *AdblockPlusWhitelistedWebsites = @"AdblockPlusWhitelistedWebsites";
@@ -40,12 +48,6 @@ static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
 {
   if (self = [super init]) {
 
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"FilterLists" ofType:@"plist"];
-    NSDictionary *filterLists = [NSDictionary dictionaryWithContentsOfFile:path];
-    if (!filterLists) {
-      filterLists = @{};
-    }
-
     // Try to extract group from bundle name from bundle id (in host app and extension):
     // org.adblockplus.AdblockPlusSafari           -> org.adblockplus
     // org.adblockplus.devbuilds.AdblockPlusSafari -> org.adblockplus.devbuilds
@@ -62,21 +64,68 @@ static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
 
     _adblockPlusDetails = [[NSUserDefaults alloc] initWithSuiteName:self.group];
     [_adblockPlusDetails registerDefaults:
-     @{ AdblockPlusActivated: @NO,
-        AdblockPlusEnabled: @YES,
+     @{ AdblockPlusEnabled: @YES,
         AdblockPlusAcceptableAdsEnabled: @YES,
+        AdblockPlusActivated: @NO,
+        AdblockPlusDefaultFilterListEnabled: @YES,
         AdblockPlusInstalledVersion: @0,
         AdblockPlusDownloadedVersion: @1,
-        AdblockPlusFilterLists: filterLists,
         AdblockPlusWhitelistedWebsites: @[]}];
 
     _enabled = [_adblockPlusDetails boolForKey:AdblockPlusEnabled];
     _acceptableAdsEnabled = [_adblockPlusDetails boolForKey:AdblockPlusAcceptableAdsEnabled];
     _activated = [_adblockPlusDetails boolForKey:AdblockPlusActivated];
-    _filterLists = [_adblockPlusDetails objectForKey:AdblockPlusFilterLists];
+    _defaultFilterListEnabled = [_adblockPlusDetails boolForKey:AdblockPlusDefaultFilterListEnabled];
+    _filterLists = [_adblockPlusDetails objectForKey:AdblockPlusFilterListsVersion2];
     _installedVersion = [_adblockPlusDetails integerForKey:AdblockPlusInstalledVersion];
     _downloadedVersion = [_adblockPlusDetails integerForKey:AdblockPlusDownloadedVersion];
     _whitelistedWebsites = [_adblockPlusDetails objectForKey:AdblockPlusWhitelistedWebsites];
+
+    if (!_filterLists) {
+      // Load default filter lists
+      NSString *path = [[NSBundle mainBundle] pathForResource:@"FilterLists" ofType:@"plist"];
+      _filterLists = [NSDictionary dictionaryWithContentsOfFile:path];
+      if (!_filterLists) {
+        _filterLists = @{};
+      }
+
+      // If no filter lists of version 1 is stored in user defaults,
+      // then default filter lists are used
+
+      NSDictionary *filterListsVersion1 = [_adblockPlusDetails objectForKey:AdblockPlusFilterLists];
+      if (filterListsVersion1) {
+        // Old version of filter lists was loaded, convert old version to new version
+
+        NSDictionary *defaultFilterListsFileNames =
+        @{DefaultFilterListName:
+            @"easylist_content_blocker.json",
+          DefaultFilterListPlusExceptionRulesName:
+            @"easylist+exceptionrules_content_blocker.json"
+          };
+
+        NSMutableDictionary *filterListsVersion2 = [_filterLists mutableCopy];
+
+        for (NSString *defaultFilterListName in defaultFilterListsFileNames) {
+          NSString *defaultFilterListFileName = defaultFilterListsFileNames[defaultFilterListName];
+          for (NSString *filterListUrl in filterListsVersion1) {
+            NSDictionary *filterList = filterListsVersion1[filterListUrl];
+            if ([filterList[@"filename"] isEqualToString:defaultFilterListFileName]) {
+              NSMutableDictionary *modifiedFilterList = [filterList mutableCopy];
+              modifiedFilterList[@"url"] = filterListUrl;
+              modifiedFilterList[@"fileName"] = defaultFilterListFileName;
+              [modifiedFilterList removeObjectForKey:@"filename"];
+
+              filterListsVersion2[defaultFilterListName] = modifiedFilterList;
+            }
+          }
+        }
+
+        _filterLists = filterListsVersion2;
+      }
+    }
+
+    NSAssert(_filterLists[DefaultFilterListName], @"Default filter list is not set");
+    NSAssert(_filterLists[DefaultFilterListPlusExceptionRulesName], @"Default filter list with exceptions is not set");
   }
   return self;
 }
@@ -104,10 +153,17 @@ static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
   [_adblockPlusDetails synchronize];
 }
 
+- (void)setDefaultFilterListEnabled:(BOOL)defaultFilterListEnabled
+{
+  _defaultFilterListEnabled = defaultFilterListEnabled;
+  [_adblockPlusDetails setBool:defaultFilterListEnabled forKey:AdblockPlusDefaultFilterListEnabled];
+  [_adblockPlusDetails synchronize];
+}
+
 - (void)setFilterLists:(NSDictionary<NSString *,NSDictionary<NSString *,NSObject *> *> *)filterLists
 {
   _filterLists = filterLists;
-  [_adblockPlusDetails setObject:filterLists forKey:AdblockPlusFilterLists];
+  [_adblockPlusDetails setObject:filterLists forKey:AdblockPlusFilterListsVersion2];
   [_adblockPlusDetails synchronize];
 }
 
@@ -147,6 +203,17 @@ static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
 - (NSString *)backgroundSessionConfigurationIdentifier
 {
   return [NSString stringWithFormat:@"%@.AdblockPlusSafari.BackgroundSession", _bundleName];
+}
+
+- (NSString *__nonnull)activeFilterListName
+{
+  if (!self.defaultFilterListEnabled && [self.filterLists[CustomFilterListName] downloaded]) {
+    return CustomFilterListName;
+  }
+  if (self.acceptableAdsEnabled) {
+    return DefaultFilterListPlusExceptionRulesName;
+  }
+  return DefaultFilterListName;
 }
 
 @end

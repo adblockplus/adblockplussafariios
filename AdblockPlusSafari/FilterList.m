@@ -40,21 +40,45 @@
 
 + (NSArray *)boolProperties
 {
-  return @[@"userTriggered", @"downloaded", @"updating", @"lastUpdateFailed"];
+  static NSMutableArray *properties;
+  static dispatch_once_t onceToken;
+
+  dispatch_once(&onceToken, ^{
+    unsigned int count = 0;
+    objc_property_t *list = class_copyPropertyList([self class], &count);
+    properties = [NSMutableArray array];
+    for (unsigned int i = 0; i < count; i++) {
+      const char *pattern = "TB,";
+      const char *attributes = property_getAttributes(list[i]);
+      if (strncmp(pattern, attributes, strlen(pattern)) == 0) {
+        [properties addObject:[NSString stringWithFormat:@"%s", property_getName(list[i])]];
+      }
+    }
+  });
+
+  return properties;
 }
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 {
+  if (!dictionary) {
+    return nil;
+  }
+
   if (self = [super init]) {
     for (NSString *key in [FilterList allProperties]) {
       [self setValue:[dictionary valueForKey:key] forKey:key];
     }
   }
+
   return self;
 }
 
 - (NSDictionary *)dictionary
 {
+  NSAssert(self.fileName, @"Filename must be set!");
+  NSAssert(self.url, @"Url must be set!");
+
   NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
 
   for (NSString *key in [FilterList allProperties]) {
@@ -83,7 +107,7 @@
     return;
   }
 
-  if ([@[@"taskIdentifier", @"expires"] containsObject:key]) {
+  if ([@[@"taskIdentifier", @"expires", @"updatingGroupIdentifier"] containsObject:key]) {
     [self setValue:@0 forKey:key];
     return;
   }

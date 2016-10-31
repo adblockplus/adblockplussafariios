@@ -20,6 +20,7 @@
 #import "Appearence.h"
 #import "RootController.h"
 #import "FilterList.h"
+#import "NSDictionary+FilterList.h"
 
 // Wake up application every hour (just hint for iOS)
 const NSTimeInterval BackgroundFetchInterval = 3600;
@@ -87,9 +88,9 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
   [self.adblockPlus checkActivatedFlag];
 
   if (!self.firstUpdateTriggered && !self.adblockPlus.updating) {
-    NSDictionary *filterLists = [self.adblockPlus outdatedFilterLists];
-    if (filterLists.count > 0) {
-      [self.adblockPlus updateFilterLists:filterLists userTriggered:NO];
+    NSArray *filterListNames = [self.adblockPlus outdatedFilterListNames];
+    if (filterListNames.count > 0) {
+      [self.adblockPlus updateFilterListsWithNames:filterListNames userTriggered:NO];
       self.firstUpdateTriggered = YES;
     }
   }
@@ -103,10 +104,15 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
-  NSDictionary *outdatedFilterLists = self.adblockPlus.outdatedFilterLists;
+  NSArray *outdatedFilterListNames = self.adblockPlus.outdatedFilterListNames;
 
-  if ([outdatedFilterLists count] > 0) {
-    [self.adblockPlus updateFilterLists:outdatedFilterLists userTriggered:NO];
+  if ([outdatedFilterListNames count] > 0) {
+    NSMutableDictionary *outdatedFilterLists = [NSMutableDictionary dictionary];
+    for (NSString *outdatedFilterListName in outdatedFilterListNames) {
+      outdatedFilterLists[outdatedFilterListName] = self.adblockPlus.filterLists[outdatedFilterListName];
+    }
+
+    [self.adblockPlus updateFilterListsWithNames:outdatedFilterListNames userTriggered:NO];
 
     [self.backgroundFetches addObject:
      @{@"completion": completionHandler,
@@ -153,9 +159,9 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
         for (NSString *filterListName in filterLists) {
           NSDictionary<NSString *, id> *filterList = filterLists[filterListName];
           // The date of the last known successful update
-          NSDate *lastUpdate = filterList[@"lastUpdate"];
+          NSDate *lastUpdate = filterList.lastUpdate;
 
-          NSDate *currentLastUpdate = self.adblockPlus.filterLists[filterListName][@"lastUpdate"];
+          NSDate *currentLastUpdate = self.adblockPlus.filterLists[filterListName].lastUpdate;
 
           updated = updated || (!lastUpdate && currentLastUpdate) || (currentLastUpdate && [currentLastUpdate compare:lastUpdate] == NSOrderedDescending);
         }
