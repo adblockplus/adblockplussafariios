@@ -41,4 +41,6 @@ extern NSString *__nonnull DefaultFontFamily;
 
 + (UIFont *__nonnull)defaultBoldFontOfSize:(CGFloat)size;
 
++ (UIFont *__nonnull)defaultSemiboldFontOfSize:(CGFloat)size;
+
 @end

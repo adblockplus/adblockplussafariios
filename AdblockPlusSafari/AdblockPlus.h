@@ -29,6 +29,10 @@ typedef NS_ENUM(NSUInteger, AdblockPlusFilterListType) {
   AdblockPlusFilterListTypeVersion2
 };
 
+typedef NS_ENUM(NSUInteger, AdblockPlusErrorCode) {
+  AdblockPlusErrorCodeActivityTest = 10
+};
+
 @interface AdblockPlus : NSObject
 
 @property (nonatomic, strong, readonly) NSUserDefaults *__nonnull adblockPlusDetails;
@@ -47,6 +51,8 @@ typedef NS_ENUM(NSUInteger, AdblockPlusFilterListType) {
 
 @property (nonatomic) BOOL defaultFilterListEnabled;
 
+@property (nonatomic) NSDate *__nullable lastActivity;
+
 @property (nonatomic) NSInteger installedVersion;
 
 @property (nonatomic) NSInteger downloadedVersion;
@@ -56,5 +62,9 @@ typedef NS_ENUM(NSUInteger, AdblockPlusFilterListType) {
 @property (nonatomic, strong) NSArray<NSString *> *__nonnull whitelistedWebsites;
 
 - (NSString *__nonnull)activeFilterListName;
+
+@property (nonatomic) BOOL performingActivityTest;
+
+- (void)synchronize;
 
 @end

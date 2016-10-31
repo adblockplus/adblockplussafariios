@@ -15,10 +15,13 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
  */
 
+
 #import <UIKit/UIKit.h>
 
-extern NSString *WelcomeControllerHasBeenSeen;
+#import "AdblockPlusExtras.h"
 
-@interface WelcomeController : UIViewController
+@interface FourthDialogController : UIViewController
+
+@property (nonatomic, strong) AdblockPlusExtras *__nullable adblockPlus;
 
 @end

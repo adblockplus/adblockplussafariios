@@ -33,6 +33,8 @@ static NSString *AdblockPlusFilterListsVersion2 = @"AdblockPlusFilterListsVersio
 static NSString *AdblockPlusInstalledVersion = @"AdblockPlusInstalledVersion";
 static NSString *AdblockPlusDownloadedVersion = @"AdblockPlusDownloadedVersion";
 static NSString *AdblockPlusWhitelistedWebsites = @"AdblockPlusWhitelistedWebsites";
+static NSString *AdblockPlusLastActivity = @"AdblockPlusLastActivity";
+static NSString *AdblockPlusPerformingActivityTest = @"AdblockPlusPerformingActivityTest";
 
 static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
 
@@ -80,6 +82,8 @@ static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
     _installedVersion = [_adblockPlusDetails integerForKey:AdblockPlusInstalledVersion];
     _downloadedVersion = [_adblockPlusDetails integerForKey:AdblockPlusDownloadedVersion];
     _whitelistedWebsites = [_adblockPlusDetails objectForKey:AdblockPlusWhitelistedWebsites];
+    _lastActivity = [_adblockPlusDetails objectForKey:AdblockPlusLastActivity];
+    _performingActivityTest = [_adblockPlusDetails boolForKey:AdblockPlusPerformingActivityTest];
 
     if (!_filterLists) {
       // Load default filter lists
@@ -160,6 +164,13 @@ static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
   [_adblockPlusDetails synchronize];
 }
 
+- (void)setLastActivity:(NSDate *)lastActivity
+{
+  _lastActivity = lastActivity;
+  [_adblockPlusDetails setObject:lastActivity forKey:AdblockPlusLastActivity];
+  [_adblockPlusDetails synchronize];
+}
+
 - (void)setFilterLists:(NSDictionary<NSString *,NSDictionary<NSString *,NSObject *> *> *)filterLists
 {
   _filterLists = filterLists;
@@ -185,6 +196,13 @@ static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
 {
   _whitelistedWebsites = whitelistedWebsites;
   [_adblockPlusDetails setObject:whitelistedWebsites forKey:AdblockPlusWhitelistedWebsites];
+  [_adblockPlusDetails synchronize];
+}
+
+- (void)setPerformingActivityTest:(BOOL)performingActivityTest
+{
+  _performingActivityTest = performingActivityTest;
+  [_adblockPlusDetails setBool:performingActivityTest forKey:AdblockPlusPerformingActivityTest];
   [_adblockPlusDetails synchronize];
 }
 
@@ -214,6 +232,12 @@ static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
     return DefaultFilterListPlusExceptionRulesName;
   }
   return DefaultFilterListName;
+}
+
+- (void)synchronize
+{
+  [self.adblockPlusDetails synchronize];
+  _lastActivity = [self.adblockPlusDetails objectForKey:AdblockPlusLastActivity];
 }
 
 @end

@@ -25,7 +25,10 @@
 // Updating filter lists
 @property (nonatomic, readonly) BOOL updating;
 
-- (void)reloadContentBlockerWithCompletion:(void(^__nullable)(NSError * __nullable error))completion;
+// Date of the last successful update of filter lists
+@property (nonatomic, readonly) NSDate *__nullable lastUpdate;
+
+- (void)reloadWithCompletion:(void (^__nullable)(NSError *__nullable error))completion;
 
 - (void)checkActivatedFlag;
 
@@ -35,6 +38,8 @@
 
 - (NSArray<NSString *> *__nonnull)outdatedFilterListNames;
 
-- (void)displayErrorDialogIfNeeded;
+//- (void)displayErrorDialogIfNeeded;
+
+@property (nonatomic) BOOL needsDisplayErrorDialog;
 
 @end

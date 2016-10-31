@@ -1,6 +1,6 @@
 /*
  * This file is part of Adblock Plus <https://adblockplus.org/>,
- * Copyright (C) 2006-2016 Eyeo GmbH
+ * Copyright (C) 2006-2015 Eyeo GmbH
  *
  * Adblock Plus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as
@@ -15,12 +15,9 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
  */
 
+
 #import <UIKit/UIKit.h>
 
-#import "AdblockPlusExtras.h"
-
-@interface HomeController : UIViewController
-
-@property (nonatomic, strong) AdblockPlusExtras *__nullable adblockPlus;
+@interface ThirdDialogController : UIViewController
 
 @end

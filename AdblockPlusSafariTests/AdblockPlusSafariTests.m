@@ -18,11 +18,13 @@
 #import <XCTest/XCTest.h>
 
 #import "AdblockPlusExtras.h"
-#import "AdblockPlus+Extension.h"
 #import "AdblockPlus+Parsing.h"
 #import "FilterList+Processing.h"
+#import "NSDictionary+FilterList.h"
 
-@interface AdblockPlusSafariTests : XCTestCase
+@import SafariServices;
+
+@interface AdblockPlusSafariTests : XCTestCase<NSFileManagerDelegate>
 
 @end
 
@@ -85,7 +87,8 @@
 
 - (void)testEasylistFilterListMergeWithWhitelistedWebsites
 {
-  [self performMergeFilterList:@"easylist_content_blocker"];}
+  [self performMergeFilterList:@"easylist_content_blocker"];
+}
 
 - (void)testEasylistPlusExceptionsFilterListMergeWithWhitelistedWebsites
 {
@@ -153,6 +156,71 @@
 - (void)testProcessingOfEasylistPlusExceptionsFilterListsMergeWithWhitelistedWebsitesV2
 {
   [self processFilterList:@"easylist+exceptionrules_content_blocker_v2" expectedVersion:@"201512011207" expectedExpires:4*3600*24];
+}
+
+- (void)performReloadTestWithFilterLists:(NSString *)filterLists acceptableAdsEnabled:(BOOL)acceptableAdsEnabled
+{
+  NSURL *input = [[NSBundle bundleForClass:[self class]] URLForResource:filterLists withExtension:@"json"];
+
+  AdblockPlusExtras *adblockPlus = [[AdblockPlusExtras alloc] init];
+  adblockPlus.enabled = YES;
+  adblockPlus.acceptableAdsEnabled = acceptableAdsEnabled;
+
+  NSString *name = adblockPlus.activeFilterListName;
+
+  NSFileManager *fileManager = [[NSFileManager alloc] init];
+  fileManager.delegate = self;
+
+  NSURL *output = [fileManager containerURLForSecurityApplicationGroupIdentifier:adblockPlus.group];
+  output = [output URLByAppendingPathComponent:adblockPlus.filterLists[name].fileName isDirectory:NO];
+
+  NSError *error;
+  if (!output || [fileManager copyItemAtURL:input toURL:output error:&error]) {
+    XCTAssert(false, @"File cannot be copied: %@", error);
+    return;
+  }
+
+  adblockPlus.activated = NO;
+
+  XCTestExpectation *expectation = [self expectationWithDescription:@"Expectations for reloader"];
+
+  // If the content blocker is requested to reload without any delay,
+  // then the reloading will always end with this error:
+  // 4097 "connection to service named com.apple.SafariServices.ContentBlockerLoader"
+  // Delay reloading magically solve this issue.
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    [adblockPlus reloadWithCompletion:^(NSError *error) {
+      dispatch_async(dispatch_get_main_queue(), ^{
+        XCTAssert(adblockPlus.activated, @"Adblock Plus is not activated, reloading test could not be properly executed.");
+        XCTAssert(!error, @"Filter lists reloading has failed: %@", error);
+        [expectation fulfill];
+      });
+    }];
+  });
+
+  [self waitForExpectationsWithTimeout:20 handler:^(NSError * _Nullable error) {
+  }];
+}
+
+- (void)testEasylistFilterListsReloading
+{
+  [self performReloadTestWithFilterLists:@"easylist_content_blocker_v2" acceptableAdsEnabled:NO];
+}
+
+- (void)testEasylistPlusExceptionsFilterListsReloading
+{
+  [self performReloadTestWithFilterLists:@"easylist+exceptionrules_content_blocker_v2" acceptableAdsEnabled:YES];
+}
+
+#pragma MARK: -
+
+- (BOOL)fileManager:(NSFileManager *)fileManager shouldProceedAfterError:(NSError *)error movingItemAtURL:(NSURL *)srcURL toURL:(NSURL *)dstURL
+{
+  if ([error code] == NSFileWriteFileExistsError) {
+    return YES;
+  } else {
+    return NO;
+  }
 }
 
 @end

@@ -15,17 +15,18 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
  */
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-#import "AdblockPlusExtras.h"
+@class UIFont;
 
-@protocol DialogControllerProtocol <NSObject>
-@end
+@interface NSAttributedString (TextRenderer)
 
-@interface RootController : UINavigationController
-
-@property (nonatomic, strong) AdblockPlusExtras *__nullable adblockPlus;
-
-- (void)showDialogIfNeeded;
+/**
+ @param token a single character representing a span marker.
+ @param font the font to substitute in the span
+ @return self as attributed string with font changes applied to the found spans
+ */
+- (NSAttributedString*)renderSpanMarkedByChar:(NSString *)markerChar
+                                       asFont:(UIFont *)font;
 
 @end

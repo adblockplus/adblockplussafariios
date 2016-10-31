@@ -15,17 +15,9 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
  */
 
+
 #import <UIKit/UIKit.h>
 
-#import "AdblockPlusExtras.h"
-
-@protocol DialogControllerProtocol <NSObject>
-@end
-
-@interface RootController : UINavigationController
-
-@property (nonatomic, strong) AdblockPlusExtras *__nullable adblockPlus;
-
-- (void)showDialogIfNeeded;
+@interface FirstDialogController : UIViewController
 
 @end
