@@ -1,6 +1,6 @@
 /*
  * This file is part of Adblock Plus <https://adblockplus.org/>,
- * Copyright (C) 2006-2016 Eyeo GmbH
+ * Copyright (C) 2006-2015 Eyeo GmbH
  *
  * Adblock Plus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as
@@ -16,8 +16,21 @@
  */
 
 
-#import <UIKit/UIKit.h>
+#import "AcceptableAdsExplanationController.h"
 
-@interface FirstDialogController : UIViewController
+#import "DialogPresenterController.h"
+
+@interface AcceptableAdsExplanationController ()
+
+@end
+
+@implementation AcceptableAdsExplanationController
+
+- (IBAction)onGotItTouched:(UIButton *)sender
+{
+  if ([self.parentViewController respondsToSelector:@selector(firstDialogControllerDidFinish:)]) {
+    [((id)self.parentViewController) firstDialogControllerDidFinish:self];
+  }
+}
 
 @end

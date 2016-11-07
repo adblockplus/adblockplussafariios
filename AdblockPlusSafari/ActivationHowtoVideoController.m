@@ -16,7 +16,7 @@
  */
 
 
-#import "SecondDialogController.h"
+#import "ActivationHowtoVideoController.h"
 
 #import "Appearence.h"
 #import "NSAttributedString+TextRenderer.h"
@@ -24,13 +24,13 @@
 @import AVKit;
 @import AVFoundation;
 
-@interface SecondDialogController ()
+@interface ActivationHowtoVideoController ()
 
 @property (nonatomic, weak) IBOutlet UILabel *firstStepLabel;
 
 @end
 
-@implementation SecondDialogController
+@implementation ActivationHowtoVideoController
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {

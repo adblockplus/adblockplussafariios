@@ -18,6 +18,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondDialogController : UIViewController
+@interface ActivationWaitingController : UIViewController
 
 @end

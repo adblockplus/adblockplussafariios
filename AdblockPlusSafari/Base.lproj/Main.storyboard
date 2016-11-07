@@ -232,10 +232,10 @@
             </objects>
             <point key="canvasLocation" x="-634" y="-1698"/>
         </scene>
-        <!--First Dialog Controller-->
+        <!--Acceptable Ads Explanation Controller-->
         <scene sceneID="yPb-MI-iJN">
             <objects>
-                <viewController storyboardIdentifier="FirstDialogController" id="yme-e6-aq9" customClass="FirstDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstDialogController" id="yme-e6-aq9" customClass="AcceptableAdsExplanationController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GSJ-Cg-71c"/>
                         <viewControllerLayoutGuide type="bottom" id="P2T-0t-UOu"/>
@@ -317,10 +317,10 @@
             </objects>
             <point key="canvasLocation" x="191" y="-1699"/>
         </scene>
-        <!--Second Dialog Controller-->
+        <!--Activation Howto Video Controller-->
         <scene sceneID="YhY-5K-lgh">
             <objects>
-                <viewController storyboardIdentifier="SecondDialogController" id="brc-eQ-Woq" customClass="SecondDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondDialogController" id="brc-eQ-Woq" customClass="ActivationHowtoVideoController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MjE-hw-nO3"/>
                         <viewControllerLayoutGuide type="bottom" id="ZIq-8B-FL1"/>
@@ -410,10 +410,10 @@
             </objects>
             <point key="canvasLocation" x="1020" y="-1699"/>
         </scene>
-        <!--Third Dialog Controller-->
+        <!--Activation Waiting Controller-->
         <scene sceneID="oZw-89-IeC">
             <objects>
-                <viewController storyboardIdentifier="ThirdDialogController" id="sVg-hE-x0Q" customClass="ThirdDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThirdDialogController" id="sVg-hE-x0Q" customClass="ActivationWaitingController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7H4-2P-px4"/>
                         <viewControllerLayoutGuide type="bottom" id="wx7-7F-ils"/>
@@ -486,10 +486,10 @@
             </objects>
             <point key="canvasLocation" x="1850" y="-1700"/>
         </scene>
-        <!--Fourth Dialog Controller-->
+        <!--Activation Confirmation Controller-->
         <scene sceneID="qJM-hY-aM9">
             <objects>
-                <viewController storyboardIdentifier="FourthDialogController" id="yFa-Pc-a0h" customClass="FourthDialogController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FourthDialogController" id="yFa-Pc-a0h" customClass="ActivationConfirmationController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lhG-IY-Znk"/>
                         <viewControllerLayoutGuide type="bottom" id="W2C-Gj-QjR"/>

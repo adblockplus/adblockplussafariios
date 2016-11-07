@@ -73,6 +73,8 @@
 
   for (UIViewController *viewController in self.childViewControllers) {
     if ([viewController isKindOfClass:[AdblockPlusController class]]) {
+      // Content of the controller table must be vertically moved
+      // in order not be covered by the bar with nonstandard height
       const CGFloat topOffsetCorrection = -15;
       UITableView *tableView = ((AdblockPlusController *)viewController).tableView;
       UIEdgeInsets insets = UIEdgeInsetsMake(self.topBarView.frame.size.height + topOffsetCorrection, 0, 0, 0);

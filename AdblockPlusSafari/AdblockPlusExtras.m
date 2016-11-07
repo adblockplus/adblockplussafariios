@@ -22,8 +22,27 @@
 #import "RootController.h"
 #import "FilterList+Processing.h"
 #import "NSDictionary+FilterList.h"
+#import "AdblockPlus+ActivityChecking.m"
+
+
 
 static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayErrorDialog";
+
+@interface ContentBlockerManager: NSObject<ContentBlockerManagerProtocol>
+
+@end
+
+@implementation ContentBlockerManager
+
+- (void)reloadWithIdentifier:(NSString *)identifier
+           completionHandler:(void (^)(NSError * error))completionHandler;
+{
+  [SFContentBlockerManager reloadContentBlockerWithIdentifier:identifier completionHandler:completionHandler];
+}
+
+@end
+
+
 
 @interface AdblockPlusExtras ()<NSURLSessionDownloadDelegate, NSFileManagerDelegate>
 
@@ -214,7 +233,9 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
   wSelf.performingActivityTest = NO;
   [SFContentBlockerManager reloadContentBlockerWithIdentifier:self.contentBlockerIdentifier completionHandler:^(NSError *error) {
     dispatch_async(dispatch_get_main_queue(), ^{
-      NSLog(@"%@", error);
+      if (error) {
+        NSLog(@"%@", error);
+      }
       wSelf.reloading = NO;
       [wSelf checkActivatedFlag:lastActivity];
       if (completion) {
@@ -222,14 +243,6 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
       }
     });
   }];
-}
-
-- (void)checkActivatedFlag
-{
-  BOOL activated = [self.adblockPlusDetails boolForKey:AdblockPlusActivated];
-  if (self.activated != activated) {
-    self.activated = activated;
-  }
 }
 
 - (void)updateActiveFilterLists:(BOOL)userTriggered
@@ -394,28 +407,10 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
   if (self.reloading) {
     return;
   }
-
-  __weak __typeof(self) wSelf = self;
-  NSDate *lastActivity = wSelf.lastActivity;
-  wSelf.performingActivityTest = YES;
-  [SFContentBlockerManager reloadContentBlockerWithIdentifier:self.contentBlockerIdentifier completionHandler:^(NSError *error) {
-    dispatch_async(dispatch_get_main_queue(), ^{
-      if (error) {
-        NSLog(@"%@", error);
-      }
-      wSelf.performingActivityTest = NO;
-      [wSelf checkActivatedFlag:lastActivity];
-    });
-  }];
-}
-
-- (void)checkActivatedFlag:(NSDate *)lastActivity
-{
-  [self synchronize];
-  BOOL activated = !!self.lastActivity && (!lastActivity || [self.lastActivity compare:lastActivity] == NSOrderedDescending);
-  if (self.activated != activated) {
-    self.activated = activated;
-  }
+  
+  [self performActivityTestWith:[[ContentBlockerManager alloc] init]];
 }
 
 @end
+
+

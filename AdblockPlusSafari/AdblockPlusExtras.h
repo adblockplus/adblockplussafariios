@@ -30,15 +30,11 @@
 
 - (void)reloadWithCompletion:(void (^__nullable)(NSError *__nullable error))completion;
 
-- (void)checkActivatedFlag;
-
 - (void)updateActiveFilterLists:(BOOL)userTriggered;
 
 - (void)updateFilterListsWithNames:(NSArray<NSString *> *__nonnull)filterListNames userTriggered:(BOOL)userTriggered;
 
 - (NSArray<NSString *> *__nonnull)outdatedFilterListNames;
-
-//- (void)displayErrorDialogIfNeeded;
 
 @property (nonatomic) BOOL needsDisplayErrorDialog;
 

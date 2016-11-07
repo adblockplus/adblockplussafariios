@@ -21,10 +21,10 @@
 #import "RootController.h"
 
 typedef NS_ENUM(NSUInteger, DialogControllerType) {
-  DialogControllerTypeFirst,
-  DialogControllerTypeSecond,
-  DialogControllerTypeThird,
-  DialogControllerTypeFourth
+  DialogControllerTypeAcceptableAdsExplanation,
+  DialogControllerTypeActivationHowtoVideo,
+  DialogControllerTypeActivationWaiting,
+  DialogControllerTypeActivationConfirmation
 };
 
 static NSString *FirstDialogControllerShown = @"FirstDialogControllerShown";
@@ -64,9 +64,9 @@ static NSString *FilterListsUpdated = @"FilterListsUpdated";
     _timeoutHasExpired = NO;
     _currentDialogLocked = NO;
     if (![[self class] wasFirstDialogControllerShown]) {
-      self.currentDialogControllerType = DialogControllerTypeFirst;
+      self.currentDialogControllerType = DialogControllerTypeAcceptableAdsExplanation;
     } else {
-      self.currentDialogControllerType = DialogControllerTypeSecond;
+      self.currentDialogControllerType = DialogControllerTypeActivationHowtoVideo;
     }
   }
   return self;
@@ -173,7 +173,7 @@ static NSString *FilterListsUpdated = @"FilterListsUpdated";
       } else {
         [self setDialogLock];
         [self setTimeout];
-        self.currentDialogControllerType = DialogControllerTypeThird;
+        self.currentDialogControllerType = DialogControllerTypeActivationWaiting;
       }
     } else if (!self.adblockPlus.updating) {
       if ([[self class] wasFilterListsUpdated]) {
@@ -187,29 +187,29 @@ static NSString *FilterListsUpdated = @"FilterListsUpdated";
   DialogControllerType oldValue = self.currentDialogControllerType;
 
   switch (self.currentDialogControllerType) {
-    case DialogControllerTypeFirst:
+    case DialogControllerTypeAcceptableAdsExplanation:
       if ([[self class] wasFirstDialogControllerShown]) {
         if (self.adblockPlus.activated) {
           tryPresentThirdDialog();
         } else {
           [self setDialogLock];
-          self.currentDialogControllerType = DialogControllerTypeSecond;
+          self.currentDialogControllerType = DialogControllerTypeActivationHowtoVideo;
         }
       }
       break;
-    case DialogControllerTypeSecond:
+    case DialogControllerTypeActivationHowtoVideo:
       if (self.adblockPlus.activated) {
         tryPresentThirdDialog();
       }
       break;
-    case DialogControllerTypeThird:
+    case DialogControllerTypeActivationWaiting:
       if (!(self.adblockPlus.updating || self.adblockPlus.reloading) || self.timeoutHasExpired) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:FilterListsUpdated];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        self.currentDialogControllerType = DialogControllerTypeFourth;
+        self.currentDialogControllerType = DialogControllerTypeActivationConfirmation;
       }
       break;
-    case DialogControllerTypeFourth:
+    case DialogControllerTypeActivationConfirmation:
       break;
   }
 
@@ -221,13 +221,13 @@ static NSString *FilterListsUpdated = @"FilterListsUpdated";
 - (UIViewController *)viewControllerFor:(DialogControllerType)type
 {
   switch (type) {
-    case DialogControllerTypeFirst:
+    case DialogControllerTypeAcceptableAdsExplanation:
       return [self.storyboard instantiateViewControllerWithIdentifier:@"FirstDialogController"];
-    case DialogControllerTypeSecond:
+    case DialogControllerTypeActivationHowtoVideo:
       return [self.storyboard instantiateViewControllerWithIdentifier:@"SecondDialogController"];
-    case DialogControllerTypeThird:
+    case DialogControllerTypeActivationWaiting:
       return [self.storyboard instantiateViewControllerWithIdentifier:@"ThirdDialogController"];
-    case DialogControllerTypeFourth:
+    case DialogControllerTypeActivationConfirmation:
       return [self.storyboard instantiateViewControllerWithIdentifier:@"FourthDialogController"];
   }
 }

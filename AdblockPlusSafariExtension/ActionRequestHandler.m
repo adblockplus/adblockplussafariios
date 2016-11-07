@@ -18,6 +18,7 @@
 #import "ActionRequestHandler.h"
 
 #import "AdblockPlus+Extension.h"
+#import "AdblockPlus+ActivityChecking.h"
 
 @interface ActionRequestHandler ()
 
@@ -28,15 +29,13 @@
 - (void)beginRequestWithExtensionContext:(NSExtensionContext *)context
 {
   AdblockPlus *adblockPlus = [[AdblockPlus alloc] init];
-  adblockPlus.activated = YES;
-  adblockPlus.lastActivity = [[NSDate alloc] init];
 
-  if (adblockPlus.performingActivityTest) {
-    // Cancel the reloading. This will reduce time of execution of execution of content blocker
-    // and therefore host application will be notified about result of testing ASAP.
-    [context cancelRequestWithError:[NSError errorWithDomain:AdblockPlusErrorDomain code:AdblockPlusErrorCodeActivityTest userInfo:nil]];
+  NSError *error;
+  if ([adblockPlus shouldRespondToActivityTest:&error]) {
+    [context cancelRequestWithError:error];
     return;
   }
+
 
   // completeRequestReturningItems might need lot of time to update rules.
   // (iOS process can be suspended during reloading, which expand time of reloading.)

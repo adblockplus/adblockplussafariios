@@ -23,6 +23,8 @@
 		691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */; };
 		6970E76E1BA94C3900B11AC3 /* AdblockPlus+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */; };
 		6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */; };
+		697D27321DCB492000118902 /* AdblockPlus+ActivityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */; };
+		697D27331DCB6CA300118902 /* AdblockPlus+ActivityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */; };
 		699876F31BBE721900595FB9 /* FilterLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 699876F21BBE721900595FB9 /* FilterLists.plist */; };
 		699876F41BBE765100595FB9 /* FilterLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 699876F21BBE721900595FB9 /* FilterLists.plist */; };
 		699B0EB61BCE9D11005DC603 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
@@ -56,10 +58,10 @@
 		69C19C771B9835D1009ACBAC /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C19C761B9835D1009ACBAC /* RootController.m */; };
 		69EA099C1DC75A7C0018FAC0 /* NSAttributedString+TextRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA099B1DC75A7C0018FAC0 /* NSAttributedString+TextRenderer.m */; };
 		69EA09A71DC75AA00018FAC0 /* DialogPresenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA099E1DC75AA00018FAC0 /* DialogPresenterController.m */; };
-		69EA09A81DC75AA00018FAC0 /* FirstDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA09A01DC75AA00018FAC0 /* FirstDialogController.m */; };
-		69EA09A91DC75AA00018FAC0 /* FourthDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA09A21DC75AA00018FAC0 /* FourthDialogController.m */; };
-		69EA09AA1DC75AA00018FAC0 /* SecondDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA09A41DC75AA00018FAC0 /* SecondDialogController.m */; };
-		69EA09AB1DC75AA00018FAC0 /* ThirdDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA09A61DC75AA00018FAC0 /* ThirdDialogController.m */; };
+		69EA09A81DC75AA00018FAC0 /* AcceptableAdsExplanationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA09A01DC75AA00018FAC0 /* AcceptableAdsExplanationController.m */; };
+		69EA09A91DC75AA00018FAC0 /* ActivationConfirmationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA09A21DC75AA00018FAC0 /* ActivationConfirmationController.m */; };
+		69EA09AA1DC75AA00018FAC0 /* ActivationHowtoVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA09A41DC75AA00018FAC0 /* ActivationHowtoVideoController.m */; };
+		69EA09AB1DC75AA00018FAC0 /* ActivationWaitingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA09A61DC75AA00018FAC0 /* ActivationWaitingController.m */; };
 		69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4D9261B95F1B700300817 /* AdblockPlusController.m */; };
 		69F4D92A1B95F28B00300817 /* AcceptableAdsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4D9291B95F28B00300817 /* AcceptableAdsController.m */; };
 		78D4980E520FB78493D616C6 /* libPods-AdblockPlusSafariTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE07FF83823C3FEEC8D669A /* libPods-AdblockPlusSafariTests.a */; };
@@ -136,6 +138,8 @@
 		6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AdblockPlus+Extension.m"; sourceTree = "<group>"; };
 		6970E76F1BA952F200B11AC3 /* AdblockPlusExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusExtras.h; sourceTree = "<group>"; };
 		6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusExtras.m; sourceTree = "<group>"; };
+		697D27301DCB492000118902 /* AdblockPlus+ActivityChecking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AdblockPlus+ActivityChecking.h"; sourceTree = "<group>"; };
+		697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AdblockPlus+ActivityChecking.m"; sourceTree = "<group>"; };
 		699876F21BBE721900595FB9 /* FilterLists.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FilterLists.plist; sourceTree = "<group>"; };
 		69A2BCFA1BCBCF8A00028734 /* WhitelistedWebsitesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhitelistedWebsitesController.h; sourceTree = "<group>"; };
 		69A2BCFB1BCBCF8A00028734 /* WhitelistedWebsitesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhitelistedWebsitesController.m; sourceTree = "<group>"; };
@@ -176,14 +180,14 @@
 		69EA099B1DC75A7C0018FAC0 /* NSAttributedString+TextRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+TextRenderer.m"; sourceTree = "<group>"; };
 		69EA099D1DC75AA00018FAC0 /* DialogPresenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogPresenterController.h; sourceTree = "<group>"; };
 		69EA099E1DC75AA00018FAC0 /* DialogPresenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogPresenterController.m; sourceTree = "<group>"; };
-		69EA099F1DC75AA00018FAC0 /* FirstDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstDialogController.h; sourceTree = "<group>"; };
-		69EA09A01DC75AA00018FAC0 /* FirstDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstDialogController.m; sourceTree = "<group>"; };
-		69EA09A11DC75AA00018FAC0 /* FourthDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthDialogController.h; sourceTree = "<group>"; };
-		69EA09A21DC75AA00018FAC0 /* FourthDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthDialogController.m; sourceTree = "<group>"; };
-		69EA09A31DC75AA00018FAC0 /* SecondDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondDialogController.h; sourceTree = "<group>"; };
-		69EA09A41DC75AA00018FAC0 /* SecondDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondDialogController.m; sourceTree = "<group>"; };
-		69EA09A51DC75AA00018FAC0 /* ThirdDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdDialogController.h; sourceTree = "<group>"; };
-		69EA09A61DC75AA00018FAC0 /* ThirdDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdDialogController.m; sourceTree = "<group>"; };
+		69EA099F1DC75AA00018FAC0 /* AcceptableAdsExplanationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptableAdsExplanationController.h; sourceTree = "<group>"; };
+		69EA09A01DC75AA00018FAC0 /* AcceptableAdsExplanationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptableAdsExplanationController.m; sourceTree = "<group>"; };
+		69EA09A11DC75AA00018FAC0 /* ActivationConfirmationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivationConfirmationController.h; sourceTree = "<group>"; };
+		69EA09A21DC75AA00018FAC0 /* ActivationConfirmationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationConfirmationController.m; sourceTree = "<group>"; };
+		69EA09A31DC75AA00018FAC0 /* ActivationHowtoVideoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivationHowtoVideoController.h; sourceTree = "<group>"; };
+		69EA09A41DC75AA00018FAC0 /* ActivationHowtoVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationHowtoVideoController.m; sourceTree = "<group>"; };
+		69EA09A51DC75AA00018FAC0 /* ActivationWaitingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivationWaitingController.h; sourceTree = "<group>"; };
+		69EA09A61DC75AA00018FAC0 /* ActivationWaitingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationWaitingController.m; sourceTree = "<group>"; };
 		69F4D9251B95F1B700300817 /* AdblockPlusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusController.h; sourceTree = "<group>"; };
 		69F4D9261B95F1B700300817 /* AdblockPlusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusController.m; sourceTree = "<group>"; };
 		69F4D9281B95F28B00300817 /* AcceptableAdsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptableAdsController.h; sourceTree = "<group>"; };
@@ -469,26 +473,26 @@
 		69F4D9241B95F18C00300817 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				69EA099D1DC75AA00018FAC0 /* DialogPresenterController.h */,
-				69EA099E1DC75AA00018FAC0 /* DialogPresenterController.m */,
-				69EA099F1DC75AA00018FAC0 /* FirstDialogController.h */,
-				69EA09A01DC75AA00018FAC0 /* FirstDialogController.m */,
-				69EA09A11DC75AA00018FAC0 /* FourthDialogController.h */,
-				69EA09A21DC75AA00018FAC0 /* FourthDialogController.m */,
-				69EA09A31DC75AA00018FAC0 /* SecondDialogController.h */,
-				69EA09A41DC75AA00018FAC0 /* SecondDialogController.m */,
-				69EA09A51DC75AA00018FAC0 /* ThirdDialogController.h */,
-				69EA09A61DC75AA00018FAC0 /* ThirdDialogController.m */,
 				691F74451B9874590057C702 /* AboutController.h */,
 				691F74461B9874590057C702 /* AboutController.m */,
 				69F4D9281B95F28B00300817 /* AcceptableAdsController.h */,
 				69F4D9291B95F28B00300817 /* AcceptableAdsController.m */,
+				69EA099F1DC75AA00018FAC0 /* AcceptableAdsExplanationController.h */,
+				69EA09A01DC75AA00018FAC0 /* AcceptableAdsExplanationController.m */,
+				69EA09A11DC75AA00018FAC0 /* ActivationConfirmationController.h */,
+				69EA09A21DC75AA00018FAC0 /* ActivationConfirmationController.m */,
+				69EA09A31DC75AA00018FAC0 /* ActivationHowtoVideoController.h */,
+				69EA09A41DC75AA00018FAC0 /* ActivationHowtoVideoController.m */,
+				69EA09A51DC75AA00018FAC0 /* ActivationWaitingController.h */,
+				69EA09A61DC75AA00018FAC0 /* ActivationWaitingController.m */,
 				691F74481B988ADC0057C702 /* AdblockPlusContainerController.h */,
 				691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */,
 				69F4D9251B95F1B700300817 /* AdblockPlusController.h */,
 				69F4D9261B95F1B700300817 /* AdblockPlusController.m */,
 				69142D721CDCCF1100FD2640 /* CustomFilterListsController.h */,
 				69142D731CDCCF1100FD2640 /* CustomFilterListsController.m */,
+				69EA099D1DC75AA00018FAC0 /* DialogPresenterController.h */,
+				69EA099E1DC75AA00018FAC0 /* DialogPresenterController.m */,
 				69C19C751B9835D1009ACBAC /* RootController.h */,
 				69C19C761B9835D1009ACBAC /* RootController.m */,
 				69A2BCFA1BCBCF8A00028734 /* WhitelistedWebsitesController.h */,
@@ -528,6 +532,8 @@
 			children = (
 				69AB6A4D1B9712F1005C2075 /* AdblockPlus.h */,
 				69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */,
+				697D27301DCB492000118902 /* AdblockPlus+ActivityChecking.h */,
+				697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */,
 				6970E76F1BA952F200B11AC3 /* AdblockPlusExtras.h */,
 				6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */,
 				69A9100E1B985B2800D93485 /* AdblockPlusSafari.entitlements */,
@@ -970,17 +976,18 @@
 				69142D7A1CDCCF1100FD2640 /* SwitchCell.m in Sources */,
 				69A910191B986DB600D93485 /* RightCenteredImageButton.m in Sources */,
 				69142D791CDCCF1100FD2640 /* NSDictionary+FilterList.m in Sources */,
-				69EA09A91DC75AA00018FAC0 /* FourthDialogController.m in Sources */,
+				69EA09A91DC75AA00018FAC0 /* ActivationConfirmationController.m in Sources */,
 				E9071D441B76897C00091AEB /* AppDelegate.m in Sources */,
 				69EA09A71DC75AA00018FAC0 /* DialogPresenterController.m in Sources */,
 				69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */,
-				69EA09A81DC75AA00018FAC0 /* FirstDialogController.m in Sources */,
+				69EA09A81DC75AA00018FAC0 /* AcceptableAdsExplanationController.m in Sources */,
 				69A2BCFC1BCBCF8A00028734 /* WhitelistedWebsitesController.m in Sources */,
 				E9071D411B76897C00091AEB /* main.m in Sources */,
 				691F74471B9874590057C702 /* AboutController.m in Sources */,
 				6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */,
-				69EA09AA1DC75AA00018FAC0 /* SecondDialogController.m in Sources */,
-				69EA09AB1DC75AA00018FAC0 /* ThirdDialogController.m in Sources */,
+				69EA09AA1DC75AA00018FAC0 /* ActivationHowtoVideoController.m in Sources */,
+				69EA09AB1DC75AA00018FAC0 /* ActivationWaitingController.m in Sources */,
+				697D27321DCB492000118902 /* AdblockPlus+ActivityChecking.m in Sources */,
 				69F4D92A1B95F28B00300817 /* AcceptableAdsController.m in Sources */,
 				69A2BF471C4E9C6B00A81994 /* WhitelistedSiteCell.m in Sources */,
 				691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */,
@@ -1000,6 +1007,7 @@
 				6970E76E1BA94C3900B11AC3 /* AdblockPlus+Extension.m in Sources */,
 				6905EDAC1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m in Sources */,
 				69142D7C1CDCDE0700FD2640 /* NSDictionary+FilterList.m in Sources */,
+				697D27331DCB6CA300118902 /* AdblockPlus+ActivityChecking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -106,6 +106,10 @@
 
 - (void)showDialogIfNeeded
 {
+  // RootController is always present.
+  // Welcome dialog is always presented before error dialog.
+  // Both dialogs are not presented at once.
+
   if ([DialogPresenterController shouldShowWelcomeDialogController:self.adblockPlus]) {
     [self showWelcomeDialogIfNeeded];
     return;

@@ -15,17 +15,17 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
  */
 
-#import "ThirdDialogController.h"
+#import "ActivationWaitingController.h"
 
 static const CGFloat ActivityIndicatorViewWidth = 44;
 
-@interface ThirdDialogController ()
+@interface ActivationWaitingController ()
 
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
-@implementation ThirdDialogController
+@implementation ActivationWaitingController
 
 - (void)viewDidLoad
 {

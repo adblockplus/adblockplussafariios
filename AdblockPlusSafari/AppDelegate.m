@@ -21,6 +21,7 @@
 #import "RootController.h"
 #import "FilterList.h"
 #import "NSDictionary+FilterList.h"
+#import "AdblockPlus+ActivityChecking.h"
 
 // Wake up application every hour (just hint for iOS)
 const NSTimeInterval BackgroundFetchInterval = 3600;

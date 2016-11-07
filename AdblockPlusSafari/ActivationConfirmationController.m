@@ -16,18 +16,18 @@
  */
 
 
-#import "FourthDialogController.h"
+#import "ActivationConfirmationController.h"
 
 #import "DialogPresenterController.h"
 
-@interface FourthDialogController ()
+@interface ActivationConfirmationController ()
 
 @property (nonatomic, weak) IBOutlet UIView *firstDialogView;
 @property (nonatomic, weak) IBOutlet UIView *secondDialogView;
 
 @end
 
-@implementation FourthDialogController
+@implementation ActivationConfirmationController
 
 - (void)viewDidLoad
 {
