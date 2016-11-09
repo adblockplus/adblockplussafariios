@@ -23,6 +23,10 @@
 
 - (void)performActivityTestWith:(id<ContentBlockerManagerProtocol> __nonnull)manager;
 
+// This method tests if this execution context is part of activity test.
+// In case of success extension should abort its execution with provided error.
+// This will reduce time of execution of content blocker
+// and therefore host application will be notified about result of testing ASAP.
 - (BOOL)shouldRespondToActivityTest:(NSError *__nullable *__nonnull)error;
 
 @end
