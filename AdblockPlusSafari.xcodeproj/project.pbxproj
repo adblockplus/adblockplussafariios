@@ -1,924 +1,2630 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		5E5F0F645DD0B2383A5726B6 /* libPods-AdblockPlusSafariTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF087AFFF81208D96A1C8C13 /* libPods-AdblockPlusSafariTests.a */; };
-		6905EDAC1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6905EDAB1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m */; settings = {ASSET_TAGS = (); }; };
-		6905EDAD1BCE890000B3A9B9 /* AdblockPlus+Parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6905EDAB1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m */; settings = {ASSET_TAGS = (); }; };
-		691216BE1BD7943900C90A78 /* WelcomeDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691216BD1BD7943900C90A78 /* WelcomeDialogController.m */; settings = {ASSET_TAGS = (); }; };
-		691216C11BD7BB5B00C90A78 /* NSAttributedString+MarkdownRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 691216C01BD7BB5B00C90A78 /* NSAttributedString+MarkdownRenderer.m */; settings = {ASSET_TAGS = (); }; };
-		691F74471B9874590057C702 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74461B9874590057C702 /* AboutController.m */; };
-		691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */; };
-		6970E76E1BA94C3900B11AC3 /* AdblockPlus+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */; settings = {ASSET_TAGS = (); }; };
-		6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */; settings = {ASSET_TAGS = (); }; };
-		699876F31BBE721900595FB9 /* FilterLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 699876F21BBE721900595FB9 /* FilterLists.plist */; settings = {ASSET_TAGS = (); }; };
-		699876F41BBE765100595FB9 /* FilterLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 699876F21BBE721900595FB9 /* FilterLists.plist */; };
-		699B0EB61BCE9D11005DC603 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; settings = {ASSET_TAGS = (); }; };
-		69A2BCFC1BCBCF8A00028734 /* WhitelistedWebsitesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A2BCFB1BCBCF8A00028734 /* WhitelistedWebsitesController.m */; settings = {ASSET_TAGS = (); }; };
-		69A910101B9860E000D93485 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
-		69A910121B9866A300D93485 /* easylist_content_blocker.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A910111B9866A300D93485 /* easylist_content_blocker.json */; };
-		69A910161B986A0D00D93485 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A910151B986A0D00D93485 /* empty.json */; };
-		69A910191B986DB600D93485 /* RightCenteredImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A910181B986DB600D93485 /* RightCenteredImageButton.m */; };
-		69AB6A2E1B96F664005C2075 /* Appearence.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A2D1B96F664005C2075 /* Appearence.m */; };
-		69AB6A3D1B970D18005C2075 /* SourceSansPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A311B970D18005C2075 /* SourceSansPro-Black.otf */; };
-		69AB6A3E1B970D18005C2075 /* SourceSansPro-BlackIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A321B970D18005C2075 /* SourceSansPro-BlackIt.otf */; };
-		69AB6A3F1B970D19005C2075 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A331B970D18005C2075 /* SourceSansPro-Bold.otf */; };
-		69AB6A401B970D19005C2075 /* SourceSansPro-BoldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A341B970D18005C2075 /* SourceSansPro-BoldIt.otf */; };
-		69AB6A411B970D19005C2075 /* SourceSansPro-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A351B970D18005C2075 /* SourceSansPro-ExtraLight.otf */; };
-		69AB6A421B970D19005C2075 /* SourceSansPro-ExtraLightIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A361B970D18005C2075 /* SourceSansPro-ExtraLightIt.otf */; };
-		69AB6A431B970D19005C2075 /* SourceSansPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A371B970D18005C2075 /* SourceSansPro-It.otf */; };
-		69AB6A441B970D19005C2075 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A381B970D18005C2075 /* SourceSansPro-Light.otf */; };
-		69AB6A451B970D19005C2075 /* SourceSansPro-LightIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A391B970D18005C2075 /* SourceSansPro-LightIt.otf */; };
-		69AB6A461B970D19005C2075 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A3A1B970D18005C2075 /* SourceSansPro-Regular.otf */; };
-		69AB6A471B970D19005C2075 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A3B1B970D18005C2075 /* SourceSansPro-Semibold.otf */; };
-		69AB6A481B970D19005C2075 /* SourceSansPro-SemiboldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A3C1B970D18005C2075 /* SourceSansPro-SemiboldIt.otf */; };
-		69AB6A4A1B970FFA005C2075 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A491B970FFA005C2075 /* LaunchScreen.xib */; };
-		69AB6A4F1B9712F1005C2075 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
-		69AB6A511B971A82005C2075 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69AB6A501B971A82005C2075 /* SafariServices.framework */; };
-		69B2AEBA1BCD289C00E874A9 /* AdblockPlusSafariTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B2AEB91BCD289C00E874A9 /* AdblockPlusSafariTests.m */; };
-		69B2AEC11BCD28D200E874A9 /* easylist+exceptionrules_content_blocker.json in Resources */ = {isa = PBXBuildFile; fileRef = E9C719D81B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json */; };
-		69B2AEC21BCD28D200E874A9 /* easylist_content_blocker.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A910111B9866A300D93485 /* easylist_content_blocker.json */; };
-		69B2AEC31BCD28D200E874A9 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A910151B986A0D00D93485 /* empty.json */; };
-		69C19C741B975946009ACBAC /* screencast.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 69C19C731B975946009ACBAC /* screencast.mp4 */; };
-		69C19C771B9835D1009ACBAC /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C19C761B9835D1009ACBAC /* RootController.m */; };
-		69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4D9261B95F1B700300817 /* AdblockPlusController.m */; };
-		69F4D92A1B95F28B00300817 /* AcceptableAdsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4D9291B95F28B00300817 /* AcceptableAdsController.m */; };
-		CF410BE9E27E9A6CA4200141 /* libPods-AdblockPlusSafariExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEA24110F282539A5B78AD1 /* libPods-AdblockPlusSafariExtension.a */; };
-		E9071D411B76897C00091AEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9071D401B76897C00091AEB /* main.m */; };
-		E9071D441B76897C00091AEB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9071D431B76897C00091AEB /* AppDelegate.m */; };
-		E9071D4A1B76897C00091AEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9071D481B76897C00091AEB /* Main.storyboard */; };
-		E9071D4C1B76897C00091AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9071D4B1B76897C00091AEB /* Assets.xcassets */; };
-		E942B0801B76899D004B4692 /* ActionRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E942B07F1B76899D004B4692 /* ActionRequestHandler.m */; };
-		E942B0841B76899D004B4692 /* AdblockPlusSafariExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E9C719D91B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json in Resources */ = {isa = PBXBuildFile; fileRef = E9C719D81B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json */; };
-		E9F3922D1BBF1B1A004A068A /* en.xliff in Resources */ = {isa = PBXBuildFile; fileRef = E9F3922C1BBF1B1A004A068A /* en.xliff */; settings = {ASSET_TAGS = (); }; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		69B2AEBC1BCD289C00E874A9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E9071D341B76897C00091AEB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E9071D3B1B76897C00091AEB;
-			remoteInfo = AdblockPlusSafari;
-		};
-		E942B0821B76899D004B4692 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E9071D341B76897C00091AEB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E942B0791B76899D004B4692;
-			remoteInfo = AdblockPlusSafariExtension;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		E942B0881B76899D004B4692 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				E942B0841B76899D004B4692 /* AdblockPlusSafariExtension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
-/* Begin PBXFileReference section */
-		1EEA24110F282539A5B78AD1 /* libPods-AdblockPlusSafariExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdblockPlusSafariExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B0623CE261A340F49593C46 /* Pods-AdblockPlusSafari.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafari.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafari/Pods-AdblockPlusSafari.debug.xcconfig"; sourceTree = "<group>"; };
-		419C3DAA2DB78EED37E8AEB4 /* Pods-AdblockPlusSafariExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension.release.xcconfig"; sourceTree = "<group>"; };
-		5CCFABEF07C44557DAAC8BD3 /* libPods-AdblockPlusSafari.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdblockPlusSafari.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		643F11F276808F530CC0D297 /* Pods-AdblockPlusSafari.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafari.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafari/Pods-AdblockPlusSafari.release.xcconfig"; sourceTree = "<group>"; };
-		6905EDAA1BCE84F500B3A9B9 /* AdblockPlus+Parsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AdblockPlus+Parsing.h"; sourceTree = "<group>"; };
-		6905EDAB1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AdblockPlus+Parsing.m"; sourceTree = "<group>"; };
-		691216BC1BD7943900C90A78 /* WelcomeDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeDialogController.h; sourceTree = "<group>"; };
-		691216BD1BD7943900C90A78 /* WelcomeDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeDialogController.m; sourceTree = "<group>"; };
-		691216BF1BD7BB5B00C90A78 /* NSAttributedString+MarkdownRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+MarkdownRenderer.h"; sourceTree = "<group>"; };
-		691216C01BD7BB5B00C90A78 /* NSAttributedString+MarkdownRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+MarkdownRenderer.m"; sourceTree = "<group>"; };
-		691F74451B9874590057C702 /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
-		691F74461B9874590057C702 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
-		691F74481B988ADC0057C702 /* AdblockPlusContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusContainerController.h; sourceTree = "<group>"; };
-		691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusContainerController.m; sourceTree = "<group>"; };
-		6970E76C1BA94C3900B11AC3 /* AdblockPlus+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AdblockPlus+Extension.h"; sourceTree = "<group>"; };
-		6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AdblockPlus+Extension.m"; sourceTree = "<group>"; };
-		6970E76F1BA952F200B11AC3 /* AdblockPlusExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusExtras.h; sourceTree = "<group>"; };
-		6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusExtras.m; sourceTree = "<group>"; };
-		699876F21BBE721900595FB9 /* FilterLists.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FilterLists.plist; sourceTree = "<group>"; };
-		69A2BCFA1BCBCF8A00028734 /* WhitelistedWebsitesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhitelistedWebsitesController.h; sourceTree = "<group>"; };
-		69A2BCFB1BCBCF8A00028734 /* WhitelistedWebsitesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhitelistedWebsitesController.m; sourceTree = "<group>"; };
-		69A9100E1B985B2800D93485 /* AdblockPlusSafari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AdblockPlusSafari.entitlements; sourceTree = "<group>"; };
-		69A9100F1B985B3B00D93485 /* AdblockPlusSafariExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AdblockPlusSafariExtension.entitlements; sourceTree = "<group>"; };
-		69A910111B9866A300D93485 /* easylist_content_blocker.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = easylist_content_blocker.json; sourceTree = "<group>"; };
-		69A910151B986A0D00D93485 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
-		69A910171B986DB600D93485 /* RightCenteredImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightCenteredImageButton.h; sourceTree = "<group>"; };
-		69A910181B986DB600D93485 /* RightCenteredImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightCenteredImageButton.m; sourceTree = "<group>"; };
-		69AB6A2C1B96F664005C2075 /* Appearence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appearence.h; sourceTree = "<group>"; };
-		69AB6A2D1B96F664005C2075 /* Appearence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appearence.m; sourceTree = "<group>"; };
-		69AB6A311B970D18005C2075 /* SourceSansPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.otf"; sourceTree = "<group>"; };
-		69AB6A321B970D18005C2075 /* SourceSansPro-BlackIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-BlackIt.otf"; sourceTree = "<group>"; };
-		69AB6A331B970D18005C2075 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
-		69AB6A341B970D18005C2075 /* SourceSansPro-BoldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-BoldIt.otf"; sourceTree = "<group>"; };
-		69AB6A351B970D18005C2075 /* SourceSansPro-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-ExtraLight.otf"; sourceTree = "<group>"; };
-		69AB6A361B970D18005C2075 /* SourceSansPro-ExtraLightIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-ExtraLightIt.otf"; sourceTree = "<group>"; };
-		69AB6A371B970D18005C2075 /* SourceSansPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-It.otf"; sourceTree = "<group>"; };
-		69AB6A381B970D18005C2075 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
-		69AB6A391B970D18005C2075 /* SourceSansPro-LightIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-LightIt.otf"; sourceTree = "<group>"; };
-		69AB6A3A1B970D18005C2075 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
-		69AB6A3B1B970D18005C2075 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
-		69AB6A3C1B970D18005C2075 /* SourceSansPro-SemiboldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-SemiboldIt.otf"; sourceTree = "<group>"; };
-		69AB6A491B970FFA005C2075 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		69AB6A4D1B9712F1005C2075 /* AdblockPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlus.h; sourceTree = "<group>"; };
-		69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlus.m; sourceTree = "<group>"; };
-		69AB6A501B971A82005C2075 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
-		69B2AEB71BCD289C00E874A9 /* AdblockPlusSafariTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdblockPlusSafariTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		69B2AEB91BCD289C00E874A9 /* AdblockPlusSafariTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusSafariTests.m; sourceTree = "<group>"; };
-		69B2AEBB1BCD289C00E874A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69C19C731B975946009ACBAC /* screencast.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = screencast.mp4; sourceTree = "<group>"; };
-		69C19C751B9835D1009ACBAC /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
-		69C19C761B9835D1009ACBAC /* RootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootController.m; sourceTree = "<group>"; };
-		69F4D9251B95F1B700300817 /* AdblockPlusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusController.h; sourceTree = "<group>"; };
-		69F4D9261B95F1B700300817 /* AdblockPlusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusController.m; sourceTree = "<group>"; };
-		69F4D9281B95F28B00300817 /* AcceptableAdsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptableAdsController.h; sourceTree = "<group>"; };
-		69F4D9291B95F28B00300817 /* AcceptableAdsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptableAdsController.m; sourceTree = "<group>"; };
-		974306E80D51C57902AEAA40 /* Pods-AdblockPlusSafariTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests.release.xcconfig"; sourceTree = "<group>"; };
-		BD4500C540DDAA9A1FF2173F /* Pods-AdblockPlusSafariExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		CF087AFFF81208D96A1C8C13 /* libPods-AdblockPlusSafariTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdblockPlusSafariTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6890318F3F64AA243A444DF /* Pods-AdblockPlusSafariTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E9071D3C1B76897C00091AEB /* AdblockPlusSafari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdblockPlusSafari.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9071D401B76897C00091AEB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E9071D421B76897C00091AEB /* AppDelegate.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; tabWidth = 2; };
-		E9071D431B76897C00091AEB /* AppDelegate.m */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; tabWidth = 2; };
-		E9071D491B76897C00091AEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E9071D4B1B76897C00091AEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E9071D501B76897C00091AEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AdblockPlusSafariExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		E942B07E1B76899D004B4692 /* ActionRequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionRequestHandler.h; sourceTree = "<group>"; };
-		E942B07F1B76899D004B4692 /* ActionRequestHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionRequestHandler.m; sourceTree = "<group>"; };
-		E942B0811B76899D004B4692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E9C719D81B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "easylist+exceptionrules_content_blocker.json"; sourceTree = "<group>"; };
-		E9F3922C1BBF1B1A004A068A /* en.xliff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = en.xliff; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		69B2AEB41BCD289C00E874A9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5E5F0F645DD0B2383A5726B6 /* libPods-AdblockPlusSafariTests.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E9071D391B76897C00091AEB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				69AB6A511B971A82005C2075 /* SafariServices.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E942B0771B76899D004B4692 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF410BE9E27E9A6CA4200141 /* libPods-AdblockPlusSafariExtension.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		21D0865C37FEAF68873CC3AA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1EEA24110F282539A5B78AD1 /* libPods-AdblockPlusSafariExtension.a */,
-				5CCFABEF07C44557DAAC8BD3 /* libPods-AdblockPlusSafari.a */,
-				CF087AFFF81208D96A1C8C13 /* libPods-AdblockPlusSafariTests.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		69A9101A1B986DB900D93485 /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-				69A910171B986DB600D93485 /* RightCenteredImageButton.h */,
-				69A910181B986DB600D93485 /* RightCenteredImageButton.m */,
-			);
-			name = Controls;
-			sourceTree = "<group>";
-		};
-		69AB6A2F1B970D18005C2075 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				69C19C731B975946009ACBAC /* screencast.mp4 */,
-				69AB6A301B970D18005C2075 /* Fonts */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		69AB6A301B970D18005C2075 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				69AB6A311B970D18005C2075 /* SourceSansPro-Black.otf */,
-				69AB6A321B970D18005C2075 /* SourceSansPro-BlackIt.otf */,
-				69AB6A331B970D18005C2075 /* SourceSansPro-Bold.otf */,
-				69AB6A341B970D18005C2075 /* SourceSansPro-BoldIt.otf */,
-				69AB6A351B970D18005C2075 /* SourceSansPro-ExtraLight.otf */,
-				69AB6A361B970D18005C2075 /* SourceSansPro-ExtraLightIt.otf */,
-				69AB6A371B970D18005C2075 /* SourceSansPro-It.otf */,
-				69AB6A381B970D18005C2075 /* SourceSansPro-Light.otf */,
-				69AB6A391B970D18005C2075 /* SourceSansPro-LightIt.otf */,
-				69AB6A3A1B970D18005C2075 /* SourceSansPro-Regular.otf */,
-				69AB6A3B1B970D18005C2075 /* SourceSansPro-Semibold.otf */,
-				69AB6A3C1B970D18005C2075 /* SourceSansPro-SemiboldIt.otf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		69B2AEB81BCD289C00E874A9 /* AdblockPlusSafariTests */ = {
-			isa = PBXGroup;
-			children = (
-				69B2AEB91BCD289C00E874A9 /* AdblockPlusSafariTests.m */,
-				69B2AEBB1BCD289C00E874A9 /* Info.plist */,
-			);
-			path = AdblockPlusSafariTests;
-			sourceTree = "<group>";
-		};
-		69F4D9241B95F18C00300817 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				691F74451B9874590057C702 /* AboutController.h */,
-				691F74461B9874590057C702 /* AboutController.m */,
-				69F4D9281B95F28B00300817 /* AcceptableAdsController.h */,
-				69F4D9291B95F28B00300817 /* AcceptableAdsController.m */,
-				691F74481B988ADC0057C702 /* AdblockPlusContainerController.h */,
-				691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */,
-				69F4D9251B95F1B700300817 /* AdblockPlusController.h */,
-				69F4D9261B95F1B700300817 /* AdblockPlusController.m */,
-				69C19C751B9835D1009ACBAC /* RootController.h */,
-				69C19C761B9835D1009ACBAC /* RootController.m */,
-				691216BC1BD7943900C90A78 /* WelcomeDialogController.h */,
-				691216BD1BD7943900C90A78 /* WelcomeDialogController.m */,
-				69A2BCFA1BCBCF8A00028734 /* WhitelistedWebsitesController.h */,
-				69A2BCFB1BCBCF8A00028734 /* WhitelistedWebsitesController.m */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		E9071D331B76897C00091AEB = {
-			isa = PBXGroup;
-			children = (
-				E9071D3E1B76897C00091AEB /* AdblockPlusSafari */,
-				E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */,
-				69B2AEB81BCD289C00E874A9 /* AdblockPlusSafariTests */,
-				21D0865C37FEAF68873CC3AA /* Frameworks */,
-				FCC080E6F80A603016DDAFA6 /* Pods */,
-				E9071D3D1B76897C00091AEB /* Products */,
-				69AB6A2F1B970D18005C2075 /* Resources */,
-				69AB6A501B971A82005C2075 /* SafariServices.framework */,
-				E9F3922B1BBF1B1A004A068A /* Translations */,
-			);
-			sourceTree = "<group>";
-		};
-		E9071D3D1B76897C00091AEB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E9071D3C1B76897C00091AEB /* AdblockPlusSafari.app */,
-				E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */,
-				69B2AEB71BCD289C00E874A9 /* AdblockPlusSafariTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		E9071D3E1B76897C00091AEB /* AdblockPlusSafari */ = {
-			isa = PBXGroup;
-			children = (
-				69AB6A4D1B9712F1005C2075 /* AdblockPlus.h */,
-				69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */,
-				6970E76F1BA952F200B11AC3 /* AdblockPlusExtras.h */,
-				6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */,
-				69A9100E1B985B2800D93485 /* AdblockPlusSafari.entitlements */,
-				E9071D421B76897C00091AEB /* AppDelegate.h */,
-				E9071D431B76897C00091AEB /* AppDelegate.m */,
-				69AB6A2C1B96F664005C2075 /* Appearence.h */,
-				69AB6A2D1B96F664005C2075 /* Appearence.m */,
-				E9071D4B1B76897C00091AEB /* Assets.xcassets */,
-				69F4D9241B95F18C00300817 /* Controllers */,
-				69A9101A1B986DB900D93485 /* Controls */,
-				699876F21BBE721900595FB9 /* FilterLists.plist */,
-				E9071D501B76897C00091AEB /* Info.plist */,
-				69AB6A491B970FFA005C2075 /* LaunchScreen.xib */,
-				E9071D481B76897C00091AEB /* Main.storyboard */,
-				691216BF1BD7BB5B00C90A78 /* NSAttributedString+MarkdownRenderer.h */,
-				691216C01BD7BB5B00C90A78 /* NSAttributedString+MarkdownRenderer.m */,
-				E9071D3F1B76897C00091AEB /* Supporting Files */,
-			);
-			path = AdblockPlusSafari;
-			sourceTree = "<group>";
-		};
-		E9071D3F1B76897C00091AEB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E9071D401B76897C00091AEB /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */ = {
-			isa = PBXGroup;
-			children = (
-				E942B07E1B76899D004B4692 /* ActionRequestHandler.h */,
-				E942B07F1B76899D004B4692 /* ActionRequestHandler.m */,
-				6970E76C1BA94C3900B11AC3 /* AdblockPlus+Extension.h */,
-				6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */,
-				6905EDAA1BCE84F500B3A9B9 /* AdblockPlus+Parsing.h */,
-				6905EDAB1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m */,
-				69A9100F1B985B3B00D93485 /* AdblockPlusSafariExtension.entitlements */,
-				69A910111B9866A300D93485 /* easylist_content_blocker.json */,
-				E9C719D81B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json */,
-				69A910151B986A0D00D93485 /* empty.json */,
-				E942B0811B76899D004B4692 /* Info.plist */,
-			);
-			path = AdblockPlusSafariExtension;
-			sourceTree = "<group>";
-		};
-		E9F3922B1BBF1B1A004A068A /* Translations */ = {
-			isa = PBXGroup;
-			children = (
-				E9F3922C1BBF1B1A004A068A /* en.xliff */,
-			);
-			path = Translations;
-			sourceTree = "<group>";
-		};
-		FCC080E6F80A603016DDAFA6 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				BD4500C540DDAA9A1FF2173F /* Pods-AdblockPlusSafariExtension.debug.xcconfig */,
-				419C3DAA2DB78EED37E8AEB4 /* Pods-AdblockPlusSafariExtension.release.xcconfig */,
-				2B0623CE261A340F49593C46 /* Pods-AdblockPlusSafari.debug.xcconfig */,
-				643F11F276808F530CC0D297 /* Pods-AdblockPlusSafari.release.xcconfig */,
-				E6890318F3F64AA243A444DF /* Pods-AdblockPlusSafariTests.debug.xcconfig */,
-				974306E80D51C57902AEAA40 /* Pods-AdblockPlusSafariTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		69B2AEB61BCD289C00E874A9 /* AdblockPlusSafariTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 69B2AEBE1BCD289C00E874A9 /* Build configuration list for PBXNativeTarget "AdblockPlusSafariTests" */;
-			buildPhases = (
-				BFCC4A703E29563EB64BAC88 /* Check Pods Manifest.lock */,
-				69B2AEB31BCD289C00E874A9 /* Sources */,
-				69B2AEB41BCD289C00E874A9 /* Frameworks */,
-				69B2AEB51BCD289C00E874A9 /* Resources */,
-				A5E0886D94E83465A9788119 /* Embed Pods Frameworks */,
-				5D42887FA9ADDB13216060AC /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				69B2AEBD1BCD289C00E874A9 /* PBXTargetDependency */,
-			);
-			name = AdblockPlusSafariTests;
-			productName = AdblockPlusSafariTests;
-			productReference = 69B2AEB71BCD289C00E874A9 /* AdblockPlusSafariTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		E9071D3B1B76897C00091AEB /* AdblockPlusSafari */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E9071D531B76897C00091AEB /* Build configuration list for PBXNativeTarget "AdblockPlusSafari" */;
-			buildPhases = (
-				E9071D381B76897C00091AEB /* Sources */,
-				E9071D391B76897C00091AEB /* Frameworks */,
-				E9071D3A1B76897C00091AEB /* Resources */,
-				E942B0881B76899D004B4692 /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E942B0831B76899D004B4692 /* PBXTargetDependency */,
-			);
-			name = AdblockPlusSafari;
-			productName = AdblockPlusSafari;
-			productReference = E9071D3C1B76897C00091AEB /* AdblockPlusSafari.app */;
-			productType = "com.apple.product-type.application";
-		};
-		E942B0791B76899D004B4692 /* AdblockPlusSafariExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E942B0871B76899D004B4692 /* Build configuration list for PBXNativeTarget "AdblockPlusSafariExtension" */;
-			buildPhases = (
-				E60D01235E98C01817D6FC2F /* Check Pods Manifest.lock */,
-				E942B0761B76899D004B4692 /* Sources */,
-				E942B0771B76899D004B4692 /* Frameworks */,
-				E942B0781B76899D004B4692 /* Resources */,
-				326FCB1ED6ADD7F4F2862B4F /* Embed Pods Frameworks */,
-				15C6F5893FBF1AFB22469D1A /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AdblockPlusSafariExtension;
-			productName = AdblockPlusSafariExtension;
-			productReference = E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		E9071D341B76897C00091AEB /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = "Eyeo GmbH";
-				TargetAttributes = {
-					69B2AEB61BCD289C00E874A9 = {
-						CreatedOnToolsVersion = 7.0.1;
-						TestTargetID = E9071D3B1B76897C00091AEB;
-					};
-					E9071D3B1B76897C00091AEB = {
-						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = GRYYZR985A;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-							com.apple.BackgroundModes = {
-								enabled = 1;
-							};
-							com.apple.VPNLite = {
-								enabled = 0;
-							};
-						};
-					};
-					E942B0791B76899D004B4692 = {
-						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = GRYYZR985A;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-						};
-					};
-				};
-			};
-			buildConfigurationList = E9071D371B76897C00091AEB /* Build configuration list for PBXProject "AdblockPlusSafari" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = E9071D331B76897C00091AEB;
-			productRefGroup = E9071D3D1B76897C00091AEB /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				E9071D3B1B76897C00091AEB /* AdblockPlusSafari */,
-				E942B0791B76899D004B4692 /* AdblockPlusSafariExtension */,
-				69B2AEB61BCD289C00E874A9 /* AdblockPlusSafariTests */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		69B2AEB51BCD289C00E874A9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				69B2AEC11BCD28D200E874A9 /* easylist+exceptionrules_content_blocker.json in Resources */,
-				69B2AEC21BCD28D200E874A9 /* easylist_content_blocker.json in Resources */,
-				69B2AEC31BCD28D200E874A9 /* empty.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E9071D3A1B76897C00091AEB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				69AB6A471B970D19005C2075 /* SourceSansPro-Semibold.otf in Resources */,
-				69AB6A431B970D19005C2075 /* SourceSansPro-It.otf in Resources */,
-				E9071D4C1B76897C00091AEB /* Assets.xcassets in Resources */,
-				E9F3922D1BBF1B1A004A068A /* en.xliff in Resources */,
-				69AB6A481B970D19005C2075 /* SourceSansPro-SemiboldIt.otf in Resources */,
-				69AB6A461B970D19005C2075 /* SourceSansPro-Regular.otf in Resources */,
-				69AB6A401B970D19005C2075 /* SourceSansPro-BoldIt.otf in Resources */,
-				69AB6A421B970D19005C2075 /* SourceSansPro-ExtraLightIt.otf in Resources */,
-				69AB6A411B970D19005C2075 /* SourceSansPro-ExtraLight.otf in Resources */,
-				E9071D4A1B76897C00091AEB /* Main.storyboard in Resources */,
-				69AB6A3D1B970D18005C2075 /* SourceSansPro-Black.otf in Resources */,
-				69C19C741B975946009ACBAC /* screencast.mp4 in Resources */,
-				699876F31BBE721900595FB9 /* FilterLists.plist in Resources */,
-				69AB6A441B970D19005C2075 /* SourceSansPro-Light.otf in Resources */,
-				69AB6A4A1B970FFA005C2075 /* LaunchScreen.xib in Resources */,
-				69AB6A451B970D19005C2075 /* SourceSansPro-LightIt.otf in Resources */,
-				69AB6A3F1B970D19005C2075 /* SourceSansPro-Bold.otf in Resources */,
-				69AB6A3E1B970D18005C2075 /* SourceSansPro-BlackIt.otf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E942B0781B76899D004B4692 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				699876F41BBE765100595FB9 /* FilterLists.plist in Resources */,
-				E9C719D91B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json in Resources */,
-				69A910161B986A0D00D93485 /* empty.json in Resources */,
-				69A910121B9866A300D93485 /* easylist_content_blocker.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		15C6F5893FBF1AFB22469D1A /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		326FCB1ED6ADD7F4F2862B4F /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5D42887FA9ADDB13216060AC /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A5E0886D94E83465A9788119 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BFCC4A703E29563EB64BAC88 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E60D01235E98C01817D6FC2F /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		69B2AEB31BCD289C00E874A9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				699B0EB61BCE9D11005DC603 /* AdblockPlus.m in Sources */,
-				69B2AEBA1BCD289C00E874A9 /* AdblockPlusSafariTests.m in Sources */,
-				6905EDAD1BCE890000B3A9B9 /* AdblockPlus+Parsing.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E9071D381B76897C00091AEB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				69AB6A4F1B9712F1005C2075 /* AdblockPlus.m in Sources */,
-				69A910191B986DB600D93485 /* RightCenteredImageButton.m in Sources */,
-				E9071D441B76897C00091AEB /* AppDelegate.m in Sources */,
-				691216BE1BD7943900C90A78 /* WelcomeDialogController.m in Sources */,
-				69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */,
-				69A2BCFC1BCBCF8A00028734 /* WhitelistedWebsitesController.m in Sources */,
-				E9071D411B76897C00091AEB /* main.m in Sources */,
-				691F74471B9874590057C702 /* AboutController.m in Sources */,
-				691216C11BD7BB5B00C90A78 /* NSAttributedString+MarkdownRenderer.m in Sources */,
-				6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */,
-				69F4D92A1B95F28B00300817 /* AcceptableAdsController.m in Sources */,
-				691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */,
-				69C19C771B9835D1009ACBAC /* RootController.m in Sources */,
-				69AB6A2E1B96F664005C2075 /* Appearence.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E942B0761B76899D004B4692 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				69A910101B9860E000D93485 /* AdblockPlus.m in Sources */,
-				E942B0801B76899D004B4692 /* ActionRequestHandler.m in Sources */,
-				6970E76E1BA94C3900B11AC3 /* AdblockPlus+Extension.m in Sources */,
-				6905EDAC1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		69B2AEBD1BCD289C00E874A9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E9071D3B1B76897C00091AEB /* AdblockPlusSafari */;
-			targetProxy = 69B2AEBC1BCD289C00E874A9 /* PBXContainerItemProxy */;
-		};
-		E942B0831B76899D004B4692 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E942B0791B76899D004B4692 /* AdblockPlusSafariExtension */;
-			targetProxy = E942B0821B76899D004B4692 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		E9071D481B76897C00091AEB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E9071D491B76897C00091AEB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		69B2AEBF1BCD289C00E874A9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6890318F3F64AA243A444DF /* Pods-AdblockPlusSafariTests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = AdblockPlusSafariTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafariTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdblockPlusSafari.app/AdblockPlusSafari";
-			};
-			name = Debug;
-		};
-		69B2AEC01BCD289C00E874A9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 974306E80D51C57902AEAA40 /* Pods-AdblockPlusSafariTests.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = AdblockPlusSafariTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafariTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdblockPlusSafari.app/AdblockPlusSafari";
-			};
-			name = Release;
-		};
-		E9071D511B76897C00091AEB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		E9071D521B76897C00091AEB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		E9071D541B76897C00091AEB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = arm64;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafari.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEFINES_MODULE = YES;
-				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-			};
-			name = Debug;
-		};
-		E9071D551B76897C00091AEB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = arm64;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafari.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEFINES_MODULE = YES;
-				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-			};
-			name = Release;
-		};
-		E942B0851B76899D004B4692 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD4500C540DDAA9A1FF2173F /* Pods-AdblockPlusSafariExtension.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = arm64;
-				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		E942B0861B76899D004B4692 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 419C3DAA2DB78EED37E8AEB4 /* Pods-AdblockPlusSafariExtension.release.xcconfig */;
-			buildSettings = {
-				ARCHS = arm64;
-				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2ded8bd2-705a-496d-906f-b6fa7458973f";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		69B2AEBE1BCD289C00E874A9 /* Build configuration list for PBXNativeTarget "AdblockPlusSafariTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				69B2AEBF1BCD289C00E874A9 /* Debug */,
-				69B2AEC01BCD289C00E874A9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E9071D371B76897C00091AEB /* Build configuration list for PBXProject "AdblockPlusSafari" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E9071D511B76897C00091AEB /* Debug */,
-				E9071D521B76897C00091AEB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E9071D531B76897C00091AEB /* Build configuration list for PBXNativeTarget "AdblockPlusSafari" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E9071D541B76897C00091AEB /* Debug */,
-				E9071D551B76897C00091AEB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E942B0871B76899D004B4692 /* Build configuration list for PBXNativeTarget "AdblockPlusSafariExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E942B0851B76899D004B4692 /* Debug */,
-				E942B0861B76899D004B4692 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = E9071D341B76897C00091AEB /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>04FC9AECAC989D86816FB52C</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>05EA1B0A29504F5E9646D78B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-AdblockPlusSafariTests.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0A1DEC88417B108E8EB14C29</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-AdblockPlusSafariExtension.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>103DBBFC1984BCB8851B01C3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-AdblockPlusSafariExtension.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1597594AF3A4CC5E1C9D3507</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-AdblockPlusSafariExtension.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>21D76AA3A4FBF8DE0EE54272</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>3E3C71BD4D2BCD28A08CC280</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>471A0CFFD44597FCFF7D48CF</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>591FB8DB08AB7F9C3EFCC69C</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafari/Pods-AdblockPlusSafari-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>63FC10C137E939DB38A876EC</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>6905EDAA1BCE84F500B3A9B9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>AdblockPlus+Parsing.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6905EDAB1BCE84F500B3A9B9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>AdblockPlus+Parsing.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6905EDAC1BCE84F500B3A9B9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6905EDAB1BCE84F500B3A9B9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ASSET_TAGS</key>
+				<array/>
+			</dict>
+		</dict>
+		<key>6905EDAD1BCE890000B3A9B9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6905EDAB1BCE84F500B3A9B9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ASSET_TAGS</key>
+				<array/>
+			</dict>
+		</dict>
+		<key>691216BC1BD7943900C90A78</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>WelcomeDialogController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>691216BD1BD7943900C90A78</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>WelcomeDialogController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>691216BE1BD7943900C90A78</key>
+		<dict>
+			<key>fileRef</key>
+			<string>691216BD1BD7943900C90A78</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ASSET_TAGS</key>
+				<array/>
+			</dict>
+		</dict>
+		<key>691216BF1BD7BB5B00C90A78</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NSAttributedString+MarkdownRenderer.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>691216C01BD7BB5B00C90A78</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NSAttributedString+MarkdownRenderer.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>691216C11BD7BB5B00C90A78</key>
+		<dict>
+			<key>fileRef</key>
+			<string>691216C01BD7BB5B00C90A78</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ASSET_TAGS</key>
+				<array/>
+			</dict>
+		</dict>
+		<key>691F74451B9874590057C702</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>AboutController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>691F74461B9874590057C702</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>AboutController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>691F74471B9874590057C702</key>
+		<dict>
+			<key>fileRef</key>
+			<string>691F74461B9874590057C702</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>691F74481B988ADC0057C702</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>AdblockPlusContainerController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>691F74491B988ADC0057C702</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>AdblockPlusContainerController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>691F744A1B988ADC0057C702</key>
+		<dict>
+			<key>fileRef</key>
+			<string>691F74491B988ADC0057C702</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6970E76C1BA94C3900B11AC3</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>AdblockPlus+Extension.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6970E76D1BA94C3900B11AC3</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>AdblockPlus+Extension.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6970E76E1BA94C3900B11AC3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6970E76D1BA94C3900B11AC3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ASSET_TAGS</key>
+				<array/>
+			</dict>
+		</dict>
+		<key>6970E76F1BA952F200B11AC3</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>AdblockPlusExtras.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6970E7701BA952F200B11AC3</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>AdblockPlusExtras.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6970E7711BA952F200B11AC3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6970E7701BA952F200B11AC3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ASSET_TAGS</key>
+				<array/>
+			</dict>
+		</dict>
+		<key>699876F21BBE721900595FB9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>FilterLists.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>699876F31BBE721900595FB9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>699876F21BBE721900595FB9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ASSET_TAGS</key>
+				<array/>
+			</dict>
+		</dict>
+		<key>699876F41BBE765100595FB9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>699876F21BBE721900595FB9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>699B0EB61BCE9D11005DC603</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A4E1B9712F1005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ASSET_TAGS</key>
+				<array/>
+			</dict>
+		</dict>
+		<key>69A2BCFA1BCBCF8A00028734</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>WhitelistedWebsitesController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69A2BCFB1BCBCF8A00028734</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>WhitelistedWebsitesController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69A2BCFC1BCBCF8A00028734</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69A2BCFB1BCBCF8A00028734</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ASSET_TAGS</key>
+				<array/>
+			</dict>
+		</dict>
+		<key>69A9100E1B985B2800D93485</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml</string>
+			<key>path</key>
+			<string>AdblockPlusSafari.entitlements</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69A9100F1B985B3B00D93485</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml</string>
+			<key>path</key>
+			<string>AdblockPlusSafariExtension.entitlements</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69A910101B9860E000D93485</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A4E1B9712F1005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69A910111B9866A300D93485</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.json</string>
+			<key>path</key>
+			<string>easylist_content_blocker.json</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69A910121B9866A300D93485</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69A910111B9866A300D93485</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69A910151B986A0D00D93485</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.json</string>
+			<key>path</key>
+			<string>empty.json</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69A910161B986A0D00D93485</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69A910151B986A0D00D93485</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69A910171B986DB600D93485</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>RightCenteredImageButton.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69A910181B986DB600D93485</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>RightCenteredImageButton.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69A910191B986DB600D93485</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69A910181B986DB600D93485</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69A9101A1B986DB900D93485</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>69A910171B986DB600D93485</string>
+				<string>69A910181B986DB600D93485</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Controls</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A2C1B96F664005C2075</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Appearence.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A2D1B96F664005C2075</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Appearence.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A2E1B96F664005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A2D1B96F664005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A2F1B970D18005C2075</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>69C19C731B975946009ACBAC</string>
+				<string>69AB6A301B970D18005C2075</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Resources</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A301B970D18005C2075</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>69AB6A311B970D18005C2075</string>
+				<string>69AB6A321B970D18005C2075</string>
+				<string>69AB6A331B970D18005C2075</string>
+				<string>69AB6A341B970D18005C2075</string>
+				<string>69AB6A351B970D18005C2075</string>
+				<string>69AB6A361B970D18005C2075</string>
+				<string>69AB6A371B970D18005C2075</string>
+				<string>69AB6A381B970D18005C2075</string>
+				<string>69AB6A391B970D18005C2075</string>
+				<string>69AB6A3A1B970D18005C2075</string>
+				<string>69AB6A3B1B970D18005C2075</string>
+				<string>69AB6A3C1B970D18005C2075</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Fonts</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A311B970D18005C2075</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>SourceSansPro-Black.otf</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A321B970D18005C2075</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>SourceSansPro-BlackIt.otf</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A331B970D18005C2075</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>SourceSansPro-Bold.otf</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A341B970D18005C2075</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>SourceSansPro-BoldIt.otf</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A351B970D18005C2075</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>SourceSansPro-ExtraLight.otf</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A361B970D18005C2075</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>SourceSansPro-ExtraLightIt.otf</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A371B970D18005C2075</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>SourceSansPro-It.otf</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A381B970D18005C2075</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>SourceSansPro-Light.otf</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A391B970D18005C2075</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>SourceSansPro-LightIt.otf</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A3A1B970D18005C2075</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>SourceSansPro-Regular.otf</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A3B1B970D18005C2075</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>SourceSansPro-Semibold.otf</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A3C1B970D18005C2075</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>SourceSansPro-SemiboldIt.otf</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A3D1B970D18005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A311B970D18005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A3E1B970D18005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A321B970D18005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A3F1B970D19005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A331B970D18005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A401B970D19005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A341B970D18005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A411B970D19005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A351B970D18005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A421B970D19005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A361B970D18005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A431B970D19005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A371B970D18005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A441B970D19005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A381B970D18005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A451B970D19005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A391B970D18005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A461B970D19005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A3A1B970D18005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A471B970D19005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A3B1B970D18005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A481B970D19005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A3C1B970D18005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A491B970FFA005C2075</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>path</key>
+			<string>LaunchScreen.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A4A1B970FFA005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A491B970FFA005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A4D1B9712F1005C2075</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>AdblockPlus.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A4E1B9712F1005C2075</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>AdblockPlus.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69AB6A4F1B9712F1005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A4E1B9712F1005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69AB6A501B971A82005C2075</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>SafariServices.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/SafariServices.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>69AB6A511B971A82005C2075</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69AB6A501B971A82005C2075</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69B2AEB31BCD289C00E874A9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>699B0EB61BCE9D11005DC603</string>
+				<string>69B2AEBA1BCD289C00E874A9</string>
+				<string>6905EDAD1BCE890000B3A9B9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>69B2AEB41BCD289C00E874A9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6E9E77B48F1767A535385923</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>69B2AEB51BCD289C00E874A9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>69B2AEC11BCD28D200E874A9</string>
+				<string>69B2AEC21BCD28D200E874A9</string>
+				<string>69B2AEC31BCD28D200E874A9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>69B2AEB61BCD289C00E874A9</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>69B2AEBE1BCD289C00E874A9</string>
+			<key>buildPhases</key>
+			<array>
+				<string>88B3BF281D61C03A5676EFA8</string>
+				<string>69B2AEB31BCD289C00E874A9</string>
+				<string>69B2AEB41BCD289C00E874A9</string>
+				<string>69B2AEB51BCD289C00E874A9</string>
+				<string>63FC10C137E939DB38A876EC</string>
+				<string>04FC9AECAC989D86816FB52C</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>69B2AEBD1BCD289C00E874A9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>AdblockPlusSafariTests</string>
+			<key>productName</key>
+			<string>AdblockPlusSafariTests</string>
+			<key>productReference</key>
+			<string>69B2AEB71BCD289C00E874A9</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>69B2AEB71BCD289C00E874A9</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>AdblockPlusSafariTests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>69B2AEB81BCD289C00E874A9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>69B2AEB91BCD289C00E874A9</string>
+				<string>69B2AEBB1BCD289C00E874A9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>AdblockPlusSafariTests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69B2AEB91BCD289C00E874A9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>AdblockPlusSafariTests.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69B2AEBA1BCD289C00E874A9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69B2AEB91BCD289C00E874A9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69B2AEBB1BCD289C00E874A9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69B2AEBC1BCD289C00E874A9</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>E9071D341B76897C00091AEB</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>E9071D3B1B76897C00091AEB</string>
+			<key>remoteInfo</key>
+			<string>AdblockPlusSafari</string>
+		</dict>
+		<key>69B2AEBD1BCD289C00E874A9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>E9071D3B1B76897C00091AEB</string>
+			<key>targetProxy</key>
+			<string>69B2AEBC1BCD289C00E874A9</string>
+		</dict>
+		<key>69B2AEBE1BCD289C00E874A9</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>69B2AEBF1BCD289C00E874A9</string>
+				<string>69B2AEC01BCD289C00E874A9</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>69B2AEBF1BCD289C00E874A9</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>05EA1B0A29504F5E9646D78B</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>INFOPLIST_FILE</key>
+				<string>AdblockPlusSafariTests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.adblockplus.AdblockPlusSafariTests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/AdblockPlusSafari.app/AdblockPlusSafari</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>69B2AEC01BCD289C00E874A9</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>EED2FFC6BB122F89EB698FFE</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>INFOPLIST_FILE</key>
+				<string>AdblockPlusSafariTests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.adblockplus.AdblockPlusSafariTests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/AdblockPlusSafari.app/AdblockPlusSafari</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>69B2AEC11BCD28D200E874A9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E9C719D81B8CDC9200584FB8</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69B2AEC21BCD28D200E874A9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69A910111B9866A300D93485</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69B2AEC31BCD28D200E874A9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69A910151B986A0D00D93485</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69C19C731B975946009ACBAC</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file</string>
+			<key>path</key>
+			<string>screencast.mp4</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69C19C741B975946009ACBAC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69C19C731B975946009ACBAC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69C19C751B9835D1009ACBAC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>RootController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69C19C761B9835D1009ACBAC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>RootController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69C19C771B9835D1009ACBAC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69C19C761B9835D1009ACBAC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69F4D9241B95F18C00300817</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>691F74451B9874590057C702</string>
+				<string>691F74461B9874590057C702</string>
+				<string>69F4D9281B95F28B00300817</string>
+				<string>69F4D9291B95F28B00300817</string>
+				<string>691F74481B988ADC0057C702</string>
+				<string>691F74491B988ADC0057C702</string>
+				<string>69F4D9251B95F1B700300817</string>
+				<string>69F4D9261B95F1B700300817</string>
+				<string>69C19C751B9835D1009ACBAC</string>
+				<string>69C19C761B9835D1009ACBAC</string>
+				<string>691216BC1BD7943900C90A78</string>
+				<string>691216BD1BD7943900C90A78</string>
+				<string>69A2BCFA1BCBCF8A00028734</string>
+				<string>69A2BCFB1BCBCF8A00028734</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Controllers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69F4D9251B95F1B700300817</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>AdblockPlusController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69F4D9261B95F1B700300817</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>AdblockPlusController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69F4D9271B95F1B700300817</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69F4D9261B95F1B700300817</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>69F4D9281B95F28B00300817</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>AcceptableAdsController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69F4D9291B95F28B00300817</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>AcceptableAdsController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>69F4D92A1B95F28B00300817</key>
+		<dict>
+			<key>fileRef</key>
+			<string>69F4D9291B95F28B00300817</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6E9E77B48F1767A535385923</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F16D99F63C94B00C2F19AE3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F16D99F63C94B00C2F19AE3</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-AdblockPlusSafariTests.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>7C64EA52241C7122C8E1292D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-AdblockPlusSafari.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-AdblockPlusSafari/Pods-AdblockPlusSafari.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7E76EDA0BD5D79087EC235EE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-AdblockPlusSafari/Pods-AdblockPlusSafari-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>7E90BCBDAF1BB72C0B82F502</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>88B3BF281D61C03A5676EFA8</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>924EC33E4DC183565121D4B9</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-AdblockPlusSafari.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>9FA09EFE800FC91B9E5C169B</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>924EC33E4DC183565121D4B9</string>
+				<string>1597594AF3A4CC5E1C9D3507</string>
+				<string>6F16D99F63C94B00C2F19AE3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A5DEC26784AACA17B2845593</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1597594AF3A4CC5E1C9D3507</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BBE5DF69DA5351FC061576D1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DA52875F3497D2EF3D458F2B</string>
+				<string>7C64EA52241C7122C8E1292D</string>
+				<string>0A1DEC88417B108E8EB14C29</string>
+				<string>103DBBFC1984BCB8851B01C3</string>
+				<string>05EA1B0A29504F5E9646D78B</string>
+				<string>EED2FFC6BB122F89EB698FFE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DA52875F3497D2EF3D458F2B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-AdblockPlusSafari.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-AdblockPlusSafari/Pods-AdblockPlusSafari.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9071D331B76897C00091AEB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E9071D3E1B76897C00091AEB</string>
+				<string>E942B07B1B76899D004B4692</string>
+				<string>69B2AEB81BCD289C00E874A9</string>
+				<string>E9071D3D1B76897C00091AEB</string>
+				<string>69AB6A2F1B970D18005C2075</string>
+				<string>69AB6A501B971A82005C2075</string>
+				<string>E9F3922B1BBF1B1A004A068A</string>
+				<string>BBE5DF69DA5351FC061576D1</string>
+				<string>9FA09EFE800FC91B9E5C169B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9071D341B76897C00091AEB</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastUpgradeCheck</key>
+				<string>0700</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>Eyeo GmbH</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>69B2AEB61BCD289C00E874A9</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>7.0.1</string>
+						<key>TestTargetID</key>
+						<string>E9071D3B1B76897C00091AEB</string>
+					</dict>
+					<key>E9071D3B1B76897C00091AEB</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>7.0</string>
+						<key>DevelopmentTeam</key>
+						<string>GRYYZR985A</string>
+						<key>SystemCapabilities</key>
+						<dict>
+							<key>com.apple.ApplicationGroups.iOS</key>
+							<dict>
+								<key>enabled</key>
+								<string>1</string>
+							</dict>
+							<key>com.apple.BackgroundModes</key>
+							<dict>
+								<key>enabled</key>
+								<string>1</string>
+							</dict>
+							<key>com.apple.VPNLite</key>
+							<dict>
+								<key>enabled</key>
+								<string>0</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>E942B0791B76899D004B4692</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>7.0</string>
+						<key>DevelopmentTeam</key>
+						<string>GRYYZR985A</string>
+						<key>SystemCapabilities</key>
+						<dict>
+							<key>com.apple.ApplicationGroups.iOS</key>
+							<dict>
+								<key>enabled</key>
+								<string>1</string>
+							</dict>
+						</dict>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>E9071D371B76897C00091AEB</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>E9071D331B76897C00091AEB</string>
+			<key>productRefGroup</key>
+			<string>E9071D3D1B76897C00091AEB</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>E9071D3B1B76897C00091AEB</string>
+				<string>E942B0791B76899D004B4692</string>
+				<string>69B2AEB61BCD289C00E874A9</string>
+			</array>
+		</dict>
+		<key>E9071D371B76897C00091AEB</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>E9071D511B76897C00091AEB</string>
+				<string>E9071D521B76897C00091AEB</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>E9071D381B76897C00091AEB</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>69AB6A4F1B9712F1005C2075</string>
+				<string>69A910191B986DB600D93485</string>
+				<string>E9071D441B76897C00091AEB</string>
+				<string>691216BE1BD7943900C90A78</string>
+				<string>69F4D9271B95F1B700300817</string>
+				<string>69A2BCFC1BCBCF8A00028734</string>
+				<string>E9071D411B76897C00091AEB</string>
+				<string>691F74471B9874590057C702</string>
+				<string>691216C11BD7BB5B00C90A78</string>
+				<string>6970E7711BA952F200B11AC3</string>
+				<string>69F4D92A1B95F28B00300817</string>
+				<string>691F744A1B988ADC0057C702</string>
+				<string>69C19C771B9835D1009ACBAC</string>
+				<string>69AB6A2E1B96F664005C2075</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E9071D391B76897C00091AEB</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>69AB6A511B971A82005C2075</string>
+				<string>FB4EC4CC9749C375F792A0CA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E9071D3A1B76897C00091AEB</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>69AB6A471B970D19005C2075</string>
+				<string>69AB6A431B970D19005C2075</string>
+				<string>E9071D4C1B76897C00091AEB</string>
+				<string>E9F3922D1BBF1B1A004A068A</string>
+				<string>69AB6A481B970D19005C2075</string>
+				<string>69AB6A461B970D19005C2075</string>
+				<string>69AB6A401B970D19005C2075</string>
+				<string>69AB6A421B970D19005C2075</string>
+				<string>69AB6A411B970D19005C2075</string>
+				<string>E9071D4A1B76897C00091AEB</string>
+				<string>69AB6A3D1B970D18005C2075</string>
+				<string>69C19C741B975946009ACBAC</string>
+				<string>699876F31BBE721900595FB9</string>
+				<string>69AB6A441B970D19005C2075</string>
+				<string>69AB6A4A1B970FFA005C2075</string>
+				<string>69AB6A451B970D19005C2075</string>
+				<string>69AB6A3F1B970D19005C2075</string>
+				<string>69AB6A3E1B970D18005C2075</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E9071D3B1B76897C00091AEB</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>E9071D531B76897C00091AEB</string>
+			<key>buildPhases</key>
+			<array>
+				<string>21D76AA3A4FBF8DE0EE54272</string>
+				<string>E9071D381B76897C00091AEB</string>
+				<string>E9071D391B76897C00091AEB</string>
+				<string>E9071D3A1B76897C00091AEB</string>
+				<string>E942B0881B76899D004B4692</string>
+				<string>591FB8DB08AB7F9C3EFCC69C</string>
+				<string>7E76EDA0BD5D79087EC235EE</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>E942B0831B76899D004B4692</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>AdblockPlusSafari</string>
+			<key>productName</key>
+			<string>AdblockPlusSafari</string>
+			<key>productReference</key>
+			<string>E9071D3C1B76897C00091AEB</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>E9071D3C1B76897C00091AEB</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>AdblockPlusSafari.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>E9071D3D1B76897C00091AEB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E9071D3C1B76897C00091AEB</string>
+				<string>E942B07A1B76899D004B4692</string>
+				<string>69B2AEB71BCD289C00E874A9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9071D3E1B76897C00091AEB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>69AB6A4D1B9712F1005C2075</string>
+				<string>69AB6A4E1B9712F1005C2075</string>
+				<string>6970E76F1BA952F200B11AC3</string>
+				<string>6970E7701BA952F200B11AC3</string>
+				<string>69A9100E1B985B2800D93485</string>
+				<string>E9071D421B76897C00091AEB</string>
+				<string>E9071D431B76897C00091AEB</string>
+				<string>69AB6A2C1B96F664005C2075</string>
+				<string>69AB6A2D1B96F664005C2075</string>
+				<string>E9071D4B1B76897C00091AEB</string>
+				<string>69F4D9241B95F18C00300817</string>
+				<string>69A9101A1B986DB900D93485</string>
+				<string>699876F21BBE721900595FB9</string>
+				<string>E9071D501B76897C00091AEB</string>
+				<string>69AB6A491B970FFA005C2075</string>
+				<string>E9071D481B76897C00091AEB</string>
+				<string>691216BF1BD7BB5B00C90A78</string>
+				<string>691216C01BD7BB5B00C90A78</string>
+				<string>E9071D3F1B76897C00091AEB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>AdblockPlusSafari</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9071D3F1B76897C00091AEB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E9071D401B76897C00091AEB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9071D401B76897C00091AEB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>main.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9071D411B76897C00091AEB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E9071D401B76897C00091AEB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E9071D421B76897C00091AEB</key>
+		<dict>
+			<key>indentWidth</key>
+			<string>2</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>AppDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+			<key>tabWidth</key>
+			<string>2</string>
+		</dict>
+		<key>E9071D431B76897C00091AEB</key>
+		<dict>
+			<key>indentWidth</key>
+			<string>2</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>AppDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+			<key>tabWidth</key>
+			<string>2</string>
+		</dict>
+		<key>E9071D441B76897C00091AEB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E9071D431B76897C00091AEB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E9071D481B76897C00091AEB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E9071D491B76897C00091AEB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9071D491B76897C00091AEB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9071D4A1B76897C00091AEB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E9071D481B76897C00091AEB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E9071D4B1B76897C00091AEB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Assets.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9071D4C1B76897C00091AEB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E9071D4B1B76897C00091AEB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E9071D501B76897C00091AEB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9071D511B76897C00091AEB</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.0</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>E9071D521B76897C00091AEB</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.0</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E9071D531B76897C00091AEB</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>E9071D541B76897C00091AEB</string>
+				<string>E9071D551B76897C00091AEB</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>E9071D541B76897C00091AEB</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>DA52875F3497D2EF3D458F2B</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ARCHS</key>
+				<string>arm64</string>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CODE_SIGN_ENTITLEMENTS</key>
+				<string>AdblockPlusSafari/AdblockPlusSafari.entitlements</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>AdblockPlusSafari/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.adblockplus.AdblockPlusSafari</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>E9071D551B76897C00091AEB</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>7C64EA52241C7122C8E1292D</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ARCHS</key>
+				<string>arm64</string>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CODE_SIGN_ENTITLEMENTS</key>
+				<string>AdblockPlusSafari/AdblockPlusSafari.entitlements</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>AdblockPlusSafari/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.adblockplus.AdblockPlusSafari</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E942B0761B76899D004B4692</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>69A910101B9860E000D93485</string>
+				<string>E942B0801B76899D004B4692</string>
+				<string>6970E76E1BA94C3900B11AC3</string>
+				<string>6905EDAC1BCE84F500B3A9B9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E942B0771B76899D004B4692</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>A5DEC26784AACA17B2845593</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E942B0781B76899D004B4692</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>699876F41BBE765100595FB9</string>
+				<string>E9C719D91B8CDC9200584FB8</string>
+				<string>69A910161B986A0D00D93485</string>
+				<string>69A910121B9866A300D93485</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E942B0791B76899D004B4692</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>E942B0871B76899D004B4692</string>
+			<key>buildPhases</key>
+			<array>
+				<string>7E90BCBDAF1BB72C0B82F502</string>
+				<string>E942B0761B76899D004B4692</string>
+				<string>E942B0771B76899D004B4692</string>
+				<string>E942B0781B76899D004B4692</string>
+				<string>3E3C71BD4D2BCD28A08CC280</string>
+				<string>471A0CFFD44597FCFF7D48CF</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>AdblockPlusSafariExtension</string>
+			<key>productName</key>
+			<string>AdblockPlusSafariExtension</string>
+			<key>productReference</key>
+			<string>E942B07A1B76899D004B4692</string>
+			<key>productType</key>
+			<string>com.apple.product-type.app-extension</string>
+		</dict>
+		<key>E942B07A1B76899D004B4692</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.app-extension</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>AdblockPlusSafariExtension.appex</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>E942B07B1B76899D004B4692</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E942B07E1B76899D004B4692</string>
+				<string>E942B07F1B76899D004B4692</string>
+				<string>6970E76C1BA94C3900B11AC3</string>
+				<string>6970E76D1BA94C3900B11AC3</string>
+				<string>6905EDAA1BCE84F500B3A9B9</string>
+				<string>6905EDAB1BCE84F500B3A9B9</string>
+				<string>69A9100F1B985B3B00D93485</string>
+				<string>69A910111B9866A300D93485</string>
+				<string>E9C719D81B8CDC9200584FB8</string>
+				<string>69A910151B986A0D00D93485</string>
+				<string>E942B0811B76899D004B4692</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>AdblockPlusSafariExtension</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E942B07E1B76899D004B4692</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>ActionRequestHandler.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E942B07F1B76899D004B4692</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>ActionRequestHandler.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E942B0801B76899D004B4692</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E942B07F1B76899D004B4692</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E942B0811B76899D004B4692</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E942B0821B76899D004B4692</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>E9071D341B76897C00091AEB</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>E942B0791B76899D004B4692</string>
+			<key>remoteInfo</key>
+			<string>AdblockPlusSafariExtension</string>
+		</dict>
+		<key>E942B0831B76899D004B4692</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>E942B0791B76899D004B4692</string>
+			<key>targetProxy</key>
+			<string>E942B0821B76899D004B4692</string>
+		</dict>
+		<key>E942B0841B76899D004B4692</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E942B07A1B76899D004B4692</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>RemoveHeadersOnCopy</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E942B0851B76899D004B4692</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>0A1DEC88417B108E8EB14C29</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ARCHS</key>
+				<string>arm64</string>
+				<key>CODE_SIGN_ENTITLEMENTS</key>
+				<string>AdblockPlusSafariExtension/AdblockPlusSafariExtension.entitlements</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>INFOPLIST_FILE</key>
+				<string>AdblockPlusSafariExtension/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>E942B0861B76899D004B4692</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>103DBBFC1984BCB8851B01C3</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ARCHS</key>
+				<string>arm64</string>
+				<key>CODE_SIGN_ENTITLEMENTS</key>
+				<string>AdblockPlusSafariExtension/AdblockPlusSafariExtension.entitlements</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>INFOPLIST_FILE</key>
+				<string>AdblockPlusSafariExtension/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string>2ded8bd2-705a-496d-906f-b6fa7458973f</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E942B0871B76899D004B4692</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>E942B0851B76899D004B4692</string>
+				<string>E942B0861B76899D004B4692</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>E942B0881B76899D004B4692</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>dstPath</key>
+			<string></string>
+			<key>dstSubfolderSpec</key>
+			<string>13</string>
+			<key>files</key>
+			<array>
+				<string>E942B0841B76899D004B4692</string>
+			</array>
+			<key>isa</key>
+			<string>PBXCopyFilesBuildPhase</string>
+			<key>name</key>
+			<string>Embed App Extensions</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E9C719D81B8CDC9200584FB8</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.json</string>
+			<key>path</key>
+			<string>easylist+exceptionrules_content_blocker.json</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9C719D91B8CDC9200584FB8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E9C719D81B8CDC9200584FB8</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E9F3922B1BBF1B1A004A068A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E9F3922C1BBF1B1A004A068A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Translations</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9F3922C1BBF1B1A004A068A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml</string>
+			<key>path</key>
+			<string>en.xliff</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E9F3922D1BBF1B1A004A068A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E9F3922C1BBF1B1A004A068A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ASSET_TAGS</key>
+				<array/>
+			</dict>
+		</dict>
+		<key>EED2FFC6BB122F89EB698FFE</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-AdblockPlusSafariTests.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-AdblockPlusSafariTests/Pods-AdblockPlusSafariTests.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FB4EC4CC9749C375F792A0CA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>924EC33E4DC183565121D4B9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>E9071D341B76897C00091AEB</string>
+</dict>
+</plist>
