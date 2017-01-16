@@ -27,6 +27,7 @@
 @interface ActivationHowtoVideoController ()
 
 @property (nonatomic, weak) IBOutlet UILabel *firstStepLabel;
+@property (nonatomic, weak) IBOutlet UILabel *secondStepLabel;
 
 @end
 
@@ -54,9 +55,14 @@
   [super viewDidLoad];
 
   CGFloat fontSize = self.firstStepLabel.font.pointSize;
-  UIFont *font = [Appearence defaultSemiboldFontOfSize:fontSize];
-  self.firstStepLabel.fontFamilyName = DefaultFontFamily;
+  UIFont *font = [UIFont systemFontOfSize:fontSize weight:UIFontWeightSemibold];
+  
+  self.firstStepLabel.fontFamilyName = @".SFUIText";
   self.firstStepLabel.attributedText = [self.firstStepLabel.attributedText renderSpanMarkedByChar:@"*"
+                                                                                           asFont:font];
+  
+  self.secondStepLabel.fontFamilyName = @".SFUIText";
+  self.secondStepLabel.attributedText = [self.secondStepLabel.attributedText renderSpanMarkedByChar:@"*"
                                                                                            asFont:font];
 }
 
