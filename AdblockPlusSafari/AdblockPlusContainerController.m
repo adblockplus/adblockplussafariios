@@ -18,10 +18,13 @@
 #import "AdblockPlusContainerController.h"
 
 #import "Appearence.h"
-#import "NSString+TextRenderer.h"
+#import "NSAttributedString+TextRenderer.h"
+#import "AdblockPlusController.h"
 
 @interface AdblockPlusContainerController ()
 
+@property (nonatomic, weak) IBOutlet UIView *topBarView;
+@property (nonatomic, weak) IBOutlet UILabel *adblockPlusLabel;
 @property (nonatomic, weak) IBOutlet UILabel *adblockBrowserLabel;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *adblockBrowserBannerConstraint;
 
@@ -39,11 +42,46 @@
     self.adblockBrowserBannerConstraint.constant = 0;
   }
 
+  CGFloat fontSize = self.adblockPlusLabel.font.pointSize;
+  self.adblockPlusLabel.fontFamilyName = DefaultFontFamily;
+  self.adblockPlusLabel.attributedText = [self.adblockPlusLabel.attributedText renderSpanMarkedByChar:@"*"
+                                                                                               asFont:[Appearence defaultBoldFontOfSize:fontSize]];
   // This is the simpliest way to print Browser word using custom bold font.
-  CGFloat fontSize = self.adblockBrowserLabel.font.pointSize;
+  fontSize = self.adblockBrowserLabel.font.pointSize;
   self.adblockBrowserLabel.fontFamilyName = DefaultFontFamily;
-  self.adblockBrowserLabel.attributedText = [self.adblockBrowserLabel.text renderSpanMarkedByChar:@"*"
-                                                                                           asFont:[Appearence defaultBoldFontOfSize:fontSize]];
+  self.adblockBrowserLabel.attributedText = [self.adblockBrowserLabel.attributedText renderSpanMarkedByChar:@"*"
+                                                                                                     asFont:[Appearence defaultBoldFontOfSize:fontSize]];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [self.navigationController setNavigationBarHidden:YES animated:animated];
+  [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+  if (self.navigationController.topViewController != self) {
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+  }
+  [super viewWillDisappear:animated];
+}
+
+- (void)viewDidLayoutSubviews
+{
+  [super viewDidLayoutSubviews];
+
+  for (UIViewController *viewController in self.childViewControllers) {
+    if ([viewController isKindOfClass:[AdblockPlusController class]]) {
+      // Content of the controller table must be vertically moved
+      // in order not be covered by the bar with nonstandard height
+      const CGFloat topOffsetCorrection = -15;
+      UITableView *tableView = ((AdblockPlusController *)viewController).tableView;
+      UIEdgeInsets insets = UIEdgeInsetsMake(self.topBarView.frame.size.height + topOffsetCorrection, 0, 0, 0);
+      tableView.contentInset = insets;
+      tableView.scrollIndicatorInsets = insets;
+    }
+  }
 }
 
 #pragma mark - Navigation

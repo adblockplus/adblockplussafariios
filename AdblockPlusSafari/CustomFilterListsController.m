@@ -156,7 +156,7 @@ static NSString *customFilterListUrl = @"https://easylist-downloads.adblockplus.
 
   if ([cell.reuseIdentifier isEqualToString:@"EnableDefaultFilterList"]) {
     self.adblockPlus.defaultFilterListEnabled = !self.adblockPlus.defaultFilterListEnabled;
-    [self.adblockPlus reloadContentBlockerWithCompletion:nil];
+    [self.adblockPlus reloadWithCompletion:nil];
   } else if ([cell.reuseIdentifier isEqualToString:@"EnableCustomFilterList"]) {
     NSMutableDictionary<NSString *, id> *filterLists = nil;
 

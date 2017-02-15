@@ -135,6 +135,12 @@ static UIFont *__nonnull createFontWithName(NSString *__nonnull name, CGFloat si
   return createFontWithName(name, size, [UIFont boldSystemFontOfSize:size]);
 }
 
++ (UIFont *__nonnull)defaultSemiboldFontOfSize:(CGFloat)size
+{
+  NSString *name = [NSString stringWithFormat:@"%@-Semibold", DefaultFontFamily];
+  return createFontWithName(name, size, [UIFont boldSystemFontOfSize:size]);
+}
+
 @end
 
 

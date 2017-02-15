@@ -18,6 +18,7 @@
 #import "ActionRequestHandler.h"
 
 #import "AdblockPlus+Extension.h"
+#import "AdblockPlus+ActivityChecking.h"
 
 @interface ActionRequestHandler ()
 
@@ -28,7 +29,13 @@
 - (void)beginRequestWithExtensionContext:(NSExtensionContext *)context
 {
   AdblockPlus *adblockPlus = [[AdblockPlus alloc] init];
-  adblockPlus.activated = YES;
+
+  NSError *error;
+  if ([adblockPlus shouldRespondToActivityTest:&error]) {
+    [context cancelRequestWithError:error];
+    return;
+  }
+
 
   // completeRequestReturningItems might need lot of time to update rules.
   // (iOS process can be suspended during reloading, which expand time of reloading.)
@@ -45,6 +52,7 @@
       // If the new filter list was updated during reloading
       // then downloadedVersion would be less then self.downloadedVersion.
       adblockPlus.installedVersion = MAX(adblockPlus.installedVersion, downloadedVersion);
+      adblockPlus.lastActivity = [[NSDate alloc] init];
     }
   }];
 }
