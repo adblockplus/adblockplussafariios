@@ -12,8 +12,8 @@ BUILD_DIR = os.path.join(BASE_DIR, "build")
 BUILD_NUMBER = time.strftime("%Y%m%d%H%M", time.gmtime())
 RELEASE_APP_PROVISIONING_PROFILE = "00d92821-2b0f-4036-9b2d-541ce10d0429"
 RELEASE_EXTENSION_PROVISIONING_PROFILE = "a30dba35-c866-4331-8967-28b9cab60ca2"
-DEVBUILD_APP_PROVISIONING_PROFILE = "2591efa4-c166-4956-a62a-e3a0cd41f5a3"
-DEVBUILD_EXTENSION_PROVISIONING_PROFILE = "c4495b74-44a8-499e-ad28-4190912bad0b"
+DEVBUILD_APP_PROVISIONING_PROFILE = "e5707b43-6416-4244-b7c2-eeafe3c73e68"
+DEVBUILD_EXTENSION_PROVISIONING_PROFILE = "ff4c872e-ccf0-4d00-802f-f35e142cc977"
 
 
 def print_usage():
@@ -23,11 +23,6 @@ def print_usage():
 
 def build_dependencies():
     subprocess.check_call(["pod", "install"])
-    subprocess.check_call(["xcodebuild",
-                           "-workspace", "AdblockPlusSafari.xcworkspace",
-                           "-scheme", "Pods-AdblockPlusSafariExtension",
-                           "CONFIGURATION_BUILD_DIR=" + BUILD_DIR,
-                           "archive"])
 
 
 def build_app(build_type, build_name):
@@ -42,6 +37,7 @@ def build_app(build_type, build_name):
     archive_path = os.path.join(BUILD_DIR, build_name + ".xcarchive")
     subprocess.check_call([
         "xcodebuild",
+        "-workspace", "AdblockPlusSafari.xcworkspace",
         "-configuration", build_configuration,
         "-scheme", "AdblockPlusSafari",
         "CONFIGURATION_BUILD_DIR=" + BUILD_DIR,
