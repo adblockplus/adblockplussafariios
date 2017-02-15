@@ -17,27 +17,51 @@
 
 #import "RootController.h"
 
-#import "WelcomeController.h"
+#import "DialogPresenterController.h"
 
-@interface RootController ()
-
+@interface RootController (AdblockPlus) <DialogControllerProtocol>
 @end
 
-@implementation RootController
+@implementation RootController (AdblockPlus)
+@end
+
+
+
+@interface RootController ()
+@end
+
+@implementation RootController {
+  BOOL _readyToShowDialog;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+  if (self = [super initWithCoder:coder]) {
+    _readyToShowDialog = NO;
+  }
+  return self;
+}
+
+- (void)dealloc
+{
+  self.adblockPlus = nil;
+}
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   // Do any additional setup after loading the view.
 
-  if (![[NSUserDefaults standardUserDefaults] boolForKey:WelcomeControllerHasBeenSeen]) {
-    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"WelcomeController"];
-    [self setViewControllers:@[controller] animated:false];
-  }
-
   if ([self.topViewController respondsToSelector:@selector(setAdblockPlus:)]) {
     [(id)self.topViewController setAdblockPlus:self.adblockPlus];
   }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  _readyToShowDialog = YES;
+  [self showDialogIfNeeded];
 }
 
 - (void)setViewControllers:(NSArray<UIViewController *> *)viewControllers animated:(BOOL)animated
@@ -46,6 +70,103 @@
     [(id)viewControllers.firstObject setAdblockPlus:self.adblockPlus];
   }
   [super setViewControllers:viewControllers animated:animated];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+  if ([keyPath isEqualToString:NSStringFromSelector(@selector(activated))]
+      || [keyPath isEqualToString:NSStringFromSelector(@selector(needsDisplayErrorDialog))]) {
+    if (_readyToShowDialog) {
+      [self showDialogIfNeeded];
+    }
+  } else {
+    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+  }
+}
+
+- (void)setAdblockPlus:(AdblockPlusExtras *)adblockPlus
+{
+  NSArray<NSString *> *keyPaths = @[NSStringFromSelector(@selector(activated)),
+                                    NSStringFromSelector(@selector(needsDisplayErrorDialog))];
+
+  for (NSString *keyPath in keyPaths) {
+    [_adblockPlus removeObserver:self
+                      forKeyPath:keyPath];
+  }
+  _adblockPlus = adblockPlus;
+  for (NSString *keyPath in keyPaths) {
+    [_adblockPlus addObserver:self
+                   forKeyPath:keyPath
+                      options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew
+                      context:nil];
+  }
+}
+
+#pragma mark - Private
+
+- (void)showDialogIfNeeded
+{
+  // RootController is always present.
+  // Welcome dialog is always presented before error dialog.
+  // Both dialogs are not presented at once.
+
+  if ([DialogPresenterController shouldShowWelcomeDialogController:self.adblockPlus]) {
+    [self showWelcomeDialogIfNeeded];
+    return;
+  }
+
+  [self showErrorDialogIfNeeded];
+}
+
+- (void)showWelcomeDialogIfNeeded
+{
+  UIViewController *presenter = self;
+
+  while (presenter.presentedViewController) {
+    presenter = presenter.presentedViewController;
+    if ([presenter isKindOfClass:[DialogPresenterController class]]) {
+      return;
+    }
+  }
+
+  DialogPresenterController *controller = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DialogPresenterController class])];
+  controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+  controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+  controller.adblockPlus = self.adblockPlus;
+  [presenter presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)showErrorDialogIfNeeded
+{
+  if (!self.adblockPlus.needsDisplayErrorDialog) {
+    return;
+  }
+
+  // Do not show message, if update was automatic.
+  if ([[self.adblockPlus.filterLists.allValues valueForKeyPath:@"@sum.userTriggered"] integerValue] == 0) {
+    return;
+  }
+
+  UIViewController *viewController = UIApplication.sharedApplication.delegate.window.rootViewController;
+
+  while (viewController.presentedViewController) {
+    viewController = viewController.presentedViewController;
+    if ([viewController conformsToProtocol:@protocol(DialogControllerProtocol) ]) {
+      return;
+    }
+  }
+
+  NSString *title = NSLocalizedString(@"​Filter list update failed",
+                                      @"Title of filter update failure dialog");
+  NSString *message = NSLocalizedString(@"Failed to update filter lists. Please try again later.",
+                                        @"Message of filter update failure dialog");
+
+  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+  [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+  alertController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+  [viewController presentViewController:alertController animated:YES completion:nil];
+
+  self.adblockPlus.needsDisplayErrorDialog = NO;
 }
 
 @end

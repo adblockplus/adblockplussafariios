@@ -15,27 +15,13 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
  */
 
-#import "AdblockPlus.h"
 
-@interface AdblockPlusExtras : AdblockPlus
+#import <UIKit/UIKit.h>
 
-// Reloading content blocker
-@property (nonatomic) BOOL reloading;
+#import "AdblockPlusExtras.h"
 
-// Updating filter lists
-@property (nonatomic, readonly) BOOL updating;
+@interface ActivationConfirmationController : UIViewController
 
-// Date of the last successful update of filter lists
-@property (nonatomic, readonly) NSDate *__nullable lastUpdate;
-
-- (void)reloadWithCompletion:(void (^__nullable)(NSError *__nullable error))completion;
-
-- (void)updateActiveFilterLists:(BOOL)userTriggered;
-
-- (void)updateFilterListsWithNames:(NSArray<NSString *> *__nonnull)filterListNames userTriggered:(BOOL)userTriggered;
-
-- (NSArray<NSString *> *__nonnull)outdatedFilterListNames;
-
-@property (nonatomic) BOOL needsDisplayErrorDialog;
+@property (nonatomic, strong) AdblockPlusExtras *__nullable adblockPlus;
 
 @end

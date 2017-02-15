@@ -1,6 +1,6 @@
 /*
  * This file is part of Adblock Plus <https://adblockplus.org/>,
- * Copyright (C) 2006-2016 Eyeo GmbH
+ * Copyright (C) 2006-2015 Eyeo GmbH
  *
  * Adblock Plus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as
@@ -15,18 +15,9 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
  */
 
-#import <Foundation/Foundation.h>
 
-@class UIFont;
+#import <UIKit/UIKit.h>
 
-@interface NSString (TextRenderer)
-
-/**
-@param token a single character representing a span marker.
-@param font the font to substitute in the span
-@return self as attributed string with font changes applied to the found spans
- */
-- (NSAttributedString*)renderSpanMarkedByChar:(NSString*)markerChar
-                                       asFont:(UIFont*)font;
+@interface ActivationWaitingController : UIViewController
 
 @end
