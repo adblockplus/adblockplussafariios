@@ -1,0 +1,15 @@
+//
+//  AdblockPlusSafari.xcconfig
+//  AdblockPlusSafari
+//
+//  Created by Pavel Zdenek on 16/02/2017.
+//  Copyright © 2017 Eyeo GmbH. All rights reserved.
+//
+
+PRODUCT_DISPLAY_NAME = Adblock Plus
+PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari
+CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafari.entitlements
+// Eyeo Development
+DEVELOPMENT_TEAM = GRYYZR985A
+CODE_SIGN_IDENTITY = iPhone Distribution: Eyeo GmbH (GRYYZR985A)
+PROVISIONING_PROFILE_SPECIFIER = Adblock Plus App Store
