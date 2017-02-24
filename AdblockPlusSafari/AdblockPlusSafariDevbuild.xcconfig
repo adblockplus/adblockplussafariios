@@ -1,0 +1,16 @@
+//
+//  AdblockPlusSafariDevbuild.xcconfig
+//  AdblockPlusSafari
+//
+//  Created by Pavel Zdenek on 16/02/2017.
+//  Copyright © 2017 Eyeo GmbH. All rights reserved.
+//
+
+PRODUCT_DISPLAY_NAME = Adblock Plus Devbuild
+PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari
+CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafariDevbuild.entitlements
+// Eyeo Enterprise
+DEVELOPMENT_TEAM = G5LEUTX2F6
+CODE_SIGN_IDENTITY = iPhone Distribution: Eyeo GmbH (G5LEUTX2F6)
+CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Distribution // override default "iPhone Developer"
+PROVISIONING_PROFILE_SPECIFIER = Adblock Plus Devbuild In House
