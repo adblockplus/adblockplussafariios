@@ -19,11 +19,9 @@ def print_usage():
 def build_dependencies():
     subprocess.check_call(["pod", "install"])
 
+
 def build_app(build_type, build_name):
-    if build_type == "release":
-        build_configuration = "Release"
-    else:
-        build_configuration = "Devbuild Release"
+    build_configuration = "Release" if build_type == "release" else "Devbuild Release"
     archive_path = os.path.join(BUILD_DIR, build_name + ".xcarchive")
     subprocess.check_call([
         "xcodebuild",

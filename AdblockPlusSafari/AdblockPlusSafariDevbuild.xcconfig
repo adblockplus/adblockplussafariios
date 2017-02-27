@@ -1,11 +1,3 @@
-//
-//  AdblockPlusSafariDevbuild.xcconfig
-//  AdblockPlusSafari
-//
-//  Created by Pavel Zdenek on 16/02/2017.
-//  Copyright © 2017 Eyeo GmbH. All rights reserved.
-//
-
 PRODUCT_DISPLAY_NAME = Adblock Plus Devbuild
 PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari
 CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafariDevbuild.entitlements
