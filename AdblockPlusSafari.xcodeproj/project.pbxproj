@@ -75,6 +75,7 @@
 		E942B0801B76899D004B4692 /* ActionRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E942B07F1B76899D004B4692 /* ActionRequestHandler.m */; };
 		E942B0841B76899D004B4692 /* AdblockPlusSafariExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E96360F11C1736E8009179F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E96360F31C1736E8009179F2 /* Localizable.strings */; };
+		E9B982AE1E55C12400C22A17 /* build.py in Resources */ = {isa = PBXBuildFile; fileRef = E9B982AD1E55C12400C22A17 /* build.py */; };
 		E9C719D91B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json in Resources */ = {isa = PBXBuildFile; fileRef = E9C719D81B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json */; };
 		E9E897361C4947F60005D6E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9E897381C4947F60005D6E2 /* InfoPlist.strings */; };
 		E9E8973B1C4947F60005D6E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9E8973D1C4947F60005D6E2 /* InfoPlist.strings */; };
@@ -229,6 +230,13 @@
 		E9A61B241C4E9F1700705A13 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9A61B251C4E9F1800705A13 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9A61B261C4E9F1800705A13 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E9B982A71E55A28C00C22A17 /* AdblockPlusSafariDevbuild.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = AdblockPlusSafariDevbuild.entitlements; sourceTree = "<group>"; };
+		E9B982A81E55A29C00C22A17 /* AdblockPlusSafariExtensionDevbuild.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = AdblockPlusSafariExtensionDevbuild.entitlements; sourceTree = "<group>"; };
+		E9B982A91E55A31F00C22A17 /* AdblockPlusSafari.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AdblockPlusSafari.xcconfig; sourceTree = "<group>"; };
+		E9B982AA1E55A33200C22A17 /* AdblockPlusSafariDevbuild.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AdblockPlusSafariDevbuild.xcconfig; sourceTree = "<group>"; };
+		E9B982AB1E55C03100C22A17 /* AdblockPlusSafariExtension.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AdblockPlusSafariExtension.xcconfig; sourceTree = "<group>"; };
+		E9B982AC1E55C04B00C22A17 /* AdblockPlusSafariExtensionDevbuild.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AdblockPlusSafariExtensionDevbuild.xcconfig; sourceTree = "<group>"; };
+		E9B982AD1E55C12400C22A17 /* build.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = build.py; sourceTree = "<group>"; };
 		E9C719D81B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "easylist+exceptionrules_content_blocker.json"; sourceTree = "<group>"; };
 		E9E897321C4947F50005D6E2 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9E897331C4947F50005D6E2 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
@@ -504,6 +512,7 @@
 		E9071D331B76897C00091AEB = {
 			isa = PBXGroup;
 			children = (
+				E9B982AD1E55C12400C22A17 /* build.py */,
 				E9071D3E1B76897C00091AEB /* AdblockPlusSafari */,
 				E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */,
 				69B2AEB81BCD289C00E874A9 /* AdblockPlusSafariTests */,
@@ -530,13 +539,16 @@
 		E9071D3E1B76897C00091AEB /* AdblockPlusSafari */ = {
 			isa = PBXGroup;
 			children = (
+				E9B982A91E55A31F00C22A17 /* AdblockPlusSafari.xcconfig */,
+				E9B982AA1E55A33200C22A17 /* AdblockPlusSafariDevbuild.xcconfig */,
+				69A9100E1B985B2800D93485 /* AdblockPlusSafari.entitlements */,
+				E9B982A71E55A28C00C22A17 /* AdblockPlusSafariDevbuild.entitlements */,
 				69AB6A4D1B9712F1005C2075 /* AdblockPlus.h */,
 				69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */,
 				697D27301DCB492000118902 /* AdblockPlus+ActivityChecking.h */,
 				697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */,
 				6970E76F1BA952F200B11AC3 /* AdblockPlusExtras.h */,
 				6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */,
-				69A9100E1B985B2800D93485 /* AdblockPlusSafari.entitlements */,
 				E9071D421B76897C00091AEB /* AppDelegate.h */,
 				E9071D431B76897C00091AEB /* AppDelegate.m */,
 				69AB6A2C1B96F664005C2075 /* Appearence.h */,
@@ -574,13 +586,16 @@
 		E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */ = {
 			isa = PBXGroup;
 			children = (
+				E9B982AB1E55C03100C22A17 /* AdblockPlusSafariExtension.xcconfig */,
+				E9B982AC1E55C04B00C22A17 /* AdblockPlusSafariExtensionDevbuild.xcconfig */,
+				69A9100F1B985B3B00D93485 /* AdblockPlusSafariExtension.entitlements */,
+				E9B982A81E55A29C00C22A17 /* AdblockPlusSafariExtensionDevbuild.entitlements */,
 				E942B07E1B76899D004B4692 /* ActionRequestHandler.h */,
 				E942B07F1B76899D004B4692 /* ActionRequestHandler.m */,
 				6970E76C1BA94C3900B11AC3 /* AdblockPlus+Extension.h */,
 				6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */,
 				6905EDAA1BCE84F500B3A9B9 /* AdblockPlus+Parsing.h */,
 				6905EDAB1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m */,
-				69A9100F1B985B3B00D93485 /* AdblockPlusSafariExtension.entitlements */,
 				69A910111B9866A300D93485 /* easylist_content_blocker.json */,
 				E9C719D81B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json */,
 				69A910151B986A0D00D93485 /* empty.json */,
@@ -697,6 +712,7 @@
 				TargetAttributes = {
 					69B2AEB61BCD289C00E874A9 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = GRYYZR985A;
 						TestTargetID = E9071D3B1B76897C00091AEB;
 					};
 					E9071D3B1B76897C00091AEB = {
@@ -777,6 +793,7 @@
 				E9E897401C4947F60005D6E2 /* InfoPlist.strings in Resources */,
 				E9321E5E1C50F4180021D51F /* rename.sh in Resources */,
 				69C19C741B975946009ACBAC /* screencast.mp4 in Resources */,
+				E9B982AE1E55C12400C22A17 /* build.py in Resources */,
 				E9E897D61C4949660005D6E2 /* unpack.sh in Resources */,
 				699876F31BBE721900595FB9 /* FilterLists.plist in Resources */,
 				69AB6A441B970D19005C2075 /* SourceSansPro-Light.otf in Resources */,
@@ -1205,6 +1222,7 @@
 		};
 		E9071D511B76897C00091AEB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9B982A91E55A31F00C22A17 /* AdblockPlusSafari.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1223,7 +1241,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1253,6 +1270,7 @@
 		};
 		E9071D521B76897C00091AEB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9B982A91E55A31F00C22A17 /* AdblockPlusSafari.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1271,7 +1289,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1298,16 +1315,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
-				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafari.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari;
-				PRODUCT_DISPLAY_NAME = "Adblock Plus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "$(APP_PROVISIONING_PROFILE)";
 			};
 			name = Debug;
 		};
@@ -1317,16 +1328,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
-				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafari.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari;
-				PRODUCT_DISPLAY_NAME = "Adblock Plus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "$(APP_PROVISIONING_PROFILE)";
 			};
 			name = Release;
 		};
@@ -1336,14 +1341,11 @@
 			buildSettings = {
 				BUILD_NUMBER = 0;
 				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension;
-				PRODUCT_DISPLAY_NAME = "Adblock Plus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "$(EXTENSION_PROVISIONING_PROFILE)";
+				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Extension App Store";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1354,20 +1356,18 @@
 			buildSettings = {
 				BUILD_NUMBER = 0;
 				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension;
-				PRODUCT_DISPLAY_NAME = "Adblock Plus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "$(EXTENSION_PROVISIONING_PROFILE)";
+				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Extension App Store";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
 		E9CA91581BC64504002696CB /* Devbuild Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9B982AA1E55A33200C22A17 /* AdblockPlusSafariDevbuild.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1386,7 +1386,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1414,15 +1413,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
-				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafariDevbuild.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eyeo GmbH";
 				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari;
-				PRODUCT_DISPLAY_NAME = "Adblock Plus Devbuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "$(APP_PROVISIONING_PROFILE)";
 			};
 			name = "Devbuild Release";
 		};
@@ -1432,20 +1425,18 @@
 			buildSettings = {
 				BUILD_NUMBER = 0;
 				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtensionDevbuild.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eyeo GmbH";
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariExtension;
-				PRODUCT_DISPLAY_NAME = "Adblock Plus Devbuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "$(EXTENSION_PROVISIONING_PROFILE)";
+				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Extension Devbuild In House";
 				SKIP_INSTALL = YES;
 			};
 			name = "Devbuild Release";
 		};
 		E9CA915B1BC64519002696CB /* Devbuild Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9B982AA1E55A33200C22A17 /* AdblockPlusSafariDevbuild.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1464,7 +1455,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1498,15 +1488,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
-				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafariDevbuild.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari;
-				PRODUCT_DISPLAY_NAME = "Adblock Plus Devbuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "$(APP_PROVISIONING_PROFILE)";
 			};
 			name = "Devbuild Debug";
 		};
@@ -1516,14 +1500,11 @@
 			buildSettings = {
 				BUILD_NUMBER = 0;
 				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtensionDevbuild.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariExtension;
-				PRODUCT_DISPLAY_NAME = "Adblock Plus Devbuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "$(EXTENSION_PROVISIONING_PROFILE)";
+				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Extension Devbuild In House";
 				SKIP_INSTALL = YES;
 			};
 			name = "Devbuild Debug";

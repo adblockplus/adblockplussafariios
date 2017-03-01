@@ -1,0 +1,21 @@
+//
+//  AdblockPlusSafariExtensionDevbuild.xcconfig
+//  AdblockPlusSafari
+//
+//  Created by Pavel Zdenek on 16/02/2017.
+//  Copyright © 2017 Eyeo GmbH. All rights reserved.
+//
+
+// Cocoapods does not understand parameterized includes.
+// If it worked, target configurations could be replaced with this xcconfig.
+// Now it's hijacked by pod xcconfigs so this xcconfig is not used, until Cocoapods is dropped
+//#include "Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension.$(CONFIGURATION).xcconfig"
+
+PRODUCT_DISPLAY_NAME = Adblock Plus Devbuild
+PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariExtension
+CODE_SIGN_ENTITLEMENTS = AdblockPlusSafari/AdblockPlusSafariExtensionDevbuild.entitlements
+// Eyeo Enterprise
+DEVELOPMENT_TEAM = G5LEUTX2F6
+CODE_SIGN_IDENTITY = iPhone Distribution: Eyeo GmbH (G5LEUTX2F6)
+CODE_SIGN_IDENTITY[sdk=iphoneos*] = iPhone Distribution // override default "iPhone Developer"
+PROVISIONING_PROFILE_SPECIFIER = Adblock Plus Extension Devbuild In House

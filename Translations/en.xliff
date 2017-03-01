@@ -14,8 +14,8 @@
         <note>Class = "UILabel"; text = "About"; ObjectID = "3Bc-kL-vsl";</note>
       </trans-unit>
       <trans-unit id="3FL-nd-DlQ.text">
-        <source>Allow some nonintrusive ads</source>
-        <note>Class = "UILabel"; text = "Allow some nonintrusive ads"; ObjectID = "3FL-nd-DlQ";</note>
+        <source>Allow some nonintrusive advertising</source>
+        <note>Class = "UILabel"; text = "Allow some nonintrusive advertising"; ObjectID = "3FL-nd-DlQ";</note>
       </trans-unit>
       <trans-unit id="4Ma-gI-dEb.headerTitle">
         <source>VERSION</source>

@@ -10,11 +10,6 @@ import time
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BUILD_DIR = os.path.join(BASE_DIR, "build")
 BUILD_NUMBER = time.strftime("%Y%m%d%H%M", time.gmtime())
-RELEASE_APP_PROVISIONING_PROFILE = "00d92821-2b0f-4036-9b2d-541ce10d0429"
-RELEASE_EXTENSION_PROVISIONING_PROFILE = "a30dba35-c866-4331-8967-28b9cab60ca2"
-DEVBUILD_APP_PROVISIONING_PROFILE = "2591efa4-c166-4956-a62a-e3a0cd41f5a3"
-DEVBUILD_EXTENSION_PROVISIONING_PROFILE = "c4495b74-44a8-499e-ad28-4190912bad0b"
-
 
 def print_usage():
     print >>sys.stderr, "Usage: %s release|devbuild" % \
@@ -23,31 +18,18 @@ def print_usage():
 
 def build_dependencies():
     subprocess.check_call(["pod", "install"])
-    subprocess.check_call(["xcodebuild",
-                           "-workspace", "AdblockPlusSafari.xcworkspace",
-                           "-scheme", "Pods-AdblockPlusSafariExtension",
-                           "CONFIGURATION_BUILD_DIR=" + BUILD_DIR,
-                           "archive"])
 
 
 def build_app(build_type, build_name):
-    if build_type == "release":
-        build_configuration = "Release"
-        app_provisioning_profile = RELEASE_APP_PROVISIONING_PROFILE
-        extension_provisioning_profile = RELEASE_EXTENSION_PROVISIONING_PROFILE
-    else:
-        build_configuration = "Devbuild Release"
-        app_provisioning_profile = DEVBUILD_APP_PROVISIONING_PROFILE
-        extension_provisioning_profile = DEVBUILD_EXTENSION_PROVISIONING_PROFILE
+    build_configuration = "Release" if build_type == "release" else "Devbuild Release"
     archive_path = os.path.join(BUILD_DIR, build_name + ".xcarchive")
     subprocess.check_call([
         "xcodebuild",
+        "-workspace", "AdblockPlusSafari.xcworkspace",
         "-configuration", build_configuration,
         "-scheme", "AdblockPlusSafari",
         "CONFIGURATION_BUILD_DIR=" + BUILD_DIR,
         "BUILD_NUMBER=" + BUILD_NUMBER,
-        "APP_PROVISIONING_PROFILE=" + app_provisioning_profile,
-        "EXTENSION_PROVISIONING_PROFILE=" + extension_provisioning_profile,
         "ENABLE_BITCODE=NO",
         "archive",
         "-archivePath", archive_path
