@@ -22,7 +22,8 @@
 #import "RootController.h"
 #import "FilterList+Processing.h"
 #import "NSDictionary+FilterList.h"
-#import "AdblockPlus+ActivityChecking.m"
+#import "AdblockPlus+ActivityChecking.h"
+#import "NSString+AdblockPlus.h"
 
 
 
@@ -49,6 +50,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 @property (nonatomic, weak) NSURLSession *backgroundSession;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, __kindof NSURLSessionTask *> *downloadTasks;
 @property (nonatomic) NSUInteger updatingGroupIdentifier;
+@property (nonatomic) BOOL disableReloading;
 
 @end
 
@@ -135,7 +137,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - property
+#pragma mark - properties
 
 @dynamic lastUpdate;
 @dynamic updating;
@@ -148,6 +150,20 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 - (BOOL)updating
 {
   return [[[self.filterLists allValues] valueForKeyPath:@"@sum.updating"] integerValue] > 0;
+}
+
+- (BOOL)anyLastUpdateFailed
+{
+  for (NSString *filterListName in self.filterLists) {
+    NSDictionary *filterList = self.filterLists[filterListName];
+    if ([filterList[@"updatingGroupIdentifier"] unsignedIntegerValue] == self.updatingGroupIdentifier
+        && [filterList[@"lastUpdateFailed"] boolValue]
+        && [filterList[@"userTriggered"] boolValue]) {
+      return YES;
+    }
+  }
+  
+  return NO;
 }
 
 - (void)setFilterLists:(NSDictionary<NSString *,NSDictionary<NSString *,NSObject *> *> *)filterLists
@@ -189,20 +205,6 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
   [self.adblockPlusDetails synchronize];
 }
 
-- (BOOL)anyLastUpdateFailed
-{
-  for (NSString *filterListName in self.filterLists) {
-    NSDictionary *filterList = self.filterLists[filterListName];
-    if ([filterList[@"updatingGroupIdentifier"] unsignedIntegerValue] == self.updatingGroupIdentifier
-        && [filterList[@"lastUpdateFailed"] boolValue]
-        && [filterList[@"userTriggered"] boolValue]) {
-      return YES;
-    }
-  }
-
-  return NO;
-}
-
 #pragma mark -
 
 - (void)setEnabled:(BOOL)enabled
@@ -214,19 +216,36 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 - (void)setAcceptableAdsEnabled:(BOOL)enabled
 {
   super.acceptableAdsEnabled = enabled;
-  [self reloadWithCompletion:nil];
-  [self updateFilterListsWithNames:self.outdatedFilterListNames userTriggered:NO];
+  [self reloadAfterCompletion:^(AdblockPlusExtras *adblockPlus) {
+    [adblockPlus updateFilterListsWithNames:adblockPlus.outdatedFilterListNames
+                              userTriggered:NO];
+  }];
 }
 
 -(void)setDefaultFilterListEnabled:(BOOL)defaultFilterListEnabled
 {
   super.defaultFilterListEnabled = defaultFilterListEnabled;
+  [self reloadAfterCompletion:^(AdblockPlusExtras *adblockPlus) {
+    [adblockPlus updateFilterListsWithNames:adblockPlus.outdatedFilterListNames
+                              userTriggered:NO];
+  }];
+}
+
+#pragma mark - reloading
+
+- (void)reloadAfterCompletion:(void(^)(AdblockPlusExtras *))completion
+{
+  self.disableReloading = YES;
+  completion(self);
+  self.disableReloading = NO;
   [self reloadWithCompletion:nil];
-  [self updateFilterListsWithNames:self.outdatedFilterListNames userTriggered:NO];
 }
 
 - (void)reloadWithCompletion:(void (^)(NSError *error))completion
 {
+  if (self.disableReloading) {
+    return;
+  }
   __weak __typeof(self) wSelf = self;
   NSDate *lastActivity = wSelf.lastActivity;
   wSelf.reloading = YES;
@@ -243,6 +262,28 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
       }
     });
   }];
+}
+
+#pragma mark -
+
+- (BOOL)whitelistWebsite:(NSString *)website
+{
+  website = website.whitelistedHostname;
+  
+  if (website.length == 0) {
+    return NO;
+  }
+  
+  NSArray<NSString *> *websites = self.whitelistedWebsites;
+  
+  if ([websites containsObject:website]) {
+    return NO;
+  }
+  
+  websites = [@[website] arrayByAddingObjectsFromArray:websites];
+  self.whitelistedWebsites = websites;
+
+  return YES;
 }
 
 - (void)updateActiveFilterLists:(BOOL)userTriggered
@@ -404,13 +445,13 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
 - (void)onApplicationWillEnterForegroundNotification:(NSNotification *)notification
 {
+  [self synchronize];
+
   if (self.reloading) {
     return;
   }
-  
+
   [self performActivityTestWith:[[ContentBlockerManager alloc] init]];
 }
 
 @end
-
-

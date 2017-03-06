@@ -10,6 +10,8 @@
 		5261B9A203EF28DD72B6EA94 /* libPods-AdblockPlusSafariExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A44A9ACEDBC5132F254C0E31 /* libPods-AdblockPlusSafariExtension.a */; };
 		690362D81C19A7B9000E5581 /* easylist_content_blocker_v2.json in Resources */ = {isa = PBXBuildFile; fileRef = 690362D61C19A7B9000E5581 /* easylist_content_blocker_v2.json */; };
 		690362D91C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json in Resources */ = {isa = PBXBuildFile; fileRef = 690362D71C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json */; };
+		6904B4011E6705F4006B3FE5 /* AdblockPlusShared.m in Sources */ = {isa = PBXBuildFile; fileRef = 6904B3FE1E6705F4006B3FE5 /* AdblockPlusShared.m */; };
+		6904B4021E6705F4006B3FE5 /* NSString+AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 6904B4001E6705F4006B3FE5 /* NSString+AdblockPlus.m */; };
 		6905EDAC1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6905EDAB1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m */; };
 		6905EDAD1BCE890000B3A9B9 /* AdblockPlus+Parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6905EDAB1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m */; };
 		69142D571CDCC51C00FD2640 /* FilterList.m in Sources */ = {isa = PBXBuildFile; fileRef = 69142D541CDCC51C00FD2640 /* FilterList.m */; };
@@ -21,6 +23,14 @@
 		69142D7C1CDCDE0700FD2640 /* NSDictionary+FilterList.m in Sources */ = {isa = PBXBuildFile; fileRef = 69142D751CDCCF1100FD2640 /* NSDictionary+FilterList.m */; };
 		691F74471B9874590057C702 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74461B9874590057C702 /* AboutController.m */; };
 		691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */; };
+		6957783D1E672A7600331DA3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6957783B1E672A7600331DA3 /* MainInterface.storyboard */; };
+		695778411E672A7600331DA3 /* AdblockPlusSafariActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 695778361E672A7500331DA3 /* AdblockPlusSafariActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6957784A1E672A9700331DA3 /* ActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695778481E672A9700331DA3 /* ActionViewController.m */; };
+		6957784F1E672B0700331DA3 /* ActionExtensionAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6957784C1E672B0700331DA3 /* ActionExtensionAssets.xcassets */; };
+		695778501E672B0700331DA3 /* AdblockPlusAction.js in Resources */ = {isa = PBXBuildFile; fileRef = 6957784D1E672B0700331DA3 /* AdblockPlusAction.js */; };
+		695778511E672B5300331DA3 /* AdblockPlusShared.m in Sources */ = {isa = PBXBuildFile; fileRef = 6904B3FE1E6705F4006B3FE5 /* AdblockPlusShared.m */; };
+		695778521E672B7D00331DA3 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
+		695778531E672C8700331DA3 /* NSString+AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 6904B4001E6705F4006B3FE5 /* NSString+AdblockPlus.m */; };
 		6970E76E1BA94C3900B11AC3 /* AdblockPlus+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */; };
 		6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */; };
 		697D27321DCB492000118902 /* AdblockPlus+ActivityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */; };
@@ -108,6 +118,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				E942B0841B76899D004B4692 /* AdblockPlusSafariExtension.appex in Embed App Extensions */,
+				695778411E672A7600331DA3 /* AdblockPlusSafariActionExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +130,10 @@
 		620FFD3DC107EDFC64E6719A /* Pods-AdblockPlusSafariExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdblockPlusSafariExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AdblockPlusSafariExtension/Pods-AdblockPlusSafariExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		690362D61C19A7B9000E5581 /* easylist_content_blocker_v2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = easylist_content_blocker_v2.json; sourceTree = "<group>"; };
 		690362D71C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "easylist+exceptionrules_content_blocker_v2.json"; sourceTree = "<group>"; };
+		6904B3FD1E6705F4006B3FE5 /* AdblockPlusShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusShared.h; sourceTree = "<group>"; };
+		6904B3FE1E6705F4006B3FE5 /* AdblockPlusShared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusShared.m; sourceTree = "<group>"; };
+		6904B3FF1E6705F4006B3FE5 /* NSString+AdblockPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AdblockPlus.h"; sourceTree = "<group>"; };
+		6904B4001E6705F4006B3FE5 /* NSString+AdblockPlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AdblockPlus.m"; sourceTree = "<group>"; };
 		6905EDAA1BCE84F500B3A9B9 /* AdblockPlus+Parsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AdblockPlus+Parsing.h"; sourceTree = "<group>"; };
 		6905EDAB1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AdblockPlus+Parsing.m"; sourceTree = "<group>"; };
 		69142D531CDCC51C00FD2640 /* FilterList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterList.h; sourceTree = "<group>"; };
@@ -135,6 +150,13 @@
 		691F74461B9874590057C702 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 		691F74481B988ADC0057C702 /* AdblockPlusContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusContainerController.h; sourceTree = "<group>"; };
 		691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusContainerController.m; sourceTree = "<group>"; };
+		695778361E672A7500331DA3 /* AdblockPlusSafariActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AdblockPlusSafariActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6957783C1E672A7600331DA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		695778471E672A9700331DA3 /* ActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionViewController.h; sourceTree = "<group>"; };
+		695778481E672A9700331DA3 /* ActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionViewController.m; sourceTree = "<group>"; };
+		695778491E672A9700331DA3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6957784C1E672B0700331DA3 /* ActionExtensionAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ActionExtensionAssets.xcassets; sourceTree = "<group>"; };
+		6957784D1E672B0700331DA3 /* AdblockPlusAction.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AdblockPlusAction.js; sourceTree = "<group>"; };
 		6970E76C1BA94C3900B11AC3 /* AdblockPlus+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AdblockPlus+Extension.h"; sourceTree = "<group>"; };
 		6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AdblockPlus+Extension.m"; sourceTree = "<group>"; };
 		6970E76F1BA952F200B11AC3 /* AdblockPlusExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusExtras.h; sourceTree = "<group>"; };
@@ -361,6 +383,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		695778331E672A7500331DA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		69B2AEB41BCD289C00E874A9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -423,6 +452,34 @@
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		6945C1C61E6872230067AC99 /* AdblockPlus */ = {
+			isa = PBXGroup;
+			children = (
+				69AB6A4D1B9712F1005C2075 /* AdblockPlus.h */,
+				69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */,
+				697D27301DCB492000118902 /* AdblockPlus+ActivityChecking.h */,
+				697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */,
+				6970E76F1BA952F200B11AC3 /* AdblockPlusExtras.h */,
+				6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */,
+				6904B3FD1E6705F4006B3FE5 /* AdblockPlusShared.h */,
+				6904B3FE1E6705F4006B3FE5 /* AdblockPlusShared.m */,
+			);
+			name = AdblockPlus;
+			sourceTree = "<group>";
+		};
+		695778371E672A7600331DA3 /* AdblockPlusSafariActionExtension */ = {
+			isa = PBXGroup;
+			children = (
+				6957784C1E672B0700331DA3 /* ActionExtensionAssets.xcassets */,
+				695778471E672A9700331DA3 /* ActionViewController.h */,
+				695778481E672A9700331DA3 /* ActionViewController.m */,
+				6957784D1E672B0700331DA3 /* AdblockPlusAction.js */,
+				695778491E672A9700331DA3 /* Info.plist */,
+				6957783B1E672A7600331DA3 /* MainInterface.storyboard */,
+			);
+			path = AdblockPlusSafariActionExtension;
 			sourceTree = "<group>";
 		};
 		69A9101A1B986DB900D93485 /* Controls */ = {
@@ -512,17 +569,18 @@
 		E9071D331B76897C00091AEB = {
 			isa = PBXGroup;
 			children = (
-				E9B982AD1E55C12400C22A17 /* build.py */,
 				E9071D3E1B76897C00091AEB /* AdblockPlusSafari */,
+				695778371E672A7600331DA3 /* AdblockPlusSafariActionExtension */,
 				E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */,
 				69B2AEB81BCD289C00E874A9 /* AdblockPlusSafariTests */,
+				E9B982AD1E55C12400C22A17 /* build.py */,
+				337C7C1E821A478DDA00E6AF /* Frameworks */,
+				37C9C06969BFAD601D170221 /* Pods */,
 				E9071D3D1B76897C00091AEB /* Products */,
 				693A31F21BF39F4500A1B40A /* Recovered References */,
 				69AB6A2F1B970D18005C2075 /* Resources */,
 				69AB6A501B971A82005C2075 /* SafariServices.framework */,
 				E9F3922B1BBF1B1A004A068A /* Translations */,
-				37C9C06969BFAD601D170221 /* Pods */,
-				337C7C1E821A478DDA00E6AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -532,6 +590,7 @@
 				E9071D3C1B76897C00091AEB /* AdblockPlusSafari.app */,
 				E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */,
 				69B2AEB71BCD289C00E874A9 /* AdblockPlusSafariTests.xctest */,
+				695778361E672A7500331DA3 /* AdblockPlusSafariActionExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -539,16 +598,11 @@
 		E9071D3E1B76897C00091AEB /* AdblockPlusSafari */ = {
 			isa = PBXGroup;
 			children = (
-				E9B982A91E55A31F00C22A17 /* AdblockPlusSafari.xcconfig */,
-				E9B982AA1E55A33200C22A17 /* AdblockPlusSafariDevbuild.xcconfig */,
+				6945C1C61E6872230067AC99 /* AdblockPlus */,
 				69A9100E1B985B2800D93485 /* AdblockPlusSafari.entitlements */,
+				E9B982A91E55A31F00C22A17 /* AdblockPlusSafari.xcconfig */,
 				E9B982A71E55A28C00C22A17 /* AdblockPlusSafariDevbuild.entitlements */,
-				69AB6A4D1B9712F1005C2075 /* AdblockPlus.h */,
-				69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */,
-				697D27301DCB492000118902 /* AdblockPlus+ActivityChecking.h */,
-				697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */,
-				6970E76F1BA952F200B11AC3 /* AdblockPlusExtras.h */,
-				6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */,
+				E9B982AA1E55A33200C22A17 /* AdblockPlusSafariDevbuild.xcconfig */,
 				E9071D421B76897C00091AEB /* AppDelegate.h */,
 				E9071D431B76897C00091AEB /* AppDelegate.m */,
 				69AB6A2C1B96F664005C2075 /* Appearence.h */,
@@ -569,6 +623,8 @@
 				69EA099B1DC75A7C0018FAC0 /* NSAttributedString+TextRenderer.m */,
 				69142D741CDCCF1100FD2640 /* NSDictionary+FilterList.h */,
 				69142D751CDCCF1100FD2640 /* NSDictionary+FilterList.m */,
+				6904B3FF1E6705F4006B3FE5 /* NSString+AdblockPlus.h */,
+				6904B4001E6705F4006B3FE5 /* NSString+AdblockPlus.m */,
 				E9071D3F1B76897C00091AEB /* Supporting Files */,
 			);
 			path = AdblockPlusSafari;
@@ -586,16 +642,16 @@
 		E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */ = {
 			isa = PBXGroup;
 			children = (
-				E9B982AB1E55C03100C22A17 /* AdblockPlusSafariExtension.xcconfig */,
-				E9B982AC1E55C04B00C22A17 /* AdblockPlusSafariExtensionDevbuild.xcconfig */,
-				69A9100F1B985B3B00D93485 /* AdblockPlusSafariExtension.entitlements */,
-				E9B982A81E55A29C00C22A17 /* AdblockPlusSafariExtensionDevbuild.entitlements */,
 				E942B07E1B76899D004B4692 /* ActionRequestHandler.h */,
 				E942B07F1B76899D004B4692 /* ActionRequestHandler.m */,
 				6970E76C1BA94C3900B11AC3 /* AdblockPlus+Extension.h */,
 				6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */,
 				6905EDAA1BCE84F500B3A9B9 /* AdblockPlus+Parsing.h */,
 				6905EDAB1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m */,
+				69A9100F1B985B3B00D93485 /* AdblockPlusSafariExtension.entitlements */,
+				E9B982AB1E55C03100C22A17 /* AdblockPlusSafariExtension.xcconfig */,
+				E9B982A81E55A29C00C22A17 /* AdblockPlusSafariExtensionDevbuild.entitlements */,
+				E9B982AC1E55C04B00C22A17 /* AdblockPlusSafariExtensionDevbuild.xcconfig */,
 				69A910111B9866A300D93485 /* easylist_content_blocker.json */,
 				E9C719D81B8CDC9200584FB8 /* easylist+exceptionrules_content_blocker.json */,
 				69A910151B986A0D00D93485 /* empty.json */,
@@ -638,6 +694,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		695778351E672A7500331DA3 /* AdblockPlusSafariActionExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 695778421E672A7600331DA3 /* Build configuration list for PBXNativeTarget "AdblockPlusSafariActionExtension" */;
+			buildPhases = (
+				695778321E672A7500331DA3 /* Sources */,
+				695778331E672A7500331DA3 /* Frameworks */,
+				695778341E672A7500331DA3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AdblockPlusSafariActionExtension;
+			productName = AdblockPlusSafariActionExtension;
+			productReference = 695778361E672A7500331DA3 /* AdblockPlusSafariActionExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		69B2AEB61BCD289C00E874A9 /* AdblockPlusSafariTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 69B2AEBE1BCD289C00E874A9 /* Build configuration list for PBXNativeTarget "AdblockPlusSafariTests" */;
@@ -710,6 +783,16 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Eyeo GmbH";
 				TargetAttributes = {
+					695778351E672A7500331DA3 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GRYYZR985A;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					69B2AEB61BCD289C00E874A9 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = GRYYZR985A;
@@ -755,6 +838,7 @@
 			projectRoot = "";
 			targets = (
 				E9071D3B1B76897C00091AEB /* AdblockPlusSafari */,
+				695778351E672A7500331DA3 /* AdblockPlusSafariActionExtension */,
 				E942B0791B76899D004B4692 /* AdblockPlusSafariExtension */,
 				69B2AEB61BCD289C00E874A9 /* AdblockPlusSafariTests */,
 			);
@@ -762,6 +846,16 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		695778341E672A7500331DA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6957784F1E672B0700331DA3 /* ActionExtensionAssets.xcassets in Resources */,
+				695778501E672B0700331DA3 /* AdblockPlusAction.js in Resources */,
+				6957783D1E672A7600331DA3 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		69B2AEB51BCD289C00E874A9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -956,6 +1050,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		695778321E672A7500331DA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				695778531E672C8700331DA3 /* NSString+AdblockPlus.m in Sources */,
+				695778521E672B7D00331DA3 /* AdblockPlus.m in Sources */,
+				6957784A1E672A9700331DA3 /* ActionViewController.m in Sources */,
+				695778511E672B5300331DA3 /* AdblockPlusShared.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		69B2AEB31BCD289C00E874A9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -972,10 +1077,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				69142D581CDCC51C00FD2640 /* FilterList+Processing.m in Sources */,
+				6904B4011E6705F4006B3FE5 /* AdblockPlusShared.m in Sources */,
 				69AB6A4F1B9712F1005C2075 /* AdblockPlus.m in Sources */,
 				69EA099C1DC75A7C0018FAC0 /* NSAttributedString+TextRenderer.m in Sources */,
 				69142D7A1CDCCF1100FD2640 /* SwitchCell.m in Sources */,
 				69A910191B986DB600D93485 /* RightCenteredImageButton.m in Sources */,
+				6904B4021E6705F4006B3FE5 /* NSString+AdblockPlus.m in Sources */,
 				69142D791CDCCF1100FD2640 /* NSDictionary+FilterList.m in Sources */,
 				69EA09A91DC75AA00018FAC0 /* ActivationConfirmationController.m in Sources */,
 				E9071D441B76897C00091AEB /* AppDelegate.m in Sources */,
@@ -1028,6 +1135,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6957783B1E672A7600331DA3 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6957783C1E672A7600331DA3 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		E9071D481B76897C00091AEB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1178,6 +1293,74 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		695778431E672A7600331DA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_NUMBER = 0;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AdblockPlusSafariActionExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariActionExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Dev AdblockPlusActionExtension";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		695778441E672A7600331DA3 /* Devbuild Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_NUMBER = 0;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = AdblockPlusSafariActionExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariActionExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Action Extension Devbuild In House";
+				SKIP_INSTALL = YES;
+			};
+			name = "Devbuild Debug";
+		};
+		695778451E672A7600331DA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_NUMBER = 0;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = AdblockPlusSafariActionExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariActionExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		695778461E672A7600331DA3 /* Devbuild Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_NUMBER = 0;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = AdblockPlusSafariActionExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariActionExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Action Extension Devbuild In House";
+				SKIP_INSTALL = YES;
+			};
+			name = "Devbuild Release";
+		};
 		6995A9601BF391DF00D4B295 /* Devbuild Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89D1BC00B38D0FAD79731A7F /* Pods-AdblockPlusSafariTests.devbuild debug.xcconfig */;
@@ -1315,10 +1498,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Dev org.adblockplus.AdblockPlusSafari";
 			};
 			name = Debug;
 		};
@@ -1340,12 +1525,12 @@
 			baseConfigurationReference = 620FFD3DC107EDFC64E6719A /* Pods-AdblockPlusSafariExtension.debug.xcconfig */;
 			buildSettings = {
 				BUILD_NUMBER = 0;
-				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Extension App Store";
+				PROVISIONING_PROFILE_SPECIFIER = "Dev org.adblockplus.ABPS.AdblockPlusExtension";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1355,12 +1540,10 @@
 			baseConfigurationReference = 8C3A136754C7819B4C33D117 /* Pods-AdblockPlusSafariExtension.release.xcconfig */;
 			buildSettings = {
 				BUILD_NUMBER = 0;
-				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtension.entitlements;
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Extension App Store";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1424,12 +1607,10 @@
 			baseConfigurationReference = B1978EF3788464F34FE08A6D /* Pods-AdblockPlusSafariExtension.devbuild release.xcconfig */;
 			buildSettings = {
 				BUILD_NUMBER = 0;
-				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtensionDevbuild.entitlements;
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Extension Devbuild In House";
 				SKIP_INSTALL = YES;
 			};
 			name = "Devbuild Release";
@@ -1499,12 +1680,10 @@
 			baseConfigurationReference = F6F50313B196F88629FD32EA /* Pods-AdblockPlusSafariExtension.devbuild debug.xcconfig */;
 			buildSettings = {
 				BUILD_NUMBER = 0;
-				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtensionDevbuild.entitlements;
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Extension Devbuild In House";
 				SKIP_INSTALL = YES;
 			};
 			name = "Devbuild Debug";
@@ -1512,6 +1691,17 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		695778421E672A7600331DA3 /* Build configuration list for PBXNativeTarget "AdblockPlusSafariActionExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				695778431E672A7600331DA3 /* Debug */,
+				695778441E672A7600331DA3 /* Devbuild Debug */,
+				695778451E672A7600331DA3 /* Release */,
+				695778461E672A7600331DA3 /* Devbuild Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		69B2AEBE1BCD289C00E874A9 /* Build configuration list for PBXNativeTarget "AdblockPlusSafariTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

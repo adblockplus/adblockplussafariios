@@ -202,6 +202,19 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
 
 @implementation AdblockPlus (Parsing)
 
++ (NSString *)escapeHostname:(NSString *)hostname
+{
+  NSRegularExpression *regexp =
+  [NSRegularExpression regularExpressionWithPattern:@"[\\\\|(){^$*+?.<>\\[\\]]" options:0 error:nil];
+
+  NSMutableString *h = [hostname mutableCopy];
+  [regexp replaceMatchesInString:h
+                         options:0
+                           range:NSMakeRange(0, h.length)
+                    withTemplate:@"\\\\$0"];
+  return h;
+}
+
 + (BOOL)mergeFilterListsFromURL:(NSURL *__nonnull)input
         withWhitelistedWebsites:(NSArray<NSString *> *__nonnull)whitelistedWebsites
                           toURL:(NSURL *__nonnull)output

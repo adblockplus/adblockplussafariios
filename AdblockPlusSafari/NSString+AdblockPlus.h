@@ -1,6 +1,6 @@
 /*
  * This file is part of Adblock Plus <https://adblockplus.org/>,
- * Copyright (C) 2006-2016 Eyeo GmbH
+ * Copyright (C) 2006-2015 Eyeo GmbH
  *
  * Adblock Plus is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as
@@ -15,18 +15,12 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/&gt.
  */
 
-#import "AdblockPlus.h"
+#import <Foundation/Foundation.h>
 
-@interface AdblockPlus (Parsing)
+@interface NSString (AdblockPlus)
 
-+ (NSString *__nonnull)escapeHostname:(NSString *__nonnull)hostname;
+- (NSString *__nullable)stringByRemovingHostDisallowedCharacters;
 
-/**
- *  Merges filter list from given json file with whitelisted websites and generates new json file.
- */
-+ (BOOL)mergeFilterListsFromURL:(NSURL *__nonnull)input
-        withWhitelistedWebsites:(NSArray<NSString *> *__nonnull)whitelistedWebsites
-                          toURL:(NSURL *__nonnull)output
-                          error:(NSError *__nullable *__nonnull)error;
+- (NSString *__nullable)whitelistedHostname;
 
 @end
