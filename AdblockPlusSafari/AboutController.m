@@ -32,6 +32,7 @@
 
   self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
   self.versionLabel.text = [NSString stringWithFormat:@"v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+  self.tableView.allowsSelection = NO;
 }
 
 @end
