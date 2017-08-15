@@ -19,6 +19,7 @@
 
 #import "Appearence.h"
 #import "RootController.h"
+#import "WhitelistedWebsitesController.h"
 #import "FilterList.h"
 #import "NSDictionary+FilterList.h"
 #import "AdblockPlus+ActivityChecking.h"
@@ -26,7 +27,7 @@
 // Wake up application every hour (just hint for iOS)
 const NSTimeInterval BackgroundFetchInterval = 3600;
 
-@interface AppDelegate ()
+@interface AppDelegate () <NSURLSessionDataDelegate>
 
 @property (nonatomic, strong) AdblockPlusExtras *adblockPlus;
 @property (nonatomic, strong) NSMutableArray<NSDictionary *> *backgroundFetches;
@@ -58,6 +59,13 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
   }
 
   [application setMinimumBackgroundFetchInterval:BackgroundFetchInterval];
+
+#ifdef DEBUG
+  UIUserNotificationType types = UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound;
+  UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: types categories:nil];
+  [application registerUserNotificationSettings:settings];
+#endif
+
   return YES;
 }
 
@@ -67,16 +75,7 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-  if (!self.adblockPlus.reloading) {
-    return;
-  }
-
-  __weak __typeof(self) wSelf = self;
-  __weak __typeof(application) wApplication = application;
-
-  self.backgroundTaskIdentifier = [application beginBackgroundTaskWithExpirationHandler:^{
-    [wSelf setBackgroundTaskIdentifier:UIBackgroundTaskInvalid withApplication:wApplication];
-  }];
+  [self applicationStartBackgroundTaskIfNeeded:application];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -99,6 +98,63 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+}
+
+#pragma mark - Handling notification from action extension
+
+/**
+ * Extract whitelisted website from given url
+ */
+- (NSString *)websiteFromURL:(NSURL *)url
+{
+  NSString *website = nil;
+  NSArray *components = [url.query componentsSeparatedByString:@"&"];
+  for (NSString *component in components) {
+    if ([component hasPrefix:@"website="]) {
+      website = [component substringFromIndex:@"website=".length];
+      break;
+    }
+  }
+  return website;
+}
+
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler
+{
+  if (![self.adblockPlus isBackgroundNotificationSessionConfigurationIdentifier:identifier]) {
+    return;
+  }
+  
+  // All finished task are processed by delegate
+  NSURLSession *session = [self.adblockPlus backgroundNotificationSessionWithIdentifier:identifier delegate:nil];
+
+  [session getAllTasksWithCompletionHandler:^(NSArray<__kindof NSURLSessionTask *> *tasks) {
+    [self.adblockPlus reloadAfterCompletion:^(AdblockPlusExtras *adblockPlus) {
+      
+      NSMutableArray<NSString *> *websites = [NSMutableArray array];
+      for (NSURLSessionTask *task in tasks) {
+        NSString *website = [self websiteFromURL:task.originalRequest.URL];
+        if (website.length > 0) {
+          [websites addObject:website];
+        }
+      }
+      
+      if (websites.count > 0) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          [self.adblockPlus reloadAfterCompletion:^(AdblockPlusExtras * adblockPlus) {
+            for (NSString *website in websites) {
+              [self.adblockPlus whitelistWebsite:website];
+            }
+          }];
+          [self applicationStartBackgroundTaskIfNeeded:application];
+          completionHandler();
+        });
+      } else {
+        completionHandler();
+      }
+    }];
+  }];
+  
+  [session invalidateAndCancel];
 }
 
 #pragma mark - Background mode
@@ -131,13 +187,13 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
   if ([keyPath isEqualToString:NSStringFromSelector(@selector(reloading))]) {
 
     BOOL reloading = [change[NSKeyValueChangeNewKey] boolValue];
-
-    if (self.backgroundTaskIdentifier != UIBackgroundTaskInvalid && !reloading) {
-      self.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
-    }
-
+    
     UIApplication *application = UIApplication.sharedApplication;
-
+    
+    if (!reloading) {
+      [self setBackgroundTaskIdentifier:UIBackgroundTaskInvalid withApplication:application];
+    }
+  
     BOOL isBackground = application.applicationState != UIApplicationStateActive;
 
     if (self.backgroundTaskIdentifier == UIBackgroundTaskInvalid && reloading && isBackground) {
@@ -197,6 +253,22 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
     _backgroundFetches = [NSMutableArray array];
   }
   return _backgroundFetches;
+}
+
+- (void)applicationStartBackgroundTaskIfNeeded:(UIApplication *)application
+{
+  if (!self.adblockPlus.reloading) {
+    return;
+  }
+  
+  __weak __typeof(self) wSelf = self;
+  __weak __typeof(application) wApplication = application;
+  
+  [self setBackgroundTaskIdentifier:UIBackgroundTaskInvalid withApplication:application];
+  
+  self.backgroundTaskIdentifier = [application beginBackgroundTaskWithExpirationHandler:^{
+    [wSelf setBackgroundTaskIdentifier:UIBackgroundTaskInvalid withApplication:wApplication];
+  }];
 }
 
 #pragma mark -

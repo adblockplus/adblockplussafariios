@@ -22,7 +22,7 @@
 @interface NSAttributedString (TextRenderer)
 
 /**
- @param token a single character representing a span marker.
+ @param markerChar a single character representing a span marker.
  @param font the font to substitute in the span
  @return self as attributed string with font changes applied to the found spans
  */

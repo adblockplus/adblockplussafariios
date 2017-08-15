@@ -30,6 +30,8 @@
 
 - (void)checkActivatedFlag;
 
+- (void)checkActivatedFlag:(NSDate *__nonnull)lastActivity;
+
 - (void)performActivityTestWith:(id<ContentBlockerManagerProtocol> __nonnull)manager;
 
 // This method tests if this execution context is part of activity test.
