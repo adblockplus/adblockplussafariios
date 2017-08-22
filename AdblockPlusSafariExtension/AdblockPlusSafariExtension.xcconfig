@@ -3,7 +3,7 @@
 //  AdblockPlusSafari
 //
 //  Created by Pavel Zdenek on 16/02/2017.
-//  Copyright © 2017 Eyeo GmbH. All rights reserved.
+//  Copyright © 2017-present eyeo GmbH. All rights reserved.
 //
 
 // Cocoapods does not understand parameterized includes.
