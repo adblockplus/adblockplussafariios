@@ -17,16 +17,13 @@
 
 #import "AdblockPlus.h"
 
-@interface AdblockPlus (Parsing)
+@interface AdblockPlusShared : AdblockPlus
 
-+ (NSString *__nonnull)escapeHostname:(NSString *__nonnull)hostname;
+- (NSString *__nonnull)generateBackgroundNotificationSessionConfigurationIdentifier;
 
-/**
- *  Merges filter list from given json file with whitelisted websites and generates new json file.
- */
-+ (BOOL)mergeFilterListsFromURL:(NSURL *__nonnull)input
-        withWhitelistedWebsites:(NSArray<NSString *> *__nonnull)whitelistedWebsites
-                          toURL:(NSURL *__nonnull)output
-                          error:(NSError *__nullable *__nonnull)error;
+- (BOOL)isBackgroundNotificationSessionConfigurationIdentifier:(NSString *__nonnull)identifier;
+
+- (NSURLSession *__nonnull)backgroundNotificationSessionWithIdentifier:(NSString *__nonnull)identifier
+                                                              delegate:(nullable id<NSURLSessionDelegate>)delegate;
 
 @end

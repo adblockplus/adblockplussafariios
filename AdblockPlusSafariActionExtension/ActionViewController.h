@@ -15,18 +15,8 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import "AdblockPlus.h"
+#import <UIKit/UIKit.h>
 
-@interface AdblockPlus (Parsing)
-
-+ (NSString *__nonnull)escapeHostname:(NSString *__nonnull)hostname;
-
-/**
- *  Merges filter list from given json file with whitelisted websites and generates new json file.
- */
-+ (BOOL)mergeFilterListsFromURL:(NSURL *__nonnull)input
-        withWhitelistedWebsites:(NSArray<NSString *> *__nonnull)whitelistedWebsites
-                          toURL:(NSURL *__nonnull)output
-                          error:(NSError *__nullable *__nonnull)error;
+@interface ActionViewController : UIViewController
 
 @end

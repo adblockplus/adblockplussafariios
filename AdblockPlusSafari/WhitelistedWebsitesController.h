@@ -21,6 +21,8 @@
 
 @interface WhitelistedWebsitesController : UITableViewController
 
+@property (nonatomic, strong) NSString *__nullable whitelistedWebsite;
+
 @property (nonatomic, strong) AdblockPlusExtras *__nullable adblockPlus;
 
 @end

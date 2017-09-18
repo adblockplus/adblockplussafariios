@@ -15,9 +15,9 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import "AdblockPlus.h"
+#import "AdblockPlusShared.h"
 
-@interface AdblockPlusExtras : AdblockPlus
+@interface AdblockPlusExtras : AdblockPlusShared
 
 // Reloading content blocker
 @property (nonatomic) BOOL reloading;
@@ -28,7 +28,11 @@
 // Date of the last successful update of filter lists
 @property (nonatomic, readonly) NSDate *__nullable lastUpdate;
 
+- (void)reloadAfterCompletion:(void(^__nonnull)(AdblockPlusExtras *__nonnull))completion;
+
 - (void)reloadWithCompletion:(void (^__nullable)(NSError *__nullable error))completion;
+
+- (BOOL)whitelistWebsite:(NSString *__nonnull)website;
 
 - (void)updateActiveFilterLists:(BOOL)userTriggered;
 

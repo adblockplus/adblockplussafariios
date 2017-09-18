@@ -37,6 +37,7 @@ static NSString *AdblockPlusLastActivity = @"AdblockPlusLastActivity";
 static NSString *AdblockPlusPerformingActivityTest = @"AdblockPlusPerformingActivityTest";
 
 static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
+static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExtension";
 
 @interface AdblockPlus ()
 
@@ -55,8 +56,9 @@ static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
     // org.adblockplus.devbuilds.AdblockPlusSafari -> org.adblockplus.devbuilds
     NSArray<NSString *> *components = [[[NSBundle mainBundle] bundleIdentifier] componentsSeparatedByString:@"."];
 
-    // Check, if the object is being created in the sharing extension.
-    if ([components.lastObject isEqualToString:AdblockPlusSafariExtension]) {
+    // Check, if the object is being created in the sharing or action extension.
+    if ([components.lastObject isEqualToString:AdblockPlusSafariExtension]
+        || [components.lastObject isEqualToString:AdblockPlusSafariActionExtension]) {
       components = [components subarrayWithRange:NSMakeRange(0, [components count] - 2)];
     } else {
       components = [components subarrayWithRange:NSMakeRange(0, [components count] - 1)];
@@ -237,7 +239,9 @@ static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
 - (void)synchronize
 {
   [self.adblockPlusDetails synchronize];
+  [self willChangeValueForKey:@"lastActivity"];
   _lastActivity = [self.adblockPlusDetails objectForKey:AdblockPlusLastActivity];
+  [self didChangeValueForKey:@"lastActivity"];
 }
 
 @end

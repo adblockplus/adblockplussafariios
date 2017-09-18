@@ -15,18 +15,12 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import "AdblockPlus.h"
+#import <Foundation/Foundation.h>
 
-@interface AdblockPlus (Parsing)
+@interface NSString (AdblockPlus)
 
-+ (NSString *__nonnull)escapeHostname:(NSString *__nonnull)hostname;
+- (NSString *__nullable)stringByRemovingHostDisallowedCharacters;
 
-/**
- *  Merges filter list from given json file with whitelisted websites and generates new json file.
- */
-+ (BOOL)mergeFilterListsFromURL:(NSURL *__nonnull)input
-        withWhitelistedWebsites:(NSArray<NSString *> *__nonnull)whitelistedWebsites
-                          toURL:(NSURL *__nonnull)output
-                          error:(NSError *__nullable *__nonnull)error;
+- (NSString *__nullable)whitelistedHostname;
 
 @end
