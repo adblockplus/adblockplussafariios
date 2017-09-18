@@ -15,7 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import "Appearence.h"
+#import "Appearance.h"
 
 NSString *DefaultFontFamily = @"SourceSansPro";
 
@@ -91,9 +91,9 @@ static UIFont *__nonnull createFontWithName(NSString *__nonnull name, CGFloat si
 
 @end
 
-@implementation Appearence
+@implementation Appearance
 
-+ (void)applyAppearence
++ (void)applyAppearance
 {
   UILabel.appearance.fontFamilyName = DefaultFontFamily;
   UITextField.appearance.fontFamilyName = DefaultFontFamily;

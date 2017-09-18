@@ -17,7 +17,7 @@
 
 #import "AdblockPlusContainerController.h"
 
-#import "Appearence.h"
+#import "Appearance.h"
 #import "NSAttributedString+TextRenderer.h"
 #import "AdblockPlusController.h"
 
@@ -45,12 +45,12 @@
   CGFloat fontSize = self.adblockPlusLabel.font.pointSize;
   self.adblockPlusLabel.fontFamilyName = DefaultFontFamily;
   self.adblockPlusLabel.attributedText = [self.adblockPlusLabel.attributedText renderSpanMarkedByChar:@"*"
-                                                                                               asFont:[Appearence defaultBoldFontOfSize:fontSize]];
+                                                                                               asFont:[Appearance defaultBoldFontOfSize:fontSize]];
   // This is the simpliest way to print Browser word using custom bold font.
   fontSize = self.adblockBrowserLabel.font.pointSize;
   self.adblockBrowserLabel.fontFamilyName = DefaultFontFamily;
   self.adblockBrowserLabel.attributedText = [self.adblockBrowserLabel.attributedText renderSpanMarkedByChar:@"*"
-                                                                                                     asFont:[Appearence defaultBoldFontOfSize:fontSize]];
+                                                                                                     asFont:[Appearance defaultBoldFontOfSize:fontSize]];
 }
 
 - (void)viewWillAppear:(BOOL)animated

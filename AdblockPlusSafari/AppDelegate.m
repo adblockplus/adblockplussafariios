@@ -17,7 +17,7 @@
 
 #import "AppDelegate.h"
 
-#import "Appearence.h"
+#import "Appearance.h"
 #import "RootController.h"
 #import "WhitelistedWebsitesController.h"
 #import "FilterList.h"
@@ -45,7 +45,7 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [Appearence applyAppearence];
+    [Appearance applyAppearance];
   return YES;
 }
 

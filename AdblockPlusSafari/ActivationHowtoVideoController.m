@@ -18,7 +18,7 @@
 
 #import "ActivationHowtoVideoController.h"
 
-#import "Appearence.h"
+#import "Appearance.h"
 #import "NSAttributedString+TextRenderer.h"
 
 @import AVKit;
@@ -56,11 +56,11 @@
 
   CGFloat fontSize = self.firstStepLabel.font.pointSize;
   UIFont *font = [UIFont systemFontOfSize:fontSize weight:UIFontWeightSemibold];
-  
+
   self.firstStepLabel.fontFamilyName = @".SFUIText";
   self.firstStepLabel.attributedText = [self.firstStepLabel.attributedText renderSpanMarkedByChar:@"*"
                                                                                            asFont:font];
-  
+
   self.secondStepLabel.fontFamilyName = @".SFUIText";
   self.secondStepLabel.attributedText = [self.secondStepLabel.attributedText renderSpanMarkedByChar:@"*"
                                                                                            asFont:font];

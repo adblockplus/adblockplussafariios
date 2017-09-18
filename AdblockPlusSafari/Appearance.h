@@ -31,9 +31,9 @@ extern NSString *__nonnull DefaultFontFamily;
 
 @end
 
-@interface Appearence : NSObject
+@interface Appearance : NSObject
 
-+ (void)applyAppearence;
++ (void)applyAppearance;
 
 + (UIFont *__nonnull)defaultLightFontOfSize:(CGFloat)size;
 

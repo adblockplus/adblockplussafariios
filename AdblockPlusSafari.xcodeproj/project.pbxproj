@@ -44,7 +44,7 @@
 		69A910121B9866A300D93485 /* easylist_content_blocker.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A910111B9866A300D93485 /* easylist_content_blocker.json */; };
 		69A910161B986A0D00D93485 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A910151B986A0D00D93485 /* empty.json */; };
 		69A910191B986DB600D93485 /* RightCenteredImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A910181B986DB600D93485 /* RightCenteredImageButton.m */; };
-		69AB6A2E1B96F664005C2075 /* Appearence.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A2D1B96F664005C2075 /* Appearence.m */; };
+		69AB6A2E1B96F664005C2075 /* Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A2D1B96F664005C2075 /* Appearance.m */; };
 		69AB6A3D1B970D18005C2075 /* SourceSansPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A311B970D18005C2075 /* SourceSansPro-Black.otf */; };
 		69AB6A3E1B970D18005C2075 /* SourceSansPro-BlackIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A321B970D18005C2075 /* SourceSansPro-BlackIt.otf */; };
 		69AB6A3F1B970D19005C2075 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69AB6A331B970D18005C2075 /* SourceSansPro-Bold.otf */; };
@@ -174,8 +174,8 @@
 		69A910151B986A0D00D93485 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 		69A910171B986DB600D93485 /* RightCenteredImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightCenteredImageButton.h; sourceTree = "<group>"; };
 		69A910181B986DB600D93485 /* RightCenteredImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightCenteredImageButton.m; sourceTree = "<group>"; };
-		69AB6A2C1B96F664005C2075 /* Appearence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appearence.h; sourceTree = "<group>"; };
-		69AB6A2D1B96F664005C2075 /* Appearence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appearence.m; sourceTree = "<group>"; };
+		69AB6A2C1B96F664005C2075 /* Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appearance.h; sourceTree = "<group>"; };
+		69AB6A2D1B96F664005C2075 /* Appearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appearance.m; sourceTree = "<group>"; };
 		69AB6A311B970D18005C2075 /* SourceSansPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.otf"; sourceTree = "<group>"; };
 		69AB6A321B970D18005C2075 /* SourceSansPro-BlackIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-BlackIt.otf"; sourceTree = "<group>"; };
 		69AB6A331B970D18005C2075 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
@@ -562,6 +562,7 @@
 		E9071D331B76897C00091AEB = {
 			isa = PBXGroup;
 			children = (
+				E9B982AD1E55C12400C22A17 /* build.py */,
 				E9071D3E1B76897C00091AEB /* AdblockPlusSafari */,
 				695778371E672A7600331DA3 /* AdblockPlusSafariActionExtension */,
 				E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */,
@@ -573,6 +574,8 @@
 				69AB6A2F1B970D18005C2075 /* Resources */,
 				69AB6A501B971A82005C2075 /* SafariServices.framework */,
 				E9F3922B1BBF1B1A004A068A /* Translations */,
+				37C9C06969BFAD601D170221 /* Pods */,
+				337C7C1E821A478DDA00E6AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -595,6 +598,14 @@
 				E9B982A91E55A31F00C22A17 /* AdblockPlusSafari.xcconfig */,
 				E9B982A71E55A28C00C22A17 /* AdblockPlusSafariDevbuild.entitlements */,
 				E9B982AA1E55A33200C22A17 /* AdblockPlusSafariDevbuild.xcconfig */,
+				69A9100E1B985B2800D93485 /* AdblockPlusSafari.entitlements */,
+				E9B982A71E55A28C00C22A17 /* AdblockPlusSafariDevbuild.entitlements */,
+				69AB6A4D1B9712F1005C2075 /* AdblockPlus.h */,
+				69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */,
+				697D27301DCB492000118902 /* AdblockPlus+ActivityChecking.h */,
+				697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */,
+				6970E76F1BA952F200B11AC3 /* AdblockPlusExtras.h */,
+				6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */,
 				E9071D421B76897C00091AEB /* AppDelegate.h */,
 				E9071D431B76897C00091AEB /* AppDelegate.m */,
 				69AB6A2C1B96F664005C2075 /* Appearence.h */,
@@ -634,6 +645,10 @@
 		E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */ = {
 			isa = PBXGroup;
 			children = (
+				E9B982AB1E55C03100C22A17 /* AdblockPlusSafariExtension.xcconfig */,
+				E9B982AC1E55C04B00C22A17 /* AdblockPlusSafariExtensionDevbuild.xcconfig */,
+				69A9100F1B985B3B00D93485 /* AdblockPlusSafariExtension.entitlements */,
+				E9B982A81E55A29C00C22A17 /* AdblockPlusSafariExtensionDevbuild.entitlements */,
 				E942B07E1B76899D004B4692 /* ActionRequestHandler.h */,
 				E942B07F1B76899D004B4692 /* ActionRequestHandler.m */,
 				6970E76C1BA94C3900B11AC3 /* AdblockPlus+Extension.h */,
@@ -1552,10 +1567,12 @@
 			baseConfigurationReference = 8C3A136754C7819B4C33D117 /* Pods-AdblockPlusSafariExtension.release.xcconfig */;
 			buildSettings = {
 				BUILD_NUMBER = 0;
+				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtension.entitlements;
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Extension App Store";
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = arm64;
 			};
@@ -1621,10 +1638,12 @@
 			baseConfigurationReference = B1978EF3788464F34FE08A6D /* Pods-AdblockPlusSafariExtension.devbuild release.xcconfig */;
 			buildSettings = {
 				BUILD_NUMBER = 0;
+				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtensionDevbuild.entitlements;
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Extension Devbuild In House";
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = arm64;
 			};
@@ -1696,10 +1715,12 @@
 			baseConfigurationReference = F6F50313B196F88629FD32EA /* Pods-AdblockPlusSafariExtension.devbuild debug.xcconfig */;
 			buildSettings = {
 				BUILD_NUMBER = 0;
+				CODE_SIGN_ENTITLEMENTS = AdblockPlusSafariExtension/AdblockPlusSafariExtensionDevbuild.entitlements;
 				INFOPLIST_FILE = AdblockPlusSafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Extension Devbuild In House";
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = arm64;
 			};
