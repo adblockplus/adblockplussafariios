@@ -447,13 +447,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		693A31F21BF39F4500A1B40A /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		6945C1C61E6872230067AC99 /* AdblockPlus */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,7 +570,6 @@
 				337C7C1E821A478DDA00E6AF /* Frameworks */,
 				37C9C06969BFAD601D170221 /* Pods */,
 				E9071D3D1B76897C00091AEB /* Products */,
-				693A31F21BF39F4500A1B40A /* Recovered References */,
 				69AB6A2F1B970D18005C2075 /* Resources */,
 				69AB6A501B971A82005C2075 /* SafariServices.framework */,
 				E9F3922B1BBF1B1A004A068A /* Translations */,
