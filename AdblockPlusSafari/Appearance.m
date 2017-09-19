@@ -42,7 +42,7 @@ static UIFont *__nonnull createFont(NSString *__nonnull familyName, UIFont *__no
 
   NSString *name = [NSString stringWithFormat:@"%@-%@", familyName, type];
 
-  NSFont *font = [UIFont fontWithName:name size:fromFont.pointSize];
+  UIFont *font = [UIFont fontWithName:name size:fromFont.pointSize];
 
   if (font) {
     return font;
@@ -103,14 +103,14 @@ static UIFont *__nonnull createFontWithName(NSString *__nonnull name, CGFloat si
   // http://ivomynttinen.com/blog/the-ios-7-design-cheat-sheet/
 
   NSString *boldFontName = [NSString stringWithFormat:@"%@-Bold", DefaultFontFamily];
-  NSFont *boldFont = [UIFont fontWithName:boldFontName size:17];
+  UIFont *boldFont = [UIFont fontWithName:boldFontName size:17];
 
   if (boldFont) {
     UINavigationBar.appearance.titleTextAttributes = @{NSFontAttributeName: boldFont};
   }
 
   NSString *regularFontName = [NSString stringWithFormat:@"%@-Regular", DefaultFontFamily];
-  NSFont *regularFont = [UIFont fontWithName:regularFontName size:17];
+  UIFont *regularFont = [UIFont fontWithName:regularFontName size:17];
 
   if (regularFont) {
     [UIBarButtonItem.appearance setTitleTextAttributes: @{NSFontAttributeName: regularFont} forState: UIControlStateNormal];
