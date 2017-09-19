@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6578DB051F71DA490088F136 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
+		6578DB061F71DA490088F136 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
+		6578DB071F71DB650088F136 /* AdblockPlus+ActivityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */; };
 		65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A173F31F60A20B004107EF /* SafariServices.framework */; };
-		65F4AC631F70FA21007D2E76 /* AdblockPlus+ActivityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */; };
-		65F4AC641F70FA24007D2E76 /* AdblockPlusExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 6970E7701BA952F200B11AC3 /* AdblockPlusExtras.m */; };
 		65F8BB621F611142004B9ED4 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
 		65F8BB641F61182D004B9ED4 /* yajl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65F8BB661F61184F004B9ED4 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
@@ -876,9 +877,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				695778531E672C8700331DA3 /* NSString+AdblockPlus.m in Sources */,
-				65F4AC641F70FA24007D2E76 /* AdblockPlusExtras.m in Sources */,
 				695778521E672B7D00331DA3 /* AdblockPlus.m in Sources */,
-				65F4AC631F70FA21007D2E76 /* AdblockPlus+ActivityChecking.m in Sources */,
 				6957784A1E672A9700331DA3 /* ActionViewController.m in Sources */,
 				695778511E672B5300331DA3 /* AdblockPlusShared.m in Sources */,
 			);
@@ -888,6 +887,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6578DB061F71DA490088F136 /* AdblockPlus.m in Sources */,
 				69142D7B1CDCDE0700FD2640 /* NSDictionary+FilterList.m in Sources */,
 				69B2AEBA1BCD289C00E874A9 /* AdblockPlusSafariTests.m in Sources */,
 				6905EDAD1BCE890000B3A9B9 /* AdblockPlus+Parsing.m in Sources */,
@@ -933,9 +933,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E942B0801B76899D004B4692 /* ActionRequestHandler.m in Sources */,
+				6578DB051F71DA490088F136 /* AdblockPlus.m in Sources */,
 				6970E76E1BA94C3900B11AC3 /* AdblockPlus+Extension.m in Sources */,
 				6905EDAC1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m in Sources */,
 				69142D7C1CDCDE0700FD2640 /* NSDictionary+FilterList.m in Sources */,
+				6578DB071F71DB650088F136 /* AdblockPlus+ActivityChecking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
