@@ -8,14 +8,13 @@ Building
 
 ### Requirements
 
-- [XCode 7 or later](https://developer.apple.com/xcode/)
-- [CocoaPods](https://cocoapods.org/)
+- [XCode 9 or later](https://developer.apple.com/xcode/)
+- [Carthage](https://github.com/Carthage/Carthage)
 
 ### Building in XCode
 
-1. Run `pod install` to install the dependencies and generate the
-   _AdblockPlusSafari_ workspace.
-2. Open _AdblockPlusSafari.xcworkspace_ in XCode.
+1. Run `carthage update` to install additional Swift dependencies.
+2. Open _AdblockPlusSafari.xcodeproj_ in XCode.
 3. Archive and export the project. In order to export a build using one of the
    devbuild configurations, the code signing identity for host app and extension
    needs to be set manually.
