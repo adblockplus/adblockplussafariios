@@ -29,5 +29,7 @@
 		<key>NSExtensionPrincipalClass</key>
 		<string>ActionRequestHandler</string>
 	</dict>
+	<key>NSHumanReadableDescription</key>
+	<string>No more annoying ads on Safari with Adblock Plus for iPhone and iPad.</string>
 </dict>
 </plist>
