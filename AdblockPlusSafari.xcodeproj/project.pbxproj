@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		6553625F1F73596500E77290 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
+		65755AFC1F7C8A4B00696261 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65755AFD1F7C8A4B00696261 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1769E1F7C8099008E2BA1 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65755AFE1F7C8A5B00696261 /* yajl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6578DB051F71DA490088F136 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
 		6578DB061F71DA490088F136 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
 		6578DB071F71DB650088F136 /* AdblockPlus+ActivityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */; };
 		65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A173F31F60A20B004107EF /* SafariServices.framework */; };
+		65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1769E1F7C8099008E2BA1 /* RxSwift.framework */; };
+		65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; };
 		65F8BB621F611142004B9ED4 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
-		65F8BB641F61182D004B9ED4 /* yajl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65F8BB661F61184F004B9ED4 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
 		690362D81C19A7B9000E5581 /* easylist_content_blocker_v2.json in Resources */ = {isa = PBXBuildFile; fileRef = 690362D61C19A7B9000E5581 /* easylist_content_blocker_v2.json */; };
 		690362D91C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json in Resources */ = {isa = PBXBuildFile; fileRef = 690362D71C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json */; };
@@ -118,7 +122,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				65F8BB641F61182D004B9ED4 /* yajl.framework in Embed Frameworks */,
+				65755AFC1F7C8A4B00696261 /* RxCocoa.framework in Embed Frameworks */,
+				65755AFD1F7C8A4B00696261 /* RxSwift.framework in Embed Frameworks */,
+				65755AFE1F7C8A5B00696261 /* yajl.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +145,8 @@
 
 /* Begin PBXFileReference section */
 		65A173F31F60A20B004107EF /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		65C1769E1F7C8099008E2BA1 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		65C176A01F7C809E008E2BA1 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		65F8BB601F61113F004B9ED4 /* yajl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = yajl.framework; path = Carthage/Build/iOS/yajl.framework; sourceTree = SOURCE_ROOT; };
 		690362D61C19A7B9000E5581 /* easylist_content_blocker_v2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = easylist_content_blocker_v2.json; sourceTree = "<group>"; };
 		690362D71C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "easylist+exceptionrules_content_blocker_v2.json"; sourceTree = "<group>"; };
@@ -400,8 +408,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65F8BB661F61184F004B9ED4 /* yajl.framework in Frameworks */,
 				65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */,
+				65F8BB661F61184F004B9ED4 /* yajl.framework in Frameworks */,
+				65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */,
+				65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +429,8 @@
 		65A173F01F60A1C2004107EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65C176A01F7C809E008E2BA1 /* RxCocoa.framework */,
+				65C1769E1F7C8099008E2BA1 /* RxSwift.framework */,
 				65A173F31F60A20B004107EF /* SafariServices.framework */,
 				65F8BB601F61113F004B9ED4 /* yajl.framework */,
 			);
@@ -1339,6 +1351,7 @@
 		E9071D541B76897C00091AEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
@@ -1360,6 +1373,7 @@
 		E9071D551B76897C00091AEB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
@@ -1459,6 +1473,7 @@
 		E9CA91591BC64504002696CB /* Devbuild Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
@@ -1544,6 +1559,7 @@
 		E9CA915C1BC64519002696CB /* Devbuild Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
