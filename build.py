@@ -49,8 +49,8 @@ FRAMEWORKS = [os.path.join("yajl.framework", "yajl")]
 
 
 def print_usage():
-    print >>sys.stderr, "Usage: %s release|devbuild" % \
-        os.path.basename(sys.argv[0])
+    print("Usage: {} release|devbuild".format(os.path.basename(sys.argv[0]),
+                                              file = sys.stderr))
 
 
 def build_dependencies():
