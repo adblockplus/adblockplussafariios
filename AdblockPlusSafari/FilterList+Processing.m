@@ -69,6 +69,7 @@ static int processString(void *ctx, const unsigned char *string, size_t stringLe
     if (context.expiresKeyFound && !context.expires) {
       context.expires = value;
     }
+      free((char *)terminatedString);
   }
 
   return YES;
