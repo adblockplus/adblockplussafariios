@@ -113,7 +113,7 @@ const NSTimeInterval BackgroundFetchInterval = 3600;
   return website;
 }
 
-- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)(void))completionHandler
 {
   if (![self.adblockPlus isBackgroundNotificationSessionConfigurationIdentifier:identifier]) {
     return;
