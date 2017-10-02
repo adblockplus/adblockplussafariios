@@ -60,13 +60,16 @@
   if (self.performingActivityTest) {
     // Cancel the reloading. This will reduce time of execution of execution of content blocker
     // and therefore host application will be notified about result of testing ASAP.
+  if (error != NULL) {
     *error = [NSError errorWithDomain:AdblockPlusErrorDomain
                                  code:AdblockPlusErrorCodeActivityTest
                              userInfo:nil];
-    return true;
   }
-
-  *error = nil;
+  return true;
+  }
+  if (error != NULL) {
+    *error = nil;
+  }
   return false;
 }
 
