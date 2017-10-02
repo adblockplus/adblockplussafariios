@@ -26,3 +26,15 @@
 
 /* Whitelisted Websites Controller */
 "YOUR WHITELIST" = "YOUR WHITELIST";
+
+/* Title of menu option to configure filter lists. */
+"Configure Filter Lists" = "Configure Filter Lists";
+
+/* Modal dialog acknowledgment when filter update fails */
+"OK" = "OK";
+
+/* Message shown while downloading a filterlist from a custom URL */
+"Valid URL, downloading..." = "Valid URL, downloading...";
+
+/* Message shown if an invalid URL is presented for a filterlist from a custom URL */
+"Invalid URL" = "Invalid URL";

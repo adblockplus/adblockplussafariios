@@ -226,7 +226,8 @@ typedef NS_ENUM(NSInteger, AdblockPlusControllerSection)
   if (indexPath.section == AdblockPlusControllerSectionDefault && indexPath.row > 0) {
     if (indexPath.row == 1) {
       UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ConfigureFilterLists"];
-      cell.textLabel.text = @"Configure Filter Lists";
+      cell.textLabel.text = NSLocalizedString(@"Configure Filter Lists",
+                                              @"Title of menu option to configure filter lists.");
       cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
       BOOL enabled = self.adblockPlus.enabled;

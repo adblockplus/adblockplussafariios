@@ -91,18 +91,6 @@
   if ([segue.destinationViewController respondsToSelector:@selector(setAdblockPlus:)]) {
     [(id)segue.destinationViewController setAdblockPlus:self.adblockPlus];
   }
-
-#ifdef CONFIGURABLE_CUSTOM_FILTER_LIST_ENABLED
-  if ([segue.identifier isEqualToString:@"ConfigureFilterListsSegue"]) {
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Done"
-                                                                 style:UIBarButtonItemStyleDone
-                                                                target:nil
-                                                                action:nil];
-    self.navigationItem.backBarButtonItem = backItem;
-  } else {
-    self.navigationItem.backBarButtonItem = nil;
-  }
-#endif
 }
 
 #pragma mark - Action
