@@ -279,13 +279,17 @@ static NSString *customFilterListUrl = @"https://easylist-downloads.adblockplus.
         }
         return nil;
       }
-
+      
+      NSString *validURLmessage = NSLocalizedString(@"Valid URL, downloading...",
+                                           @"Message shown while downloading a filterlist from a custom URL");
       UIColor *greenColor = [UIColor colorWithRed:68.0 / 256 green:151.0 / 256 blue:45.0 / 256 alpha:1.0];
-      return [[NSAttributedString alloc] initWithString:@"Valid URL, downloading..." attributes:@{NSForegroundColorAttributeName: greenColor}];
+      return [[NSAttributedString alloc] initWithString:validURLmessage attributes:@{NSForegroundColorAttributeName: greenColor}];
     }
-
+      
+    NSString *invalidURLmessage = NSLocalizedString(@"Invalid URL",
+                                          @"Message shown if an invalid URL is presented for a filterlist from a custom URL");
     UIColor *redColor = [UIColor colorWithRed:195.0 / 256 green:48.0 / 256 blue:37.0 / 256 alpha:1.0];
-    return [[NSAttributedString alloc] initWithString:@"Invalid URL" attributes:@{NSForegroundColorAttributeName: redColor}];
+    return [[NSAttributedString alloc] initWithString:invalidURLmessage attributes:@{NSForegroundColorAttributeName: redColor}];
   }
   return nil;
 }

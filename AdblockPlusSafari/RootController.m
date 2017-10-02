@@ -160,9 +160,11 @@
                                       @"Title of filter update failure dialog");
   NSString *message = NSLocalizedString(@"Failed to update filter lists. Please try again later.",
                                         @"Message of filter update failure dialog");
-
+  NSString *action = NSLocalizedString(@"OK",
+                                       @"Modal dialog acknowledgment when filter update fails");
+    
   UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-  [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [alertController addAction:[UIAlertAction actionWithTitle:action style:UIAlertActionStyleDefault handler:nil]];
   alertController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
   [viewController presentViewController:alertController animated:YES completion:nil];
 
