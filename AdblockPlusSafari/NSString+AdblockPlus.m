@@ -40,8 +40,10 @@
   }
   
   // URL percent encoding
-  hostname = [hostname stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-  
+  // URLFragmentAllowedCharacterSet used as URLHostAllowedCharacterSet strips out "/" causing malformed domains to be whitelisted.
+  NSCharacterSet *set = [NSCharacterSet URLFragmentAllowedCharacterSet];
+  hostname = [hostname stringByAddingPercentEncodingWithAllowedCharacters:set];
+    
   // Get host from URL
   hostname = [[NSURL URLWithString:hostname] host];
   if (hostname.length == 0) {
