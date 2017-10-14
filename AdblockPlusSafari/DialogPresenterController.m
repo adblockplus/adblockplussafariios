@@ -166,7 +166,7 @@ static NSString *FilterListsUpdated = @"FilterListsUpdated";
     return;
   }
 
-  void(^tryPresentThirdDialog)() = ^() {
+  void(^tryPresentThirdDialog)(void) = ^() {
     if (self.adblockPlus.updating || self.adblockPlus.reloading) {
       if ([[self class] wasFilterListsUpdated]) {
         [self dismissViewControllerAnimated:YES completion:nil];
