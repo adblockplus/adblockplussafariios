@@ -15,12 +15,8 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import <UIKit/UIKit.h>
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
-
-@end
-
+/// Globally available constants used for configuration.
+struct GlobalConstants {
+    /// Wake up application every hour (just hint for iOS)
+    static let backgroundFetchInterval: TimeInterval = 3600
+}

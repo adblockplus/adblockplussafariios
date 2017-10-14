@@ -10,15 +10,19 @@
 		6553625F1F73596500E77290 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
 		65755AFC1F7C8A4B00696261 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65755AFD1F7C8A4B00696261 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1769E1F7C8099008E2BA1 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		65755AFE1F7C8A5B00696261 /* yajl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6578DB051F71DA490088F136 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
 		6578DB061F71DA490088F136 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
 		6578DB071F71DB650088F136 /* AdblockPlus+ActivityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */; };
 		65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A173F31F60A20B004107EF /* SafariServices.framework */; };
+		65BBB6101F7ED10700B013C3 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
+		65BBB6111F7ED10700B013C3 /* yajl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65C1769B1F7C7996008E2BA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C176981F7C7962008E2BA1 /* AppDelegate.swift */; };
+		65C1769C1F7C79A3008E2BA1 /* ABPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C176991F7C7963008E2BA1 /* ABPManager.swift */; };
+		65C1769D1F7C79D2008E2BA1 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */; };
 		65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1769E1F7C8099008E2BA1 /* RxSwift.framework */; };
 		65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; };
+		65E4EE3C1F7DE1E200ED31BF /* KVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */; };
 		65F8BB621F611142004B9ED4 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
-		65F8BB661F61184F004B9ED4 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
 		690362D81C19A7B9000E5581 /* easylist_content_blocker_v2.json in Resources */ = {isa = PBXBuildFile; fileRef = 690362D61C19A7B9000E5581 /* easylist_content_blocker_v2.json */; };
 		690362D91C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json in Resources */ = {isa = PBXBuildFile; fileRef = 690362D71C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json */; };
 		6904B4011E6705F4006B3FE5 /* AdblockPlusShared.m in Sources */ = {isa = PBXBuildFile; fileRef = 6904B3FE1E6705F4006B3FE5 /* AdblockPlusShared.m */; };
@@ -81,8 +85,6 @@
 		69EA09AB1DC75AA00018FAC0 /* ActivationWaitingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA09A61DC75AA00018FAC0 /* ActivationWaitingController.m */; };
 		69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4D9261B95F1B700300817 /* AdblockPlusController.m */; };
 		69F4D92A1B95F28B00300817 /* AcceptableAdsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4D9291B95F28B00300817 /* AcceptableAdsController.m */; };
-		E9071D411B76897C00091AEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9071D401B76897C00091AEB /* main.m */; };
-		E9071D441B76897C00091AEB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9071D431B76897C00091AEB /* AppDelegate.m */; };
 		E9071D4A1B76897C00091AEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9071D481B76897C00091AEB /* Main.storyboard */; };
 		E9071D4C1B76897C00091AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9071D4B1B76897C00091AEB /* Assets.xcassets */; };
 		E9321E5D1C50F4180021D51F /* el.xliff in Resources */ = {isa = PBXBuildFile; fileRef = E9321E5B1C50F4180021D51F /* el.xliff */; };
@@ -124,7 +126,7 @@
 			files = (
 				65755AFC1F7C8A4B00696261 /* RxCocoa.framework in Embed Frameworks */,
 				65755AFD1F7C8A4B00696261 /* RxSwift.framework in Embed Frameworks */,
-				65755AFE1F7C8A5B00696261 /* yajl.framework in Embed Frameworks */,
+				65BBB6111F7ED10700B013C3 /* yajl.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,8 +147,14 @@
 
 /* Begin PBXFileReference section */
 		65A173F31F60A20B004107EF /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		65C176971F7C7961008E2BA1 /* AdblockPlusSafari-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdblockPlusSafari-Bridging-Header.h"; sourceTree = "<group>"; };
+		65C176981F7C7962008E2BA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		65C176991F7C7963008E2BA1 /* ABPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABPManager.swift; sourceTree = "<group>"; };
+		65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		65C1769E1F7C8099008E2BA1 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		65C176A01F7C809E008E2BA1 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		65E4EE3A1F7DE1E100ED31BF /* AdblockPlusSafariTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdblockPlusSafariTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOTests.swift; sourceTree = "<group>"; };
 		65F8BB601F61113F004B9ED4 /* yajl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = yajl.framework; path = Carthage/Build/iOS/yajl.framework; sourceTree = SOURCE_ROOT; };
 		690362D61C19A7B9000E5581 /* easylist_content_blocker_v2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = easylist_content_blocker_v2.json; sourceTree = "<group>"; };
 		690362D71C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "easylist+exceptionrules_content_blocker_v2.json"; sourceTree = "<group>"; };
@@ -235,9 +243,6 @@
 		69F4D9281B95F28B00300817 /* AcceptableAdsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptableAdsController.h; sourceTree = "<group>"; };
 		69F4D9291B95F28B00300817 /* AcceptableAdsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptableAdsController.m; sourceTree = "<group>"; };
 		E9071D3C1B76897C00091AEB /* AdblockPlusSafari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdblockPlusSafari.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9071D401B76897C00091AEB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E9071D421B76897C00091AEB /* AppDelegate.h */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; tabWidth = 2; };
-		E9071D431B76897C00091AEB /* AppDelegate.m */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; tabWidth = 2; };
 		E9071D491B76897C00091AEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9071D4B1B76897C00091AEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9071D501B76897C00091AEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -409,7 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */,
-				65F8BB661F61184F004B9ED4 /* yajl.framework in Frameworks */,
+				65BBB6101F7ED10700B013C3 /* yajl.framework in Frameworks */,
 				65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */,
 				65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */,
 			);
@@ -509,11 +514,13 @@
 		69B2AEB81BCD289C00E874A9 /* AdblockPlusSafariTests */ = {
 			isa = PBXGroup;
 			children = (
+				65E4EE3A1F7DE1E100ED31BF /* AdblockPlusSafariTests-Bridging-Header.h */,
 				69B2AEB91BCD289C00E874A9 /* AdblockPlusSafariTests.m */,
 				690362D61C19A7B9000E5581 /* easylist_content_blocker_v2.json */,
 				690362D71C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json */,
 				69B2AEBB1BCD289C00E874A9 /* Info.plist */,
 				E9E8973D1C4947F60005D6E2 /* InfoPlist.strings */,
+				65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */,
 			);
 			path = AdblockPlusSafariTests;
 			sourceTree = "<group>";
@@ -578,13 +585,14 @@
 		E9071D3E1B76897C00091AEB /* AdblockPlusSafari */ = {
 			isa = PBXGroup;
 			children = (
+				65C176991F7C7963008E2BA1 /* ABPManager.swift */,
 				6945C1C61E6872230067AC99 /* AdblockPlus */,
+				65C176971F7C7961008E2BA1 /* AdblockPlusSafari-Bridging-Header.h */,
 				69A9100E1B985B2800D93485 /* AdblockPlusSafari.entitlements */,
 				E9B982A91E55A31F00C22A17 /* AdblockPlusSafari.xcconfig */,
 				E9B982A71E55A28C00C22A17 /* AdblockPlusSafariDevbuild.entitlements */,
 				E9B982AA1E55A33200C22A17 /* AdblockPlusSafariDevbuild.xcconfig */,
-				E9071D421B76897C00091AEB /* AppDelegate.h */,
-				E9071D431B76897C00091AEB /* AppDelegate.m */,
+				65C176981F7C7962008E2BA1 /* AppDelegate.swift */,
 				69AB6A2C1B96F664005C2075 /* Appearance.h */,
 				69AB6A2D1B96F664005C2075 /* Appearance.m */,
 				E9071D4B1B76897C00091AEB /* Assets.xcassets */,
@@ -595,6 +603,7 @@
 				69142D551CDCC51C00FD2640 /* FilterList+Processing.h */,
 				69142D561CDCC51C00FD2640 /* FilterList+Processing.m */,
 				699876F21BBE721900595FB9 /* FilterLists.plist */,
+				65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */,
 				E9071D501B76897C00091AEB /* Info.plist */,
 				E9E897421C4947F60005D6E2 /* InfoPlist.strings */,
 				69AB6A491B970FFA005C2075 /* LaunchScreen.xib */,
@@ -614,7 +623,6 @@
 			isa = PBXGroup;
 			children = (
 				E96360F31C1736E8009179F2 /* Localizable.strings */,
-				E9071D401B76897C00091AEB /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -768,11 +776,13 @@
 					69B2AEB61BCD289C00E874A9 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = GRYYZR985A;
+						LastSwiftMigration = 0900;
 						TestTargetID = E9071D3B1B76897C00091AEB;
 					};
 					E9071D3B1B76897C00091AEB = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = GRYYZR985A;
+						LastSwiftMigration = 0900;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -905,6 +915,7 @@
 				69142D7B1CDCDE0700FD2640 /* NSDictionary+FilterList.m in Sources */,
 				69B2AEBA1BCD289C00E874A9 /* AdblockPlusSafariTests.m in Sources */,
 				6905EDAD1BCE890000B3A9B9 /* AdblockPlus+Parsing.m in Sources */,
+				65E4EE3C1F7DE1E200ED31BF /* KVOTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -919,17 +930,18 @@
 				69142D7A1CDCCF1100FD2640 /* SwitchCell.m in Sources */,
 				69A910191B986DB600D93485 /* RightCenteredImageButton.m in Sources */,
 				6904B4021E6705F4006B3FE5 /* NSString+AdblockPlus.m in Sources */,
+				65C1769C1F7C79A3008E2BA1 /* ABPManager.swift in Sources */,
 				69142D791CDCCF1100FD2640 /* NSDictionary+FilterList.m in Sources */,
+				65C1769B1F7C7996008E2BA1 /* AppDelegate.swift in Sources */,
 				69EA09A91DC75AA00018FAC0 /* ActivationConfirmationController.m in Sources */,
-				E9071D441B76897C00091AEB /* AppDelegate.m in Sources */,
 				69EA09A71DC75AA00018FAC0 /* DialogPresenterController.m in Sources */,
 				69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */,
 				69EA09A81DC75AA00018FAC0 /* AcceptableAdsExplanationController.m in Sources */,
 				69A2BCFC1BCBCF8A00028734 /* WhitelistedWebsitesController.m in Sources */,
-				E9071D411B76897C00091AEB /* main.m in Sources */,
 				691F74471B9874590057C702 /* AboutController.m in Sources */,
 				6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */,
 				69EA09AA1DC75AA00018FAC0 /* ActivationHowtoVideoController.m in Sources */,
+				65C1769D1F7C79D2008E2BA1 /* GlobalConstants.swift in Sources */,
 				69EA09AB1DC75AA00018FAC0 /* ActivationWaitingController.m in Sources */,
 				697D27321DCB492000118902 /* AdblockPlus+ActivityChecking.m in Sources */,
 				69F4D92A1B95F28B00300817 /* AcceptableAdsController.m in Sources */,
@@ -1204,11 +1216,17 @@
 		6995A9601BF391DF00D4B295 /* Devbuild Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				HEADER_SEARCH_PATHS = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = AdblockPlusSafariTests;
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariTests/AdblockPlusSafariTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = arm64;
 			};
 			name = "Devbuild Debug";
@@ -1216,11 +1234,16 @@
 		6995A9611BF391DF00D4B295 /* Devbuild Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				HEADER_SEARCH_PATHS = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = AdblockPlusSafariTests;
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariTests/AdblockPlusSafariTests-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = arm64;
 			};
 			name = "Devbuild Release";
@@ -1228,7 +1251,9 @@
 		69B2AEBF1BCD289C00E874A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				HEADER_SEARCH_PATHS = "";
@@ -1237,6 +1262,9 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafariTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariTests/AdblockPlusSafariTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdblockPlusSafari.app/AdblockPlusSafari";
 				VALID_ARCHS = arm64;
 			};
@@ -1245,7 +1273,9 @@
 		69B2AEC01BCD289C00E874A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				HEADER_SEARCH_PATHS = "";
@@ -1254,6 +1284,8 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafariTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariTests/AdblockPlusSafariTests-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdblockPlusSafari.app/AdblockPlusSafari";
 				VALID_ARCHS = arm64;
 			};
@@ -1363,10 +1395,10 @@
 		E9071D541B76897C00091AEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
@@ -1377,6 +1409,9 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Dev org.adblockplus.AdblockPlusSafari";
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafari/AdblockPlusSafari-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = arm64;
 			};
@@ -1385,10 +1420,10 @@
 		E9071D551B76897C00091AEB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				HEADER_SEARCH_PATHS = "";
@@ -1397,6 +1432,8 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafari/AdblockPlusSafari-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = arm64;
 			};
@@ -1491,10 +1528,10 @@
 		E9CA91591BC64504002696CB /* Devbuild Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
@@ -1502,6 +1539,8 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafari/AdblockPlusSafari-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = arm64;
 			};
@@ -1583,10 +1622,10 @@
 		E9CA915C1BC64519002696CB /* Devbuild Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = AdblockPlusSafari/Info.plist;
@@ -1594,6 +1633,9 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafari/AdblockPlusSafari-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = arm64;
 			};
