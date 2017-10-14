@@ -94,7 +94,7 @@
   components.path = [NSString stringWithFormat:@"/invalidimage-%d.png", (int)time];
   components.query = [@"website=" stringByAppendingString:[self.website whitelistedHostname]];
   
-  void(^completeAndExit)() = ^() {
+  void(^completeAndExit)(void) = ^() {
 
     // Session must be created with new identifier, see Apple documentation:
     // https://developer.apple.com/library/prerelease/ios/documentation/General/Conceptual/ExtensibilityPG/ExtensionScenarios.html
