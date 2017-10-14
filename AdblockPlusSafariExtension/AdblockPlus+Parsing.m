@@ -218,7 +218,7 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
 + (BOOL)mergeFilterListsFromURL:(NSURL *__nonnull)input
         withWhitelistedWebsites:(NSArray<NSString *> *__nonnull)whitelistedWebsites
                           toURL:(NSURL *__nonnull)output
-                          error:(NSError *__nullable *__nonnull)error
+                          error:(NSError *__nullable __autoreleasing *__nonnull)error
 {
 
   NSInputStream *inputStream = [NSInputStream inputStreamWithURL:input];
