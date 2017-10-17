@@ -1,0 +1,26 @@
+disabled_rules: # rule identifiers to exclude from running
+  - notification_center_detachment
+opt_in_rules: # some rules are only opt-in
+  - attributes
+  - closure_end_indentation
+  - fatal_error_message
+  - joined_default_parameter
+  - let_var_whitespace
+  - multiline_parameters
+  - operator_usage_whitespace
+  - overridden_super_call
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - single_test_class
+  - sorted_imports
+  - strict_fileprivate
+  - switch_case_on_newline
+  - unneeded_parentheses_in_closure_argument
+  - vertical_parameter_alignment_on_call
+  # Find all the available rules by running:
+  # swiftlint rules
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Resources
+  - Translations
+line_length: 150

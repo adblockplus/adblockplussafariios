@@ -10,6 +10,7 @@ Building
 
 - [XCode 9 or later](https://developer.apple.com/xcode/)
 - [Carthage](https://github.com/Carthage/Carthage)
+- [SwiftLint](https://github.com/realm/SwiftLint/) (optional)
 
 ### Building in XCode
 
