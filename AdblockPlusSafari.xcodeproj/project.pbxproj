@@ -242,6 +242,7 @@
 		69F4D9261B95F1B700300817 /* AdblockPlusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusController.m; sourceTree = "<group>"; };
 		69F4D9281B95F28B00300817 /* AcceptableAdsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptableAdsController.h; sourceTree = "<group>"; };
 		69F4D9291B95F28B00300817 /* AcceptableAdsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptableAdsController.m; sourceTree = "<group>"; };
+		E5DF8C591F7DBA68003AD9B8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E9071D3C1B76897C00091AEB /* AdblockPlusSafari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdblockPlusSafari.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9071D491B76897C00091AEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9071D4B1B76897C00091AEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -559,6 +560,7 @@
 		E9071D331B76897C00091AEB = {
 			isa = PBXGroup;
 			children = (
+				E5DF8C591F7DBA68003AD9B8 /* README.md */,
 				E9071D3E1B76897C00091AEB /* AdblockPlusSafari */,
 				695778371E672A7600331DA3 /* AdblockPlusSafariActionExtension */,
 				E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */,
