@@ -13,6 +13,8 @@
 		6578DB051F71DA490088F136 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
 		6578DB061F71DA490088F136 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
 		6578DB071F71DB650088F136 /* AdblockPlus+ActivityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */; };
+		657CEC7D1F9EC47B00F37B68 /* FilterList+ObjectiveC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657CEC7B1F9EC47A00F37B68 /* FilterList+ObjectiveC.swift */; };
+		657CEC7E1F9EC47B00F37B68 /* FilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657CEC7C1F9EC47A00F37B68 /* FilterList.swift */; };
 		65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A173F31F60A20B004107EF /* SafariServices.framework */; };
 		65BBB6101F7ED10700B013C3 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
 		65BBB6111F7ED10700B013C3 /* yajl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -146,6 +148,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		657CEC7B1F9EC47A00F37B68 /* FilterList+ObjectiveC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilterList+ObjectiveC.swift"; sourceTree = "<group>"; };
+		657CEC7C1F9EC47A00F37B68 /* FilterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterList.swift; sourceTree = "<group>"; };
 		65A173F31F60A20B004107EF /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		65C176971F7C7961008E2BA1 /* AdblockPlusSafari-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdblockPlusSafari-Bridging-Header.h"; sourceTree = "<group>"; };
 		65C176981F7C7962008E2BA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -432,6 +436,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		657CEC7A1F9EC47A00F37B68 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				657CEC7C1F9EC47A00F37B68 /* FilterList.swift */,
+				657CEC7B1F9EC47A00F37B68 /* FilterList+ObjectiveC.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		65A173F01F60A1C2004107EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +623,7 @@
 				E9E897421C4947F60005D6E2 /* InfoPlist.strings */,
 				69AB6A491B970FFA005C2075 /* LaunchScreen.xib */,
 				E9071D481B76897C00091AEB /* Main.storyboard */,
+				657CEC7A1F9EC47A00F37B68 /* Model */,
 				69EA099A1DC75A7C0018FAC0 /* NSAttributedString+TextRenderer.h */,
 				69EA099B1DC75A7C0018FAC0 /* NSAttributedString+TextRenderer.m */,
 				69142D741CDCCF1100FD2640 /* NSDictionary+FilterList.h */,
@@ -954,10 +968,12 @@
 				69142D791CDCCF1100FD2640 /* NSDictionary+FilterList.m in Sources */,
 				65C1769B1F7C7996008E2BA1 /* AppDelegate.swift in Sources */,
 				69EA09A91DC75AA00018FAC0 /* ActivationConfirmationController.m in Sources */,
+				657CEC7E1F9EC47B00F37B68 /* FilterList.swift in Sources */,
 				69EA09A71DC75AA00018FAC0 /* DialogPresenterController.m in Sources */,
 				69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */,
 				69EA09A81DC75AA00018FAC0 /* AcceptableAdsExplanationController.m in Sources */,
 				69A2BCFC1BCBCF8A00028734 /* WhitelistedWebsitesController.m in Sources */,
+				657CEC7D1F9EC47B00F37B68 /* FilterList+ObjectiveC.swift in Sources */,
 				691F74471B9874590057C702 /* AboutController.m in Sources */,
 				6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */,
 				69EA09AA1DC75AA00018FAC0 /* ActivationHowtoVideoController.m in Sources */,
