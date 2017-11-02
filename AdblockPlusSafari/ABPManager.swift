@@ -137,6 +137,16 @@ class ABPManager: NSObject {
         backgroundTaskIdentifier = app.beginBackgroundTask(expirationHandler: expirationHandler)
     }
 
+    /// Process events initiated by background URLSession requests.
+    func handleEventsForBackgroundURLSession(identifier: String,
+                                             completion: @escaping () -> Void) {
+        whitelistedWebsites(forSessionID: identifier)
+            .subscribe(onCompleted: {
+                self.handleDidEnterBackground()
+                completion()
+            }).disposed(by: bag)
+    }
+
     // ------------------------------------------------------------
     // MARK: - KVO -
     // ------------------------------------------------------------

@@ -54,4 +54,11 @@ class AppDelegate: UIResponder,
                      performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         ABPManager.sharedInstance().handlePerformFetch(withCompletionHandler: completionHandler)
     }
+
+    func application(_ application: UIApplication,
+                     handleEventsForBackgroundURLSession identifier: String,
+                     completionHandler: @escaping () -> Void) {
+        ABPManager.sharedInstance().handleEventsForBackgroundURLSession(identifier: identifier,
+                                                                        completion: completionHandler)
+    }
 }
