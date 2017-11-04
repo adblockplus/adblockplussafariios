@@ -58,17 +58,13 @@ extension ABPManager {
 
     /// Extract the name of the whitelisted website from a URL.
     private func website(fromURL url: URL?) -> String? {
-        guard let uwURL = url else { return nil }
-        let components = uwURL.query?.components(separatedBy: "&")
+        let components = url?.query?.components(separatedBy: "&") ?? []
         let prefix = "website="
-        let result = components?
-            .filter { $0.hasPrefix(prefix) }
-            .map {
-                return $0.replacingOccurrences(of: prefix,
-                                               with: "")
-            } ?? []
-        if result.count == 1 {
-            return result[0]
+        let websites = components.filter { $0.hasPrefix(prefix) }
+        if websites.count == 1 {
+            return websites
+                .map { $0.replacingOccurrences(of: prefix, with: "") }
+                .reduce("") { $0 + $1 }
         }
         return nil
     }
