@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		291FFD5A1F79495E00FE29C5 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FFD591F79495E00FE29C5 /* ActionViewController.swift */; };
 		6541CEA21FAAC69B00601D6F /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6541CEA11FAAC69B00601D6F /* TypeAliases.swift */; };
 		6541CEA51FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6541CEA41FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift */; };
 		6553625F1F73596500E77290 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
@@ -44,7 +45,6 @@
 		691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */; };
 		6957783D1E672A7600331DA3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6957783B1E672A7600331DA3 /* MainInterface.storyboard */; };
 		695778411E672A7600331DA3 /* AdblockPlusSafariActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 695778361E672A7500331DA3 /* AdblockPlusSafariActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		6957784A1E672A9700331DA3 /* ActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695778481E672A9700331DA3 /* ActionViewController.m */; };
 		6957784F1E672B0700331DA3 /* ActionExtensionAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6957784C1E672B0700331DA3 /* ActionExtensionAssets.xcassets */; };
 		695778501E672B0700331DA3 /* AdblockPlusAction.js in Resources */ = {isa = PBXBuildFile; fileRef = 6957784D1E672B0700331DA3 /* AdblockPlusAction.js */; };
 		695778511E672B5300331DA3 /* AdblockPlusShared.m in Sources */ = {isa = PBXBuildFile; fileRef = 6904B3FE1E6705F4006B3FE5 /* AdblockPlusShared.m */; };
@@ -150,6 +150,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		291FFD591F79495E00FE29C5 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		291FFD5B1F794CD100FE29C5 /* AdblockPlusSafariActionExtension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdblockPlusSafariActionExtension-Bridging-Header.h"; sourceTree = "<group>"; };
 		6541CEA11FAAC69B00601D6F /* TypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		6541CEA41FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ABPManager+WhitelistedWebsites.swift"; sourceTree = "<group>"; };
 		657CEC7B1F9EC47A00F37B68 /* FilterList+ObjectiveC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilterList+ObjectiveC.swift"; sourceTree = "<group>"; };
@@ -188,8 +190,6 @@
 		691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusContainerController.m; sourceTree = "<group>"; };
 		695778361E672A7500331DA3 /* AdblockPlusSafariActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AdblockPlusSafariActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6957783C1E672A7600331DA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		695778471E672A9700331DA3 /* ActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionViewController.h; sourceTree = "<group>"; };
-		695778481E672A9700331DA3 /* ActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionViewController.m; sourceTree = "<group>"; };
 		695778491E672A9700331DA3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6957784C1E672B0700331DA3 /* ActionExtensionAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ActionExtensionAssets.xcassets; sourceTree = "<group>"; };
 		6957784D1E672B0700331DA3 /* AdblockPlusAction.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AdblockPlusAction.js; sourceTree = "<group>"; };
@@ -479,11 +479,11 @@
 			isa = PBXGroup;
 			children = (
 				6957784C1E672B0700331DA3 /* ActionExtensionAssets.xcassets */,
-				695778471E672A9700331DA3 /* ActionViewController.h */,
-				695778481E672A9700331DA3 /* ActionViewController.m */,
 				6957784D1E672B0700331DA3 /* AdblockPlusAction.js */,
 				695778491E672A9700331DA3 /* Info.plist */,
 				6957783B1E672A7600331DA3 /* MainInterface.storyboard */,
+				291FFD591F79495E00FE29C5 /* ActionViewController.swift */,
+				291FFD5B1F794CD100FE29C5 /* AdblockPlusSafariActionExtension-Bridging-Header.h */,
 			);
 			path = AdblockPlusSafariActionExtension;
 			sourceTree = "<group>";
@@ -789,6 +789,7 @@
 					695778351E672A7500331DA3 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = GRYYZR985A;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -941,8 +942,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				695778531E672C8700331DA3 /* NSString+AdblockPlus.m in Sources */,
+				291FFD5A1F79495E00FE29C5 /* ActionViewController.swift in Sources */,
 				695778521E672B7D00331DA3 /* AdblockPlus.m in Sources */,
-				6957784A1E672A9700331DA3 /* ActionViewController.m in Sources */,
 				695778511E672B5300331DA3 /* AdblockPlusShared.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1191,6 +1192,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1203,6 +1205,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Dev AdblockPlusActionExtension";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariActionExtension/AdblockPlusSafariActionExtension-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = arm64;
 			};
 			name = Debug;
@@ -1213,6 +1218,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				INFOPLIST_FILE = AdblockPlusSafariActionExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1220,6 +1226,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Action Extension Devbuild In House";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariActionExtension/AdblockPlusSafariActionExtension-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = arm64;
 			};
 			name = "Devbuild Debug";
@@ -1230,12 +1239,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				INFOPLIST_FILE = AdblockPlusSafariActionExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariActionExtension/AdblockPlusSafariActionExtension-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = arm64;
 			};
 			name = Release;
@@ -1246,6 +1258,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				INFOPLIST_FILE = AdblockPlusSafariActionExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1253,6 +1266,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Action Extension Devbuild In House";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariActionExtension/AdblockPlusSafariActionExtension-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = arm64;
 			};
 			name = "Devbuild Release";
