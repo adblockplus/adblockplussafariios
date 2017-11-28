@@ -34,72 +34,72 @@
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
+    [super viewDidLoad];
 
-  // Test if adblock browser is installed
-  NSURL *adblockBrowserTestUrl = [NSURL URLWithString:@"adblockbrowser://example.com"];
-  if ([[UIApplication sharedApplication] canOpenURL:adblockBrowserTestUrl]) {
-    self.adblockBrowserBannerConstraint.constant = 0;
-  }
+    // Test if adblock browser is installed
+    NSURL *adblockBrowserTestUrl = [NSURL URLWithString:@"adblockbrowser://example.com"];
+    if ([[UIApplication sharedApplication] canOpenURL:adblockBrowserTestUrl]) {
+        self.adblockBrowserBannerConstraint.constant = 0;
+    }
 
-  CGFloat fontSize = self.adblockPlusLabel.font.pointSize;
-  self.adblockPlusLabel.fontFamilyName = DefaultFontFamily;
-  self.adblockPlusLabel.attributedText = [self.adblockPlusLabel.attributedText renderSpanMarkedByChar:@"*"
-                                                                                               asFont:[Appearance defaultBoldFontOfSize:fontSize]];
-  // This is the simpliest way to print Browser word using custom bold font.
-  fontSize = self.adblockBrowserLabel.font.pointSize;
-  self.adblockBrowserLabel.fontFamilyName = DefaultFontFamily;
-  self.adblockBrowserLabel.attributedText = [self.adblockBrowserLabel.attributedText renderSpanMarkedByChar:@"*"
-                                                                                                     asFont:[Appearance defaultBoldFontOfSize:fontSize]];
+    CGFloat fontSize = self.adblockPlusLabel.font.pointSize;
+    self.adblockPlusLabel.fontFamilyName = DefaultFontFamily;
+    self.adblockPlusLabel.attributedText = [self.adblockPlusLabel.attributedText renderSpanMarkedByChar:@"*"
+                                                                                                 asFont:[Appearance defaultBoldFontOfSize:fontSize]];
+    // This is the simpliest way to print Browser word using custom bold font.
+    fontSize = self.adblockBrowserLabel.font.pointSize;
+    self.adblockBrowserLabel.fontFamilyName = DefaultFontFamily;
+    self.adblockBrowserLabel.attributedText = [self.adblockBrowserLabel.attributedText renderSpanMarkedByChar:@"*"
+                                                                                                       asFont:[Appearance defaultBoldFontOfSize:fontSize]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-  [self.navigationController setNavigationBarHidden:YES animated:animated];
-  [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-  if (self.navigationController.topViewController != self) {
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-  }
-  [super viewWillDisappear:animated];
+    if (self.navigationController.topViewController != self) {
+        [self.navigationController setNavigationBarHidden:NO animated:animated];
+    }
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidLayoutSubviews
 {
-  [super viewDidLayoutSubviews];
+    [super viewDidLayoutSubviews];
 
-  for (UIViewController *viewController in self.childViewControllers) {
-    if ([viewController isKindOfClass:[AdblockPlusController class]]) {
-      // Content of the controller table must be vertically moved
-      // in order not be covered by the bar with nonstandard height
-      const CGFloat topOffsetCorrection = -15;
-      UITableView *tableView = ((AdblockPlusController *)viewController).tableView;
-      UIEdgeInsets insets = UIEdgeInsetsMake(self.topBarView.frame.size.height + topOffsetCorrection, 0, 0, 0);
-      tableView.contentInset = insets;
-      tableView.scrollIndicatorInsets = insets;
+    for (UIViewController *viewController in self.childViewControllers) {
+        if ([viewController isKindOfClass:[AdblockPlusController class]]) {
+            // Content of the controller table must be vertically moved
+            // in order not be covered by the bar with nonstandard height
+            const CGFloat topOffsetCorrection = -15;
+            UITableView *tableView = ((AdblockPlusController *)viewController).tableView;
+            UIEdgeInsets insets = UIEdgeInsetsMake(self.topBarView.frame.size.height + topOffsetCorrection, 0, 0, 0);
+            tableView.contentInset = insets;
+            tableView.scrollIndicatorInsets = insets;
+        }
     }
-  }
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  if ([segue.destinationViewController respondsToSelector:@selector(setAdblockPlus:)]) {
-    [(id)segue.destinationViewController setAdblockPlus:self.adblockPlus];
-  }
+    if ([segue.destinationViewController respondsToSelector:@selector(setAdblockPlus:)]) {
+        [(id)segue.destinationViewController setAdblockPlus:self.adblockPlus];
+    }
 }
 
 #pragma mark - Action
 
 - (IBAction)onAppStoreButtonTouched:(id)sender
 {
-  NSString *appStoreId = [[NSBundle mainBundle] infoDictionary][@"AdblockBrowserAppStoreId"];
-  NSString *urlString = [NSString stringWithFormat:@"http://itunes.apple.com/app/id%@", appStoreId];
-  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+    NSString *appStoreId = [[NSBundle mainBundle] infoDictionary][@"AdblockBrowserAppStoreId"];
+    NSString *urlString = [NSString stringWithFormat:@"http://itunes.apple.com/app/id%@", appStoreId];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
 
 @end

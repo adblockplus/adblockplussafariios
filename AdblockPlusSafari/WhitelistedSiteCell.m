@@ -23,48 +23,48 @@ const CGFloat imageOffset = 20;
 
 - (void)awakeFromNib
 {
-  [super awakeFromNib];
-  self.deleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
-  self.deleteButton.bounds = CGRectMake(0, 0, 50, 44);
-  self.deleteButton.tintColor = UIColor.blackColor;
-  [self.deleteButton setImage:[UIImage imageNamed:@"trash"] forState:UIControlStateNormal];
-  [self.deleteButton addTarget:self
-                        action:@selector(onDeleteButtonTouched:)
-              forControlEvents:UIControlEventTouchUpInside];
-  self.accessoryView = self.deleteButton;
+    [super awakeFromNib];
+    self.deleteButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.deleteButton.bounds = CGRectMake(0, 0, 50, 44);
+    self.deleteButton.tintColor = UIColor.blackColor;
+    [self.deleteButton setImage:[UIImage imageNamed:@"trash"] forState:UIControlStateNormal];
+    [self.deleteButton addTarget:self
+                          action:@selector(onDeleteButtonTouched:)
+                forControlEvents:UIControlEventTouchUpInside];
+    self.accessoryView = self.deleteButton;
 }
 
 - (void)layoutSubviews
 {
-  [super layoutSubviews];
-  CGFloat width = [self.deleteButton imageForState:UIControlStateNormal].size.width / 2;
-  CGPoint center = [self convertPoint:self.deleteButton.center toView:self];
+    [super layoutSubviews];
+    CGFloat width = [self.deleteButton imageForState:UIControlStateNormal].size.width / 2;
+    CGPoint center = [self convertPoint:self.deleteButton.center toView:self];
 
-  CGFloat offset;
-  if ([UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.semanticContentAttribute] == UIUserInterfaceLayoutDirectionRightToLeft) {
-    offset = imageOffset + width;
-  } else {
-    offset = self.frame.size.width - imageOffset - width;
-  }
-  self.deleteButton.center = CGPointMake(offset, center.y);
+    CGFloat offset;
+    if ([UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.semanticContentAttribute] == UIUserInterfaceLayoutDirectionRightToLeft) {
+        offset = imageOffset + width;
+    } else {
+        offset = self.frame.size.width - imageOffset - width;
+    }
+    self.deleteButton.center = CGPointMake(offset, center.y);
 }
 
 #pragma mark - Actions
 
 - (void)onDeleteButtonTouched:(UIButton *)sender
 {
-  UIView *view = self.superview;
-  while (view) {
-    if ([view isKindOfClass:[UITableView class]]) {
-      UITableView *tableView = (UITableView *)view;
-      NSIndexPath *indexPath = [tableView indexPathForCell:self];
-      if (indexPath && [tableView.delegate conformsToProtocol:@protocol(WhitelistingDelegate)]) {
-        [((id<WhitelistingDelegate>)tableView.delegate) tableView:tableView didTouchedDeleteButtonAtIndexPath:indexPath];
-      }
-      return;
+    UIView *view = self.superview;
+    while (view) {
+        if ([view isKindOfClass:[UITableView class]]) {
+            UITableView *tableView = (UITableView *)view;
+            NSIndexPath *indexPath = [tableView indexPathForCell:self];
+            if (indexPath && [tableView.delegate conformsToProtocol:@protocol(WhitelistingDelegate)]) {
+                [((id<WhitelistingDelegate>)tableView.delegate) tableView:tableView didTouchedDeleteButtonAtIndexPath:indexPath];
+            }
+            return;
+        }
+        view = view.superview;
     }
-    view = view.superview;
-  }
 }
 
 @end

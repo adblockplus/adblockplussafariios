@@ -27,10 +27,10 @@ const CGFloat ImageRightMargin = 25;
 
 - (void)layoutSubviews
 {
-  [super layoutSubviews];
-  CGFloat x = self.frame.size.width - ImageRightMargin - self.imageView.frame.size.width / 2;
-  CGFloat y = self.frame.size.height / 2;
-  self.imageView.center = CGPointMake(x, y);
+    [super layoutSubviews];
+    CGFloat x = self.frame.size.width - ImageRightMargin - self.imageView.frame.size.width / 2;
+    CGFloat y = self.frame.size.height / 2;
+    self.imageView.center = CGPointMake(x, y);
 }
 
 @end

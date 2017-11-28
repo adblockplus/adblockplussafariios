@@ -25,53 +25,53 @@ static NSString *emptyFilterListName = @"empty.json";
 
 - (NSURL *__nullable)activeFilterListsURL
 {
-  NSString *fileName;
+    NSString *fileName;
 
-  if (self.enabled) {
-    NSString *filterListName = self.activeFilterListName;
-    NSDictionary *filterList = self.filterLists[filterListName];
-    fileName = filterList.fileName;
+    if (self.enabled) {
+        NSString *filterListName = self.activeFilterListName;
+        NSDictionary *filterList = self.filterLists[filterListName];
+        fileName = filterList.fileName;
 
-    if (filterList.downloaded && fileName) {
-      NSFileManager *fileManager = [NSFileManager defaultManager];
-      NSURL *url = [fileManager containerURLForSecurityApplicationGroupIdentifier:self.group];
-      url = [url URLByAppendingPathComponent:fileName isDirectory:NO];
+        if (filterList.downloaded && fileName) {
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            NSURL *url = [fileManager containerURLForSecurityApplicationGroupIdentifier:self.group];
+            url = [url URLByAppendingPathComponent:fileName isDirectory:NO];
 
-      if ([fileManager fileExistsAtPath:url.path]) {
-        return url;
-      }
+            if ([fileManager fileExistsAtPath:url.path]) {
+                return url;
+            }
+        }
     }
-  }
 
-  if (!fileName) {
-    fileName = emptyFilterListName;
-  }
+    if (!fileName) {
+        fileName = emptyFilterListName;
+    }
 
-  return [[NSBundle mainBundle] URLForResource:[fileName stringByDeletingPathExtension] withExtension:@"json"];
+    return [[NSBundle mainBundle] URLForResource:[fileName stringByDeletingPathExtension] withExtension:@"json"];
 }
 
 - (NSURL *)activeFilterListURLWithWhitelistedWebsites
 {
-  NSURL *original = self.activeFilterListsURL;
-  NSString *fileName = original.lastPathComponent;
+    NSURL *original = self.activeFilterListsURL;
+    NSString *fileName = original.lastPathComponent;
 
-  if (fileName == nil || [fileName isEqual:emptyFilterListName])  {
-    return original;
-  }
+    if (fileName == nil || [fileName isEqual:emptyFilterListName]) {
+        return original;
+    }
 
-  NSFileManager *fileManager = [NSFileManager defaultManager];
-  NSURL *copy = [fileManager containerURLForSecurityApplicationGroupIdentifier:self.group];
-  copy = [copy URLByAppendingPathComponent:[NSString stringWithFormat:@"ww-%@", fileName] isDirectory:NO];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *copy = [fileManager containerURLForSecurityApplicationGroupIdentifier:self.group];
+    copy = [copy URLByAppendingPathComponent:[NSString stringWithFormat:@"ww-%@", fileName] isDirectory:NO];
 
-  NSError *error;
-  if (![[self class] mergeFilterListsFromURL:original
-                     withWhitelistedWebsites:self.whitelistedWebsites
-                                       toURL:copy
-                                       error:&error]) {
-    return original;
-  }
+    NSError *error;
+    if (![[self class] mergeFilterListsFromURL:original
+                       withWhitelistedWebsites:self.whitelistedWebsites
+                                         toURL:copy
+                                         error:&error]) {
+        return original;
+    }
 
-  return copy;
+    return copy;
 }
 
 @end

@@ -23,7 +23,7 @@
 #include <yajl/yajl_gen.h>
 
 // Update filter list every 5 days
-const NSTimeInterval DefaultFilterListsUpdateInterval = 3600*24*5;
+const NSTimeInterval DefaultFilterListsUpdateInterval = 3600 * 24 * 5;
 
 @interface AdblockPlusProcessingContext : NSObject
 
@@ -43,107 +43,107 @@ const NSTimeInterval DefaultFilterListsUpdateInterval = 3600*24*5;
 
 static int processNull(void *ctx)
 {
-  return YES;
+    return YES;
 }
 
 static int processBoolean(void *ctx, int boolean)
 {
-  return YES;
+    return YES;
 }
 
 static int processNumber(void *ctx, const char *s, size_t l)
 {
-  return YES;
+    return YES;
 }
 
 static int processString(void *ctx, const unsigned char *string, size_t stringLength)
 {
-  AdblockPlusProcessingContext *context = (__bridge AdblockPlusProcessingContext *)ctx;
+    AdblockPlusProcessingContext *context = (__bridge AdblockPlusProcessingContext *)ctx;
 
-  if (context.mapLevel == 1 && context.filterListType == AdblockPlusFilterListTypeVersion2) {
-    const char *terminatedString = strndup((const char *)string, stringLength);
-    NSString *value = [NSString stringWithCString:terminatedString encoding:NSASCIIStringEncoding];
-    if (context.versionKeyFound && !context.version) {
-      context.version = value;
+    if (context.mapLevel == 1 && context.filterListType == AdblockPlusFilterListTypeVersion2) {
+        const char *terminatedString = strndup((const char *)string, stringLength);
+        NSString *value = [NSString stringWithCString:terminatedString encoding:NSASCIIStringEncoding];
+        if (context.versionKeyFound && !context.version) {
+            context.version = value;
+        }
+        if (context.expiresKeyFound && !context.expires) {
+            context.expires = value;
+        }
+        free((char *)terminatedString);
     }
-    if (context.expiresKeyFound && !context.expires) {
-      context.expires = value;
-    }
-      free((char *)terminatedString);
-  }
 
-  return YES;
+    return YES;
 }
 
 static int processMapKey(void *ctx, const unsigned char *string, size_t stringLength)
 {
-  AdblockPlusProcessingContext *context = (__bridge AdblockPlusProcessingContext *)ctx;
+    AdblockPlusProcessingContext *context = (__bridge AdblockPlusProcessingContext *)ctx;
 
-  if (context.mapLevel == 1 && context.filterListType == AdblockPlusFilterListTypeVersion2) {
-    if (strncmp((const char *)string, "version", stringLength) == 0) {
-      context.versionKeyFound = YES;
+    if (context.mapLevel == 1 && context.filterListType == AdblockPlusFilterListTypeVersion2) {
+        if (strncmp((const char *)string, "version", stringLength) == 0) {
+            context.versionKeyFound = YES;
+        }
+        if (strncmp((const char *)string, "expires", stringLength) == 0) {
+            context.expiresKeyFound = YES;
+        }
+        if (strncmp((const char *)string, "rules", stringLength) == 0) {
+            context.rulesKeyFound = YES;
+        }
     }
-    if (strncmp((const char *)string, "expires", stringLength) == 0) {
-      context.expiresKeyFound = YES;
-    }
-    if (strncmp((const char *)string, "rules", stringLength) == 0) {
-      context.rulesKeyFound = YES;
-    }
-  }
 
-  return YES;
+    return YES;
 }
 
 static int processStartMap(void *ctx)
 {
-  AdblockPlusProcessingContext *context = (__bridge AdblockPlusProcessingContext *)ctx;
-  context.mapLevel += 1;
+    AdblockPlusProcessingContext *context = (__bridge AdblockPlusProcessingContext *)ctx;
+    context.mapLevel += 1;
 
-  if (context.mapLevel == 1 && context.arrayLevel == 0) {
-    context.filterListType = AdblockPlusFilterListTypeVersion2;
-  }
+    if (context.mapLevel == 1 && context.arrayLevel == 0) {
+        context.filterListType = AdblockPlusFilterListTypeVersion2;
+    }
 
-  return YES;
+    return YES;
 }
 
 static int processEndMap(void *ctx)
 {
-  AdblockPlusProcessingContext *context = (__bridge AdblockPlusProcessingContext *)ctx;
-  context.mapLevel -= 1;
-  return YES;
+    AdblockPlusProcessingContext *context = (__bridge AdblockPlusProcessingContext *)ctx;
+    context.mapLevel -= 1;
+    return YES;
 }
 
 static int processStartArray(void *ctx)
 {
-  AdblockPlusProcessingContext *context = (__bridge AdblockPlusProcessingContext *)ctx;
-  context.arrayLevel += 1;
+    AdblockPlusProcessingContext *context = (__bridge AdblockPlusProcessingContext *)ctx;
+    context.arrayLevel += 1;
 
-  if (context.mapLevel == 0 && context.arrayLevel == 1) {
-    context.filterListType = AdblockPlusFilterListTypeVersion1;
-  }
+    if (context.mapLevel == 0 && context.arrayLevel == 1) {
+        context.filterListType = AdblockPlusFilterListTypeVersion1;
+    }
 
-  return YES;
+    return YES;
 }
 
 static int processEndArray(void *ctx)
 {
-  AdblockPlusProcessingContext *context = (__bridge AdblockPlusProcessingContext *)ctx;
-  context.arrayLevel -= 1;
-  return YES;
+    AdblockPlusProcessingContext *context = (__bridge AdblockPlusProcessingContext *)ctx;
+    context.arrayLevel -= 1;
+    return YES;
 }
 
 static yajl_callbacks callbacks = {
-  processNull,
-  processBoolean,
-  NULL,
-  NULL,
-  processNumber,
-  processString,
-  processStartMap,
-  processMapKey,
-  processEndMap,
-  processStartArray,
-  processEndArray
+    processNull,
+    processBoolean,
+    NULL,
+    NULL,
+    processNumber,
+    processString,
+    processStartMap,
+    processMapKey,
+    processEndMap,
+    processStartArray,
+    processEndArray
 };
 
 @implementation FilterList (Processing)
@@ -151,107 +151,107 @@ static yajl_callbacks callbacks = {
 + (BOOL)parseExpiresString:(NSString *)expires
                         to:(NSTimeInterval *)output
 {
-  NSError *error = nil;
-  NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^(\\d+) days"
-                                                                         options:NSRegularExpressionCaseInsensitive
-                                                                           error:&error];
-  if (error != nil) {
-    return NO;
-  }
-  NSArray *matches = [regex matchesInString:expires
-                                    options:0
-                                      range:NSMakeRange(0, [expires length])];
-  NSAssert([matches count] <= 1, @"There should be at most one match");
-  NSTextCheckingResult *firstMatch = matches.firstObject;
-  if (firstMatch == nil) {
-    return NO;
-  }
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^(\\d+) days"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    if (error != nil) {
+        return NO;
+    }
+    NSArray *matches = [regex matchesInString:expires
+                                      options:0
+                                        range:NSMakeRange(0, [expires length])];
+    NSAssert([matches count] <= 1, @"There should be at most one match");
+    NSTextCheckingResult *firstMatch = matches.firstObject;
+    if (firstMatch == nil) {
+        return NO;
+    }
 
-  *output = [[expires substringWithRange:[firstMatch range]] doubleValue] * 3600 * 24;
-  return YES;
+    *output = [[expires substringWithRange:[firstMatch range]] doubleValue] * 3600 * 24;
+    return YES;
 }
 
 // Get parser error
-+ (NSError *)createParserError:(yajl_handle) hand
++ (NSError *)createParserError:(yajl_handle)hand
 {
-  NSUInteger errorBufferLength = 512;
-  uint8_t errorBuffer[errorBufferLength];
-  unsigned char *error_string = yajl_get_error(hand, 1, errorBuffer, errorBufferLength);
-  NSString *errorString = [[NSString alloc] initWithCString:(const char *)error_string encoding:NSASCIIStringEncoding];
-  return [NSError errorWithDomain:AdblockPlusErrorDomain
-                             code:0
-                         userInfo:@{NSLocalizedDescriptionKey: errorString}];
+    NSUInteger errorBufferLength = 512;
+    uint8_t errorBuffer[errorBufferLength];
+    unsigned char *error_string = yajl_get_error(hand, 1, errorBuffer, errorBufferLength);
+    NSString *errorString = [[NSString alloc] initWithCString:(const char *)error_string encoding:NSASCIIStringEncoding];
+    return [NSError errorWithDomain:AdblockPlusErrorDomain
+                               code:0
+                           userInfo:@{ NSLocalizedDescriptionKey : errorString }];
 }
 
 - (BOOL)parseFilterListFromURL:(NSURL *__nonnull)input
                          error:(NSError *__nullable *__nonnull)error
 {
-  NSInputStream *inputStream = [NSInputStream inputStreamWithURL:input];
+    NSInputStream *inputStream = [NSInputStream inputStreamWithURL:input];
 
-  yajl_handle hand = NULL;
-  AdblockPlusProcessingContext *context = [[AdblockPlusProcessingContext alloc] init];
-  void *contentPointer = (void *)CFBridgingRetain(context);
+    yajl_handle hand = NULL;
+    AdblockPlusProcessingContext *context = [[AdblockPlusProcessingContext alloc] init];
+    void *contentPointer = (void *)CFBridgingRetain(context);
 
-  @try {
-    [inputStream open];
+    @try {
+        [inputStream open];
 
-    hand = yajl_alloc(&callbacks, NULL, contentPointer);
-    yajl_config(hand, yajl_allow_comments, 0);
-    yajl_config(hand, yajl_dont_validate_strings, 1);
+        hand = yajl_alloc(&callbacks, NULL, contentPointer);
+        yajl_config(hand, yajl_allow_comments, 0);
+        yajl_config(hand, yajl_dont_validate_strings, 1);
 
-    // Read json file
-    const NSUInteger inputBufferLength = 256;
-    uint8_t inputBuffer[inputBufferLength];
-    NSInteger read;
+        // Read json file
+        const NSUInteger inputBufferLength = 256;
+        uint8_t inputBuffer[inputBufferLength];
+        NSInteger read;
 
-    while ((read = [inputStream read:inputBuffer maxLength:inputBufferLength])) {
+        while ((read = [inputStream read:inputBuffer maxLength:inputBufferLength])) {
 
-      yajl_status status = yajl_parse(hand, inputBuffer, read);
-      if (status != yajl_status_ok) {
-        *error = [[self class] createParserError:hand];
+            yajl_status status = yajl_parse(hand, inputBuffer, read);
+            if (status != yajl_status_ok) {
+                *error = [[self class] createParserError:hand];
+                return NO;
+            }
+        }
+
+        // Close parser
+        yajl_status status = yajl_complete_parse(hand);
+        if (status != yajl_status_ok) {
+            *error = [[self class] createParserError:hand];
+            return NO;
+        }
+    }
+    @catch (NSException *exception) {
+        *error = [NSError errorWithDomain:AdblockPlusErrorDomain
+                                     code:0
+                                 userInfo:@{ NSLocalizedDescriptionKey : [exception reason] }];
         return NO;
-      }
+    }
+    @finally {
+        CFBridgingRelease(contentPointer);
+        [inputStream close];
+        yajl_free(hand);
     }
 
-    // Close parser
-    yajl_status status = yajl_complete_parse(hand);
-    if (status != yajl_status_ok) {
-      *error = [[self class] createParserError:hand];
-      return NO;
+    if (context.filterListType == AdblockPlusFilterListTypeVersion1) {
+        // Use default values for filter list of version 1
+        self.version = nil;
+        self.expires = DefaultFilterListsUpdateInterval;
+        return YES;
     }
-  }
-  @catch (NSException *exception) {
-    *error = [NSError errorWithDomain:AdblockPlusErrorDomain
-                                 code:0
-                             userInfo:@{NSLocalizedDescriptionKey: [exception reason]}];
-    return NO;
-  }
-  @finally {
-    CFBridgingRelease(contentPointer);
-    [inputStream close];
-    yajl_free(hand);
-  }
 
-  if (context.filterListType == AdblockPlusFilterListTypeVersion1) {
-    // Use default values for filter list of version 1
-    self.version = nil;
-    self.expires = DefaultFilterListsUpdateInterval;
+    // Check if filter list of version 2 contains mandatory rules key
+    if (!context.rulesKeyFound) {
+        return NO;
+    }
+
+    NSTimeInterval expires;
+    if (!context.expiresKeyFound || ![[self class] parseExpiresString:context.expires to:&expires]) {
+        expires = DefaultFilterListsUpdateInterval;
+    }
+
+    self.version = context.version;
+    self.expires = expires;
     return YES;
-  }
-
-  // Check if filter list of version 2 contains mandatory rules key
-  if (!context.rulesKeyFound) {
-    return NO;
-  }
-
-  NSTimeInterval expires;
-  if (!context.expiresKeyFound || ![[self class] parseExpiresString:context.expires to:&expires]) {
-    expires = DefaultFilterListsUpdateInterval;
-  }
-
-  self.version = context.version;
-  self.expires = expires;
-  return YES;
 }
 
 @end

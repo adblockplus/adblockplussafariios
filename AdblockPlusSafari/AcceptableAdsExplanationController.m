@@ -15,7 +15,6 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #import "AcceptableAdsExplanationController.h"
 
 #import "DialogPresenterController.h"
@@ -28,9 +27,9 @@
 
 - (IBAction)onGotItTouched:(UIButton *)sender
 {
-  if ([self.parentViewController respondsToSelector:@selector(firstDialogControllerDidFinish:)]) {
-    [((id)self.parentViewController) firstDialogControllerDidFinish:self];
-  }
+    if ([self.parentViewController respondsToSelector:@selector(firstDialogControllerDidFinish:)]) {
+        [((id)self.parentViewController) firstDialogControllerDidFinish:self];
+    }
 }
 
 @end

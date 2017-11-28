@@ -21,22 +21,22 @@
 
 - (NSDate *)lastUpdate
 {
-  return self[@"lastUpdate"];
+    return self[@"lastUpdate"];
 }
 
 - (NSString *)fileName
 {
-  return self[@"fileName"];
+    return self[@"fileName"];
 }
 
 - (BOOL)downloaded
 {
-  return [self[@"downloaded"] boolValue];
+    return [self[@"downloaded"] boolValue];
 }
 
 - (NSUInteger)taskIdentifier
 {
-  return [self[@"taskIdentifier"] unsignedIntegerValue];
+    return [self[@"taskIdentifier"] unsignedIntegerValue];
 }
 
 @end

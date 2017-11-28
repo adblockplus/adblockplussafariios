@@ -29,21 +29,21 @@ static const CGFloat ActivityIndicatorViewWidth = 44;
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  CGFloat width = self.activityIndicatorView.bounds.size.width;
-  self.activityIndicatorView.transform = CGAffineTransformMakeScale(ActivityIndicatorViewWidth / width, ActivityIndicatorViewWidth / width);
+    [super viewDidLoad];
+    CGFloat width = self.activityIndicatorView.bounds.size.width;
+    self.activityIndicatorView.transform = CGAffineTransformMakeScale(ActivityIndicatorViewWidth / width, ActivityIndicatorViewWidth / width);
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-  [super viewWillAppear:animated];
-  [self.activityIndicatorView startAnimating];
+    [super viewWillAppear:animated];
+    [self.activityIndicatorView startAnimating];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-  [super viewDidDisappear:animated];
-  [self.activityIndicatorView stopAnimating];
+    [super viewDidDisappear:animated];
+    [self.activityIndicatorView stopAnimating];
 }
 
 @end

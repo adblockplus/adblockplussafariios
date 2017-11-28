@@ -23,96 +23,96 @@
 
 + (NSArray *)allProperties
 {
-  static NSMutableArray *properties;
-  static dispatch_once_t onceToken;
+    static NSMutableArray *properties;
+    static dispatch_once_t onceToken;
 
-  dispatch_once(&onceToken, ^{
-    unsigned int count = 0;
-    objc_property_t *list = class_copyPropertyList([self class], &count);
-    properties = [NSMutableArray array];
-    for (unsigned int i = 0; i < count; i++) {
-      [properties addObject:[NSString stringWithFormat:@"%s", property_getName(list[i])]];
-    }
-  });
+    dispatch_once(&onceToken, ^{
+        unsigned int count = 0;
+        objc_property_t *list = class_copyPropertyList([self class], &count);
+        properties = [NSMutableArray array];
+        for (unsigned int i = 0; i < count; i++) {
+            [properties addObject:[NSString stringWithFormat:@"%s", property_getName(list[i])]];
+        }
+    });
 
-  return properties;
+    return properties;
 }
 
 + (NSArray *)boolProperties
 {
-  static NSMutableArray *properties;
-  static dispatch_once_t onceToken;
+    static NSMutableArray *properties;
+    static dispatch_once_t onceToken;
 
-  dispatch_once(&onceToken, ^{
-    unsigned int count = 0;
-    objc_property_t *list = class_copyPropertyList([self class], &count);
-    properties = [NSMutableArray array];
-    for (unsigned int i = 0; i < count; i++) {
-      const char *pattern = "TB,";
-      const char *attributes = property_getAttributes(list[i]);
-      if (strncmp(pattern, attributes, strlen(pattern)) == 0) {
-        [properties addObject:[NSString stringWithFormat:@"%s", property_getName(list[i])]];
-      }
-    }
-  });
+    dispatch_once(&onceToken, ^{
+        unsigned int count = 0;
+        objc_property_t *list = class_copyPropertyList([self class], &count);
+        properties = [NSMutableArray array];
+        for (unsigned int i = 0; i < count; i++) {
+            const char *pattern = "TB,";
+            const char *attributes = property_getAttributes(list[i]);
+            if (strncmp(pattern, attributes, strlen(pattern)) == 0) {
+                [properties addObject:[NSString stringWithFormat:@"%s", property_getName(list[i])]];
+            }
+        }
+    });
 
-  return properties;
+    return properties;
 }
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 {
-  if (!dictionary) {
-    return nil;
-  }
-
-  if (self = [super init]) {
-    for (NSString *key in [FilterList allProperties]) {
-      [self setValue:[dictionary valueForKey:key] forKey:key];
+    if (!dictionary) {
+        return nil;
     }
-  }
 
-  return self;
+    if (self = [super init]) {
+        for (NSString *key in [FilterList allProperties]) {
+            [self setValue:[dictionary valueForKey:key] forKey:key];
+        }
+    }
+
+    return self;
 }
 
 - (NSDictionary *)dictionary
 {
-  NSAssert(self.fileName, @"Filename must be set!");
-  NSAssert(self.url, @"Url must be set!");
+    NSAssert(self.fileName, @"Filename must be set!");
+    NSAssert(self.url, @"Url must be set!");
 
-  NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
 
-  for (NSString *key in [FilterList allProperties]) {
-    id value = [self valueForKey:key];
-    [dictionary setValue:value forKey:key];
-  }
+    for (NSString *key in [FilterList allProperties]) {
+        id value = [self valueForKey:key];
+        [dictionary setValue:value forKey:key];
+    }
 
-  return dictionary;
+    return dictionary;
 }
 
 - (id)valueForKey:(NSString *)key
 {
-  id value = [super valueForKey:key];
+    id value = [super valueForKey:key];
 
-  if ([[[self class] boolProperties] containsObject:key]) {
-    return [value boolValue] ? value : nil;
-  }
+    if ([[[self class] boolProperties] containsObject:key]) {
+        return [value boolValue] ? value : nil;
+    }
 
-  return value;
+    return value;
 }
 
 - (void)setNilValueForKey:(NSString *)key
 {
-  if ([[[self class] boolProperties] containsObject:key]) {
-    [self setValue:@NO forKey:key];
-    return;
-  }
+    if ([[[self class] boolProperties] containsObject:key]) {
+        [self setValue:@NO forKey:key];
+        return;
+    }
 
-  if ([@[@"taskIdentifier", @"expires", @"updatingGroupIdentifier"] containsObject:key]) {
-    [self setValue:@0 forKey:key];
-    return;
-  }
+    if ([@[ @"taskIdentifier", @"expires", @"updatingGroupIdentifier" ] containsObject:key]) {
+        [self setValue:@0 forKey:key];
+        return;
+    }
 
-  [super setNilValueForKey:key];
+    [super setNilValueForKey:key];
 }
 
 @end

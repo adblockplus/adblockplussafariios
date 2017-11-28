@@ -26,7 +26,7 @@
  @param font the font to substitute in the span
  @return self as attributed string with font changes applied to the found spans
  */
-- (NSAttributedString*)renderSpanMarkedByChar:(NSString *)markerChar
-                                       asFont:(UIFont *)font;
+- (NSAttributedString *)renderSpanMarkedByChar:(NSString *)markerChar
+                                        asFont:(UIFont *)font;
 
 @end

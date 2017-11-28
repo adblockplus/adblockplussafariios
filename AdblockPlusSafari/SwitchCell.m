@@ -27,40 +27,40 @@
 
 - (void)awakeFromNib
 {
-  [super awakeFromNib];
-  self.selectionStyle = UITableViewCellSelectionStyleNone;
-  self.cellSwitch = [[UISwitch alloc] init];
-  [self.cellSwitch addTarget:self action:@selector(onSwitchDidChanged:) forControlEvents:UIControlEventValueChanged];
-  [self.cellSwitch sizeToFit];
-  self.accessoryView = self.cellSwitch;
+    [super awakeFromNib];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.cellSwitch = [[UISwitch alloc] init];
+    [self.cellSwitch addTarget:self action:@selector(onSwitchDidChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.cellSwitch sizeToFit];
+    self.accessoryView = self.cellSwitch;
 }
 
 - (void)onSwitchDidChanged:(UISwitch *)sender
 {
-  UIView *view = self.superview;
-  while (view != nil) {
-    if ([view isKindOfClass:[UITableView class]]) {
-      UITableView *tableView = (UITableView *)view;
-      if ([tableView.delegate conformsToProtocol:@protocol(SwitchCellTableViewDelegate)]) {
-        NSIndexPath *indexPath = [tableView indexPathForCell:self];
-        if (indexPath) {
-          [(id<SwitchCellTableViewDelegate>)tableView.delegate tableView:tableView didChangedSwitchAtIndexPath:indexPath];
+    UIView *view = self.superview;
+    while (view != nil) {
+        if ([view isKindOfClass:[UITableView class]]) {
+            UITableView *tableView = (UITableView *)view;
+            if ([tableView.delegate conformsToProtocol:@protocol(SwitchCellTableViewDelegate)]) {
+                NSIndexPath *indexPath = [tableView indexPathForCell:self];
+                if (indexPath) {
+                    [(id<SwitchCellTableViewDelegate>)tableView.delegate tableView:tableView didChangedSwitchAtIndexPath:indexPath];
+                }
+            }
+            return;
         }
-      }
-      return;
+        view = view.superview;
     }
-    view = view.superview;
-  }
 }
 
 - (BOOL)isOn
 {
-  return self.cellSwitch.isOn;
+    return self.cellSwitch.isOn;
 }
 
 - (void)setOn:(BOOL)on
 {
-  self.cellSwitch.on = on;
+    self.cellSwitch.on = on;
 }
 
 @end

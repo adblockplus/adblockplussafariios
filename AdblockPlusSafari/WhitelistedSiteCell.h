@@ -17,7 +17,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol WhitelistingDelegate<UITableViewDelegate>
+@protocol WhitelistingDelegate <UITableViewDelegate>
 
 @optional
 
@@ -25,9 +25,8 @@
 
 @end
 
-
 @interface WhitelistedSiteCell : UITableViewCell
 
-@property(nonatomic, strong) UIButton *deleteButton;
+@property (nonatomic, strong) UIButton *deleteButton;
 
 @end

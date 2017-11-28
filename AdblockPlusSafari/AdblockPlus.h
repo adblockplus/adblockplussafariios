@@ -25,12 +25,12 @@ extern NSString *_Nonnull AdblockPlusErrorDomain;
 extern NSString *_Nonnull AdblockPlusActivated;
 
 typedef NS_ENUM(NSUInteger, AdblockPlusFilterListType) {
-  AdblockPlusFilterListTypeVersion1,
-  AdblockPlusFilterListTypeVersion2
+    AdblockPlusFilterListTypeVersion1,
+    AdblockPlusFilterListTypeVersion2
 };
 
 typedef NS_ENUM(NSUInteger, AdblockPlusErrorCode) {
-  AdblockPlusErrorCodeActivityTest = 10
+    AdblockPlusErrorCodeActivityTest = 10
 };
 
 @interface AdblockPlus : NSObject

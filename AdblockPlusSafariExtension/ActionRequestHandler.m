@@ -28,33 +28,33 @@
 
 - (void)beginRequestWithExtensionContext:(NSExtensionContext *)context
 {
-  AdblockPlus *adblockPlus = [[AdblockPlus alloc] init];
+    AdblockPlus *adblockPlus = [[AdblockPlus alloc] init];
 
-  NSError *error;
-  if ([adblockPlus shouldRespondToActivityTest:&error]) {
-    [context cancelRequestWithError:error];
-    return;
-  }
-
-
-  // completeRequestReturningItems might need lot of time to update rules.
-  // (iOS process can be suspended during reloading, which expand time of reloading.)
-  // During this period filter lists might be updated (either by hand or by background refresh).
-  NSInteger downloadedVersion = adblockPlus.downloadedVersion;
-  NSURL *url = [adblockPlus activeFilterListURLWithWhitelistedWebsites];
-
-  NSItemProvider *attachment = [[NSItemProvider alloc] initWithContentsOfURL:url];
-  NSExtensionItem *item = [[NSExtensionItem alloc] init];
-  item.attachments = @[attachment];
-
-  [context completeRequestReturningItems:@[item] completionHandler:^(BOOL expired) {
-    if (!expired) {
-      // If the new filter list was updated during reloading
-      // then downloadedVersion would be less then self.downloadedVersion.
-      adblockPlus.installedVersion = MAX(adblockPlus.installedVersion, downloadedVersion);
-      adblockPlus.lastActivity = [[NSDate alloc] init];
+    NSError *error;
+    if ([adblockPlus shouldRespondToActivityTest:&error]) {
+        [context cancelRequestWithError:error];
+        return;
     }
-  }];
+
+    // completeRequestReturningItems might need lot of time to update rules.
+    // (iOS process can be suspended during reloading, which expand time of reloading.)
+    // During this period filter lists might be updated (either by hand or by background refresh).
+    NSInteger downloadedVersion = adblockPlus.downloadedVersion;
+    NSURL *url = [adblockPlus activeFilterListURLWithWhitelistedWebsites];
+
+    NSItemProvider *attachment = [[NSItemProvider alloc] initWithContentsOfURL:url];
+    NSExtensionItem *item = [[NSExtensionItem alloc] init];
+    item.attachments = @[ attachment ];
+
+    [context completeRequestReturningItems:@[ item ]
+                         completionHandler:^(BOOL expired) {
+                             if (!expired) {
+                                 // If the new filter list was updated during reloading
+                                 // then downloadedVersion would be less then self.downloadedVersion.
+                                 adblockPlus.installedVersion = MAX(adblockPlus.installedVersion, downloadedVersion);
+                                 adblockPlus.lastActivity = [[NSDate alloc] init];
+                             }
+                         }];
 }
 
 @end

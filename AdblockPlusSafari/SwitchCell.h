@@ -21,13 +21,12 @@
 
 @optional
 
--(void)tableView:(UITableView *)tableView didChangedSwitchAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tableView:(UITableView *)tableView didChangedSwitchAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
-
 @interface SwitchCell : UITableViewCell
 
-@property(nonatomic, getter=isOn) BOOL on;
+@property (nonatomic, getter=isOn) BOOL on;
 
 @end

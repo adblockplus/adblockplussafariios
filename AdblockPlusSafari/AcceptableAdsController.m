@@ -17,9 +17,9 @@
 
 #import "AcceptableAdsController.h"
 
-@interface AcceptableAdsController ()<UITableViewDataSource>
+@interface AcceptableAdsController () <UITableViewDataSource>
 
-@property(nonatomic, nullable, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, nullable, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UISwitch *acceptableAdsEnablingSwitch;
 
 @end
@@ -28,92 +28,92 @@
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
-  if (self = [super initWithCoder:coder]) {
-    _acceptableAdsEnablingSwitch = [[UISwitch alloc] init];
-    [_acceptableAdsEnablingSwitch sizeToFit];
-    [_acceptableAdsEnablingSwitch addTarget:self action:@selector(onSwitchHasChanged:) forControlEvents:UIControlEventValueChanged];
-  }
-  return self;
+    if (self = [super initWithCoder:coder]) {
+        _acceptableAdsEnablingSwitch = [[UISwitch alloc] init];
+        [_acceptableAdsEnablingSwitch sizeToFit];
+        [_acceptableAdsEnablingSwitch addTarget:self action:@selector(onSwitchHasChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    return self;
 }
 
 - (void)dealloc
 {
-  self.adblockPlus = nil;
+    self.adblockPlus = nil;
 }
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
+    [super viewDidLoad];
 
-  self.tableView.tableHeaderView = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.tableView.bounds.size.width, 1)];
-  self.tableView.contentInset = UIEdgeInsetsMake(-1, 0, 0, 0);
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.tableView.bounds.size.width, 1)];
+    self.tableView.contentInset = UIEdgeInsetsMake(-1, 0, 0, 0);
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *, id> *)change context:(void *)context
 {
-  if ([keyPath isEqualToString:NSStringFromSelector(@selector(acceptableAdsEnabled))]) {
-    self.acceptableAdsEnablingSwitch.on = self.adblockPlus.acceptableAdsEnabled;
-  } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(reloading))]) {
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    [self updateAccessoryViewOfCell: cell];
-  } else {
-    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-  }
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(acceptableAdsEnabled))]) {
+        self.acceptableAdsEnablingSwitch.on = self.adblockPlus.acceptableAdsEnabled;
+    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(reloading))]) {
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        [self updateAccessoryViewOfCell:cell];
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 - (void)setAdblockPlus:(AdblockPlusExtras *)adblockPlus
 {
-  NSArray<NSString *> *keyPaths = @[NSStringFromSelector(@selector(acceptableAdsEnabled)),
-                                   NSStringFromSelector(@selector(reloading))];
+    NSArray<NSString *> *keyPaths = @[ NSStringFromSelector(@selector(acceptableAdsEnabled)),
+        NSStringFromSelector(@selector(reloading)) ];
 
-  for (NSString *keyPath in keyPaths) {
-    [_adblockPlus removeObserver:self
-                      forKeyPath:keyPath];
-  }
-  _adblockPlus = adblockPlus;
-  for (NSString *keyPath in keyPaths) {
-    [_adblockPlus addObserver:self
-                   forKeyPath:keyPath
-                      options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew
-                      context:nil];
-  }
+    for (NSString *keyPath in keyPaths) {
+        [_adblockPlus removeObserver:self
+                          forKeyPath:keyPath];
+    }
+    _adblockPlus = adblockPlus;
+    for (NSString *keyPath in keyPaths) {
+        [_adblockPlus addObserver:self
+                       forKeyPath:keyPath
+                          options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
+                          context:nil];
+    }
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return 1;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AcceptableAds" forIndexPath: indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AcceptableAds" forIndexPath:indexPath];
 
-  cell.selectionStyle = UITableViewCellSelectionStyleNone;
-  cell.accessoryView = self.acceptableAdsEnablingSwitch;
-  [self updateAccessoryViewOfCell: cell];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.accessoryView = self.acceptableAdsEnablingSwitch;
+    [self updateAccessoryViewOfCell:cell];
 
-  return cell;
+    return cell;
 }
 
 #pragma mark - Private
 
 - (void)onSwitchHasChanged:(UISwitch *)s
 {
-  self.adblockPlus.acceptableAdsEnabled = s.on;
+    self.adblockPlus.acceptableAdsEnabled = s.on;
 }
 
 - (void)updateAccessoryViewOfCell:(UITableViewCell *)cell
 {
-  if (!self.adblockPlus.reloading) {
-    cell.accessoryView = self.acceptableAdsEnablingSwitch;
-  } else {
-    UIActivityIndicatorView *view =
-    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [view startAnimating];
-    cell.accessoryView = view;
-  }
+    if (!self.adblockPlus.reloading) {
+        cell.accessoryView = self.acceptableAdsEnablingSwitch;
+    } else {
+        UIActivityIndicatorView *view =
+            [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [view startAnimating];
+        cell.accessoryView = view;
+    }
 }
 
 @end

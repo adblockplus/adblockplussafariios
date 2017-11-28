@@ -23,33 +23,33 @@
 
 - (NSString *)backgroundNotificationSessionConfigurationPrefix
 {
-  return [NSString stringWithFormat:@"%@.AdblockPlusSafari.NotificationSession.", self.bundleName];
+    return [NSString stringWithFormat:@"%@.AdblockPlusSafari.NotificationSession.", self.bundleName];
 }
 
 - (NSString *)generateBackgroundNotificationSessionConfigurationIdentifier
 {
-  NSString *UUID = [[NSUUID UUID] UUIDString];
-  return [self.backgroundNotificationSessionConfigurationPrefix stringByAppendingString:UUID];
+    NSString *UUID = [[NSUUID UUID] UUIDString];
+    return [self.backgroundNotificationSessionConfigurationPrefix stringByAppendingString:UUID];
 }
 
 - (BOOL)isBackgroundNotificationSessionConfigurationIdentifier:(NSString *__nonnull)identifier
 {
-  return [identifier hasPrefix:self.backgroundNotificationSessionConfigurationPrefix];
+    return [identifier hasPrefix:self.backgroundNotificationSessionConfigurationPrefix];
 }
 
 - (NSURLSession *)backgroundNotificationSessionWithIdentifier:(NSString *)identifier
                                                      delegate:(id<NSURLSessionDelegate>)delegate
 {
-  NSURLSessionConfiguration *configuration =
-  [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:identifier];
-  configuration.timeoutIntervalForRequest = 2;
-  configuration.timeoutIntervalForResource = 2;
-  configuration.sharedContainerIdentifier = self.group;
-  if (delegate) {
-    return [NSURLSession sessionWithConfiguration:configuration delegate:delegate delegateQueue:nil];
-  } else {
-    return [NSURLSession sessionWithConfiguration:configuration];
-  }
+    NSURLSessionConfiguration *configuration =
+        [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:identifier];
+    configuration.timeoutIntervalForRequest = 2;
+    configuration.timeoutIntervalForResource = 2;
+    configuration.sharedContainerIdentifier = self.group;
+    if (delegate) {
+        return [NSURLSession sessionWithConfiguration:configuration delegate:delegate delegateQueue:nil];
+    } else {
+        return [NSURLSession sessionWithConfiguration:configuration];
+    }
 }
 
 @end
