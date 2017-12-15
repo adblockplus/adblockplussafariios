@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="f6J-Ft-1mH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="f6J-Ft-1mH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,13 +14,13 @@
         <!--Adblock Plus-->
         <scene sceneID="viM-nu-gOf">
             <objects>
-                <viewController id="LgF-W7-d9z" customClass="ActionViewController" sceneMemberID="viewController">
+                <viewController id="LgF-W7-d9z" customClass="ActionViewController" customModule="AdblockPlusSafariActionExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EMw-hi-RG8"/>
                         <viewControllerLayoutGuide type="bottom" id="g1T-9b-5c8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZGK-FV-AgH">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRm-aJ-jae">
@@ -117,18 +117,18 @@
                     <navigationItem key="navigationItem" title="Adblock Plus" id="uee-5l-Ypp">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="0dG-kU-Xvn">
                             <connections>
-                                <action selector="onCancelButtonTouched:" destination="LgF-W7-d9z" id="dMO-c4-sFf"/>
+                                <action selector="onCancelButtonTouched:" destination="LgF-W7-d9z" id="o3r-xZ-E9G"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="vQI-dp-zYG">
                             <connections>
-                                <action selector="onDoneButtonTouched:" destination="LgF-W7-d9z" id="1yE-go-cR4"/>
+                                <action selector="onDoneButtonTouched:" destination="LgF-W7-d9z" id="2oz-ii-Q7J"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addressField" destination="zAT-WW-wUf" id="vmL-kw-SyJ"/>
-                        <outlet property="descriptionField" destination="JrW-s8-bWY" id="7jn-th-7Yv"/>
+                        <outlet property="addressField" destination="zAT-WW-wUf" id="9i8-Zn-dR7"/>
+                        <outlet property="descriptionField" destination="JrW-s8-bWY" id="FGe-p2-c7e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWz-m8-wRB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -141,7 +141,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="overFullScreen" id="f6J-Ft-1mH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="VQs-cg-zEM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -156,9 +156,4 @@
             <point key="canvasLocation" x="507" y="-128"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
-    </simulatedMetricsContainer>
 </document>

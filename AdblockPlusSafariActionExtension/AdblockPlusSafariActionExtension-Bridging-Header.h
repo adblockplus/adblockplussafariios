@@ -15,10 +15,6 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import <UIKit/UIKit.h>
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
-@end
+#import "AdblockPlusShared.h"
+#import "NSAttributedString+TextRenderer.h"
+#import "NSString+AdblockPlus.h"

@@ -15,12 +15,8 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import <UIKit/UIKit.h>
-#import "AppDelegate.h"
-
-int main(int argc, char *argv[])
-{
-    @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
-    }
+/// Globally available constants used for configuration.
+struct GlobalConstants {
+    /// Wake up application every hour (just hint for iOS)
+    static let backgroundFetchInterval: TimeInterval = 3600
 }

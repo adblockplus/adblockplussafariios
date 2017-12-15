@@ -15,8 +15,4 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import <UIKit/UIKit.h>
-
-@interface ActionViewController : UIViewController
-
-@end
+#import "AdblockPlusSafari-Bridging-Header.h"
