@@ -15,5 +15,6 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
- /// Global collection of type aliases for Adblock Plus for Safari iOS.
- typealias WhiteListedWebsite = String
+/// Global collection of type aliases for Adblock Plus for Safari iOS.
+typealias WhiteListedWebsite = String
+typealias FilterListName = String
