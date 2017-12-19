@@ -28,6 +28,8 @@ class AppDelegate: UIResponder,
             uwController.adblockPlus = ABPManager.sharedInstance().adblockPlus
         }
         application.setMinimumBackgroundFetchInterval(GlobalConstants.backgroundFetchInterval)
+        ikiLoggerEnabled = true
+        ikiLoggerUseColor = true
         return true
     }
 
