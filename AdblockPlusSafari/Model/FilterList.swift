@@ -35,3 +35,18 @@ struct FilterList {
     var userTriggered: Bool?
     var version: String?
 }
+
+extension FilterList
+{
+    /// Return true if filter list has expired based on last update + expires interval.
+    func expired() -> Bool
+    {
+        guard let uwLastUpdate = lastUpdate,
+            let uwExpires = expires else
+        {
+            return false
+        }
+        let lastUpdateInterval = uwLastUpdate.timeIntervalSinceReferenceDate
+        return lastUpdateInterval + uwExpires < Date.timeIntervalSinceReferenceDate
+    }
+}
