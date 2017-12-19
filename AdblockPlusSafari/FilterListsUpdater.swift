@@ -2,8 +2,10 @@ import RxCocoa
 import RxSwift
 
 /// This replaces the former Objective-C implementation of AdblockPlusExtras.
-/// It makes use of struct FilterList to represent a filter list. The Swift model struct should
-/// always be used when interacting with this class.
+///
+/// It makes use of struct FilterList to represent a filter list.
+///
+/// Therefore, the **Swift model struct should always be used when interacting with this class.**
 ///
 /// self.filterLists is what type?
 /// Filter lists are [String :[String: Any]] - Dictionary of dictionaries
@@ -15,7 +17,7 @@ class FilterListsUpdater: AdblockPlusShared,
     let bag = DisposeBag()
     weak var backgroundSession: URLSession?
     var downloadTasks: [String: URLSessionTask]?
-    var updatingGroupIdentifier: UInt16?
+    var updatingGroupIdentifier = 0
     var disableReloading: Bool?
 
     /// Max date for lastUpdated
@@ -79,9 +81,45 @@ class FilterListsUpdater: AdblockPlusShared,
             }.disposed(by: bag)
     }
 
+    struct ScheduledTasks
+    {
+
+    }
+
     func updateFilterLists(withNames names: [FilterListName],
                            userTriggered: Bool)
     {
+        if names.count == 0 { return }
+
+        self.updatingGroupIdentifier += 1
+
+        var modifiedFilterLists = [String: FilterList]()
+        var scheduledTasks = [String: URLSessionTask]()
+
+        for name in names {
+            if var filterList = FilterList(fromDictionary: self.filterLists[name]) {
+
+                if let urlString = filterList.url,
+                   let url = URL(string: urlString) {
+                    let task = self.backgroundSession?.downloadTask(with: url)
+                    scheduledTasks[name] = task
+                    filterList.taskIdentifier = task?.taskIdentifier
+                }
+                
+                filterList.updating = true
+                filterList.updatingGroupIdentifier = self.updatingGroupIdentifier
+                filterList.userTriggered = userTriggered
+                filterList.lastUpdateFailed = false
+                modifiedFilterLists[name] = filterList
+            }
+        }
+
+        // Write the filterlists back to the Objective-C side.
+    }
+
+    func convertFilterListsToObjC()
+    {
+
     }
 
     /// Return an array of filter list names that are outdated.
