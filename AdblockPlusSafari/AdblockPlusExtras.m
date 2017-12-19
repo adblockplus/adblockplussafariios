@@ -27,6 +27,7 @@
 
 static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayErrorDialog";
 
+__deprecated
 @interface ContentBlockerManager : NSObject <ContentBlockerManagerProtocol>
 
 @end
