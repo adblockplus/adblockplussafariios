@@ -20,8 +20,8 @@ extension FilterList {
     /// Failable initializer that converts a filter list object from the Objective-C implementation.
     init?(fromDictionary dictionary: [String: Any]?) {
         guard let uwDict = dictionary else { return nil }
-        taskIdentifier = uwDict["taskIdentifier"] as? UInt16
-        updatingGroupIdentifier = uwDict["updatingGroupIdentifier"] as? UInt16
+        taskIdentifier = uwDict["taskIdentifier"] as? Int
+        updatingGroupIdentifier = uwDict["updatingGroupIdentifier"] as? Int
         downloaded = uwDict["downloaded"] as? Bool
         expires = uwDict["expires"] as? TimeInterval
         fileName = uwDict["fileName"] as? String

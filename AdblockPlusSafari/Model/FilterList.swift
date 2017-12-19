@@ -18,12 +18,12 @@
 /// Swift-based FilterList model struct to replace the Objective-C FilterList model object.
 struct FilterList {
     /// Task identifier of associated download task
-    var taskIdentifier: UInt16?
+    var taskIdentifier: Int?
 
     /// Group identifier refer to an associated download group.
     /// Only download tasks triggered by a user are allowed to display download failure dialogs.
     /// updatingGroupIdentifier represents the most recent download tasks.
-    var updatingGroupIdentifier: UInt16?
+    var updatingGroupIdentifier: Int?
 
     var downloaded: Bool?
     var expires: TimeInterval?
