@@ -24,23 +24,24 @@
 #import "NSDictionary+FilterList.h"
 #import "AdblockPlus+ActivityChecking.h"
 #import "NSString+AdblockPlus.h"
+#import "AdblockPlusSafari-Swift.h"
 
 static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayErrorDialog";
 
-__deprecated
-@interface ContentBlockerManager : NSObject <ContentBlockerManagerProtocol>
-
-@end
-
-@implementation ContentBlockerManager
-
-- (void)reloadWithIdentifier:(NSString *)identifier
-           completionHandler:(void (^)(NSError *error))completionHandler;
-{
-    [SFContentBlockerManager reloadContentBlockerWithIdentifier:identifier completionHandler:completionHandler];
-}
-
-@end
+//__deprecated
+//@interface ContentBlockerManager : NSObject <ContentBlockerManagerProtocol>
+//
+//@end
+//
+//@implementation ContentBlockerManager
+//
+//- (void)reloadWithIdentifier:(NSString *)identifier
+//           completionHandler:(void (^)(NSError *error))completionHandler;
+//{
+//    [SFContentBlockerManager reloadContentBlockerWithIdentifier:identifier completionHandler:completionHandler];
+//}
+//
+//@end
 
 @interface AdblockPlusExtras () <NSURLSessionDownloadDelegate, NSFileManagerDelegate>
 
@@ -232,59 +233,59 @@ __deprecated
 
 #pragma mark - reloading
 
-- (void)reloadAfterCompletion:(void (^)(AdblockPlusExtras *))completion
-{
-    self.disableReloading = YES;
-    completion(self);
-    self.disableReloading = NO;
-    [self reloadWithCompletion:nil];
-}
-
-- (void)reloadWithCompletion:(void (^)(NSError *error))completion
-{
-    if (self.disableReloading) {
-        return;
-    }
-    __weak __typeof(self) wSelf = self;
-    NSDate *lastActivity = wSelf.lastActivity;
-    wSelf.reloading = YES;
-    wSelf.performingActivityTest = NO;
-    [SFContentBlockerManager reloadContentBlockerWithIdentifier:self.contentBlockerIdentifier
-                                              completionHandler:^(NSError *error) {
-                                                  dispatch_async(dispatch_get_main_queue(), ^{
-                                                      if (error) {
-                                                          NSLog(@"%@", error);
-                                                      }
-                                                      wSelf.reloading = NO;
-                                                      [wSelf checkActivatedFlag:lastActivity];
-                                                      if (completion) {
-                                                          completion(error);
-                                                      }
-                                                  });
-                                              }];
-}
+//- (void)reloadAfterCompletion:(void (^)(AdblockPlusExtras *))completion
+//{
+//    self.disableReloading = YES;
+//    completion(self);
+//    self.disableReloading = NO;
+//    [self reloadWithCompletion:nil];
+//}
+//
+//- (void)reloadWithCompletion:(void (^)(NSError *error))completion
+//{
+//    if (self.disableReloading) {
+//        return;
+//    }
+//    __weak __typeof(self) wSelf = self;
+//    NSDate *lastActivity = wSelf.lastActivity;
+//    wSelf.reloading = YES;
+//    wSelf.performingActivityTest = NO;
+//    [SFContentBlockerManager reloadContentBlockerWithIdentifier:self.contentBlockerIdentifier
+//                                              completionHandler:^(NSError *error) {
+//                                                  dispatch_async(dispatch_get_main_queue(), ^{
+//                                                      if (error) {
+//                                                          NSLog(@"%@", error);
+//                                                      }
+//                                                      wSelf.reloading = NO;
+//                                                      [wSelf checkActivatedFlag:lastActivity];
+//                                                      if (completion) {
+//                                                          completion(error);
+//                                                      }
+//                                                  });
+//                                              }];
+//}
 
 #pragma mark - whitelisting
 
-- (BOOL)whitelistWebsite:(NSString *)website
-{
-    website = website.whitelistedHostname;
-
-    if (website.length == 0) {
-        return NO;
-    }
-
-    NSArray<NSString *> *websites = self.whitelistedWebsites;
-
-    if ([websites containsObject:website]) {
-        return NO;
-    }
-
-    websites = [@[ website ] arrayByAddingObjectsFromArray:websites];
-    self.whitelistedWebsites = websites;
-
-    return YES;
-}
+//- (BOOL)whitelistWebsite:(NSString *)website
+//{
+//    website = website.whitelistedHostname;
+//
+//    if (website.length == 0) {
+//        return NO;
+//    }
+//
+//    NSArray<NSString *> *websites = self.whitelistedWebsites;
+//
+//    if ([websites containsObject:website]) {
+//        return NO;
+//    }
+//
+//    websites = [@[ website ] arrayByAddingObjectsFromArray:websites];
+//    self.whitelistedWebsites = websites;
+//
+//    return YES;
+//}
 
 #pragma mark - updating
 
