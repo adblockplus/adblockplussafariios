@@ -12,8 +12,7 @@ import SafariServices
 /// Filter lists are [String :[String: Any]] - Dictionary of dictionaries
 class FilterListsUpdater: AdblockPlusShared,
                           URLSessionDownloadDelegate,
-                          FileManagerDelegate
-{
+                          FileManagerDelegate {
     let updatingKey = "updatingGroupIdentifier"
     let bag = DisposeBag()
     weak var backgroundSession: URLSession?
@@ -23,20 +22,14 @@ class FilterListsUpdater: AdblockPlusShared,
     var reloading: Bool?
 
     /// Max date for lastUpdated
-    var lastUpdate: Date
-    {
-        get
-        {
-            var lists = self.filterLists.keys.map
-                { key in
+    var lastUpdate: Date {
+            var lists = self.filterLists.keys.map { key in
                     return FilterList(fromDictionary: self.filterLists[key])
                 }
             return .distantPast
         }
-    }
 
-    override init()
-    {
+    override init() {
         dLog("", date: "2017-Oct-24")
         super.init()
         removeUpdatingGroupID()
@@ -45,21 +38,18 @@ class FilterListsUpdater: AdblockPlusShared,
     }
 
     /// Remove the updating state key from a filter list
-    func removeUpdatingGroupID()
-    {
+    func removeUpdatingGroupID() {
         dLog("", date: "2017-Oct-24")
-        for key in filterLists.keys
-        {
-            self.filterLists[key]?.removeValue(forKey: updatingKey)
+        for key in filterLists.keys {
+            filterLists[key]?.removeValue(forKey: updatingKey)
         }
     }
 
     /// Is there where background tasks are processed?
-    func processRunningTasks()
-    {
+    func processRunningTasks() {
         dLog("", date: "2017-Oct-24")
         let config = URLSessionConfiguration.background(withIdentifier: backgroundSessionConfigurationIdentifier())
-        self.backgroundSession = URLSession(configuration: config,
+        backgroundSession = URLSession(configuration: config,
                                             delegate: self,
                                             delegateQueue: OperationQueue.main)
         backgroundSession?.getAllTasks(completionHandler: { tasks in
@@ -68,14 +58,12 @@ class FilterListsUpdater: AdblockPlusShared,
     }
 
     /// Is the where the filter list reloads?
-    func addReloadingObserver()
-    {
+    func addReloadingObserver() {
         print("💯 reloading")
         let nc = NotificationCenter.default
         nc.rx.notification(NSNotification.Name.UIApplicationWillEnterForeground,
                            object: nil)
-            .subscribe
-            { event in
+            .subscribe { event in
                 self.synchronize()
                 let abp = ABPManager.sharedInstance().adblockPlus
                 if abp?.reloading == true { return }
@@ -83,63 +71,68 @@ class FilterListsUpdater: AdblockPlusShared,
             }.disposed(by: bag)
     }
 
-    struct ScheduledTasks
-    {
-
-    }
-
+    ///
     func updateFilterLists(withNames names: [FilterListName],
-                           userTriggered: Bool)
-    {
+                           userTriggered: Bool) {
         if names.count == 0 { return }
-
-        self.updatingGroupIdentifier += 1
-
+        updatingGroupIdentifier += 1
         var modifiedFilterLists = [String: FilterList]()
         var scheduledTasks = [String: URLSessionTask]()
-
         for name in names {
             if var filterList = FilterList(fromDictionary: self.filterLists[name]) {
-
                 if let urlString = filterList.url,
                    let url = URL(string: urlString) {
-                    let task = self.backgroundSession?.downloadTask(with: url)
+                    let task = backgroundSession?.downloadTask(with: url)
                     scheduledTasks[name] = task
                     filterList.taskIdentifier = task?.taskIdentifier
                 }
-
                 filterList.updating = true
-                filterList.updatingGroupIdentifier = self.updatingGroupIdentifier
+                filterList.updatingGroupIdentifier = updatingGroupIdentifier
                 filterList.userTriggered = userTriggered
                 filterList.lastUpdateFailed = false
                 modifiedFilterLists[name] = filterList
             }
         }
-
-        // Write the filterlists back to the Objective-C side.
+        // TODO: Write the filterlists back to the Objective-C side.
     }
 
-    func convertFilterListsToObjC()
-    {
-
+    func convertFilterListsToObjC() {
     }
 
-    func setAcceptableAdsEnabled(enabled: Bool)
-    {
+    /// Set whether acceptable ads will be enabled or not.
+    /// The content blocker filter lists are reloaded after the state change.
+    /// - parameter enabled: true if acceptable ads are enabled
+    func setAcceptableAdsEnabled(enabled: Bool) {
         super.enabled = enabled
-
+        reload(afterCompletion: { [weak self] in
+            if let names = self?.outdatedFilterListNames() {
+                self?.updateFilterLists(withNames: names,
+                                        userTriggered: false)
+            }
+        })
     }
 
-    func reload(afterCompletion completion: (FilterListsUpdater) -> Void)
-    {
+    /// Set whether the default filter list be used or not.
+    /// The content blocker filter lists are reloaded after the state change.
+    /// - parameter enabled: true if the default filter list is enabled
+    func setDefaultFilterListEnabled(enabled: Bool) {
+        super.defaultFilterListEnabled = enabled
+        reload(withCompletion: { error in
+            self.updateFilterLists(withNames: self.outdatedFilterListNames(),
+                                   userTriggered: false)
+        })
+    }
+
+    /// Start a completion closure, then reload the content blocker.
+    func reload(afterCompletion completion: () -> Void) {
         disableReloading = true
-        completion(self)
+        completion()
         disableReloading = false
         reload(withCompletion: nil)
     }
 
-    func reload(withCompletion completion: ((Error?) -> Void)?)
-    {
+    /// Reload the content blocker, then run a completion closure.
+    func reload(withCompletion completion: ((Error?) -> Void)?) {
         if disableReloading == true { return }
         let lastActivity = self.lastActivity
         reloading = true
@@ -157,14 +150,11 @@ class FilterListsUpdater: AdblockPlusShared,
     }
 
     /// Return an array of filter list names that are outdated.
-    func outdatedFilterListNames() -> [FilterListName]
-    {
+    func outdatedFilterListNames() -> [FilterListName] {
         var outdated = [FilterListName]()
         for key in filterLists.keys {
-            if let uwList = FilterList(fromDictionary: filterLists[key])
-            {
-                if uwList.expired()
-                {
+            if let uwList = FilterList(fromDictionary: filterLists[key]) {
+                if uwList.expired() {
                     outdated.append(key)
                 }
             }
@@ -178,7 +168,6 @@ class FilterListsUpdater: AdblockPlusShared,
 
     func urlSession(_ session: URLSession,
                     downloadTask: URLSessionDownloadTask,
-                    didFinishDownloadingTo location: URL)
-    {
+                    didFinishDownloadingTo location: URL) {
     }
 }
