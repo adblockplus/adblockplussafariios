@@ -29,6 +29,7 @@ class FilterListsUpdater: AdblockPlusShared,
             return .distantPast
         }
 
+    /// Process running tasks and add a reloading observer.
     override init() {
         dLog("", date: "2017-Oct-24")
         super.init()
@@ -37,7 +38,7 @@ class FilterListsUpdater: AdblockPlusShared,
         addReloadingObserver()
     }
 
-    /// Remove the updating state key from a filter list
+    /// Remove the updating state key from a filter list.
     func removeUpdatingGroupID() {
         dLog("", date: "2017-Oct-24")
         for key in filterLists.keys {
@@ -55,20 +56,6 @@ class FilterListsUpdater: AdblockPlusShared,
         backgroundSession?.getAllTasks(completionHandler: { tasks in
             // Remove filter lists whose tasks are still running
         })
-    }
-
-    /// Is the where the filter list reloads?
-    func addReloadingObserver() {
-        print("💯 reloading")
-        let nc = NotificationCenter.default
-        nc.rx.notification(NSNotification.Name.UIApplicationWillEnterForeground,
-                           object: nil)
-            .subscribe { event in
-                self.synchronize()
-                let abp = ABPManager.sharedInstance().adblockPlus
-                if abp?.reloading == true { return }
-                abp?.performActivityTest(with: ContentBlockerManager())
-            }.disposed(by: bag)
     }
 
     ///
@@ -97,6 +84,41 @@ class FilterListsUpdater: AdblockPlusShared,
     }
 
     func convertFilterListsToObjC() {
+    }
+
+    // ------------------------------------------------------------
+    // MARK: - Filter Lists -
+    // ------------------------------------------------------------
+
+    /// Return an array of filter list names that are outdated.
+    func outdatedFilterListNames() -> [FilterListName] {
+        var outdated = [FilterListName]()
+        for key in filterLists.keys {
+            if let uwList = FilterList(fromDictionary: filterLists[key]) {
+                if uwList.expired() {
+                    outdated.append(key)
+                }
+            }
+        }
+        return outdated
+    }
+
+    // ------------------------------------------------------------
+    // MARK: - Reloading -
+    // ------------------------------------------------------------
+
+    /// Is the where the filter list reloads?
+    func addReloadingObserver() {
+        print("💯 reloading")
+        let nc = NotificationCenter.default
+        nc.rx.notification(NSNotification.Name.UIApplicationWillEnterForeground,
+                           object: nil)
+            .subscribe { event in
+                self.synchronize()
+                let abp = ABPManager.sharedInstance().adblockPlus
+                if abp?.reloading == true { return }
+                abp?.performActivityTest(with: ContentBlockerManager())
+            }.disposed(by: bag)
     }
 
     /// Set whether acceptable ads will be enabled or not.
@@ -147,19 +169,6 @@ class FilterListsUpdater: AdblockPlusShared,
                 }
             }
         }
-    }
-
-    /// Return an array of filter list names that are outdated.
-    func outdatedFilterListNames() -> [FilterListName] {
-        var outdated = [FilterListName]()
-        for key in filterLists.keys {
-            if let uwList = FilterList(fromDictionary: filterLists[key]) {
-                if uwList.expired() {
-                    outdated.append(key)
-                }
-            }
-        }
-        return outdated
     }
 
     // ------------------------------------------------------------
