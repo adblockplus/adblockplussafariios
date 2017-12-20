@@ -117,7 +117,7 @@ class FilterListsUpdater: AdblockPlusShared,
 
     /// Is the where the filter list reloads?
     func addReloadingObserver() {
-        dLog("💯 reloading", date: "2017-Dec-20")
+        dLog("adding observer", date: "2017-Dec-20")
 
         let nc = NotificationCenter.default
         nc.rx.notification(NSNotification.Name.UIApplicationWillEnterForeground,
@@ -165,15 +165,20 @@ class FilterListsUpdater: AdblockPlusShared,
 
     /// Reload the content blocker, then run a completion closure.
     func reload(withCompletion completion: ((Error?) -> Void)?) {
-        if ABPManager.sharedInstance().disableReloading == true { return }
+        guard ABPManager.sharedInstance().disableReloading == false else {
+            dLog("reloading disabled", date: "2017-Dec-20")
+            return
+        }
         let lastActivity = self.lastActivity
         ABPManager.sharedInstance().adblockPlus.reloading = true
         performingActivityTest = false
+        dLog("reloading", date: "2017-Dec-20")
         SFContentBlockerManager.reloadContentBlocker(withIdentifier: contentBlockerIdentifier()) { error in
             DispatchQueue.main.async {
                 // Handle error
                 ABPManager.sharedInstance().adblockPlus.reloading = false
                 ABPManager.sharedInstance().adblockPlus.checkActivatedFlag(lastActivity!)
+                dLog("💯 fin reload", date: "2017-Dec-20")
                 if completion != nil {
                     completion!(error)
                 }
