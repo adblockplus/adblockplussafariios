@@ -21,7 +21,7 @@ class FilterListsUpdater: AdblockPlusShared,
     var disableReloading: Bool?
     var reloading: Bool?
 
-    /// Max date for lastUpdated
+    /// Maximum date for lastUpdated.
     var lastUpdate: Date {
             var lists = self.filterLists.keys.map { key in
                     return FilterList(fromDictionary: self.filterLists[key])
@@ -94,9 +94,6 @@ class FilterListsUpdater: AdblockPlusShared,
         tasks[name]?.cancel()
         tasks[name] = uwTask
         uwTask.resume()
-    }
-
-    func convertFilterListsToObjC() {
     }
 
     // ------------------------------------------------------------
@@ -182,14 +179,5 @@ class FilterListsUpdater: AdblockPlusShared,
                 }
             }
         }
-    }
-
-    // ------------------------------------------------------------
-    // MARK: - URLSessionDownloadDelegate -
-    // ------------------------------------------------------------
-
-    func urlSession(_ session: URLSession,
-                    downloadTask: URLSessionDownloadTask,
-                    didFinishDownloadingTo location: URL) {
     }
 }
