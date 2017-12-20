@@ -38,7 +38,7 @@
 
 - (void)updateFilterListsWithNames:(NSArray<NSString *> *__nonnull)filterListNames userTriggered:(BOOL)userTriggered;
 
-- (NSArray<NSString *> *__nonnull)outdatedFilterListNames;
+//- (NSArray<NSString *> *__nonnull)outdatedFilterListNames;
 
 @property (nonatomic) BOOL needsDisplayErrorDialog;
 
