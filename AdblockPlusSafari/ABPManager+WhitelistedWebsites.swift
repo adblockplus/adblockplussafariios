@@ -51,9 +51,10 @@ extension ABPManager {
 
     /// Add a website to the whitelist and reload the content blocker.
     private func whitelist(forWebsite website: String) {
-        let updater = FilterListsUpdater()
-        updater.reload(afterCompletion: {
-            ABPManager.sharedInstance().whitelist(forWebsite: website)
+        dLog("website \(website)", date: "2017-Dec-20")
+        ABPManager.sharedInstance().updater?.reload(afterCompletion: {
+//            ABPManager.sharedInstance().whitelist(forWebsite: website)
+            ABPManager.sharedInstance().adblockPlus.whitelistWebsite(website)
         })
     }
 
