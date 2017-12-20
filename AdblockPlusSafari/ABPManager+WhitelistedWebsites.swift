@@ -53,7 +53,6 @@ extension ABPManager {
     private func whitelist(forWebsite website: String) {
         dLog("website \(website)", date: "2017-Dec-20")
         ABPManager.sharedInstance().updater?.reload(afterCompletion: {
-//            ABPManager.sharedInstance().whitelist(forWebsite: website)
             ABPManager.sharedInstance().adblockPlus.whitelistWebsite(website)
         })
     }
