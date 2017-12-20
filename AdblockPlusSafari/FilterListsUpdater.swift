@@ -1,5 +1,6 @@
 import RxCocoa
 import RxSwift
+import SafariServices
 
 /// This replaces the former Objective-C implementation of AdblockPlusExtras.
 ///
@@ -19,6 +20,7 @@ class FilterListsUpdater: AdblockPlusShared,
     var downloadTasks: [String: URLSessionTask]?
     var updatingGroupIdentifier = 0
     var disableReloading: Bool?
+    var reloading: Bool?
 
     /// Max date for lastUpdated
     var lastUpdate: Date
@@ -105,7 +107,7 @@ class FilterListsUpdater: AdblockPlusShared,
                     scheduledTasks[name] = task
                     filterList.taskIdentifier = task?.taskIdentifier
                 }
-                
+
                 filterList.updating = true
                 filterList.updatingGroupIdentifier = self.updatingGroupIdentifier
                 filterList.userTriggered = userTriggered
@@ -120,6 +122,38 @@ class FilterListsUpdater: AdblockPlusShared,
     func convertFilterListsToObjC()
     {
 
+    }
+
+    func setAcceptableAdsEnabled(enabled: Bool)
+    {
+        super.enabled = enabled
+
+    }
+
+    func reload(afterCompletion completion: (FilterListsUpdater) -> Void)
+    {
+        disableReloading = true
+        completion(self)
+        disableReloading = false
+        reload(withCompletion: nil)
+    }
+
+    func reload(withCompletion completion: ((Error?) -> Void)?)
+    {
+        if disableReloading == true { return }
+        let lastActivity = self.lastActivity
+        reloading = true
+        performingActivityTest = false
+        SFContentBlockerManager.reloadContentBlocker(withIdentifier: contentBlockerIdentifier()) { [weak self] error in
+            DispatchQueue.main.async {
+                // Handle error
+                self?.reloading = false
+                self?.checkActivatedFlag(lastActivity!)
+                if completion != nil {
+                    completion!(error)
+                }
+            }
+        }
     }
 
     /// Return an array of filter list names that are outdated.
