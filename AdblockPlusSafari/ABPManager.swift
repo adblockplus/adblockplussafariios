@@ -29,6 +29,11 @@ enum ABPState: String {
 class ABPManager: NSObject {
     var bag: DisposeBag!
 
+    /// Disable reloading state
+    var disableReloading = false
+
+    var updater: FilterListsUpdater?
+
     /// For testing reloading KVO.
     var reloadingKeyValue: Int?
 
@@ -73,9 +78,11 @@ class ABPManager: NSObject {
 
     /// Setup an initial Adblock Plus instance.
     override init() {
+        dLog("🐮", date: "2017-Dec-20")
         super.init()
         defer {
             adblockPlus = AdblockPlusExtras()
+            updater = FilterListsUpdater()
         }
     }
 
@@ -91,10 +98,10 @@ class ABPManager: NSObject {
 
     /// When the app becomes active, if there are outdated filter lists, update them.
     func handleDidBecomeActive() {
+        guard let updater = ABPManager.sharedInstance().updater else { return }
         adblockPlus.checkActivatedFlag()
         if !firstUpdateTriggered &&
            !adblockPlus.updating {
-            let updater = FilterListsUpdater()
             let filterListNames: [String] = updater.outdatedFilterListNames()
             if filterListNames.count > 0 {
                 updater.updateFilterLists(withNames: filterListNames,
@@ -109,7 +116,7 @@ class ABPManager: NSObject {
     // ------------------------------------------------------------
 
     func handlePerformFetch(withCompletionHandler completion: @escaping (UIBackgroundFetchResult) -> Void) {
-        let updater = FilterListsUpdater()
+        guard let updater = ABPManager.sharedInstance().updater else { return }
         let outdatedFilterListNames = updater.outdatedFilterListNames()
         if outdatedFilterListNames.count > 0 {
             var outdatedFilterLists = [String: Any]()
@@ -117,7 +124,7 @@ class ABPManager: NSObject {
                 outdatedFilterLists[outdatedFilterListName] = adblockPlus.filterLists[outdatedFilterListName]
             }
             updater.updateFilterLists(withNames: outdatedFilterListNames,
-                                          userTriggered: false)
+                                       userTriggered: false)
             backgroundFetches.append(["completion": completion,
                                       "filterLists": outdatedFilterLists,
                                       "startDate": Date()])
