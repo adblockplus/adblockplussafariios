@@ -207,14 +207,10 @@ private func logMultilineMessage(color: String,
 
     for textLine in splitMessage
     {
-        #if DEBUG
-            if ikiLogger_useColor {
-                NSLog("\(ikiLogger_prefix) \(color) -[\((filename as NSString).lastPathComponent):\(line)] \(function) - \(textLine)")
-            } else {
-                NSLog("\(ikiLogger_prefix) -[\((filename as NSString).lastPathComponent):\(line)] \(function) - \(textLine)")
-            }
-        #else
-            // No message will be printed unless DEBUG is defined in the building settings under Other Swift Flags.
-        #endif
+        if ikiLoggerUseColor {
+            NSLog("\(ikiLoggerPrefix) \(color) -[\((filename as NSString).lastPathComponent):\(line)] \(function) - \(textLine)")
+        } else {
+            NSLog("\(ikiLoggerPrefix) -[\((filename as NSString).lastPathComponent):\(line)] \(function) - \(textLine)")
+        }
     }
 }
