@@ -62,13 +62,11 @@ class FilterListsUpdater: AdblockPlusShared,
         if names.count == 0 { return }
         updatingGroupIdentifier += 1
         var modifiedFilterLists = [String: FilterList]()
-//        var scheduledTasks = [String: URLSessionTask]()
         for name in names {
             if var filterList = FilterList(fromDictionary: self.filterLists[name]) {
                 if let urlString = filterList.url,
                    let url = URL(string: urlString) {
                     let task = backgroundSession?.downloadTask(with: url)
-//                    scheduledTasks[name] = task
                     startDownloadTask(forFilterListName: name,
                                       task: task)
                     filterList.taskIdentifier = task?.taskIdentifier
@@ -173,7 +171,7 @@ class FilterListsUpdater: AdblockPlusShared,
         ABPManager.sharedInstance().adblockPlus.reloading = true
         performingActivityTest = false
         dLog("reloading", date: "2017-Dec-20")
-        SFContentBlockerManager.reloadContentBlocker(withIdentifier: contentBlockerIdentifier()) { error in
+        ContentBlockerManager.reload(withIdentifier: contentBlockerIdentifier()) { error in
             DispatchQueue.main.async {
                 // Handle error
                 ABPManager.sharedInstance().adblockPlus.reloading = false

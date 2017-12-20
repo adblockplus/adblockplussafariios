@@ -4,7 +4,7 @@ import SafariServices
 class ContentBlockerManager: NSObject,
                              ContentBlockerManagerProtocol
 {
-    func reload(withIdentifier identifier: String,
+    class func reload(withIdentifier identifier: String,
                 completionHandler: ((Error?) -> Void)? = nil)
     {
         SFContentBlockerManager.reloadContentBlocker(withIdentifier: identifier,
