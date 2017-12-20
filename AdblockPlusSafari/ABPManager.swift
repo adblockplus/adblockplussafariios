@@ -94,10 +94,11 @@ class ABPManager: NSObject {
         adblockPlus.checkActivatedFlag()
         if !firstUpdateTriggered &&
            !adblockPlus.updating {
-            let filterListNames: [String] = adblockPlus.outdatedFilterListNames()
+            let updater = FilterListsUpdater()
+            let filterListNames: [String] = updater.outdatedFilterListNames()
             if filterListNames.count > 0 {
-                adblockPlus.updateFilterLists(withNames: filterListNames,
-                                              userTriggered: false)
+                updater.updateFilterLists(withNames: filterListNames,
+                                          userTriggered: false)
                 firstUpdateTriggered = true
             }
         }
@@ -108,13 +109,14 @@ class ABPManager: NSObject {
     // ------------------------------------------------------------
 
     func handlePerformFetch(withCompletionHandler completion: @escaping (UIBackgroundFetchResult) -> Void) {
-        let outdatedFilterListNames = adblockPlus.outdatedFilterListNames()
+        let updater = FilterListsUpdater()
+        let outdatedFilterListNames = updater.outdatedFilterListNames()
         if outdatedFilterListNames.count > 0 {
             var outdatedFilterLists = [String: Any]()
             for outdatedFilterListName in outdatedFilterListNames {
                 outdatedFilterLists[outdatedFilterListName] = adblockPlus.filterLists[outdatedFilterListName]
             }
-            adblockPlus.updateFilterLists(withNames: outdatedFilterListNames,
+            updater.updateFilterLists(withNames: outdatedFilterListNames,
                                           userTriggered: false)
             backgroundFetches.append(["completion": completion,
                                       "filterLists": outdatedFilterLists,
