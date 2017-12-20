@@ -18,8 +18,6 @@ class FilterListsUpdater: AdblockPlusShared,
     weak var backgroundSession: URLSession?
     var downloadTasks: [String: URLSessionTask]?
     var updatingGroupIdentifier = 0
-    var disableReloading: Bool?
-    var reloading: Bool?
 
     /// Maximum date for lastUpdated.
     var lastUpdate: Date {
@@ -119,13 +117,15 @@ class FilterListsUpdater: AdblockPlusShared,
 
     /// Is the where the filter list reloads?
     func addReloadingObserver() {
-        print("💯 reloading")
+        dLog("💯 reloading", date: "2017-Dec-20")
+
         let nc = NotificationCenter.default
         nc.rx.notification(NSNotification.Name.UIApplicationWillEnterForeground,
                            object: nil)
             .subscribe { event in
                 self.synchronize()
                 let abp = ABPManager.sharedInstance().adblockPlus
+                dLog("reloading state = \(abp?.reloading)", date: "2017-Dec-20")
                 if abp?.reloading == true { return }
                 abp?.performActivityTest(with: ContentBlockerManager())
             }.disposed(by: bag)
@@ -157,23 +157,23 @@ class FilterListsUpdater: AdblockPlusShared,
 
     /// Start a completion closure, then reload the content blocker.
     func reload(afterCompletion completion: () -> Void) {
-        disableReloading = true
+        ABPManager.sharedInstance().disableReloading = true
         completion()
-        disableReloading = false
+        ABPManager.sharedInstance().disableReloading = false
         reload(withCompletion: nil)
     }
 
     /// Reload the content blocker, then run a completion closure.
     func reload(withCompletion completion: ((Error?) -> Void)?) {
-        if disableReloading == true { return }
+        if ABPManager.sharedInstance().disableReloading == true { return }
         let lastActivity = self.lastActivity
-        reloading = true
+        ABPManager.sharedInstance().adblockPlus.reloading = true
         performingActivityTest = false
-        SFContentBlockerManager.reloadContentBlocker(withIdentifier: contentBlockerIdentifier()) { [weak self] error in
+        SFContentBlockerManager.reloadContentBlocker(withIdentifier: contentBlockerIdentifier()) { error in
             DispatchQueue.main.async {
                 // Handle error
-                self?.reloading = false
-                self?.checkActivatedFlag(lastActivity!)
+                ABPManager.sharedInstance().adblockPlus.reloading = false
+                ABPManager.sharedInstance().adblockPlus.checkActivatedFlag(lastActivity!)
                 if completion != nil {
                     completion!(error)
                 }
