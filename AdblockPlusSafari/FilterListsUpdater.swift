@@ -64,13 +64,15 @@ class FilterListsUpdater: AdblockPlusShared,
         if names.count == 0 { return }
         updatingGroupIdentifier += 1
         var modifiedFilterLists = [String: FilterList]()
-        var scheduledTasks = [String: URLSessionTask]()
+//        var scheduledTasks = [String: URLSessionTask]()
         for name in names {
             if var filterList = FilterList(fromDictionary: self.filterLists[name]) {
                 if let urlString = filterList.url,
                    let url = URL(string: urlString) {
                     let task = backgroundSession?.downloadTask(with: url)
-                    scheduledTasks[name] = task
+//                    scheduledTasks[name] = task
+                    startDownloadTask(forFilterListName: name,
+                                      task: task)
                     filterList.taskIdentifier = task?.taskIdentifier
                 }
                 filterList.updating = true
@@ -80,7 +82,18 @@ class FilterListsUpdater: AdblockPlusShared,
                 modifiedFilterLists[name] = filterList
             }
         }
-        // TODO: Write the filterlists back to the Objective-C side.
+        // DZ: Write the filterlists back to the Objective-C side.
+    }
+
+    /// Store and start a download task.
+    func startDownloadTask(forFilterListName name: FilterListName,
+                           task: URLSessionDownloadTask?)
+    {
+        guard var tasks = downloadTasks,
+              let uwTask = task else { return }
+        tasks[name]?.cancel()
+        tasks[name] = uwTask
+        uwTask.resume()
     }
 
     func convertFilterListsToObjC() {
