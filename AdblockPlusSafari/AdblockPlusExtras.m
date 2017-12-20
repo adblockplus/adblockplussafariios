@@ -210,23 +210,25 @@ __deprecated
     [self reloadWithCompletion:nil];
 }
 
-- (void)setAcceptableAdsEnabled:(BOOL)enabled
-{
-    super.acceptableAdsEnabled = enabled;
-    [self reloadAfterCompletion:^(AdblockPlusExtras *adblockPlus) {
-        [adblockPlus updateFilterListsWithNames:adblockPlus.outdatedFilterListNames
-                                  userTriggered:NO];
-    }];
-}
+/// This needs to be rewritten in Swift
+//- (void)setAcceptableAdsEnabled:(BOOL)enabled
+//__attribute__((deprecated("Use FilterListsUpdater.setAcceptableAdsEnabled()")));
+//{
+//    super.acceptableAdsEnabled = enabled;
+//    [self reloadAfterCompletion:^(AdblockPlusExtras *adblockPlus) {
+//        [adblockPlus updateFilterListsWithNames:adblockPlus.outdatedFilterListNames
+//                                  userTriggered:NO];
+//    }];
+//}
 
-- (void)setDefaultFilterListEnabled:(BOOL)defaultFilterListEnabled
-{
-    super.defaultFilterListEnabled = defaultFilterListEnabled;
-    [self reloadAfterCompletion:^(AdblockPlusExtras *adblockPlus) {
-        [adblockPlus updateFilterListsWithNames:adblockPlus.outdatedFilterListNames
-                                  userTriggered:NO];
-    }];
-}
+//- (void)setDefaultFilterListEnabled:(BOOL)defaultFilterListEnabled
+//{
+//    super.defaultFilterListEnabled = defaultFilterListEnabled;
+//    [self reloadAfterCompletion:^(AdblockPlusExtras *adblockPlus) {
+//        [adblockPlus updateFilterListsWithNames:adblockPlus.outdatedFilterListNames
+//                                  userTriggered:NO];
+//    }];
+//}
 
 #pragma mark - reloading
 
@@ -291,7 +293,9 @@ __deprecated
     [self updateFilterListsWithNames:@[ self.activeFilterListName ] userTriggered:userTriggered];
 }
 
+
 - (void)updateFilterListsWithNames:(NSArray<NSString *> *)filterListNames userTriggered:(BOOL)userTriggered
+__attribute__((deprecated("Use FilterListsUpdater.updateFilterListsWithNames()")));
 {
     if ([filterListNames count] == 0) {
         return;
@@ -329,22 +333,22 @@ __deprecated
     }
 }
 
-- (NSArray<NSString *> *)outdatedFilterListNames
-{
-    NSDate *now = [NSDate date];
-    NSMutableArray<NSString *> *outdatedFilterListNames = [NSMutableArray array];
-
-    NSString *filterListName = self.activeFilterListName;
-    FilterList *filterList = [[FilterList alloc] initWithDictionary:self.filterLists[filterListName]];
-    if (filterList) {
-        NSDate *lastUpdate = filterList.lastUpdate;
-        if (lastUpdate == nil || lastUpdate.timeIntervalSince1970 + filterList.expires <= now.timeIntervalSince1970) {
-            [outdatedFilterListNames addObject:filterListName];
-        }
-    }
-
-    return outdatedFilterListNames;
-}
+//- (NSArray<NSString *> *)outdatedFilterListNames
+//{
+//    NSDate *now = [NSDate date];
+//    NSMutableArray<NSString *> *outdatedFilterListNames = [NSMutableArray array];
+//
+//    NSString *filterListName = self.activeFilterListName;
+//    FilterList *filterList = [[FilterList alloc] initWithDictionary:self.filterLists[filterListName]];
+//    if (filterList) {
+//        NSDate *lastUpdate = filterList.lastUpdate;
+//        if (lastUpdate == nil || lastUpdate.timeIntervalSince1970 + filterList.expires <= now.timeIntervalSince1970) {
+//            [outdatedFilterListNames addObject:filterListName];
+//        }
+//    }
+//
+//    return outdatedFilterListNames;
+//}
 
 #pragma mark - NSURLSessionDownloadDelegate
 
