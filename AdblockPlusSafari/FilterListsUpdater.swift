@@ -171,7 +171,8 @@ class FilterListsUpdater: AdblockPlusShared,
         ABPManager.sharedInstance().adblockPlus.reloading = true
         performingActivityTest = false
         dLog("reloading", date: "2017-Dec-20")
-        ContentBlockerManager.reload(withIdentifier: contentBlockerIdentifier()) { error in
+
+        ContentBlockerManager().reload(withIdentifier: contentBlockerIdentifier()) { error in
             DispatchQueue.main.async {
                 // Handle error
                 ABPManager.sharedInstance().adblockPlus.reloading = false
@@ -182,5 +183,21 @@ class FilterListsUpdater: AdblockPlusShared,
                 }
             }
         }
+    }
+
+    // ------------------------------------------------------------
+    // MARK: - Private -
+    // ------------------------------------------------------------
+
+    /// Handle notification of app entering the foreground.
+    private func onApplicationWillEnterForegroundNotification(notification: Notification)
+    {
+        synchronize()
+
+        if ABPManager.sharedInstance().adblockPlus.reloading {
+            return
+        }
+
+        ABPManager.sharedInstance().adblockPlus.performActivityTest(with: ContentBlockerManager())
     }
 }
