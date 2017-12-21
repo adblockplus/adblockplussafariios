@@ -1,9 +1,9 @@
 import SafariServices
 
-/// Performs operations with the SFContentBlockerManager
+/// Performs operations with the Safari content blocker manager.
 class ContentBlockerManager: NSObject,
                              ContentBlockerManagerProtocol {
-    class func reload(withIdentifier identifier: String,
+    func reload(withIdentifier identifier: String,
                 completionHandler: ((Error?) -> Void)? = nil) {
         SFContentBlockerManager.reloadContentBlocker(withIdentifier: identifier,
                                                      completionHandler: completionHandler)
