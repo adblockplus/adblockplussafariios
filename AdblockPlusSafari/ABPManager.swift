@@ -26,18 +26,20 @@ enum ABPState: String {
 
 /// Shared instance that contains the active Adblock Plus instance.
 /// This class holds the operations that were previously coupled to the Objective-C app delegate.
+/// It also attempts to consolidate state variables essential to the app's operation.
 class ABPManager: NSObject {
     var bag: DisposeBag!
 
-    /// Disable reloading state
+    /// Reloading will not happen when this value is true.
     var disableReloading = false
 
-    var updater: FilterListsUpdater?
+    /// Performs operations for updating filter lists.
+    @objc var filterListsUpdater: FilterListsUpdater?
 
     /// For testing reloading KVO.
     var reloadingKeyValue: Int?
 
-    /// Active instance of Adblock Plus.
+    /// Active instance of Adblock Plus. It is dynamic to support KVO.
     @objc dynamic var adblockPlus: AdblockPlusExtras! {
         /// Add kvo observers.
         didSet {
@@ -68,7 +70,7 @@ class ABPManager: NSObject {
     }
 
     /// Access the shared instance.
-    class func sharedInstance() -> ABPManager {
+    @objc class func sharedInstance() -> ABPManager {
         guard let shared = privateSharedInstance else {
             privateSharedInstance = ABPManager()
             return privateSharedInstance!
@@ -82,7 +84,7 @@ class ABPManager: NSObject {
         super.init()
         defer {
             adblockPlus = AdblockPlusExtras()
-            updater = FilterListsUpdater()
+            filterListsUpdater = FilterListsUpdater()
         }
     }
 
@@ -92,13 +94,29 @@ class ABPManager: NSObject {
         adblockPlus = nil
     }
 
+    /// During the transition to Swift, filter lists previously held in Objective-C data structures
+    /// will be made available in native Swift.
+    func filterLists() -> [FilterList]
+    {
+        let lists = [FilterList]()
+
+        // Grab the lists from the Objective-C side.
+
+        for key in adblockPlus.filterLists.keys {
+
+        }
+
+        return lists
+    }
+
+
     // ------------------------------------------------------------
     // MARK: - Foreground mode -
     // ------------------------------------------------------------
 
     /// When the app becomes active, if there are outdated filter lists, update them.
     func handleDidBecomeActive() {
-        guard let updater = ABPManager.sharedInstance().updater else { return }
+        guard let updater = ABPManager.sharedInstance().filterListsUpdater else { return }
         adblockPlus.checkActivatedFlag()
         if !firstUpdateTriggered &&
            !adblockPlus.updating {
@@ -116,7 +134,7 @@ class ABPManager: NSObject {
     // ------------------------------------------------------------
 
     func handlePerformFetch(withCompletionHandler completion: @escaping (UIBackgroundFetchResult) -> Void) {
-        guard let updater = ABPManager.sharedInstance().updater else { return }
+        guard let updater = ABPManager.sharedInstance().filterListsUpdater else { return }
         let outdatedFilterListNames = updater.outdatedFilterListNames()
         if outdatedFilterListNames.count > 0 {
             var outdatedFilterLists = [String: Any]()
