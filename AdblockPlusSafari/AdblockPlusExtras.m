@@ -448,15 +448,12 @@ __attribute__((deprecated("Use FilterListsUpdater.updateFilterListsWithNames()")
     return nil;
 }
 
+/// Changed to call Swift ABPManager during transition.
 - (void)onApplicationWillEnterForegroundNotification:(NSNotification *)notification
 {
-    [self synchronize];
-
-    if (self.reloading) {
-        return;
-    }
-
-    [self performActivityTestWith:[[ContentBlockerManager alloc] init]];
+    NSLog(@"🌶");
+    [[[ABPManager sharedInstance] adblockPlus]
+                  performActivityTestWith:[[ContentBlockerManager alloc] init]];
 }
 
 @end
