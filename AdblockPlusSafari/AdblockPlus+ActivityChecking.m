@@ -38,7 +38,7 @@
 
 - (void)performActivityTestWith:(id<ContentBlockerManagerProtocol>)manager
 {
-    NSLog(@"🔥");
+    NSLog(@"ikiApps 🔥");
     __weak __typeof(self) wSelf = self;
     NSDate *lastActivity = wSelf.lastActivity;
     wSelf.performingActivityTest = YES;
