@@ -52,6 +52,7 @@ static NSString *emptyFilterListName = @"empty.json";
 
 - (NSURL *)activeFilterListURLWithWhitelistedWebsites
 {
+    NSLog(@"ikiApps ✅");
     NSURL *original = self.activeFilterListsURL;
     NSString *fileName = original.lastPathComponent;
 
