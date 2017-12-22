@@ -18,6 +18,7 @@ class FilterListsUpdater: AdblockPlusShared,
     weak var backgroundSession: URLSession?
     var downloadTasks: [String: URLSessionTask]?
     var updatingGroupIdentifier = 0
+    var manager: ContentBlockerManagerProtocol?
 
     /// Maximum date for lastUpdated.
     var lastUpdate: Date {
@@ -31,6 +32,7 @@ class FilterListsUpdater: AdblockPlusShared,
     override init() {
         dLog("", date: "2017-Oct-24")
         super.init()
+        manager = ContentBlockerManager()
         removeUpdatingGroupID()
         processRunningTasks()
         addReloadingObserver()
@@ -169,20 +171,57 @@ class FilterListsUpdater: AdblockPlusShared,
         }
         let lastActivity = self.lastActivity
         ABPManager.sharedInstance().adblockPlus.reloading = true
-        performingActivityTest = false
-        dLog("reloading", date: "2017-Dec-20")
+        ABPManager.sharedInstance().adblockPlus.performingActivityTest = false
 
-        ContentBlockerManager().reload(withIdentifier: contentBlockerIdentifier()) { error in
-            DispatchQueue.main.async {
-                // Handle error
-                ABPManager.sharedInstance().adblockPlus.reloading = false
-                ABPManager.sharedInstance().adblockPlus.checkActivatedFlag(lastActivity!)
+//        ContentBlockerManager().reload(withIdentifier: id) { error in
+//        DispatchQueue.global(qos: .default).async {
+////            DispatchQueue.main.async {
+//                // Handle error
+//                dLog("error after reload: \(error)", date: "2017-Dec-21")
+//                ABPManager.sharedInstance().adblockPlus.reloading = false
+//                ABPManager.sharedInstance().adblockPlus.checkActivatedFlag(lastActivity!)
+//                dLog("💯 fin reload", date: "2017-Dec-20")
+//                dLog("completion \(completion)", date: "2017-Dec-21")
+//                if completion != nil {
+//                    completion!(error)
+//                }
+//            }
+//        }
+
+        reloadContentBlocker(completion: completion)
+
+//            .observeOn(scheduler)
+//            .subscribeOn(scheduler)
+            .subscribe(onCompleted: {
                 dLog("💯 fin reload", date: "2017-Dec-20")
+            }).disposed(by: bag)
+
+    }
+
+    func reloadContentBlocker(completion: ((Error?) -> Void)?) -> Observable<Void>
+    {
+        return Observable.create { observer in
+            let id = self.contentBlockerIdentifier()
+            dLog("reloading \(id)", date: "2017-Dec-20")
+            dLog("completion \(String(describing: completion))", date: "2017-Dec-21")
+            self.manager?.reload(withIdentifier: id) { error in
+
+                //            DispatchQueue.main.async {
+                // Handle error
+                dLog("error after reload: \(String(describing: error))", date: "2017-Dec-21")
+                ABPManager.sharedInstance().adblockPlus.reloading = false
+                ABPManager.sharedInstance().adblockPlus.checkActivatedFlag(self.lastActivity!)
+
                 if completion != nil {
                     completion!(error)
+                    observer.onCompleted()
+                } else {
+                    observer.onCompleted()
                 }
             }
-        }
+
+            return Disposables.create()
+        }.observeOn(SerialDispatchQueueScheduler(qos: .userInitiated))
     }
 
     // ------------------------------------------------------------
