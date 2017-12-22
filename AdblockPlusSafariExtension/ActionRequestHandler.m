@@ -28,6 +28,7 @@
 
 - (void)beginRequestWithExtensionContext:(NSExtensionContext *)context
 {
+    NSLog(@"ikiApps begin req");
     AdblockPlus *adblockPlus = [[AdblockPlus alloc] init];
 
     NSError *error;
