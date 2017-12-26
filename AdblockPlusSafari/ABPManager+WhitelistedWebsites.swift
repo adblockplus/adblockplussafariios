@@ -27,7 +27,7 @@ extension ABPManager {
         return tasks(forSessionID: sessionID)
     }
 
-    /// Process the websites found within the tasks using the main thread.
+    /// Process the websites found within the tasks using a background thread with high priority.
     private func tasks(forSessionID sessionID: String) -> Observable<[WhiteListedWebsite]> {
         return Observable.create { observer in
             let config = URLSessionConfiguration.background(withIdentifier: sessionID)
@@ -39,24 +39,14 @@ extension ABPManager {
                     self.website(fromURL: $0.originalRequest?.url)
                 }.flatMap { website in
                     // Nil members in the websites array have been removed by flatMap.
-                    self.whitelist(forWebsite: website!)
+                    ABPManager.sharedInstance().adblockPlus.whitelistWebsite(website!)
                     return website
                 }
                 observer.onNext(websites)
                 observer.onCompleted()
             }
             return Disposables.create()
-//        }.observeOn(MainScheduler.asyncInstance)
         }.observeOn(SerialDispatchQueueScheduler(qos: .userInitiated))
-    }
-
-    /// Add a website to the whitelist and reload the content blocker.
-    /// This is reloading the blocker everytime a site is added - not good
-    private func whitelist(forWebsite website: String) {
-        dLog("website \(website)", date: "2017-Dec-20")
-//        ABPManager.sharedInstance().filterListsUpdater?.reload(afterCompletion: {
-            ABPManager.sharedInstance().adblockPlus.whitelistWebsite(website)
-//        })
     }
 
     /// Extract the name of the whitelisted website from a URL.
