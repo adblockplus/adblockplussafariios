@@ -19,6 +19,7 @@
 
 #import "WhitelistedSiteCell.h"
 #import "NSString+AdblockPlus.h"
+#import "AdblockPlusSafari-Swift.h"
 
 const NSInteger TextFieldTag = 121212;
 
@@ -185,7 +186,12 @@ const NSInteger TextFieldTag = 121212;
 
 - (void)whitelistWebsite:(NSString *)website
 {
-    [self.adblockPlus whitelistWebsite:website.whitelistedHostname];
+    BOOL result = [ABPManager.sharedInstance whiteListWithAWebsite:website];
+    if (!result) {
+        // Handle error
+    }
+
+//    [self.adblockPlus whitelistWebsite:website.whitelistedHostname];
 }
 
 @end

@@ -33,7 +33,7 @@
 
 // Swift implementation in ABPManager.
 // DZ: Is there really a swift implementation?
-- (BOOL)whitelistWebsite:(NSString *__nonnull)website;
+//- (BOOL)whitelistWebsite:(NSString *__nonnull)website;
 
 - (void)updateActiveFilterLists:(BOOL)userTriggered;
 

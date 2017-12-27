@@ -224,25 +224,25 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
 #pragma mark - whitelisting
 
-- (BOOL)whitelistWebsite:(NSString *)website
-{
-    website = website.whitelistedHostname;
-
-    if (website.length == 0) {
-        return NO;
-    }
-
-    NSArray<NSString *> *websites = self.whitelistedWebsites;
-
-    if ([websites containsObject:website]) {
-        return NO;
-    }
-
-    websites = [@[ website ] arrayByAddingObjectsFromArray:websites];
-    self.whitelistedWebsites = websites;
-
-    return YES;
-}
+//- (BOOL)whitelistWebsite:(NSString *)website
+//{
+//    website = website.whitelistedHostname;
+//
+//    if (website.length == 0) {
+//        return NO;
+//    }
+//
+//    NSArray<NSString *> *websites = self.whitelistedWebsites;
+//
+//    if ([websites containsObject:website]) {
+//        return NO;
+//    }
+//
+//    websites = [@[ website ] arrayByAddingObjectsFromArray:websites];
+//    self.whitelistedWebsites = websites;
+//
+//    return YES;
+//}
 
 #pragma mark - updating
 
@@ -405,7 +405,7 @@ __attribute__((deprecated("Use FilterListsUpdater.updateFilterListsWithNames()")
     return nil;
 }
 
-/// Changed to call Swift ABPManager during transition.
+/// Changed to call Swift ABPManager during transition to Swift.
 - (void)onApplicationWillEnterForegroundNotification:(NSNotification *)notification
 {
     NSLog(@"🌶");

@@ -18,4 +18,5 @@
 #import "AdblockPlus+ActivityChecking.h"
 #import "AdblockPlusExtras.h"
 #import "Appearance.h"
+#import "NSString+AdblockPlus.h"
 #import "RootController.h"
