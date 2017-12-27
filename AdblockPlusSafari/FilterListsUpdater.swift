@@ -18,7 +18,7 @@ class FilterListsUpdater: AdblockPlusShared,
     weak var backgroundSession: URLSession?
     var downloadTasks: [String: URLSessionTask]?
     var updatingGroupIdentifier = 0
-    var manager: ContentBlockerManagerProtocol?
+    var cbManager: ContentBlockerManagerProtocol?
 
     /// Maximum date for lastUpdated.
     var lastUpdate: Date {
@@ -32,7 +32,7 @@ class FilterListsUpdater: AdblockPlusShared,
     override init() {
         dLog("", date: "2017-Oct-24")
         super.init()
-        manager = ContentBlockerManager()
+        cbManager = ContentBlockerManager()
         removeUpdatingGroupID()
         processRunningTasks()
         addReloadingObserver()
@@ -116,6 +116,8 @@ class FilterListsUpdater: AdblockPlusShared,
     // ------------------------------------------------------------
 
     /// Is the where the filter list reloads?
+    ///
+    /// Observe the reloading state of ABP.
     func addReloadingObserver() {
         dLog("adding observer", date: "2017-Dec-20")
 
@@ -133,8 +135,11 @@ class FilterListsUpdater: AdblockPlusShared,
 
     /// Set whether acceptable ads will be enabled or not.
     /// The content blocker filter lists are reloaded after the state change.
+    /// Enabling acceptable ads will also enable the content blocker if it is disabled.
     /// - parameter enabled: true if acceptable ads are enabled
-    func setAcceptableAdsEnabled(enabled: Bool) {
+    ///
+    /// DZ: Check if this is correct
+    @objc func changeAcceptableAds(enabled: Bool) {
         super.enabled = enabled
         reload(afterCompletion: { [weak self] in
             if let names = self?.outdatedFilterListNames() {
@@ -173,6 +178,10 @@ class FilterListsUpdater: AdblockPlusShared,
         ABPManager.sharedInstance().adblockPlus.reloading = true
         ABPManager.sharedInstance().adblockPlus.performingActivityTest = false
 
+//        let id = self.contentBlockerIdentifier()
+//        dLog("reloading \(id)", date: "2017-Dec-20")
+//        dLog("completion \(String(describing: completion))", date: "2017-Dec-21")
+
 //        ContentBlockerManager().reload(withIdentifier: id) { error in
 //        DispatchQueue.global(qos: .default).async {
 ////            DispatchQueue.main.async {
@@ -188,7 +197,7 @@ class FilterListsUpdater: AdblockPlusShared,
 //            }
 //        }
 
-        reloadContentBlocker(completion: completion)
+        reloadContentBlocker(withCompletion: completion)
 
 //            .observeOn(scheduler)
 //            .subscribeOn(scheduler)
@@ -198,13 +207,13 @@ class FilterListsUpdater: AdblockPlusShared,
 
     }
 
-    func reloadContentBlocker(completion: ((Error?) -> Void)?) -> Observable<Void>
+    func reloadContentBlocker(withCompletion completion: ((Error?) -> Void)?) -> Observable<Void>
     {
         return Observable.create { observer in
             let id = self.contentBlockerIdentifier()
             dLog("reloading \(id)", date: "2017-Dec-20")
             dLog("completion \(String(describing: completion))", date: "2017-Dec-21")
-            self.manager?.reload(withIdentifier: id) { error in
+            self.cbManager?.reload(withIdentifier: id) { error in
 
                 //            DispatchQueue.main.async {
                 // Handle error
@@ -221,7 +230,7 @@ class FilterListsUpdater: AdblockPlusShared,
             }
 
             return Disposables.create()
-        }.observeOn(SerialDispatchQueueScheduler(qos: .userInitiated))
+        }.observeOn(MainScheduler.asyncInstance)
     }
 
     // ------------------------------------------------------------

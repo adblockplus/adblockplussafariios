@@ -16,6 +16,7 @@
  */
 
 #import "AcceptableAdsController.h"
+#import "AdblockPlusSafari-Swift.h"
 
 @interface AcceptableAdsController () <UITableViewDataSource>
 
@@ -102,6 +103,7 @@
 - (void)onSwitchHasChanged:(UISwitch *)s
 {
     self.adblockPlus.acceptableAdsEnabled = s.on;
+    [[ABPManager.sharedInstance filterListsUpdater] changeAcceptableAdsWithEnabled:s.on];
 }
 
 - (void)updateAccessoryViewOfCell:(UITableViewCell *)cell

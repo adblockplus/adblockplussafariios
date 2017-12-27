@@ -189,6 +189,7 @@ class ABPManager: NSObject {
     /// Subscription of changes on reloading key.
     /// Reloading occurs when
     /// * Filter lists are configured or updated
+    /// * Acceptable ads switch is changed
     /// * A website is added to, or deleted from, the whitelist, inside ABP
     /// * A website is whitelisted with the Safari action extension
     private func reloadingSubscription() -> Disposable {
@@ -201,7 +202,7 @@ class ABPManager: NSObject {
                     return
                 }
 
-                // Used for testing to verify that the reloading observer is active.
+                // Used for unit testing to verify that the reloading observer is active.
                 self.reloadingKeyValue = uwReloading ? 1 : 0
 
                 dLog("⛸️", date: "2017-Dec-26")
