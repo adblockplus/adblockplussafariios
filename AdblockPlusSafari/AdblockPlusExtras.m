@@ -222,28 +222,6 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
                                               }];
 }
 
-#pragma mark - whitelisting
-
-//- (BOOL)whitelistWebsite:(NSString *)website
-//{
-//    website = website.whitelistedHostname;
-//
-//    if (website.length == 0) {
-//        return NO;
-//    }
-//
-//    NSArray<NSString *> *websites = self.whitelistedWebsites;
-//
-//    if ([websites containsObject:website]) {
-//        return NO;
-//    }
-//
-//    websites = [@[ website ] arrayByAddingObjectsFromArray:websites];
-//    self.whitelistedWebsites = websites;
-//
-//    return YES;
-//}
-
 #pragma mark - updating
 
 - (void)updateActiveFilterLists:(BOOL)userTriggered

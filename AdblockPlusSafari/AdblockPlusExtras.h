@@ -31,10 +31,6 @@
 // Swift implementation in FilterListsUpdater.
 - (void)reloadWithCompletion:(void (^__nullable)(NSError *__nullable error))completion;
 
-// Swift implementation in ABPManager.
-// DZ: Is there really a swift implementation?
-//- (BOOL)whitelistWebsite:(NSString *__nonnull)website;
-
 - (void)updateActiveFilterLists:(BOOL)userTriggered;
 
 // Swift implementation in FilterListsUpdater.

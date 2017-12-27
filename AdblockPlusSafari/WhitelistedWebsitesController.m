@@ -190,8 +190,6 @@ const NSInteger TextFieldTag = 121212;
     if (!result) {
         // Handle error
     }
-
-//    [self.adblockPlus whitelistWebsite:website.whitelistedHostname];
 }
 
 @end
