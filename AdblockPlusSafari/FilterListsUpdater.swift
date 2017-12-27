@@ -178,33 +178,10 @@ class FilterListsUpdater: AdblockPlusShared,
         ABPManager.sharedInstance().adblockPlus.reloading = true
         ABPManager.sharedInstance().adblockPlus.performingActivityTest = false
 
-//        let id = self.contentBlockerIdentifier()
-//        dLog("reloading \(id)", date: "2017-Dec-20")
-//        dLog("completion \(String(describing: completion))", date: "2017-Dec-21")
-
-//        ContentBlockerManager().reload(withIdentifier: id) { error in
-//        DispatchQueue.global(qos: .default).async {
-////            DispatchQueue.main.async {
-//                // Handle error
-//                dLog("error after reload: \(error)", date: "2017-Dec-21")
-//                ABPManager.sharedInstance().adblockPlus.reloading = false
-//                ABPManager.sharedInstance().adblockPlus.checkActivatedFlag(lastActivity!)
-//                dLog("💯 fin reload", date: "2017-Dec-20")
-//                dLog("completion \(completion)", date: "2017-Dec-21")
-//                if completion != nil {
-//                    completion!(error)
-//                }
-//            }
-//        }
-
         reloadContentBlocker(withCompletion: completion)
-
-//            .observeOn(scheduler)
-//            .subscribeOn(scheduler)
             .subscribe(onCompleted: {
                 dLog("💯 fin reload", date: "2017-Dec-20")
             }).disposed(by: bag)
-
     }
 
     func reloadContentBlocker(withCompletion completion: ((Error?) -> Void)?) -> Observable<Void>
@@ -214,11 +191,10 @@ class FilterListsUpdater: AdblockPlusShared,
             dLog("reloading \(id)", date: "2017-Dec-20")
             dLog("completion \(String(describing: completion))", date: "2017-Dec-21")
             self.cbManager?.reload(withIdentifier: id) { error in
-
-                //            DispatchQueue.main.async {
-                // Handle error
+                // DZ: Handle error
                 dLog("error after reload: \(String(describing: error))", date: "2017-Dec-21")
                 ABPManager.sharedInstance().adblockPlus.reloading = false
+                dLog("🦈 fin reload", date: "2017-Dec-26")
                 ABPManager.sharedInstance().adblockPlus.checkActivatedFlag(self.lastActivity!)
 
                 if completion != nil {
