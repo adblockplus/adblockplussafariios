@@ -28,12 +28,11 @@
 // Date of the last successful update of filter lists
 @property (nonatomic, readonly) NSDate *__nullable lastUpdate;
 
-//- (void)reloadAfterCompletion:(void (^__nonnull)(AdblockPlusExtras *__nonnull))completion;
-
 // Swift implementation in FilterListsUpdater.
 - (void)reloadWithCompletion:(void (^__nullable)(NSError *__nullable error))completion;
 
 // Swift implementation in ABPManager.
+// DZ: Is there really a swift implementation?
 - (BOOL)whitelistWebsite:(NSString *__nonnull)website;
 
 - (void)updateActiveFilterLists:(BOOL)userTriggered;

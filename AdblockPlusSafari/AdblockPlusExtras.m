@@ -28,21 +28,6 @@
 
 static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayErrorDialog";
 
-//__deprecated
-//@interface ContentBlockerManager : NSObject <ContentBlockerManagerProtocol>
-//
-//@end
-//
-//@implementation ContentBlockerManager
-//
-//- (void)reloadWithIdentifier:(NSString *)identifier
-//           completionHandler:(void (^)(NSError *error))completionHandler;
-//{
-//    [SFContentBlockerManager reloadContentBlockerWithIdentifier:identifier completionHandler:completionHandler];
-//}
-//
-//@end
-
 @interface AdblockPlusExtras () <NSURLSessionDownloadDelegate, NSFileManagerDelegate>
 
 @property (nonatomic, weak) NSURLSession *backgroundSession;
@@ -210,39 +195,11 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
     super.enabled = enabled;
     [self reloadWithCompletion:nil];
 }
-
-/// This needs to be rewritten in Swift
-//- (void)setAcceptableAdsEnabled:(BOOL)enabled
-//__attribute__((deprecated("Use FilterListsUpdater.setAcceptableAdsEnabled()")));
-//{
-//    super.acceptableAdsEnabled = enabled;
-//    [self reloadAfterCompletion:^(AdblockPlusExtras *adblockPlus) {
-//        [adblockPlus updateFilterListsWithNames:adblockPlus.outdatedFilterListNames
-//                                  userTriggered:NO];
-//    }];
-//}
-
-//- (void)setDefaultFilterListEnabled:(BOOL)defaultFilterListEnabled
-//{
-//    super.defaultFilterListEnabled = defaultFilterListEnabled;
-//    [self reloadAfterCompletion:^(AdblockPlusExtras *adblockPlus) {
-//        [adblockPlus updateFilterListsWithNames:adblockPlus.outdatedFilterListNames
-//                                  userTriggered:NO];
-//    }];
-//}
-
 #pragma mark - reloading
 
-//- (void)reloadAfterCompletion:(void (^)(AdblockPlusExtras *))completion
-//{
-//    self.disableReloading = YES;
-//    completion(self);
-//    self.disableReloading = NO;
-//    [self reloadWithCompletion:nil];
-//}
-//
 - (void)reloadWithCompletion:(void (^)(NSError *error))completion
 {
+    NSLog(@"🛑 RELOAD");
     if (self.disableReloading) {
         return;
     }
@@ -276,7 +233,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
     }
 
     NSArray<NSString *> *websites = self.whitelistedWebsites;
-//
+
     if ([websites containsObject:website]) {
         return NO;
     }
