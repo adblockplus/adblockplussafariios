@@ -19,11 +19,9 @@
 
 @import SafariServices;
 
-#import "RootController.h"
 #import "FilterList+Processing.h"
 #import "NSDictionary+FilterList.h"
 #import "AdblockPlus+ActivityChecking.h"
-#import "NSString+AdblockPlus.h"
 #import "AdblockPlusSafari-Swift.h"
 
 static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayErrorDialog";
