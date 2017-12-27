@@ -55,6 +55,7 @@
     if ([keyPath isEqualToString:NSStringFromSelector(@selector(acceptableAdsEnabled))]) {
         self.acceptableAdsEnablingSwitch.on = self.adblockPlus.acceptableAdsEnabled;
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(reloading))]) {
+        NSLog(@"reloading observed");
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         [self updateAccessoryViewOfCell:cell];
     } else {
@@ -106,16 +107,22 @@
     [[ABPManager.sharedInstance filterListsUpdater] changeAcceptableAdsWithEnabled:s.on];
 }
 
+/// The accessory view changes with the state of the reloading key.
 - (void)updateAccessoryViewOfCell:(UITableViewCell *)cell
 {
-    if (!self.adblockPlus.reloading) {
-        cell.accessoryView = self.acceptableAdsEnablingSwitch;
-    } else {
-        UIActivityIndicatorView *view =
-            [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [view startAnimating];
-        cell.accessoryView = view;
-    }
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+        NSLog(@"updating accessory view");
+        if (!self.adblockPlus.reloading) {
+            cell.accessoryView = self.acceptableAdsEnablingSwitch;
+        } else {
+            UIActivityIndicatorView *view =
+                                            [[UIActivityIndicatorView alloc]
+                                                                      initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [view startAnimating];
+            cell.accessoryView = view;
+        }
+    });
 }
 
 @end
