@@ -187,6 +187,10 @@ class ABPManager: NSObject {
     }
 
     /// Subscription of changes on reloading key.
+    /// Reloading occurs when
+    /// * Filter lists are configured or updated
+    /// * A website is added to, or deleted from, the whitelist, inside ABP
+    /// * A website is whitelisted with the Safari action extension
     private func reloadingSubscription() -> Disposable {
         return adblockPlus.rx
             .observeWeakly(Bool.self,
@@ -200,19 +204,30 @@ class ABPManager: NSObject {
                 // Used for testing to verify that the reloading observer is active.
                 self.reloadingKeyValue = uwReloading ? 1 : 0
 
-                let app = UIApplication.shared
-                let isBackground = (app.applicationState != UIApplicationState.active)
+                dLog("⛸️", date: "2017-Dec-26")
+
                 let invalidBgTask = (self.backgroundTaskIdentifier == UIBackgroundTaskInvalid)
                 if self.backgroundTaskIdentifier != UIBackgroundTaskInvalid &&
                    !uwReloading {
                     self.backgroundTaskIdentifier = UIBackgroundTaskInvalid
                 }
-                if invalidBgTask && uwReloading && isBackground {
+                if invalidBgTask && uwReloading && self.isBackground() {
+                    let app = UIApplication.shared
                     self.backgroundTaskIdentifier = app.beginBackgroundTask(expirationHandler: { [weak self] in
                         self?.backgroundTaskIdentifier = UIBackgroundTaskInvalid
                     })
                 }
             })
+    }
+
+    /// Determine if the app is in the background.
+    /// The app is in the background when whitelisting through the Safari action extension.
+    private func isBackground() -> Bool
+    {
+        let app = UIApplication.shared
+        let isBackground = (app.applicationState != UIApplicationState.active)
+        dLog("is background = \(isBackground)", date: "2017-Dec-26")
+        return isBackground
     }
 
     /// Subscription of changes on filterLists key.
