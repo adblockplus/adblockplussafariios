@@ -45,6 +45,7 @@ class AppDelegate: UIResponder,
 
     /// Set background task state to invalid.
     func applicationWillEnterForeground(_ application: UIApplication) {
+        dLog("will enter fg", date: "2017-Dec-22")
         ABPManager.sharedInstance().backgroundTaskIdentifier = UIBackgroundTaskInvalid
     }
 
@@ -57,9 +58,12 @@ class AppDelegate: UIResponder,
         ABPManager.sharedInstance().handlePerformFetch(withCompletionHandler: completionHandler)
     }
 
+    /// Background events include whitelisting of websites.
+    /// The content blocker is reloaded after whitelist processing is complete.
     func application(_ application: UIApplication,
                      handleEventsForBackgroundURLSession identifier: String,
                      completionHandler: @escaping () -> Void) {
+        dLog("", date: "2017-Dec-26")
         ABPManager.sharedInstance().handleEventsForBackgroundURLSession(identifier: identifier,
                                                                         completion: completionHandler)
     }
