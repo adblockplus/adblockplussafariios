@@ -37,11 +37,11 @@ class FilterListsUpdater: AdblockPlusShared,
         dLog("🍺 - should only be called once", date: "2017-Oct-24")
         super.init()
         cbManager = ContentBlockerManager()
-//        removeUpdatingGroupID()
+        removeUpdatingGroupID()
 
         // DZ: Needs setting of _needsDisplayErrorDialog
 
-//        processRunningTasks()
+        processRunningTasks()
         addReloadingObserver()
     }
 
@@ -62,7 +62,8 @@ class FilterListsUpdater: AdblockPlusShared,
                                        delegateQueue: OperationQueue.main)
         backgroundSession?.getAllTasks(completionHandler: { tasks in
             let lists = ABPManager.sharedInstance().filterLists()
-            var listNames = lists.flatMap { $0.name }
+//            var listNames = lists.flatMap { $0.name }
+            var listsToRemoveUpdatingFrom = [FilterListName]()
 
             // Remove filter lists whose tasks are still running.
             for task in tasks {
@@ -70,24 +71,42 @@ class FilterListsUpdater: AdblockPlusShared,
                 var listIndex = 0
                 for list in lists
                 {
-                    if let url = task.originalRequest?.url?.absoluteString {
+                    if let url = task.originalRequest?.url?.absoluteString
+                    {
                         if url == list.url &&
-                           task.taskIdentifier == list.taskIdentifier {
+                           task.taskIdentifier == list.taskIdentifier
+                        {
+                            dLog("♣️ dl task", date: "2017-Dec-27")
                             self.downloadTasks[url] = task
-                        } else {
+                        }
+                        else
+                        {
+                            // If a task was interrupted, then it is cancelled here.
+                            // This handles the case where the app crashes or is forced
+                            // to quit during a download task. The user receives an alert
+                            // and is able to redo what had previously failed.
+                            dLog("♣️ cancel", date: "2017-Dec-27")
                             task.cancel()
                         }
                         found = true
-                        listNames.remove(at: listIndex)
+//                        listNames.remove(at: listIndex)
+                        if let name = list.name {
+                            listsToRemoveUpdatingFrom.append(name)
+                        }
                         break
                     }
                     listIndex += 1
+                } // End for list
+                if !found
+                {
+                    dLog("🔫 cancelling", date: "2017-Dec-27")
+                    task.cancel()
                 }
-                if !found { task.cancel() }
-            }
+            } // End for task
 
             // Set updating to false for lists that don't have tasks.
-//            ABPManager.sharedInstance().setNotUpdating(forNames: listNames)
+            ABPManager.sharedInstance().setNotUpdating(forNames: listsToRemoveUpdatingFrom)
+
 
         })
     }
