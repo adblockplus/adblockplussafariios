@@ -85,7 +85,7 @@ class ABPManager: NSObject {
         super.init()
         defer {
             adblockPlus = AdblockPlusExtras()
-            filterListsUpdater = FilterListsUpdater()
+            filterListsUpdater = FilterListsUpdater(abpManager: self)
         }
     }
 

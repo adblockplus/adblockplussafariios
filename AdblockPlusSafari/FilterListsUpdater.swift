@@ -10,6 +10,7 @@ import SafariServices
 ///
 /// self.filterLists is what type?
 /// Filter lists are [String :[String: Any]] - Dictionary of dictionaries
+///
 class FilterListsUpdater: AdblockPlusShared,
                           URLSessionDownloadDelegate,
                           FileManagerDelegate {
@@ -22,6 +23,7 @@ class FilterListsUpdater: AdblockPlusShared,
 
     var updatingGroupIdentifier = 0
     var cbManager: ContentBlockerManagerProtocol?
+    var abpManager: ABPManager?
 
     /// Maximum date for lastUpdated.
     var lastUpdate: Date {
@@ -33,24 +35,36 @@ class FilterListsUpdater: AdblockPlusShared,
         }
 
     /// Process running tasks and add a reloading observer.
-    override init() {
+    ///
+    /// Because the ABPManager initializes an instance of this class in its init, the shared instance of ABPManager
+    /// cannot be used within the init of this class without forming a circular reference.
+    init(abpManager: ABPManager) {
         dLog("🍺 - should only be called once", date: "2017-Oct-24")
         super.init()
         cbManager = ContentBlockerManager()
+        self.abpManager = abpManager
         removeUpdatingGroupID()
 
         // DZ: Needs setting of _needsDisplayErrorDialog
 
-        processRunningTasks()
+//        processRunningTasks()
         addReloadingObserver()
     }
 
     /// Remove the updating state key from a filter list.
     private func removeUpdatingGroupID() {
         dLog("", date: "2017-Oct-24")
-        for key in filterLists.keys {
-            filterLists[key]?.removeValue(forKey: updatingKey)
+//        for key in filterLists.keys {
+//            filterLists[key]?.removeValue(forKey: updatingKey)
+//        }
+        let lists = abpManager?.filterLists()
+        var newLists = [FilterList]()
+        for var list in lists! {
+            list.updatingGroupIdentifier = nil
+            newLists.append(list)
         }
+//        ABPManager.sharedInstance().saveFilterLists(newLists)
+        abpManager?.saveFilterLists(newLists)
     }
 
     /// Update the state of all filter lists. If there is a task to complete, save a new download task.
@@ -175,12 +189,13 @@ class FilterListsUpdater: AdblockPlusShared,
         let nc = NotificationCenter.default
         nc.rx.notification(NSNotification.Name.UIApplicationWillEnterForeground,
                            object: nil)
+            .subscribeOn(MainScheduler.asyncInstance)
             .subscribe { event in
-                self.synchronize()
-                let abp = ABPManager.sharedInstance().adblockPlus
-                dLog("reloading state = \(abp?.reloading)", date: "2017-Dec-20")
-                if abp?.reloading == true { return }
-                abp?.performActivityTest(with: ContentBlockerManager())
+//                self.synchronize()
+//                let abp = ABPManager.sharedInstance().adblockPlus
+//                dLog("reloading state = \(abp?.reloading)", date: "2017-Dec-20")
+//                if abp?.reloading == true { return }
+                self.abpManager?.adblockPlus.performActivityTest(with: ContentBlockerManager())
             }.disposed(by: bag)
     }
 

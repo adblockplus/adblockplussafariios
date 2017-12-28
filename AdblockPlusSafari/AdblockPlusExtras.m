@@ -41,15 +41,15 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 {
     if (self = [super init]) {
         // Remove updatingGroupIdentifier, which is only runtime attribute
-        NSMutableDictionary *modifiedFilterLists = [self.filterLists mutableCopy];
-        for (NSString *filterListName in self.filterLists) {
-            NSMutableDictionary *modifiedFilterList = [self.filterLists[filterListName] mutableCopy];
-            [modifiedFilterList removeObjectForKey:@"updatingGroupIdentifier"];
-            modifiedFilterLists[filterListName] = modifiedFilterList;
-        }
-        self.filterLists = modifiedFilterLists;
+//        NSMutableDictionary *modifiedFilterLists = [self.filterLists mutableCopy];
+//        for (NSString *filterListName in self.filterLists) {
+//            NSMutableDictionary *modifiedFilterList = [self.filterLists[filterListName] mutableCopy];
+//            [modifiedFilterList removeObjectForKey:@"updatingGroupIdentifier"];
+//            modifiedFilterLists[filterListName] = modifiedFilterList;
+//        }
+//        self.filterLists = modifiedFilterLists;
 
-        // Process running tasks
+//        // Process running tasks
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:self.backgroundSessionConfigurationIdentifier];
         _backgroundSession = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
         _downloadTasks = [[NSMutableDictionary alloc] init];
@@ -102,13 +102,13 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
             }
         }];
 
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(onApplicationWillEnterForegroundNotification:)
-                                                     name:UIApplicationWillEnterForegroundNotification
-                                                   object:nil];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self onApplicationWillEnterForegroundNotification:nil];
-        });
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//                                                 selector:@selector(onApplicationWillEnterForegroundNotification:)
+//                                                     name:UIApplicationWillEnterForegroundNotification
+//                                                   object:nil];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self onApplicationWillEnterForegroundNotification:nil];
+//        });
     }
     return self;
 }
