@@ -145,12 +145,6 @@ class ABPManager: NSObject {
         saveFilterLists(newLists)
     }
 
-    func downloadTasks() -> [URLSessionDownloadTask]
-    {
-        var result = [URLSessionDownloadTask]()
-        return result
-    }
-
     // ------------------------------------------------------------
     // MARK: - Foreground mode -
     // ------------------------------------------------------------
@@ -174,6 +168,7 @@ class ABPManager: NSObject {
     // MARK: - Background mode -
     // ------------------------------------------------------------
 
+    /// Add background fetches for outdated filter lists.
     func handlePerformFetch(withCompletionHandler completion: @escaping (UIBackgroundFetchResult) -> Void) {
         guard let updater = ABPManager.sharedInstance().filterListsUpdater else { return }
         let outdatedFilterListNames = updater.outdatedFilterListNames()
@@ -183,7 +178,7 @@ class ABPManager: NSObject {
                 outdatedFilterLists[outdatedFilterListName] = adblockPlus.filterLists[outdatedFilterListName]
             }
             updater.updateFilterLists(withNames: outdatedFilterListNames,
-                                       userTriggered: false)
+                                      userTriggered: false)
             backgroundFetches.append(["completion": completion,
                                       "filterLists": outdatedFilterLists,
                                       "startDate": Date()])
@@ -288,6 +283,7 @@ class ABPManager: NSObject {
             })
     }
 
+    /// Check last update of filter lists.
     private func checkFilterList() {
         if adblockPlus.updating {
             for bgFetch in backgroundFetches {

@@ -62,7 +62,6 @@ class FilterListsUpdater: AdblockPlusShared,
                                        delegateQueue: OperationQueue.main)
         backgroundSession?.getAllTasks(completionHandler: { tasks in
             let lists = ABPManager.sharedInstance().filterLists()
-//            var listNames = lists.flatMap { $0.name }
             var listsToRemoveUpdatingFrom = [FilterListName]()
 
             // Remove filter lists whose tasks are still running.
@@ -89,7 +88,6 @@ class FilterListsUpdater: AdblockPlusShared,
                             task.cancel()
                         }
                         found = true
-//                        listNames.remove(at: listIndex)
                         if let name = list.name {
                             listsToRemoveUpdatingFrom.append(name)
                         }
@@ -106,8 +104,6 @@ class FilterListsUpdater: AdblockPlusShared,
 
             // Set updating to false for lists that don't have tasks.
             ABPManager.sharedInstance().setNotUpdating(forNames: listsToRemoveUpdatingFrom)
-
-
         })
     }
 

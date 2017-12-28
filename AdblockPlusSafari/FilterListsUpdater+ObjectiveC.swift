@@ -1,4 +1,0 @@
-extension FilterListsUpdater {
-    func convertFilterListsToObjC() {
-    }
-}

@@ -20,7 +20,6 @@
 		657CEC7E1F9EC47B00F37B68 /* FilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657CEC7C1F9EC47A00F37B68 /* FilterList.swift */; };
 		658FCAA61FF45A1A00198A2A /* IKILogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FCAA51FF45A1A00198A2A /* IKILogger.swift */; };
 		658FCAAA1FF45A2B00198A2A /* FilterListsUpdater+DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FCAA71FF45A2A00198A2A /* FilterListsUpdater+DownloadDelegate.swift */; };
-		658FCAAB1FF45A2B00198A2A /* FilterListsUpdater+ObjectiveC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FCAA81FF45A2A00198A2A /* FilterListsUpdater+ObjectiveC.swift */; };
 		658FCAAC1FF45A2B00198A2A /* FilterListsUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FCAA91FF45A2B00198A2A /* FilterListsUpdater.swift */; };
 		658FCAAE1FF45A3600198A2A /* ContentBlockerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FCAAD1FF45A3600198A2A /* ContentBlockerManager.swift */; };
 		65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A173F31F60A20B004107EF /* SafariServices.framework */; };
@@ -164,7 +163,6 @@
 		657CEC7C1F9EC47A00F37B68 /* FilterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterList.swift; sourceTree = "<group>"; };
 		658FCAA51FF45A1A00198A2A /* IKILogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IKILogger.swift; path = AdblockPlusSafari/IKILogger.swift; sourceTree = "<group>"; };
 		658FCAA71FF45A2A00198A2A /* FilterListsUpdater+DownloadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilterListsUpdater+DownloadDelegate.swift"; sourceTree = "<group>"; };
-		658FCAA81FF45A2A00198A2A /* FilterListsUpdater+ObjectiveC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilterListsUpdater+ObjectiveC.swift"; sourceTree = "<group>"; };
 		658FCAA91FF45A2B00198A2A /* FilterListsUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterListsUpdater.swift; sourceTree = "<group>"; };
 		658FCAAD1FF45A3600198A2A /* ContentBlockerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlockerManager.swift; sourceTree = "<group>"; };
 		65A173F31F60A20B004107EF /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
@@ -640,7 +638,6 @@
 				699876F21BBE721900595FB9 /* FilterLists.plist */,
 				658FCAA91FF45A2B00198A2A /* FilterListsUpdater.swift */,
 				658FCAA71FF45A2A00198A2A /* FilterListsUpdater+DownloadDelegate.swift */,
-				658FCAA81FF45A2A00198A2A /* FilterListsUpdater+ObjectiveC.swift */,
 				65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */,
 				E9071D501B76897C00091AEB /* Info.plist */,
 				E9E897421C4947F60005D6E2 /* InfoPlist.strings */,
@@ -1012,7 +1009,6 @@
 				69EA09AB1DC75AA00018FAC0 /* ActivationWaitingController.m in Sources */,
 				697D27321DCB492000118902 /* AdblockPlus+ActivityChecking.m in Sources */,
 				69F4D92A1B95F28B00300817 /* AcceptableAdsController.m in Sources */,
-				658FCAAB1FF45A2B00198A2A /* FilterListsUpdater+ObjectiveC.swift in Sources */,
 				69A2BF471C4E9C6B00A81994 /* WhitelistedSiteCell.m in Sources */,
 				691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */,
 				69C19C771B9835D1009ACBAC /* RootController.m in Sources */,
