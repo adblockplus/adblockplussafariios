@@ -16,56 +16,91 @@ class FilterListsUpdater: AdblockPlusShared,
     let updatingKey = "updatingGroupIdentifier"
     let bag = DisposeBag()
     weak var backgroundSession: URLSession?
-    var downloadTasks: [String: URLSessionTask]?
+
+    /// Filter list download tasks keyed by URL string.
+    var downloadTasks = [String: URLSessionTask]()
+
     var updatingGroupIdentifier = 0
     var cbManager: ContentBlockerManagerProtocol?
 
     /// Maximum date for lastUpdated.
     var lastUpdate: Date {
             var lists = self.filterLists.keys.map { key in
-                    return FilterList(fromDictionary: self.filterLists[key])
+                    return FilterList(withName: key,
+                                      fromDictionary: self.filterLists[key])
                 }
             return .distantPast
         }
 
     /// Process running tasks and add a reloading observer.
     override init() {
-        dLog("", date: "2017-Oct-24")
+        dLog("🍺 - should only be called once", date: "2017-Oct-24")
         super.init()
         cbManager = ContentBlockerManager()
-        removeUpdatingGroupID()
-        processRunningTasks()
+//        removeUpdatingGroupID()
+
+        // DZ: Needs setting of _needsDisplayErrorDialog
+
+//        processRunningTasks()
         addReloadingObserver()
     }
 
     /// Remove the updating state key from a filter list.
-    func removeUpdatingGroupID() {
+    private func removeUpdatingGroupID() {
         dLog("", date: "2017-Oct-24")
         for key in filterLists.keys {
             filterLists[key]?.removeValue(forKey: updatingKey)
         }
     }
 
-    /// Is there where background tasks are processed?
-    func processRunningTasks() {
-        dLog("", date: "2017-Oct-24")
+    /// Update the state of all filter lists. If there is a task to complete, save a new download task.
+    private func processRunningTasks() {
+        dLog("Process running tasks", date: "2017-Oct-24")
         let config = URLSessionConfiguration.background(withIdentifier: backgroundSessionConfigurationIdentifier())
         backgroundSession = URLSession(configuration: config,
-                                            delegate: self,
-                                            delegateQueue: OperationQueue.main)
+                                       delegate: self,
+                                       delegateQueue: OperationQueue.main)
         backgroundSession?.getAllTasks(completionHandler: { tasks in
-            // Remove filter lists whose tasks are still running
+            let lists = ABPManager.sharedInstance().filterLists()
+            var listNames = lists.flatMap { $0.name }
+
+            // Remove filter lists whose tasks are still running.
+            for task in tasks {
+                var found = false
+                var listIndex = 0
+                for list in lists
+                {
+                    if let url = task.originalRequest?.url?.absoluteString {
+                        if url == list.url &&
+                           task.taskIdentifier == list.taskIdentifier {
+                            self.downloadTasks[url] = task
+                        } else {
+                            task.cancel()
+                        }
+                        found = true
+                        listNames.remove(at: listIndex)
+                        break
+                    }
+                    listIndex += 1
+                }
+                if !found { task.cancel() }
+            }
+
+            // Set updating to false for lists that don't have tasks.
+//            ABPManager.sharedInstance().setNotUpdating(forNames: listNames)
+
         })
     }
 
-    ///
+    /// Update filter lists with statuses of tasks running while the app is in the background.
     func updateFilterLists(withNames names: [FilterListName],
                            userTriggered: Bool) {
         if names.count == 0 { return }
         updatingGroupIdentifier += 1
         var modifiedFilterLists = [String: FilterList]()
         for name in names {
-            if var filterList = FilterList(fromDictionary: self.filterLists[name]) {
+            if var filterList = FilterList(withName: name,
+                                           fromDictionary: self.filterLists[name]) {
                 if let urlString = filterList.url,
                    let url = URL(string: urlString) {
                     let task = backgroundSession?.downloadTask(with: url)
@@ -87,10 +122,10 @@ class FilterListsUpdater: AdblockPlusShared,
     func startDownloadTask(forFilterListName name: FilterListName,
                            task: URLSessionDownloadTask?)
     {
-        guard var tasks = downloadTasks,
-              let uwTask = task else { return }
-        tasks[name]?.cancel()
-        tasks[name] = uwTask
+        dLog("🌋", date: "2017-Dec-27")
+        guard let uwTask = task else { return }
+        downloadTasks[name]?.cancel()
+        downloadTasks[name] = uwTask
         uwTask.resume()
     }
 
@@ -102,7 +137,8 @@ class FilterListsUpdater: AdblockPlusShared,
     func outdatedFilterListNames() -> [FilterListName] {
         var outdated = [FilterListName]()
         for key in filterLists.keys {
-            if let uwList = FilterList(fromDictionary: filterLists[key]) {
+            if let uwList = FilterList(withName: key,
+                                       fromDictionary: filterLists[key]) {
                 if uwList.expired() {
                     outdated.append(key)
                 }
