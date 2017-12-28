@@ -133,14 +133,14 @@ class ABPManager: NSObject {
     }
 
     /// Set updating on all filter lists to be false.
-    /// DZ: Are the changes saved using var list?
-    func setNotUpdating(forNames: [FilterListName])
+    func setNotUpdating(forNames names: [FilterListName])
     {
         let lists = filterLists()
         var newLists = [FilterList]()
         for var list in lists {
             list.updating = false
             newLists.append(list)
+            dLog("setting not updating on \(list.name)", date: "2017-Dec-27")
         }
         saveFilterLists(newLists)
     }
