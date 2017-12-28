@@ -31,6 +31,7 @@
 		65C1769D1F7C79D2008E2BA1 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */; };
 		65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1769E1F7C8099008E2BA1 /* RxSwift.framework */; };
 		65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; };
+		65E1EED11FF49B3800347032 /* ABPDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E1EED01FF49B3800347032 /* ABPDebug.swift */; };
 		65E4EE3C1F7DE1E200ED31BF /* KVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */; };
 		65F8BB621F611142004B9ED4 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
 		690362D81C19A7B9000E5581 /* easylist_content_blocker_v2.json in Resources */ = {isa = PBXBuildFile; fileRef = 690362D61C19A7B9000E5581 /* easylist_content_blocker_v2.json */; };
@@ -173,6 +174,7 @@
 		65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		65C1769E1F7C8099008E2BA1 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		65C176A01F7C809E008E2BA1 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		65E1EED01FF49B3800347032 /* ABPDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPDebug.swift; sourceTree = "<group>"; };
 		65E4EE3A1F7DE1E100ED31BF /* AdblockPlusSafariTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdblockPlusSafariTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOTests.swift; sourceTree = "<group>"; };
 		65F8BB601F61113F004B9ED4 /* yajl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = yajl.framework; path = Carthage/Build/iOS/yajl.framework; sourceTree = SOURCE_ROOT; };
@@ -587,6 +589,7 @@
 		E9071D331B76897C00091AEB = {
 			isa = PBXGroup;
 			children = (
+				65E1EED01FF49B3800347032 /* ABPDebug.swift */,
 				E5DF8C591F7DBA68003AD9B8 /* README.md */,
 				658FCAA51FF45A1A00198A2A /* IKILogger.swift */,
 				E9071D3E1B76897C00091AEB /* AdblockPlusSafari */,
@@ -947,7 +950,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SWIFTLINT=\"/usr/local/bin/swiftlint\"\nif [ -f $SWIFTLINT ]\nthen\n    $SWIFTLINT\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "exit 0 ; SWIFTLINT=\"/usr/local/bin/swiftlint\"\nif [ -f $SWIFTLINT ]\nthen\n    $SWIFTLINT\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -994,6 +997,7 @@
 				69142D791CDCCF1100FD2640 /* NSDictionary+FilterList.m in Sources */,
 				65C1769B1F7C7996008E2BA1 /* AppDelegate.swift in Sources */,
 				69EA09A91DC75AA00018FAC0 /* ActivationConfirmationController.m in Sources */,
+				65E1EED11FF49B3800347032 /* ABPDebug.swift in Sources */,
 				657CEC7E1F9EC47B00F37B68 /* FilterList.swift in Sources */,
 				69EA09A71DC75AA00018FAC0 /* DialogPresenterController.m in Sources */,
 				69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */,
