@@ -72,6 +72,7 @@ class ABPManager: NSObject {
     /// Access the shared instance.
     @objc class func sharedInstance() -> ABPManager {
         guard let shared = privateSharedInstance else {
+            dLog("machen neu", date: "2017-Dec-27")
             privateSharedInstance = ABPManager()
             return privateSharedInstance!
         }
@@ -94,21 +95,25 @@ class ABPManager: NSObject {
         adblockPlus = nil
     }
 
+    // ------------------------------------------------------------
+    // MARK: - Objective-C Bridging -
+    // ------------------------------------------------------------
+
     /// During the transition to Swift, filter lists previously held in Objective-C data structures
     /// will be made available in native Swift.
     func filterLists() -> [FilterList]
     {
-        let lists = [FilterList]()
+        var result = [FilterList]()
 
         // Grab the lists from the Objective-C side.
 
         for key in adblockPlus.filterLists.keys {
-
+            let converted = FilterList(fromDictionary: adblockPlus.filterLists[key])
+            result.append(converted!)
         }
 
-        return lists
+        return result
     }
-
 
     // ------------------------------------------------------------
     // MARK: - Foreground mode -
@@ -192,6 +197,7 @@ class ABPManager: NSObject {
     /// * Acceptable ads switch is changed
     /// * A website is added to, or deleted from, the whitelist, inside ABP
     /// * A website is whitelisted with the Safari action extension
+    /// Note that instantiating an ABPManager shared instance within the subscription will cause an infinite loop.
     private func reloadingSubscription() -> Disposable {
         return adblockPlus.rx
             .observeWeakly(Bool.self,
@@ -206,6 +212,7 @@ class ABPManager: NSObject {
                 self.reloadingKeyValue = uwReloading ? 1 : 0
 
                 dLog("⛸️", date: "2017-Dec-26")
+                ABPDebug.printFilterLists(self.filterLists())
 
                 let invalidBgTask = (self.backgroundTaskIdentifier == UIBackgroundTaskInvalid)
                 if self.backgroundTaskIdentifier != UIBackgroundTaskInvalid &&
