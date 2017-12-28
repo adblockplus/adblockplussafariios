@@ -17,6 +17,9 @@
 
 /// Swift-based FilterList model struct to replace the Objective-C FilterList model object.
 struct FilterList {
+    /// Name of the list
+    var name: String?
+
     /// Task identifier of associated download task
     var taskIdentifier: Int?
 

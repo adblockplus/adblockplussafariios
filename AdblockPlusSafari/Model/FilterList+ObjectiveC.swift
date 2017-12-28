@@ -18,8 +18,10 @@
 /// Objective-C bridging for FilterList model struct.
 extension FilterList {
     /// Failable initializer that converts a filter list object from the Objective-C implementation.
-    init?(fromDictionary dictionary: [String: Any]?) {
+    init?(withName: String,
+          fromDictionary dictionary: [String: Any]?) {
         guard let uwDict = dictionary else { return nil }
+        name = uwDict["name"] as? String
         taskIdentifier = uwDict["taskIdentifier"] as? Int
         updatingGroupIdentifier = uwDict["updatingGroupIdentifier"] as? Int
         downloaded = uwDict["downloaded"] as? Bool
