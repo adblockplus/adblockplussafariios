@@ -125,6 +125,26 @@ class ABPManager: NSObject {
         adblockPlus.filterLists = converted
     }
 
+    /// Remove a filter list and save the results to the Objective-C side.
+    func removeFilterList(_ name: String?)
+    {
+        guard name != nil else { return }
+        saveFilterLists(filterLists().filter { $0.name != name })
+    }
+
+    /// Set updating on all filter lists to be false.
+    /// DZ: Are the changes saved using var list?
+    func setNotUpdating(forNames: [FilterListName])
+    {
+        let lists = filterLists()
+        var newLists = [FilterList]()
+        for var list in lists {
+            list.updating = false
+            newLists.append(list)
+        }
+        saveFilterLists(newLists)
+    }
+
     func downloadTasks() -> [URLSessionDownloadTask]
     {
         var result = [URLSessionDownloadTask]()
