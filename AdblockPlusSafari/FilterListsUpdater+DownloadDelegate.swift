@@ -19,5 +19,6 @@ extension FilterListsUpdater {
         for name in filterLists {
 
         }
+        return ""
     }
 }
