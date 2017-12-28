@@ -104,14 +104,30 @@ class ABPManager: NSObject {
     func filterLists() -> [FilterList]
     {
         var result = [FilterList]()
-
-        // Grab the lists from the Objective-C side.
-
         for key in adblockPlus.filterLists.keys {
-            let converted = FilterList(fromDictionary: adblockPlus.filterLists[key])
+            let converted = FilterList(withName: key,
+                                       fromDictionary: adblockPlus.filterLists[key])
             result.append(converted!)
         }
+        return result
+    }
 
+    /// Write the filter lists back to Objective-C.
+    /// It is to be called with the lists to be saved.
+    func saveFilterLists(_ lists: [FilterList])
+    {
+        var converted = [String: [String: Any]]()
+        for list in lists {
+            if let name = list.name {
+                converted[name] = list.toDictionary()
+            }
+        }
+        adblockPlus.filterLists = converted
+    }
+
+    func downloadTasks() -> [URLSessionDownloadTask]
+    {
+        var result = [URLSessionDownloadTask]()
         return result
     }
 
