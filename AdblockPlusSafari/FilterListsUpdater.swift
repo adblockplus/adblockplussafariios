@@ -47,7 +47,7 @@ class FilterListsUpdater: AdblockPlusShared,
 
         // DZ: Needs setting of _needsDisplayErrorDialog
 
-//        processRunningTasks()
+        processRunningTasks()
         addReloadingObserver()
     }
 
@@ -69,20 +69,30 @@ class FilterListsUpdater: AdblockPlusShared,
 
     /// Update the state of all filter lists. If there is a task to complete, save a new download task.
     private func processRunningTasks() {
-        dLog("Process running tasks", date: "2017-Oct-24")
-        let config = URLSessionConfiguration.background(withIdentifier: backgroundSessionConfigurationIdentifier())
-        backgroundSession = URLSession(configuration: config,
+        let id = backgroundSessionConfigurationIdentifier()
+        dLog("Process running tasks w id \(id)", date: "2017-Oct-24")
+        let config = URLSessionConfiguration.background(withIdentifier: id)
+        abpManager?.adblockPlus.backgroundSession = URLSession(configuration: config,
                                        delegate: self,
                                        delegateQueue: OperationQueue.main)
-        backgroundSession?.getAllTasks(completionHandler: { tasks in
-            let lists = ABPManager.sharedInstance().filterLists()
+        abpManager?.adblockPlus.backgroundSession?.getAllTasks(completionHandler: { tasks in
+
+            dLog("🏜️", date: "2017-Dec-28")
+
+            let lists = self.abpManager?.filterLists()
             var listsToRemoveUpdatingFrom = [FilterListName]()
+            for list in lists! {
+                listsToRemoveUpdatingFrom.append(list.name!)
+            }
+            dLog("remove from \(listsToRemoveUpdatingFrom)", date: "2017-Dec-28")
 
             // Remove filter lists whose tasks are still running.
             for task in tasks {
+                dLog("🐎 task = \(task)", date: "2017-Dec-28")
                 var found = false
                 var listIndex = 0
-                for list in lists
+
+                for list in lists!
                 {
                     if let url = task.originalRequest?.url?.absoluteString
                     {
@@ -91,6 +101,15 @@ class FilterListsUpdater: AdblockPlusShared,
                         {
                             dLog("♣️ dl task", date: "2017-Dec-27")
                             self.downloadTasks[url] = task
+                            var nameIndex = 0
+                            for name in listsToRemoveUpdatingFrom {
+                                if name == list.name {
+                                    listsToRemoveUpdatingFrom.remove(at: nameIndex)
+                                    dLog("found list \(name) that needs updating", date: "2017-Dec-28")
+                                    break
+                                }
+                                nameIndex += 1
+                            }
                         }
                         else
                         {
@@ -102,9 +121,9 @@ class FilterListsUpdater: AdblockPlusShared,
                             task.cancel()
                         }
                         found = true
-                        if let name = list.name {
-                            listsToRemoveUpdatingFrom.append(name)
-                        }
+//                        if let name = list.name {
+//                            listsToRemoveUpdatingFrom.append(name)
+//                        }
                         break
                     }
                     listIndex += 1
@@ -117,7 +136,7 @@ class FilterListsUpdater: AdblockPlusShared,
             } // End for task
 
             // Set updating to false for lists that don't have tasks.
-            ABPManager.sharedInstance().setNotUpdating(forNames: listsToRemoveUpdatingFrom)
+            self.abpManager?.setNotUpdating(forNames: listsToRemoveUpdatingFrom)
         })
     }
 
