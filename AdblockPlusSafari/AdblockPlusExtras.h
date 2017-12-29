@@ -40,4 +40,7 @@
 
 @property (nonatomic) BOOL needsDisplayErrorDialog;
 
+/// Has been changed to public so that it can be accessed from Swift.
+@property (nonatomic, weak) NSURLSession *backgroundSession;
+
 @end
