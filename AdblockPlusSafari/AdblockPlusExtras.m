@@ -28,7 +28,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
 @interface AdblockPlusExtras () <NSURLSessionDownloadDelegate, NSFileManagerDelegate>
 
-@property (nonatomic, weak) NSURLSession *backgroundSession;
+
 @property (nonatomic, strong) NSMutableDictionary<NSString *, __kindof NSURLSessionTask *> *downloadTasks;
 @property (nonatomic) NSUInteger updatingGroupIdentifier;
 @property (nonatomic) BOOL disableReloading;
@@ -50,57 +50,58 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 //        self.filterLists = modifiedFilterLists;
 
 //        // Process running tasks
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:self.backgroundSessionConfigurationIdentifier];
-        _backgroundSession = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-        _downloadTasks = [[NSMutableDictionary alloc] init];
-        _needsDisplayErrorDialog = [self.adblockPlusDetails boolForKey:AdblockPlusNeedsDisplayErrorDialog];
-
-        // Update filter lists with statuses of task running in background (outside application scope).
-        __weak __typeof(self) wSelf = self;
-        [_backgroundSession getAllTasksWithCompletionHandler:^(NSArray<__kindof NSURLSessionTask *> *_Nonnull tasks) {
-            __strong __typeof(wSelf) sSelf = wSelf;
-            if (sSelf) {
-                NSMutableSet<NSString *> *set = [NSMutableSet setWithArray:sSelf.filterLists.allKeys];
-
-                // Remove filter lists whose tasks are still running
-                for (NSURLSessionTask *task in tasks) {
-                    NSString *url = task.originalRequest.URL.absoluteString;
-                    BOOL found = NO;
-                    for (NSString *filterListName in sSelf.filterLists) {
-                        NSDictionary *filterList = sSelf.filterLists[filterListName];
-                        if ([url isEqualToString:filterList[@"url"]]) {
-                            if (task.taskIdentifier == [sSelf.filterLists[filterListName] taskIdentifier]) {
-                                sSelf.downloadTasks[task.originalRequest.URL.absoluteString] = task;
-                            } else {
-                                [task cancel];
-                            }
-                            found = YES;
-                            break;
-                        }
-                    }
-
-                    if (!found) {
-                        [task cancel];
-                    }
-                }
-
-                // Remove filter lists whose tasks have been found
-                for (NSString *filterListName in self.downloadTasks) {
-                    [set removeObject:filterListName];
-                }
-
-                // Set updating flag to false of filter list, which was cancelled by user (user killed application).
-                if ([set count] > 0) {
-                    NSMutableDictionary *filterLists = [sSelf.filterLists mutableCopy];
-                    for (NSString *key in set) {
-                        NSMutableDictionary *filterList = [filterLists[key] mutableCopy];
-                        filterList[@"updating"] = @NO;
-                        filterLists[key] = filterList;
-                    }
-                    sSelf.filterLists = filterLists;
-                }
-            }
-        }];
+//        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:self.backgroundSessionConfigurationIdentifier];
+//        _backgroundSession = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+//        _downloadTasks = [[NSMutableDictionary alloc] init];
+//        _needsDisplayErrorDialog = [self.adblockPlusDetails boolForKey:AdblockPlusNeedsDisplayErrorDialog];
+//
+//        // Update filter lists with statuses of task running in background (outside application scope).
+//        __weak __typeof(self) wSelf = self;
+//        [_backgroundSession getAllTasksWithCompletionHandler:^(NSArray<__kindof NSURLSessionTask *> *_Nonnull tasks) {
+//            __strong __typeof(wSelf) sSelf = wSelf;
+//            if (sSelf) {
+//                NSMutableSet<NSString *> *set = [NSMutableSet setWithArray:sSelf.filterLists.allKeys];
+//
+//                // Remove filter lists whose tasks are still running
+//                for (NSURLSessionTask *task in tasks) {
+//                    NSLog(@"TASK = %@", task);
+//                    NSString *url = task.originalRequest.URL.absoluteString;
+//                    BOOL found = NO;
+//                    for (NSString *filterListName in sSelf.filterLists) {
+//                        NSDictionary *filterList = sSelf.filterLists[filterListName];
+//                        if ([url isEqualToString:filterList[@"url"]]) {
+//                            if (task.taskIdentifier == [sSelf.filterLists[filterListName] taskIdentifier]) {
+//                                sSelf.downloadTasks[task.originalRequest.URL.absoluteString] = task;
+//                            } else {
+//                                [task cancel];
+//                            }
+//                            found = YES;
+//                            break;
+//                        }
+//                    }
+//
+//                    if (!found) {
+//                        [task cancel];
+//                    }
+//                }
+//
+//                // Remove filter lists whose tasks have been found
+//                for (NSString *filterListName in self.downloadTasks) {
+//                    [set removeObject:filterListName];
+//                }
+//
+//                // Set updating flag to false of filter list, which was cancelled by user (user killed application).
+//                if ([set count] > 0) {
+//                    NSMutableDictionary *filterLists = [sSelf.filterLists mutableCopy];
+//                    for (NSString *key in set) {
+//                        NSMutableDictionary *filterList = [filterLists[key] mutableCopy];
+//                        filterList[@"updating"] = @NO;
+//                        filterLists[key] = filterList;
+//                    }
+//                    sSelf.filterLists = filterLists;
+//                }
+//            }
+//        }];
 
 //        [[NSNotificationCenter defaultCenter] addObserver:self
 //                                                 selector:@selector(onApplicationWillEnterForegroundNotification:)
@@ -227,10 +228,11 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
     [self updateFilterListsWithNames:@[ self.activeFilterListName ] userTriggered:userTriggered];
 }
 
-
 - (void)updateFilterListsWithNames:(NSArray<NSString *> *)filterListNames userTriggered:(BOOL)userTriggered
 __attribute__((deprecated("Use FilterListsUpdater.updateFilterListsWithNames()")));
 {
+    NSLog(@"🏞");
+
     if ([filterListNames count] == 0) {
         return;
     }
@@ -288,6 +290,7 @@ __attribute__((deprecated("Use FilterListsUpdater.updateFilterListsWithNames()")
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
+    NSLog(@"*****");
     NSString *filterListName = [self filterListNameForTaskTaskIdentifier:task.taskIdentifier];
     FilterList *filterList = [[FilterList alloc] initWithDictionary:self.filterLists[filterListName]];
     if (filterList) {
@@ -306,6 +309,7 @@ __attribute__((deprecated("Use FilterListsUpdater.updateFilterListsWithNames()")
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
+    NSLog(@"*-*-*");
     NSString *filterListName = [self filterListNameForTaskTaskIdentifier:downloadTask.taskIdentifier];
     FilterList *filterList = [[FilterList alloc] initWithDictionary:self.filterLists[filterListName]];
     if (filterList) {
@@ -382,11 +386,11 @@ __attribute__((deprecated("Use FilterListsUpdater.updateFilterListsWithNames()")
 }
 
 /// Changed to call Swift ABPManager during transition to Swift.
-- (void)onApplicationWillEnterForegroundNotification:(NSNotification *)notification
-{
-    NSLog(@"🌶");
-    [[[ABPManager sharedInstance] adblockPlus]
-                  performActivityTestWith:[[ContentBlockerManager alloc] init]];
-}
+//- (void)onApplicationWillEnterForegroundNotification:(NSNotification *)notification
+//{
+//    NSLog(@"🌶");
+//    [[[ABPManager sharedInstance] adblockPlus]
+//                  performActivityTestWith:[[ContentBlockerManager alloc] init]];
+//}
 
 @end
