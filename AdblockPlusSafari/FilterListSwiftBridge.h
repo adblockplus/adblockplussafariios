@@ -15,8 +15,14 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import "AdblockPlus+ActivityChecking.h"
-#import "AdblockPlusExtras.h"
-#import "Appearance.h"
-#import "FilterListSwiftBridge.h"
-#import "RootController.h"
+#import "FilterList+Processing.h"
+
+@interface FilterListSwiftBridge: NSObject
+
+@property(nullable) FilterList *filterList;
+
+- (nonnull instancetype)initWithDictionary:(nonnull NSDictionary *)dictionary;
+- (BOOL)parseFilterListFromURL:(nonnull NSURL *)url
+                     withError:(NSError *__nullable *__nullable)error;
+
+@end

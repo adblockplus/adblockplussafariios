@@ -19,6 +19,7 @@
 		657CEC7D1F9EC47B00F37B68 /* FilterList+ObjectiveC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657CEC7B1F9EC47A00F37B68 /* FilterList+ObjectiveC.swift */; };
 		657CEC7E1F9EC47B00F37B68 /* FilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657CEC7C1F9EC47A00F37B68 /* FilterList.swift */; };
 		65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A173F31F60A20B004107EF /* SafariServices.framework */; };
+		65ADD2481FF73DAF00A9E69F /* FilterListSwiftBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 65ADD2471FF73DAF00A9E69F /* FilterListSwiftBridge.m */; };
 		65BBB6101F7ED10700B013C3 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
 		65BBB6111F7ED10700B013C3 /* yajl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65C1769B1F7C7996008E2BA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C176981F7C7962008E2BA1 /* AppDelegate.swift */; };
@@ -157,6 +158,8 @@
 		657CEC7B1F9EC47A00F37B68 /* FilterList+ObjectiveC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilterList+ObjectiveC.swift"; sourceTree = "<group>"; };
 		657CEC7C1F9EC47A00F37B68 /* FilterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterList.swift; sourceTree = "<group>"; };
 		65A173F31F60A20B004107EF /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		65ADD2461FF73DAF00A9E69F /* FilterListSwiftBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterListSwiftBridge.h; sourceTree = "<group>"; };
+		65ADD2471FF73DAF00A9E69F /* FilterListSwiftBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterListSwiftBridge.m; sourceTree = "<group>"; };
 		65C176971F7C7961008E2BA1 /* AdblockPlusSafari-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdblockPlusSafari-Bridging-Header.h"; sourceTree = "<group>"; };
 		65C176981F7C7962008E2BA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65C176991F7C7963008E2BA1 /* ABPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABPManager.swift; sourceTree = "<group>"; };
@@ -623,6 +626,8 @@
 				69142D551CDCC51C00FD2640 /* FilterList+Processing.h */,
 				69142D561CDCC51C00FD2640 /* FilterList+Processing.m */,
 				699876F21BBE721900595FB9 /* FilterLists.plist */,
+				65ADD2461FF73DAF00A9E69F /* FilterListSwiftBridge.h */,
+				65ADD2471FF73DAF00A9E69F /* FilterListSwiftBridge.m */,
 				65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */,
 				E9071D501B76897C00091AEB /* Info.plist */,
 				E9E897421C4947F60005D6E2 /* InfoPlist.strings */,
@@ -995,6 +1000,7 @@
 				6541CEA21FAAC69B00601D6F /* TypeAliases.swift in Sources */,
 				69AB6A2E1B96F664005C2075 /* Appearance.m in Sources */,
 				69142D781CDCCF1100FD2640 /* CustomFilterListsController.m in Sources */,
+				65ADD2481FF73DAF00A9E69F /* FilterListSwiftBridge.m in Sources */,
 				69142D571CDCC51C00FD2640 /* FilterList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
