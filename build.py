@@ -18,7 +18,7 @@
 
 """
 
-Builds AdblockPlusSafari Xcode project.
+Builds AdblockPlusSafari Xcode project for iOS.
 
 Supported build configurations:
 
@@ -29,7 +29,7 @@ Usage:
 
     $ python build.py {release|devbuild}
 
-Tested with Python 2.7.12 and 3.6.2.
+Tested with Python 2.7.14 and 3.6.3.
 
 """
 
@@ -45,7 +45,9 @@ BUILD_DIR = os.path.join(BASE_DIR, "build")
 BUILD_NUMBER = time.strftime("%Y%m%d%H%M", time.gmtime())
 VALID_SLICES = ["arm64"]
 FRAMEWORK_DIR = os.path.join(BASE_DIR, "Carthage", "Build", "iOS")
-FRAMEWORKS = [os.path.join("yajl.framework", "yajl")]
+FRAMEWORKS = [os.path.join("yajl.framework", "yajl"),
+              os.path.join("rxswift.framework", "rxswift"),
+              os.path.join("FavIcon.framework", "FavIcon")]
 
 
 def print_usage():
@@ -55,12 +57,17 @@ def print_usage():
 
 def build_dependencies():
     # The bootstrap option here builds the dependencies in Cartfile.resolved.
-    subprocess.check_call(["carthage", "bootstrap"])
+    subprocess.check_call(["carthage",
+                           "bootstrap",
+                           "--platform",
+                           "ios",
+                           "--no-use-binaries"])
 
 
 def strip_slices():
     """
-    Strip unused/invalid slices from built frameworks.
+    Strip unused/invalid slices from built frameworks as required for the
+    Apple App Store.
     """
 
     for framework in FRAMEWORKS:
