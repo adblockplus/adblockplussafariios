@@ -69,7 +69,13 @@ typedef NS_ENUM(NSInteger, AdblockPlusControllerSection) {
     }
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *, id> *)change context:(void *)context
+/// Explicit main thread dispatching has been added to reloading state changes
+/// so that UI APIs are correctly accessed when reloading changes on a
+/// background thread.
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSString *, id> *)change
+                       context:(void *)context
 {
     if ([keyPath isEqualToString:NSStringFromSelector(@selector(enabled))]) {
         self.blockingEnablingSwitch.on = self.adblockPlus.enabled;
@@ -78,8 +84,11 @@ typedef NS_ENUM(NSInteger, AdblockPlusControllerSection) {
         [sections addIndex:AdblockPlusControllerSectionExceptions];
         [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationNone];
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(reloading))]) {
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        [self updateAccessoryViewOfCell:cell];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0
+                                                                                             inSection:0]];
+            [self updateAccessoryViewOfCell:cell];
+        });
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(updating))]) {
         if (self.adblockPlus.updating) {
             [self.activityIndicatorView startAnimating];
@@ -100,7 +109,6 @@ typedef NS_ENUM(NSInteger, AdblockPlusControllerSection) {
                                        NSStringFromSelector(@selector(reloading)),
                                        NSStringFromSelector(@selector(updating)),
                                        NSStringFromSelector(@selector(filterLists)) ];
-    
     for (NSString *keyPath in keyPaths) {
         [_adblockPlus removeObserver:self
                           forKeyPath:keyPath];
@@ -136,7 +144,7 @@ typedef NS_ENUM(NSInteger, AdblockPlusControllerSection) {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-    
+
     if ([cell.reuseIdentifier isEqualToString:@"AdblockPlus"]) {
         cell.accessoryView = self.blockingEnablingSwitch;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -150,7 +158,7 @@ typedef NS_ENUM(NSInteger, AdblockPlusControllerSection) {
         cell.selectionStyle = enabled ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
         cell.textLabel.enabled = enabled;
     }
-    
+
     return cell;
 }
 
@@ -173,7 +181,7 @@ typedef NS_ENUM(NSInteger, AdblockPlusControllerSection) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
+
     if ([cell.reuseIdentifier isEqualToString:@"AcceptableAds"]) {
         [self.parentViewController performSegueWithIdentifier:@"AcceptableAdsSegue" sender:nil];
     } else if ([cell.reuseIdentifier isEqualToString:@"About"]) {
@@ -228,19 +236,19 @@ typedef NS_ENUM(NSInteger, AdblockPlusControllerSection) {
             cell.textLabel.text = NSLocalizedString(@"Configure Filter Lists",
                                                     @"Title of menu option to configure filter lists.");
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            
+
             BOOL enabled = self.adblockPlus.enabled;
             cell.userInteractionEnabled = enabled;
             cell.selectionStyle = enabled ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
             cell.textLabel.enabled = enabled;
             return cell;
         }
-        
+
         NSInteger row = indexPath.row - 1;
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:AdblockPlusControllerSectionDefault];
         return [super tableView:tableView cellForRowAtIndexPath:indexPath];
     }
-    
+
     return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
@@ -259,7 +267,7 @@ typedef NS_ENUM(NSInteger, AdblockPlusControllerSection) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
+
     if ([cell.reuseIdentifier isEqualToString:@"ConfigureFilterLists"]) {
         [self.parentViewController performSegueWithIdentifier:@"ConfigureFilterListsSegue" sender:nil];
     } else {

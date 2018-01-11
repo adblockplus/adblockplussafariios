@@ -49,13 +49,21 @@
     self.tableView.contentInset = UIEdgeInsetsMake(-1, 0, 0, 0);
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *, id> *)change context:(void *)context
+/// Handle state changes for the AA switch and the reloading state of the
+/// content blocker.
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSString *, id> *)change
+                       context:(void *)context
 {
     if ([keyPath isEqualToString:NSStringFromSelector(@selector(acceptableAdsEnabled))]) {
         self.acceptableAdsEnablingSwitch.on = self.adblockPlus.acceptableAdsEnabled;
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(reloading))]) {
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        [self updateAccessoryViewOfCell:cell];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0
+                                                                                             inSection:0]];
+            [self updateAccessoryViewOfCell:cell];
+        });
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
@@ -104,13 +112,16 @@
     self.adblockPlus.acceptableAdsEnabled = s.on;
 }
 
+/// The accessory view changes based on the state of the reloading key. An
+/// activity indicator is shown when reloading is taking place.
 - (void)updateAccessoryViewOfCell:(UITableViewCell *)cell
 {
     if (!self.adblockPlus.reloading) {
         cell.accessoryView = self.acceptableAdsEnablingSwitch;
     } else {
         UIActivityIndicatorView *view =
-            [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [[UIActivityIndicatorView alloc]
+                                      initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [view startAnimating];
         cell.accessoryView = view;
     }
