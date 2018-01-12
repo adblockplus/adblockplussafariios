@@ -1,2 +1,3 @@
+github "adblockplus/FavIcon" "2.0.1"
 github "adblockplus/rxswift" "4.1.0"
 github "adblockplus/yajl-dynamic" "1.0"

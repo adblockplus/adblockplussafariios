@@ -15,6 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import FavIcon
 import MobileCoreServices
 import SafariServices
 import UIKit
@@ -27,6 +28,10 @@ class ActionViewController: UIViewController {
 
     @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var addressField: UITextField!
+    @IBOutlet weak var faviconView: UIImageView!
+
+    @IBOutlet weak var placeholderFaviconView: UIView!
+    @IBOutlet weak var placeholderFaviconLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +54,25 @@ class ActionViewController: UIViewController {
                                                       self?.website = baseURI
                                                       self?.addressField.text = whitelistedHostname
                                                       self?.descriptionField.text = results["title"] as? String
+
+                                                      // Favicon placeholder label consists of a capitalised letter (the first letter of the domain).
+                                                      if let uwWhitelistedHostname = whitelistedHostname {
+                                                          let startIndex = uwWhitelistedHostname.startIndex
+                                                          self?.placeholderFaviconLabel.text = String(uwWhitelistedHostname[startIndex]).uppercased()
+                                                      }
+
+                                                      // Download the website favicon.
+                                                      if let downloadURL = URL(string: baseURI) {
+                                                          FavIcon.downloadPreferred(downloadURL,
+                                                                                    width: GlobalConstants.faviconSize,
+                                                                                    height: GlobalConstants.faviconSize,
+                                                                                    completion: { image in
+                                                                                        if let uwImage = image {
+                                                                                            self?.placeholderFaviconView.isHidden = true
+                                                                                            self?.faviconView.image = uwImage
+                                                                                        }
+                                                                                    })
+                                                      }
                                                   }
                                               }
                                           })

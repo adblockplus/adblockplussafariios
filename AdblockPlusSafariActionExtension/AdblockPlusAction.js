@@ -17,13 +17,14 @@
 
 var AdblockPlusAction = function() {};
 
-AdblockPlusAction.prototype =
-{
-    run: function(arguments)
-    {
+AdblockPlusAction.prototype = {
+    run: function(arguments) {
         // Pass the baseURI of the webpage to the extension.
-        arguments.completionFunction({"baseURI": document.baseURI, "title": document.title});
-    }
+        arguments.completionFunction({"baseURI": document.baseURI,
+                                      "title": document.title,
+                                      "domain": document.domain});
+    },
+    finalize: function(arguments) {}
 };
 
 // The JavaScript file must contain a global object named "ExtensionPreprocessingJS".

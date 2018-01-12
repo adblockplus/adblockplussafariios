@@ -19,4 +19,7 @@
 struct GlobalConstants {
     /// Wake up application every hour (just hint for iOS)
     static let backgroundFetchInterval: TimeInterval = 3600
+
+    /// Maximum favicon size to download
+    static let faviconSize = 180
 }

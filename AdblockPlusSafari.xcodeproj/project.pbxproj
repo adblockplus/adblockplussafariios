@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		291FFD5A1F79495E00FE29C5 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FFD591F79495E00FE29C5 /* ActionViewController.swift */; };
+		292CD5F41F94F84800555814 /* FavIcon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292CD5F31F94F84700555814 /* FavIcon.framework */; };
+		293989031F8BA827007935B0 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
+		299FB5302004DA3C0090FBAB /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */; };
 		6541CEA21FAAC69B00601D6F /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6541CEA11FAAC69B00601D6F /* TypeAliases.swift */; };
 		6541CEA51FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6541CEA41FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift */; };
 		6553625F1F73596500E77290 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
@@ -28,7 +31,6 @@
 		65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1769E1F7C8099008E2BA1 /* RxSwift.framework */; };
 		65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; };
 		65E4EE3C1F7DE1E200ED31BF /* KVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */; };
-		65F8BB621F611142004B9ED4 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
 		690362D81C19A7B9000E5581 /* easylist_content_blocker_v2.json in Resources */ = {isa = PBXBuildFile; fileRef = 690362D61C19A7B9000E5581 /* easylist_content_blocker_v2.json */; };
 		690362D91C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json in Resources */ = {isa = PBXBuildFile; fileRef = 690362D71C19A7B9000E5581 /* easylist+exceptionrules_content_blocker_v2.json */; };
 		6904B4011E6705F4006B3FE5 /* AdblockPlusShared.m in Sources */ = {isa = PBXBuildFile; fileRef = 6904B3FE1E6705F4006B3FE5 /* AdblockPlusShared.m */; };
@@ -153,6 +155,7 @@
 /* Begin PBXFileReference section */
 		291FFD591F79495E00FE29C5 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		291FFD5B1F794CD100FE29C5 /* AdblockPlusSafariActionExtension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdblockPlusSafariActionExtension-Bridging-Header.h"; sourceTree = "<group>"; };
+		292CD5F31F94F84700555814 /* FavIcon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FavIcon.framework; path = Carthage/Build/iOS/FavIcon.framework; sourceTree = "<group>"; };
 		6541CEA11FAAC69B00601D6F /* TypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		6541CEA41FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ABPManager+WhitelistedWebsites.swift"; sourceTree = "<group>"; };
 		657CEC7B1F9EC47A00F37B68 /* FilterList+ObjectiveC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilterList+ObjectiveC.swift"; sourceTree = "<group>"; };
@@ -410,6 +413,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292CD5F41F94F84800555814 /* FavIcon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,13 +440,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65F8BB621F611142004B9ED4 /* yajl.framework in Frameworks */,
+				293989031F8BA827007935B0 /* yajl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29B63A7A1FFFC7B1003BB75B /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				292CD5F31F94F84700555814 /* FavIcon.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		657CEC7A1F9EC47A00F37B68 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -590,6 +602,7 @@
 				E9071D3D1B76897C00091AEB /* Products */,
 				69AB6A2F1B970D18005C2075 /* Resources */,
 				E9F3922B1BBF1B1A004A068A /* Translations */,
+				29B63A7A1FFFC7B1003BB75B /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -948,6 +961,7 @@
 			files = (
 				695778531E672C8700331DA3 /* NSString+AdblockPlus.m in Sources */,
 				291FFD5A1F79495E00FE29C5 /* ActionViewController.swift in Sources */,
+				299FB5302004DA3C0090FBAB /* GlobalConstants.swift in Sources */,
 				695778521E672B7D00331DA3 /* AdblockPlus.m in Sources */,
 				695778511E672B5300331DA3 /* AdblockPlusShared.m in Sources */,
 			);
@@ -1201,6 +1215,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1212,6 +1230,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "Dev AdblockPlusActionExtension";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariActionExtension/AdblockPlusSafariActionExtension-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PROJECT_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = arm64;
@@ -1226,6 +1245,10 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AdblockPlusSafariActionExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariActionExtension;
@@ -1233,6 +1256,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Action Extension Devbuild In House";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariActionExtension/AdblockPlusSafariActionExtension-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PROJECT_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = arm64;
@@ -1247,12 +1271,17 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AdblockPlusSafariActionExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafari.AdblockPlusSafariActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariActionExtension/AdblockPlusSafariActionExtension-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PROJECT_NAME)-Swift.h";
 				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = arm64;
 			};
@@ -1266,6 +1295,10 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AdblockPlusSafariActionExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariActionExtension;
@@ -1273,6 +1306,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "Adblock Plus Action Extension Devbuild In House";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariActionExtension/AdblockPlusSafariActionExtension-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PROJECT_NAME)-Swift.h";
 				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = arm64;
 			};
