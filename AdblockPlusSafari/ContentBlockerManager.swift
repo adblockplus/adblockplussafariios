@@ -15,9 +15,15 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import "AdblockPlus+ActivityChecking.h"
-#import "AdblockPlusExtras.h"
-#import "Appearance.h"
-#import "FilterListSwiftBridge.h"
-#import "NSString+AdblockPlus.h"
-#import "RootController.h"
+import SafariServices
+
+/// Performs reload operations with the Safari content blocker manager for a
+/// given identifier.
+class ContentBlockerManager: NSObject,
+                             ContentBlockerManagerProtocol {
+    func reload(withIdentifier identifier: String,
+                completionHandler: ((Error?) -> Void)? = nil) {
+        SFContentBlockerManager.reloadContentBlocker(withIdentifier: identifier,
+                                                     completionHandler: completionHandler)
+    }
+}

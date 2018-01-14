@@ -46,6 +46,10 @@ class AppDelegate: UIResponder,
         ABPManager.sharedInstance().backgroundTaskIdentifier = UIBackgroundTaskInvalid
     }
 
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        ABPManager.sharedInstance().handleDidBecomeActive()
+    }
+
     // ------------------------------------------------------------
     // MARK: - Background mode -
     // ------------------------------------------------------------
@@ -55,6 +59,8 @@ class AppDelegate: UIResponder,
         ABPManager.sharedInstance().handlePerformFetch(withCompletionHandler: completionHandler)
     }
 
+    /// Background events include whitelisting of websites.
+    /// The content blocker is reloaded after whitelist processing is complete.
     func application(_ application: UIApplication,
                      handleEventsForBackgroundURLSession identifier: String,
                      completionHandler: @escaping () -> Void) {

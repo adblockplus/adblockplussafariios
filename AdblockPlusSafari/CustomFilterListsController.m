@@ -20,6 +20,7 @@
 #import "SwitchCell.h"
 #import "FilterList.h"
 #import "NSDictionary+FilterList.h"
+#import "AdblockPlusSafari-Swift.h"
 
 static NSString *customFilterListKey = @"customFilterListKey";
 static NSString *customFilterListFileName = @"custom.json";
@@ -156,7 +157,7 @@ static NSString *customFilterListUrl = @"https://easylist-downloads.adblockplus.
 
     if ([cell.reuseIdentifier isEqualToString:@"EnableDefaultFilterList"]) {
         self.adblockPlus.defaultFilterListEnabled = !self.adblockPlus.defaultFilterListEnabled;
-        [self.adblockPlus reloadWithCompletion:nil];
+        [[[ABPManager sharedInstance] filterListsUpdater] reloadWithCompletion:nil];
     } else if ([cell.reuseIdentifier isEqualToString:@"EnableCustomFilterList"]) {
         NSMutableDictionary<NSString *, id> *filterLists = nil;
 
@@ -236,8 +237,8 @@ static NSString *customFilterListUrl = @"https://easylist-downloads.adblockplus.
     NSMutableDictionary<NSString *, id> *filterLists = [self.adblockPlus.filterLists mutableCopy];
     filterLists[CustomFilterListName] = customFilterList.dictionary;
     self.adblockPlus.filterLists = filterLists;
-
-    [self.adblockPlus updateFilterListsWithNames:@[ CustomFilterListName ] userTriggered:NO];
+    [[[ABPManager sharedInstance] filterListsUpdater]
+                                  updateFilterListsWithNames:@[CustomFilterListName] userTriggered:NO];
 }
 
 - (NSDateFormatter *)dateFormatter

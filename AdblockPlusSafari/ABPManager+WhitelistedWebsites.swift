@@ -19,6 +19,19 @@ import RxSwift
 
 /// Handle whitelisting of websites.
 extension ABPManager {
+    /// Add a website to the user's whitelist.
+    @objc
+    func whiteList(withWebsite website: NSString) -> Bool {
+        guard let name = website.whitelistedHostname(), name.count > 0 else { return false }
+        var websites = ABPManager.sharedInstance().adblockPlus.whitelistedWebsites
+        if websites.contains(name) {
+            return false
+        }
+        websites.append(name)
+        ABPManager.sharedInstance().adblockPlus.whitelistedWebsites = websites
+        return true
+    }
+
     /// Return websites that have been added to the whitelist from the URL Session tasks.
     func whitelistedWebsites(forSessionID sessionID: String) -> Observable<[WhiteListedWebsite]> {
         if !adblockPlus.isBackgroundNotificationSessionConfigurationIdentifier(sessionID) {
@@ -39,7 +52,8 @@ extension ABPManager {
                     self.website(fromURL: $0.originalRequest?.url)
                 }.flatMap { website in
                     // Nil members in the websites array have been removed by flatMap.
-                    ABPManager.sharedInstance().adblockPlus.whitelistWebsite(website!)
+                    let nsString = NSString(string: website!)
+                    guard ABPManager.sharedInstance().whiteList(withWebsite: nsString) else { return nil }
                     return website
                 }
                 observer.onNext(websites)

@@ -24,15 +24,19 @@ enum ABPState: String {
     case reloading
 }
 
-/// Shared instance that contains the active Adblock Plus instance.
-/// This class holds the operations that were previously coupled to the Objective-C app delegate.
+/// Shared instance that contains the active Adblock Plus instance. This class
+/// holds the operations that were previously coupled to the Objective-C app
+/// delegate. It is also meant to consolidate variables representing state.
 class ABPManager: NSObject {
     var bag: DisposeBag!
 
-    /// For testing reloading KVO.
-    var reloadingKeyValue: Int?
+    /// Reloading will not happen when this value is true.
+    var disableReloading = false
 
-    /// Active instance of Adblock Plus.
+    /// Performs operations for updating filter lists.
+    @objc var filterListsUpdater: FilterListsUpdater?
+
+    /// Active instance of Adblock Plus. It is dynamic to support KVO.
     @objc dynamic var adblockPlus: AdblockPlusExtras! {
         /// Add kvo observers.
         didSet {
@@ -40,7 +44,8 @@ class ABPManager: NSObject {
         }
     }
 
-    /// This is a unique token (Int) that identifies a request to run in the background.
+    /// This is a unique token (Int) that identifies a request to run in the
+    /// background.
     var backgroundTaskIdentifier: UIBackgroundTaskIdentifier? {
         /// End the existing task before setting a new one.
         willSet {
@@ -51,6 +56,9 @@ class ABPManager: NSObject {
             }
         }
     }
+
+    /// For unit testing KVO operations involving reloading.
+    var reloadingKeyValue: Int?
 
     private static var privateSharedInstance: ABPManager?
     private static let keyPaths: [ABPState] = [.filterLists, .reloading]
@@ -63,6 +71,7 @@ class ABPManager: NSObject {
     }
 
     /// Access the shared instance.
+    @objc
     class func sharedInstance() -> ABPManager {
         guard let shared = privateSharedInstance else {
             privateSharedInstance = ABPManager()
@@ -75,7 +84,8 @@ class ABPManager: NSObject {
     override init() {
         super.init()
         defer {
-            adblockPlus = AdblockPlusExtras()
+            adblockPlus = AdblockPlusExtras(abpManager: self)
+            filterListsUpdater = FilterListsUpdater(abpManager: self)
         }
     }
 
@@ -89,15 +99,20 @@ class ABPManager: NSObject {
     // MARK: - Foreground mode -
     // ------------------------------------------------------------
 
-    /// When the app becomes active, if there are outdated filter lists, update them.
+    /// When the app becomes active, if there are outdated filter lists, update
+    /// them. Also check the enabled state of the content blocker.
     func handleDidBecomeActive() {
+        guard let updater = ABPManager.sharedInstance().filterListsUpdater else { return }
+        let stateHandler = ContentBlockerStateHandler(adblockPlus: adblockPlus,
+                                                      filterListsUpdater: updater)
         adblockPlus.checkActivatedFlag()
+        stateHandler.updateActivation()
         if !firstUpdateTriggered &&
            !adblockPlus.updating {
-            let filterListNames: [String] = adblockPlus.outdatedFilterListNames()
+            let filterListNames = updater.outdatedFilterListNames()
             if filterListNames.count > 0 {
-                adblockPlus.updateFilterLists(withNames: filterListNames,
-                                              userTriggered: false)
+                updater.updateFilterLists(withNames: filterListNames,
+                                          userTriggered: false)
                 firstUpdateTriggered = true
             }
         }
@@ -107,15 +122,17 @@ class ABPManager: NSObject {
     // MARK: - Background mode -
     // ------------------------------------------------------------
 
+    /// Add background fetches for outdated filter lists.
     func handlePerformFetch(withCompletionHandler completion: @escaping (UIBackgroundFetchResult) -> Void) {
-        let outdatedFilterListNames = adblockPlus.outdatedFilterListNames()
+        guard let updater = ABPManager.sharedInstance().filterListsUpdater else { return }
+        let outdatedFilterListNames = updater.outdatedFilterListNames()
         if outdatedFilterListNames.count > 0 {
             var outdatedFilterLists = [String: Any]()
             for outdatedFilterListName in outdatedFilterListNames {
                 outdatedFilterLists[outdatedFilterListName] = adblockPlus.filterLists[outdatedFilterListName]
             }
-            adblockPlus.updateFilterLists(withNames: outdatedFilterListNames,
-                                          userTriggered: false)
+            updater.updateFilterLists(withNames: outdatedFilterListNames,
+                                      userTriggered: false)
             backgroundFetches.append(["completion": completion,
                                       "filterLists": outdatedFilterLists,
                                       "startDate": Date()])
@@ -160,6 +177,15 @@ class ABPManager: NSObject {
     }
 
     /// Subscription of changes on reloading key.
+    /// Reloading occurs under the following conditions:
+    ///
+    /// * Filter lists are configured or updated
+    /// * Acceptable ads switch is changed
+    /// * A website is added to, or deleted from, the whitelist, inside ABP
+    /// * A website is whitelisted with the Safari action extension
+    ///
+    /// Note that instantiating an ABPManager shared instance within the
+    /// subscription will cause an infinite loop.
     private func reloadingSubscription() -> Disposable {
         return adblockPlus.rx
             .observeWeakly(Bool.self,
@@ -170,22 +196,29 @@ class ABPManager: NSObject {
                     return
                 }
 
-                // Used for testing to verify that the reloading observer is active.
+                // Used for unit testing to verify that the reloading observer is active.
                 self.reloadingKeyValue = uwReloading ? 1 : 0
 
-                let app = UIApplication.shared
-                let isBackground = (app.applicationState != UIApplicationState.active)
                 let invalidBgTask = (self.backgroundTaskIdentifier == UIBackgroundTaskInvalid)
                 if self.backgroundTaskIdentifier != UIBackgroundTaskInvalid &&
                    !uwReloading {
                     self.backgroundTaskIdentifier = UIBackgroundTaskInvalid
                 }
-                if invalidBgTask && uwReloading && isBackground {
+                if invalidBgTask && uwReloading && self.isBackground() {
+                    let app = UIApplication.shared
                     self.backgroundTaskIdentifier = app.beginBackgroundTask(expirationHandler: { [weak self] in
                         self?.backgroundTaskIdentifier = UIBackgroundTaskInvalid
                     })
                 }
             })
+    }
+
+    /// Determine if the app is in the background. The app is in the
+    /// background when whitelisting through the Safari action extension.
+    private func isBackground() -> Bool {
+        let app = UIApplication.shared
+        let isBackground = (app.applicationState != UIApplicationState.active)
+        return isBackground
     }
 
     /// Subscription of changes on filterLists key.
@@ -202,6 +235,7 @@ class ABPManager: NSObject {
             })
     }
 
+    /// Check last update of filter lists.
     private func checkFilterList() {
         if adblockPlus.updating {
             for bgFetch in backgroundFetches {

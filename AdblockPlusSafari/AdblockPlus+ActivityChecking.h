@@ -30,7 +30,7 @@
 
 - (void)checkActivatedFlag;
 
-- (void)checkActivatedFlag:(NSDate *__nonnull)lastActivity;
+- (void)checkActivatedFlag:(NSDate *__nullable)lastActivity;
 
 - (void)performActivityTestWith:(id<ContentBlockerManagerProtocol> __nonnull)manager;
 

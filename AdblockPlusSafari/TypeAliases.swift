@@ -18,3 +18,4 @@
 /// Global collection of type aliases for Adblock Plus for Safari iOS.
 typealias WhiteListedWebsite = String
 typealias FilterListName = String
+typealias ContentBlockerIdentifier = String

@@ -20,6 +20,9 @@ struct GlobalConstants {
     /// Wake up application every hour (just hint for iOS)
     static let backgroundFetchInterval: TimeInterval = 3600
 
+    /// The number of times to try an immediate reload if an error is encountered.
+    static let contentBlockerReloadRetryCount = 3
+
     /// Maximum favicon size to download
     static let faviconSize = 180
 }

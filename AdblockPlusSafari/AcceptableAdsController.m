@@ -16,6 +16,7 @@
  */
 
 #import "AcceptableAdsController.h"
+#import "AdblockPlusSafari-Swift.h"
 
 @interface AcceptableAdsController () <UITableViewDataSource>
 
@@ -110,6 +111,7 @@
 - (void)onSwitchHasChanged:(UISwitch *)s
 {
     self.adblockPlus.acceptableAdsEnabled = s.on;
+    [[[ABPManager sharedInstance] filterListsUpdater] changeAcceptableAdsWithEnabled:s.on];
 }
 
 /// The accessory view changes based on the state of the reloading key. An

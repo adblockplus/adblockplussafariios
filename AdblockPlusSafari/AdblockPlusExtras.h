@@ -17,29 +17,27 @@
 
 #import "AdblockPlusShared.h"
 
+@class ABPManager;
+
 @interface AdblockPlusExtras : AdblockPlusShared
 
-// Reloading content blocker
+/// Allow access to the ABP Manager.
+@property (nonatomic, weak, nullable) ABPManager *abpManager;
+
+/// Reloading state of the content blocker.
 @property (nonatomic) BOOL reloading;
 
-// Updating filter lists
+/// Updating state for filter lists.
 @property (nonatomic, readonly) BOOL updating;
 
-// Date of the last successful update of filter lists
+/// Date of the last successful update of filter lists.
 @property (nonatomic, readonly) NSDate *__nullable lastUpdate;
 
-- (void)reloadAfterCompletion:(void (^__nonnull)(AdblockPlusExtras *__nonnull))completion;
-
-- (void)reloadWithCompletion:(void (^__nullable)(NSError *__nullable error))completion;
-
-- (BOOL)whitelistWebsite:(NSString *__nonnull)website;
-
-- (void)updateActiveFilterLists:(BOOL)userTriggered;
-
-- (void)updateFilterListsWithNames:(NSArray<NSString *> *__nonnull)filterListNames userTriggered:(BOOL)userTriggered;
-
-- (NSArray<NSString *> *__nonnull)outdatedFilterListNames;
-
+/// When set to YES, an error dialog will be displayed when there is a filter list update failure.
 @property (nonatomic) BOOL needsDisplayErrorDialog;
+
+- (nonnull instancetype)initWithABPManager:(ABPManager *__nullable)abpManager;
+- (void)updateActiveFilterLists:(BOOL)userTriggered;
+- (BOOL)whitelistWebsite:(NSString *__nonnull)website;
 
 @end

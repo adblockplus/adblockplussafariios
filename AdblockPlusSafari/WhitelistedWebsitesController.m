@@ -19,6 +19,7 @@
 
 #import "WhitelistedSiteCell.h"
 #import "NSString+AdblockPlus.h"
+#import "AdblockPlusSafari-Swift.h"
 
 const NSInteger TextFieldTag = 121212;
 
@@ -185,7 +186,13 @@ const NSInteger TextFieldTag = 121212;
 
 - (void)whitelistWebsite:(NSString *)website
 {
-    [self.adblockPlus whitelistWebsite:website.whitelistedHostname];
+    BOOL result = [[ABPManager sharedInstance] whiteListWithWebsite:website];
+    if (!result) {
+        // Whitelisting did not succeed and no further action is taken at this
+        // time. It is unlikely this error will happen during normal usage.
+        // However, this error condition will be addressed during the
+        // transition to MVVM.
+    }
 }
 
 @end

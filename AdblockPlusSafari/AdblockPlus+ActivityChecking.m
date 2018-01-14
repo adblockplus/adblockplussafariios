@@ -27,7 +27,9 @@
     }
 }
 
-- (void)checkActivatedFlag:(NSDate *)lastActivity
+/// Determines if the content blocker is enabled. This will be replaced when
+/// the minimum deployment SDK is >= 10.
+- (void)checkActivatedFlag:(NSDate *__nullable)lastActivity
 {
     [self synchronize];
     BOOL activated = !!self.lastActivity && (!lastActivity || [self.lastActivity compare:lastActivity] == NSOrderedDescending);
@@ -36,6 +38,9 @@
     }
 }
 
+/// Initiates a test that ends up setting the internal activated state for the
+/// content blocker. This is currently used when the app enters the
+/// foreground.
 - (void)performActivityTestWith:(id<ContentBlockerManagerProtocol>)manager
 {
     __weak __typeof(self) wSelf = self;
@@ -44,9 +49,6 @@
     [manager reloadWithIdentifier:self.contentBlockerIdentifier
                 completionHandler:^(NSError *error) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        if (error) {
-                            NSLog(@"%@", error);
-                        }
                         wSelf.performingActivityTest = NO;
                         [wSelf checkActivatedFlag:lastActivity];
                     });
