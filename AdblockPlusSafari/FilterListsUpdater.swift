@@ -95,13 +95,14 @@ class FilterListsUpdater: AdblockPlusShared,
         abpManager.saveFilterLists(newLists)
     }
 
-    /// Update the state of all filter lists. If there is a task to complete,
-    /// save a new download task.
+    /// Update the download tasks for all filter lists. If there is a task to complete, save it as
+    /// a new download task. If there was a previous matching task matched by list URL and task
+    /// identifier, it will be cancelled.
     private func processRunningTasks() {
         backgroundSession.getAllTasks(completionHandler: { tasks in
-            let lists = self.abpManager?.filterLists()
+            guard let lists = self.abpManager?.filterLists() else { return }
             var listsToRemoveUpdatingFrom = [FilterListName]()
-            for list in lists! {
+            for list in lists where list.name != nil {
                 listsToRemoveUpdatingFrom.append(list.name!)
             }
 
@@ -109,7 +110,7 @@ class FilterListsUpdater: AdblockPlusShared,
             for task in tasks {
                 var found = false
                 var listIndex = 0
-                for list in lists! {
+                for list in lists {
                     if let url = task.originalRequest?.url?.absoluteString {
                         if url == list.url &&
                            task.taskIdentifier == list.taskIdentifier {

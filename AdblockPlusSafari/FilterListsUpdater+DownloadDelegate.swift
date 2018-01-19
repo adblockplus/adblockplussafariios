@@ -36,7 +36,9 @@ extension FilterListsUpdater {
         removeDownloadTask(forFilterListName: uwName)
     }
 
-    /// A download task for a filter list has finished downloading.
+    /// A download task for a filter list has finished downloading. Update the user's filter list
+    /// metadata and move the downloaded file. Future optimization can include retrying the
+    /// post-download operations if an error is encountered.
     func urlSession(_ session: URLSession,
                     downloadTask: URLSessionDownloadTask,
                     didFinishDownloadingTo location: URL) {
@@ -49,7 +51,8 @@ extension FilterListsUpdater {
         }
         let fileManager = FileManager.default
         let containerURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: group())
-        let destination = containerURL?.appendingPathComponent(list.fileName!,
+        guard let fileName = list.fileName else { return }
+        let destination = containerURL?.appendingPathComponent(fileName,
                                                                isDirectory: false)
         moveOrReplaceItem(source: location,
                           destination: destination)
@@ -61,10 +64,12 @@ extension FilterListsUpdater {
         downloadedVersion += 1
 
         // Test parsing of the filter list.
-        let bridge = FilterListSwiftBridge(dictionary: list.toDictionary()!)
+        guard let objcList = list.toDictionary() else { return }
+        let bridge = FilterListSwiftBridge(dictionary: objcList)
 
+        guard let uwDestination = destination else { return }
         do {
-            try bridge.parseFilterList(from: destination!)
+            try bridge.parseFilterList(from: uwDestination)
         } catch {
             return
         }
@@ -79,10 +84,12 @@ extension FilterListsUpdater {
     // ------------------------------------------------------------
 
     /// Move a file to a destination. If the file exists, it will be first removed, if possible.
+    /// If the operation cannot be completed, the function will return without an error.
     private func moveOrReplaceItem(source: URL,
                                    destination: URL?) {
+        guard let uwDestination = destination else { return }
         let fileManager = FileManager.default
-        let destPath = destination!.path
+        let destPath = uwDestination.path
         let exists = fileManager.fileExists(atPath: destPath)
         var removeError: Error?
         if exists {
@@ -93,7 +100,7 @@ extension FilterListsUpdater {
         }
         if removeError == nil {
             do { try fileManager.moveItem(at: source,
-                                          to: destination!)
+                                          to: uwDestination)
             } catch {
                 // Move error occurred.
                 return
@@ -139,7 +146,8 @@ extension FilterListsUpdater {
 
     private func filterList(withName name: String?) -> FilterList? {
         guard name != nil else { return nil }
-        let lists: [FilterList] = abpManager!.filterLists()
+        guard let uwAbpManager = abpManager else { return nil }
+        let lists: [FilterList] = uwAbpManager.filterLists()
         var result: FilterList?
         var cnt = 0
         for list in lists where list.name == name {
@@ -152,7 +160,8 @@ extension FilterListsUpdater {
 
     /// Return the filter list name for a given task identifier.
     private func filterListNameForTaskTaskIdentifier(taskIdentifier: Int) -> FilterListName? {
-        let lists = abpManager!.filterLists()
+        guard let uwAbpManager = abpManager else { return nil }
+        let lists = uwAbpManager.filterLists()
         var result: FilterListName?
         var cnt = 0
         for list in lists where list.taskIdentifier == taskIdentifier {

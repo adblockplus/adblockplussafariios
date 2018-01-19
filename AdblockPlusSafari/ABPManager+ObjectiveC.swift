@@ -17,14 +17,17 @@
 
 /// Contains functions specific to interoperating with Objective-C.
 extension ABPManager {
-    /// During the transition to Swift, filter lists previously held in Objective-C data structures
-    /// will be made available in native Swift.
+    /// During the transition to Swift, filter lists stored as Objective-C model objects will be
+    /// converted to Swift model structs. If a filter list cannot be converted, it will not be
+    /// visible to Swift.
     func filterLists() -> [FilterList] {
         var result = [FilterList]()
         for key in adblockPlus.filterLists.keys {
             let converted = FilterList(withName: key,
                                        fromDictionary: adblockPlus.filterLists[key])
-            result.append(converted!)
+            if converted != nil {
+                result.append(converted!)
+            }
         }
         return result
     }
