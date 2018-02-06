@@ -15,19 +15,24 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/// Swift-based FilterList model struct to replace the Objective-C FilterList
-/// model object.
+/// Swift-based FilterList model struct to replace the Objective-C FilterList model object. This
+/// is used internally to represent filter lists.
 struct FilterList {
+    /// Counter for number of downloads.
+    var downloadCount: Int?
+
     /// Name used to identify a list uniquely.
     var name: FilterListName?
+
+    /// The last version value extracted from the filter list.
+    var lastVersion: FilterListLastVersion?
 
     /// Task identifier of the associated download task.
     var taskIdentifier: Int?
 
-    /// Group identifier refer to an associated download group. Only download
-    /// tasks triggered by a user are allowed to display download failure
-    /// dialogs. updatingGroupIdentifier represents the most recent download
-    /// tasks.
+    /// Group identifier refer to an associated download group. Only download tasks triggered by a
+    /// user are allowed to display download failure dialogs. The updatingGroupIdentifier
+    /// represents the group of the most recent download tasks.
     var updatingGroupIdentifier: Int?
 
     var downloaded: Bool?
@@ -42,8 +47,7 @@ struct FilterList {
 }
 
 extension FilterList {
-    /// Return true if filter list has expired based on last update + expires
-    /// interval.
+    /// - Returns: True if filter list has expired based on last update + expires interval.
     func expired() -> Bool {
         guard let uwLastUpdate = lastUpdate,
               let uwExpires = expires

@@ -15,8 +15,16 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/// Global type aliases for Adblock Plus for Safari iOS.
-typealias ContentBlockerIdentifier = String
-typealias FilterListLastVersion = String
-typealias FilterListName = String
-typealias WhiteListedWebsite = String
+/// Custom errors for ABP.
+
+/// Error cases for download tasks.
+/// - failedToMakeDownloadTask: Download task could not be created for the download.
+enum ABPDownloadTaskError: Error {
+    case failedToMakeDownloadTask
+}
+
+/// Error cases for filter list processing.
+/// - invalidData: Data could not be read from the list.
+enum ABPFilterListError: Error {
+    case invalidData
+}

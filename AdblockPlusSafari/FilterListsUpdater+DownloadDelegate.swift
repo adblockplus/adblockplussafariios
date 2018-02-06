@@ -63,13 +63,14 @@ extension FilterListsUpdater {
         list.taskIdentifier = nil
         downloadedVersion += 1
 
-        // Test parsing of the filter list.
+        // Test parsing of the filter list and set the version.
         guard let objcList = list.toDictionary() else { return }
         let bridge = FilterListSwiftBridge(dictionary: objcList)
-
         guard let uwDestination = destination else { return }
         do {
             try bridge.parseFilterList(from: uwDestination)
+            try setVersion(url: uwDestination,
+                           filterList: &list)
         } catch {
             return
         }
@@ -77,6 +78,23 @@ extension FilterListsUpdater {
         // Save the modified filter list.
         replaceFilterList(withName: uwName,
                           withNewList: list)
+    }
+
+    /// Parse the v2 filter list version and set it on the internal filter list model struct.
+    /// - Parameters:
+    ///   - url: Local URL where the list is saved.
+    ///   - filterList: Internal model struct for the list.
+    /// - Throws: ABP error if parsing fails.
+    func setVersion(url: URL,
+                    filterList: inout FilterList) throws {
+        do {
+            let data = try Data(contentsOf: url,
+                                options: .uncached)
+            let json = JSONFilterList(with: data)
+            filterList.version = json?.version
+        } catch {
+            throw ABPFilterListError.invalidData
+        }
     }
 
     // ------------------------------------------------------------

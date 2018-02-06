@@ -18,12 +18,18 @@
 import RxSwift
 import SafariServices
 
-/// Handle the state of the content blocker.
+/// Handle the state of the content blocker including
+/// * Determine content blocker activation state
+/// * Save content blocker activation state
 class ContentBlockerStateHandler {
     var bag: DisposeBag! = DisposeBag()
     var adblockPlus: AdblockPlusExtras!
     var filterListsUpdater: FilterListsUpdater!
 
+    /// Construct a state handler.
+    /// - Parameters:
+    ///   - adblockPlus: Legacy adblockplus object.
+    ///   - filterListsUpdater: Reference to a filter list updater.
     init(adblockPlus: AdblockPlusExtras,
          filterListsUpdater: FilterListsUpdater) {
         self.adblockPlus = adblockPlus
@@ -35,20 +41,22 @@ class ContentBlockerStateHandler {
         adblockPlus.synchronize()
         guard !adblockPlus.reloading else { return }
 
-        /// Dispose all update operations first.
+        // Dispose all update operations first.
         filterListsUpdater.reloadBag = DisposeBag()
 
         let id = adblockPlus.contentBlockerIdentifier()
-        contentBlockerIsEnabled(withIdentifier: id)
+        contentBlockerIsEnabled(with: id)
             .retry(GlobalConstants.contentBlockerReloadRetryCount)
             .subscribe(onNext: { activated in
                 self.adblockPlus.activated = activated
             }).disposed(by: bag)
     }
 
-    /// Determine content blocker activation state. For iOS >= 10, use the
-    /// content blocker API. For iOS < 10, use the legacy method.
-    private func contentBlockerIsEnabled(withIdentifier identifier: ContentBlockerIdentifier) -> Observable<Bool> {
+    /// Determine content blocker activation state. For iOS >= 10, use the content blocker API.
+    /// For iOS < 10, use the legacy method.
+    /// - Parameter identifier: Unique ID string for the content blocker.
+    /// - Returns: Observable with true if activated, false otherwise.
+    private func contentBlockerIsEnabled(with identifier: ContentBlockerIdentifier) -> Observable<Bool> {
         return Observable.create { observer in
             if #available(iOS 10.0, *) {
                 SFContentBlockerManager
@@ -67,11 +75,9 @@ class ContentBlockerStateHandler {
                         }
                     })
             } else {
-                DispatchQueue.main.async {
-                    self.adblockPlus.performActivityTest(with: self.filterListsUpdater.cbManager)
-                }
+                self.adblockPlus.performActivityTest(with: self.filterListsUpdater.cbManager)
             }
             return Disposables.create()
-        }
+        }.observeOn(MainScheduler.asyncInstance)
     }
 }

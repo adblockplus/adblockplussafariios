@@ -19,8 +19,15 @@
 extension FilterList {
     /// Failable initializer that converts a filter list object from the
     /// Objective-C implementation.
+    /// - Parameters:
+    ///   - name: Unique name for the filter list.
+    ///   - dictionary: NSDictionary from legacy data model.
+    ///   - lastVersion: Nonrequired last version.
+    ///   - downloadCount: Nonrequired downloadCount.
     init?(withName name: String,
-          fromDictionary dictionary: [String: Any]?) {
+          fromDictionary dictionary: [String: Any]?,
+          lastVersion: String = "",
+          downloadCount: Int = 0) {
         guard let uwDict = dictionary else { return nil }
         self.name = name
         taskIdentifier = uwDict["taskIdentifier"] as? Int
@@ -34,9 +41,11 @@ extension FilterList {
         url = uwDict["url"] as? String
         userTriggered = uwDict["userTriggered"] as? Bool
         version = uwDict["version"] as? String
+        self.lastVersion = lastVersion
+        self.downloadCount = downloadCount
     }
 
-    /// Create a dictionary suitable for use with Objective-C.
+    /// - Returns: A dictionary suitable for use with Objective-C.
     func toDictionary() -> [String: Any]? {
         var dict = [String: Any]()
         dict["taskIdentifier"] = taskIdentifier

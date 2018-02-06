@@ -65,6 +65,10 @@ class ABPManager: NSObject {
     private var firstUpdateTriggered: Bool = false
     private var backgroundFetches = [[String: Any]]()
 
+    /// Swift-based filter list model struct for unit testing. Workaround for namespace conflicts
+    /// during unit testing.
+    var testingList = FilterList()
+
     /// Destroy the shared instance in memory.
     class func destroy() {
         privateSharedInstance = nil

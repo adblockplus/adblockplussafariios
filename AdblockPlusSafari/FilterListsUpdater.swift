@@ -22,12 +22,11 @@ import RxSwift
 ///
 /// This replaces the former Objective-C implementation of AdblockPlusExtras.
 ///
-/// It makes use of struct FilterList to represent a filter list. Therefore,
-/// the **Swift model struct should always be used when interacting with this
-/// class.**
+/// It makes use of struct FilterList to represent a filter list. Therefore, the **Swift model
+/// struct should always be used when interacting with this class.**
 ///
-/// Filter lists on the Objective-C side are [String :[String: Any]] or a
-/// dictionary of dictionaries.
+/// Filter lists on the Objective-C side are [String :[String: Any]] or a dictionary of
+/// dictionaries.
 class FilterListsUpdater: AdblockPlusShared,
                           URLSessionDownloadDelegate {
     let updatingKey = "updatingGroupIdentifier"
@@ -46,18 +45,16 @@ class FilterListsUpdater: AdblockPlusShared,
     /// Handles reloading of the content blocker.
     var cbManager: ContentBlockerManagerProtocol!
 
-    /// Reference to active ABPManager that must not be nil. Without this
-    /// reference, accessing the ABP Manager shared instance will be circular
-    /// since the ABP Manager has a strong reference to the Filter List
-    /// updater and makes an updater in its init.
+    /// Reference to active ABPManager that must not be nil. Without this reference, accessing the
+    /// ABP Manager shared instance will be circular since the ABP Manager has a strong reference
+    /// to the Filter List updater and makes an updater in its init.
     weak var abpManager: ABPManager!
 
-    /// Process running tasks and add a reloading observer.
-    ///
-    /// Because the ABPManager initializes an instance of this class in its
-    /// init, the shared instance of ABPManager cannot be used within the init
-    /// of this class without forming a circular reference. Therefore, a
-    /// reference to the ABP Manager is passed in and stored as a property.
+    /// Construct a FilterListUpdater. Process running tasks and add a reloading observer.
+    /// - Parameter abpManager: Because the ABPManager initializes an instance of this class in
+    /// its init, the shared instance of ABPManager cannot be used within the init of this class
+    /// without forming a circular reference. Therefore, a reference to the ABP Manager is passed
+    /// in and stored as a property.
     init(abpManager: ABPManager) {
         super.init()
         cbManager = ContentBlockerManager()
@@ -146,11 +143,12 @@ class FilterListsUpdater: AdblockPlusShared,
     }
 
     /// Store and start a download task.
+    /// - Parameters:
+    ///   - name: The unique filter list name.
+    ///   - task: The saved download task for the filter list.
     func startDownloadTask(forFilterListName name: FilterListName,
                            task: URLSessionDownloadTask?) {
-        guard let uwTask = task else {
-            return
-        }
+        guard let uwTask = task else { return }
         downloadTasks[name]?.cancel()
         downloadTasks[name] = uwTask
         uwTask.resume()
@@ -160,6 +158,8 @@ class FilterListsUpdater: AdblockPlusShared,
     // MARK: - Filter Lists -
     // ------------------------------------------------------------
 
+    /// Download the active filter list if an update has been requested.
+    /// - Parameter userTriggered: true if the user trigged a filter list update, otherwise false.
     func updateActiveFilterList(userTriggered: Bool) {
         let activeFilterList = activeFilterListName()
         updateFilterLists(withNames: [activeFilterList],
@@ -176,28 +176,51 @@ class FilterListsUpdater: AdblockPlusShared,
         for name in names {
             if var filterList = FilterList(withName: name,
                                            fromDictionary: self.filterLists[name]) {
-                if let urlString = filterList.url,
-                   let url = URL(string: urlString) {
-                    let task = backgroundSession.downloadTask(with: url)
-                    startDownloadTask(forFilterListName: name,
-                                      task: task)
-                    filterList.taskIdentifier = task.taskIdentifier
-                }
-                filterList.updating = true
-                filterList.updatingGroupIdentifier = updatingGroupIdentifier
-                filterList.userTriggered = userTriggered
-                filterList.lastUpdateFailed = false
-                modifiedFilterLists[name] = filterList
+                newDownloadTask(for: filterList)
+                    .subscribe(onNext: { task in
+                        self.startDownloadTask(forFilterListName: name,
+                                               task: task)
+                        filterList.taskIdentifier = task?.taskIdentifier
+                        filterList.updating = true
+                        filterList.updatingGroupIdentifier = self.updatingGroupIdentifier
+                        filterList.userTriggered = userTriggered
+                        filterList.lastUpdateFailed = false
+                        modifiedFilterLists[name] = filterList
 
-                // Write the filter list back to the Objective-C side.
-                replaceFilterList(withName: name,
-                                  withNewList: filterList)
+                        // Write the filter list back to the Objective-C side.
+                        self.replaceFilterList(withName: name,
+                                               withNewList: filterList)
+                    }).disposed(by: reloadBag)
             }
         }
     }
 
-    /// Examine the current filter lists and return an array of filter list
-    /// names that are outdated.
+    /// Create a new filter list download task.
+    /// - Parameter filterList: A filter list model struct.
+    /// - Returns: A download task for the filter list.
+    func newDownloadTask(for filterList: FilterList) -> Observable<URLSessionDownloadTask?> {
+        return Observable.create { observer in
+            guard let urlString = filterList.url,
+                  let url = URL(string: urlString),
+                  var components = URLComponents(string: url.absoluteString) else {
+                observer.onNext(nil)
+                observer.onCompleted()
+                return Disposables.create()
+            }
+            components.queryItems = FilterListDownloadData(with: filterList).queryItems
+            if let newURL = components.url {
+                let task = self.backgroundSession.downloadTask(with: newURL)
+                observer.onNext(task)
+                observer.onCompleted()
+            }
+            observer.onError(ABPDownloadTaskError.failedToMakeDownloadTask)
+            return Disposables.create()
+        }
+    }
+
+    /// Examine the current filter lists and return an array of filter list names that are
+    /// outdated.
+    /// - Returns: Array of filter lists that are outdated.
     func outdatedFilterListNames() -> [FilterListName] {
         var outdated = [FilterListName]()
         for key in filterLists.keys {
@@ -211,12 +234,10 @@ class FilterListsUpdater: AdblockPlusShared,
         return outdated
     }
 
-    /// Set whether acceptable ads will be enabled or not. The content blocker
-    /// filter lists are reloaded after a state change triggered by the user.
-    /// Enabling acceptable ads will also enable the content blocker if it is
-    /// disabled.
-    ///
-    /// - parameter enabled: true if acceptable ads are enabled
+    /// Set whether acceptable ads will be enabled or not. The content blocker filter lists are
+    /// reloaded after a state change triggered by the user. Enabling acceptable ads will also
+    /// enable the content blocker if it is disabled.
+    /// - Parameter enabled: True if acceptable ads are enabled.
     @objc
     func changeAcceptableAds(enabled: Bool) {
         super.enabled = enabled
@@ -228,10 +249,9 @@ class FilterListsUpdater: AdblockPlusShared,
         })
     }
 
-    /// Set whether the default filter list be used or not. The content
-    /// blocker filter lists are reloaded after the state change.
-    ///
-    /// - parameter enabled: true if the default filter list is enabled
+    /// Set whether the default filter list be used or not. The content blocker filter lists are
+    /// reloaded after the state change.
+    /// - Parameter enabled: True if the default filter list is enabled.
     func setDefaultFilterListEnabled(enabled: Bool) {
         super.defaultFilterListEnabled = enabled
         reload(withCompletion: { _ in
@@ -245,6 +265,7 @@ class FilterListsUpdater: AdblockPlusShared,
     // ------------------------------------------------------------
 
     /// Start a completion closure, then reload the content blocker.
+    /// - Parameter completion: Closure to run **before** reload.
     func reload(afterCompletion completion: () -> Void) {
         abpManager.disableReloading = true
         completion()
@@ -253,6 +274,7 @@ class FilterListsUpdater: AdblockPlusShared,
     }
 
     /// Reload the content blocker, then run a completion closure.
+    /// - Parameter completion: Closure to run after reload.
     @objc
     func reload(withCompletion completion: ((Error?) -> Void)?) {
         guard abpManager.disableReloading == false else {
@@ -266,9 +288,10 @@ class FilterListsUpdater: AdblockPlusShared,
             .disposed(by: reloadBag)
     }
 
-    /// This is the base function for reloading the content blocker. A
-    /// ContentBlockerManager performs the actual reload. Errors in reloading
-    /// are currently not handled.
+    /// This is the base function for reloading the content blocker. A ContentBlockerManager
+    /// performs the actual reload. Errors in reloading are currently not handled.
+    /// - Parameter completion: Closure to run after reload even if an error occurred.
+    /// - Returns: An Observable.
     func reloadContentBlocker(withCompletion completion: ((Error?) -> Void)?) -> Observable<Void> {
         return Observable.create { observer in
             let id = self.contentBlockerIdentifier()
