@@ -20,24 +20,22 @@ import MobileCoreServices
 import SafariServices
 import UIKit
 
+/// Handles the action extension view for adding a host to the user's whitelist.
 class ActionViewController: UIViewController {
-
-    var adblockPlus: AdblockPlusShared?
-    var website: String?
-    var components: URLComponents?
-
-    @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var addressField: UITextField!
+    @IBOutlet weak var contentWillNotBeBlockedLabel: UILabel!
+    @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var faviconView: UIImageView!
-
-    @IBOutlet weak var placeholderFaviconView: UIView!
     @IBOutlet weak var placeholderFaviconLabel: UILabel!
+    @IBOutlet weak var placeholderFaviconView: UIView!
+    var adblockPlus: AdblockPlusShared?
+    var components: URLComponents?
+    var website: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         adblockPlus = AdblockPlusShared()
-
+        localizeAttributedStrings()
         for item in extensionContext?.inputItems as? [NSExtensionItem] ?? [] {
             for itemProvider in item.attachments as? [NSItemProvider] ?? [] {
                 let typeIdentifier = kUTTypePropertyList as String

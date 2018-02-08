@@ -33,6 +33,7 @@
 		65929E0520227192003126FB /* JSONFilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65929E0420227192003126FB /* JSONFilterList.swift */; };
 		65929E0920228C08003126FB /* ABPActiveVersions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65929E0820228C08003126FB /* ABPActiveVersions.swift */; };
 		65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A173F31F60A20B004107EF /* SafariServices.framework */; };
+		65A31976202D0A0A00A64E77 /* ActionViewController+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A31975202D0A0A00A64E77 /* ActionViewController+Localization.swift */; };
 		65ABBD812005B11500172823 /* ContentBlockerStateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ABBD802005B11500172823 /* ContentBlockerStateHandler.swift */; };
 		65ADD2481FF73DAF00A9E69F /* FilterListSwiftBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 65ADD2471FF73DAF00A9E69F /* FilterListSwiftBridge.m */; };
 		65BBB6101F7ED10700B013C3 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
@@ -185,6 +186,7 @@
 		65929E0420227192003126FB /* JSONFilterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFilterList.swift; sourceTree = "<group>"; };
 		65929E0820228C08003126FB /* ABPActiveVersions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABPActiveVersions.swift; sourceTree = "<group>"; };
 		65A173F31F60A20B004107EF /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		65A31975202D0A0A00A64E77 /* ActionViewController+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActionViewController+Localization.swift"; sourceTree = "<group>"; };
 		65ABBD802005B11500172823 /* ContentBlockerStateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlockerStateHandler.swift; sourceTree = "<group>"; };
 		65ADD2461FF73DAF00A9E69F /* FilterListSwiftBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterListSwiftBridge.h; sourceTree = "<group>"; };
 		65ADD2471FF73DAF00A9E69F /* FilterListSwiftBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterListSwiftBridge.m; sourceTree = "<group>"; };
@@ -522,11 +524,12 @@
 			isa = PBXGroup;
 			children = (
 				6957784C1E672B0700331DA3 /* ActionExtensionAssets.xcassets */,
+				291FFD591F79495E00FE29C5 /* ActionViewController.swift */,
+				65A31975202D0A0A00A64E77 /* ActionViewController+Localization.swift */,
 				6957784D1E672B0700331DA3 /* AdblockPlusAction.js */,
+				291FFD5B1F794CD100FE29C5 /* AdblockPlusSafariActionExtension-Bridging-Header.h */,
 				695778491E672A9700331DA3 /* Info.plist */,
 				6957783B1E672A7600331DA3 /* MainInterface.storyboard */,
-				291FFD591F79495E00FE29C5 /* ActionViewController.swift */,
-				291FFD5B1F794CD100FE29C5 /* AdblockPlusSafariActionExtension-Bridging-Header.h */,
 			);
 			path = AdblockPlusSafariActionExtension;
 			sourceTree = "<group>";
@@ -1007,6 +1010,7 @@
 				299FB5302004DA3C0090FBAB /* GlobalConstants.swift in Sources */,
 				695778521E672B7D00331DA3 /* AdblockPlus.m in Sources */,
 				695778511E672B5300331DA3 /* AdblockPlusShared.m in Sources */,
+				65A31976202D0A0A00A64E77 /* ActionViewController+Localization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
