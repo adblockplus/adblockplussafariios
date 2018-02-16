@@ -27,7 +27,7 @@ extension ABPManager {
         if websites.contains(name) {
             return false
         }
-        websites.append(name)
+        websites.append(name.lowercased().trimmingCharacters(in: .whitespaces))
         ABPManager.sharedInstance().adblockPlus.whitelistedWebsites = websites
         return true
     }
