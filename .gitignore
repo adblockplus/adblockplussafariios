@@ -18,8 +18,12 @@ DerivedData
 *.xcuserstate
 AdblockPlusSafari.xcworkspace/
 
-#Mac garbage
+# Mac garbage
 **/.DS_Store
 
 # Carthage
 Carthage
+
+# API data
+ABP-Secret-API-Env-Vars.sh
+ABPAPIData.swift

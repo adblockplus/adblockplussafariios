@@ -47,14 +47,20 @@ struct FilterList {
 }
 
 extension FilterList {
-    /// - Returns: True if filter list has expired based on last update + expires interval.
+    /// This is not using an expiration interval from a v2 filter list as that data is not yet available.
+    /// - Returns: True if the filter list is considered to be expired.
     func expired() -> Bool {
-        guard let uwLastUpdate = lastUpdate,
-              let uwExpires = expires
-        else {
-            return false
+        let nowInterval = Date.timeIntervalSinceReferenceDate
+        if expires == nil && lastUpdate != nil {
+            // Default to a fixed expiration.
+            let defaultIntervalPlusLast = lastUpdate!.addingTimeInterval(GlobalConstants.defaultFilterListExpiration)
+                                                     .timeIntervalSinceReferenceDate
+            return defaultIntervalPlusLast < nowInterval
+        } else if expires != nil && lastUpdate != nil {
+            return expires! < nowInterval
+        } else {
+            // Expires is nil and last update is nil.
+            return true
         }
-        let lastUpdateInterval = uwLastUpdate.timeIntervalSinceReferenceDate
-        return lastUpdateInterval + uwExpires < Date.timeIntervalSinceReferenceDate
     }
 }

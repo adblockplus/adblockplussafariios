@@ -65,6 +65,8 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
     return NO;
 }
 
+/// Here, the meaning of lastUpdate is not equal to the last update value for individual filter
+/// lists. This will be refactored to have a clearer meaning when converted to Swift.
 - (void)setFilterLists:(NSDictionary<NSString *, NSDictionary<NSString *, NSObject *> *> *)filterLists
 {
     NSAssert([NSThread isMainThread], @"This method should be called from main thread only!");
@@ -79,7 +81,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
     BOOL anyLastUpdateFailed = self.anyLastUpdateFailed;
     if (self.installedVersion < self.downloadedVersion && wasUpdating && !updating) {
         // Force content blocker to load newer version of filter list
-        [[[ABPManager sharedInstance] filterListsUpdater] reloadWithCompletion:nil];
+        [[[ABPManager sharedInstance] filterListsUpdater] reloadContentBlockerWithCompletion:nil];
     }
     if (hasAnyLastUpdateFailed != anyLastUpdateFailed) {
         self.needsDisplayErrorDialog = anyLastUpdateFailed;
@@ -89,7 +91,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 - (void)setWhitelistedWebsites:(NSArray<NSString *> *)whitelistedWebsites
 {
     super.whitelistedWebsites = whitelistedWebsites;
-    [[[ABPManager sharedInstance] filterListsUpdater] reloadWithCompletion:nil];
+    [[[ABPManager sharedInstance] filterListsUpdater] reloadContentBlockerWithCompletion:nil];
 }
 
 - (void)setNeedsDisplayErrorDialog:(BOOL)needsDisplayErrorDialog
@@ -104,22 +106,24 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 - (void)setEnabled:(BOOL)enabled
 {
     super.enabled = enabled;
-    [[[ABPManager sharedInstance] filterListsUpdater] reloadWithCompletion:nil];
+    [[[ABPManager sharedInstance] filterListsUpdater] reloadContentBlockerWithCompletion:nil];
 }
 
 #pragma mark - Updating
 
-/// Calls the Swift implementation. Only the active filter list is requested to be updated.
+/// Calls the Swift implementation. Only the active filter list is requested to be updated. Here,
+/// the active filter list is obtained from the Objective-C side.
 - (void)updateActiveFilterLists:(BOOL)userTriggered
 {
     [[[ABPManager sharedInstance] filterListsUpdater]
-                  updateFilterListsWithNames:@[self.activeFilterListName] userTriggered:userTriggered];
+                  updateFilterListsWithNames:@[self.activeFilterListName]
+                               userTriggered:userTriggered
+                                  completion:nil];
 }
 
 #pragma mark - Unit Testing -
 
-/// Only used for unit testing. The replacement implementation is on the Swift
-/// side.
+/// Only used for unit testing. The replacement implementation is on the Swift side.
 - (BOOL)whitelistWebsite:(NSString *__nonnull)website
 {
     return [[ABPManager sharedInstance] whiteListWithWebsite:website];

@@ -17,12 +17,19 @@
 
 /// Globally available constants used for configuration.
 struct GlobalConstants {
-    /// Wake up application every hour (just hint for iOS)
-    static let backgroundFetchInterval: TimeInterval = 3600
+    /// Time limit for background operations. It is less than the allowed limit to allow time for
+    /// content blocker reloading.
+    static let backgroundOperationLimit: TimeInterval = 24
+
+    /// Time limit for foreground operations.
+    static let foregroundOperationLimit: TimeInterval = 10 * backgroundOperationLimit
 
     /// The number of times to try an immediate reload if an error is encountered.
     static let contentBlockerReloadRetryCount = 3
 
-    /// Maximum favicon size to download
+    /// Default interval for expiration of a filter list.
+    static let defaultFilterListExpiration: TimeInterval = 86400
+
+    /// Maximum favicon size to download.
     static let faviconSize = 180
 }

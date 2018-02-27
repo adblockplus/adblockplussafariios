@@ -33,7 +33,7 @@ extension ABPManager {
     }
 
     /// Write the filter lists back to Objective-C.
-    /// It is to be called with the lists to be saved.
+    /// - Parameter lists: The lists to be saved.
     func saveFilterLists(_ lists: [FilterList]) {
         var converted = [String: [String: Any]]()
         for list in lists {

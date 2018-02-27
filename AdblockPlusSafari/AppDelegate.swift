@@ -15,19 +15,25 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import RxSwift
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder,
                    UIApplicationDelegate {
     var window: UIWindow?
+    var bag = DisposeBag()
+
+    /// Variable indicating that the app is actively in a starting state.
+    var startingApp = Variable<Bool>(true)
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         if let uwController = window?.rootViewController as? RootController {
             uwController.adblockPlus = ABPManager.sharedInstance().adblockPlus
         }
-        application.setMinimumBackgroundFetchInterval(GlobalConstants.backgroundFetchInterval)
+        application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        registerForNotifications()
         return true
     }
 
@@ -37,16 +43,23 @@ class AppDelegate: UIResponder,
         return true
     }
 
+    func applicationWillResignActive(_ application: UIApplication) {
+        startingApp.value = false
+    }
+
     func applicationDidEnterBackground(_ application: UIApplication) {
+        startingApp.value = false
         ABPManager.sharedInstance().handleDidEnterBackground()
     }
 
     /// Set background task state to invalid.
     func applicationWillEnterForeground(_ application: UIApplication) {
+        startingApp.value = true
         ABPManager.sharedInstance().backgroundTaskIdentifier = UIBackgroundTaskInvalid
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        startingApp.value = false
         ABPManager.sharedInstance().handleDidBecomeActive()
     }
 

@@ -44,8 +44,7 @@ class ABPManager: NSObject {
         }
     }
 
-    /// This is a unique token (Int) that identifies a request to run in the
-    /// background.
+    /// This is a unique token (Int) that identifies a request to run in the background.
     var backgroundTaskIdentifier: UIBackgroundTaskIdentifier? {
         /// End the existing task before setting a new one.
         willSet {
@@ -103,8 +102,8 @@ class ABPManager: NSObject {
     // MARK: - Foreground mode -
     // ------------------------------------------------------------
 
-    /// When the app becomes active, if there are outdated filter lists, update
-    /// them. Also check the enabled state of the content blocker.
+    /// When the app becomes active, if there are outdated filter lists, update them. Also check
+    /// the enabled state of the content blocker.
     func handleDidBecomeActive() {
         guard let updater = ABPManager.sharedInstance().filterListsUpdater else { return }
         let stateHandler = ContentBlockerStateHandler(adblockPlus: adblockPlus,
@@ -217,9 +216,9 @@ class ABPManager: NSObject {
             })
     }
 
-    /// Determine if the app is in the background. The app is in the
-    /// background when whitelisting through the Safari action extension.
-    private func isBackground() -> Bool {
+    /// Determine if the app is in the background. The app is in the background when whitelisting
+    /// through the Safari action extension.
+    func isBackground() -> Bool {
         let app = UIApplication.shared
         let isBackground = (app.applicationState != UIApplicationState.active)
         return isBackground

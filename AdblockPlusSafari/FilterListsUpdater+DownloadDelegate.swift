@@ -15,16 +15,48 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import RxSwift
+
 /// Implementation of URLSessionDownloadDelegate and related support functions.
 extension FilterListsUpdater {
+
+    /// Get last event from behavior subject matching the task ID.
+    /// - Parameter taskID: A background task identifier.
+    /// - Returns: The download event value if it exists, otherwise nil.
+    func lastDownloadEvent(taskID: UIBackgroundTaskIdentifier) -> DownloadEvent? {
+        if let subject = downloadEvents[taskID] {
+            if let lastEvent = try? subject.value() {
+                return lastEvent
+            }
+        }
+        return nil
+    }
+
     // ------------------------------------------------------------
     // MARK: - URLSessionDownloadDelegate -
     // ------------------------------------------------------------
+
+    /// A URL session task is transferring data.
+    func urlSession(_ session: URLSession,
+                    downloadTask: URLSessionDownloadTask,
+                    didWriteData bytesWritten: Int64,
+                    totalBytesWritten: Int64,
+                    totalBytesExpectedToWrite: Int64) {
+        if var lastEvent = lastDownloadEvent(taskID: downloadTask.taskIdentifier) {
+            lastEvent.totalBytesWritten = totalBytesWritten
+            downloadEvents[downloadTask.taskIdentifier]?.onNext(lastEvent) // new event
+        }
+    }
 
     /// A URL session task has finished transferring data.
     func urlSession(_ session: URLSession,
                     task: URLSessionTask,
                     didCompleteWithError error: Error?) {
+        if var lastEvent = lastDownloadEvent(taskID: task.taskIdentifier) {
+            lastEvent.error = error
+            lastEvent.errorWritten = true
+            downloadEvents[task.taskIdentifier]?.onNext(lastEvent)
+        }
         let name = filterListNameForTaskTaskIdentifier(taskIdentifier: task.taskIdentifier)
         guard let uwName = name else { return }
         guard var list = filterList(withName: name) else { return }
@@ -33,7 +65,7 @@ extension FilterListsUpdater {
         list.taskIdentifier = nil
         replaceFilterList(withName: uwName,
                           withNewList: list)
-        removeDownloadTask(forFilterListName: uwName)
+        downloadTasksByID[task.taskIdentifier] = nil
     }
 
     /// A download task for a filter list has finished downloading. Update the user's filter list
@@ -42,6 +74,12 @@ extension FilterListsUpdater {
     func urlSession(_ session: URLSession,
                     downloadTask: URLSessionDownloadTask,
                     didFinishDownloadingTo location: URL) {
+
+        if var lastEvent = lastDownloadEvent(taskID: downloadTask.taskIdentifier) {
+            lastEvent.didFinishDownloading = true
+            downloadEvents[downloadTask.taskIdentifier]?.onNext(lastEvent) // new event
+        }
+
         let name = filterListNameForTaskTaskIdentifier(taskIdentifier: downloadTask.taskIdentifier)
         guard let uwName = name else { return }
         guard var list = filterList(withName: name) else { return }
@@ -188,19 +226,5 @@ extension FilterListsUpdater {
         }
         assert(cnt == 0 || cnt == 1)
         return result
-    }
-
-    /// Remove a key-value pair from the download tasks.
-    private func removeDownloadTask(forFilterListName name: FilterListName) {
-        var removeName: FilterListName?
-        var cnt = 0
-        for key in downloadTasks.keys where key == name {
-            removeName = name
-            cnt += 1
-        }
-        assert(cnt == 0 || cnt == 1)
-        if let name = removeName {
-            downloadTasks[name] = nil
-        }
     }
 }

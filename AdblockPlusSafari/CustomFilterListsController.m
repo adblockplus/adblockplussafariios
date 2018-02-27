@@ -157,7 +157,7 @@ static NSString *customFilterListUrl = @"https://easylist-downloads.adblockplus.
 
     if ([cell.reuseIdentifier isEqualToString:@"EnableDefaultFilterList"]) {
         self.adblockPlus.defaultFilterListEnabled = !self.adblockPlus.defaultFilterListEnabled;
-        [[[ABPManager sharedInstance] filterListsUpdater] reloadWithCompletion:nil];
+        [[[ABPManager sharedInstance] filterListsUpdater] reloadContentBlockerWithCompletion:nil];
     } else if ([cell.reuseIdentifier isEqualToString:@"EnableCustomFilterList"]) {
         NSMutableDictionary<NSString *, id> *filterLists = nil;
 
@@ -238,7 +238,8 @@ static NSString *customFilterListUrl = @"https://easylist-downloads.adblockplus.
     filterLists[CustomFilterListName] = customFilterList.dictionary;
     self.adblockPlus.filterLists = filterLists;
     [[[ABPManager sharedInstance] filterListsUpdater]
-                                  updateFilterListsWithNames:@[CustomFilterListName] userTriggered:NO];
+                  updateFilterListsWithNames:@[CustomFilterListName]
+                               userTriggered:NO completion:nil];
 }
 
 - (NSDateFormatter *)dateFormatter

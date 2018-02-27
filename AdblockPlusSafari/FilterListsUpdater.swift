@@ -30,13 +30,21 @@ import RxSwift
 class FilterListsUpdater: AdblockPlusShared,
                           URLSessionDownloadDelegate {
     let updatingKey = "updatingGroupIdentifier"
+
+    /// Bag for reload operations.
     var reloadBag: DisposeBag! = DisposeBag()
+
+    /// Bag for download operations.
+    var downloadBag: DisposeBag! = DisposeBag()
 
     /// For download tasks.
     var backgroundSession: URLSession!
 
-    /// Filter list download tasks keyed by URL string.
-    var downloadTasks = [FilterListName: URLSessionTask]()
+    /// Filter list download tasks keyed by task ID.
+    var downloadTasksByID = [UIBackgroundTaskIdentifier: URLSessionTask]()
+
+    /// Download events keyed by task ID.
+    var downloadEvents = [UIBackgroundTaskIdentifier: BehaviorSubject<DownloadEvent>]()
 
     /// This identifier is incremented every time filter lists are updated.
     /// See updateFilterLists:withNames:userTriggered.
@@ -111,7 +119,7 @@ class FilterListsUpdater: AdblockPlusShared,
                     if let url = task.originalRequest?.url?.absoluteString {
                         if url == list.url &&
                            task.taskIdentifier == list.taskIdentifier {
-                            self.downloadTasks[url] = task
+                            self.downloadTasksByID[task.taskIdentifier] = task
                             var nameIndex = 0
                             for name in listsToRemoveUpdatingFrom {
                                 if name == list.name {
@@ -142,80 +150,167 @@ class FilterListsUpdater: AdblockPlusShared,
         })
     }
 
-    /// Store and start a download task.
-    /// - Parameters:
-    ///   - name: The unique filter list name.
-    ///   - task: The saved download task for the filter list.
-    func startDownloadTask(forFilterListName name: FilterListName,
-                           task: URLSessionDownloadTask?) {
-        guard let uwTask = task else { return }
-        downloadTasks[name]?.cancel()
-        downloadTasks[name] = uwTask
-        uwTask.resume()
+    /// Time limit for a download operation.
+    /// - Returns: Time interval according to background state.
+    func downloadLimit() -> TimeInterval {
+        let mgr = self.abpManager
+        if mgr?.isBackground() == true {
+            return GlobalConstants.backgroundOperationLimit
+        }
+        return GlobalConstants.foregroundOperationLimit
+    }
+
+    /// A filter list download task is created. An entry in the download tasks dictionary is
+    /// created for the task.
+    /// - Parameter filterList: A filter List struct.
+    /// - Returns: The download task.
+    func filterListDownload(for filterList: FilterList) -> Observable<URLSessionDownloadTask> {
+        return Observable.create { observer in
+            guard let urlString = filterList.url,
+                  let url = URL(string: urlString),
+                  var components = URLComponents(string: url.absoluteString)
+            else {
+                observer.onError(ABPDownloadTaskError.failedToMakeDownloadTask)
+                return Disposables.create()
+            }
+            components.queryItems = FilterListDownloadData(with: filterList).queryItems
+            if let newURL = components.url {
+                let task = self.backgroundSession.downloadTask(with: newURL)
+                self.downloadTasksByID[task.taskIdentifier] = task
+                observer.onNext(task)
+                observer.onCompleted()
+            } else {
+                observer.onError(ABPDownloadTaskError.failedToMakeDownloadTask)
+            }
+            return Disposables.create()
+        }
     }
 
     // ------------------------------------------------------------
     // MARK: - Filter Lists -
     // ------------------------------------------------------------
 
-    /// Download the active filter list if an update has been requested.
-    /// - Parameter userTriggered: true if the user trigged a filter list update, otherwise false.
-    func updateActiveFilterList(userTriggered: Bool) {
-        let activeFilterList = activeFilterListName()
-        updateFilterLists(withNames: [activeFilterList],
-                          userTriggered: userTriggered)
+    /// An observable with tasks to update each named filter list.
+    /// Tasks are not started.
+    /// - Parameters:
+    ///   - names: Array of names of filter lists to update.
+    ///   - userTriggered: User triggered flag.
+    /// - Returns: Stream of FilterListUpdate model structs.
+    func updateMake(with names: [FilterListName],
+                    userTriggered: Bool) -> Observable<FilterListUpdate> {
+        return Observable.from(names).concatMap({ name -> Observable<FilterListUpdate> in
+            return self.updateFilterList(with: name,
+                                         userTriggered: userTriggered)
+        })
+    }
+
+    /// Tasks are started here and observed for completion. Download operations are limited by the
+    /// download limit. The observable is disposed when the limit is exceeded.
+    /// - Parameter update: A filter list update model struct.
+    /// - Returns: The update that was completed.
+    func updateWait(for update: FilterListUpdate) -> Observable<FilterListUpdate> {
+        let taskID = update.task.taskIdentifier
+        self.downloadEvents[taskID] = BehaviorSubject<DownloadEvent>(value: DownloadEvent())
+        update.task.resume()
+        return Observable.create { observer in
+            return self.downloadEvents[taskID]!
+                .filter({ event -> Bool in
+                    return event.didFinishDownloading == true &&
+                           event.errorWritten == true
+                }).subscribe(onNext: { _ in
+                    observer.onNext(update)
+                    observer.onCompleted()
+                }, onDisposed: {
+                    self.cleanupUpdate(update)
+                })
+        }.timeout(downloadLimit(),
+                  scheduler: MainScheduler.asyncInstance)
     }
 
     /// Update filter lists with statuses of tasks running while the app is in the background.
+    /// Update should only occur if the filter list is considered to be expired.
+    /// - Parameters:
+    ///   - names: Array of filter list names.
+    ///   - userTriggered: True if initiated by a user.
+    ///   - completion: Nonrequired closure that is called when all downloads are complete if
+    ///   downloading happens.
     @objc
     func updateFilterLists(withNames names: [FilterListName],
-                           userTriggered: Bool) {
-        if names.count == 0 { return }
-        updatingGroupIdentifier += 1
-        var modifiedFilterLists = [String: FilterList]()
-        for name in names {
-            if var filterList = FilterList(withName: name,
-                                           fromDictionary: self.filterLists[name]) {
-                newDownloadTask(for: filterList)
-                    .subscribe(onNext: { task in
-                        self.startDownloadTask(forFilterListName: name,
-                                               task: task)
-                        filterList.taskIdentifier = task?.taskIdentifier
-                        filterList.updating = true
-                        filterList.updatingGroupIdentifier = self.updatingGroupIdentifier
-                        filterList.userTriggered = userTriggered
-                        filterList.lastUpdateFailed = false
-                        modifiedFilterLists[name] = filterList
+                           userTriggered: Bool,
+                           completion: ((Error?) -> Void)? = nil) {
+        updateMake(with: names,
+                   userTriggered: userTriggered)
+            .flatMap { update -> Observable<FilterListUpdate> in
+                return self.updateWait(for: update)
+            }.subscribe(onNext: { update in
+                do {
+                    try self.internallyUpdate(with: update)
+                } catch {
+                    // Internal state will be corrupt if an error occurs with the internal update. This is not
+                    // a fatal condition as the state is continually updated as filter lists expire.
+                }
+                self.reloadContentBlocker { error in
+                    completion?(error)
+                }
+            }, onError: { error in
+                completion?(error)
+            }).disposed(by: downloadBag)
+    }
 
-                        // Write the filter list back to the Objective-C side.
-                        self.replaceFilterList(withName: name,
-                                               withNewList: filterList)
-                    }).disposed(by: reloadBag)
+    /// This is the private function for downloading an updated filter list. The last update date is
+    /// changed here.
+    /// - Parameters:
+    ///   - name: Filter list name.
+    ///   - userTriggered: True if initiated by the user.
+    /// - Returns: Observable of the filter list name for confirmation.
+    fileprivate func updateFilterList(with name: FilterListName,
+                                      userTriggered: Bool) -> Observable<FilterListUpdate> {
+        self.updatingGroupIdentifier += 1
+        guard var filterList = FilterList(withName: name,
+                                          fromDictionary: self.filterLists[name])
+        else { return Observable.empty() }
+        filterList.lastUpdate = Date()
+        return self.filterListDownload(for: filterList).flatMap { task -> Observable<FilterListUpdate> in
+            let update = FilterListUpdate(filterList: filterList,
+                                          task: task,
+                                          userTriggered: userTriggered)
+            return Observable.create { observer in
+                observer.onNext(update)
+                observer.onCompleted()
+                return Disposables.create()
             }
         }
     }
 
-    /// Create a new filter list download task.
-    /// - Parameter filterList: A filter list model struct.
-    /// - Returns: A download task for the filter list.
-    func newDownloadTask(for filterList: FilterList) -> Observable<URLSessionDownloadTask?> {
-        return Observable.create { observer in
-            guard let urlString = filterList.url,
-                  let url = URL(string: urlString),
-                  var components = URLComponents(string: url.absoluteString) else {
-                observer.onNext(nil)
-                observer.onCompleted()
-                return Disposables.create()
-            }
-            components.queryItems = FilterListDownloadData(with: filterList).queryItems
-            if let newURL = components.url {
-                let task = self.backgroundSession.downloadTask(with: newURL)
-                observer.onNext(task)
-                observer.onCompleted()
-            }
-            observer.onError(ABPDownloadTaskError.failedToMakeDownloadTask)
-            return Disposables.create()
+    /// Clean up memory for
+    /// * Download events
+    /// * Download tasks
+    /// - Parameter update: A filter list update model struct.
+    func cleanupUpdate(_ update: FilterListUpdate) {
+        update.task.cancel()
+        downloadTasksByID[update.task.taskIdentifier] = nil
+    }
+
+    /// Maintain compatibility with the legacy implementation by writing data to the Objective-C side.
+    /// - Parameters:
+    ///   - filterList: A filter list.
+    ///   - task: A download task if available.
+    ///   - userTriggered: User triggered flag.
+    /// - Throws: Error if data is invalid.
+    func internallyUpdate(with update: FilterListUpdate) throws {
+        guard let name = update.filterList.name else {
+            throw ABPFilterListError.invalidData
         }
+        var newFilterList = update.filterList
+        newFilterList.taskIdentifier = update.task.taskIdentifier
+        newFilterList.updating = true
+        newFilterList.updatingGroupIdentifier = self.updatingGroupIdentifier
+        newFilterList.userTriggered = update.userTriggered
+        newFilterList.lastUpdateFailed = false
+        newFilterList.lastUpdate = update.filterList.lastUpdate
+        // Write the filter list back to the Objective-C side.
+        replaceFilterList(withName: name,
+                          withNewList: newFilterList)
     }
 
     /// Examine the current filter lists and return an array of filter list names that are
@@ -241,7 +336,7 @@ class FilterListsUpdater: AdblockPlusShared,
     @objc
     func changeAcceptableAds(enabled: Bool) {
         super.enabled = enabled
-        reload(afterCompletion: { [weak self] in
+        reloadContentBlocker(afterCompletion: { [weak self] in
             if let names = self?.outdatedFilterListNames() {
                 self?.updateFilterLists(withNames: names,
                                         userTriggered: false)
@@ -254,57 +349,9 @@ class FilterListsUpdater: AdblockPlusShared,
     /// - Parameter enabled: True if the default filter list is enabled.
     func setDefaultFilterListEnabled(enabled: Bool) {
         super.defaultFilterListEnabled = enabled
-        reload(withCompletion: { _ in
+        reloadContentBlocker(withCompletion: { _ in
             self.updateFilterLists(withNames: self.outdatedFilterListNames(),
                                    userTriggered: false)
         })
-    }
-
-    // ------------------------------------------------------------
-    // MARK: - Reload Content Blocker -
-    // ------------------------------------------------------------
-
-    /// Start a completion closure, then reload the content blocker.
-    /// - Parameter completion: Closure to run **before** reload.
-    func reload(afterCompletion completion: () -> Void) {
-        abpManager.disableReloading = true
-        completion()
-        abpManager.disableReloading = false
-        reload(withCompletion: nil)
-    }
-
-    /// Reload the content blocker, then run a completion closure.
-    /// - Parameter completion: Closure to run after reload.
-    @objc
-    func reload(withCompletion completion: ((Error?) -> Void)?) {
-        guard abpManager.disableReloading == false else {
-            return
-        }
-        abpManager.adblockPlus.reloading = true
-        abpManager.adblockPlus.performingActivityTest = false
-        reloadBag = DisposeBag()
-        reloadContentBlocker(withCompletion: completion)
-            .subscribe()
-            .disposed(by: reloadBag)
-    }
-
-    /// This is the base function for reloading the content blocker. A ContentBlockerManager
-    /// performs the actual reload. Errors in reloading are currently not handled.
-    /// - Parameter completion: Closure to run after reload even if an error occurred.
-    /// - Returns: An Observable.
-    func reloadContentBlocker(withCompletion completion: ((Error?) -> Void)?) -> Observable<Void> {
-        return Observable.create { observer in
-            let id = self.contentBlockerIdentifier()
-            self.cbManager.reload(withIdentifier: id) { error in
-                self.abpManager.adblockPlus.reloading = false
-                if completion != nil {
-                    completion!(error)
-                    observer.onCompleted()
-                } else {
-                    observer.onCompleted()
-                }
-            }
-            return Disposables.create()
-        }.observeOn(MainScheduler.asyncInstance)
     }
 }

@@ -15,22 +15,9 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/// Custom errors for ABP.
-
-/// Error cases for download tasks.
-/// - failedToMakeDownloadTask: Download task could not be created for the download.
-enum ABPDownloadTaskError: Error {
-    case failedToMakeDownloadTask
-}
-
-/// Error cases for filter list processing.
-/// - invalidData: Data could not be read from the list.
-enum ABPFilterListError: Error {
-    case invalidData
-}
-
-/// Error cases for managing device tokens.
-/// - invalidEndpoint: Endpoint URL was not found.
-enum ABPDeviceTokenSaveError: Error {
-    case invalidEndpoint
+/// Represents a filter list update.
+struct FilterListUpdate {
+    var filterList: FilterList
+    var task: URLSessionDownloadTask
+    var userTriggered: Bool
 }

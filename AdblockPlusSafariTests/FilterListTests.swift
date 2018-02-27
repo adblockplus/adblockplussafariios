@@ -18,32 +18,23 @@
 @testable import AdblockPlusSafari
 import XCTest
 
-/// Test Filter List operations.
 class FilterListTests: XCTestCase {
-    override func setUp() {
-        super.setUp()
-    }
+    let mgr = ABPManager.sharedInstance()
 
-    override func tearDown() {
-        super.tearDown()
-    }
-
-    /// * Test reloading of content blocker.
-    /// * Test detection of content blocker activation or enabled state.
-    func testReloadContentBlocker() {
-        let expect = expectation(description: "Expectations for reloader")
-        let timeout = 20.0
-        let mgr = ABPManager.sharedInstance()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2,
-                                      execute: {
-            mgr.filterListsUpdater?.reload(withCompletion: { error in
-                XCTAssert(mgr.adblockPlus.activated, "Content blocker has not been enabled")
-                XCTAssert(error == nil,
-                          "Error during reload: \(String(describing: error))")
-                expect.fulfill()
-            })
-        })
-        wait(for: [expect],
-             timeout: timeout)
+    /// Test expired logic.
+    func testExpired() {
+        var filterList = mgr.testingList
+        filterList.lastUpdate = Date()
+        XCTAssert(!filterList.expired(),
+                  "Last update is now - should not be expired")
+        filterList.lastUpdate = Date() - GlobalConstants.defaultFilterListExpiration - 1
+        XCTAssert(filterList.expired(),
+                  "Last updated is beyond default expiration - should be expired")
+        filterList.lastUpdate = Date() - GlobalConstants.defaultFilterListExpiration + 1
+        XCTAssert(!filterList.expired(),
+                  "Last updated is not beyond default expiration - should not be expired")
+        filterList.expires = Date().timeIntervalSinceReferenceDate - 1
+        XCTAssert(filterList.expired(),
+                  "Expires < now - should be expired")
     }
 }
