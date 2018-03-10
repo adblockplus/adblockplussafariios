@@ -189,7 +189,7 @@ typedef NS_ENUM(NSInteger, AdblockPlusControllerSection) {
     } else if ([cell.reuseIdentifier isEqualToString:@"WhitelistedWebsites"]) {
         [self.parentViewController performSegueWithIdentifier:@"WhitelistedWebsitesSegue" sender:nil];
     } else if ([cell.reuseIdentifier isEqualToString:@"UpdateFilterLists"]) {
-        [self.adblockPlus updateActiveFilterLists:YES];
+        [self.adblockPlus updateActiveFilterLists:NO];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }

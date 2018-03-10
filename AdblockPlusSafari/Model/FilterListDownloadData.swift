@@ -23,15 +23,15 @@ struct FilterListDownloadData {
         applicationVer = ABPActiveVersions.iosVersion(),
         platform = "webkit",
         platformVer = ABPActiveVersions.webkitVersion() ?? ""
+
+    /// Maximum value beyond which download count is represented by (n-1)+.
+    let maxDownloadCount = 5
+
     var queryItems: [URLQueryItem]!
 
     /// Construct a filter list download data struct.
     /// - Parameter filterList: The local filter list corresponding to the download data.
     init(with filterList: FilterList) {
-        var downloadCount = ""
-        if let count = filterList.downloadCount {
-            downloadCount = String(count)
-        }
         queryItems = [URLQueryItem(name: "addonName",
                                    value: addonName),
             URLQueryItem(name: "addonVersion",
@@ -47,6 +47,19 @@ struct FilterListDownloadData {
             URLQueryItem(name: "lastVersion",
                          value: filterList.lastVersion),
             URLQueryItem(name: "downloadCount",
-                         value: downloadCount)]
+                         value: downloadCountString(for: filterList))]
+    }
+}
+
+extension FilterListDownloadData {
+    func downloadCountString(for filterList: FilterList) -> String {
+        if let count = filterList.downloadCount {
+            if count >= maxDownloadCount {
+                return String(maxDownloadCount - 1) + "+"
+            } else {
+                return String(count)
+            }
+        }
+        return "0"
     }
 }

@@ -15,7 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/// Objective-C bridging for FilterList model struct.
+// Objective-C bridging for FilterList model struct.
 extension FilterList {
     /// Failable initializer that converts a filter list object from the
     /// Objective-C implementation.
@@ -23,11 +23,9 @@ extension FilterList {
     ///   - name: Unique name for the filter list.
     ///   - dictionary: NSDictionary from legacy data model.
     ///   - lastVersion: Nonrequired last version.
-    ///   - downloadCount: Nonrequired downloadCount.
-    init?(withName name: String,
+    init?(named name: String,
           fromDictionary dictionary: [String: Any]?,
-          lastVersion: String = "",
-          downloadCount: Int = 0) {
+          lastVersion: String = "") {
         guard let uwDict = dictionary else { return nil }
         self.name = name
         taskIdentifier = uwDict["taskIdentifier"] as? Int
@@ -42,7 +40,7 @@ extension FilterList {
         userTriggered = uwDict["userTriggered"] as? Bool
         version = uwDict["version"] as? String
         self.lastVersion = lastVersion
-        self.downloadCount = downloadCount
+        self.downloadCount = uwDict["downloadCount"] as? Int
     }
 
     /// - Returns: A dictionary suitable for use with Objective-C.
@@ -59,6 +57,7 @@ extension FilterList {
         dict["url"] = url
         dict["userTriggered"] = userTriggered
         dict["version"] = version
+        dict["downloadCount"] = downloadCount
         return dict
     }
 }

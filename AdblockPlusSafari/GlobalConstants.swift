@@ -19,7 +19,7 @@
 struct GlobalConstants {
     /// Time limit for background operations. It is less than the allowed limit to allow time for
     /// content blocker reloading.
-    static let backgroundOperationLimit: TimeInterval = 24
+    static let backgroundOperationLimit: TimeInterval = 28
 
     /// Time limit for foreground operations.
     static let foregroundOperationLimit: TimeInterval = 10 * backgroundOperationLimit

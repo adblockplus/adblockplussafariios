@@ -173,6 +173,7 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
     [_adblockPlusDetails synchronize];
 }
 
+/// Called from AdblockPlusExtras when updating filter lists.
 - (void)setFilterLists:(NSDictionary<NSString *, NSDictionary<NSString *, NSObject *> *> *)filterLists
 {
     _filterLists = filterLists;

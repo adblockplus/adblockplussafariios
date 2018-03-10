@@ -59,6 +59,8 @@ typedef NS_ENUM(NSUInteger, AdblockPlusErrorCode) {
 
 @property (nonatomic) NSInteger downloadedVersion;
 
+/// This property should never be used to access the current filter list data from the Swift side
+/// as it is not guaranteed to be synchronized with the saved data.
 @property (nonatomic, strong) NSDictionary<NSString *, NSDictionary<NSString *, id> *> *__nonnull filterLists;
 
 @property (nonatomic, strong) NSArray<NSString *> *__nonnull whitelistedWebsites;

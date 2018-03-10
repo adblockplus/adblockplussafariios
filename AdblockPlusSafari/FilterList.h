@@ -37,6 +37,7 @@
 
 @property (nonatomic, strong, nullable) NSDate *lastUpdate;
 @property (nonatomic) NSTimeInterval expires;
+@property (nonatomic) NSUInteger downloadCount;
 
 - (instancetype __nullable)initWithDictionary:(NSDictionary *__nullable)dictionary;
 

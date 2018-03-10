@@ -174,6 +174,7 @@ class FilterListsUpdater: AdblockPlusShared,
                 return Disposables.create()
             }
             components.queryItems = FilterListDownloadData(with: filterList).queryItems
+            components.encodePlusSign()
             if let newURL = components.url {
                 let task = self.backgroundSession.downloadTask(with: newURL)
                 self.downloadTasksByID[task.taskIdentifier] = task
@@ -218,8 +219,14 @@ class FilterListsUpdater: AdblockPlusShared,
                     return event.didFinishDownloading == true &&
                            event.errorWritten == true
                 }).subscribe(onNext: { _ in
-                    observer.onNext(update)
-                    observer.onCompleted()
+                    self.reloadContentBlocker { error in
+                        if error == nil {
+                            observer.onNext(update)
+                            observer.onCompleted()
+                        } else {
+                            observer.onError(error!)
+                        }
+                    }
                 }, onDisposed: {
                     self.cleanupUpdate(update)
                 })
@@ -249,9 +256,7 @@ class FilterListsUpdater: AdblockPlusShared,
                     // Internal state will be corrupt if an error occurs with the internal update. This is not
                     // a fatal condition as the state is continually updated as filter lists expire.
                 }
-                self.reloadContentBlocker { error in
-                    completion?(error)
-                }
+                completion?(nil)
             }, onError: { error in
                 completion?(error)
             }).disposed(by: downloadBag)
@@ -266,9 +271,12 @@ class FilterListsUpdater: AdblockPlusShared,
     fileprivate func updateFilterList(with name: FilterListName,
                                       userTriggered: Bool) -> Observable<FilterListUpdate> {
         self.updatingGroupIdentifier += 1
-        guard var filterList = FilterList(withName: name,
-                                          fromDictionary: self.filterLists[name])
-        else { return Observable.empty() }
+        guard var filterList = FilterList(matching: name) else {
+            return Observable.create { observer in
+                observer.onError(ABPFilterListError.invalidData)
+                return Disposables.create()
+            }
+        }
         filterList.lastUpdate = Date()
         return self.filterListDownload(for: filterList).flatMap { task -> Observable<FilterListUpdate> in
             let update = FilterListUpdate(filterList: filterList,
@@ -291,6 +299,16 @@ class FilterListsUpdater: AdblockPlusShared,
         downloadTasksByID[update.task.taskIdentifier] = nil
     }
 
+    /// Update filter list with a new download count.
+    /// - Parameter filterList: A filter list.
+    func updateSuccessfulDownloadCount(for filterList: inout FilterList) {
+        if filterList.downloadCount != nil {
+            filterList.downloadCount! += 1
+        } else {
+            filterList.downloadCount = 1
+        }
+    }
+
     /// Maintain compatibility with the legacy implementation by writing data to the Objective-C side.
     /// - Parameters:
     ///   - filterList: A filter list.
@@ -303,11 +321,12 @@ class FilterListsUpdater: AdblockPlusShared,
         }
         var newFilterList = update.filterList
         newFilterList.taskIdentifier = update.task.taskIdentifier
-        newFilterList.updating = true
+        newFilterList.updating = false
         newFilterList.updatingGroupIdentifier = self.updatingGroupIdentifier
         newFilterList.userTriggered = update.userTriggered
         newFilterList.lastUpdateFailed = false
         newFilterList.lastUpdate = update.filterList.lastUpdate
+        updateSuccessfulDownloadCount(for: &newFilterList)
         // Write the filter list back to the Objective-C side.
         replaceFilterList(withName: name,
                           withNewList: newFilterList)
@@ -319,7 +338,7 @@ class FilterListsUpdater: AdblockPlusShared,
     func outdatedFilterListNames() -> [FilterListName] {
         var outdated = [FilterListName]()
         for key in filterLists.keys {
-            if let uwList = FilterList(withName: key,
+            if let uwList = FilterList(named: key,
                                        fromDictionary: filterLists[key]) {
                 if uwList.expired() {
                     outdated.append(key)

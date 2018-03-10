@@ -67,6 +67,9 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 
 /// Here, the meaning of lastUpdate is not equal to the last update value for individual filter
 /// lists. This will be refactored to have a clearer meaning when converted to Swift.
+///
+/// This is the first point of contact when filter lists are saved from the Swift side.
+/// The lists get synchronized when super.filterLists is set.
 - (void)setFilterLists:(NSDictionary<NSString *, NSDictionary<NSString *, NSObject *> *> *)filterLists
 {
     NSAssert([NSThread isMainThread], @"This method should be called from main thread only!");

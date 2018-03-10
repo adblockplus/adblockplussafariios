@@ -28,7 +28,7 @@ extension FilterListsUpdater {
                 return Disposables.create()
             }
             let activeList = ABPManager.sharedInstance().adblockPlus.filterLists[activeName]
-            let filterList = FilterList(withName: activeName,
+            let filterList = FilterList(named: activeName,
                                         fromDictionary: activeList)
             if filterList?.expired() == true {
                 self.updateFilterLists(withNames: [activeName],

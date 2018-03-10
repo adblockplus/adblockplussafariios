@@ -44,7 +44,7 @@ extension FilterListsUpdater {
                     totalBytesExpectedToWrite: Int64) {
         if var lastEvent = lastDownloadEvent(taskID: downloadTask.taskIdentifier) {
             lastEvent.totalBytesWritten = totalBytesWritten
-            downloadEvents[downloadTask.taskIdentifier]?.onNext(lastEvent) // new event
+            downloadEvents[downloadTask.taskIdentifier]?.onNext(lastEvent) // make a new event
         }
     }
 

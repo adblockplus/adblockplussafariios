@@ -23,7 +23,7 @@ extension ABPManager {
     func filterLists() -> [FilterList] {
         var result = [FilterList]()
         for key in adblockPlus.filterLists.keys {
-            let converted = FilterList(withName: key,
+            let converted = FilterList(named: key,
                                        fromDictionary: adblockPlus.filterLists[key])
             if converted != nil {
                 result.append(converted!)
@@ -41,7 +41,9 @@ extension ABPManager {
                 converted[name] = list.toDictionary()
             }
         }
-        adblockPlus.filterLists = converted
+        DispatchQueue.main.async {
+            self.adblockPlus.filterLists = converted
+        }
     }
 
     /// Remove a filter list and save the results to the Objective-C side.
