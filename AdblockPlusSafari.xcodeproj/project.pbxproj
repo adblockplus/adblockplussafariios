@@ -28,7 +28,6 @@
 		657680A8203CB313007C9ABE /* FilterListUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657680A7203CB313007C9ABE /* FilterListUpdate.swift */; };
 		657680AB203CC14C007C9ABE /* FilterListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657680AA203CC14C007C9ABE /* FilterListTests.swift */; };
 		657680AD203D77C6007C9ABE /* FilterListsUpdater+ContentBlocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657680AC203D77C6007C9ABE /* FilterListsUpdater+ContentBlocker.swift */; };
-		657680B1203E1DA1007C9ABE /* ABPAPIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657680B0203E1DA0007C9ABE /* ABPAPIData.swift */; };
 		6578DB051F71DA490088F136 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
 		6578DB061F71DA490088F136 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
 		6578DB071F71DB650088F136 /* AdblockPlus+ActivityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D27311DCB492000118902 /* AdblockPlus+ActivityChecking.m */; };
@@ -51,6 +50,7 @@
 		65C1769D1F7C79D2008E2BA1 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */; };
 		65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1769E1F7C8099008E2BA1 /* RxSwift.framework */; };
 		65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; };
+		65D8D43F2058C21100E6AFC2 /* ABPAPIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D8D43E2058C21100E6AFC2 /* ABPAPIData.swift */; };
 		65C88F882044ADFE004F272E /* FilterList+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C88F872044ADFE004F272E /* FilterList+UserDefaults.swift */; };
 		65E4EE3C1F7DE1E200ED31BF /* KVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */; };
 		65EBAC1F20030CBE001E181F /* ABPManager+ObjectiveC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EBAC1E20030CBE001E181F /* ABPManager+ObjectiveC.swift */; };
@@ -194,7 +194,6 @@
 		657680A7203CB313007C9ABE /* FilterListUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListUpdate.swift; sourceTree = "<group>"; };
 		657680AA203CC14C007C9ABE /* FilterListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListTests.swift; sourceTree = "<group>"; };
 		657680AC203D77C6007C9ABE /* FilterListsUpdater+ContentBlocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterListsUpdater+ContentBlocker.swift"; sourceTree = "<group>"; };
-		657680B0203E1DA0007C9ABE /* ABPAPIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ABPAPIData.swift; path = ../Generated/ABPAPIData.swift; sourceTree = "<group>"; };
 		657CEC7B1F9EC47A00F37B68 /* FilterList+ObjectiveC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilterList+ObjectiveC.swift"; sourceTree = "<group>"; };
 		657CEC7C1F9EC47A00F37B68 /* FilterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterList.swift; sourceTree = "<group>"; };
 		658FCAA71FF45A2A00198A2A /* FilterListsUpdater+DownloadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilterListsUpdater+DownloadDelegate.swift"; sourceTree = "<group>"; };
@@ -214,6 +213,7 @@
 		65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		65C1769E1F7C8099008E2BA1 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		65C176A01F7C809E008E2BA1 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		65D8D43E2058C21100E6AFC2 /* ABPAPIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPAPIData.swift; sourceTree = "<group>"; };
 		65C88F872044ADFE004F272E /* FilterList+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterList+UserDefaults.swift"; sourceTree = "<group>"; };
 		65E4EE3A1F7DE1E100ED31BF /* AdblockPlusSafariTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdblockPlusSafariTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOTests.swift; sourceTree = "<group>"; };
@@ -544,6 +544,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		65D8D43D2058C21100E6AFC2 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				65D8D43E2058C21100E6AFC2 /* ABPAPIData.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		6945C1C61E6872230067AC99 /* AdblockPlus */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,7 +682,7 @@
 				6501812020253B220018C603 /* ABPDebug.swift */,
 				E9B982AD1E55C12400C22A17 /* build.py */,
 				65A173F01F60A1C2004107EF /* Frameworks */,
-				657680B2203E57E4007C9ABE /* Generated */,
+				65D8D43D2058C21100E6AFC2 /* Generated */,
 				E9071D3D1B76897C00091AEB /* Products */,
 				29B63A7A1FFFC7B1003BB75B /* Recovered References */,
 				69AB6A2F1B970D18005C2075 /* Resources */,
@@ -1048,7 +1056,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Manage API access data.\nAPI_DATA_ENV_VARS=\"ABP-Secret-API-Env-Vars.sh\"\nif [ -f ./$API_DATA_ENV_VARS ]\nthen\n    source ./$API_DATA_ENV_VARS\nelse\n    echo \"warning: API data not found. The app will run but will not have access to API functions.\"\nfi\nsourcery --templates . --sources . --output ./Generated/ABPAPIData.swift --args endpointReceive=$ENDPOINT_RECEIVE_DEVICE_DATA,keyReceive=$KEY_API_DEVICE_DATA";
+			shellScript = "# Manage API access data.\nAPI_DATA_ENV_VARS=\"ABP-Secret-API-Env-Vars.sh\"\nif [ -f ./$API_DATA_ENV_VARS ]\nthen\n    source ./$API_DATA_ENV_VARS\nelse\n    echo \"warning: API data not found. The app will run but will not have access to API functions.\"\nfi\nsourcery";
 		};
 		E5DF8C561F7DAF85003AD9B8 /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1116,11 +1124,11 @@
 				69A910191B986DB600D93485 /* RightCenteredImageButton.m in Sources */,
 				65BC55B7203512EC0049A6E8 /* FilterListsUpdater+Notifications.swift in Sources */,
 				6904B4021E6705F4006B3FE5 /* NSString+AdblockPlus.m in Sources */,
+				65D8D43F2058C21100E6AFC2 /* ABPAPIData.swift in Sources */,
 				65C1769C1F7C79A3008E2BA1 /* ABPManager.swift in Sources */,
 				653FE9872030E767007123FC /* AppDelegate+Notifications.swift in Sources */,
 				69142D791CDCCF1100FD2640 /* NSDictionary+FilterList.m in Sources */,
 				65C1769B1F7C7996008E2BA1 /* AppDelegate.swift in Sources */,
-				657680B1203E1DA1007C9ABE /* ABPAPIData.swift in Sources */,
 				69EA09A91DC75AA00018FAC0 /* ActivationConfirmationController.m in Sources */,
 				657CEC7E1F9EC47B00F37B68 /* FilterList.swift in Sources */,
 				69EA09A71DC75AA00018FAC0 /* DialogPresenterController.m in Sources */,

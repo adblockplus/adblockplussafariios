@@ -1,4 +1,6 @@
-// sourcery:file:ABPAPIData.swift
+// Generated using Sourcery 0.10.1 — https://github.com/krzysztofzablocki/Sourcery
+// DO NOT EDIT
+
 /*
  * This file is part of Adblock Plus <https://adblockplus.org/>,
  * Copyright (C) 2006-present eyeo GmbH
@@ -20,12 +22,11 @@
 class ABPAPIData {
     /// - Returns: A URL string or nil.
     class func endpointReceiveDeviceData() -> String? {
-        {% if argument.keyReceive == 1 %}return nil{% else %}return "{{ argument.endpointReceive }}"{% endif %}
+        return ""
     }
 
     /// - Returns: An API key or nil.
     class func keyAPIReceiveDeviceData() -> String? {
-        {% if argument.keyReceive == 1 %}return nil{% else %}return "{{ argument.keyReceive }}"{% endif %}
+        return ""
     }
 }
-// sourcery:end

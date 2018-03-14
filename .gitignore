@@ -27,3 +27,6 @@ Carthage
 # API data
 ABP-Secret-API-Env-Vars.sh
 ABPAPIData.swift
+
+# Generated files
+Generated/
