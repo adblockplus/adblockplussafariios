@@ -17,15 +17,13 @@
 
 // Objective-C bridging for FilterList model struct.
 extension FilterList {
-    /// Failable initializer that converts a filter list object from the
-    /// Objective-C implementation.
+    /// Failable initializer that converts a filter list object from the Objective-C
+    /// implementation.
     /// - Parameters:
     ///   - name: Unique name for the filter list.
     ///   - dictionary: NSDictionary from legacy data model.
-    ///   - lastVersion: Nonrequired last version.
     init?(named name: String,
-          fromDictionary dictionary: [String: Any]?,
-          lastVersion: String = "") {
+          fromDictionary dictionary: [String: Any]?) {
         guard let uwDict = dictionary else { return nil }
         self.name = name
         taskIdentifier = uwDict["taskIdentifier"] as? Int
@@ -39,7 +37,6 @@ extension FilterList {
         url = uwDict["url"] as? String
         userTriggered = uwDict["userTriggered"] as? Bool
         version = uwDict["version"] as? String
-        self.lastVersion = lastVersion
         self.downloadCount = uwDict["downloadCount"] as? Int
     }
 

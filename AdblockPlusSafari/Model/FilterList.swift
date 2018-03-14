@@ -18,14 +18,14 @@
 /// Swift-based FilterList model struct to replace the Objective-C FilterList model object. This
 /// is used internally to represent filter lists.
 struct FilterList {
-    /// Counter for number of downloads.
+    /// Counter for number of successful downloads.
     var downloadCount: Int?
 
     /// Name used to identify a list uniquely.
     var name: FilterListName?
 
-    /// The last version value extracted from the filter list.
-    var lastVersion: FilterListLastVersion?
+    /// The last version value extracted from the filter list or default value of "0".
+    var lastVersion: FilterListLastVersion = "0"
 
     /// Task identifier of the associated download task.
     var taskIdentifier: Int?
