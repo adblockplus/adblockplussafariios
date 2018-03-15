@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		290398DD205827480072E885 /* FavIcon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292CD5F31F94F84700555814 /* FavIcon.framework */; };
+		290398DE205827480072E885 /* FavIcon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 292CD5F31F94F84700555814 /* FavIcon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		291FFD5A1F79495E00FE29C5 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FFD591F79495E00FE29C5 /* ActionViewController.swift */; };
 		292CD5F41F94F84800555814 /* FavIcon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292CD5F31F94F84700555814 /* FavIcon.framework */; };
 		293989031F8BA827007935B0 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
@@ -50,8 +52,8 @@
 		65C1769D1F7C79D2008E2BA1 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */; };
 		65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1769E1F7C8099008E2BA1 /* RxSwift.framework */; };
 		65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; };
-		65D8D43F2058C21100E6AFC2 /* ABPAPIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D8D43E2058C21100E6AFC2 /* ABPAPIData.swift */; };
 		65C88F882044ADFE004F272E /* FilterList+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C88F872044ADFE004F272E /* FilterList+UserDefaults.swift */; };
+		65D8D43F2058C21100E6AFC2 /* ABPAPIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D8D43E2058C21100E6AFC2 /* ABPAPIData.swift */; };
 		65E4EE3C1F7DE1E200ED31BF /* KVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */; };
 		65EBAC1F20030CBE001E181F /* ABPManager+ObjectiveC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EBAC1E20030CBE001E181F /* ABPManager+ObjectiveC.swift */; };
 		65F8A8D8203A279700A7C559 /* DownloadEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8A8D7203A279700A7C559 /* DownloadEvent.swift */; };
@@ -158,6 +160,7 @@
 				65755AFC1F7C8A4B00696261 /* RxCocoa.framework in Embed Frameworks */,
 				65755AFD1F7C8A4B00696261 /* RxSwift.framework in Embed Frameworks */,
 				65BBB6111F7ED10700B013C3 /* yajl.framework in Embed Frameworks */,
+				290398DE205827480072E885 /* FavIcon.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,8 +216,8 @@
 		65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		65C1769E1F7C8099008E2BA1 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		65C176A01F7C809E008E2BA1 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		65D8D43E2058C21100E6AFC2 /* ABPAPIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPAPIData.swift; sourceTree = "<group>"; };
 		65C88F872044ADFE004F272E /* FilterList+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterList+UserDefaults.swift"; sourceTree = "<group>"; };
+		65D8D43E2058C21100E6AFC2 /* ABPAPIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPAPIData.swift; sourceTree = "<group>"; };
 		65E4EE3A1F7DE1E100ED31BF /* AdblockPlusSafariTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdblockPlusSafariTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOTests.swift; sourceTree = "<group>"; };
 		65EBAC1E20030CBE001E181F /* ABPManager+ObjectiveC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ABPManager+ObjectiveC.swift"; sourceTree = "<group>"; };
@@ -479,6 +482,7 @@
 			files = (
 				65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */,
 				65BBB6101F7ED10700B013C3 /* yajl.framework in Frameworks */,
+				290398DD205827480072E885 /* FavIcon.framework in Frameworks */,
 				65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */,
 				65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */,
 			);
@@ -495,28 +499,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		29B63A7A1FFFC7B1003BB75B /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				292CD5F31F94F84700555814 /* FavIcon.framework */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		6503C3F42044DB2300040507 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				6503C3F52044DBF800040507 /* URLComponents+Encoding.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		657680B2203E57E4007C9ABE /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				657680B0203E1DA0007C9ABE /* ABPAPIData.swift */,
-			);
-			path = Generated;
 			sourceTree = "<group>";
 		};
 		657CEC7A1F9EC47A00F37B68 /* Model */ = {
@@ -536,6 +524,7 @@
 		65A173F01F60A1C2004107EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				292CD5F31F94F84700555814 /* FavIcon.framework */,
 				65C176A01F7C809E008E2BA1 /* RxCocoa.framework */,
 				65C1769E1F7C8099008E2BA1 /* RxSwift.framework */,
 				65A173F31F60A20B004107EF /* SafariServices.framework */,
@@ -684,7 +673,6 @@
 				65A173F01F60A1C2004107EF /* Frameworks */,
 				65D8D43D2058C21100E6AFC2 /* Generated */,
 				E9071D3D1B76897C00091AEB /* Products */,
-				29B63A7A1FFFC7B1003BB75B /* Recovered References */,
 				69AB6A2F1B970D18005C2075 /* Resources */,
 				E9F3922B1BBF1B1A004A068A /* Translations */,
 				6503C3F42044DB2300040507 /* Utilities */,
