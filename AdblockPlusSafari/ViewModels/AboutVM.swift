@@ -15,8 +15,21 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import <UIKit/UIKit.h>
+/// ViewModel for About.
+struct AboutVM {
+    let versionKey = "CFBundleShortVersionString"
+    let links = ["https://adblockplus.org/privacy",
+                 "https://adblockplus.org/terms"]
+    let sectionTitles = [NSLocalizedString("VERSION_TITLE",
+                                           value: "VERSION",
+                                           comment: "Title for the version section in the About view.")]
+    var version = ""
+    let gdprSection = 1
+    let gdprIndexLinkMax = 1
 
-@interface AboutController : UITableViewController
-
-@end
+    init() {
+        if let version = Bundle.main.infoDictionary?[versionKey] as? String {
+            self.version = "v" + version
+        }
+    }
+}

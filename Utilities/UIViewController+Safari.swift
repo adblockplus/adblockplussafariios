@@ -15,24 +15,15 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import "AboutController.h"
-
-@interface AboutController ()
-
-@property (nonatomic, weak) IBOutlet UILabel *versionLabel;
-
-@end
-
-@implementation AboutController
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.versionLabel.text = [NSString stringWithFormat:@"v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
-    self.tableView.allowsSelection = NO;
+extension UIViewController {
+    /// Open a URL in Safari using the appropriate call for the current iOS version.
+    /// - Parameter url: A URL.
+    func openURL(_ url: URL) {
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url,
+                                      options: [:])
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
 }
-
-@end

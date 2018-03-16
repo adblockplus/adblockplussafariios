@@ -17,10 +17,17 @@
 		6501811F20252BA80018C603 /* JSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501811E20252BA70018C603 /* JSONTests.swift */; };
 		6501812120253B220018C603 /* ABPDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501812020253B220018C603 /* ABPDebug.swift */; };
 		6503C3F62044DBF800040507 /* URLComponents+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503C3F52044DBF800040507 /* URLComponents+Encoding.swift */; };
+		6503C3FE204518B900040507 /* AboutTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503C3F9204518B900040507 /* AboutTVC.swift */; };
+		6503C3FF204518B900040507 /* ImprintVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503C3FA204518B900040507 /* ImprintVC.swift */; };
+		6503C400204518B900040507 /* ImprintVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503C3FC204518B900040507 /* ImprintVM.swift */; };
+		6503C401204518B900040507 /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503C3FD204518B900040507 /* AboutVM.swift */; };
+		6503C4052045196F00040507 /* UIViewController+Safari.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503C4032045196E00040507 /* UIViewController+Safari.swift */; };
+		6503C408204519D100040507 /* imprint.html in Resources */ = {isa = PBXBuildFile; fileRef = 6503C407204519D100040507 /* imprint.html */; };
 		653FE9872030E767007123FC /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FE9862030E767007123FC /* AppDelegate+Notifications.swift */; };
 		6541CEA21FAAC69B00601D6F /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6541CEA11FAAC69B00601D6F /* TypeAliases.swift */; };
 		6541CEA51FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6541CEA41FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift */; };
 		6553625F1F73596500E77290 /* yajl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F8BB601F61113F004B9ED4 /* yajl.framework */; };
+		6566200E205C7BE6003A334A /* UIView+LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6566200D205C7BE6003A334A /* UIView+LayoutConstraints.swift */; };
 		656B89AF203799830090C6E0 /* ABPRemoteCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656B89AE203799830090C6E0 /* ABPRemoteCommands.swift */; };
 		656D08DE20046AC500E31B71 /* ContentBlockerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D08DD20046AC400E31B71 /* ContentBlockerTests.swift */; };
 		65755AFC1F7C8A4B00696261 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -70,7 +77,6 @@
 		69142D7A1CDCCF1100FD2640 /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69142D771CDCCF1100FD2640 /* SwitchCell.m */; };
 		69142D7B1CDCDE0700FD2640 /* NSDictionary+FilterList.m in Sources */ = {isa = PBXBuildFile; fileRef = 69142D751CDCCF1100FD2640 /* NSDictionary+FilterList.m */; };
 		69142D7C1CDCDE0700FD2640 /* NSDictionary+FilterList.m in Sources */ = {isa = PBXBuildFile; fileRef = 69142D751CDCCF1100FD2640 /* NSDictionary+FilterList.m */; };
-		691F74471B9874590057C702 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74461B9874590057C702 /* AboutController.m */; };
 		691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */; };
 		6957783D1E672A7600331DA3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6957783B1E672A7600331DA3 /* MainInterface.storyboard */; };
 		695778411E672A7600331DA3 /* AdblockPlusSafariActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 695778361E672A7500331DA3 /* AdblockPlusSafariActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -187,9 +193,16 @@
 		6501811E20252BA70018C603 /* JSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTests.swift; sourceTree = "<group>"; };
 		6501812020253B220018C603 /* ABPDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPDebug.swift; sourceTree = SOURCE_ROOT; };
 		6503C3F52044DBF800040507 /* URLComponents+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLComponents+Encoding.swift"; sourceTree = "<group>"; };
+		6503C3F9204518B900040507 /* AboutTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTVC.swift; sourceTree = "<group>"; };
+		6503C3FA204518B900040507 /* ImprintVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImprintVC.swift; sourceTree = "<group>"; };
+		6503C3FC204518B900040507 /* ImprintVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImprintVM.swift; sourceTree = "<group>"; };
+		6503C3FD204518B900040507 /* AboutVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVM.swift; sourceTree = "<group>"; };
+		6503C4032045196E00040507 /* UIViewController+Safari.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Safari.swift"; sourceTree = "<group>"; };
+		6503C407204519D100040507 /* imprint.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = imprint.html; sourceTree = "<group>"; };
 		653FE9862030E767007123FC /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
 		6541CEA11FAAC69B00601D6F /* TypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		6541CEA41FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ABPManager+WhitelistedWebsites.swift"; sourceTree = "<group>"; };
+		6566200D205C7BE6003A334A /* UIView+LayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutConstraints.swift"; sourceTree = "<group>"; };
 		656B89AE203799830090C6E0 /* ABPRemoteCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPRemoteCommands.swift; sourceTree = "<group>"; };
 		656D08DD20046AC400E31B71 /* ContentBlockerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlockerTests.swift; sourceTree = "<group>"; };
 		657660832022DAEC00488FE7 /* ABPErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPErrors.swift; sourceTree = "<group>"; };
@@ -241,8 +254,6 @@
 		69142D751CDCCF1100FD2640 /* NSDictionary+FilterList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+FilterList.m"; sourceTree = "<group>"; };
 		69142D761CDCCF1100FD2640 /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
 		69142D771CDCCF1100FD2640 /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
-		691F74451B9874590057C702 /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
-		691F74461B9874590057C702 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 		691F74481B988ADC0057C702 /* AdblockPlusContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdblockPlusContainerController.h; sourceTree = "<group>"; };
 		691F74491B988ADC0057C702 /* AdblockPlusContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdblockPlusContainerController.m; sourceTree = "<group>"; };
 		695778361E672A7500331DA3 /* AdblockPlusSafariActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AdblockPlusSafariActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -502,9 +513,29 @@
 		6503C3F42044DB2300040507 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				6566200D205C7BE6003A334A /* UIView+LayoutConstraints.swift */,
+				6503C4032045196E00040507 /* UIViewController+Safari.swift */,
 				6503C3F52044DBF800040507 /* URLComponents+Encoding.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		6503C3F8204518B800040507 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6503C3F9204518B900040507 /* AboutTVC.swift */,
+				6503C3FA204518B900040507 /* ImprintVC.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6503C3FB204518B900040507 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				6503C3FC204518B900040507 /* ImprintVM.swift */,
+				6503C3FD204518B900040507 /* AboutVM.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		657CEC7A1F9EC47A00F37B68 /* Model */ = {
@@ -587,6 +618,7 @@
 			isa = PBXGroup;
 			children = (
 				69AB6A301B970D18005C2075 /* Fonts */,
+				6503C407204519D100040507 /* imprint.html */,
 				69C19C731B975946009ACBAC /* screencast.mp4 */,
 			);
 			path = Resources;
@@ -632,8 +664,6 @@
 		69F4D9241B95F18C00300817 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				691F74451B9874590057C702 /* AboutController.h */,
-				691F74461B9874590057C702 /* AboutController.m */,
 				69F4D9281B95F28B00300817 /* AcceptableAdsController.h */,
 				69F4D9291B95F28B00300817 /* AcceptableAdsController.m */,
 				69EA099F1DC75AA00018FAC0 /* AcceptableAdsExplanationController.h */,
@@ -739,6 +769,8 @@
 				6904B4001E6705F4006B3FE5 /* NSString+AdblockPlus.m */,
 				E9071D3F1B76897C00091AEB /* Supporting Files */,
 				6541CEA11FAAC69B00601D6F /* TypeAliases.swift */,
+				6503C3FB204518B900040507 /* ViewModels */,
+				6503C3F8204518B800040507 /* Views */,
 			);
 			path = AdblockPlusSafari;
 			sourceTree = "<group>";
@@ -905,7 +937,7 @@
 					};
 					69B2AEB61BCD289C00E874A9 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = GRYYZR985A;
+						DevelopmentTeam = G5LEUTX2F6;
 						LastSwiftMigration = 0900;
 						TestTargetID = E9071D3B1B76897C00091AEB;
 					};
@@ -1001,6 +1033,7 @@
 				69AB6A411B970D19005C2075 /* SourceSansPro-ExtraLight.otf in Resources */,
 				E9071D4A1B76897C00091AEB /* Main.storyboard in Resources */,
 				69AB6A3D1B970D18005C2075 /* SourceSansPro-Black.otf in Resources */,
+				6503C408204519D100040507 /* imprint.html in Resources */,
 				E9321E5D1C50F4180021D51F /* el.xliff in Resources */,
 				E9E897401C4947F60005D6E2 /* InfoPlist.strings in Resources */,
 				E9321E5E1C50F4180021D51F /* rename.sh in Resources */,
@@ -1098,6 +1131,7 @@
 				65ABBD812005B11500172823 /* ContentBlockerStateHandler.swift in Sources */,
 				69142D581CDCC51C00FD2640 /* FilterList+Processing.m in Sources */,
 				6904B4011E6705F4006B3FE5 /* AdblockPlusShared.m in Sources */,
+				6503C4052045196F00040507 /* UIViewController+Safari.swift in Sources */,
 				69AB6A4F1B9712F1005C2075 /* AdblockPlus.m in Sources */,
 				69EA099C1DC75A7C0018FAC0 /* NSAttributedString+TextRenderer.m in Sources */,
 				6541CEA51FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift in Sources */,
@@ -1110,6 +1144,7 @@
 				658FCAAE1FF45A3600198A2A /* ContentBlockerManager.swift in Sources */,
 				658FCAAA1FF45A2B00198A2A /* FilterListsUpdater+DownloadDelegate.swift in Sources */,
 				69A910191B986DB600D93485 /* RightCenteredImageButton.m in Sources */,
+				6503C401204518B900040507 /* AboutVM.swift in Sources */,
 				65BC55B7203512EC0049A6E8 /* FilterListsUpdater+Notifications.swift in Sources */,
 				6904B4021E6705F4006B3FE5 /* NSString+AdblockPlus.m in Sources */,
 				65D8D43F2058C21100E6AFC2 /* ABPAPIData.swift in Sources */,
@@ -1119,6 +1154,7 @@
 				65C1769B1F7C7996008E2BA1 /* AppDelegate.swift in Sources */,
 				69EA09A91DC75AA00018FAC0 /* ActivationConfirmationController.m in Sources */,
 				657CEC7E1F9EC47B00F37B68 /* FilterList.swift in Sources */,
+				6566200E205C7BE6003A334A /* UIView+LayoutConstraints.swift in Sources */,
 				69EA09A71DC75AA00018FAC0 /* DialogPresenterController.m in Sources */,
 				6503C3F62044DBF800040507 /* URLComponents+Encoding.swift in Sources */,
 				69F4D9271B95F1B700300817 /* AdblockPlusController.m in Sources */,
@@ -1127,8 +1163,9 @@
 				69A2BCFC1BCBCF8A00028734 /* WhitelistedWebsitesController.m in Sources */,
 				657CEC7D1F9EC47B00F37B68 /* FilterList+ObjectiveC.swift in Sources */,
 				65EBAC1F20030CBE001E181F /* ABPManager+ObjectiveC.swift in Sources */,
+				6503C3FF204518B900040507 /* ImprintVC.swift in Sources */,
 				6501812120253B220018C603 /* ABPDebug.swift in Sources */,
-				691F74471B9874590057C702 /* AboutController.m in Sources */,
+				6503C3FE204518B900040507 /* AboutTVC.swift in Sources */,
 				6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */,
 				69EA09AA1DC75AA00018FAC0 /* ActivationHowtoVideoController.m in Sources */,
 				65C1769D1F7C79D2008E2BA1 /* GlobalConstants.swift in Sources */,
@@ -1145,6 +1182,7 @@
 				69AB6A2E1B96F664005C2075 /* Appearance.m in Sources */,
 				69142D781CDCCF1100FD2640 /* CustomFilterListsController.m in Sources */,
 				65ADD2481FF73DAF00A9E69F /* FilterListSwiftBridge.m in Sources */,
+				6503C400204518B900040507 /* ImprintVM.swift in Sources */,
 				69142D571CDCC51C00FD2640 /* FilterList.m in Sources */,
 				65929E0520227192003126FB /* JSONFilterList.swift in Sources */,
 			);
