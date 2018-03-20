@@ -99,6 +99,7 @@ extension AppDelegate {
     /// - Returns: Void observable.
     func deviceTokenSave(token: DeviceToken) -> Observable<Void> {
         let deviceTokenKey = "deviceToken"
+        let appTypeKey = "appType"
         let postMethod = "POST"
         let apiKeyHeader = "X-API-KEY"
         return Observable.create { observer in
@@ -109,7 +110,9 @@ extension AppDelegate {
             guard let url = URL(string: endpoint) else {
                 return Disposables.create()
             }
-            let json = [deviceTokenKey: token]
+            let json: [String: Any] =
+                [deviceTokenKey: token,
+                 appTypeKey: AppType().abpTypeID]
             let jsonData = try? JSONSerialization.data(withJSONObject: json)
             var request = URLRequest(url: url)
             request.httpMethod = postMethod
