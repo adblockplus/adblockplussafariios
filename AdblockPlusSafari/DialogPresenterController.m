@@ -95,7 +95,11 @@ static NSString *FilterListsUpdated = @"FilterListsUpdated";
     if ([keyPath isEqualToString:NSStringFromSelector(@selector(activated))]
         || [keyPath isEqualToString:NSStringFromSelector(@selector(reloading))]
         || [keyPath isEqualToString:@"updating"]) {
-        [self update];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // It's critical for this call to update to be wrapped in a main queue dispatch due to
+            // interactions with background operations.
+            [self update];
+        });
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
@@ -106,7 +110,7 @@ static NSString *FilterListsUpdated = @"FilterListsUpdated";
     NSArray<NSString *> *keyPaths =
     @[ NSStringFromSelector(@selector(activated)),
        NSStringFromSelector(@selector(reloading)), @"updating" ];
-    
+
     for (NSString *keyPath in keyPaths) {
         [_adblockPlus removeObserver:self
                           forKeyPath:keyPath];
@@ -161,10 +165,11 @@ static NSString *FilterListsUpdated = @"FilterListsUpdated";
 
 - (void)update
 {
+
     if (self.currentDialogLocked) {
         return;
     }
-    
+
     void(^tryPresentThirdDialog)(void) = ^() {
         if (self.adblockPlus.updating || self.adblockPlus.reloading) {
             if ([[self class] wasFilterListsUpdated]) {
@@ -182,9 +187,9 @@ static NSString *FilterListsUpdated = @"FilterListsUpdated";
             }
         }
     };
-    
+
     DialogControllerType oldValue = self.currentDialogControllerType;
-    
+
     switch (self.currentDialogControllerType) {
         case DialogControllerTypeAcceptableAdsExplanation:
             if ([[self class] wasFirstDialogControllerShown]) {
@@ -211,7 +216,7 @@ static NSString *FilterListsUpdated = @"FilterListsUpdated";
         case DialogControllerTypeActivationConfirmation:
             break;
     }
-    
+
     if ([self isViewLoaded] && oldValue != self.currentDialogControllerType) {
         [self setViewControllerForType:self.currentDialogControllerType];
     }
@@ -238,7 +243,7 @@ static NSString *FilterListsUpdated = @"FilterListsUpdated";
         [(id)viewController setAdblockPlus:self.adblockPlus];
     }
     [self addChildViewController:viewController];
-    
+
     if (self.currentViewController == nil) {
         viewController.view.bounds = self.view.bounds;
         [self.view addSubview:viewController.view];

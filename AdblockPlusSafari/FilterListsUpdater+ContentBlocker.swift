@@ -32,9 +32,13 @@ extension FilterListsUpdater {
     @objc
     func reloadContentBlocker(withCompletion completion: ((Error?) -> Void)?) {
         guard abpManager.disableReloading == false else { return }
+
+        // Dispose all current reloads before doing another. This comes before property changes to
+        // isolate KVO observer interactions.
+        reloadBag = DisposeBag()
+
         abpManager.adblockPlus.reloading = true
         abpManager.adblockPlus.performingActivityTest = false
-        reloadBag = DisposeBag()
         contentBlockerReload(withCompletion: completion)
             .subscribe()
             .disposed(by: reloadBag)

@@ -68,6 +68,10 @@ class ABPManager: NSObject {
     /// during unit testing.
     var testingList = FilterList()
 
+    /// Variable to maintain background state. Application state is not read because of conflicts
+    /// due its reading requiring main thread access under the UI API.
+    var inBackground = Variable<Bool>(true)
+
     /// Destroy the shared instance in memory.
     class func destroy() {
         privateSharedInstance = nil
@@ -86,10 +90,18 @@ class ABPManager: NSObject {
     /// Setup an initial Adblock Plus instance.
     override init() {
         super.init()
+        setupApplicationState()
         defer {
             adblockPlus = AdblockPlusExtras(abpManager: self)
             filterListsUpdater = FilterListsUpdater(abpManager: self)
         }
+    }
+
+    /// Only used during init.
+    private func setupApplicationState() {
+        let app = UIApplication.shared
+        let isBackground = (app.applicationState != UIApplicationState.active)
+        inBackground.value = isBackground
     }
 
     /// Cleanup Adblock Plus instance and observers.
@@ -105,6 +117,7 @@ class ABPManager: NSObject {
     /// When the app becomes active, if there are outdated filter lists, update them. Also check
     /// the enabled state of the content blocker.
     func handleDidBecomeActive() {
+        inBackground.value = false
         guard let updater = ABPManager.sharedInstance().filterListsUpdater else { return }
         let stateHandler = ContentBlockerStateHandler(adblockPlus: adblockPlus,
                                                       filterListsUpdater: updater)
@@ -147,6 +160,7 @@ class ABPManager: NSObject {
 
     /// Begin background tasks if filter lists are reloading.
     func handleDidEnterBackground() {
+        inBackground.value = true
         if !adblockPlus.reloading {
             return
         }
@@ -207,21 +221,13 @@ class ABPManager: NSObject {
                    !uwReloading {
                     self.backgroundTaskIdentifier = UIBackgroundTaskInvalid
                 }
-                if invalidBgTask && uwReloading && self.isBackground() {
+                if invalidBgTask && uwReloading && self.inBackground.value {
                     let app = UIApplication.shared
                     self.backgroundTaskIdentifier = app.beginBackgroundTask(expirationHandler: { [weak self] in
                         self?.backgroundTaskIdentifier = UIBackgroundTaskInvalid
                     })
                 }
             })
-    }
-
-    /// Determine if the app is in the background. The app is in the background when whitelisting
-    /// through the Safari action extension.
-    func isBackground() -> Bool {
-        let app = UIApplication.shared
-        let isBackground = (app.applicationState != UIApplicationState.active)
-        return isBackground
     }
 
     /// Subscription of changes on filterLists key.

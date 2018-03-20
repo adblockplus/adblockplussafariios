@@ -47,6 +47,7 @@ class AppDelegate: UIResponder,
         startingApp.value = false
     }
 
+    /// App is now in the background.
     func applicationDidEnterBackground(_ application: UIApplication) {
         startingApp.value = false
         ABPManager.sharedInstance().handleDidEnterBackground()
@@ -58,6 +59,7 @@ class AppDelegate: UIResponder,
         ABPManager.sharedInstance().backgroundTaskIdentifier = UIBackgroundTaskInvalid
     }
 
+    /// App is now in the foreground.
     func applicationDidBecomeActive(_ application: UIApplication) {
         startingApp.value = false
         ABPManager.sharedInstance().handleDidBecomeActive()

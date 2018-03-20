@@ -21,8 +21,11 @@
 		6503C3FF204518B900040507 /* ImprintVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503C3FA204518B900040507 /* ImprintVC.swift */; };
 		6503C400204518B900040507 /* ImprintVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503C3FC204518B900040507 /* ImprintVM.swift */; };
 		6503C401204518B900040507 /* AboutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503C3FD204518B900040507 /* AboutVM.swift */; };
+		650F8230205C5F0B00FD9706 /* FilterListsUpdater+ObjectiveC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F822F205C5F0B00FD9706 /* FilterListsUpdater+ObjectiveC.swift */; };
 		6503C4052045196F00040507 /* UIViewController+Safari.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503C4032045196E00040507 /* UIViewController+Safari.swift */; };
 		6503C408204519D100040507 /* imprint.html in Resources */ = {isa = PBXBuildFile; fileRef = 6503C407204519D100040507 /* imprint.html */; };
+		650F8230205C5F0B00FD9706 /* FilterListsUpdater+ObjectiveC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F822F205C5F0B00FD9706 /* FilterListsUpdater+ObjectiveC.swift */; };
+		6534116E2060BCC600690719 /* AppType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6534116D2060BCC600690719 /* AppType.swift */; };
 		653FE9872030E767007123FC /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FE9862030E767007123FC /* AppDelegate+Notifications.swift */; };
 		6541CEA21FAAC69B00601D6F /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6541CEA11FAAC69B00601D6F /* TypeAliases.swift */; };
 		6541CEA51FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6541CEA41FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift */; };
@@ -197,8 +200,11 @@
 		6503C3FA204518B900040507 /* ImprintVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImprintVC.swift; sourceTree = "<group>"; };
 		6503C3FC204518B900040507 /* ImprintVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImprintVM.swift; sourceTree = "<group>"; };
 		6503C3FD204518B900040507 /* AboutVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVM.swift; sourceTree = "<group>"; };
+		650F822F205C5F0B00FD9706 /* FilterListsUpdater+ObjectiveC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterListsUpdater+ObjectiveC.swift"; sourceTree = "<group>"; };
 		6503C4032045196E00040507 /* UIViewController+Safari.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Safari.swift"; sourceTree = "<group>"; };
 		6503C407204519D100040507 /* imprint.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = imprint.html; sourceTree = "<group>"; };
+		650F822F205C5F0B00FD9706 /* FilterListsUpdater+ObjectiveC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterListsUpdater+ObjectiveC.swift"; sourceTree = "<group>"; };
+		6534116D2060BCC600690719 /* AppType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppType.swift; sourceTree = "<group>"; };
 		653FE9862030E767007123FC /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
 		6541CEA11FAAC69B00601D6F /* TypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		6541CEA41FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ABPManager+WhitelistedWebsites.swift"; sourceTree = "<group>"; };
@@ -541,6 +547,7 @@
 		657CEC7A1F9EC47A00F37B68 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6534116D2060BCC600690719 /* AppType.swift */,
 				65F8A8D7203A279700A7C559 /* DownloadEvent.swift */,
 				657CEC7C1F9EC47A00F37B68 /* FilterList.swift */,
 				657CEC7B1F9EC47A00F37B68 /* FilterList+ObjectiveC.swift */,
@@ -753,6 +760,7 @@
 				657680AC203D77C6007C9ABE /* FilterListsUpdater+ContentBlocker.swift */,
 				658FCAA71FF45A2A00198A2A /* FilterListsUpdater+DownloadDelegate.swift */,
 				65BC55B6203512EC0049A6E8 /* FilterListsUpdater+Notifications.swift */,
+				650F822F205C5F0B00FD9706 /* FilterListsUpdater+ObjectiveC.swift */,
 				65ADD2461FF73DAF00A9E69F /* FilterListSwiftBridge.h */,
 				65ADD2471FF73DAF00A9E69F /* FilterListSwiftBridge.m */,
 				65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */,
@@ -1146,10 +1154,12 @@
 				69A910191B986DB600D93485 /* RightCenteredImageButton.m in Sources */,
 				6503C401204518B900040507 /* AboutVM.swift in Sources */,
 				65BC55B7203512EC0049A6E8 /* FilterListsUpdater+Notifications.swift in Sources */,
+				6534116E2060BCC600690719 /* AppType.swift in Sources */,
 				6904B4021E6705F4006B3FE5 /* NSString+AdblockPlus.m in Sources */,
 				65D8D43F2058C21100E6AFC2 /* ABPAPIData.swift in Sources */,
 				65C1769C1F7C79A3008E2BA1 /* ABPManager.swift in Sources */,
 				653FE9872030E767007123FC /* AppDelegate+Notifications.swift in Sources */,
+				650F8230205C5F0B00FD9706 /* FilterListsUpdater+ObjectiveC.swift in Sources */,
 				69142D791CDCCF1100FD2640 /* NSDictionary+FilterList.m in Sources */,
 				65C1769B1F7C7996008E2BA1 /* AppDelegate.swift in Sources */,
 				69EA09A91DC75AA00018FAC0 /* ActivationConfirmationController.m in Sources */,

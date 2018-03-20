@@ -154,7 +154,7 @@ class FilterListsUpdater: AdblockPlusShared,
     /// - Returns: Time interval according to background state.
     func downloadLimit() -> TimeInterval {
         let mgr = self.abpManager
-        if mgr?.isBackground() == true {
+        if mgr?.inBackground.value == true {
             return GlobalConstants.backgroundOperationLimit
         }
         return GlobalConstants.foregroundOperationLimit
@@ -245,9 +245,10 @@ class FilterListsUpdater: AdblockPlusShared,
     func updateFilterLists(withNames names: [FilterListName],
                            userTriggered: Bool,
                            completion: ((Error?) -> Void)? = nil) {
+        downloadBag = DisposeBag()
         updateMake(with: names,
                    userTriggered: userTriggered)
-            .flatMap { update -> Observable<FilterListUpdate> in
+            .concatMap { update -> Observable<FilterListUpdate> in
                 return self.updateWait(for: update)
             }.subscribe(onNext: { update in
                 do {
@@ -307,29 +308,6 @@ class FilterListsUpdater: AdblockPlusShared,
         } else {
             filterList.downloadCount = 1
         }
-    }
-
-    /// Maintain compatibility with the legacy implementation by writing data to the Objective-C side.
-    /// - Parameters:
-    ///   - filterList: A filter list.
-    ///   - task: A download task if available.
-    ///   - userTriggered: User triggered flag.
-    /// - Throws: Error if data is invalid.
-    func internallyUpdate(with update: FilterListUpdate) throws {
-        guard let name = update.filterList.name else {
-            throw ABPFilterListError.invalidData
-        }
-        var newFilterList = update.filterList
-        newFilterList.taskIdentifier = update.task.taskIdentifier
-        newFilterList.updating = false
-        newFilterList.updatingGroupIdentifier = self.updatingGroupIdentifier
-        newFilterList.userTriggered = update.userTriggered
-        newFilterList.lastUpdateFailed = false
-        newFilterList.lastUpdate = update.filterList.lastUpdate
-        updateSuccessfulDownloadCount(for: &newFilterList)
-        // Write the filter list back to the Objective-C side.
-        replaceFilterList(withName: name,
-                          withNewList: newFilterList)
     }
 
     /// Examine the current filter lists and return an array of filter list names that are
