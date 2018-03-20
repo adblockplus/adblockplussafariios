@@ -17,6 +17,11 @@
 
 /// ViewModel for Imprint.
 struct ImprintVM {
+    var contactFrom: String {
+        return NSLocalizedString("Contact-From-ABP-For-iOS",
+                                 value: "Contact from ABP for iOS",
+                                 comment: "Used in mail subject to indicate source of contact.")
+    }
     var imprint: URLRequest? {
         guard let path = Bundle.main.url(forResource: "imprint",
                                          withExtension: "html")
@@ -26,6 +31,10 @@ struct ImprintVM {
         return URLRequest(url: path)
     }
     let eyeoInfoEmail = "info@eyeo.com"
-    let mailSubject = ""
+    var mailSubject = ""
     let mailBody = ""
+
+    init() {
+        mailSubject = contactFrom
+    }
 }
