@@ -1083,7 +1083,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Manage API access data.\nAPI_DATA_ENV_VARS=\"ABP-Secret-API-Env-Vars.sh\"\nif [ -f ./$API_DATA_ENV_VARS ]\nthen\n    source ./$API_DATA_ENV_VARS\nelse\n    echo \"warning: API data not found. The app will run but will not have access to API functions.\"\nfi\nsourcery";
+			shellScript = "# Manage API access data.\nAPI_DATA_ENV_VARS=\"ABP-Secret-API-Env-Vars.sh\"\nif [ -f ./$API_DATA_ENV_VARS ]\nthen\n    source ./$API_DATA_ENV_VARS\nelse\n    echo \"warning: API data not found. The app will run but will not have access to API functions.\"\nfi\nsourcery --templates . --sources . --output ./Generated/ --args endpointReceive=$ENDPOINT_RECEIVE_DEVICE_DATA,keyReceive=$KEY_API_DEVICE_DATA";
 		};
 		E5DF8C561F7DAF85003AD9B8 /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;

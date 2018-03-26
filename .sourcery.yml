@@ -1,8 +1,0 @@
-templates:
-    - .
-sources:
-    - .
-output: ./Generated/
-args:
-    endpointReceive=$ENDPOINT_RECEIVE_DEVICE_DATA
-    keyReceive=$KEY_API_DEVICE_DATA

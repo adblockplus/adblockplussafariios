@@ -97,17 +97,16 @@ extension AppDelegate {
     /// Send an app-specific device token for saving.
     /// - Parameter token: App-specific device token.
     /// - Returns: Void observable.
-    func deviceTokenSave(token: DeviceToken) -> Observable<Void> {
+    func deviceTokenSave(token: DeviceToken) -> Observable<DeviceToken> {
         let deviceTokenKey = "deviceToken"
         let appTypeKey = "appType"
         let postMethod = "POST"
         let apiKeyHeader = "X-API-KEY"
         return Observable.create { observer in
-            guard let endpoint = ABPAPIData.endpointReceiveDeviceData() else {
+            guard let endpoint = ABPAPIData.endpointReceiveDeviceData(),
+                  let url = URL(string: endpoint)
+            else {
                 observer.onError(ABPDeviceTokenSaveError.invalidEndpoint)
-                return Disposables.create()
-            }
-            guard let url = URL(string: endpoint) else {
                 return Disposables.create()
             }
             let json: [String: Any] =
@@ -124,6 +123,7 @@ extension AppDelegate {
                     observer.onError(error!)
                     return
                 }
+                observer.onNext(token)
                 observer.onCompleted()
             }
             task.resume()
