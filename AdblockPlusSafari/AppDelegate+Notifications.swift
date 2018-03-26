@@ -16,6 +16,7 @@
  */
 
 import RxSwift
+import RxSwiftExt
 
 extension AppDelegate {
     typealias DeviceToken = String
@@ -28,9 +29,17 @@ extension AppDelegate {
     /// Registration for remote notifications has completed successfully.
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        deviceTokenSave(token: deviceToken.reduce("", { $0 + String(format: "%02X", $1) }))
-            .subscribe()
-            .disposed(by: bag)
+        let maxRetryCount: UInt = 10
+        let retryDelay: Double = (GlobalConstants.tokenSaveTimeout - 1) / Double(maxRetryCount)
+        httpClient = HTTPClient()
+        guard let client = httpClient else { return }
+        deviceTokenSave(token: deviceToken.reduce("", { $0 + String(format: "%02X", $1) }),
+                        client: client)
+            .retry(.delayed(maxCount: maxRetryCount,
+                            time: retryDelay))
+            .subscribe(onCompleted: {
+                self.httpClient = nil
+            }).disposed(by: bag)
     }
 
     /// Update an expired filter list.
@@ -94,14 +103,14 @@ extension AppDelegate {
         }
     }
 
-    /// Send an app-specific device token for saving.
-    /// - Parameter token: App-specific device token.
-    /// - Returns: Void observable.
-    func deviceTokenSave(token: DeviceToken) -> Observable<DeviceToken> {
-        let deviceTokenKey = "deviceToken"
-        let appTypeKey = "appType"
-        let postMethod = "POST"
-        let apiKeyHeader = "X-API-KEY"
+    /// Send an app-specific device token for saving. Importantly, the http client is not constructed
+    /// within this function but is used for testing it.
+    /// - Parameters:
+    ///   - token: App-specific device token.
+    ///   - client: Provides URL session. Also used for testing this function.
+    /// - Returns: Observable of device token saved.
+    func deviceTokenSave(token: DeviceToken,
+                         client: HTTPClient) -> Observable<DeviceToken> {
         return Observable.create { observer in
             guard let endpoint = ABPAPIData.endpointReceiveDeviceData(),
                   let url = URL(string: endpoint)
@@ -109,16 +118,8 @@ extension AppDelegate {
                 observer.onError(ABPDeviceTokenSaveError.invalidEndpoint)
                 return Disposables.create()
             }
-            let json: [String: Any] =
-                [deviceTokenKey: token,
-                 appTypeKey: AppType().abpTypeID]
-            let jsonData = try? JSONSerialization.data(withJSONObject: json)
-            var request = URLRequest(url: url)
-            request.httpMethod = postMethod
-            request.setValue(ABPAPIData.keyAPIReceiveDeviceData(),
-                             forHTTPHeaderField: apiKeyHeader)
-            request.httpBody = jsonData
-            let task = URLSession.shared.dataTask(with: request) { _, _, error in
+            let request = self.makeRequest(with: token, url: url)
+            let task = client.session.dataTask(with: request) { _, _, error in
                 guard error == nil else {
                     observer.onError(error!)
                     return
@@ -130,6 +131,25 @@ extension AppDelegate {
             return Disposables.create {
                 task.cancel()
             }
-        }
+        }.timeout(GlobalConstants.tokenSaveTimeout,
+                  scheduler: MainScheduler.asyncInstance)
+    }
+
+    private func makeRequest(with token: DeviceToken,
+                             url: URL) -> URLRequest {
+        let deviceTokenKey = "deviceToken"
+        let appTypeKey = "appType"
+        let postMethod = "POST"
+        let apiKeyHeader = "X-API-KEY"
+        let json: [String: Any] =
+            [deviceTokenKey: token,
+             appTypeKey: AppType().abpTypeID]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        var request = URLRequest(url: url)
+        request.httpMethod = postMethod
+        request.setValue(ABPAPIData.keyAPIReceiveDeviceData(),
+                         forHTTPHeaderField: apiKeyHeader)
+        request.httpBody = jsonData
+        return request
     }
 }

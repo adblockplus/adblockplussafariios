@@ -24,6 +24,9 @@ class AppDelegate: UIResponder,
     var window: UIWindow?
     var bag = DisposeBag()
 
+    /// Client used for token saving/testing. It is set nil when not active.
+    var httpClient: HTTPClient?
+
     /// Variable indicating that the app is actively in a starting state.
     var startingApp = Variable<Bool>(true)
 
@@ -33,7 +36,6 @@ class AppDelegate: UIResponder,
             uwController.adblockPlus = ABPManager.sharedInstance().adblockPlus
         }
         application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
-        registerForNotifications()
         return true
     }
 
@@ -62,6 +64,7 @@ class AppDelegate: UIResponder,
     /// App is now in the foreground.
     func applicationDidBecomeActive(_ application: UIApplication) {
         startingApp.value = false
+        registerForNotifications()
         ABPManager.sharedInstance().handleDidBecomeActive()
     }
 

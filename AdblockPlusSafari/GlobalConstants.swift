@@ -32,4 +32,7 @@ struct GlobalConstants {
 
     /// Maximum favicon size to download.
     static let faviconSize = 180
+
+    /// Token save timeout.
+    static let tokenSaveTimeout: TimeInterval = 30
 }

@@ -62,6 +62,10 @@
 		65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1769E1F7C8099008E2BA1 /* RxSwift.framework */; };
 		65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; };
 		65C88F882044ADFE004F272E /* FilterList+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C88F872044ADFE004F272E /* FilterList+UserDefaults.swift */; };
+		65CB10D22068982B005C3A9E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB10D12068982A005C3A9E /* HTTPClient.swift */; };
+		65CB10D7206899E2005C3A9E /* TokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB10D6206899E2005C3A9E /* TokenTests.swift */; };
+		65CB10DD20689B5E005C3A9E /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CB10DB20689B5A005C3A9E /* RxSwiftExt.framework */; };
+		65CB10DF20689B7C005C3A9E /* RxSwiftExt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65CB10DB20689B5A005C3A9E /* RxSwiftExt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65D8D43F2058C21100E6AFC2 /* ABPAPIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D8D43E2058C21100E6AFC2 /* ABPAPIData.swift */; };
 		65E4EE3C1F7DE1E200ED31BF /* KVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */; };
 		65EBAC1F20030CBE001E181F /* ABPManager+ObjectiveC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EBAC1E20030CBE001E181F /* ABPManager+ObjectiveC.swift */; };
@@ -169,6 +173,7 @@
 				65755AFD1F7C8A4B00696261 /* RxSwift.framework in Embed Frameworks */,
 				65BBB6111F7ED10700B013C3 /* yajl.framework in Embed Frameworks */,
 				290398DE205827480072E885 /* FavIcon.framework in Embed Frameworks */,
+				65CB10DF20689B7C005C3A9E /* RxSwiftExt.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,6 +239,9 @@
 		65C1769E1F7C8099008E2BA1 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		65C176A01F7C809E008E2BA1 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		65C88F872044ADFE004F272E /* FilterList+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterList+UserDefaults.swift"; sourceTree = "<group>"; };
+		65CB10D12068982A005C3A9E /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		65CB10D6206899E2005C3A9E /* TokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenTests.swift; sourceTree = "<group>"; };
+		65CB10DB20689B5A005C3A9E /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = "../../Carthage-for-ABP/Carthage/Build/iOS/RxSwiftExt.framework"; sourceTree = "<group>"; };
 		65D8D43E2058C21100E6AFC2 /* ABPAPIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPAPIData.swift; sourceTree = "<group>"; };
 		65E4EE3A1F7DE1E100ED31BF /* AdblockPlusSafariTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdblockPlusSafariTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOTests.swift; sourceTree = "<group>"; };
@@ -499,6 +507,7 @@
 				65BBB6101F7ED10700B013C3 /* yajl.framework in Frameworks */,
 				290398DD205827480072E885 /* FavIcon.framework in Frameworks */,
 				65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */,
+				65CB10DD20689B5E005C3A9E /* RxSwiftExt.framework in Frameworks */,
 				65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +572,7 @@
 				292CD5F31F94F84700555814 /* FavIcon.framework */,
 				65C176A01F7C809E008E2BA1 /* RxCocoa.framework */,
 				65C1769E1F7C8099008E2BA1 /* RxSwift.framework */,
+				65CB10DB20689B5A005C3A9E /* RxSwiftExt.framework */,
 				65A173F31F60A20B004107EF /* SafariServices.framework */,
 				65F8BB601F61113F004B9ED4 /* yajl.framework */,
 			);
@@ -662,6 +672,7 @@
 				E9E8973D1C4947F60005D6E2 /* InfoPlist.strings */,
 				6501811E20252BA70018C603 /* JSONTests.swift */,
 				65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */,
+				65CB10D6206899E2005C3A9E /* TokenTests.swift */,
 			);
 			path = AdblockPlusSafariTests;
 			sourceTree = "<group>";
@@ -762,6 +773,7 @@
 				65ADD2461FF73DAF00A9E69F /* FilterListSwiftBridge.h */,
 				65ADD2471FF73DAF00A9E69F /* FilterListSwiftBridge.m */,
 				65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */,
+				65CB10D12068982A005C3A9E /* HTTPClient.swift */,
 				E9071D501B76897C00091AEB /* Info.plist */,
 				E9E897421C4947F60005D6E2 /* InfoPlist.strings */,
 				69AB6A491B970FFA005C2075 /* LaunchScreen.xib */,
@@ -945,6 +957,7 @@
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = G5LEUTX2F6;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
 						TestTargetID = E9071D3B1B76897C00091AEB;
 					};
 					E9071D3B1B76897C00091AEB = {
@@ -1119,6 +1132,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65CB10D7206899E2005C3A9E /* TokenTests.swift in Sources */,
 				6578DB061F71DA490088F136 /* AdblockPlus.m in Sources */,
 				656D08DE20046AC500E31B71 /* ContentBlockerTests.swift in Sources */,
 				69142D7B1CDCDE0700FD2640 /* NSDictionary+FilterList.m in Sources */,
@@ -1160,6 +1174,7 @@
 				69142D791CDCCF1100FD2640 /* NSDictionary+FilterList.m in Sources */,
 				65C1769B1F7C7996008E2BA1 /* AppDelegate.swift in Sources */,
 				69EA09A91DC75AA00018FAC0 /* ActivationConfirmationController.m in Sources */,
+				65CB10D22068982B005C3A9E /* HTTPClient.swift in Sources */,
 				657CEC7E1F9EC47B00F37B68 /* FilterList.swift in Sources */,
 				6566200E205C7BE6003A334A /* UIView+LayoutConstraints.swift in Sources */,
 				69EA09A71DC75AA00018FAC0 /* DialogPresenterController.m in Sources */,
@@ -1507,12 +1522,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				HEADER_SEARCH_PATHS = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = AdblockPlusSafariTests;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariTests/AdblockPlusSafariTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1525,12 +1544,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				HEADER_SEARCH_PATHS = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = AdblockPlusSafariTests;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariTests/AdblockPlusSafariTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = arm64;
@@ -1543,6 +1566,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				HEADER_SEARCH_PATHS = "";
@@ -1551,6 +1577,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafariTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariTests/AdblockPlusSafariTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1565,6 +1592,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				HEADER_SEARCH_PATHS = "";
@@ -1573,6 +1603,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.adblockplus.AdblockPlusSafariTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariTests/AdblockPlusSafariTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdblockPlusSafari.app/AdblockPlusSafari";

@@ -19,8 +19,10 @@
 
 /// Error cases for download tasks.
 /// - failedToMakeDownloadTask: Download task could not be created for the download.
+/// - tooManyRequests: HTTP connection failed due to temporary state.
 enum ABPDownloadTaskError: Error {
     case failedToMakeDownloadTask
+    case tooManyRequests
 }
 
 /// Error cases for filter list processing.
@@ -33,4 +35,5 @@ enum ABPFilterListError: Error {
 /// - invalidEndpoint: Endpoint URL was not found.
 enum ABPDeviceTokenSaveError: Error {
     case invalidEndpoint
+    case invalidClient
 }
