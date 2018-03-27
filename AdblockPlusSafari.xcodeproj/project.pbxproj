@@ -49,6 +49,15 @@
 		658FCAAE1FF45A3600198A2A /* ContentBlockerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FCAAD1FF45A3600198A2A /* ContentBlockerManager.swift */; };
 		65929E0520227192003126FB /* JSONFilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65929E0420227192003126FB /* JSONFilterList.swift */; };
 		65929E0920228C08003126FB /* ABPActiveVersions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65929E0820228C08003126FB /* ABPActiveVersions.swift */; };
+		659AECBE2069BA8100DECF0E /* libadblockplus_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659AECB52069BA8000DECF0E /* libadblockplus_ios.framework */; };
+		659AECC72069BA8100DECF0E /* libadblockplus_ios.h in Headers */ = {isa = PBXBuildFile; fileRef = 659AECB72069BA8000DECF0E /* libadblockplus_ios.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		659AECCA2069BA8100DECF0E /* libadblockplus_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659AECB52069BA8000DECF0E /* libadblockplus_ios.framework */; };
+		659AECCB2069BA8100DECF0E /* libadblockplus_ios.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 659AECB52069BA8000DECF0E /* libadblockplus_ios.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		659AECD62069BB2400DECF0E /* FavIcon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292CD5F31F94F84700555814 /* FavIcon.framework */; };
+		659AECD72069BB2400DECF0E /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; };
+		659AECD82069BB2400DECF0E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1769E1F7C8099008E2BA1 /* RxSwift.framework */; };
+		659AECD92069BB2400DECF0E /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CB10DB20689B5A005C3A9E /* RxSwiftExt.framework */; };
+		659AECDA2069BB2400DECF0E /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A173F31F60A20B004107EF /* SafariServices.framework */; };
 		65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A173F31F60A20B004107EF /* SafariServices.framework */; };
 		65A31976202D0A0A00A64E77 /* ActionViewController+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A31975202D0A0A00A64E77 /* ActionViewController+Localization.swift */; };
 		65ABBD812005B11500172823 /* ContentBlockerStateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ABBD802005B11500172823 /* ContentBlockerStateHandler.swift */; };
@@ -146,6 +155,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		659AECBF2069BA8100DECF0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E9071D341B76897C00091AEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 659AECB42069BA8000DECF0E;
+			remoteInfo = "libadblockplus-ios";
+		};
+		659AECC12069BA8100DECF0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E9071D341B76897C00091AEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E9071D3B1B76897C00091AEB;
+			remoteInfo = AdblockPlusSafari;
+		};
+		659AECC82069BA8100DECF0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E9071D341B76897C00091AEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 659AECB42069BA8000DECF0E;
+			remoteInfo = "libadblockplus-ios";
+		};
 		69B2AEBC1BCD289C00E874A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E9071D341B76897C00091AEB /* Project object */;
@@ -174,6 +204,7 @@
 				65BBB6111F7ED10700B013C3 /* yajl.framework in Embed Frameworks */,
 				290398DE205827480072E885 /* FavIcon.framework in Embed Frameworks */,
 				65CB10DF20689B7C005C3A9E /* RxSwiftExt.framework in Embed Frameworks */,
+				659AECCB2069BA8100DECF0E /* libadblockplus_ios.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,6 +257,11 @@
 		658FCAAD1FF45A3600198A2A /* ContentBlockerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlockerManager.swift; sourceTree = "<group>"; };
 		65929E0420227192003126FB /* JSONFilterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFilterList.swift; sourceTree = "<group>"; };
 		65929E0820228C08003126FB /* ABPActiveVersions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABPActiveVersions.swift; sourceTree = "<group>"; };
+		659AECB52069BA8000DECF0E /* libadblockplus_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libadblockplus_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		659AECB72069BA8000DECF0E /* libadblockplus_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libadblockplus_ios.h; sourceTree = "<group>"; };
+		659AECB82069BA8000DECF0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		659AECBD2069BA8100DECF0E /* libadblockplus-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "libadblockplus-iosTests.xctest"; path = "libadblockplus-ios-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		659AECC62069BA8100DECF0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65A173F31F60A20B004107EF /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		65A31975202D0A0A00A64E77 /* ActionViewController+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActionViewController+Localization.swift"; sourceTree = "<group>"; };
 		65ABBD802005B11500172823 /* ContentBlockerStateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlockerStateHandler.swift; sourceTree = "<group>"; };
@@ -483,6 +519,26 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		659AECB12069BA8000DECF0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				659AECD62069BB2400DECF0E /* FavIcon.framework in Frameworks */,
+				659AECD72069BB2400DECF0E /* RxCocoa.framework in Frameworks */,
+				659AECD82069BB2400DECF0E /* RxSwift.framework in Frameworks */,
+				659AECD92069BB2400DECF0E /* RxSwiftExt.framework in Frameworks */,
+				659AECDA2069BB2400DECF0E /* SafariServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		659AECBA2069BA8000DECF0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				659AECBE2069BA8100DECF0E /* libadblockplus_ios.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		695778331E672A7500331DA3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -506,9 +562,10 @@
 				65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */,
 				65BBB6101F7ED10700B013C3 /* yajl.framework in Frameworks */,
 				290398DD205827480072E885 /* FavIcon.framework in Frameworks */,
+				65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */,
 				65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */,
 				65CB10DD20689B5E005C3A9E /* RxSwiftExt.framework in Frameworks */,
-				65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */,
+				659AECCA2069BA8100DECF0E /* libadblockplus_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +621,23 @@
 				65929E0420227192003126FB /* JSONFilterList.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		659AECB62069BA8000DECF0E /* libadblockplus-ios */ = {
+			isa = PBXGroup;
+			children = (
+				659AECB72069BA8000DECF0E /* libadblockplus_ios.h */,
+				659AECB82069BA8000DECF0E /* Info.plist */,
+			);
+			path = "libadblockplus-ios";
+			sourceTree = "<group>";
+		};
+		659AECC32069BA8100DECF0E /* libadblockplus-ios-tests */ = {
+			isa = PBXGroup;
+			children = (
+				659AECC62069BA8100DECF0E /* Info.plist */,
+			);
+			path = "libadblockplus-ios-tests";
 			sourceTree = "<group>";
 		};
 		65A173F01F60A1C2004107EF /* Frameworks */ = {
@@ -718,6 +792,8 @@
 				E9B982AD1E55C12400C22A17 /* build.py */,
 				65A173F01F60A1C2004107EF /* Frameworks */,
 				65D8D43D2058C21100E6AFC2 /* Generated */,
+				659AECB62069BA8000DECF0E /* libadblockplus-ios */,
+				659AECC32069BA8100DECF0E /* libadblockplus-ios-tests */,
 				E9071D3D1B76897C00091AEB /* Products */,
 				69AB6A2F1B970D18005C2075 /* Resources */,
 				E9F3922B1BBF1B1A004A068A /* Translations */,
@@ -732,6 +808,8 @@
 				E942B07A1B76899D004B4692 /* AdblockPlusSafariExtension.appex */,
 				69B2AEB71BCD289C00E874A9 /* AdblockPlusSafariTests.xctest */,
 				695778361E672A7500331DA3 /* AdblockPlusSafariActionExtension.appex */,
+				659AECB52069BA8000DECF0E /* libadblockplus_ios.framework */,
+				659AECBD2069BA8100DECF0E /* libadblockplus-iosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -855,7 +933,55 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		659AECB22069BA8000DECF0E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				659AECC72069BA8100DECF0E /* libadblockplus_ios.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		659AECB42069BA8000DECF0E /* libadblockplus-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 659AECD42069BA8100DECF0E /* Build configuration list for PBXNativeTarget "libadblockplus-ios" */;
+			buildPhases = (
+				659AECB02069BA8000DECF0E /* Sources */,
+				659AECB12069BA8000DECF0E /* Frameworks */,
+				659AECB22069BA8000DECF0E /* Headers */,
+				659AECB32069BA8000DECF0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "libadblockplus-ios";
+			productName = "libadblockplus-ios";
+			productReference = 659AECB52069BA8000DECF0E /* libadblockplus_ios.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		659AECBC2069BA8000DECF0E /* libadblockplus-ios-tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 659AECD52069BA8100DECF0E /* Build configuration list for PBXNativeTarget "libadblockplus-ios-tests" */;
+			buildPhases = (
+				659AECB92069BA8000DECF0E /* Sources */,
+				659AECBA2069BA8000DECF0E /* Frameworks */,
+				659AECBB2069BA8000DECF0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				659AECC02069BA8100DECF0E /* PBXTargetDependency */,
+				659AECC22069BA8100DECF0E /* PBXTargetDependency */,
+			);
+			name = "libadblockplus-ios-tests";
+			productName = "libadblockplus-iosTests";
+			productReference = 659AECBD2069BA8100DECF0E /* libadblockplus-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		695778351E672A7500331DA3 /* AdblockPlusSafariActionExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 695778421E672A7600331DA3 /* Build configuration list for PBXNativeTarget "AdblockPlusSafariActionExtension" */;
@@ -907,6 +1033,7 @@
 			);
 			dependencies = (
 				E942B0831B76899D004B4692 /* PBXTargetDependency */,
+				659AECC92069BA8100DECF0E /* PBXTargetDependency */,
 			);
 			name = AdblockPlusSafari;
 			productName = AdblockPlusSafari;
@@ -936,9 +1063,20 @@
 		E9071D341B76897C00091AEB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0910;
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Eyeo GmbH";
 				TargetAttributes = {
+					659AECB42069BA8000DECF0E = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = G5LEUTX2F6;
+						ProvisioningStyle = Automatic;
+					};
+					659AECBC2069BA8000DECF0E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E9071D3B1B76897C00091AEB;
+					};
 					695778351E672A7500331DA3 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = G5LEUTX2F6;
@@ -1009,11 +1147,27 @@
 				695778351E672A7500331DA3 /* AdblockPlusSafariActionExtension */,
 				E942B0791B76899D004B4692 /* AdblockPlusSafariExtension */,
 				69B2AEB61BCD289C00E874A9 /* AdblockPlusSafariTests */,
+				659AECB42069BA8000DECF0E /* libadblockplus-ios */,
+				659AECBC2069BA8000DECF0E /* libadblockplus-ios-tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		659AECB32069BA8000DECF0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		659AECBB2069BA8000DECF0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		695778341E672A7500331DA3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1115,6 +1269,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		659AECB02069BA8000DECF0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		659AECB92069BA8000DECF0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		695778321E672A7500331DA3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1227,6 +1395,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		659AECC02069BA8100DECF0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 659AECB42069BA8000DECF0E /* libadblockplus-ios */;
+			targetProxy = 659AECBF2069BA8100DECF0E /* PBXContainerItemProxy */;
+		};
+		659AECC22069BA8100DECF0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E9071D3B1B76897C00091AEB /* AdblockPlusSafari */;
+			targetProxy = 659AECC12069BA8100DECF0E /* PBXContainerItemProxy */;
+		};
+		659AECC92069BA8100DECF0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 659AECB42069BA8000DECF0E /* libadblockplus-ios */;
+			targetProxy = 659AECC82069BA8100DECF0E /* PBXContainerItemProxy */;
+		};
 		69B2AEBD1BCD289C00E874A9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E9071D3B1B76897C00091AEB /* AdblockPlusSafari */;
@@ -1398,6 +1581,274 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		659AECCC2069BA8100DECF0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = G5LEUTX2F6;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "libadblockplus-ios/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-ios";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		659AECCD2069BA8100DECF0E /* Devbuild Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = G5LEUTX2F6;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "libadblockplus-ios/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-ios";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = "Devbuild Debug";
+		};
+		659AECCE2069BA8100DECF0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = G5LEUTX2F6;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "libadblockplus-ios/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-ios";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		659AECCF2069BA8100DECF0E /* Devbuild Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = G5LEUTX2F6;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "libadblockplus-ios/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-ios";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = "Devbuild Release";
+		};
+		659AECD02069BA8100DECF0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "libadblockplus-iosTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdblockPlusSafari.app/AdblockPlusSafari";
+			};
+			name = Debug;
+		};
+		659AECD12069BA8100DECF0E /* Devbuild Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "libadblockplus-iosTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdblockPlusSafari.app/AdblockPlusSafari";
+			};
+			name = "Devbuild Debug";
+		};
+		659AECD22069BA8100DECF0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "libadblockplus-iosTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdblockPlusSafari.app/AdblockPlusSafari";
+			};
+			name = Release;
+		};
+		659AECD32069BA8100DECF0E /* Devbuild Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "libadblockplus-iosTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdblockPlusSafari.app/AdblockPlusSafari";
+			};
+			name = "Devbuild Release";
+		};
 		695778431E672A7600331DA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1521,6 +1972,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1535,6 +1987,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariTests/AdblockPlusSafariTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdblockPlusSafari.app/AdblockPlusSafari";
 				VALID_ARCHS = arm64;
 			};
 			name = "Devbuild Debug";
@@ -1543,6 +1996,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1556,6 +2010,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariTests/AdblockPlusSafariTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdblockPlusSafari.app/AdblockPlusSafari";
 				VALID_ARCHS = arm64;
 			};
 			name = "Devbuild Release";
@@ -1749,6 +2204,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -1868,6 +2324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5LEUTX2F6;
@@ -1969,6 +2426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 0;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5LEUTX2F6;
@@ -2013,6 +2471,28 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		659AECD42069BA8100DECF0E /* Build configuration list for PBXNativeTarget "libadblockplus-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				659AECCC2069BA8100DECF0E /* Debug */,
+				659AECCD2069BA8100DECF0E /* Devbuild Debug */,
+				659AECCE2069BA8100DECF0E /* Release */,
+				659AECCF2069BA8100DECF0E /* Devbuild Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		659AECD52069BA8100DECF0E /* Build configuration list for PBXNativeTarget "libadblockplus-ios-tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				659AECD02069BA8100DECF0E /* Debug */,
+				659AECD12069BA8100DECF0E /* Devbuild Debug */,
+				659AECD22069BA8100DECF0E /* Release */,
+				659AECD32069BA8100DECF0E /* Devbuild Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		695778421E672A7600331DA3 /* Build configuration list for PBXNativeTarget "AdblockPlusSafariActionExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
