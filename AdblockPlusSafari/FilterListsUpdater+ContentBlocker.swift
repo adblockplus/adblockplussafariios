@@ -50,8 +50,8 @@ extension FilterListsUpdater {
     /// - Returns: An Observable.
     fileprivate func contentBlockerReload(withCompletion completion: ((Error?) -> Void)?) -> Observable<Void> {
         return Observable.create { observer in
-            let id = self.contentBlockerIdentifier()
-            self.cbManager.reload(withIdentifier: id) { error in
+            let cbID = self.contentBlockerIdentifier()
+            self.cbManager.reload(withIdentifier: cbID) { error in
                 self.abpManager.adblockPlus.reloading = false
                 if completion != nil {
                     completion!(error)
