@@ -44,8 +44,8 @@ class ContentBlockerStateHandler {
         // Dispose all update operations first.
         filterListsUpdater.reloadBag = DisposeBag()
 
-        let id = adblockPlus.contentBlockerIdentifier()
-        contentBlockerIsEnabled(with: id)
+        let cbID = adblockPlus.contentBlockerIdentifier()
+        contentBlockerIsEnabled(with: cbID)
             .retry(GlobalConstants.contentBlockerReloadRetryCount)
             .subscribe(onNext: { activated in
                 self.adblockPlus.activated = activated

@@ -41,7 +41,7 @@ class ABPActiveVersions {
 
     /// - Returns: Current iOS version as a string.
     class func iosVersion() -> String {
-        let os = ProcessInfo().operatingSystemVersion
-        return "\(os.majorVersion).\(os.minorVersion).\(os.patchVersion)"
+        let osv = ProcessInfo().operatingSystemVersion
+        return "\(osv.majorVersion).\(osv.minorVersion).\(osv.patchVersion)"
     }
 }
