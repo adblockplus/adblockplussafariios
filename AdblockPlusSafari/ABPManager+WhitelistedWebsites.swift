@@ -48,13 +48,8 @@ extension ABPManager {
                                      delegate: nil,
                                      delegateQueue: nil)
             session.getAllTasks { (tasks: [URLSessionTask]) in
-                let websites = tasks.map {
+                let websites = tasks.compactMap {
                     self.website(fromURL: $0.originalRequest?.url)
-                }.flatMap { website in
-                    // Nil members in the websites array have been removed by flatMap.
-                    let nsString = NSString(string: website!)
-                    guard ABPManager.sharedInstance().whiteList(withWebsite: nsString) else { return nil }
-                    return website
                 }
                 observer.onNext(websites)
                 observer.onCompleted()
