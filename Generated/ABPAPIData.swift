@@ -1,4 +1,4 @@
-// Generated using Sourcery 0.10.1 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 0.11.2 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
 /*
@@ -19,14 +19,14 @@
  */
 
 /// API data values are loaded in at build time.
-class ABPAPIData {
+final class ABPAPIData {
     /// - Returns: A URL string or nil.
     class func endpointReceiveDeviceData() -> String? {
-        return ""
+        return nil
     }
 
     /// - Returns: An API key or nil.
     class func keyAPIReceiveDeviceData() -> String? {
-        return ""
+        return nil
     }
 }

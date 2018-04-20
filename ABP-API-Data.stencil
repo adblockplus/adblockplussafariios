@@ -17,15 +17,15 @@
  */
 
 /// API data values are loaded in at build time.
-class ABPAPIData {
+final class ABPAPIData {
     /// - Returns: A URL string or nil.
     class func endpointReceiveDeviceData() -> String? {
-        {% if argument.keyReceive == 1 %}return nil{% else %}return "{{ argument.endpointReceive }}"{% endif %}
+        {% if argument.endpointReceive %}return "{{ argument.endpointReceive }}"{% else %}return nil{% endif %}
     }
 
     /// - Returns: An API key or nil.
     class func keyAPIReceiveDeviceData() -> String? {
-        {% if argument.keyReceive == 1 %}return nil{% else %}return "{{ argument.keyReceive }}"{% endif %}
+        {% if argument.keyReceive %}return "{{ argument.keyReceive }}"{% else %}return nil{% endif %}
     }
 }
 // sourcery:end

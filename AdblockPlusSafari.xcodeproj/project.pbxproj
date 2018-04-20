@@ -77,6 +77,7 @@
 		65CB10D22068982B005C3A9E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB10D12068982A005C3A9E /* HTTPClient.swift */; };
 		65CB10D7206899E2005C3A9E /* TokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB10D6206899E2005C3A9E /* TokenTests.swift */; };
 		65D8D43F2058C21100E6AFC2 /* ABPAPIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D8D43E2058C21100E6AFC2 /* ABPAPIData.swift */; };
+		65DAA6E62086B846007C9D3D /* APIDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DAA6E52086B843007C9D3D /* APIDataTests.swift */; };
 		65E4EE3C1F7DE1E200ED31BF /* KVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */; };
 		65EBAC1F20030CBE001E181F /* ABPManager+ObjectiveC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EBAC1E20030CBE001E181F /* ABPManager+ObjectiveC.swift */; };
 		65F8A8D8203A279700A7C559 /* DownloadEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8A8D7203A279700A7C559 /* DownloadEvent.swift */; };
@@ -280,6 +281,7 @@
 		65CB10D12068982A005C3A9E /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		65CB10D6206899E2005C3A9E /* TokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenTests.swift; sourceTree = "<group>"; };
 		65D8D43E2058C21100E6AFC2 /* ABPAPIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPAPIData.swift; sourceTree = "<group>"; };
+		65DAA6E52086B843007C9D3D /* APIDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDataTests.swift; sourceTree = "<group>"; };
 		65E4EE3A1F7DE1E100ED31BF /* AdblockPlusSafariTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdblockPlusSafariTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		65E4EE3B1F7DE1E100ED31BF /* KVOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOTests.swift; sourceTree = "<group>"; };
 		65EBAC1E20030CBE001E181F /* ABPManager+ObjectiveC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ABPManager+ObjectiveC.swift"; sourceTree = "<group>"; };
@@ -739,6 +741,7 @@
 			children = (
 				65E4EE3A1F7DE1E100ED31BF /* AdblockPlusSafariTests-Bridging-Header.h */,
 				69B2AEB91BCD289C00E874A9 /* AdblockPlusSafariTests.m */,
+				65DAA6E52086B843007C9D3D /* APIDataTests.swift */,
 				656D08DD20046AC400E31B71 /* ContentBlockerTests.swift */,
 				6501811B20252A960018C603 /* easylist_content_blocker_v2_short.json */,
 				690362D61C19A7B9000E5581 /* easylist_content_blocker_v2.json */,
@@ -1251,8 +1254,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Manage API access data.\nAPI_DATA_ENV_VARS=\"ABP-Secret-API-Env-Vars.sh\"\nif [ -f ./$API_DATA_ENV_VARS ]\nthen\n    source ./$API_DATA_ENV_VARS\nelse\n    echo \"warning: API data not found. The app will run but will not have access to API functions.\"\nfi\nsourcery --templates . --sources . --output ./Generated/ --args endpointReceive=$ENDPOINT_RECEIVE_DEVICE_DATA,keyReceive=$KEY_API_DEVICE_DATA";
+			shellPath = "/bin/sh make-api-data-file.sh";
+			shellScript = "";
 		};
 		E5DF8C561F7DAF85003AD9B8 /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1302,6 +1305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65DAA6E62086B846007C9D3D /* APIDataTests.swift in Sources */,
 				65CB10D7206899E2005C3A9E /* TokenTests.swift in Sources */,
 				6578DB061F71DA490088F136 /* AdblockPlus.m in Sources */,
 				656D08DE20046AC500E31B71 /* ContentBlockerTests.swift in Sources */,
