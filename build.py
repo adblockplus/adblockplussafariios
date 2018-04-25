@@ -27,9 +27,12 @@ Supported build configurations:
 
 Usage:
 
-    $ python build.py {release|devbuild}
+    $ python build.py <release|devbuild> [bootstrap]
 
-Tested with Python 2.7.14 and 3.6.3.
+where adding the optional bootstrap argument will rebuild everything in
+Cartfile.resolved.
+
+Tested with Python 2.7.14 and 3.6.5.
 
 """
 
@@ -48,17 +51,25 @@ FRAMEWORK_DIR = os.path.join(BASE_DIR, "Carthage", "Build", "iOS")
 
 
 def print_usage():
-    print("Usage: {} release|devbuild".format(os.path.basename(sys.argv[0]),
-                                              file = sys.stderr))
+    print("Usage: {} release|devbuild [bootstrap]"
+          .format(os.path.basename(sys.argv[0]),
+                  file = sys.stderr))
 
 
-def build_dependencies():
-    # The bootstrap option here builds the dependencies in Cartfile.resolved.
-    subprocess.check_call(["carthage",
-                           "bootstrap",
-                           "--platform",
-                           "ios",
-                           "--no-use-binaries"])
+def build_args(update_type):
+    return ["carthage", "{}".format(update_type), "--platform", "ios"]
+
+
+def build_dependencies(bootstrap):
+    """
+    :param bootstrap: Builds the dependencies in Cartfile.resolved while
+                      ignoring binaries, if True.
+    """
+
+    update = "update"
+    if bootstrap:
+        update = "bootstrap"
+    subprocess.check_call(build_args(update))
 
 
 def get_frameworks():
@@ -148,13 +159,21 @@ if __name__ == "__main__":
         sys.exit(1)
 
     build_type = sys.argv[1]
+    bootstrap = False
 
     if build_type not in ["devbuild", "release"]:
         print_usage()
         sys.exit(2)
 
+    if len(sys.argv) == 3:
+        if sys.argv[2] not in ["bootstrap"]:
+            print_usage()
+            sys.exit(3)
+        else:
+            bootstrap = True
+
     shutil.rmtree(BUILD_DIR, ignore_errors=True)
-    build_dependencies()
+    build_dependencies(bootstrap)
     strip_slices()
     build_name = "adblockplussafariios-%s-%s" % (build_type, BUILD_NUMBER)
     archive_path = build_app(build_type, build_name)
