@@ -45,9 +45,6 @@ BUILD_DIR = os.path.join(BASE_DIR, "build")
 BUILD_NUMBER = time.strftime("%Y%m%d%H%M", time.gmtime())
 VALID_SLICES = ["arm64"]
 FRAMEWORK_DIR = os.path.join(BASE_DIR, "Carthage", "Build", "iOS")
-FRAMEWORKS = [os.path.join("yajl.framework", "yajl"),
-              os.path.join("rxswift.framework", "rxswift"),
-              os.path.join("FavIcon.framework", "FavIcon")]
 
 
 def print_usage():
@@ -64,13 +61,30 @@ def build_dependencies():
                            "--no-use-binaries"])
 
 
+def get_frameworks():
+    """
+    :return: List of frameworks in the Cartfile
+    """
+
+    frameworks = []
+    regex = '^(?:(?!#).+).*/(.*)\"' # Ignore commented lines
+    with open("Cartfile", "r") as file:
+        for cnt, line in enumerate(file):
+            fw_name = re.search(regex, line)
+            if fw_name:
+                base = fw_name.group(1).replace('-', '_')
+                frameworks.append(os.path.join(base + ".framework",
+                                               base))
+    return frameworks
+
+
 def strip_slices():
     """
     Strip unused/invalid slices from built frameworks as required for the
     Apple App Store.
     """
 
-    for framework in FRAMEWORKS:
+    for framework in get_frameworks():
         fw = os.path.join(FRAMEWORK_DIR, framework)
 
         for slice in get_slices(fw):
