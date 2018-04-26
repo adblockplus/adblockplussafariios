@@ -31,18 +31,6 @@
 
 @implementation AdblockPlusSafariTests
 
-- (void)setUp
-{
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
-
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
 - (void)performMergeFilterList:(NSString *)filterList
 {
     NSURL *input = [[NSBundle bundleForClass:[self class]] URLForResource:filterList withExtension:@"json"];
@@ -219,7 +207,7 @@
           expectedExpires:(NSTimeInterval)expectedExpires
 {
     NSURL *input = [[NSBundle bundleForClass:[self class]] URLForResource:filterListPath withExtension:@"json"];
-    FilterList *filterList = [[FilterList alloc] initWithDictionary:@{}];
+    FilterList *filterList = [[FilterList alloc] initWithDictionary:@{@"downloadCount": @0}];
 
     NSError *error = nil;
     if (![filterList parseFilterListFromURL:input error:&error]) {
