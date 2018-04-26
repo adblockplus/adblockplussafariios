@@ -263,7 +263,7 @@
 		659AECB52069BA8000DECF0E /* libadblockplus_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libadblockplus_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		659AECB72069BA8000DECF0E /* libadblockplus_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libadblockplus_ios.h; sourceTree = "<group>"; };
 		659AECB82069BA8000DECF0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		659AECBD2069BA8100DECF0E /* libadblockplus-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "libadblockplus-iosTests.xctest"; path = "libadblockplus-ios-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		659AECBD2069BA8100DECF0E /* libadblockplus-ios-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "libadblockplus-ios-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		659AECC62069BA8100DECF0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65A173F31F60A20B004107EF /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		65A31975202D0A0A00A64E77 /* ActionViewController+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActionViewController+Localization.swift"; sourceTree = "<group>"; };
@@ -812,7 +812,7 @@
 				69B2AEB71BCD289C00E874A9 /* AdblockPlusSafariTests.xctest */,
 				695778361E672A7500331DA3 /* AdblockPlusSafariActionExtension.appex */,
 				659AECB52069BA8000DECF0E /* libadblockplus_ios.framework */,
-				659AECBD2069BA8100DECF0E /* libadblockplus-iosTests.xctest */,
+				659AECBD2069BA8100DECF0E /* libadblockplus-ios-tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -982,7 +982,7 @@
 			);
 			name = "libadblockplus-ios-tests";
 			productName = "libadblockplus-iosTests";
-			productReference = 659AECBD2069BA8100DECF0E /* libadblockplus-iosTests.xctest */;
+			productReference = 659AECBD2069BA8100DECF0E /* libadblockplus-ios-tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		695778351E672A7500331DA3 /* AdblockPlusSafariActionExtension */ = {
@@ -1760,10 +1760,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "libadblockplus-iosTests/Info.plist";
+				INFOPLIST_FILE = "libadblockplus-ios-tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-iosTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-ios-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1788,10 +1788,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "libadblockplus-iosTests/Info.plist";
+				INFOPLIST_FILE = "libadblockplus-ios-tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-iosTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-ios-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1814,10 +1814,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "libadblockplus-iosTests/Info.plist";
+				INFOPLIST_FILE = "libadblockplus-ios-tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-iosTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-ios-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1840,10 +1840,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "libadblockplus-iosTests/Info.plist";
+				INFOPLIST_FILE = "libadblockplus-ios-tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-iosTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.adblockplus.libadblockplus-ios-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
