@@ -15,6 +15,8 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import libadblockplus_ios
+
 // Functions related to the legacy implementation.
 extension FilterListsUpdater {
     /// Maintain compatibility with the legacy implementation by writing data to the Objective-C side.

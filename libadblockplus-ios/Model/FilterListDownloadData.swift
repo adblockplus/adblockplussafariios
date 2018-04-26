@@ -16,7 +16,7 @@
  */
 
 /// Data sent during downloads of filter lists.
-struct FilterListDownloadData {
+public struct FilterListDownloadData {
     let addonName = "adblockplusios",
         addonVer = ABPActiveVersions.appVersion() ?? "",
         application = "safari",
@@ -27,11 +27,11 @@ struct FilterListDownloadData {
     /// Maximum value beyond which download count is represented by (n-1)+.
     let maxDownloadCount = 5
 
-    var queryItems: [URLQueryItem]!
+    public var queryItems: [URLQueryItem]!
 
     /// Construct a filter list download data struct.
     /// - Parameter filterList: The local filter list corresponding to the download data.
-    init(with filterList: FilterList) {
+    public init(with filterList: FilterList) {
         queryItems = [URLQueryItem(name: "addonName",
                                    value: addonName),
             URLQueryItem(name: "addonVersion",

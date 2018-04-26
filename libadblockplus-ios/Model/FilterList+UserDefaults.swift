@@ -19,10 +19,8 @@
     /// Construct a new filter list matching one saved in the legacy adblockPlusDetails user
     /// defaults.
     /// - Parameter name: The name of the existing filter list.
-    init?(matching name: FilterListName) {
-        let listsKey = "AdblockPlusFilterListsVersion2"
-        let details = ABPManager.sharedInstance().adblockPlus.adblockPlusDetails
-        let root = details.value(forKey: listsKey) as? [String: Any]
+    public init?(matching name: FilterListName,
+                 root: [String: Any]?) {
         let listDict = root?[name] as? [String: Any]
         guard let filterList = FilterList(named: name,
                                           fromDictionary: listDict)

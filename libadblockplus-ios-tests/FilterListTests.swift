@@ -15,8 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-@testable import AdblockPlusSafari
-import libadblockplus_ios
+@testable import libadblockplus_ios
 import XCTest
 
 class FilterListTests: XCTestCase {
@@ -26,10 +25,10 @@ class FilterListTests: XCTestCase {
         filterList.lastUpdate = Date()
         XCTAssert(!filterList.expired(),
                   "Last update is now - should not be expired")
-        filterList.lastUpdate = Date() - GlobalConstants.defaultFilterListExpiration - 1
+        filterList.lastUpdate = Date() - Constants.defaultFilterListExpiration - 1
         XCTAssert(filterList.expired(),
                   "Last updated is beyond default expiration - should be expired")
-        filterList.lastUpdate = Date() - GlobalConstants.defaultFilterListExpiration + 1
+        filterList.lastUpdate = Date() - Constants.defaultFilterListExpiration + 1
         XCTAssert(!filterList.expired(),
                   "Last updated is not beyond default expiration - should not be expired")
         filterList.expires = Date().timeIntervalSinceReferenceDate - 1

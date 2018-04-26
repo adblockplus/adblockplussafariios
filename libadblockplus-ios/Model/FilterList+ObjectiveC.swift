@@ -22,8 +22,8 @@ extension FilterList {
     /// - Parameters:
     ///   - name: Unique name for the filter list.
     ///   - dictionary: NSDictionary from legacy data model.
-    init?(named name: String,
-          fromDictionary dictionary: [String: Any]?) {
+    public init?(named name: String,
+                 fromDictionary dictionary: [String: Any]?) {
         guard let uwDict = dictionary else { return nil }
         self.name = name
         taskIdentifier = uwDict["taskIdentifier"] as? Int
@@ -41,7 +41,7 @@ extension FilterList {
     }
 
     /// - Returns: A dictionary suitable for use with Objective-C.
-    func toDictionary() -> [String: Any]? {
+    public func toDictionary() -> [String: Any]? {
         var dict = [String: Any]()
         dict["taskIdentifier"] = taskIdentifier
         dict["updatingGroupIdentifier"] = updatingGroupIdentifier

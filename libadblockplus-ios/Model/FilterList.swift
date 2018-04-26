@@ -17,44 +17,49 @@
 
 /// Swift-based FilterList model struct to replace the Objective-C FilterList model object. This
 /// is used internally to represent filter lists.
-struct FilterList {
+public struct FilterList {
     /// Counter for number of successful downloads.
-    var downloadCount: Int?
+    public var downloadCount: Int?
 
     /// Name used to identify a list uniquely.
-    var name: FilterListName?
+    public var name: FilterListName?
 
     /// The last version value extracted from the filter list or default value of "0".
-    var lastVersion: FilterListLastVersion = "0"
+    public var lastVersion: FilterListLastVersion = "0"
 
     /// Task identifier of the associated download task.
-    var taskIdentifier: Int?
+    public var taskIdentifier: Int?
 
     /// Group identifier refer to an associated download group. Only download tasks triggered by a
     /// user are allowed to display download failure dialogs. The updatingGroupIdentifier
     /// represents the group of the most recent download tasks.
-    var updatingGroupIdentifier: Int?
+    public var updatingGroupIdentifier: Int?
 
-    var downloaded: Bool?
-    var expires: TimeInterval?
-    var fileName: String?
-    var lastUpdate: Date?
-    var lastUpdateFailed: Bool?
-    var updating: Bool?
-    var url: String?
-    var userTriggered: Bool?
-    var version: String?
+    public var downloaded: Bool?
+    public var expires: TimeInterval?
+    public var fileName: String?
+    public var lastUpdate: Date?
+    public var lastUpdateFailed: Bool?
+    public var updating: Bool?
+    public var url: String?
+    public var userTriggered: Bool?
+    public var version: String?
+
+    public init() {
+        // Intentionally empty
+    }
 }
 
 extension FilterList {
     /// This is not using an expiration interval from a v2 filter list as that data is not yet available.
     /// - Returns: True if the filter list is considered to be expired.
-    func expired() -> Bool {
+    public func expired() -> Bool {
         let nowInterval = Date.timeIntervalSinceReferenceDate
         if expires == nil && lastUpdate != nil {
             // Default to a fixed expiration.
-            let defaultIntervalPlusLast = lastUpdate!.addingTimeInterval(GlobalConstants.defaultFilterListExpiration)
-                                                     .timeIntervalSinceReferenceDate
+            let defaultIntervalPlusLast =
+                lastUpdate!.addingTimeInterval(Constants.defaultFilterListExpiration)
+                    .timeIntervalSinceReferenceDate
             return defaultIntervalPlusLast < nowInterval
         } else if expires != nil && lastUpdate != nil {
             return expires! < nowInterval

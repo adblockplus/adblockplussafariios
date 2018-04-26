@@ -16,6 +16,7 @@
  */
 
 @testable import AdblockPlusSafari
+import libadblockplus_ios
 import XCTest
 
 /// Test JSON operations.
@@ -53,7 +54,7 @@ class JSONTests: XCTestCase {
             XCTAssert(false, "Data missing")
             return
         }
-        let json = JSONFilterList(with: uwData)
+        let json = libadblockplus_ios.JSONFilterList(with: uwData)
         XCTAssert(json?.version == "201512011207", "Parsed version value is wrong")
     }
 
@@ -61,7 +62,7 @@ class JSONTests: XCTestCase {
     func testSetVersion() {
         let mgr = ABPManager.sharedInstance()
         let updater = mgr.filterListsUpdater
-        var list = mgr.testingList
+        var list = libadblockplus_ios.FilterList()
         do {
             try updater?.setVersion(url: localURL,
                                     filterList: &list)

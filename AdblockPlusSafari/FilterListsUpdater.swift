@@ -15,6 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import libadblockplus_ios
 import RxCocoa
 import RxSwift
 
@@ -92,7 +93,7 @@ class FilterListsUpdater: AdblockPlusShared,
     /// Remove the updating state key from a filter list.
     private func removeUpdatingGroupID() {
         let lists = abpManager.filterLists()
-        var newLists = [FilterList]()
+        var newLists = [libadblockplus_ios.FilterList]()
         for var list in lists {
             list.updatingGroupIdentifier = nil
             newLists.append(list)
@@ -164,7 +165,7 @@ class FilterListsUpdater: AdblockPlusShared,
     /// created for the task.
     /// - Parameter filterList: A filter List struct.
     /// - Returns: The download task.
-    func filterListDownload(for filterList: FilterList) -> Observable<URLSessionDownloadTask> {
+    func filterListDownload(for filterList: libadblockplus_ios.FilterList) -> Observable<URLSessionDownloadTask> {
         return Observable.create { observer in
             guard let urlString = filterList.url,
                   let url = URL(string: urlString),
@@ -213,12 +214,14 @@ class FilterListsUpdater: AdblockPlusShared,
         let taskID = update.task.taskIdentifier
         self.downloadEvents[taskID] = BehaviorSubject<DownloadEvent>(value: DownloadEvent())
         update.task.resume()
+
+        // The subscribe is wrapped in an Observable to use timeout()
         return Observable.create { observer in
             return self.downloadEvents[taskID]!
-                .filter({ event -> Bool in
+                .filter { event -> Bool in
                     return event.didFinishDownloading == true &&
                            event.errorWritten == true
-                }).subscribe(onNext: { _ in
+                }.subscribe(onNext: { _ in
                     self.reloadContentBlocker { error in
                         if error == nil {
                             observer.onNext(update)
@@ -272,7 +275,13 @@ class FilterListsUpdater: AdblockPlusShared,
     fileprivate func updateFilterList(with name: FilterListName,
                                       userTriggered: Bool) -> Observable<FilterListUpdate> {
         self.updatingGroupIdentifier += 1
-        guard var filterList = FilterList(matching: name) else {
+        // Make a filter list that exists on the Objective-C side.
+        let listsKey = "AdblockPlusFilterListsVersion2"
+        let details = ABPManager.sharedInstance().adblockPlus.adblockPlusDetails
+        let root = details.value(forKey: listsKey) as? [String: Any]
+        guard var filterList = FilterList(matching: name,
+                                          root: root)
+        else {
             return Observable.create { observer in
                 observer.onError(ABPFilterListError.invalidData)
                 return Disposables.create()
@@ -302,7 +311,7 @@ class FilterListsUpdater: AdblockPlusShared,
 
     /// Update filter list with a new download count.
     /// - Parameter filterList: A filter list.
-    func updateSuccessfulDownloadCount(for filterList: inout FilterList) {
+    func updateSuccessfulDownloadCount(for filterList: inout libadblockplus_ios.FilterList) {
         if filterList.downloadCount != nil {
             filterList.downloadCount! += 1
         } else {

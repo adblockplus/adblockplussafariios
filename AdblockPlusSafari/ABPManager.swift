@@ -15,6 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import libadblockplus_ios
 import RxCocoa
 import RxSwift
 
@@ -64,10 +65,6 @@ class ABPManager: NSObject {
     private var firstUpdateTriggered: Bool = false
     private var backgroundFetches = [[String: Any]]()
 
-    /// Swift-based filter list model struct for unit testing. Workaround for namespace conflicts
-    /// during unit testing.
-    var testingList = FilterList()
-
     /// Variable to maintain background state. Application state is not read because of conflicts
     /// due its reading requiring main thread access under the UI API.
     var inBackground = Variable<Bool>(true)
@@ -95,6 +92,7 @@ class ABPManager: NSObject {
             adblockPlus = AdblockPlusExtras(abpManager: self)
             filterListsUpdater = FilterListsUpdater(abpManager: self)
         }
+
     }
 
     /// Only used during init.

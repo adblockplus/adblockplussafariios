@@ -15,9 +15,14 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/// Represents a filter list update.
-struct FilterListUpdate {
-    var filterList: FilterList
-    var task: URLSessionDownloadTask
-    var userTriggered: Bool
+/// Type aliases.
+public typealias FilterListName = String
+public typealias FilterListLastVersion = String
+public typealias FilterListV2Sources = [[String: String]]
+public typealias FilterListV2Rules = [[String: [String: String]]]
+
+/// Constants that are global to the framework.
+struct Constants {
+    /// Default interval for expiration of a filter list.
+    static let defaultFilterListExpiration: TimeInterval = 86400
 }
