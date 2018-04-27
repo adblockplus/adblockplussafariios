@@ -48,7 +48,6 @@
 		656D08DE20046AC500E31B71 /* ContentBlockerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D08DD20046AC400E31B71 /* ContentBlockerTests.swift */; };
 		65755AFC1F7C8A4B00696261 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65755AFD1F7C8A4B00696261 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1769E1F7C8099008E2BA1 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		657660842022DAEC00488FE7 /* ABPErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657660832022DAEC00488FE7 /* ABPErrors.swift */; };
 		657680AD203D77C6007C9ABE /* FilterListsUpdater+ContentBlocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657680AC203D77C6007C9ABE /* FilterListsUpdater+ContentBlocker.swift */; };
 		6578DB051F71DA490088F136 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
 		6578DB061F71DA490088F136 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
@@ -56,6 +55,7 @@
 		658FCAAA1FF45A2B00198A2A /* FilterListsUpdater+DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FCAA71FF45A2A00198A2A /* FilterListsUpdater+DownloadDelegate.swift */; };
 		658FCAAC1FF45A2B00198A2A /* FilterListsUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FCAA91FF45A2B00198A2A /* FilterListsUpdater.swift */; };
 		658FCAAE1FF45A3600198A2A /* ContentBlockerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FCAAD1FF45A3600198A2A /* ContentBlockerManager.swift */; };
+		6591FDEB2092DCEA004C2490 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6591FDEA2092DCEA004C2490 /* Errors.swift */; };
 		65929E0920228C08003126FB /* ABPActiveVersions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65929E0820228C08003126FB /* ABPActiveVersions.swift */; };
 		659AECBE2069BA8100DECF0E /* libadblockplus_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659AECB52069BA8000DECF0E /* libadblockplus_ios.framework */; };
 		659AECC72069BA8100DECF0E /* libadblockplus_ios.h in Headers */ = {isa = PBXBuildFile; fileRef = 659AECB72069BA8000DECF0E /* libadblockplus_ios.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -258,11 +258,11 @@
 		6566200D205C7BE6003A334A /* UIView+LayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutConstraints.swift"; sourceTree = "<group>"; };
 		656B89AE203799830090C6E0 /* ABPRemoteCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPRemoteCommands.swift; sourceTree = "<group>"; };
 		656D08DD20046AC400E31B71 /* ContentBlockerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlockerTests.swift; sourceTree = "<group>"; };
-		657660832022DAEC00488FE7 /* ABPErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPErrors.swift; sourceTree = "<group>"; };
 		657680AC203D77C6007C9ABE /* FilterListsUpdater+ContentBlocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterListsUpdater+ContentBlocker.swift"; sourceTree = "<group>"; };
 		658FCAA71FF45A2A00198A2A /* FilterListsUpdater+DownloadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilterListsUpdater+DownloadDelegate.swift"; sourceTree = "<group>"; };
 		658FCAA91FF45A2B00198A2A /* FilterListsUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterListsUpdater.swift; sourceTree = "<group>"; };
 		658FCAAD1FF45A3600198A2A /* ContentBlockerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlockerManager.swift; sourceTree = "<group>"; };
+		6591FDEA2092DCEA004C2490 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		65929E0820228C08003126FB /* ABPActiveVersions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABPActiveVersions.swift; sourceTree = "<group>"; };
 		659AECB52069BA8000DECF0E /* libadblockplus_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libadblockplus_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		659AECB72069BA8000DECF0E /* libadblockplus_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libadblockplus_ios.h; sourceTree = "<group>"; };
@@ -642,9 +642,18 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		6591FDE92092DCCA004C2490 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				6591FDEA2092DCEA004C2490 /* Errors.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		659AECB62069BA8000DECF0E /* libadblockplus-ios */ = {
 			isa = PBXGroup;
 			children = (
+				6591FDE92092DCCA004C2490 /* Error */,
 				6507AD4E2091349200CC3317 /* Configuration */,
 				659AECB82069BA8000DECF0E /* Info.plist */,
 				659AECB72069BA8000DECF0E /* libadblockplus_ios.h */,
@@ -841,7 +850,6 @@
 			isa = PBXGroup;
 			children = (
 				65929E0820228C08003126FB /* ABPActiveVersions.swift */,
-				657660832022DAEC00488FE7 /* ABPErrors.swift */,
 				65C176991F7C7963008E2BA1 /* ABPManager.swift */,
 				65EBAC1E20030CBE001E181F /* ABPManager+ObjectiveC.swift */,
 				6541CEA41FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift */,
@@ -1303,6 +1311,7 @@
 				6507AD562091349200CC3317 /* FilterList.swift in Sources */,
 				6507AD6F209143E700CC3317 /* DownloadEvent.swift in Sources */,
 				6507AD6B20913CB100CC3317 /* FilterList+UserDefaults.swift in Sources */,
+				6591FDEB2092DCEA004C2490 /* Errors.swift in Sources */,
 				6507AD6D20913DCF00CC3317 /* FilterListUpdate.swift in Sources */,
 				6507AD60209139B200CC3317 /* FilterListDownloadData.swift in Sources */,
 				6507AD73209155F300CC3317 /* JSONFilterList.swift in Sources */,
@@ -1357,7 +1366,6 @@
 				69AB6A4F1B9712F1005C2075 /* AdblockPlus.m in Sources */,
 				69EA099C1DC75A7C0018FAC0 /* NSAttributedString+TextRenderer.m in Sources */,
 				6541CEA51FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift in Sources */,
-				657660842022DAEC00488FE7 /* ABPErrors.swift in Sources */,
 				658FCAAC1FF45A2B00198A2A /* FilterListsUpdater.swift in Sources */,
 				69142D7A1CDCCF1100FD2640 /* SwitchCell.m in Sources */,
 				658FCAAE1FF45A3600198A2A /* ContentBlockerManager.swift in Sources */,
