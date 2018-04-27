@@ -263,6 +263,7 @@
 		658FCAA91FF45A2B00198A2A /* FilterListsUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterListsUpdater.swift; sourceTree = "<group>"; };
 		658FCAAD1FF45A3600198A2A /* ContentBlockerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlockerManager.swift; sourceTree = "<group>"; };
 		6591FDEA2092DCEA004C2490 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		6591FE1A2093CE55004C2490 /* AdblockPlusSafariExtension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdblockPlusSafariExtension-Bridging-Header.h"; sourceTree = "<group>"; };
 		65929E0820228C08003126FB /* ABPActiveVersions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABPActiveVersions.swift; sourceTree = "<group>"; };
 		659AECB52069BA8000DECF0E /* libadblockplus_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libadblockplus_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		659AECB72069BA8000DECF0E /* libadblockplus_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libadblockplus_ios.h; sourceTree = "<group>"; };
@@ -918,6 +919,7 @@
 				6970E76D1BA94C3900B11AC3 /* AdblockPlus+Extension.m */,
 				6905EDAA1BCE84F500B3A9B9 /* AdblockPlus+Parsing.h */,
 				6905EDAB1BCE84F500B3A9B9 /* AdblockPlus+Parsing.m */,
+				6591FE1A2093CE55004C2490 /* AdblockPlusSafariExtension-Bridging-Header.h */,
 				69A9100F1B985B3B00D93485 /* AdblockPlusSafariExtension.entitlements */,
 				E9B982AB1E55C03100C22A17 /* AdblockPlusSafariExtension.xcconfig */,
 				E9B982A81E55A29C00C22A17 /* AdblockPlusSafariExtensionDevbuild.entitlements */,
@@ -1153,6 +1155,7 @@
 					E942B0791B76899D004B4692 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = G5LEUTX2F6;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -2281,6 +2284,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				BUILD_NUMBER = 0;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -2294,6 +2298,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariExtension/AdblockPlusSafariExtension-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.1;
 				VALID_ARCHS = arm64;
 			};
 			name = Debug;
@@ -2303,6 +2310,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				BUILD_NUMBER = 0;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5LEUTX2F6;
@@ -2315,6 +2323,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariExtension/AdblockPlusSafariExtension-Bridging-Header.h";
+				SWIFT_VERSION = 4.1;
 				VALID_ARCHS = arm64;
 			};
 			name = Release;
@@ -2403,6 +2413,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				BUILD_NUMBER = 0;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5LEUTX2F6;
@@ -2415,6 +2426,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariExtension/AdblockPlusSafariExtension-Bridging-Header.h";
+				SWIFT_VERSION = 4.1;
 				VALID_ARCHS = arm64;
 			};
 			name = "Devbuild Release";
@@ -2510,6 +2523,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				BUILD_NUMBER = 0;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5LEUTX2F6;
@@ -2522,6 +2536,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AdblockPlusSafariExtension/AdblockPlusSafariExtension-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.1;
 				VALID_ARCHS = arm64;
 			};
 			name = "Devbuild Debug";
