@@ -42,7 +42,6 @@
 		651FF79B208EAA7E00522A98 /* yajl_dynamic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651FF795208EAA5500522A98 /* yajl_dynamic.framework */; };
 		653411702060BFEF00690719 /* AppType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6534116F2060BFEF00690719 /* AppType.swift */; };
 		653FE9872030E767007123FC /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FE9862030E767007123FC /* AppDelegate+Notifications.swift */; };
-		6541CEA21FAAC69B00601D6F /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6541CEA11FAAC69B00601D6F /* TypeAliases.swift */; };
 		6541CEA51FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6541CEA41FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift */; };
 		6566200E205C7BE6003A334A /* UIView+LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6566200D205C7BE6003A334A /* UIView+LayoutConstraints.swift */; };
 		656B89AF203799830090C6E0 /* ABPRemoteCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656B89AE203799830090C6E0 /* ABPRemoteCommands.swift */; };
@@ -255,7 +254,6 @@
 		651FF795208EAA5500522A98 /* yajl_dynamic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = yajl_dynamic.framework; path = Carthage/Build/iOS/yajl_dynamic.framework; sourceTree = "<group>"; };
 		6534116F2060BFEF00690719 /* AppType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppType.swift; sourceTree = "<group>"; };
 		653FE9862030E767007123FC /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
-		6541CEA11FAAC69B00601D6F /* TypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		6541CEA41FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ABPManager+WhitelistedWebsites.swift"; sourceTree = "<group>"; };
 		6566200D205C7BE6003A334A /* UIView+LayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutConstraints.swift"; sourceTree = "<group>"; };
 		656B89AE203799830090C6E0 /* ABPRemoteCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPRemoteCommands.swift; sourceTree = "<group>"; };
@@ -889,7 +887,6 @@
 				6904B3FF1E6705F4006B3FE5 /* NSString+AdblockPlus.h */,
 				6904B4001E6705F4006B3FE5 /* NSString+AdblockPlus.m */,
 				E9071D3F1B76897C00091AEB /* Supporting Files */,
-				6541CEA11FAAC69B00601D6F /* TypeAliases.swift */,
 				6503C3FB204518B900040507 /* ViewModels */,
 				6503C3F8204518B800040507 /* Views */,
 			);
@@ -1400,7 +1397,6 @@
 				691F744A1B988ADC0057C702 /* AdblockPlusContainerController.m in Sources */,
 				656B89AF203799830090C6E0 /* ABPRemoteCommands.swift in Sources */,
 				69C19C771B9835D1009ACBAC /* RootController.m in Sources */,
-				6541CEA21FAAC69B00601D6F /* TypeAliases.swift in Sources */,
 				69AB6A2E1B96F664005C2075 /* Appearance.m in Sources */,
 				69142D781CDCCF1100FD2640 /* CustomFilterListsController.m in Sources */,
 				65ADD2481FF73DAF00A9E69F /* FilterListSwiftBridge.m in Sources */,
