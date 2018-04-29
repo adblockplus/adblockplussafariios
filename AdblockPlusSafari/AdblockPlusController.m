@@ -169,7 +169,11 @@ typedef NS_ENUM(NSInteger, AdblockPlusControllerSection) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.locale = [NSLocale currentLocale];
         dateFormatter.dateStyle = NSDateFormatterFullStyle;
+        #ifdef DEBUG
+        dateFormatter.timeStyle = NSDateFormatterLongStyle;
+        #else
         dateFormatter.timeStyle = NSDateFormatterShortStyle;
+        #endif
         NSString *footerFormat = [super tableView:tableView titleForFooterInSection:section];
         return [NSString stringWithFormat:footerFormat, [dateFormatter stringFromDate:lastUpdate]];
     }

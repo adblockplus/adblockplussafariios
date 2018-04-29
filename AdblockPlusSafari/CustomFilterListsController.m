@@ -247,7 +247,12 @@ static NSString *customFilterListUrl = @"https://easylist-downloads.adblockplus.
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.locale = [NSLocale currentLocale];
     dateFormatter.dateStyle = NSDateFormatterFullStyle;
+    #ifdef DEBUG
+    dateFormatter.timeStyle = NSDateFormatterLongStyle;
+    #else
     dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    #endif
+
     return dateFormatter;
 }
 
