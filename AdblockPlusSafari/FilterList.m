@@ -67,7 +67,10 @@
 
     if (self = [super init]) {
         for (NSString *key in [FilterList allProperties]) {
-            [self setValue:[dictionary valueForKey:key] forKey:key];
+            // Make an exception for keys that cannot be set nil.
+            if (![key isEqualToString: @"downloadCount"]) {
+                [self setValue:[dictionary valueForKey:key] forKey:key];
+            }
         }
     }
 
