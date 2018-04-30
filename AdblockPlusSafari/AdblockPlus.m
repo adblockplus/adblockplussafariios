@@ -36,7 +36,10 @@ static NSString *AdblockPlusWhitelistedWebsites = @"AdblockPlusWhitelistedWebsit
 static NSString *AdblockPlusLastActivity = @"AdblockPlusLastActivity";
 static NSString *AdblockPlusPerformingActivityTest = @"AdblockPlusPerformingActivityTest";
 
+/// Duplicated in libadblockplus-ios.
 static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
+
+/// Duplicated in libadblockplus-ios.
 static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExtension";
 
 @interface AdblockPlus ()
@@ -65,6 +68,8 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
         }
 
         _bundleName = [components componentsJoinedByString:@"."];
+
+        /// Above code duplicated in libadblockplus-ios.
 
         _adblockPlusDetails = [[NSUserDefaults alloc] initWithSuiteName:self.group];
         [_adblockPlusDetails registerDefaults:
@@ -211,6 +216,7 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
 
 #pragma mark -
 
+/// Duplicated in libadblockplus-ios.
 - (NSString *)contentBlockerIdentifier
 {
     return [NSString stringWithFormat:@"%@.AdblockPlusSafari.%@", _bundleName, AdblockPlusSafariExtension];

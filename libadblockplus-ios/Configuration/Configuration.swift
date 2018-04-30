@@ -28,3 +28,36 @@ struct Constants {
     /// Default interval for expiration of a filter list.
     static let defaultFilterListExpiration: TimeInterval = 86400
 }
+
+public struct Config {
+    let baseProduct = "AdblockPlusSafari"
+    let adblockPlusSafariExtension = "AdblockPlusSafariExtension"
+    let adblockPlusSafariActionExtension = "AdblockPlusSafariActionExtension"
+
+    public init() {
+        // Left empty
+    }
+
+    private func bundleName() -> String? {
+        if let comps = Bundle.main.bundleIdentifier?.components(separatedBy: ".") {
+            var newComps = [String]()
+            if comps.last == adblockPlusSafariExtension ||
+                comps.last == adblockPlusSafariActionExtension {
+                newComps = Array(comps[0...1])
+            } else {
+                newComps = Array(comps[0...2])
+            }
+            return newComps.joined(separator: ".")
+        }
+        return nil
+    }
+
+    /// A copy of the content blocker identifier function found in the legacy ABP implementation.
+    /// - Returns: A content blocker ID such as "org.adblockplus.devbuilds.AdblockPlusSafari" or nil
+    public func contentBlockerIdentifier() -> ContentBlockerIdentifier? {
+        if let name = bundleName() {
+            return "\(name).\(baseProduct).\(adblockPlusSafariExtension)"
+        }
+        return nil
+    }
+}

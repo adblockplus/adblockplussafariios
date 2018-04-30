@@ -49,11 +49,19 @@ static NSString *customFilterListUrl = @"https://easylist-downloads.adblockplus.
 @end
 
 @implementation CustomFilterListsController
+{
+    /// Performs content blocker operations.
+    SafariContentBlocker * safariCB;
+}
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
         _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        safariCB = [[SafariContentBlocker alloc]
+             initWithReloadingSetter:^(BOOL value) { self.adblockPlus.reloading = value; }
+             performingActivityTestSetter:^(BOOL value) { self.adblockPlus.performingActivityTest = value; }
+         ];
     }
     return self;
 }
@@ -157,7 +165,7 @@ static NSString *customFilterListUrl = @"https://easylist-downloads.adblockplus.
 
     if ([cell.reuseIdentifier isEqualToString:@"EnableDefaultFilterList"]) {
         self.adblockPlus.defaultFilterListEnabled = !self.adblockPlus.defaultFilterListEnabled;
-        [[[ABPManager sharedInstance] filterListsUpdater] reloadContentBlockerWithCompletion:nil];
+        [safariCB reloadContentBlockerWithCompletion:nil];
     } else if ([cell.reuseIdentifier isEqualToString:@"EnableCustomFilterList"]) {
         NSMutableDictionary<NSString *, id> *filterLists = nil;
 

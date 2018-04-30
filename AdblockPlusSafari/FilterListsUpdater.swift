@@ -59,12 +59,25 @@ class FilterListsUpdater: AdblockPlusShared,
     /// to the Filter List updater and makes an updater in its init.
     weak var abpManager: ABPManager!
 
+    /// Setter used during legacy refactoring.
+    var setLegacyReloading: (Bool) -> Void
+
+    /// Setter used during legacy refactoring.
+    var setLegacyPerformingActivityTest: (Bool) -> Void
+
+    /// Performs content blocking operations.
+    var safariCB: SafariContentBlocker!
+
     /// Construct a FilterListUpdater. Process running tasks and add a reloading observer.
     /// - Parameter abpManager: Because the ABPManager initializes an instance of this class in
     /// its init, the shared instance of ABPManager cannot be used within the init of this class
     /// without forming a circular reference. Therefore, a reference to the ABP Manager is passed
     /// in and stored as a property.
     init(abpManager: ABPManager) {
+        setLegacyReloading = abpManager.setLegacyReloading
+        setLegacyPerformingActivityTest = abpManager.setLegacyPerformingActivityTest
+        safariCB = SafariContentBlocker(reloadingSetter: setLegacyReloading,
+                                        performingActivityTestSetter: setLegacyPerformingActivityTest)
         super.init()
         cbManager = ContentBlockerManager()
         self.abpManager = abpManager
@@ -222,7 +235,7 @@ class FilterListsUpdater: AdblockPlusShared,
                     return event.didFinishDownloading == true &&
                            event.errorWritten == true
                 }.subscribe(onNext: { _ in
-                    self.reloadContentBlocker { error in
+                    self.safariCB.reloadContentBlocker { error in
                         if error == nil {
                             observer.onNext(update)
                             observer.onCompleted()
@@ -342,7 +355,7 @@ class FilterListsUpdater: AdblockPlusShared,
     @objc
     func changeAcceptableAds(enabled: Bool) {
         super.enabled = enabled
-        reloadContentBlocker(afterCompletion: { [weak self] in
+        safariCB.reloadContentBlocker(after: { [weak self] in
             if let names = self?.outdatedFilterListNames() {
                 self?.updateFilterLists(withNames: names,
                                         userTriggered: false)
@@ -355,9 +368,9 @@ class FilterListsUpdater: AdblockPlusShared,
     /// - Parameter enabled: True if the default filter list is enabled.
     func setDefaultFilterListEnabled(enabled: Bool) {
         super.defaultFilterListEnabled = enabled
-        reloadContentBlocker(withCompletion: { _ in
+        safariCB.reloadContentBlocker { _ in
             self.updateFilterLists(withNames: self.outdatedFilterListNames(),
                                    userTriggered: false)
-        })
+        }
     }
 }

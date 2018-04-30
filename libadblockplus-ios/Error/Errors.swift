@@ -37,3 +37,9 @@ public enum ABPDeviceTokenSaveError: Error {
     case invalidEndpoint
     case invalidClient
 }
+
+/// Error cases for managing content blocking.
+/// - invalidIdentifier: Invalid ID.
+public enum ABPContentBlockerError: Error {
+    case invalidIdentifier
+}

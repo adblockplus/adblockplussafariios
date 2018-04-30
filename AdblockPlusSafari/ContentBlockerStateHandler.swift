@@ -45,7 +45,8 @@ class ContentBlockerStateHandler {
         // Dispose all update operations first.
         filterListsUpdater.reloadBag = DisposeBag()
 
-        let cbID = adblockPlus.contentBlockerIdentifier()
+        guard let cbID = Config().contentBlockerIdentifier() else { return }
+        // Activation of the content blocker will not happen without a valid identifier.
         contentBlockerIsEnabled(with: cbID)
             .retry(GlobalConstants.contentBlockerReloadRetryCount)
             .subscribe(onNext: { activated in

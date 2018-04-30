@@ -25,6 +25,10 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 /// This class contains legacy setters and getters. The majority of the functionality
 /// has been refactored into Swift in FilterListsUpdater.
 @implementation AdblockPlusExtras
+{
+    /// Performs content blocker operations.
+    SafariContentBlocker * safariCB;
+}
 
 /// Init that passes in a reference to the ABP Manager, held weakly, to avoid
 /// circular referencing.
@@ -32,6 +36,10 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 {
     if (self = [super init]) {
         self.abpManager = abpManager;
+        safariCB = [[SafariContentBlocker alloc]
+            initWithReloadingSetter:^(BOOL value) { self.reloading = value; }
+            performingActivityTestSetter:^(BOOL value) { self.performingActivityTest = value; }
+        ];
     }
     return self;
 }
@@ -84,7 +92,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
     BOOL anyLastUpdateFailed = self.anyLastUpdateFailed;
     if (self.installedVersion < self.downloadedVersion && wasUpdating && !updating) {
         // Force content blocker to load newer version of filter list
-        [[[ABPManager sharedInstance] filterListsUpdater] reloadContentBlockerWithCompletion:nil];
+        [safariCB reloadContentBlockerWithCompletion:nil];
     }
     if (hasAnyLastUpdateFailed != anyLastUpdateFailed) {
         self.needsDisplayErrorDialog = anyLastUpdateFailed;
@@ -94,7 +102,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 - (void)setWhitelistedWebsites:(NSArray<NSString *> *)whitelistedWebsites
 {
     super.whitelistedWebsites = whitelistedWebsites;
-    [[[ABPManager sharedInstance] filterListsUpdater] reloadContentBlockerWithCompletion:nil];
+    [safariCB reloadContentBlockerWithCompletion:nil];
 }
 
 - (void)setNeedsDisplayErrorDialog:(BOOL)needsDisplayErrorDialog
@@ -109,7 +117,7 @@ static NSString *AdblockPlusNeedsDisplayErrorDialog = @"AdblockPlusNeedsDisplayE
 - (void)setEnabled:(BOOL)enabled
 {
     super.enabled = enabled;
-    [[[ABPManager sharedInstance] filterListsUpdater] reloadContentBlockerWithCompletion:nil];
+    [safariCB reloadContentBlockerWithCompletion:nil];
 }
 
 #pragma mark - Updating

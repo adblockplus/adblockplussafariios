@@ -31,9 +31,6 @@ enum ABPState: String {
 class ABPManager: NSObject {
     var bag: DisposeBag!
 
-    /// Reloading will not happen when this value is true.
-    var disableReloading = false
-
     /// Performs operations for updating filter lists.
     @objc var filterListsUpdater: FilterListsUpdater?
 
@@ -92,7 +89,6 @@ class ABPManager: NSObject {
             adblockPlus = AdblockPlusExtras(abpManager: self)
             filterListsUpdater = FilterListsUpdater(abpManager: self)
         }
-
     }
 
     /// Only used during init.
@@ -190,6 +186,18 @@ class ABPManager: NSObject {
                     filterListsSubscription]
         _ = subs.map { $0().disposed(by: bag) }
     }
+
+    /// Used to remove coupling with the legacy implementation.
+    func setLegacyReloading(_ value: Bool) {
+        adblockPlus.reloading = value
+    }
+
+    /// Used to remove coupling with the legacy implementation.
+    func setLegacyPerformingActivityTest(_ value: Bool) {
+        adblockPlus.performingActivityTest = value
+    }
+
+    // For filter lists, see Objective-C extension - saveFilterLists([FilterList]).
 
     /// Subscription of changes on reloading key.
     /// Reloading occurs under the following conditions:
