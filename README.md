@@ -18,7 +18,7 @@ Building
 1. Copy the file `ABP-Secret-API-Env-Vars.sh` (available internally) into the same directory as `AdblockPlusSafari.xcodeproj`.
 2. Run `carthage update` to install additional Swift dependencies.
 3. Open _AdblockPlusSafari.xcodeproj_ in Xcode.
-4. Build and run the project locally in Xcode _or_ run `build.py` to export a build for distribution.
+4. Build and run the project locally in Xcode _or_ run `build.py` to export a build for distribution. After using `build.py`, the locally created `build` folder may need to be removed before building with Xcode will succeed.
 
 ### Changing Xcode configurations
 
