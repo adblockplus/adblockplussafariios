@@ -3,8 +3,14 @@
 stages:
   - build
 
+cache:
+  paths:
+    - Carthage
+
 build_code:
   stage: build
+  before_script:
+    - carthage update --platform ios --no-use-binaries --cache-builds
   script:
     - set -o pipefail && xcodebuild clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3'
     - set -o pipefail && xcodebuild clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.3.1'
