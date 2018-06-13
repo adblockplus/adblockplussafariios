@@ -16,6 +16,7 @@
  */
 
 @testable import AdblockPlusSafari
+import libadblockplus_ios
 import RxCocoa
 import RxSwift
 import RxSwiftExt
