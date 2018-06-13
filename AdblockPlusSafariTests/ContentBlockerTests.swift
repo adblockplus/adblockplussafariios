@@ -16,6 +16,7 @@
  */
 
 @testable import AdblockPlusSafari
+import libadblockplus_ios
 import XCTest
 
 /// Test content blocker operations.
@@ -36,7 +37,7 @@ class ContentBlockerTests: XCTestCase {
         let mgr = ABPManager.sharedInstance()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2,
                                       execute: {
-            mgr.filterListsUpdater?.reloadContentBlocker(withCompletion: { error in
+            mgr.filterListsUpdater?.safariCB.reloadContentBlocker(completion: { error in
                 XCTAssert(mgr.adblockPlus.activated, "Content blocker has not been enabled")
                 XCTAssert(error == nil,
                           "Error during reload: \(String(describing: error))")
