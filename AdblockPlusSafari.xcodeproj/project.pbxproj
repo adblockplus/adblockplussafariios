@@ -75,6 +75,7 @@
 		65C1769D1F7C79D2008E2BA1 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */; };
 		65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1769E1F7C8099008E2BA1 /* RxSwift.framework */; };
 		65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; };
+		65C38D0720DB2E2A003DDC3F /* ABPManager+Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C38D0620DB2E2A003DDC3F /* ABPManager+Debugging.swift */; };
 		65CB10D22068982B005C3A9E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB10D12068982A005C3A9E /* HTTPClient.swift */; };
 		65CB10D7206899E2005C3A9E /* TokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CB10D6206899E2005C3A9E /* TokenTests.swift */; };
 		65D8D43F2058C21100E6AFC2 /* ABPAPIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D8D43E2058C21100E6AFC2 /* ABPAPIData.swift */; };
@@ -282,6 +283,7 @@
 		65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		65C1769E1F7C8099008E2BA1 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		65C176A01F7C809E008E2BA1 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		65C38D0620DB2E2A003DDC3F /* ABPManager+Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ABPManager+Debugging.swift"; sourceTree = "<group>"; };
 		65CB10D12068982A005C3A9E /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		65CB10D6206899E2005C3A9E /* TokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenTests.swift; sourceTree = "<group>"; };
 		65D8D43E2058C21100E6AFC2 /* ABPAPIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPAPIData.swift; sourceTree = "<group>"; };
@@ -869,6 +871,7 @@
 			children = (
 				65929E0820228C08003126FB /* ABPActiveVersions.swift */,
 				65C176991F7C7963008E2BA1 /* ABPManager.swift */,
+				65C38D0620DB2E2A003DDC3F /* ABPManager+Debugging.swift */,
 				65EBAC1E20030CBE001E181F /* ABPManager+ObjectiveC.swift */,
 				6541CEA41FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift */,
 				656B89AE203799830090C6E0 /* ABPRemoteCommands.swift */,
@@ -1383,6 +1386,7 @@
 				69142D581CDCC51C00FD2640 /* FilterList+Processing.m in Sources */,
 				6904B4011E6705F4006B3FE5 /* AdblockPlusShared.m in Sources */,
 				6503C4052045196F00040507 /* UIViewController+Safari.swift in Sources */,
+				65C38D0720DB2E2A003DDC3F /* ABPManager+Debugging.swift in Sources */,
 				69AB6A4F1B9712F1005C2075 /* AdblockPlus.m in Sources */,
 				69EA099C1DC75A7C0018FAC0 /* NSAttributedString+TextRenderer.m in Sources */,
 				6541CEA51FAAC6AC00601D6F /* ABPManager+WhitelistedWebsites.swift in Sources */,
