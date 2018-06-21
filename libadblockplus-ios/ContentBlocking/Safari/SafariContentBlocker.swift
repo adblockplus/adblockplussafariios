@@ -99,4 +99,34 @@ public class SafariContentBlocker: NSObject {
             return Disposables.create()
         }.observeOn(MainScheduler.asyncInstance)
     }
+
+    // ------------------------------------------------------------
+    // MARK: - State handling -
+    // ------------------------------------------------------------
+
+    /// Determine content blocker activation state for iOS >= 10.
+    /// - Parameter identifier: Unique ID string for the content blocker.
+    /// - Returns: Observable with true if activated, false otherwise.
+    public func contentBlockerIsEnabled(with identifier: ContentBlockerIdentifier) -> Observable<Bool> {
+        return Observable.create { observer in
+            if #available(iOS 10.0, *) {
+                SFContentBlockerManager
+                    .getStateOfContentBlocker(withIdentifier: identifier,
+                                              completionHandler: { state, error in
+                        if let uwError = error {
+                            observer.onError(uwError)
+                        }
+                        if let uwState = state {
+                            let contentBlockerIsEnabled = uwState.isEnabled
+                            observer.onNext(contentBlockerIsEnabled)
+                            observer.onCompleted()
+                        } else {
+                            observer.onNext(false)
+                            observer.onCompleted()
+                        }
+                    })
+            }
+            return Disposables.create()
+        }.observeOn(MainScheduler.asyncInstance)
+    }
 }

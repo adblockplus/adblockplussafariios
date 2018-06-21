@@ -47,39 +47,27 @@ class ContentBlockerStateHandler {
 
         guard let cbID = Config().contentBlockerIdentifier() else { return }
         // Activation of the content blocker will not happen without a valid identifier.
-        contentBlockerIsEnabled(with: cbID)
-            .retry(GlobalConstants.contentBlockerReloadRetryCount)
-            .subscribe(onNext: { activated in
-                self.adblockPlus.activated = activated
-            }).disposed(by: bag)
+        let reloading = { value in self.adblockPlus.reloading = value }
+        let performingActivityTest = { value in self.adblockPlus.performingActivityTest = value }
+        let safariCB =
+            libadblockplus_ios.SafariContentBlocker(reloadingSetter: reloading,
+                                                    performingActivityTestSetter: performingActivityTest)
+        if #available(iOS 10.0, *) {
+            safariCB.contentBlockerIsEnabled(with: cbID)
+                .retry(GlobalConstants.contentBlockerReloadRetryCount)
+                .subscribe(onNext: { activated in
+                    self.adblockPlus.activated = activated
+                }).disposed(by: bag)
+        } else {
+            handleLegacyContentBlockerIsEnabled(with: cbID)
+        }
     }
 
-    /// Determine content blocker activation state. For iOS >= 10, use the content blocker API.
-    /// For iOS < 10, use the legacy method.
+    /// Determine content blocker activation state for iOS < 10 using the legacy activity test.
     /// - Parameter identifier: Unique ID string for the content blocker.
-    /// - Returns: Observable with true if activated, false otherwise.
-    private func contentBlockerIsEnabled(with identifier: ContentBlockerIdentifier) -> Observable<Bool> {
-        return Observable.create { observer in
-            if #available(iOS 10.0, *) {
-                SFContentBlockerManager
-                    .getStateOfContentBlocker(withIdentifier: identifier,
-                                              completionHandler: { state, error in
-                        if let uwError = error {
-                            observer.onError(uwError)
-                        }
-                        if let uwState = state {
-                            let contentBlockerIsEnabled = uwState.isEnabled
-                            observer.onNext(contentBlockerIsEnabled)
-                            observer.onCompleted()
-                        } else {
-                            observer.onNext(false)
-                            observer.onCompleted()
-                        }
-                    })
-            } else {
-                self.adblockPlus.performActivityTest(with: self.filterListsUpdater.cbManager)
-            }
-            return Disposables.create()
-        }.observeOn(MainScheduler.asyncInstance)
+    private func handleLegacyContentBlockerIsEnabled(with identifier: ContentBlockerIdentifier) {
+        DispatchQueue.main.async {
+            self.adblockPlus.performActivityTest(with: self.filterListsUpdater.cbManager)
+        }
     }
 }
