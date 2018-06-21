@@ -19,6 +19,7 @@
 
 @implementation AdblockPlus (ActivityChecking)
 
+/// Update the activated flag with the stored value.
 - (void)checkActivatedFlag
 {
     BOOL activated = [self.adblockPlusDetails boolForKey:AdblockPlusActivated];
@@ -27,12 +28,24 @@
     }
 }
 
-/// Determines if the content blocker is enabled. This will be replaced when
+/// Determines if the content blocker is enabled. This will be removed when
 /// the minimum deployment SDK is >= 10.
+///
+/// Set the activated flag to TRUE if content blocking is enabled as determined
+/// by the logic below.
 - (void)checkActivatedFlag:(NSDate *__nullable)lastActivity
 {
     [self synchronize];
-    BOOL activated = !!self.lastActivity && (!lastActivity || [self.lastActivity compare:lastActivity] == NSOrderedDescending);
+    BOOL activated = FALSE;
+    if (self.lastActivity != nil) {
+        if (lastActivity != nil) {
+            if ([self.lastActivity compare:lastActivity] == NSOrderedDescending) {
+                activated = TRUE;
+            }
+        } else {
+            activated = TRUE;
+        }
+    }
     if (self.activated != activated) {
         self.activated = activated;
     }
