@@ -168,7 +168,7 @@ class ABPManager: NSObject {
     /// Process events initiated by background URLSession requests.
     func handleEventsForBackgroundURLSession(identifier: String,
                                              completion: @escaping () -> Void) {
-        whitelistedWebsites(forSessionID: identifier)
+        whitelistedHostnames(forSessionID: identifier)
             .subscribe(onCompleted: {
                 self.handleDidEnterBackground()
                 completion()
