@@ -34,7 +34,7 @@ extension ABPManager {
     }
 
     /// Return websites that have been added to the whitelist from the URL Session tasks.
-    func whitelistedWebsites(forSessionID sessionID: String) -> Observable<[WhiteListedWebsite]> {
+    func whitelistedHostnames(forSessionID sessionID: String) -> Observable<[WhitelistedHostname]> {
         if !adblockPlus.isBackgroundNotificationSessionConfigurationIdentifier(sessionID) {
             return Observable.just([])
         }
@@ -42,7 +42,7 @@ extension ABPManager {
     }
 
     /// Process the websites found within the tasks using a background thread with high priority.
-    private func tasks(forSessionID sessionID: String) -> Observable<[WhiteListedWebsite]> {
+    private func tasks(forSessionID sessionID: String) -> Observable<[WhitelistedHostname]> {
         return Observable.create { observer in
             let config = URLSessionConfiguration.background(withIdentifier: sessionID)
             let session = URLSession(configuration: config,
