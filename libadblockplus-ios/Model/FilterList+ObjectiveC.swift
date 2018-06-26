@@ -34,10 +34,12 @@ extension FilterList {
         lastUpdate = uwDict["lastUpdate"] as? Date
         lastUpdateFailed = uwDict["lastUpdateFailed"] as? Bool
         updating = uwDict["updating"] as? Bool
-        url = uwDict["url"] as? String
+        source = uwDict["url"] as? String
         userTriggered = uwDict["userTriggered"] as? Bool
         version = uwDict["version"] as? String
         self.downloadCount = uwDict["downloadCount"] as? Int
+        rules = nil
+        ruleCount = nil
     }
 
     /// - Returns: A dictionary suitable for use with Objective-C.
@@ -51,7 +53,7 @@ extension FilterList {
         dict["lastUpdate"] = lastUpdate
         dict["lastUpdateFailed"] = lastUpdateFailed
         dict["updating"] = updating
-        dict["url"] = url
+        dict["url"] = source
         dict["userTriggered"] = userTriggered
         dict["version"] = version
         dict["downloadCount"] = downloadCount

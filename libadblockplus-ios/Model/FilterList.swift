@@ -15,8 +15,12 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import Foundation
+
 /// Swift-based FilterList model struct to replace the Objective-C FilterList model object. This
 /// is used internally to represent filter lists.
+///
+/// Some legacy properties exist but will be removed in future versions.
 public struct FilterList {
     /// Counter for number of successful downloads.
     public var downloadCount: Int?
@@ -39,11 +43,21 @@ public struct FilterList {
     public var expires: TimeInterval?
     public var fileName: String?
     public var lastUpdate: Date?
+    /// Legacy property.
     public var lastUpdateFailed: Bool?
+    /// Legacy property.
     public var updating: Bool?
-    public var url: String?
+    /// Original download location as a URL string.
+    public var source: String?
+    /// Legacy property.
     public var userTriggered: Bool?
     public var version: String?
+
+    /// URL for local rules.
+    public var rules: URL?
+
+    /// Count of rules in the filter list.
+    public var ruleCount: Int?
 
     public init() {
         // Intentionally empty
