@@ -131,7 +131,7 @@ class FilterListsUpdater: AdblockPlusShared,
                 var listIndex = 0
                 for list in lists {
                     if let url = task.originalRequest?.url?.absoluteString {
-                        if url == list.url &&
+                        if url == list.source &&
                            task.taskIdentifier == list.taskIdentifier {
                             self.downloadTasksByID[task.taskIdentifier] = task
                             var nameIndex = 0
@@ -180,7 +180,7 @@ class FilterListsUpdater: AdblockPlusShared,
     /// - Returns: The download task.
     func filterListDownload(for filterList: libadblockplus_ios.FilterList) -> Observable<URLSessionDownloadTask> {
         return Observable.create { observer in
-            guard let urlString = filterList.url,
+            guard let urlString = filterList.source,
                   let url = URL(string: urlString),
                   var components = URLComponents(string: url.absoluteString)
             else {
