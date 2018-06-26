@@ -21,7 +21,10 @@ import RxSwift
 
 /// KVO keys.
 enum ABPState: String {
+    case activated
     case filterLists
+    case lastActivity
+    case performingActivityTest
     case reloading
 }
 
@@ -182,8 +185,13 @@ class ABPManager: NSObject {
     /// Subscribe to kvo updates.
     private func setupKVO() {
         bag = DisposeBag()
-        let subs = [reloadingSubscription,
+        var subs = [reloadingSubscription,
                     filterListsSubscription]
+        #if DEBUG_KVO
+        subs += [activatedSubscription,
+                 lastActivitySubscription,
+                 performingActivityTestSubscription]
+        #endif
         _ = subs.map { $0().disposed(by: bag) }
     }
 
