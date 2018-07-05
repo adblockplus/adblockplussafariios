@@ -31,8 +31,9 @@
 		6507AD6D20913DCF00CC3317 /* FilterListUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6507AD6C20913DCF00CC3317 /* FilterListUpdate.swift */; };
 		6507AD6F209143E700CC3317 /* DownloadEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6507AD6E209143E600CC3317 /* DownloadEvent.swift */; };
 		6507AD712091545B00CC3317 /* FilterListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6507AD702091545B00CC3317 /* FilterListTests.swift */; };
-		6507AD73209155F300CC3317 /* JSONFilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6507AD72209155F200CC3317 /* JSONFilterList.swift */; };
 		650F8230205C5F0B00FD9706 /* FilterListsUpdater+ObjectiveC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F822F205C5F0B00FD9706 /* FilterListsUpdater+ObjectiveC.swift */; };
+		6517A30C20E33CAB000C076C /* V1FilterListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6517A30A20E33CAB000C076C /* V1FilterListParser.swift */; };
+		6517A30D20E33CAB000C076C /* V2FilterListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6517A30B20E33CAB000C076C /* V2FilterListParser.swift */; };
 		651CEF53207863A300281BF4 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651CEF51207863A300281BF4 /* RxSwiftExt.framework */; };
 		651CEF542078642F00281BF4 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651CEF51207863A300281BF4 /* RxSwiftExt.framework */; };
 		651CEF552078642F00281BF4 /* RxSwiftExt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 651CEF51207863A300281BF4 /* RxSwiftExt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -47,6 +48,7 @@
 		6566200E205C7BE6003A334A /* UIView+LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6566200D205C7BE6003A334A /* UIView+LayoutConstraints.swift */; };
 		656B89AF203799830090C6E0 /* ABPRemoteCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656B89AE203799830090C6E0 /* ABPRemoteCommands.swift */; };
 		656D08DE20046AC500E31B71 /* ContentBlockerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D08DD20046AC400E31B71 /* ContentBlockerTests.swift */; };
+		656D64F520EC8AEC00EA9D9A /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D64F420EC8AEC00EA9D9A /* Errors.swift */; };
 		65755AFC1F7C8A4B00696261 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65C176A01F7C809E008E2BA1 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65755AFD1F7C8A4B00696261 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1769E1F7C8099008E2BA1 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6578DB051F71DA490088F136 /* AdblockPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB6A4E1B9712F1005C2075 /* AdblockPlus.m */; };
@@ -69,6 +71,9 @@
 		65A31976202D0A0A00A64E77 /* ActionViewController+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A31975202D0A0A00A64E77 /* ActionViewController+Localization.swift */; };
 		65ABBD812005B11500172823 /* ContentBlockerStateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ABBD802005B11500172823 /* ContentBlockerStateHandler.swift */; };
 		65ADD2481FF73DAF00A9E69F /* FilterListSwiftBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 65ADD2471FF73DAF00A9E69F /* FilterListSwiftBridge.m */; };
+		65B392EB20DC76F900093BDB /* ParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B392EA20DC76F900093BDB /* ParsingTests.swift */; };
+		65B392EF20DC7A4900093BDB /* v1 easylist short.json in Resources */ = {isa = PBXBuildFile; fileRef = 65B392ED20DC7A4900093BDB /* v1 easylist short.json */; };
+		65B392F020DC7A4900093BDB /* v2 easylist short.json in Resources */ = {isa = PBXBuildFile; fileRef = 65B392EE20DC7A4900093BDB /* v2 easylist short.json */; };
 		65BC55B7203512EC0049A6E8 /* FilterListsUpdater+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC55B6203512EC0049A6E8 /* FilterListsUpdater+Notifications.swift */; };
 		65C1769B1F7C7996008E2BA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C176981F7C7962008E2BA1 /* AppDelegate.swift */; };
 		65C1769C1F7C79A3008E2BA1 /* ABPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C176991F7C7963008E2BA1 /* ABPManager.swift */; };
@@ -249,8 +254,9 @@
 		6507AD6C20913DCF00CC3317 /* FilterListUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterListUpdate.swift; sourceTree = "<group>"; };
 		6507AD6E209143E600CC3317 /* DownloadEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadEvent.swift; sourceTree = "<group>"; };
 		6507AD702091545B00CC3317 /* FilterListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterListTests.swift; sourceTree = "<group>"; };
-		6507AD72209155F200CC3317 /* JSONFilterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONFilterList.swift; sourceTree = "<group>"; };
 		650F822F205C5F0B00FD9706 /* FilterListsUpdater+ObjectiveC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterListsUpdater+ObjectiveC.swift"; sourceTree = "<group>"; };
+		6517A30A20E33CAB000C076C /* V1FilterListParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V1FilterListParser.swift; sourceTree = "<group>"; };
+		6517A30B20E33CAB000C076C /* V2FilterListParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2FilterListParser.swift; sourceTree = "<group>"; };
 		651CEF51207863A300281BF4 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
 		651FF795208EAA5500522A98 /* yajl_dynamic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = yajl_dynamic.framework; path = Carthage/Build/iOS/yajl_dynamic.framework; sourceTree = "<group>"; };
 		6534116F2060BFEF00690719 /* AppType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppType.swift; sourceTree = "<group>"; };
@@ -260,6 +266,7 @@
 		6566200D205C7BE6003A334A /* UIView+LayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutConstraints.swift"; sourceTree = "<group>"; };
 		656B89AE203799830090C6E0 /* ABPRemoteCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPRemoteCommands.swift; sourceTree = "<group>"; };
 		656D08DD20046AC400E31B71 /* ContentBlockerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlockerTests.swift; sourceTree = "<group>"; };
+		656D64F420EC8AEC00EA9D9A /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		658FCAA71FF45A2A00198A2A /* FilterListsUpdater+DownloadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FilterListsUpdater+DownloadDelegate.swift"; sourceTree = "<group>"; };
 		658FCAA91FF45A2B00198A2A /* FilterListsUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterListsUpdater.swift; sourceTree = "<group>"; };
 		658FCAAD1FF45A3600198A2A /* ContentBlockerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlockerManager.swift; sourceTree = "<group>"; };
@@ -276,6 +283,9 @@
 		65ABBD802005B11500172823 /* ContentBlockerStateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlockerStateHandler.swift; sourceTree = "<group>"; };
 		65ADD2461FF73DAF00A9E69F /* FilterListSwiftBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterListSwiftBridge.h; sourceTree = "<group>"; };
 		65ADD2471FF73DAF00A9E69F /* FilterListSwiftBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterListSwiftBridge.m; sourceTree = "<group>"; };
+		65B392EA20DC76F900093BDB /* ParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingTests.swift; sourceTree = "<group>"; };
+		65B392ED20DC7A4900093BDB /* v1 easylist short.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "v1 easylist short.json"; sourceTree = "<group>"; };
+		65B392EE20DC7A4900093BDB /* v2 easylist short.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "v2 easylist short.json"; sourceTree = "<group>"; };
 		65BC55B6203512EC0049A6E8 /* FilterListsUpdater+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterListsUpdater+Notifications.swift"; sourceTree = "<group>"; };
 		65C176971F7C7961008E2BA1 /* AdblockPlusSafari-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdblockPlusSafari-Bridging-Header.h"; sourceTree = "<group>"; };
 		65C176981F7C7962008E2BA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -632,7 +642,6 @@
 				6507AD6A20913CB000CC3317 /* FilterList+UserDefaults.swift */,
 				6507AD5F209139B100CC3317 /* FilterListDownloadData.swift */,
 				6507AD6C20913DCF00CC3317 /* FilterListUpdate.swift */,
-				6507AD72209155F200CC3317 /* JSONFilterList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -643,6 +652,15 @@
 				6507AD6220913A2700CC3317 /* ActiveVersions.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		6517A30920E33CAB000C076C /* Parsing */ = {
+			isa = PBXGroup;
+			children = (
+				6517A30A20E33CAB000C076C /* V1FilterListParser.swift */,
+				6517A30B20E33CAB000C076C /* V2FilterListParser.swift */,
+			);
+			path = Parsing;
 			sourceTree = "<group>";
 		};
 		655DEADB209568F400E9A525 /* ContentBlocking */ = {
@@ -659,6 +677,14 @@
 				655DEADD2095691100E9A525 /* SafariContentBlocker.swift */,
 			);
 			path = Safari;
+			sourceTree = "<group>";
+		};
+		656D64F320EC8AEC00EA9D9A /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				656D64F420EC8AEC00EA9D9A /* Errors.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		6591FDE92092DCCA004C2490 /* Error */ = {
@@ -678,6 +704,7 @@
 				659AECB82069BA8000DECF0E /* Info.plist */,
 				659AECB72069BA8000DECF0E /* libadblockplus_ios.h */,
 				6507AD522091349200CC3317 /* Model */,
+				6517A30920E33CAB000C076C /* Parsing */,
 				6507AD61209139E600CC3317 /* Utility */,
 			);
 			path = "libadblockplus-ios";
@@ -686,8 +713,11 @@
 		659AECC32069BA8100DECF0E /* libadblockplus-ios-tests */ = {
 			isa = PBXGroup;
 			children = (
+				65B392EC20DC7A2900093BDB /* Data */,
+				656D64F320EC8AEC00EA9D9A /* Error */,
 				6507AD702091545B00CC3317 /* FilterListTests.swift */,
 				659AECC62069BA8100DECF0E /* Info.plist */,
+				65B392EA20DC76F900093BDB /* ParsingTests.swift */,
 			);
 			path = "libadblockplus-ios-tests";
 			sourceTree = "<group>";
@@ -703,6 +733,15 @@
 				651FF795208EAA5500522A98 /* yajl_dynamic.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		65B392EC20DC7A2900093BDB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				65B392ED20DC7A4900093BDB /* v1 easylist short.json */,
+				65B392EE20DC7A4900093BDB /* v2 easylist short.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		65D8D43D2058C21100E6AFC2 /* Generated */ = {
@@ -1219,6 +1258,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65B392F020DC7A4900093BDB /* v2 easylist short.json in Resources */,
+				65B392EF20DC7A4900093BDB /* v1 easylist short.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1330,14 +1371,15 @@
 				6507AD542091349200CC3317 /* Configuration.swift in Sources */,
 				6507AD6320913A2700CC3317 /* ActiveVersions.swift in Sources */,
 				655DEADE2095691100E9A525 /* SafariContentBlocker.swift in Sources */,
+				6517A30C20E33CAB000C076C /* V1FilterListParser.swift in Sources */,
 				6507AD6520913B2A00CC3317 /* FilterList+ObjectiveC.swift in Sources */,
 				6507AD562091349200CC3317 /* FilterList.swift in Sources */,
 				6507AD6F209143E700CC3317 /* DownloadEvent.swift in Sources */,
+				6517A30D20E33CAB000C076C /* V2FilterListParser.swift in Sources */,
 				6507AD6B20913CB100CC3317 /* FilterList+UserDefaults.swift in Sources */,
 				6591FDEB2092DCEA004C2490 /* Errors.swift in Sources */,
 				6507AD6D20913DCF00CC3317 /* FilterListUpdate.swift in Sources */,
 				6507AD60209139B200CC3317 /* FilterListDownloadData.swift in Sources */,
-				6507AD73209155F300CC3317 /* JSONFilterList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1345,6 +1387,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65B392EB20DC76F900093BDB /* ParsingTests.swift in Sources */,
+				656D64F520EC8AEC00EA9D9A /* Errors.swift in Sources */,
 				6507AD712091545B00CC3317 /* FilterListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -54,7 +54,7 @@ class JSONTests: XCTestCase {
             XCTAssert(false, "Data missing")
             return
         }
-        let json = libadblockplus_ios.JSONFilterList(with: uwData)
+        let json = libadblockplus_ios.V2FilterList(with: uwData)
         XCTAssert(json?.version == "201512011207", "Parsed version value is wrong")
     }
 
