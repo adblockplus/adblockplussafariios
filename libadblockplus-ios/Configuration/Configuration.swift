@@ -19,7 +19,6 @@
 public typealias ContentBlockerIdentifier = String
 public typealias FilterListLastVersion = String
 public typealias FilterListName = String
-public typealias FilterListV2Rules = [[String: [String: String]]]
 public typealias FilterListV2Sources = [[String: String]]
 public typealias WhitelistedHostname = String
 
