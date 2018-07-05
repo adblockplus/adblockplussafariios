@@ -1,0 +1,89 @@
+[
+  {
+    "trigger": {
+      "url-filter": "^https?://"
+    },
+    "action": {
+      "type": "css-display-none",
+      "selector": "#A9AdsMiddleBoxTop"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "^https?://"
+    },
+    "action": {
+      "type": "css-display-none",
+      "selector": "#A9AdsOutOfStockWidgetTop"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "^https?://"
+    },
+    "action": {
+      "type": "css-display-none",
+      "selector": "#A9AdsServicesWidgetTop"
+    }
+  },
+  {
+    "action": {
+      "type": "ignore-previous-rules"
+    },
+    "trigger": {
+      "url-filter": "^https?://nosvideo\\.com",
+      "resource-type": [
+        "popup"
+      ],
+      "if-domain": [
+        "putlocker.is",
+        "www.putlocker.is"
+      ]
+    }
+  },
+  {
+    "action": {
+      "type": "ignore-previous-rules"
+    },
+    "trigger": {
+      "url-filter": "^https?://serving-sys\\.com/BurstingPipe/adServer\\.bs\\?",
+      "resource-type": [
+        "popup"
+      ],
+      "if-domain": [
+        "jobamatic.com",
+        "www.jobamatic.com"
+      ]
+    }
+  },
+  {
+    "action": {
+      "type": "ignore-previous-rules"
+    },
+    "trigger": {
+      "url-filter": "^https?://sharerepo\\.com",
+      "resource-type": [
+        "popup"
+      ],
+      "if-domain": [
+        "putlocker.is",
+        "www.putlocker.is"
+      ]
+    }
+  },
+  {
+    "action": {
+      "type": "ignore-previous-rules"
+    },
+    "trigger": {
+      "url-filter": "^https?://sharesix\\.com",
+      "resource-type": [
+        "popup"
+      ],
+      "if-domain": [
+        "putlocker.is",
+        "www.putlocker.is"
+      ]
+    }
+  }
+]

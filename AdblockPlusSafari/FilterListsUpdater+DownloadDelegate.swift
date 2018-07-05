@@ -129,7 +129,7 @@ extension FilterListsUpdater {
         do {
             let data = try Data(contentsOf: url,
                                 options: .uncached)
-            let json = JSONFilterList(with: data)
+            let json = V2FilterList(with: data)
             filterList.version = json?.version
         } catch {
             throw ABPFilterListError.invalidData
