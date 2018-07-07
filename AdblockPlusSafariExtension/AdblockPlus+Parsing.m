@@ -241,7 +241,7 @@ static BOOL writeDictionary(NSDictionary<NSString *, id> *__nonnull dictionary, 
         // Write buffer to output stream
         BOOL (^writeBuffer)
         (yajl_gen g) = ^BOOL(yajl_gen g) {
-            NSUInteger outputBufferLength;
+            size_t outputBufferLength;
             const uint8_t *outputBuffer;
             yajl_gen_get_buf(g, &outputBuffer, &outputBufferLength);
             if (outputBufferLength > 0) {
