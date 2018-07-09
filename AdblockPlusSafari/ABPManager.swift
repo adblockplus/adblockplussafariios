@@ -172,7 +172,13 @@ class ABPManager: NSObject {
     func handleEventsForBackgroundURLSession(identifier: String,
                                              completion: @escaping () -> Void) {
         whitelistedHostnames(forSessionID: identifier)
-            .subscribe(onCompleted: {
+            .subscribe(onNext: { hostnames in
+                hostnames.forEach {
+                    _ = self.whiteList(withWebsite: $0 as NSString)
+                    // Whitelisting failures are not handled at this time as a failure
+                    // would be unlikely and also self-evident.
+                }
+            }, onCompleted: {
                 self.handleDidEnterBackground()
                 completion()
             }).disposed(by: bag)

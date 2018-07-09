@@ -21,6 +21,8 @@ import RxSwift
 /// Handle whitelisting of websites.
 extension ABPManager {
     /// Add a website to the user's whitelist.
+    /// - parameter website: NSString of hostname
+    /// - returns: True if whitelisting succeeded, otherwise False
     @objc
     func whiteList(withWebsite website: NSString) -> Bool {
         guard let name = website.whitelistedHostname(), name.count > 0 else { return false }
