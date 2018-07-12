@@ -12,9 +12,9 @@ build_code:
   before_script:
     - carthage update --platform ios --no-use-binaries --cache-builds
   script:
-    - set -o pipefail && xcodebuild clean -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3' '-skip-testing:AdBlockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker,AdBlockPlusSafariTests/DeviceTokenTests/testTokenSave' test
-    - set -o pipefail && xcodebuild clean -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.3.1' '-skip-testing:AdBlockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker,AdBlockPlusSafariTests/DeviceTokenTests/testTokenSave' test
-    - set -o pipefail && xcodebuild clean -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone 6s Plus,OS=9.3' '-skip-testing:AdBlockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker,AdBlockPlusSafariTests/DeviceTokenTests/testTokenSave' test
+    - set -o pipefail && xcodebuild clean -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3' '-skip-testing:AdBlockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker' '-skip-testing:AdBlockPlusSafariTests/DeviceTokenTests/testTokenSave' test
+    - set -o pipefail && xcodebuild clean -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.3.1' '-skip-testing:AdBlockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker' '-skip-testing:AdBlockPlusSafariTests/DeviceTokenTests/testTokenSave' test
+    - set -o pipefail && xcodebuild clean -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone 6s Plus,OS=9.3' '-skip-testing:AdBlockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker' '-skip-testing:AdBlockPlusSafariTests/DeviceTokenTests/testTokenSave' test
     - set -o pipefail && xcodebuild clean -project AdblockPlusSafari.xcodeproj -scheme libadblockplus-ios -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3' test
     - set -o pipefail && xcodebuild clean -project AdblockPlusSafari.xcodeproj -scheme libadblockplus-ios -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.3.1' test
     - set -o pipefail && xcodebuild clean -project AdblockPlusSafari.xcodeproj -scheme libadblockplus-ios -destination 'platform=iOS Simulator,name=iPhone 6s Plus,OS=9.3' test
