@@ -1,0 +1,19 @@
+# CI Script used for ABP iOS
+
+stages:
+  - test
+
+cache:
+  paths:
+    - Carthage
+
+build_code:
+  stage: test
+  before_script:
+    - carthage update --platform ios --no-use-binaries --cache-builds
+  script:
+    - set -o pipefail && xcodebuild clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3' -skip-testing:AdblockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker -skip-testing:AdblockPlusSafariTests/DeviceTokenTests/testTokenSave
+    - set -o pipefail && xcodebuild clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.3.1' -skip-testing:AdblockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker -skip-testing:AdblockPlusSafariTests/DeviceTokenTests/testTokenSave
+    - set -o pipefail && xcodebuild clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone 6s Plus,OS=9.3' -skip-testing:AdblockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker -skip-testing:AdblockPlusSafariTests/DeviceTokenTests/testTokenSave
+  tags:
+    - ios, abp
