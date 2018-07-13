@@ -21,24 +21,14 @@ import XCTest
 
 /// Test content blocker operations.
 class ContentBlockerTests: XCTestCase {
-    override func setUp() {
-        super.setUp()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-
-    /// * Test reloading of content blocker.
-    /// * Test detection of content blocker activation or enabled state.
+    /// Test reloading of content blocker.
     func testReloadContentBlocker() {
-        let expect = expectation(description: "Expectations for reloader")
+        let expect = expectation(description: #function)
         let timeout = 20.0
         let mgr = ABPManager.sharedInstance()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2,
                                       execute: {
             mgr.filterListsUpdater?.safariCB.reloadContentBlocker(completion: { error in
-                XCTAssert(mgr.adblockPlus.activated, "Content blocker has not been enabled")
                 XCTAssert(error == nil,
                           "Error during reload: \(String(describing: error))")
                 expect.fulfill()

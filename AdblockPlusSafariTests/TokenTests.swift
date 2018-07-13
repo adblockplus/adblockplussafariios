@@ -80,14 +80,6 @@ class DeviceTokenTests: XCTestCase {
     var bag: DisposeBag! = DisposeBag()
     var mockSession = MockURLSession()
 
-    override func setUp() {
-        super.setUp()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-
     /// Test saving a token where the request fails for a few iterations initially with a 429 too many
     /// requests error.
     func testTokenSave() {
@@ -110,7 +102,7 @@ class DeviceTokenTests: XCTestCase {
             }, onError: { err in
                 XCTAssert(self.mockSession.shouldFail.value == true &&
                           err as? ABPDownloadTaskError == .tooManyRequests,
-                          "Error was expected")
+                          "Error tooManyRequests was expected: Got err = \(err) with shouldFail = \(self.mockSession.shouldFail.value)")
                 expect.fulfill()
             }, onCompleted: {
                 appDel.httpClient = nil
