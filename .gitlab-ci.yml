@@ -13,6 +13,7 @@ cache:
 build_code:
   stage: test
   before_script:
+    - killall "Simulator" 2> /dev/null; xcrun simctl erase all
     - cp ~/Desktop/ABP-Secret-API-Env-Vars.sh $CI_PROJECT_DIR
     - carthage update --platform ios --no-use-binaries --cache-builds
   script:
