@@ -15,11 +15,12 @@ build_code:
   before_script:
     - xcrun simctl shutdown all
     - xcrun simctl erase all
+    - echo $CI_PROJECT_DIR
     - cp ~/Desktop/ABP-Secret-API-Env-Vars.sh $CI_PROJECT_DIR
-    - carthage update --platform ios --no-use-binaries --cache-builds
+    - carthage update --platform ios --no-use-binaries
   script:
-    - set -o pipefail && xcodebuild clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3' -skip-testing:AdblockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker
-    - set -o pipefail && xcodebuild clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.3.1' -skip-testing:AdblockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker
-    - set -o pipefail && xcodebuild clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone 6s Plus,OS=9.3' -skip-testing:AdblockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker
+    - set -o pipefail && xcodebuild --verbose clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3' -skip-testing:AdblockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker
+    - set -o pipefail && xcodebuild --verbose clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.3.1' -skip-testing:AdblockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker
+    - set -o pipefail && xcodebuild --verbose clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone 6s Plus,OS=9.3' -skip-testing:AdblockPlusSafariTests/ContentBlockerTests/testReloadContentBlocker
   tags:
     - ios, abp
