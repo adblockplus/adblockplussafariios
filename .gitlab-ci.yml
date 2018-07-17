@@ -15,7 +15,6 @@ build_code:
   before_script:
     - xcrun simctl shutdown all
     - xcrun simctl erase all
-    - echo $CI_PROJECT_DIR
     - cp ~/Desktop/ABP-Secret-API-Env-Vars.sh $CI_PROJECT_DIR
     - carthage update --platform ios --no-use-binaries
   script:
