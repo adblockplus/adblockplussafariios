@@ -32,7 +32,7 @@ class MockURLSession: URLSessionProtocol {
     /// Current request count.
     var requestCount = 0
 
-    let dummyURL = URL(string: "https://127.0.0.1")
+    let dummyURL = URL(string: "https://yz5o9hlugc.execute-api.eu-central-1.amazonaws.com/release/receive-device-data")
     let statusSuccess = 200
     let statusFail = 429
     var shouldFail = BehaviorRelay<Bool>(value: true)
