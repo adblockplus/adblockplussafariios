@@ -15,6 +15,8 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import RxSwift
+
 /// Intended to represent all available keys for trigger resource-type.
 /// See [Introduction to WebKit Content Blockers](https://webkit.org/blog/3476/content-blockers-first-look/).
 enum TriggerResourceType: String, Codable {
@@ -70,29 +72,53 @@ public struct BlockingRule: Decodable {
 /// Used for decoding all rules where the rules are unkeyed.
 /// This is for verification and handling of v1 filter lists in JSON format.
 public struct V1FilterList: Decodable {
-    var rules = [BlockingRule]()
+    var container: UnkeyedDecodingContainer!
 
     public init(from decoder: Decoder) {
-        guard var container = try? decoder.unkeyedContainer() else {
+        guard let container = try? decoder.unkeyedContainer() else {
             return
         }
-        while !container.isAtEnd {
-            var rule = BlockingRule()
-            if let contents = try? container.nestedContainer(keyedBy: BlockingRule.CodingKeys.self) {
-                if let decoded =
-                    try? contents.decodeIfPresent(Trigger.self,
-                                                  forKey: .trigger) {
-                    rule.trigger = decoded
-                }
-                if let decoded =
-                    try? contents.decodeIfPresent(Action.self,
-                                                  forKey: .action) {
-                    rule.action = decoded
+        self.container = container
+    }
+}
+
+extension V1FilterList {
+    /// - returns: Observable of filter list rules
+    func rules() -> Observable<BlockingRule> {
+        var mself = self // copy
+        guard let count = mself.container.count,
+                  count > 0
+        else {
+            return Observable.empty()
+        }
+        return Observable.create { observer in
+            while !mself.container.isAtEnd {
+                var rule = BlockingRule()
+                if let contents =
+                    try? mself
+                        .container
+                        .nestedContainer(keyedBy: BlockingRule.CodingKeys.self) {
+                    if let decoded =
+                        try? contents.decodeIfPresent(Trigger.self,
+                                                      forKey: .trigger) {
+                        rule.trigger = decoded
+                    }
+                    if let decoded =
+                        try? contents.decodeIfPresent(Action.self,
+                                                      forKey: .action) {
+                        rule.action = decoded
+                    } else {
+                        observer.onError(ABPFilterListError.failedDecode)
+                    }
+                    if rule.trigger != nil && rule.action != nil {
+                        observer.onNext(rule)
+                    }
+                } else {
+                    observer.onError(ABPFilterListError.badContainer)
                 }
             }
-            if rule.trigger != nil && rule.action != nil {
-                rules.append(rule)
-            }
+            observer.onCompleted()
+            return Disposables.create()
         }
     }
 }

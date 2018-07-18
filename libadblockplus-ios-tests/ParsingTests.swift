@@ -16,35 +16,52 @@
  */
 
 @testable import libadblockplus_ios
+import RxSwift
 import XCTest
 
 class ParsingTests: XCTestCase {
     /// Expected number of test rules.
     let testingRuleCount = 7
+    /// Expected v2 expires
+    let testingExpires = "4 days easylist"
+    /// Expected v2 version.
+    let testingVersion = "201512011207"
+    /// Expected v2 source url.
+    let testingSources: FilterListV2Sources =
+        [["version": "201512011200",
+          "url": "https://easylist-downloads.adblockplus.org/easylist_noadult.txt"]]
     var localPath: String!
     var v1FileURL: URL!
     var v2FileURL: URL!
+    var v2PartialFileURL: URL!
+    var bag: DisposeBag!
+
+    /// Get a file URL for a bundled resource.
+    /// - parameters:
+    ///   - resource: String filename
+    ///   - ext: String extension
+    /// - returns: File URL
+    private func fileURL(resource: String,
+                         ext: String) -> URL? {
+        let testingBundle = Bundle(for: type(of: self))
+        let localPath =
+            testingBundle.path(forResource: resource,
+                               ofType: ext)
+        guard let path = localPath else {
+            XCTFail("Resource \(resource) missing")
+            return nil
+        }
+        return URL(fileURLWithPath: path)
+    }
 
     override func setUp() {
         super.setUp()
-        // Load test filter lists.
-        let testingBundle = Bundle(for: type(of: self))
-        localPath =
-            testingBundle.path(forResource: "v1 easylist short",
-                               ofType: "json")
-        guard let v1path = localPath else {
-            XCTAssert(false, "V1 filter list missing")
-            return
-        }
-        v1FileURL = URL(fileURLWithPath: v1path)
-        localPath =
-            testingBundle.path(forResource: "v2 easylist short",
-                               ofType: "json")
-        guard let v2path = localPath else {
-            XCTAssert(false, "V2 filter list missing")
-            return
-        }
-        v2FileURL = URL(fileURLWithPath: v2path)
+        bag = DisposeBag()
+
+        // Load test filter list URLs.
+        v1FileURL = fileURL(resource: "v1 easylist short", ext: "json")
+        v2FileURL = fileURL(resource: "v2 easylist short", ext: "json")
+        v2PartialFileURL = fileURL(resource: "v2 easylist short partial", ext: "json")
     }
 
     /// Test parsing v1 filter lists.
@@ -58,7 +75,11 @@ class ParsingTests: XCTestCase {
             if let data = try? filterListData(url: url) {
                 let list = try decoder.decode(V1FilterList.self,
                                               from: data)
-                XCTAssert(list.rules.count == testingRuleCount,
+                var rules = [BlockingRule]()
+                list.rules().subscribe(onNext: { rule in
+                    rules.append(rule)
+                }).disposed(by: bag)
+                XCTAssert(rules.count == testingRuleCount,
                           "Wrong rule count")
             }
         } catch let error {
@@ -66,30 +87,39 @@ class ParsingTests: XCTestCase {
         }
     }
 
-    /// Test parsing v2 filter lists.
-    func testParsingV2FilterList() {
-        guard let url = v2FileURL else {
-            XCTFail("Missing url")
-            return
-        }
-        let decoder = JSONDecoder()
-        do {
-            if let data = try? filterListData(url: url) {
-                let list = try decoder.decode(V2FilterList.self,
-                                              from: data)
-                XCTAssert(list.rules.count == testingRuleCount,
-                          "Wrong rule count")
+    /// Sort FilterListV2Sources based on the url key.
+    /// - parameter sources: Contents of the v2 filter list sources key
+    /// - returns: Sorted FilterListV2Sources
+    /// - throws: ABPFilterListError
+    private func sort(_ sources: FilterListV2Sources) throws -> FilterListV2Sources {
+        let key = "url"
+        return try sources.sorted {
+            if let valA = $0[key], let valB = $1[key] {
+                return valA < valB
+            } else {
+                throw ABPFilterListError.invalidData
             }
-        } catch let error {
-            XCTFail("Decode failed with error: \(error)")
         }
+    }
+
+    /// For a dictionary A, check that its key-value pairs match those in dictionary B.
+    /// - parameters:
+    ///   - dictA: A dictionary to be compared
+    ///   - dictB: A dictionary to be compared
+    /// - returns: True if equal, otherwise false
+    private func equal<T>(dictA: [T: T], dictB: [T: T]) -> Bool {
+        var mismatch = false
+        dictA.keys.forEach { key in
+            if dictA[key] != dictB[key] { mismatch = true }
+        }
+        return !mismatch
     }
 
     /// Get filter lister data.
     /// - parameter url: File URL of the data
     /// - returns: Data of the filter list
     /// - throws: ABPKitTestingError
-    func filterListData(url: URL) throws -> Data {
+    private func filterListData(url: URL) throws -> Data {
         guard let data = try? Data(contentsOf: url,
                                    options: .uncached)
         else {
@@ -97,5 +127,70 @@ class ParsingTests: XCTestCase {
             throw ABPKitTestingError.invalidData
         }
         return data
+    }
+
+    /// V2 test cases.
+    enum V2ParseTestType: String,
+                          CaseIterable {
+        case short
+        case partial
+    }
+
+    private func runV2ParsingTest(type: V2ParseTestType) {
+        var url: URL?
+        switch type {
+        case .short:
+            url = v2FileURL
+        case .partial:
+            url = v2PartialFileURL
+        }
+        guard let uwURL = url else {
+            XCTFail("Missing url")
+            return
+        }
+        let decoder = JSONDecoder()
+        do {
+            if let data = try? filterListData(url: uwURL) {
+               let list = try decoder.decode(V2FilterList.self,
+                                             from: data)
+                var rules = [BlockingRule]()
+                list.rules().subscribe(onNext: { rule in
+                    rules.append(rule)
+                }).disposed(by: bag)
+                XCTAssert(rules.count == testingRuleCount,
+                          "Wrong rule count")
+                XCTAssert(list.expires == testingExpires,
+                          "Wrong expires")
+                XCTAssert(list.version == testingVersion,
+                          "Wrong version")
+                XCTAssert(testingSources.count == list.sources?.count,
+                          "Wrong sources count")
+                if let sources = list.sources {
+                    if let testingSorted = try? sort(testingSources),
+                        let sorted = try? sort(sources) {
+                        for idx in 0...testingSorted.count - 1 {
+                            XCTAssertTrue(equal(dictA: testingSorted[idx],
+                                                dictB: sorted[idx]),
+                                          "Wrong sources")
+                        }
+                    }
+                } else {
+                    XCTFail("Missing sources")
+                }
+            }
+        } catch let error {
+            if [.short].contains(type) {
+                XCTFail("Decode failed with error: \(error)")
+            }
+        }
+    }
+
+    /// Test parsing v2 filter lists.
+    func testV2FilterLists() {
+        V2ParseTestType
+            .allCases
+            .forEach {
+                runV2ParsingTest(type: $0)
+            }
     }
 }
