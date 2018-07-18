@@ -1,0 +1,22 @@
+# CI Script used for ABP iOS
+
+stages:
+  - test
+
+cache:
+  paths:
+    - Carthage
+
+build_code:
+  stage: test
+  before_script:
+    - xcrun simctl shutdown all
+    - xcrun simctl erase all
+    - cp ~/Desktop/ABP-Secret-API-Env-Vars.sh $CI_PROJECT_DIR
+    - carthage update --platform ios --no-use-binaries
+  script:
+    - set -o pipefail && xcodebuild -verbose clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3'
+    - set -o pipefail && xcodebuild -verbose clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.3.1'
+    - set -o pipefail && xcodebuild -verbose clean test -project AdblockPlusSafari.xcodeproj -scheme AdblockPlusSafari -destination 'platform=iOS Simulator,name=iPhone 6s Plus,OS=9.3'
+  tags:
+    - ios, abp
