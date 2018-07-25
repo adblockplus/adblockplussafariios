@@ -30,6 +30,8 @@ class ParsingTests: XCTestCase {
     let testingSources: FilterListV2Sources =
         [["version": "201512011200",
           "url": "https://easylist-downloads.adblockplus.org/easylist_noadult.txt"]]
+    /// Expected v2 test count.
+    let testingV2TestCount = 2
     var localPath: String!
     var v1FileURL: URL!
     var v2FileURL: URL!
@@ -131,7 +133,7 @@ class ParsingTests: XCTestCase {
 
     /// V2 test cases.
     enum V2ParseTestType: String,
-                          CaseIterable {
+                          CaseEnumerable {
         case short
         case partial
     }
@@ -187,10 +189,14 @@ class ParsingTests: XCTestCase {
 
     /// Test parsing v2 filter lists.
     func testV2FilterLists() {
+        var cnt = 0
         V2ParseTestType
-            .allCases
+            .allCases()
             .forEach {
+                cnt += 1
                 runV2ParsingTest(type: $0)
             }
+        XCTAssert(cnt == testingV2TestCount,
+                  "Wrong number of tests")
     }
 }
