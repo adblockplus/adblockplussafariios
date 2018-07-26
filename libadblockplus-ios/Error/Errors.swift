@@ -27,15 +27,18 @@ public enum ABPDownloadTaskError: Error {
 
 /// Error cases for filter list processing.
 /// - invalidData: Data could not be read from the list.
+/// - badContainer: Container could not be accessed.
+/// - failedDecode: Could not decode data.
 public enum ABPFilterListError: Error {
     case invalidData
+    case badContainer
+    case failedDecode
 }
 
 /// Error cases for managing device tokens.
 /// - invalidEndpoint: Endpoint URL was not found.
 public enum ABPDeviceTokenSaveError: Error {
     case invalidEndpoint
-    case invalidClient
 }
 
 /// Error cases for managing content blocking.
