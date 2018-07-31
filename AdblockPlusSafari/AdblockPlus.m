@@ -17,6 +17,7 @@
 
 #import "AdblockPlus.h"
 
+@import libadblockplus_ios;
 #import "NSDictionary+FilterList.h"
 
 NSString *DefaultFilterListName = @"easylist";
@@ -146,6 +147,7 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
 - (void)setEnabled:(BOOL)enabled
 {
     _enabled = enabled;
+    [[AppExtensionRelay sharedInstance] legacyEnabledSet:enabled];
     [_adblockPlusDetails setBool:enabled forKey:AdblockPlusEnabled];
     [_adblockPlusDetails synchronize];
 }
@@ -174,6 +176,7 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
 - (void)setLastActivity:(NSDate *)lastActivity
 {
     _lastActivity = lastActivity;
+    [[AppExtensionRelay sharedInstance] legacyLastActivitySet:lastActivity];
     [_adblockPlusDetails setObject:lastActivity forKey:AdblockPlusLastActivity];
     [_adblockPlusDetails synchronize];
 }
@@ -182,6 +185,7 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
 - (void)setFilterLists:(NSDictionary<NSString *, NSDictionary<NSString *, NSObject *> *> *)filterLists
 {
     _filterLists = filterLists;
+    [[AppExtensionRelay sharedInstance] legacyFilterListsSet:filterLists];
     [_adblockPlusDetails setObject:filterLists forKey:AdblockPlusFilterListsVersion2];
     [_adblockPlusDetails synchronize];
 }
@@ -189,6 +193,7 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
 - (void)setInstalledVersion:(NSInteger)installedVersion
 {
     _installedVersion = installedVersion;
+    [[AppExtensionRelay sharedInstance] legacyInstalledVersionSet:installedVersion];
     [_adblockPlusDetails setInteger:installedVersion forKey:AdblockPlusInstalledVersion];
     [_adblockPlusDetails synchronize];
 }
@@ -196,6 +201,7 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
 - (void)setDownloadedVersion:(NSInteger)downloadedVersion
 {
     _downloadedVersion = downloadedVersion;
+    [[AppExtensionRelay sharedInstance] legacyDownloadedVersionSet:downloadedVersion];
     [_adblockPlusDetails setInteger:downloadedVersion forKey:AdblockPlusDownloadedVersion];
     [_adblockPlusDetails synchronize];
 }
@@ -203,6 +209,7 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
 - (void)setWhitelistedWebsites:(NSArray<NSString *> *)whitelistedWebsites
 {
     _whitelistedWebsites = whitelistedWebsites;
+    [[AppExtensionRelay sharedInstance] legacyWhitelistedWebsitesSet:whitelistedWebsites];
     [_adblockPlusDetails setObject:whitelistedWebsites forKey:AdblockPlusWhitelistedWebsites];
     [_adblockPlusDetails synchronize];
 }

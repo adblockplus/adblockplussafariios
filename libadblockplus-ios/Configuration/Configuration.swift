@@ -15,17 +15,20 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import Foundation
+
 /// Type aliases.
 public typealias ContentBlockerIdentifier = String
 public typealias FilterListLastVersion = String
 public typealias FilterListName = String
 public typealias FilterListV2Sources = [[String: String]]
+public typealias LegacyFilterLists = [String: [String: Any]]
 public typealias WhitelistedHostname = String
 
 /// Constants that are global to the framework.
-struct Constants {
+public struct Constants {
     /// Default interval for expiration of a filter list.
-    static let defaultFilterListExpiration: TimeInterval = 86400
+    public static let defaultFilterListExpiration: TimeInterval = 86400
 }
 
 public struct Config {
