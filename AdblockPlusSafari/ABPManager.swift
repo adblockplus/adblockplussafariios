@@ -22,10 +22,14 @@ import RxSwift
 /// KVO keys.
 enum ABPState: String {
     case activated
+    case downloadedVersion
+    case enabled
     case filterLists
+    case installedVersion
     case lastActivity
     case performingActivityTest
     case reloading
+    case whiteListedWebsites
 }
 
 /// Shared instance that contains the active Adblock Plus instance. This class
@@ -192,7 +196,12 @@ class ABPManager: NSObject {
     private func setupKVO() {
         bag = DisposeBag()
         var subs = [reloadingSubscription,
-                    filterListsSubscription]
+                    filterListsSubscription,
+                    legacyDownloadedVersionSubscription,
+                    legacyEnabledSubscription,
+                    legacyInstalledVersionSubscription,
+                    legacyLastActivitySubscription,
+                    legacyWhiteListedWebsitesSubscription]
         #if DEBUG_KVO
         subs += [activatedSubscription,
                  lastActivitySubscription,
@@ -253,7 +262,7 @@ class ABPManager: NSObject {
     /// Subscription of changes on filterLists key.
     private func filterListsSubscription() -> Disposable {
         return adblockPlus.rx
-            .observeWeakly(NSDictionary.self,
+            .observeWeakly(LegacyFilterLists.self,
                            ABPState.filterLists.rawValue,
                            options: [.initial, .new])
             .subscribe(onNext: { filterLists in
@@ -261,6 +270,7 @@ class ABPManager: NSObject {
                     return
                 }
                 self.checkFilterList()
+                AppExtensionRelay.sharedInstance().legacyFilterListsSet(filterLists!)
             })
     }
 
