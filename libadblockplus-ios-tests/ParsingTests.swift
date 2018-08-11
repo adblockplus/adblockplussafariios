@@ -133,7 +133,7 @@ class ParsingTests: XCTestCase {
 
     /// V2 test cases.
     enum V2ParseTestType: String,
-                          CaseEnumerable {
+                          CaseIterable {
         case short
         case partial
     }
@@ -191,7 +191,7 @@ class ParsingTests: XCTestCase {
     func testV2FilterLists() {
         var cnt = 0
         V2ParseTestType
-            .allCases()
+            .allCases
             .forEach {
                 cnt += 1
                 runV2ParsingTest(type: $0)

@@ -16,17 +16,19 @@
  */
 
 /// For iterating enums until Swift 4.2.
-protocol CaseEnumerable: Hashable {
-    static func allCases() -> AnySequence<Self>
+#if swift(>=4.2)
+#else
+protocol CaseIterable: Hashable {
+    static func cases() -> AnySequence<Self>
 
-    static var allValues: [Self] { get }
+    static var allCases: [Self] { get }
 }
 
-extension CaseEnumerable {
-    static func allCases() -> AnySequence<Self> {
+extension CaseIterable {
+    static func cases() -> AnySequence<Self> {
         return AnySequence { () -> AnyIterator<Self> in
+            var idx = 0 // memory index
             return AnyIterator {
-                var idx = 0
                 let val: Self =
                     withUnsafePointer(to: &idx) { arg in
                         arg.withMemoryRebound(to: self,
@@ -43,7 +45,8 @@ extension CaseEnumerable {
         }
     }
 
-    static var allValues: [Self] {
-        return Array(self.allCases())
+    static var allCases: [Self] {
+        return Array(self.cases())
     }
 }
+#endif
