@@ -1378,6 +1378,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh make-api-data-file.sh";
 			shellScript = "";
+			showEnvVarsInLog = 0;
 		};
 		E5DF8C561F7DAF85003AD9B8 /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1392,6 +1393,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "SWIFTLINT=\"/usr/local/bin/swiftlint\"\nif [ -f $SWIFTLINT ]\nthen\n    $SWIFTLINT\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
