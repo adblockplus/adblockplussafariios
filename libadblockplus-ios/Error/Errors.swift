@@ -26,13 +26,17 @@ public enum ABPDownloadTaskError: Error {
 }
 
 /// Error cases for filter list processing.
-/// - invalidData: Data could not be read from the list.
 /// - badContainer: Container could not be accessed.
 /// - failedDecode: Could not decode data.
+/// - invalidData: Data could not be read from the list.
+/// - missingName: Name could not be read.
+/// - notFound: Count not find a matching filter list.
 public enum ABPFilterListError: Error {
-    case invalidData
     case badContainer
     case failedDecode
+    case invalidData
+    case missingName
+    case notFound
 }
 
 /// Error cases for managing device tokens.
@@ -42,7 +46,11 @@ public enum ABPDeviceTokenSaveError: Error {
 }
 
 /// Error cases for managing content blocking.
+/// - invalidAppGroup: Invalid app group.
+/// - invalidFilterListAttachment: Filter list attachment is invalid.
 /// - invalidIdentifier: Invalid ID.
 public enum ABPContentBlockerError: Error {
+    case invalidAppGroup
+    case invalidFilterListAttachment
     case invalidIdentifier
 }
