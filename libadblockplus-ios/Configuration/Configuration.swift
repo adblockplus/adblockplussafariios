@@ -17,10 +17,15 @@
 
 import Foundation
 
+/// This file contains constants intended for global scope.
+
 /// Type aliases.
+public typealias BundleName = String
 public typealias ContentBlockerIdentifier = String
 public typealias FilterListLastVersion = String
+public typealias FilterListID = String
 public typealias FilterListName = String
+public typealias FilterListFileURL = URL
 public typealias FilterListV2Sources = [[String: String]]
 public typealias LegacyFilterLists = [String: [String: Any]]
 public typealias WhitelistedHostname = String
@@ -29,6 +34,9 @@ public typealias WhitelistedHostname = String
 public struct Constants {
     /// Default interval for expiration of a filter list.
     public static let defaultFilterListExpiration: TimeInterval = 86400
+    public static let customFilterListName = "customFilterList"
+    public static let defaultFilterListName = "easylist"
+    public static let defaultFilterListPlusExceptionRulesName = "easylist+exceptionrules"
 }
 
 public struct Config {
@@ -40,7 +48,7 @@ public struct Config {
         // Left empty
     }
 
-    private func bundleName() -> String? {
+    private func bundleName() -> BundleName? {
         if let comps = Bundle.main.bundleIdentifier?.components(separatedBy: ".") {
             var newComps = [String]()
             if comps.last == adblockPlusSafariExtension ||
@@ -55,7 +63,7 @@ public struct Config {
     }
 
     /// A copy of the content blocker identifier function found in the legacy ABP implementation.
-    /// - Returns: A content blocker ID such as "org.adblockplus.devbuilds.AdblockPlusSafari" or nil
+    /// - returns: A content blocker ID such as "org.adblockplus.devbuilds.AdblockPlusSafari" or nil
     public func contentBlockerIdentifier() -> ContentBlockerIdentifier? {
         if let name = bundleName() {
             return "\(name).\(baseProduct).\(adblockPlusSafariExtension)"

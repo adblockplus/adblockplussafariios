@@ -86,8 +86,9 @@ extension V1FilterList {
     /// - returns: Observable of filter list rules
     func rules() -> Observable<BlockingRule> {
         var mself = self // copy
-        guard let count = mself.container.count,
-                  count > 0
+        guard let container = mself.container,
+              let count = container.count,
+              count > 0
         else {
             return Observable.empty()
         }
