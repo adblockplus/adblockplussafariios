@@ -39,7 +39,6 @@ extension FilterList {
         version = uwDict["version"] as? String
         self.downloadCount = uwDict["downloadCount"] as? Int
         rules = nil
-        ruleCount = nil
     }
 
     /// - Returns: A dictionary suitable for use with Objective-C.

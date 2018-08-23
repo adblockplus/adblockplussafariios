@@ -56,9 +56,6 @@ public struct FilterList {
     /// URL for local rules.
     public var rules: URL?
 
-    /// Count of rules in the filter list.
-    public var ruleCount: Int?
-
     public init() {
         // Intentionally empty
     }
