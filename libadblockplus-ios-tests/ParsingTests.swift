@@ -38,32 +38,15 @@ class ParsingTests: XCTestCase {
     var v2PartialFileURL: URL!
     var bag: DisposeBag!
 
-    /// Get a file URL for a bundled resource.
-    /// - parameters:
-    ///   - resource: String filename
-    ///   - ext: String extension
-    /// - returns: File URL
-    private func fileURL(resource: String,
-                         ext: String) -> URL? {
-        let testingBundle = Bundle(for: type(of: self))
-        let localPath =
-            testingBundle.path(forResource: resource,
-                               ofType: ext)
-        guard let path = localPath else {
-            XCTFail("Resource \(resource) missing")
-            return nil
-        }
-        return URL(fileURLWithPath: path)
-    }
-
     override func setUp() {
         super.setUp()
         bag = DisposeBag()
+        let util = TestingFileUtility()
 
         // Load test filter list URLs.
-        v1FileURL = fileURL(resource: "v1 easylist short", ext: "json")
-        v2FileURL = fileURL(resource: "v2 easylist short", ext: "json")
-        v2PartialFileURL = fileURL(resource: "v2 easylist short partial", ext: "json")
+        v1FileURL = util.fileURL(resource: "v1 easylist short", ext: "json")
+        v2FileURL = util.fileURL(resource: "v2 easylist short", ext: "json")
+        v2PartialFileURL = util.fileURL(resource: "v2 easylist short partial", ext: "json")
     }
 
     /// Test parsing v1 filter lists.
@@ -117,7 +100,7 @@ class ParsingTests: XCTestCase {
         return !mismatch
     }
 
-    /// Get filter lister data.
+    /// Get filter list data.
     /// - parameter url: File URL of the data
     /// - returns: Data of the filter list
     /// - throws: ABPKitTestingError
