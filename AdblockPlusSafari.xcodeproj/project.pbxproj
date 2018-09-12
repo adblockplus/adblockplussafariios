@@ -247,7 +247,7 @@
 		292CD5F31F94F84700555814 /* FavIcon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FavIcon.framework; path = Carthage/Build/iOS/FavIcon.framework; sourceTree = "<group>"; };
 		6501811B20252A960018C603 /* easylist_content_blocker_v2_short.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = easylist_content_blocker_v2_short.json; sourceTree = "<group>"; };
 		6501811E20252BA70018C603 /* JSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTests.swift; sourceTree = "<group>"; };
-		6501812020253B220018C603 /* ABPDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPDebug.swift; sourceTree = SOURCE_ROOT; };
+		6501812020253B220018C603 /* ABPDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ABPDebug.swift; path = "libadblockplus-ios/Utility/ABPDebug.swift"; sourceTree = SOURCE_ROOT; };
 		6503C3F52044DBF800040507 /* URLComponents+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLComponents+Encoding.swift"; sourceTree = "<group>"; };
 		6503C3F9204518B900040507 /* AboutTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTVC.swift; sourceTree = "<group>"; };
 		6503C3FA204518B900040507 /* ImprintVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImprintVC.swift; sourceTree = "<group>"; };
@@ -670,6 +670,7 @@
 		6507AD61209139E600CC3317 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				6501812020253B220018C603 /* ABPDebug.swift */,
 				6507AD6220913A2700CC3317 /* ActiveVersions.swift */,
 			);
 			path = Utility;
@@ -924,7 +925,6 @@
 				695778371E672A7600331DA3 /* AdblockPlusSafariActionExtension */,
 				E942B07B1B76899D004B4692 /* AdblockPlusSafariExtension */,
 				69B2AEB81BCD289C00E874A9 /* AdblockPlusSafariTests */,
-				6501812020253B220018C603 /* ABPDebug.swift */,
 				E9B982AD1E55C12400C22A17 /* build.py */,
 				65A173F01F60A1C2004107EF /* Frameworks */,
 				65D8D43D2058C21100E6AFC2 /* Generated */,
