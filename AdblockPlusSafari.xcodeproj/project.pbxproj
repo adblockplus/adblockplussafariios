@@ -14,7 +14,7 @@
 		299FB5302004DA3C0090FBAB /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */; };
 		6501811D20252A960018C603 /* easylist_content_blocker_v2_short.json in Resources */ = {isa = PBXBuildFile; fileRef = 6501811B20252A960018C603 /* easylist_content_blocker_v2_short.json */; };
 		6501811F20252BA80018C603 /* JSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501811E20252BA70018C603 /* JSONTests.swift */; };
-		6501812120253B220018C603 /* ABPDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501812020253B220018C603 /* ABPDebug.swift */; };
+		650395292149BDF700472A43 /* ABPDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501812020253B220018C603 /* ABPDebug.swift */; };
 		6503C3F62044DBF800040507 /* URLComponents+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503C3F52044DBF800040507 /* URLComponents+Encoding.swift */; };
 		6503C3FE204518B900040507 /* AboutTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503C3F9204518B900040507 /* AboutTVC.swift */; };
 		6503C3FF204518B900040507 /* ImprintVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503C3FA204518B900040507 /* ImprintVC.swift */; };
@@ -1421,6 +1421,7 @@
 				650EAB0C212E53FA00455A34 /* ContentBlockerUtility.swift in Sources */,
 				6507AD542091349200CC3317 /* Configuration.swift in Sources */,
 				6507AD6320913A2700CC3317 /* ActiveVersions.swift in Sources */,
+				650395292149BDF700472A43 /* ABPDebug.swift in Sources */,
 				655DEADE2095691100E9A525 /* SafariContentBlocker.swift in Sources */,
 				6517A30C20E33CAB000C076C /* V1FilterListParser.swift in Sources */,
 				6507AD6520913B2A00CC3317 /* FilterList+ObjectiveC.swift in Sources */,
@@ -1517,7 +1518,6 @@
 				69A2BCFC1BCBCF8A00028734 /* WhitelistedWebsitesController.m in Sources */,
 				65EBAC1F20030CBE001E181F /* ABPManager+ObjectiveC.swift in Sources */,
 				6503C3FF204518B900040507 /* ImprintVC.swift in Sources */,
-				6501812120253B220018C603 /* ABPDebug.swift in Sources */,
 				6503C3FE204518B900040507 /* AboutTVC.swift in Sources */,
 				6970E7711BA952F200B11AC3 /* AdblockPlusExtras.m in Sources */,
 				69EA09AA1DC75AA00018FAC0 /* ActivationHowtoVideoController.m in Sources */,
