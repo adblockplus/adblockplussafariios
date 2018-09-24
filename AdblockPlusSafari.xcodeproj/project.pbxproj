@@ -1200,7 +1200,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Eyeo GmbH";
 				TargetAttributes = {
 					659AECB42069BA8000DECF0E = {
