@@ -20,6 +20,48 @@ import RxSwift
 
 // For relaying changes in mutable state in the legacy implementation.
 extension ABPManager {
+    func legacyAcceptableAdsEnabledSubscription() -> Disposable {
+        return adblockPlus.rx
+            .observeWeakly(Bool.self,
+                           ABPState.acceptableAdsEnabled.rawValue,
+                           options: [.initial, .new])
+            .subscribe(onNext: {
+                if let val = $0 {
+                    AppExtensionRelay
+                        .sharedInstance()
+                        .legacyAcceptableAdsEnabledSet(val)
+                }
+            })
+    }
+
+    func legacyCustomFilterListEnabledSubscription() -> Disposable {
+        return adblockPlus.rx
+            .observeWeakly(Bool.self,
+                           ABPState.customFilterListEnabled.rawValue,
+                           options: [.initial, .new])
+            .subscribe(onNext: {
+                if let val = $0 {
+                    AppExtensionRelay
+                        .sharedInstance()
+                        .legacyCustomFilterListEnabledSet(val)
+                }
+            })
+    }
+
+    func legacyDefaultFilterListEnabledSubscription() -> Disposable {
+        return adblockPlus.rx
+            .observeWeakly(Bool.self,
+                           ABPState.defaultFilterListEnabled.rawValue,
+                           options: [.initial, .new])
+            .subscribe(onNext: {
+                if let val = $0 {
+                    AppExtensionRelay
+                        .sharedInstance()
+                        .legacyDefaultFilterListEnabledSet(val)
+                }
+            })
+    }
+
     func legacyDownloadedVersionSubscription() -> Disposable {
         return adblockPlus.rx
             .observeWeakly(Int.self,
@@ -89,5 +131,4 @@ extension ABPManager {
                 }
             })
     }
-
 }
