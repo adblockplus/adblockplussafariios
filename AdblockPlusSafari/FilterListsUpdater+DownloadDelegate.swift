@@ -75,12 +75,11 @@ extension FilterListsUpdater {
     func urlSession(_ session: URLSession,
                     downloadTask: URLSessionDownloadTask,
                     didFinishDownloadingTo location: URL) {
-
+        let cfg = Config()
         if var lastEvent = lastDownloadEvent(taskID: downloadTask.taskIdentifier) {
             lastEvent.didFinishDownloading = true
             downloadEvents[downloadTask.taskIdentifier]?.onNext(lastEvent) // new event
         }
-
         let name = filterListNameForTaskTaskIdentifier(taskIdentifier: downloadTask.taskIdentifier)
         guard let uwName = name else { return }
         guard var list = filterList(withName: name) else { return }
@@ -89,7 +88,10 @@ extension FilterListsUpdater {
             return
         }
         let fileManager = FileManager.default
-        let containerURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: group())
+        guard let group = try? cfg.appGroup() else {
+            return
+        }
+        let containerURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: group)
         guard let fileName = list.fileName else { return }
         let destination = containerURL?.appendingPathComponent(fileName,
                                                                isDirectory: false)
@@ -101,6 +103,7 @@ extension FilterListsUpdater {
         list.updating = false
         list.taskIdentifier = nil
         downloadedVersion += 1
+        AppExtensionRelay.sharedInstance().downloadedVersion.accept(downloadedVersion)
 
         // Test parsing of the filter list and set the version.
         guard let objcList = list.toDictionary() else { return }

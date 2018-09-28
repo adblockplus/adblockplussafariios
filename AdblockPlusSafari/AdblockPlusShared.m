@@ -17,6 +17,8 @@
 
 #import "AdblockPlusShared.h"
 
+@import libadblockplus_ios;
+
 @implementation AdblockPlusShared
 
 #pragma mark - BackgroundNotificationSession
@@ -44,7 +46,7 @@
         [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:identifier];
     configuration.timeoutIntervalForRequest = 2;
     configuration.timeoutIntervalForResource = 2;
-    configuration.sharedContainerIdentifier = self.group;
+    configuration.sharedContainerIdentifier = AppExtensionRelay.sharedInstance.legacyGroup;
     if (delegate) {
         return [NSURLSession sessionWithConfiguration:configuration delegate:delegate delegateQueue:nil];
     } else {

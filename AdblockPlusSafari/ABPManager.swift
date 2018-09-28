@@ -21,7 +21,10 @@ import RxSwift
 
 /// KVO keys.
 enum ABPState: String {
+    case acceptableAdsEnabled
     case activated
+    case customFilterListEnabled
+    case defaultFilterListEnabled
     case downloadedVersion
     case enabled
     case filterLists
@@ -192,11 +195,17 @@ class ABPManager: NSObject {
     // MARK: - KVO -
     // ------------------------------------------------------------
 
-    /// Subscribe to kvo updates.
+    /// Subscribe to legacy KVO updates.
+    ///
+    /// This is critical for maintaining the state between the architectural layers
+    /// of the legacy app as well as ABPKit.
     private func setupKVO() {
         bag = DisposeBag()
         var subs = [reloadingSubscription,
                     filterListsSubscription,
+                    legacyAcceptableAdsEnabledSubscription,
+                    legacyCustomFilterListEnabledSubscription,
+                    legacyDefaultFilterListEnabledSubscription,
                     legacyDownloadedVersionSubscription,
                     legacyEnabledSubscription,
                     legacyInstalledVersionSubscription,

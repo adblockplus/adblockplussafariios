@@ -17,7 +17,19 @@
 
 import RxCocoa
 
-/// This class is for passing legacy states from the host app to the app extension.
+/// This class is for encapsulating legacy mutable states and configuration
+/// values.
+///
+/// It also serves the following purposes
+/// * An intermediary between the host app and app extension.
+/// * Translate between Objective-C and Swift types during the migration of the
+/// legacy app to ABPKit.
+///   - The related selectors are prefixed with `legacy` for this purpose.
+///
+/// Usage:
+///
+///     let relay = AppExtensionRelay.sharedInstance()
+///
 @objc
 public class AppExtensionRelay: NSObject {
     private static var privateSharedInstance: AppExtensionRelay?
@@ -26,14 +38,26 @@ public class AppExtensionRelay: NSObject {
     // MARK: - Legacy host app states -
     // ------------------------------------------------------------
 
+    public var acceptableAdsEnabled = BehaviorRelay<Bool?>(value: nil)
+    public var customFilterListEnabled = BehaviorRelay<Bool?>(value: nil)
+    public var defaultFilterListEnabled = BehaviorRelay<Bool?>(value: nil)
     public var downloadedVersion = BehaviorRelay<Int?>(value: nil)
     public var enabled = BehaviorRelay<Bool?>(value: nil)
     public var filterLists = BehaviorRelay<[libadblockplus_ios.FilterList]>(value: [])
+    public var group = BehaviorRelay<String?>(value: nil)
     public var installedVersion = BehaviorRelay<Int?>(value: nil)
     public var lastActivity = BehaviorRelay<Date?>(value: nil)
+    public var shouldRespondToActivityTest = BehaviorRelay<Bool?>(value: nil)
     public var whitelistedWebsites = BehaviorRelay<[String]>(value: [])
 
     // End legacy host app states
+
+    override public init() {
+        guard let grp = try? Config().appGroup() else {
+            return
+        }
+        self.group.accept(grp)
+    }
 
     /// Destroy the shared instance in memory.
     class func destroy() {
@@ -50,6 +74,39 @@ public class AppExtensionRelay: NSObject {
         return shared
     }
 
+    // ------------------------------------------------------------
+    // MARK: - Legacy getters -
+    // ------------------------------------------------------------
+
+    @objc
+    public func legacyContentBlockerIdentifier() -> ContentBlockerIdentifier? {
+        return Config().contentBlockerIdentifier()
+    }
+
+    @objc
+    public func legacyGroup() -> AppGroupName? {
+        return group.value
+    }
+
+    // ------------------------------------------------------------
+    // MARK: - Legacy setters -
+    // ------------------------------------------------------------
+
+    @objc
+    public func legacyAcceptableAdsEnabledSet(_ acceptableAdsEnabled: Bool) {
+        self.acceptableAdsEnabled.accept(acceptableAdsEnabled)
+    }
+
+    @objc
+    public func legacyCustomFilterListEnabledSet(_ customFilterListEnabled: Bool) {
+        self.customFilterListEnabled.accept(customFilterListEnabled)
+    }
+
+    @objc
+    public func legacyDefaultFilterListEnabledSet(_ defaultFilterListEnabled: Bool) {
+        self.defaultFilterListEnabled.accept(defaultFilterListEnabled)
+    }
+
     @objc
     public func legacyDownloadedVersionSet(_ downloadedVersion: Int) {
         self.downloadedVersion.accept(downloadedVersion)
@@ -60,6 +117,7 @@ public class AppExtensionRelay: NSObject {
         self.enabled.accept(enabled)
     }
 
+    /// Add all Swift filter list structs from the legacy type.
     @objc
     public func legacyFilterListsSet(_ filterLists: LegacyFilterLists) {
         var swiftLists = [FilterList]()
