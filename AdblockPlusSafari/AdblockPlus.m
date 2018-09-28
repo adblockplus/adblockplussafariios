@@ -72,7 +72,7 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
 
         /// Above code duplicated in libadblockplus-ios.
 
-        _adblockPlusDetails = [[NSUserDefaults alloc] initWithSuiteName:self.group];
+        _adblockPlusDetails = [[NSUserDefaults alloc] initWithSuiteName:[[AppExtensionRelay sharedInstance] legacyGroup]];
         [_adblockPlusDetails registerDefaults:
                                  @{ AdblockPlusEnabled : @YES,
                                      AdblockPlusAcceptableAdsEnabled : @YES,
@@ -114,7 +114,6 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
                         DefaultFilterListPlusExceptionRulesName :
                             @"easylist+exceptionrules_content_blocker.json"
                     };
-
                 NSMutableDictionary *filterListsVersion2 = [_filterLists mutableCopy];
 
                 for (NSString *defaultFilterListName in defaultFilterListsFileNames) {
@@ -155,6 +154,7 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
 - (void)setAcceptableAdsEnabled:(BOOL)acceptableAdsEnabled
 {
     _acceptableAdsEnabled = acceptableAdsEnabled;
+    [[AppExtensionRelay sharedInstance] legacyAcceptableAdsEnabledSet:acceptableAdsEnabled];
     [_adblockPlusDetails setBool:acceptableAdsEnabled forKey:AdblockPlusAcceptableAdsEnabled];
     [_adblockPlusDetails synchronize];
 }
@@ -169,6 +169,7 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
 - (void)setDefaultFilterListEnabled:(BOOL)defaultFilterListEnabled
 {
     _defaultFilterListEnabled = defaultFilterListEnabled;
+    [[AppExtensionRelay sharedInstance] legacyDefaultFilterListEnabledSet:defaultFilterListEnabled];
     [_adblockPlusDetails setBool:defaultFilterListEnabled forKey:AdblockPlusDefaultFilterListEnabled];
     [_adblockPlusDetails synchronize];
 }
@@ -222,17 +223,6 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
 }
 
 #pragma mark -
-
-/// Duplicated in libadblockplus-ios.
-- (NSString *)contentBlockerIdentifier
-{
-    return [NSString stringWithFormat:@"%@.AdblockPlusSafari.%@", _bundleName, AdblockPlusSafariExtension];
-}
-
-- (NSString *)group
-{
-    return [NSString stringWithFormat:@"group.%@.%@", _bundleName, @"AdblockPlusSafari"];
-}
 
 - (NSString *)backgroundSessionConfigurationIdentifier
 {

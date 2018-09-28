@@ -20,26 +20,51 @@ import Foundation
 /// This file contains constants intended for global scope.
 
 /// Type aliases.
+public typealias AppGroupName = String
+public typealias BlockListData = Data
+public typealias BlockListDirectoryURL = URL
+public typealias BlockListFilename = String
+public typealias BlockListFileURL = URL
 public typealias BundleName = String
 public typealias ContentBlockerIdentifier = String
-public typealias FilterListLastVersion = String
-public typealias FilterListID = String
-public typealias FilterListName = String
 public typealias FilterListFileURL = URL
+public typealias FilterListID = String
+public typealias FilterListLastVersion = String
+public typealias FilterListName = String
 public typealias FilterListV2Sources = [[String: String]]
 public typealias LegacyFilterLists = [String: [String: Any]]
 public typealias WhitelistedHostname = String
+public typealias WhitelistedWebsites = [String]
 
 /// Constants that are global to the framework.
 public struct Constants {
+    // swiftlint:disable identifier_name
     /// Default interval for expiration of a filter list.
     public static let defaultFilterListExpiration: TimeInterval = 86400
+    /// Internal name.
     public static let customFilterListName = "customFilterList"
+    /// Internal name.
     public static let defaultFilterListName = "easylist"
+    /// Internal name.
     public static let defaultFilterListPlusExceptionRulesName = "easylist+exceptionrules"
+    /// On-disk name.
+    public static let defaultFilterListFilename = "easylist_content_blocker.json"
+    /// On-disk name.
+    public static let defaultFilterListPlusExceptionRulesFilename = "easylist+exceptionrules_content_blocker.json"
+    /// On-disk name.
+    public static let emptyFilterListFilename = "empty.json"
+    /// On-disk name.
+    public static let customFilterListFilename = "custom.json"
+
+    public static let blocklistEncoding = String.Encoding.utf8
+    public static let blocklistArrayStart = "["
+    public static let blocklistArrayEnd = "]"
+    public static let blocklistRuleSeparator = ","
+    // swiftlint:enable identifier_name
 }
 
-public struct Config {
+/// ABPKit configuration class for accessing globally relevant functions.
+public class Config {
     let baseProduct = "AdblockPlusSafari"
     let adblockPlusSafariExtension = "AdblockPlusSafariExtension"
     let adblockPlusSafariActionExtension = "AdblockPlusSafariActionExtension"
@@ -60,6 +85,19 @@ public struct Config {
             return newComps.joined(separator: ".")
         }
         return nil
+    }
+
+    /// Bundle reference for resources including:
+    /// * bundled blocklists
+    public func bundle() -> Bundle {
+        return Bundle(for: Config.self)
+    }
+
+    public func appGroup() throws -> AppGroupName {
+        if let name = bundleName() {
+            return "group.\(name).\(baseProduct)"
+        }
+        throw ABPContentBlockerError.invalidAppGroup
     }
 
     /// A copy of the content blocker identifier function found in the legacy ABP implementation.
