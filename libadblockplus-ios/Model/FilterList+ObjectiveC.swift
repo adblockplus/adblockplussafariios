@@ -17,9 +17,18 @@
 
 // Objective-C bridging for FilterList model struct.
 extension FilterList {
+    /// Returns URL for rules without parsing them.
+    func getRulesURL(for name: FilterListName) -> FilterListFileURL? {
+        let util = ContentBlockerUtility()
+        if let url = try? util.getFilterListFileURL(name: name) {
+            return url
+        }
+        return nil
+    }
+
     /// Failable initializer that converts a filter list object from the Objective-C
     /// implementation.
-    /// - Parameters:
+    /// - parameters:
     ///   - name: Unique name for the filter list.
     ///   - dictionary: NSDictionary from legacy data model.
     public init?(named name: String,
@@ -38,7 +47,8 @@ extension FilterList {
         userTriggered = uwDict["userTriggered"] as? Bool
         version = uwDict["version"] as? String
         self.downloadCount = uwDict["downloadCount"] as? Int
-        rules = nil
+        rules = nil // default value that prevents a build error
+        rules = getRulesURL(for: name)
     }
 
     /// - Returns: A dictionary suitable for use with Objective-C.
