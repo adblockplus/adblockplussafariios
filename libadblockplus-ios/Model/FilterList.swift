@@ -53,8 +53,8 @@ public struct FilterList {
     public var userTriggered: Bool?
     public var version: String?
 
-    /// URL for local rules.
-    public var rules: URL?
+    /// URL for local content blocking rules.
+    public var rules: BlockListFileURL?
 
     public init() {
         // Intentionally empty
