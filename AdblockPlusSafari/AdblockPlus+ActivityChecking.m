@@ -17,6 +17,8 @@
 
 #import "AdblockPlus+ActivityChecking.h"
 
+@import libadblockplus_ios;
+
 @implementation AdblockPlus (ActivityChecking)
 
 /// Update the activated flag with the stored value.
@@ -59,7 +61,7 @@
     __weak __typeof(self) wSelf = self;
     NSDate *lastActivity = wSelf.lastActivity;
     wSelf.performingActivityTest = YES;
-    [manager reloadWithIdentifier:self.contentBlockerIdentifier
+    [manager reloadWithIdentifier:[[AppExtensionRelay sharedInstance] legacyContentBlockerIdentifier]
                 completionHandler:^(NSError *error) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         wSelf.performingActivityTest = NO;

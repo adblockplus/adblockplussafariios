@@ -23,6 +23,8 @@ import XCTest
 class AppToExtensionStateRelayTests: XCTestCase {
     /// Test sending states through the app extension relay.
     /// Setters are in the legacy app. Changes are picked up by RxSwift KVO.
+    /// * acceptableAdsEnabled
+    /// * defaultFilterListEnabled
     /// * downloadedVersion
     /// * enabled
     /// * installedVersion
@@ -37,11 +39,17 @@ class AppToExtensionStateRelayTests: XCTestCase {
         for idx in 0...10 {
             var state = false
             if Int(arc4random_uniform(2)) == 1 { state = true }
+            abp.acceptableAdsEnabled = state
+            abp.defaultFilterListEnabled = state
             abp.downloadedVersion = idx
             abp.enabled = state
             abp.installedVersion = idx
             abp.lastActivity = testDate + TimeInterval(idx) * timeFactor
             abp.whitelistedWebsites = [testWebsiteHost] + [String(idx)]
+            XCTAssertTrue(relay.acceptableAdsEnabled.value == state,
+                          "Mismatched state: expected \(state) but got \(String(describing: relay.acceptableAdsEnabled.value))")
+            XCTAssertTrue(relay.defaultFilterListEnabled.value == state,
+                          "Mismatched state: expected \(state) but got \(String(describing: relay.defaultFilterListEnabled.value))")
             XCTAssertTrue(relay.downloadedVersion.value == idx,
                           "Mismatched state: expected \(idx) but got \(String(describing: relay.downloadedVersion.value))")
             XCTAssertTrue(relay.enabled.value == state,

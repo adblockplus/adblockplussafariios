@@ -39,11 +39,7 @@ typedef NS_ENUM(NSUInteger, AdblockPlusErrorCode) {
 
 @property (nonatomic, strong, readonly) NSUserDefaults *__nonnull adblockPlusDetails;
 
-- (NSString *__nonnull)group;
-
 - (NSString *__nonnull)backgroundSessionConfigurationIdentifier;
-
-- (NSString *__nonnull)contentBlockerIdentifier;
 
 @property (nonatomic) BOOL enabled;
 

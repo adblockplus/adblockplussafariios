@@ -16,6 +16,8 @@
  */
 
 #import "AdblockPlus+Extension.h"
+
+@import libadblockplus_ios;
 #import "AdblockPlus+Parsing.h"
 #import "NSDictionary+FilterList.h"
 
@@ -34,7 +36,7 @@ static NSString *emptyFilterListName = @"empty.json";
 
         if (filterList.downloaded && fileName) {
             NSFileManager *fileManager = [NSFileManager defaultManager];
-            NSURL *url = [fileManager containerURLForSecurityApplicationGroupIdentifier:self.group];
+            NSURL *url = [fileManager containerURLForSecurityApplicationGroupIdentifier:AppExtensionRelay.sharedInstance.legacyGroup];
             url = [url URLByAppendingPathComponent:fileName isDirectory:NO];
 
             if ([fileManager fileExistsAtPath:url.path]) {
@@ -60,7 +62,7 @@ static NSString *emptyFilterListName = @"empty.json";
     }
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *copy = [fileManager containerURLForSecurityApplicationGroupIdentifier:self.group];
+    NSURL *copy = [fileManager containerURLForSecurityApplicationGroupIdentifier:AppExtensionRelay.sharedInstance.legacyGroup];
     copy = [copy URLByAppendingPathComponent:[NSString stringWithFormat:@"ww-%@", fileName] isDirectory:NO];
 
     NSError *error;
