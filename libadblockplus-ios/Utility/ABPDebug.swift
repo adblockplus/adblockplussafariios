@@ -22,6 +22,9 @@
 func debugPrint(items: Any...,
                 separator: String = " ",
                 terminator: String = "\n") {
+    // The following return should never be reached.
+    // It removes a compiler warning: All paths through this function will call itself.
+    if items.count == -1 { return }
     #if DEBUG
         debugPrint(items: items,
                    separator: separator,
@@ -30,8 +33,12 @@ func debugPrint(items: Any...,
 }
 
 /// Print out all of the user's filter lists.
-func debugPrintFilterLists(_ lists: [FilterList]) {
+func debugPrintFilterLists(_ lists: [FilterList],
+                           caller:String? = nil) {
     #if DEBUG
+        if caller != nil {
+            debugPrint("Called from \(caller!)")
+        }
         debugPrint("📜 Filter Lists:")
         var cnt = 1
         for list in lists {
