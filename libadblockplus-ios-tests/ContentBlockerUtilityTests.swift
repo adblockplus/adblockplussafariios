@@ -28,12 +28,20 @@ class ContentBlockerUtilityTests: XCTestCase {
         ["test1.com",
          "test2.com",
          "test3.com"]
+    var testingFile: URL?
 
     override func setUp() {
         super.setUp()
         bag = DisposeBag()
         util = ContentBlockerUtility()
         relay = AppExtensionRelay.sharedInstance()
+    }
+
+    override func tearDown() {
+        if testingFile != nil {
+            removeFile(testingFile!)
+        }
+        super.tearDown()
     }
 
     /// Test getting filter list name
@@ -155,9 +163,9 @@ class ContentBlockerUtilityTests: XCTestCase {
         guard let list =
             try? util.getFilterList(for: name,
                                     filterLists: relay.filterLists.value)
-            else {
-                XCTFail("Bad filter list model object.")
-                return
+        else {
+            XCTFail("Bad filter list model object.")
+            return
         }
         guard let rules = list.rules else {
             XCTFail("Bad rules.")
@@ -175,6 +183,7 @@ class ContentBlockerUtilityTests: XCTestCase {
         var cnt = 0
         let fileurl = util.makeNewBlocklistFileURL(name: "testfile",
                                                    at: rulesDir)
+        testingFile = fileurl
         // swiftlint:disable unused_optional_binding
         guard let _ = try? util.startBlockListFile(blocklist: fileurl) else {
             XCTFail("Cannot make file.")
@@ -257,5 +266,15 @@ class ContentBlockerUtilityTests: XCTestCase {
             relay.defaultFilterListEnabled.accept(false)
             relay.acceptableAdsEnabled.accept(true)
         }
+    }
+
+    private func removeFile(_ fileURL: URL) {
+        let fmgr = FileManager.default
+        // swiftlint:disable unused_optional_binding
+        guard let _ = try? fmgr.removeItem(at: fileURL) else {
+            XCTFail("Failed to remove testing file with file URL: \(fileURL)")
+            return
+        }
+        // swiftlint:enable unused_optional_binding
     }
 }
