@@ -180,9 +180,12 @@ public class ContentBlockerUtility {
                 return Observable.create { observer in
                     whitelistedWebsites.forEach {
                         let rule = self.makeWhitelistRule(domain: $0)
-                        let data = try? encoder.encode(rule)
+                        guard let data = try? encoder.encode(rule) else {
+                            observer.onError(ABPFilterListError.failedEncodeRule)
+                            return
+                        }
                         self.writeToEndOfFile(blocklist: dest,
-                                              with: data!)
+                                              with: data)
                         self.addRuleSeparator(blocklist: dest)
                     }
                     self.endBlockListFile(blocklist: dest)

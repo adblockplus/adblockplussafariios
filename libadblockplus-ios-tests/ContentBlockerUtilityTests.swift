@@ -79,23 +79,23 @@ class ContentBlockerUtilityTests: XCTestCase {
                 try decoder.decode(BlockingRule.self,
                                    from: data!)
             XCTAssert(decoded.action?.selector == nil,
-                      "Bad selector.")
+                      "Bad action selector.")
             XCTAssert(decoded.action?.type == "ignore-previous-rules",
-                      "Bad selector.")
+                      "Bad action type.")
             if decoded.trigger?.ifDomain != nil {
                 XCTAssert(decoded.trigger?.ifDomain![0] == "*\(domain)",
-                          "Bad domain.")
+                          "Bad trigger ifDomain.")
             } else {
-                XCTFail("Bad domain.")
+                XCTFail("Bad trigger ifDomain.")
             }
             XCTAssert(decoded.trigger?.loadType == nil,
-                      "Bad selector.")
+                      "Bad trigger loadType.")
             XCTAssert(decoded.trigger?.resourceType == nil,
-                      "Bad resourceType.")
+                      "Bad trigger resourceType.")
             XCTAssert(decoded.trigger?.unlessDomain == nil,
-                      "Bad unlessDomain.")
+                      "Bad trigger unlessDomain.")
             XCTAssert(decoded.trigger?.urlFilterIsCaseSensitive == false,
-                      "Bad urlFilterIsCaseSensitive.")
+                      "Bad trigger urlFilterIsCaseSensitive.")
         } catch let error {
             XCTFail("Bad rule with error: \(error)")
         }
@@ -156,7 +156,7 @@ class ContentBlockerUtilityTests: XCTestCase {
             try? util.getFilterList(for: name,
                                     filterLists: relay.filterLists.value)
             else {
-                XCTFail("Bad list.")
+                XCTFail("Bad filter list model object.")
                 return
         }
         guard let rules = list.rules else {
