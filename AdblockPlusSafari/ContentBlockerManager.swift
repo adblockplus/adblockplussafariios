@@ -26,8 +26,8 @@ class ContentBlockerManager: NSObject,
         let mgr = ABPManager.sharedInstance()
         let reloading = { value in mgr.adblockPlus.reloading = value }
         let performingActivityTest = { value in mgr.adblockPlus.performingActivityTest = value }
-        let cb = SafariContentBlocker(reloadingSetter: reloading,
-                                      performingActivityTestSetter: performingActivityTest)
-        cb.reloadContentBlocker(completion: completionHandler)
+        let scb = SafariContentBlocker(reloadingSetter: reloading,
+                                       performingActivityTestSetter: performingActivityTest)
+        scb.reloadContentBlocker(completion: completionHandler)
     }
 }
