@@ -34,7 +34,7 @@ func debugPrint(items: Any...,
 
 /// Print out all of the user's filter lists.
 func debugPrintFilterLists(_ lists: [FilterList],
-                           caller:String? = nil) {
+                           caller: String? = nil) {
     #if DEBUG
         if caller != nil {
             debugPrint("Called from \(caller!)")
