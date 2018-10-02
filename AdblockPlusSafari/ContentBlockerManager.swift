@@ -15,7 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import SafariServices
+import libadblockplus_ios
 
 /// Performs reload operations with the Safari content blocker manager for a
 /// given identifier.
@@ -23,7 +23,11 @@ class ContentBlockerManager: NSObject,
                              ContentBlockerManagerProtocol {
     func reload(withIdentifier identifier: String,
                 completionHandler: ((Error?) -> Void)? = nil) {
-        SFContentBlockerManager.reloadContentBlocker(withIdentifier: identifier,
-                                                     completionHandler: completionHandler)
+        let mgr = ABPManager.sharedInstance()
+        let reloading = { value in mgr.adblockPlus.reloading = value }
+        let performingActivityTest = { value in mgr.adblockPlus.performingActivityTest = value }
+        let scb = SafariContentBlocker(reloadingSetter: reloading,
+                                       performingActivityTestSetter: performingActivityTest)
+        scb.reloadContentBlocker(completion: completionHandler)
     }
 }
