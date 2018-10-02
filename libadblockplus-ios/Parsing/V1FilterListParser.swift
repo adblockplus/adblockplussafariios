@@ -19,7 +19,8 @@ import RxSwift
 
 /// Intended to represent all available keys for trigger resource-type.
 /// See [Introduction to WebKit Content Blockers](https://webkit.org/blog/3476/content-blockers-first-look/).
-enum TriggerResourceType: String, Codable {
+enum TriggerResourceType: String,
+                          Codable {
     case document
     case image
     case styleSheet = "style-sheet"
@@ -31,7 +32,8 @@ enum TriggerResourceType: String, Codable {
     case popup
 }
 
-struct Trigger: Decodable {
+struct Trigger: Decodable,
+                Encodable {
     var ifDomain: [String]?
     var loadType: [String]?
     var resourceType: [TriggerResourceType]?
@@ -40,7 +42,8 @@ struct Trigger: Decodable {
     var urlFilterIsCaseSensitive: Bool?
 
     // Keys here are intended to be comprehensive for WebKit content-blocking triggers.
-    enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String,
+                     CodingKey {
         case ifDomain = "if-domain"
         case loadType = "load-type"
         case resourceType = "resource-type"
@@ -50,7 +53,8 @@ struct Trigger: Decodable {
     }
 }
 
-struct Action: Decodable {
+struct Action: Decodable,
+               Encodable {
     // Keys here are intended to be comprehensive for WebKit content-blocking actions.
     var selector: String?
     var type: String?
@@ -58,18 +62,23 @@ struct Action: Decodable {
 
 /// A filter list WebKit content blocking rule.
 /// Used for decoding individual rules.
-public struct BlockingRule: Decodable {
+public struct BlockingRule: Decodable,
+                            Encodable {
     var action: Action?
     var trigger: Trigger?
 
     // Keys here are intended to be comprehensive for WebKit content-blocking rules.
-    enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String,
+                     CodingKey {
         case action
         case trigger
     }
 }
 
-/// Used for decoding all rules where the rules are unkeyed.
+/// A Filter List is also known as a Block List within the context of content
+/// blocking on iOS/macOS.
+///
+/// This struct is used for decoding all rules where the rules are unkeyed.
 /// This is for verification and handling of v1 filter lists in JSON format.
 public struct V1FilterList: Decodable {
     var container: UnkeyedDecodingContainer!

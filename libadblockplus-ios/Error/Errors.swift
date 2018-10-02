@@ -28,14 +28,20 @@ public enum ABPDownloadTaskError: Error {
 /// Error cases for filter list processing.
 /// - badContainer: Container could not be accessed.
 /// - failedDecode: Could not decode data.
+/// - failedEncodeRule: A rule could not be encoded.
+/// - failedFileCreation: Could not make a file.
 /// - invalidData: Data could not be read from the list.
 /// - missingName: Name could not be read.
+/// - missingRules: Rules could not be read.
 /// - notFound: Count not find a matching filter list.
 public enum ABPFilterListError: Error {
     case badContainer
     case failedDecode
+    case failedEncodeRule
+    case failedFileCreation
     case invalidData
     case missingName
+    case missingRules
     case notFound
 }
 
