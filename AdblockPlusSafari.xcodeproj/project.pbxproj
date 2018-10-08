@@ -84,6 +84,9 @@
 		65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A173F31F60A20B004107EF /* SafariServices.framework */; };
 		65A31976202D0A0A00A64E77 /* ActionViewController+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A31975202D0A0A00A64E77 /* ActionViewController+Localization.swift */; };
 		65ABBD812005B11500172823 /* ContentBlockerStateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ABBD802005B11500172823 /* ContentBlockerStateHandler.swift */; };
+		65AD9C7C216B052A000F7682 /* Persistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AD9C7B216B052A000F7682 /* Persistor.swift */; };
+		65AD9C7E216B0538000F7682 /* ABPMutableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AD9C7D216B0537000F7682 /* ABPMutableState.swift */; };
+		65AD9C80216B0545000F7682 /* PersistentStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AD9C7F216B0545000F7682 /* PersistentStateTests.swift */; };
 		65ADD2481FF73DAF00A9E69F /* FilterListSwiftBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 65ADD2471FF73DAF00A9E69F /* FilterListSwiftBridge.m */; };
 		65B392EB20DC76F900093BDB /* ParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B392EA20DC76F900093BDB /* ParsingTests.swift */; };
 		65B392EF20DC7A4900093BDB /* v1 easylist short.json in Resources */ = {isa = PBXBuildFile; fileRef = 65B392ED20DC7A4900093BDB /* v1 easylist short.json */; };
@@ -311,6 +314,9 @@
 		65A173F31F60A20B004107EF /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		65A31975202D0A0A00A64E77 /* ActionViewController+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActionViewController+Localization.swift"; sourceTree = "<group>"; };
 		65ABBD802005B11500172823 /* ContentBlockerStateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBlockerStateHandler.swift; sourceTree = "<group>"; };
+		65AD9C7B216B052A000F7682 /* Persistor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistor.swift; sourceTree = "<group>"; };
+		65AD9C7D216B0537000F7682 /* ABPMutableState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABPMutableState.swift; sourceTree = "<group>"; };
+		65AD9C7F216B0545000F7682 /* PersistentStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStateTests.swift; sourceTree = "<group>"; };
 		65ADD2461FF73DAF00A9E69F /* FilterListSwiftBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterListSwiftBridge.h; sourceTree = "<group>"; };
 		65ADD2471FF73DAF00A9E69F /* FilterListSwiftBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterListSwiftBridge.m; sourceTree = "<group>"; };
 		65B392EA20DC76F900093BDB /* ParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingTests.swift; sourceTree = "<group>"; };
@@ -678,6 +684,7 @@
 		6507AD522091349200CC3317 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				65AD9C7D216B0537000F7682 /* ABPMutableState.swift */,
 				6507AD6E209143E600CC3317 /* DownloadEvent.swift */,
 				6507AD532091349200CC3317 /* FilterList.swift */,
 				6507AD6420913B2900CC3317 /* FilterList+ObjectiveC.swift */,
@@ -761,6 +768,7 @@
 				659AECB82069BA8000DECF0E /* Info.plist */,
 				659AECB72069BA8000DECF0E /* libadblockplus_ios.h */,
 				6507AD522091349200CC3317 /* Model */,
+				65AD9C7A216B052A000F7682 /* MutableState */,
 				6517A30920E33CAB000C076C /* Parsing */,
 				6507AD61209139E600CC3317 /* Utility */,
 			);
@@ -776,6 +784,7 @@
 				6507AD702091545B00CC3317 /* FilterListTests.swift */,
 				659AECC62069BA8100DECF0E /* Info.plist */,
 				65B392EA20DC76F900093BDB /* ParsingTests.swift */,
+				65AD9C7F216B0545000F7682 /* PersistentStateTests.swift */,
 				650EAB05212E537300455A34 /* RuleCountTests.swift */,
 				65C41B6020FF0D4A009A4FEE /* Utility */,
 			);
@@ -793,6 +802,14 @@
 				651FF795208EAA5500522A98 /* yajl_dynamic.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		65AD9C7A216B052A000F7682 /* MutableState */ = {
+			isa = PBXGroup;
+			children = (
+				65AD9C7B216B052A000F7682 /* Persistor.swift */,
+			);
+			path = MutableState;
 			sourceTree = "<group>";
 		};
 		65B392EC20DC7A2900093BDB /* Data */ = {
@@ -1437,7 +1454,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SWIFTLINT=\"/usr/local/bin/swiftlint\"\nif [ -f $SWIFTLINT ]\nthen\n    $SWIFTLINT\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "SWIFTLINT=\"/usr/local/bin/swiftlint\"\nif [ -f $SWIFTLINT ]\nthen\n    $SWIFTLINT\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1449,7 +1466,9 @@
 			files = (
 				650EAB0C212E53FA00455A34 /* ContentBlockerUtility.swift in Sources */,
 				6507AD542091349200CC3317 /* Configuration.swift in Sources */,
+				65AD9C7E216B0538000F7682 /* ABPMutableState.swift in Sources */,
 				6507AD6320913A2700CC3317 /* ActiveVersions.swift in Sources */,
+				65AD9C7C216B052A000F7682 /* Persistor.swift in Sources */,
 				650395292149BDF700472A43 /* ABPDebug.swift in Sources */,
 				655DEADE2095691100E9A525 /* SafariContentBlocker.swift in Sources */,
 				65035A69215EF60F00D737C4 /* ContentBlockerUtility+FileManager.swift in Sources */,
@@ -1474,6 +1493,7 @@
 			files = (
 				65035A73215EF93C00D737C4 /* ContentBlockerUtilityTests.swift in Sources */,
 				65B392EB20DC76F900093BDB /* ParsingTests.swift in Sources */,
+				65AD9C80216B0545000F7682 /* PersistentStateTests.swift in Sources */,
 				650EAB06212E537300455A34 /* RuleCountTests.swift in Sources */,
 				65C7DAF8211FACF10033EE15 /* CaseIterable.swift in Sources */,
 				656D64F520EC8AEC00EA9D9A /* Errors.swift in Sources */,
