@@ -251,7 +251,7 @@ class PersistentStateTests: XCTestCase {
     }
     // swiftlint:enable cyclomatic_complexity
     // swiftlint:enable function_body_length
-    // swiftlint:enableTennis opening_brace
+    // swiftlint:enable opening_brace
 
     // ------------------------------------------------------------
     // MARK: - Private -
