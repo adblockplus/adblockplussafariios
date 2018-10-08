@@ -54,9 +54,23 @@ public enum ABPDeviceTokenSaveError: Error {
 /// Error cases for managing content blocking.
 /// - invalidAppGroup: Invalid app group.
 /// - invalidFilterListAttachment: Filter list attachment is invalid.
+/// - invalidFilterListName: Filter list name is invalid.
 /// - invalidIdentifier: Invalid ID.
 public enum ABPContentBlockerError: Error {
     case invalidAppGroup
     case invalidFilterListAttachment
+    case invalidFilterListName
     case invalidIdentifier
+}
+
+/// Error cases related to mutable state.
+/// - invalidData: Indicates error with data.
+/// - invalidType: Indicates error with a type.
+/// - missingDefaults: UserDefaults not found.
+/// - missingsDefaultsSuiteName: Suite name not found.
+public enum ABPMutableStateError: Error {
+    case invalidData
+    case invalidType
+    case missingDefaults
+    case missingsDefaultsSuiteName
 }

@@ -27,6 +27,7 @@ public typealias BlockListFilename = String
 public typealias BlockListFileURL = URL
 public typealias BundleName = String
 public typealias ContentBlockerIdentifier = String
+public typealias DefaultsSuiteName = String
 public typealias FilterListFileURL = URL
 public typealias FilterListID = String
 public typealias FilterListLastVersion = String
@@ -38,7 +39,6 @@ public typealias WhitelistedWebsites = [String]
 
 /// Constants that are global to the framework.
 public struct Constants {
-    // swiftlint:disable identifier_name
     /// Default interval for expiration of a filter list.
     public static let defaultFilterListExpiration: TimeInterval = 86400
     /// Internal name.
@@ -50,7 +50,9 @@ public struct Constants {
     /// On-disk name.
     public static let defaultFilterListFilename = "easylist_content_blocker.json"
     /// On-disk name.
+    // swiftlint:disable identifier_name
     public static let defaultFilterListPlusExceptionRulesFilename = "easylist+exceptionrules_content_blocker.json"
+    // swiftlint:enable identifier_name
     /// On-disk name.
     public static let emptyFilterListFilename = "empty.json"
     /// On-disk name.
@@ -60,7 +62,8 @@ public struct Constants {
     public static let blocklistArrayStart = "["
     public static let blocklistArrayEnd = "]"
     public static let blocklistRuleSeparator = ","
-    // swiftlint:enable identifier_name
+
+    public static let organization = "org.adblockplus"
 }
 
 /// ABPKit configuration class for accessing globally relevant functions.
@@ -98,6 +101,14 @@ public class Config {
             return "group.\(name).\(baseProduct)"
         }
         throw ABPContentBlockerError.invalidAppGroup
+    }
+
+    /// This suite name comes from the legacy app.
+    public func defaultsSuiteName() throws -> DefaultsSuiteName {
+        guard let name = try? appGroup() else {
+            throw ABPMutableStateError.missingsDefaultsSuiteName
+        }
+        return name
     }
 
     /// A copy of the content blocker identifier function found in the legacy ABP implementation.
