@@ -115,8 +115,8 @@ class ContentBlockerUtilityTests: XCTestCase {
         let expect = expectation(description: #function)
         let ruleMax = 1 // max rules to read
         setupABPState(state: .defaultFilterListEnabled)
-        guard let source = try? util.activeFilterListsURL() else {
-            XCTFail(ABPFilterListError.notFound.localizedDescription)
+        guard let source = localTestFilterListRules() else {
+            XCTFail("Bad rules.")
             return
         }
         var destURL: BlockListFileURL?
@@ -156,18 +156,7 @@ class ContentBlockerUtilityTests: XCTestCase {
         var rule: BlockingRule?
         let fmgr = FileManager.default
         setupABPState(state: .defaultFilterListEnabled)
-        guard let name = util.activeFilterListName() else {
-            XCTFail(ABPFilterListError.missingName.localizedDescription)
-            return
-        }
-        guard let list =
-            try? util.getFilterList(for: name,
-                                    filterLists: relay.filterLists.value)
-        else {
-            XCTFail("Bad filter list model object.")
-            return
-        }
-        guard let rules = list.rules else {
+        guard let rules = localTestFilterListRules() else {
             XCTFail("Bad rules.")
             return
         }
@@ -228,6 +217,24 @@ class ContentBlockerUtilityTests: XCTestCase {
     // ------------------------------------------------------------
     // MARK: - Private -
     // ------------------------------------------------------------
+
+    private func localTestFilterListRules() -> BlockListFileURL? {
+        let bundle = Bundle(for: ContentBlockerUtilityTests.self)
+        var list = FilterList()
+        list.name = "v1 easylist short"
+        list.fileName = "v1 easylist short.json"
+        if let url = bundle.url(forResource: list.fileName!,
+                                withExtension: "") {
+            list.rules = url
+        } else {
+            XCTFail("Bad local list resource.")
+        }
+        // Adding a list for testing to the relay does not work because the host app loads its own lists into the relay.
+        guard let rules = list.rules else {
+            return nil
+        }
+        return rules
+    }
 
     private func ruleCount(rules: Data,
                            completion: @escaping (Int) -> Void) {
