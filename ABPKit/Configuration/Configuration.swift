@@ -64,6 +64,9 @@ public struct Constants {
     public static let blocklistRuleSeparator = ","
 
     public static let organization = "org.adblockplus"
+
+    /// Internal distribution label for eyeo.
+    public static let devbuildsName = "devbuilds"
 }
 
 /// ABPKit configuration class for accessing globally relevant functions.
@@ -76,14 +79,17 @@ public class Config {
         // Left empty
     }
 
+    /// References the host app.
+    /// Returns app identifier prefix such as:
+    /// * org.adblockplus.devbuilds or
+    /// * org.adblockplus
     private func bundleName() -> BundleName? {
         if let comps = Bundle.main.bundleIdentifier?.components(separatedBy: ".") {
             var newComps = [String]()
-            if comps.last == adblockPlusSafariExtension ||
-                comps.last == adblockPlusSafariActionExtension {
-                newComps = Array(comps[0...1])
-            } else {
+            if comps.contains(Constants.devbuildsName) {
                 newComps = Array(comps[0...2])
+            } else {
+                newComps = Array(comps[0...1])
             }
             return newComps.joined(separator: ".")
         }
@@ -98,7 +104,8 @@ public class Config {
 
     public func appGroup() throws -> AppGroupName {
         if let name = bundleName() {
-            return "group.\(name).\(baseProduct)"
+            let grp = "group.\(name).\(baseProduct)"
+            return grp
         }
         throw ABPContentBlockerError.invalidAppGroup
     }
@@ -112,7 +119,8 @@ public class Config {
     }
 
     /// A copy of the content blocker identifier function found in the legacy ABP implementation.
-    /// - returns: A content blocker ID such as "org.adblockplus.devbuilds.AdblockPlusSafari" or nil
+    /// - returns: A content blocker ID such as
+    ///            "org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariExtension" or nil
     public func contentBlockerIdentifier() -> ContentBlockerIdentifier? {
         if let name = bundleName() {
             return "\(name).\(baseProduct).\(adblockPlusSafariExtension)"
