@@ -72,7 +72,8 @@ public class ContentBlockerUtility {
     /// - returns: True if file exists, otherwise false
     func filterListFileExists(_ filename: String) -> Bool {
         let mgr = FileManager.default
-        guard let group = try? Config().appGroup() else {
+        let cfg = Config()
+        guard let group = try? cfg.appGroup() else {
             return false
         }
         var url = mgr.containerURL(forSecurityApplicationGroupIdentifier: group)

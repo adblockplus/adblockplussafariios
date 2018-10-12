@@ -16,7 +16,8 @@
  */
 
 @testable import AdblockPlusSafari
-import libadblockplus_ios
+
+import ABPKit
 import RxCocoa
 import XCTest
 
@@ -32,7 +33,7 @@ class AppToExtensionStateRelayTests: XCTestCase {
     /// * whitelistedWebsites
     func testSendingStates() {
         let abp = AdblockPlus()
-        let relay = libadblockplus_ios.AppExtensionRelay.sharedInstance()
+        let relay = ABPKit.AppExtensionRelay.sharedInstance()
         let testDate = Date()
         let timeFactor: TimeInterval = Constants.defaultFilterListExpiration
         let testWebsiteHost = "adblockplus.org"

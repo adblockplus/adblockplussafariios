@@ -43,7 +43,7 @@ public class AppExtensionRelay: NSObject {
     public var defaultFilterListEnabled = BehaviorRelay<Bool?>(value: nil)
     public var downloadedVersion = BehaviorRelay<Int?>(value: nil)
     public var enabled = BehaviorRelay<Bool?>(value: nil)
-    public var filterLists = BehaviorRelay<[libadblockplus_ios.FilterList]>(value: [])
+    public var filterLists = BehaviorRelay<[ABPKit.FilterList]>(value: [])
     public var group = BehaviorRelay<String?>(value: nil)
     public var installedVersion = BehaviorRelay<Int?>(value: nil)
     public var lastActivity = BehaviorRelay<Date?>(value: nil)
@@ -52,8 +52,9 @@ public class AppExtensionRelay: NSObject {
 
     // End legacy host app states
 
-    override public init() {
-        guard let grp = try? Config().appGroup() else {
+    override private init() {
+        let cfg = Config()
+        guard let grp = try? cfg.appGroup() else {
             return
         }
         self.group.accept(grp)
