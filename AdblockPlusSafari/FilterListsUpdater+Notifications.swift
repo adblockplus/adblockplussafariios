@@ -15,7 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import libadblockplus_ios
+import ABPKit
 import RxSwift
 
 extension FilterListsUpdater {

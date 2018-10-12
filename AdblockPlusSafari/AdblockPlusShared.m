@@ -17,7 +17,7 @@
 
 #import "AdblockPlusShared.h"
 
-@import libadblockplus_ios;
+@import ABPKit;
 
 @implementation AdblockPlusShared
 

@@ -17,7 +17,7 @@
 
 #import "AdblockPlus+ActivityChecking.h"
 
-@import libadblockplus_ios;
+@import ABPKit;
 
 @implementation AdblockPlus (ActivityChecking)
 

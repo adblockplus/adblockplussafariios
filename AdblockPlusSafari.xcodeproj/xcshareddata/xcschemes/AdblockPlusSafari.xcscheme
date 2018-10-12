@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "659AECB42069BA8000DECF0E"
-               BuildableName = "libadblockplus_ios.framework"
-               BlueprintName = "libadblockplus-ios"
+               BuildableName = "ABPKit.framework"
+               BlueprintName = "ABPKit-iOS"
                ReferencedContainer = "container:AdblockPlusSafari.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -57,8 +57,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "659AECBC2069BA8000DECF0E"
-               BuildableName = "libadblockplus-ios-tests.xctest"
-               BlueprintName = "libadblockplus-ios-tests"
+               BuildableName = "ABPKit-iOS-Tests.xctest"
+               BlueprintName = "ABPKit-iOS-Tests"
                ReferencedContainer = "container:AdblockPlusSafari.xcodeproj">
             </BuildableReference>
          </TestableReference>

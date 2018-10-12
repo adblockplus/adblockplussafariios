@@ -17,8 +17,8 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for libadblockplus_ios.
-FOUNDATION_EXPORT double libadblockplus_iosVersionNumber;
+//! Project version number for ABPKit.
+FOUNDATION_EXPORT double ABPKitVersionNumber;
 
-//! Project version string for libadblockplus_ios.
-FOUNDATION_EXPORT const unsigned char libadblockplus_iosVersionString[];
+//! Project version string for ABPKit.
+FOUNDATION_EXPORT const unsigned char ABPKitVersionString[];

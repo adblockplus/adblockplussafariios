@@ -7,30 +7,16 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E9071D3B1B76897C00091AEB"
-               BuildableName = "AdblockPlusSafari.app"
-               BlueprintName = "AdblockPlusSafari"
-               ReferencedContainer = "container:AdblockPlusSafari.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "659AECBC2069BA8000DECF0E"
-               BuildableName = "libadblockplus-ios-tests.xctest"
-               BlueprintName = "libadblockplus-ios-tests"
+               BlueprintIdentifier = "659AECB42069BA8000DECF0E"
+               BuildableName = "ABPKit.framework"
+               BlueprintName = "ABPKit-iOS"
                ReferencedContainer = "container:AdblockPlusSafari.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,20 +29,11 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E9071D3B1B76897C00091AEB"
-            BuildableName = "AdblockPlusSafari.app"
-            BlueprintName = "AdblockPlusSafari"
-            ReferencedContainer = "container:AdblockPlusSafari.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Devbuild Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -68,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E9071D3B1B76897C00091AEB"
-            BuildableName = "AdblockPlusSafari.app"
-            BlueprintName = "AdblockPlusSafari"
+            BlueprintIdentifier = "659AECB42069BA8000DECF0E"
+            BuildableName = "ABPKit.framework"
+            BlueprintName = "ABPKit-iOS"
             ReferencedContainer = "container:AdblockPlusSafari.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "659AECB42069BA8000DECF0E"
+            BuildableName = "ABPKit.framework"
+            BlueprintName = "ABPKit-iOS"
+            ReferencedContainer = "container:AdblockPlusSafari.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

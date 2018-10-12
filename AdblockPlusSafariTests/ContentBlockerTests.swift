@@ -16,7 +16,8 @@
  */
 
 @testable import AdblockPlusSafari
-import libadblockplus_ios
+
+import ABPKit
 import XCTest
 
 /// Test content blocker operations.

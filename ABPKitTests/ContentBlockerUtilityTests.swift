@@ -15,7 +15,8 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-@testable import libadblockplus_ios
+@testable import ABPKit
+
 import RxSwift
 import XCTest
 
