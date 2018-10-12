@@ -15,7 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import libadblockplus_ios
+import ABPKit
 import RxSwift
 import SafariServices
 
@@ -50,8 +50,8 @@ class ContentBlockerStateHandler {
         let reloading = { value in self.adblockPlus.reloading = value }
         let performingActivityTest = { value in self.adblockPlus.performingActivityTest = value }
         let safariCB =
-            libadblockplus_ios.SafariContentBlocker(reloadingSetter: reloading,
-                                                    performingActivityTestSetter: performingActivityTest)
+            ABPKit.SafariContentBlocker(reloadingSetter: reloading,
+                                        performingActivityTestSetter: performingActivityTest)
         if #available(iOS 10.0, *) {
             safariCB.contentBlockerIsEnabled(with: cbID)
                 .retry(GlobalConstants.contentBlockerReloadRetryCount)

@@ -16,13 +16,14 @@
  */
 
 @testable import AdblockPlusSafari
-import libadblockplus_ios
+
+import ABPKit
 import XCTest
 
 class FilterListTests: XCTestCase {
     /// Test expired logic.
     func testExpired() {
-        var filterList = libadblockplus_ios.FilterList()
+        var filterList = ABPKit.FilterList()
         filterList.lastUpdate = Date()
         XCTAssert(!filterList.expired(),
                   "Last update is now - should not be expired")

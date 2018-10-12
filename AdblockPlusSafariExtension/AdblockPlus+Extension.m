@@ -17,7 +17,7 @@
 
 #import "AdblockPlus+Extension.h"
 
-@import libadblockplus_ios;
+@import ABPKit;
 #import "AdblockPlus+Parsing.h"
 #import "NSDictionary+FilterList.h"
 

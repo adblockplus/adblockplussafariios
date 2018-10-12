@@ -48,8 +48,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "659AECBC2069BA8000DECF0E"
-               BuildableName = "libadblockplus-ios-tests.xctest"
-               BlueprintName = "libadblockplus-ios-tests"
+               BuildableName = "ABPKit-iOS-Tests.xctest"
+               BlueprintName = "ABPKit-iOS-Tests"
                ReferencedContainer = "container:AdblockPlusSafari.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -67,7 +67,7 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Devbuild Debug"
       selectedDebuggerIdentifier = ""
       selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"

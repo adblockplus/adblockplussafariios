@@ -15,7 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import libadblockplus_ios
+import ABPKit
 import RxSwift
 
 /// Implementation of URLSessionDownloadDelegate and related support functions.
@@ -128,7 +128,7 @@ extension FilterListsUpdater {
     ///   - filterList: Internal model struct for the list.
     /// - Throws: ABP error if parsing fails.
     func setVersion(url: URL,
-                    filterList: inout libadblockplus_ios.FilterList) throws {
+                    filterList: inout ABPKit.FilterList) throws {
         do {
             let data = try Data(contentsOf: url,
                                 options: .uncached)
@@ -184,7 +184,7 @@ extension FilterListsUpdater {
 
     /// Replace an existing filter list with a new one.
     internal func replaceFilterList(withName name: String,
-                                    withNewList newList: libadblockplus_ios.FilterList) {
+                                    withNewList newList: ABPKit.FilterList) {
         guard let abpMgr = abpManager else { return }
         var lists = abpMgr.filterLists()
         var index = 0
@@ -204,11 +204,11 @@ extension FilterListsUpdater {
         abpMgr.saveFilterLists(lists)
     }
 
-    private func filterList(withName name: String?) -> libadblockplus_ios.FilterList? {
+    private func filterList(withName name: String?) -> ABPKit.FilterList? {
         guard name != nil else { return nil }
         guard let uwAbpManager = abpManager else { return nil }
-        let lists: [libadblockplus_ios.FilterList] = uwAbpManager.filterLists()
-        var result: libadblockplus_ios.FilterList?
+        let lists: [ABPKit.FilterList] = uwAbpManager.filterLists()
+        var result: ABPKit.FilterList?
         var cnt = 0
         for list in lists where list.name == name {
             cnt += 1

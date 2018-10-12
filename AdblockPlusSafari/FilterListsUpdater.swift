@@ -15,7 +15,7 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import libadblockplus_ios
+import ABPKit
 import RxCocoa
 import RxSwift
 
@@ -106,7 +106,7 @@ class FilterListsUpdater: AdblockPlusShared,
     /// Remove the updating state key from a filter list.
     private func removeUpdatingGroupID() {
         let lists = abpManager.filterLists()
-        var newLists = [libadblockplus_ios.FilterList]()
+        var newLists = [ABPKit.FilterList]()
         for var list in lists {
             list.updatingGroupIdentifier = nil
             newLists.append(list)
@@ -178,7 +178,7 @@ class FilterListsUpdater: AdblockPlusShared,
     /// created for the task.
     /// - Parameter filterList: A filter List struct.
     /// - Returns: The download task.
-    func filterListDownload(for filterList: libadblockplus_ios.FilterList) -> Observable<URLSessionDownloadTask> {
+    func filterListDownload(for filterList: ABPKit.FilterList) -> Observable<URLSessionDownloadTask> {
         return Observable.create { observer in
             guard let urlString = filterList.source,
                   let url = URL(string: urlString),
@@ -324,7 +324,7 @@ class FilterListsUpdater: AdblockPlusShared,
 
     /// Update filter list with a new download count.
     /// - Parameter filterList: A filter list.
-    func updateSuccessfulDownloadCount(for filterList: inout libadblockplus_ios.FilterList) {
+    func updateSuccessfulDownloadCount(for filterList: inout ABPKit.FilterList) {
         if filterList.downloadCount != nil {
             filterList.downloadCount! += 1
         } else {

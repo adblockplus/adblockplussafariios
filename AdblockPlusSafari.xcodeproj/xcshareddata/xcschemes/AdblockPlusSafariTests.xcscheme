@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "659AECB42069BA8000DECF0E"
-               BuildableName = "libadblockplus_ios.framework"
-               BlueprintName = "libadblockplus-ios"
+               BuildableName = "ABPKit.framework"
+               BlueprintName = "ABPKit-iOS"
                ReferencedContainer = "container:AdblockPlusSafari.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -67,12 +67,12 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "659AECBC2069BA8000DECF0E"
-               BuildableName = "libadblockplus-ios-tests.xctest"
-               BlueprintName = "libadblockplus-ios-tests"
+               BuildableName = "ABPKit-iOS-Tests.xctest"
+               BlueprintName = "ABPKit-iOS-Tests"
                ReferencedContainer = "container:AdblockPlusSafari.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -90,7 +90,7 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Devbuild Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"

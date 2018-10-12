@@ -17,7 +17,7 @@
 
 #import "AdblockPlus.h"
 
-@import libadblockplus_ios;
+@import ABPKit;
 #import "NSDictionary+FilterList.h"
 
 NSString *DefaultFilterListName = @"easylist";
@@ -37,10 +37,10 @@ static NSString *AdblockPlusWhitelistedWebsites = @"AdblockPlusWhitelistedWebsit
 static NSString *AdblockPlusLastActivity = @"AdblockPlusLastActivity";
 static NSString *AdblockPlusPerformingActivityTest = @"AdblockPlusPerformingActivityTest";
 
-/// Duplicated in libadblockplus-ios.
+/// Duplicated in ABPKit.
 static NSString *AdblockPlusSafariExtension = @"AdblockPlusSafariExtension";
 
-/// Duplicated in libadblockplus-ios.
+/// Duplicated in ABPKit.
 static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExtension";
 
 @interface AdblockPlus ()
@@ -70,7 +70,7 @@ static NSString *AdblockPlusSafariActionExtension = @"AdblockPlusSafariActionExt
 
         _bundleName = [components componentsJoinedByString:@"."];
 
-        /// Above code duplicated in libadblockplus-ios.
+        /// Above code duplicated in ABPKit.
 
         _adblockPlusDetails = [[NSUserDefaults alloc] initWithSuiteName:[[AppExtensionRelay sharedInstance] legacyGroup]];
         [_adblockPlusDetails registerDefaults:
