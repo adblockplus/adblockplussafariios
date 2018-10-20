@@ -637,14 +637,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		65035A74215EFD3B00D737C4 /* Data */ = {
+		65035A74215EFD3B00D737C4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				65035A77215EFD3B00D737C4 /* easylist_content_blocker.json */,
 				65035A76215EFD3B00D737C4 /* easylist+exceptionrules_content_blocker.json */,
 				65035A75215EFD3B00D737C4 /* empty.json */,
 			);
-			path = Data;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		6503C3F42044DB2300040507 /* Utilities */ = {
@@ -762,16 +762,16 @@
 		659AECB62069BA8000DECF0E /* ABPKit */ = {
 			isa = PBXGroup;
 			children = (
+				659AECB72069BA8000DECF0E /* ABPKit.h */,
 				6507AD4E2091349200CC3317 /* Configuration */,
 				655DEADB209568F400E9A525 /* ContentBlocking */,
-				65035A74215EFD3B00D737C4 /* Data */,
 				6591FDE92092DCCA004C2490 /* Error */,
 				655576A3211129BF00737E27 /* HostApp */,
 				659AECB82069BA8000DECF0E /* Info.plist */,
-				659AECB72069BA8000DECF0E /* ABPKit.h */,
 				6507AD522091349200CC3317 /* Model */,
 				65AD9C7A216B052A000F7682 /* MutableState */,
 				6517A30920E33CAB000C076C /* Parsing */,
+				65035A74215EFD3B00D737C4 /* Resources */,
 				6507AD61209139E600CC3317 /* Utility */,
 			);
 			path = ABPKit;
@@ -781,12 +781,12 @@
 			isa = PBXGroup;
 			children = (
 				65035A72215EF93C00D737C4 /* ContentBlockerUtilityTests.swift */,
-				65B392EC20DC7A2900093BDB /* Data */,
 				656D64F320EC8AEC00EA9D9A /* Error */,
 				6507AD702091545B00CC3317 /* FilterListTests.swift */,
 				659AECC62069BA8100DECF0E /* Info.plist */,
 				65B392EA20DC76F900093BDB /* ParsingTests.swift */,
 				65AD9C7F216B0545000F7682 /* PersistentStateTests.swift */,
+				65B392EC20DC7A2900093BDB /* Resources */,
 				650EAB05212E537300455A34 /* RuleCountTests.swift */,
 				65C41B6020FF0D4A009A4FEE /* Utility */,
 			);
@@ -814,7 +814,7 @@
 			path = MutableState;
 			sourceTree = "<group>";
 		};
-		65B392EC20DC7A2900093BDB /* Data */ = {
+		65B392EC20DC7A2900093BDB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				650EAB07212E538300455A34 /* test_easylist_content_blocker.json */,
@@ -822,7 +822,7 @@
 				65C41B5E20FF05D1009A4FEE /* v2 easylist short partial.json */,
 				65B392EE20DC7A4900093BDB /* v2 easylist short.json */,
 			);
-			path = Data;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		65C41B6020FF0D4A009A4FEE /* Utility */ = {
