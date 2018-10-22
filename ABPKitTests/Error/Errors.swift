@@ -18,7 +18,14 @@
 /// Custom errors for ABPKit tests.
 
 /// Error cases for download tasks.
+/// - failedModelCreation: Failed when making a model object.
+/// - failedSave: Unable to save data.
 /// - invalidData: Unable to obtain valid data.
-public enum ABPKitTestingError: Error {
+/// - invalidURL: Unable to obtain a valid URL.
+public
+enum ABPKitTestingError: Error {
+    case failedModelCreation
+    case failedSave
     case invalidData
+    case invalidURL
 }

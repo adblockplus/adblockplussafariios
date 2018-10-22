@@ -155,7 +155,7 @@ public class ContentBlockerUtility {
         }
         guard let ruleList = try? decoder.decode(V1FilterList.self,
                                                  from: rulesData) else {
-            return Observable.error(ABPFilterListError.failedDecode)
+            return Observable.error(ABPFilterListError.failedDecoding)
         }
         // swiftlint:disable unused_optional_binding
         guard let _ = try? self.startBlockListFile(blocklist: dest) else {
