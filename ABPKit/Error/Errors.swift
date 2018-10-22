@@ -17,28 +17,59 @@
 
 /// Custom errors for ABP.
 
+/// Error cases for configuration.
+/// - invalidBundlePrefix: Bundle prefix is not valid.
+public
+enum ABPConfigurationError: Error {
+    case invalidBundlePrefix
+}
+
 /// Error cases for download tasks.
+/// - badAppGroup: App group was not obtained successfully.
+/// - badFilename: Bad filename for filter list rules.
+/// - badFilterListModel: Bad model object.
+/// - badFilterListModelName: Bad name for model object.
+/// - failedFilterListModelSave: Failed to save model object.
+/// - failedToMakeBackgroundSession: Failed during background session creation.
 /// - failedToMakeDownloadTask: Download task could not be created for the download.
+/// - invalidResponse: Web server response was invalid.
 /// - tooManyRequests: HTTP connection failed due to temporary state.
-public enum ABPDownloadTaskError: Error {
+public
+enum ABPDownloadTaskError: Error {
+    case badAppGroup
+    case badFilename
+    case badFilterListModel
+    case badFilterListModelName
+    case failedFilterListModelSave
+    case failedToMakeBackgroundSession
     case failedToMakeDownloadTask
+    case invalidResponse
     case tooManyRequests
 }
 
 /// Error cases for filter list processing.
+/// - ambiguousModels: Model objects are not unique or are missing.
 /// - badContainer: Container could not be accessed.
-/// - failedDecode: Could not decode data.
+/// - badData: Valid data was not obtained.
+/// - failedDecoding: Could not decode a list.
 /// - failedEncodeRule: A rule could not be encoded.
+/// - failedEncoding: A list model could not be encoded.
 /// - failedFileCreation: Could not make a file.
+/// - failedLoadModels: Could not load models.
 /// - invalidData: Data could not be read from the list.
 /// - missingName: Name could not be read.
 /// - missingRules: Rules could not be read.
 /// - notFound: Count not find a matching filter list.
-public enum ABPFilterListError: Error {
+public
+enum ABPFilterListError: Error {
+    case ambiguousModels
     case badContainer
-    case failedDecode
+    case badData
+    case failedDecoding
     case failedEncodeRule
+    case failedEncoding
     case failedFileCreation
+    case failedLoadModels
     case invalidData
     case missingName
     case missingRules
@@ -47,7 +78,8 @@ public enum ABPFilterListError: Error {
 
 /// Error cases for managing device tokens.
 /// - invalidEndpoint: Endpoint URL was not found.
-public enum ABPDeviceTokenSaveError: Error {
+public
+enum ABPDeviceTokenSaveError: Error {
     case invalidEndpoint
 }
 
@@ -56,7 +88,8 @@ public enum ABPDeviceTokenSaveError: Error {
 /// - invalidFilterListAttachment: Filter list attachment is invalid.
 /// - invalidFilterListName: Filter list name is invalid.
 /// - invalidIdentifier: Invalid ID.
-public enum ABPContentBlockerError: Error {
+public
+enum ABPContentBlockerError: Error {
     case invalidAppGroup
     case invalidFilterListAttachment
     case invalidFilterListName
@@ -68,7 +101,9 @@ public enum ABPContentBlockerError: Error {
 /// - invalidType: Indicates error with a type.
 /// - missingDefaults: UserDefaults not found.
 /// - missingsDefaultsSuiteName: Suite name not found.
-public enum ABPMutableStateError: Error {
+public
+enum ABPMutableStateError: Error {
+    case failedClear
     case invalidData
     case invalidType
     case missingDefaults
