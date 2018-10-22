@@ -118,7 +118,7 @@ extension V1FilterList {
                                                       forKey: .action) {
                         rule.action = decoded
                     } else {
-                        observer.onError(ABPFilterListError.failedDecode)
+                        observer.onError(ABPFilterListError.failedDecoding)
                     }
                     if rule.trigger != nil && rule.action != nil {
                         observer.onNext(rule)
