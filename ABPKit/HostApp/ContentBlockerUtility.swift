@@ -123,9 +123,10 @@ public class ContentBlockerUtility {
                                              filterLists: lists),
                let filename = list.fileName {
                 if list.downloaded == true || ignoreDownloaded {
-                    if let url = cfg.bundle()
-                                    .url(forResource: filename,
-                                         withExtension: "") {
+                    if let url =
+                        cfg.bundle()
+                           .url(forResource: filename,
+                                withExtension: "") {
                         return url
                     } else {
                         throw ABPFilterListError.notFound
