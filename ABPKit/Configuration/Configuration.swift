@@ -26,8 +26,10 @@ public typealias BlockListDirectoryURL = URL
 public typealias BlockListFilename = String
 public typealias BlockListFileURL = URL
 public typealias BundleName = String
+public typealias BundlePrefix = String
 public typealias ContentBlockerIdentifier = String
 public typealias DefaultsSuiteName = String
+public typealias DownloadEventID = String
 public typealias FilterListFileURL = URL
 public typealias FilterListID = String
 public typealias FilterListLastVersion = String
@@ -39,6 +41,8 @@ public typealias WhitelistedWebsites = [String]
 
 /// Constants that are global to the framework.
 public struct Constants {
+    /// Limit for background operations, less than the allowed limit to allow time for content blocker reloading.
+    static let backgroundOperationLimit: TimeInterval = 28
     /// Default interval for expiration of a filter list.
     public static let defaultFilterListExpiration: TimeInterval = 86400
     /// Internal name.
@@ -74,6 +78,7 @@ public class Config {
     let baseProduct = "AdblockPlusSafari"
     let adblockPlusSafariExtension = "AdblockPlusSafariExtension"
     let adblockPlusSafariActionExtension = "AdblockPlusSafariActionExtension"
+    let backgroundSession = "BackgroundSession"
 
     public init() {
         // Left empty
@@ -83,7 +88,7 @@ public class Config {
     /// Returns app identifier prefix such as:
     /// * org.adblockplus.devbuilds or
     /// * org.adblockplus
-    private func bundleName() -> BundleName? {
+    private func bundlePrefix() -> BundlePrefix? {
         if let comps = Bundle.main.bundleIdentifier?.components(separatedBy: ".") {
             var newComps = [String]()
             if comps.contains(Constants.devbuildsName) {
@@ -103,7 +108,7 @@ public class Config {
     }
 
     public func appGroup() throws -> AppGroupName {
-        if let name = bundleName() {
+        if let name = bundlePrefix() {
             let grp = "group.\(name).\(baseProduct)"
             return grp
         }
@@ -122,9 +127,16 @@ public class Config {
     /// - returns: A content blocker ID such as
     ///            "org.adblockplus.devbuilds.AdblockPlusSafari.AdblockPlusSafariExtension" or nil
     public func contentBlockerIdentifier() -> ContentBlockerIdentifier? {
-        if let name = bundleName() {
+        if let name = bundlePrefix() {
             return "\(name).\(baseProduct).\(adblockPlusSafariExtension)"
         }
         return nil
+    }
+
+    public func backgroundSessionConfigurationIdentifier() throws -> String {
+        guard let prefix = bundlePrefix() else {
+            throw ABPConfigurationError.invalidBundlePrefix
+        }
+        return "\(prefix).\(baseProduct).\(backgroundSession)"
     }
 }

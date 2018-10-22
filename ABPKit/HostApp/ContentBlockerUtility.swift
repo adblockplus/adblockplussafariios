@@ -113,24 +113,25 @@ public class ContentBlockerUtility {
 
     /// Retrieve a reference (file URL) to a blocklist file in persistent storage.
     /// - parameter name: The given name for a filter list.
-    func getFilterListFileURL(name: FilterListName) throws -> FilterListFileURL {
-        let cfg = Config()
+    /// - parameter bundle: Defaults to config bundle.
+    func getFilterListFileURL(name: FilterListName,
+                              bundle: Bundle = Config().bundle()) throws -> FilterListFileURL {
         let ignoreDownloaded = false // don't check the downloaded flag for special cases
-        let relay = AppExtensionRelay.sharedInstance()
-        if relay.enabled.value == true {
-            let lists = relay.filterLists.value
-            if let list = try? getFilterList(for: name,
-                                             filterLists: lists),
-               let filename = list.fileName {
-                if list.downloaded == true || ignoreDownloaded {
-                    if let url =
-                        cfg.bundle()
-                           .url(forResource: filename,
-                                withExtension: "") {
-                        return url
-                    } else {
-                        throw ABPFilterListError.notFound
-                    }
+        guard let pstr = Persistor() else {
+            throw ABPMutableStateError.missingDefaults
+        }
+        guard let models = try? pstr.loadFilterListModels() else {
+            throw ABPFilterListError.invalidData
+        }
+        if let model = try? getFilterList(for: name,
+                                          filterLists: models),
+           let filename = model.fileName {
+            if model.downloaded == true || ignoreDownloaded {
+                if let url = bundle.url(forResource: filename,
+                                        withExtension: "") {
+                    return url
+                } else {
+                    throw ABPFilterListError.notFound
                 }
             }
         }
