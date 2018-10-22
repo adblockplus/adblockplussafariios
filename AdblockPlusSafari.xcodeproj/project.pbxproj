@@ -101,6 +101,11 @@
 		65C5886F217D88F40033B6AB /* FilterListTestModeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C5886E217D88F40033B6AB /* FilterListTestModeler.swift */; };
 		65C58872217D89120033B6AB /* Persistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C58870217D89120033B6AB /* Persistor.swift */; };
 		65C58873217D89120033B6AB /* Persistor+ModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C58871217D89120033B6AB /* Persistor+ModelHelper.swift */; };
+		65C58881217D92650033B6AB /* BlockListDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C5887E217D92650033B6AB /* BlockListDownloader.swift */; };
+		65C58882217D92650033B6AB /* BlocklistDownloader+Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C5887F217D92650033B6AB /* BlocklistDownloader+Persistence.swift */; };
+		65C58883217D92650033B6AB /* BlockListDownloader+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C58880217D92650033B6AB /* BlockListDownloader+Delegate.swift */; };
+		65C58885217D927D0033B6AB /* URLComponents+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C58884217D927D0033B6AB /* URLComponents+Encoding.swift */; };
+		65C58887217D92970033B6AB /* BlockListDownloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C58886217D92970033B6AB /* BlockListDownloadTests.swift */; };
 		65C6E5CD216F00F100189276 /* ABPDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501812020253B220018C603 /* ABPDebug.swift */; };
 		65C6E5CE216F0FB400189276 /* ABPKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659AECB52069BA8000DECF0E /* ABPKit.framework */; };
 		65C7DAF8211FACF10033EE15 /* CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C7DAF7211FACF10033EE15 /* CaseIterable.swift */; };
@@ -338,6 +343,11 @@
 		65C5886E217D88F40033B6AB /* FilterListTestModeler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterListTestModeler.swift; sourceTree = "<group>"; };
 		65C58870217D89120033B6AB /* Persistor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistor.swift; sourceTree = "<group>"; };
 		65C58871217D89120033B6AB /* Persistor+ModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Persistor+ModelHelper.swift"; sourceTree = "<group>"; };
+		65C5887E217D92650033B6AB /* BlockListDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockListDownloader.swift; sourceTree = "<group>"; };
+		65C5887F217D92650033B6AB /* BlocklistDownloader+Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlocklistDownloader+Persistence.swift"; sourceTree = "<group>"; };
+		65C58880217D92650033B6AB /* BlockListDownloader+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlockListDownloader+Delegate.swift"; sourceTree = "<group>"; };
+		65C58884217D927D0033B6AB /* URLComponents+Encoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLComponents+Encoding.swift"; sourceTree = "<group>"; };
+		65C58886217D92970033B6AB /* BlockListDownloadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockListDownloadTests.swift; sourceTree = "<group>"; };
 		65C7DAF7211FACF10033EE15 /* CaseIterable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseIterable.swift; sourceTree = "<group>"; };
 		65CB10D12068982A005C3A9E /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		65CB10D6206899E2005C3A9E /* TokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenTests.swift; sourceTree = "<group>"; };
@@ -709,6 +719,7 @@
 			children = (
 				6501812020253B220018C603 /* ABPDebug.swift */,
 				6507AD6220913A2700CC3317 /* ActiveVersions.swift */,
+				65C58884217D927D0033B6AB /* URLComponents+Encoding.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -771,6 +782,7 @@
 				659AECB72069BA8000DECF0E /* ABPKit.h */,
 				6507AD4E2091349200CC3317 /* Configuration */,
 				655DEADB209568F400E9A525 /* ContentBlocking */,
+				65C5887D217D92650033B6AB /* Downloading */,
 				6591FDE92092DCCA004C2490 /* Error */,
 				655576A3211129BF00737E27 /* HostApp */,
 				659AECB82069BA8000DECF0E /* Info.plist */,
@@ -786,6 +798,7 @@
 		659AECC32069BA8100DECF0E /* ABPKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				65C58886217D92970033B6AB /* BlockListDownloadTests.swift */,
 				65035A72215EF93C00D737C4 /* ContentBlockerUtilityTests.swift */,
 				656D64F320EC8AEC00EA9D9A /* Error */,
 				6507AD702091545B00CC3317 /* FilterListTests.swift */,
@@ -841,6 +854,16 @@
 				650EAB03212E536300455A34 /* TestingFileUtility.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		65C5887D217D92650033B6AB /* Downloading */ = {
+			isa = PBXGroup;
+			children = (
+				65C5887E217D92650033B6AB /* BlockListDownloader.swift */,
+				65C58880217D92650033B6AB /* BlockListDownloader+Delegate.swift */,
+				65C5887F217D92650033B6AB /* BlocklistDownloader+Persistence.swift */,
+			);
+			path = Downloading;
 			sourceTree = "<group>";
 		};
 		65D8D43D2058C21100E6AFC2 /* Generated */ = {
@@ -1481,14 +1504,18 @@
 				6507AD6320913A2700CC3317 /* ActiveVersions.swift in Sources */,
 				655DEADE2095691100E9A525 /* SafariContentBlocker.swift in Sources */,
 				65035A69215EF60F00D737C4 /* ContentBlockerUtility+FileManager.swift in Sources */,
+				65C58882217D92650033B6AB /* BlocklistDownloader+Persistence.swift in Sources */,
 				65C58872217D89120033B6AB /* Persistor.swift in Sources */,
 				6517A30C20E33CAB000C076C /* V1FilterListParser.swift in Sources */,
+				65C58881217D92650033B6AB /* BlockListDownloader.swift in Sources */,
 				6507AD6520913B2A00CC3317 /* FilterList+ObjectiveC.swift in Sources */,
 				6507AD562091349200CC3317 /* FilterList.swift in Sources */,
 				6507AD6F209143E700CC3317 /* DownloadEvent.swift in Sources */,
+				65C58883217D92650033B6AB /* BlockListDownloader+Delegate.swift in Sources */,
 				6517A30D20E33CAB000C076C /* V2FilterListParser.swift in Sources */,
 				6507AD6B20913CB100CC3317 /* FilterList+UserDefaults.swift in Sources */,
 				6591FDEB2092DCEA004C2490 /* Errors.swift in Sources */,
+				65C58885217D927D0033B6AB /* URLComponents+Encoding.swift in Sources */,
 				65035A6A215EF60F00D737C4 /* ContentBlockerUtility+Whitelist.swift in Sources */,
 				655576942111143A00737E27 /* AppExtensionRelay.swift in Sources */,
 				650EAB0A212E53C900455A34 /* FilterList+RuleCount.swift in Sources */,
@@ -1506,6 +1533,7 @@
 				65035A73215EF93C00D737C4 /* ContentBlockerUtilityTests.swift in Sources */,
 				65B392EB20DC76F900093BDB /* ParsingTests.swift in Sources */,
 				65AD9C80216B0545000F7682 /* PersistentStateTests.swift in Sources */,
+				65C58887217D92970033B6AB /* BlockListDownloadTests.swift in Sources */,
 				650EAB06212E537300455A34 /* RuleCountTests.swift in Sources */,
 				65C7DAF8211FACF10033EE15 /* CaseIterable.swift in Sources */,
 				656D64F520EC8AEC00EA9D9A /* Errors.swift in Sources */,
@@ -1844,7 +1872,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1885,7 +1913,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1924,7 +1952,7 @@
 				PRODUCT_NAME = ABPKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1964,7 +1992,7 @@
 				PRODUCT_NAME = ABPKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

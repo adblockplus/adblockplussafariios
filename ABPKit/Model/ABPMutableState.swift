@@ -15,9 +15,12 @@
  * along with Adblock Plus.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-public struct ABPMutableState {
-    public enum LegacyStateName: String,
-                                 CaseIterable {
+public
+struct ABPMutableState {
+    /// Enum is named legacy to indicate source of cases.
+    public
+    enum LegacyStateName: String,
+                          CaseIterable {
         case empty
         case acceptableAdsEnabled
         case customFilterListEnabled

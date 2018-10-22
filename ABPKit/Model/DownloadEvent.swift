@@ -21,6 +21,7 @@ public struct DownloadEvent {
     public var didFinishDownloading: Bool?
     public var totalBytesWritten: Int64?
     public var error: Error?
+    /// This may no longer be needed outside of the legacy implementation.
     public var errorWritten: Bool?
 
     public init(filterListName: FilterListName?,
