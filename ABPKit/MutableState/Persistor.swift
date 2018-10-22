@@ -22,6 +22,7 @@ import RxSwift
 /// * observe
 /// * save
 /// * load
+/// * clear
 class Persistor {
     typealias Action = (_ value: Any) -> Void
     /// Scheduler for all operations, main thread subscription is necessary for correct results.
@@ -57,23 +58,23 @@ class Persistor {
     }
 
     /// Return an observer for non KVORepresentable types.
-    public func unsafeObserve<T>(dataType: T.Type,
-                                 key: ABPMutableState.LegacyStateName,
-                                 nextAction: @escaping Action) -> Disposable? {
-            return defaults?.rx
-                .observe(dataType,
-                         key.rawValue,
-                         options: [.initial,
-                                   .new],
-                         retainSelf: false)
-                .subscribeOn(scheduler)
-                .subscribe(onNext: { next in
-                    guard let val = next else {
-                        return
-                    }
-                    nextAction(val)
-                })
-        }
+    func unsafeObserve<T>(dataType: T.Type,
+                          key: ABPMutableState.LegacyStateName,
+                          nextAction: @escaping Action) -> Disposable? {
+        return defaults?.rx
+            .observe(dataType,
+                     key.rawValue,
+                     options: [.initial,
+                               .new],
+                     retainSelf: false)
+            .subscribeOn(scheduler)
+            .subscribe(onNext: { next in
+                guard let val = next else {
+                    return
+                }
+                nextAction(val)
+            })
+    }
 
     /// Save a value to a key path in defaults.
     func save<T>(type: T.Type,
@@ -82,8 +83,9 @@ class Persistor {
         guard let defaults = self.defaults else {
             throw ABPMutableStateError.missingDefaults
         }
-        defaults.setValue(value,
-                          forKey: key.rawValue)
+        defaults
+            .setValue(value,
+                      forKey: key.rawValue)
     }
 
     /// This function should not not return nil.
@@ -96,5 +98,14 @@ class Persistor {
             throw ABPMutableStateError.invalidType
         }
         return res
+    }
+
+    func clear(key: ABPMutableState.LegacyStateName) throws {
+        guard let defaults = self.defaults else {
+            throw ABPMutableStateError.missingDefaults
+        }
+        defaults
+            .setValue(nil,
+                      forKey: key.rawValue)
     }
 }
