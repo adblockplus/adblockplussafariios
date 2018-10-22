@@ -21,7 +21,8 @@ import Foundation
 /// is used internally to represent filter lists.
 ///
 /// Some legacy properties exist but will be removed in future versions.
-public struct FilterList {
+public
+struct FilterList: Codable {
     /// Counter for number of successful downloads.
     public var downloadCount: Int?
 
@@ -53,7 +54,7 @@ public struct FilterList {
     public var userTriggered: Bool?
     public var version: String?
 
-    /// URL for local content blocking rules.
+    /// URL for local content blocking rules, the JSON file.
     public var rules: BlockListFileURL?
 
     public init() {
@@ -64,7 +65,8 @@ public struct FilterList {
 extension FilterList {
     /// This is not using an expiration interval from a v2 filter list as that data is not yet available.
     /// - Returns: True if the filter list is considered to be expired.
-    public func expired() -> Bool {
+    public
+    func expired() -> Bool {
         let nowInterval = Date.timeIntervalSinceReferenceDate
         if expires == nil && lastUpdate != nil {
             // Default to a fixed expiration.
