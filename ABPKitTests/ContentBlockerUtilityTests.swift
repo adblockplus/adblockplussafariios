@@ -62,21 +62,6 @@ class ContentBlockerUtilityTests: XCTestCase {
                   "AA filter list name is wrong.")
     }
 
-    /// Calls the following functions:
-    /// * getFilterListFileURL
-    func testActiveFilterListsURL() {
-        setupABPState(state: .defaultFilterListEnabled)
-        let url1 = try? util.activeFilterListsURL()
-        if url1 == nil {
-            XCTFail("Bad URL.")
-        }
-        setupABPState(state: .acceptableAdsEnabled)
-        let url2 = try? util.activeFilterListsURL()
-        if url2 == nil {
-            XCTFail("Bad URL.")
-        }
-    }
-
     func testMakeWhitelistRules() {
         let domain = "test.com"
         let rule = util.makeWhitelistRule(domain: domain)
