@@ -14,6 +14,10 @@
 		29850617231E8D56008AE7CD /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29850615231E8D56008AE7CD /* RxSwiftExt.framework */; };
 		29850618231E8D56008AE7CD /* yajl_dynamic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29850616231E8D56008AE7CD /* yajl_dynamic.framework */; };
 		29850619231E8D6D008AE7CD /* yajl_dynamic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29850616231E8D56008AE7CD /* yajl_dynamic.framework */; };
+		2985061E231EA82E008AE7CD /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29850615231E8D56008AE7CD /* RxSwiftExt.framework */; };
+		2985061F231EA82E008AE7CD /* RxSwiftExt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 29850615231E8D56008AE7CD /* RxSwiftExt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		29850620231EA855008AE7CD /* yajl_dynamic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29850616231E8D56008AE7CD /* yajl_dynamic.framework */; };
+		29850621231EA855008AE7CD /* yajl_dynamic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 29850616231E8D56008AE7CD /* yajl_dynamic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		299FB5302004DA3C0090FBAB /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C1769A1F7C7963008E2BA1 /* GlobalConstants.swift */; };
 		6501811D20252A960018C603 /* easylist_content_blocker_v2_short.json in Resources */ = {isa = PBXBuildFile; fileRef = 6501811B20252A960018C603 /* easylist_content_blocker_v2_short.json */; };
 		6501811F20252BA80018C603 /* JSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6501811E20252BA70018C603 /* JSONTests.swift */; };
@@ -166,7 +170,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2985061F231EA82E008AE7CD /* RxSwiftExt.framework in Embed Frameworks */,
 				65755AFC1F7C8A4B00696261 /* RxCocoa.framework in Embed Frameworks */,
+				29850621231EA855008AE7CD /* yajl_dynamic.framework in Embed Frameworks */,
 				65755AFD1F7C8A4B00696261 /* RxSwift.framework in Embed Frameworks */,
 				290398DE205827480072E885 /* FavIcon.framework in Embed Frameworks */,
 			);
@@ -500,8 +506,10 @@
 				65A173FE1F60A4E1004107EF /* SafariServices.framework in Frameworks */,
 				290398DD205827480072E885 /* FavIcon.framework in Frameworks */,
 				65C1769F1F7C809A008E2BA1 /* RxSwift.framework in Frameworks */,
+				2985061E231EA82E008AE7CD /* RxSwiftExt.framework in Frameworks */,
 				65C176A11F7C809E008E2BA1 /* RxCocoa.framework in Frameworks */,
 				29850617231E8D56008AE7CD /* RxSwiftExt.framework in Frameworks */,
+				29850620231EA855008AE7CD /* yajl_dynamic.framework in Frameworks */,
 				29850618231E8D56008AE7CD /* yajl_dynamic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
