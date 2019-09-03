@@ -19,8 +19,8 @@
 
 #import "AdblockPlus.h"
 
-#include <yajl/yajl_parse.h>
-#include <yajl/yajl_gen.h>
+#include <yajl_dynamic/yajl_parse.h>
+#include <yajl_dynamic/yajl_gen.h>
 
 // Update filter list every 5 days
 const NSTimeInterval DefaultFilterListsUpdateInterval = 3600 * 24 * 5;

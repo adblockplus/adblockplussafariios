@@ -19,8 +19,8 @@
 
 // yajl is sax-like json parser. Content blocker extension has limited amount of memory,
 // so that it is not possible to load whole filter list at once.
-#include <yajl/yajl_parse.h>
-#include <yajl/yajl_gen.h>
+#include <yajl_dynamic/yajl_gen.h>
+#include <yajl_dynamic/yajl_parse.h>
 
 #include <stdio.h>
 #include <stdlib.h>
