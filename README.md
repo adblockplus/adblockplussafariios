@@ -1,3 +1,9 @@
+### ⚠️ Deprecated
+
+This repository is for the 1.x version of Adblock Plus for iOS which has now been deprecated.
+Adblock Plus for iOS has been rewritten from the ground up and can be found in its [new repository here](https://gitlab.com/eyeo/adblockplus/adblock-plus-for-safari).
+
+
 Adblock Plus for iOS
 ====================
 
